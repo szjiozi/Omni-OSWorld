@@ -7,71 +7,256 @@ from multiprocessing import current_process
 
 from wrapt_timeout_decorator import *
 from lib_results_logger import log_task_completion
+from desktop_env.trajectory import TrajectoryRecorder
 
 logger = logging.getLogger("desktopenv.experiment")
 
 
 def run_single_example(agent, env, example, max_steps, instruction, args, example_result_dir, scores):
     runtime_logger = setup_logger(example, example_result_dir)
+    recorder = TrajectoryRecorder(
+        example_result_dir,
+        task_id=example["id"],
+        actor="agent",
+    )
+    artifacts = {
+        "raw_trajectory": "traj.jsonl",
+        "normalized_trajectory": "events.jsonl",
+        "manifest": "episode_manifest.json",
+    }
+    result = None
+    execution_started_ns = None
 
-    # Reset environment first to get fresh VM IP
-    env.reset(task_config=example)
-
-    # Reset agent with fresh VM IP (for snapshot reverts)
     try:
-        agent.reset(runtime_logger, vm_ip=env.vm_ip)
-    except Exception as e:
-        agent.reset(vm_ip=env.vm_ip)
-    
-    time.sleep(60) # Wait for the environment to be ready
-    obs = env._get_obs() # Get the initial observation
-    done = False
-    step_idx = 0
-    env.controller.start_recording()
-    while not done and step_idx < max_steps:
-        response, actions = agent.predict(
-            instruction,
-            obs
+        reset_started_ns = recorder.now_ns()
+        # Reset environment first to get fresh VM IP.
+        env.reset(task_config=example)
+        recorder.add_timing(
+            "environment_setup",
+            recorder.now_ns() - reset_started_ns,
         )
-        for action in actions:
-            # Capture the timestamp before executing the action
-            action_timestamp = datetime.datetime.now().strftime("%Y%m%d@%H%M%S%f")
-            logger.info("Step %d: %s", step_idx + 1, action)
-            obs, reward, done, info = env.step(action, args.sleep_after_execution)
 
-            logger.info("Reward: %.2f", reward)
-            logger.info("Done: %s", done)
-            # Save screenshot and trajectory information
-            with open(os.path.join(example_result_dir, f"step_{step_idx + 1}_{action_timestamp}.png"),
-                      "wb") as _f:
-                _f.write(obs['screenshot'])
-            with open(os.path.join(example_result_dir, "traj.jsonl"), "a") as f:
-                f.write(json.dumps({
-                    "step_num": step_idx + 1,
-                    "action_timestamp": action_timestamp,
-                    "action": action,
+        # Reset agent with fresh VM IP (for snapshot reverts).
+        try:
+            agent.reset(runtime_logger, vm_ip=env.vm_ip)
+        except Exception:
+            agent.reset(vm_ip=env.vm_ip)
+
+        initial_settle_started_ns = recorder.now_ns()
+        time.sleep(60)  # Kept for compatibility; excluded from execution latency.
+        recorder.add_timing(
+            "initial_settle",
+            recorder.now_ns() - initial_settle_started_ns,
+        )
+
+        obs = env._get_obs()
+        initial_screenshot = "initial_state.png"
+        with open(os.path.join(example_result_dir, initial_screenshot), "wb") as screenshot_file:
+            screenshot_file.write(obs["screenshot"])
+        artifacts["initial_state"] = initial_screenshot
+
+        initial_a11y = None
+        if obs.get("accessibility_tree"):
+            initial_a11y = "initial_state.xml"
+            with open(
+                os.path.join(example_result_dir, initial_a11y),
+                "w",
+                encoding="utf-8",
+            ) as a11y_file:
+                a11y_file.write(obs["accessibility_tree"])
+            artifacts["initial_a11y"] = initial_a11y
+
+        execution_started_ns = recorder.now_ns()
+        recorder.record_event(
+            "observation",
+            started_ns=execution_started_ns,
+            finished_ns=execution_started_ns,
+            observation_ref=initial_screenshot,
+            a11y_ref=initial_a11y,
+            metadata={"kind": "initial"},
+        )
+
+        done = False
+        step_idx = 0
+        env.controller.start_recording()
+        artifacts["recording"] = "recording.mp4"
+
+        while not done and step_idx < max_steps:
+            model_started_ns = recorder.now_ns()
+            response, actions = agent.predict(instruction, obs)
+            model_finished_ns = recorder.now_ns()
+            model_latency_ms = (model_finished_ns - model_started_ns) / 1_000_000
+            recorder.add_timing("model", model_finished_ns - model_started_ns)
+            recorder.record_event(
+                "plan",
+                group_id=step_idx,
+                started_ns=model_started_ns,
+                finished_ns=model_finished_ns,
+                latency_ms={"model": model_latency_ms},
+                metadata={
                     "response": response,
-                    "reward": reward,
-                    "done": done,
-                    "info": info,
-                    "screenshot_file": f"step_{step_idx + 1}_{action_timestamp}.png"
-                }))
-                f.write("\n")
-            if done:
-                logger.info("The episode is done.")
-                break
-        step_idx += 1
-    time.sleep(20) # Wait for the environment to settle
-    result = env.evaluate()
-    logger.info("Result: %.2f", result)
-    scores.append(result)
-    with open(os.path.join(example_result_dir, "result.txt"), "w", encoding="utf-8") as f:
-        f.write(f"{result}\n")
-    
-    # Log task completion to results.json
-    log_task_completion(example, result, example_result_dir, args)
-    
-    env.controller.end_recording(os.path.join(example_result_dir, "recording.mp4"))
+                    "action_count": len(actions),
+                },
+            )
+
+            for action in actions:
+                action_timestamp = datetime.datetime.now().strftime(
+                    "%Y%m%d@%H%M%S%f"
+                )
+                logger.info("Step %d: %s", step_idx + 1, action)
+                action_started_ns = recorder.now_ns()
+                obs, reward, done, info = env.step(
+                    action,
+                    args.sleep_after_execution,
+                )
+                action_finished_ns = recorder.now_ns()
+                environment_latency_ms = (
+                    action_finished_ns - action_started_ns
+                ) / 1_000_000
+                recorder.add_timing(
+                    "environment_action",
+                    action_finished_ns - action_started_ns,
+                )
+
+                logger.info("Reward: %.2f", reward)
+                logger.info("Done: %s", done)
+                screenshot_name = (
+                    f"step_{step_idx + 1}_{action_timestamp}.png"
+                )
+                with open(
+                    os.path.join(example_result_dir, screenshot_name),
+                    "wb",
+                ) as screenshot_file:
+                    screenshot_file.write(obs["screenshot"])
+
+                a11y_name = None
+                if obs.get("accessibility_tree"):
+                    a11y_name = (
+                        f"step_{step_idx + 1}_{action_timestamp}.xml"
+                    )
+                    with open(
+                        os.path.join(example_result_dir, a11y_name),
+                        "w",
+                        encoding="utf-8",
+                    ) as a11y_file:
+                        a11y_file.write(obs["accessibility_tree"])
+
+                recorder.record_event(
+                    "action",
+                    group_id=step_idx,
+                    started_ns=action_started_ns,
+                    finished_ns=action_finished_ns,
+                    raw_action=action,
+                    latency_ms={"environment": environment_latency_ms},
+                    observation_ref=screenshot_name,
+                    a11y_ref=a11y_name,
+                    metadata={
+                        "step_num": step_idx + 1,
+                        "reward": reward,
+                        "done": done,
+                        "info": info,
+                    },
+                )
+
+                # Keep the original trajectory for existing OSWorld tooling.
+                with open(
+                    os.path.join(example_result_dir, "traj.jsonl"),
+                    "a",
+                    encoding="utf-8",
+                ) as trajectory_file:
+                    trajectory_file.write(
+                        json.dumps(
+                            {
+                                "step_num": step_idx + 1,
+                                "action_timestamp": action_timestamp,
+                                "action": action,
+                                "response": response,
+                                "reward": reward,
+                                "done": done,
+                                "info": info,
+                                "screenshot_file": screenshot_name,
+                            }
+                        )
+                    )
+                    trajectory_file.write("\n")
+
+                if done:
+                    logger.info("The episode is done.")
+                    break
+            step_idx += 1
+
+        execution_finished_ns = recorder.now_ns()
+        recorder.add_timing(
+            "execution",
+            execution_finished_ns - execution_started_ns,
+        )
+
+        post_settle_started_ns = recorder.now_ns()
+        time.sleep(20)  # Kept for compatibility; excluded from execution latency.
+        recorder.add_timing(
+            "post_action_settle",
+            recorder.now_ns() - post_settle_started_ns,
+        )
+
+        evaluation_started_ns = recorder.now_ns()
+        result = env.evaluate()
+        evaluation_finished_ns = recorder.now_ns()
+        recorder.add_timing(
+            "evaluation",
+            evaluation_finished_ns - evaluation_started_ns,
+        )
+        logger.info("Result: %.2f", result)
+        scores.append(result)
+        with open(
+            os.path.join(example_result_dir, "result.txt"),
+            "w",
+            encoding="utf-8",
+        ) as result_file:
+            result_file.write(f"{result}\n")
+        artifacts["result"] = "result.txt"
+
+        log_task_completion(example, result, example_result_dir, args)
+
+        recording_finalize_started_ns = recorder.now_ns()
+        env.controller.end_recording(
+            os.path.join(example_result_dir, "recording.mp4")
+        )
+        recorder.add_timing(
+            "recording_finalize",
+            recorder.now_ns() - recording_finalize_started_ns,
+        )
+        recorder.record_event(
+            "result",
+            started_ns=evaluation_started_ns,
+            finished_ns=evaluation_finished_ns,
+            outcome="ok",
+            metadata={"score": result},
+        )
+        recorder.finalize(
+            status="completed",
+            result=result,
+            artifacts=artifacts,
+            metadata={"instruction": instruction},
+        )
+    except Exception as exc:
+        if execution_started_ns is not None:
+            recorder.add_timing(
+                "execution_until_error",
+                recorder.now_ns() - execution_started_ns,
+            )
+        recorder.record_event(
+            "result",
+            outcome="error",
+            error=f"{type(exc).__name__}: {exc}",
+        )
+        recorder.finalize(
+            status="failed",
+            result=result,
+            artifacts=artifacts,
+            error=f"{type(exc).__name__}: {exc}",
+            metadata={"instruction": instruction},
+        )
+        raise
 
 
 def setup_logger(example, example_result_dir):

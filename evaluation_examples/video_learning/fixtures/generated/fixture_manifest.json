@@ -1,0 +1,86 @@
+{
+  "files": {
+    "calc_currency_demo.mp4": {
+      "bytes": 72313,
+      "sha256": "746f0863655fa8ec78fc1a731187c3b243d4b803142f71ad03da9e42b3738db5"
+    },
+    "calc_currency_demo_after.xlsx": {
+      "bytes": 4918,
+      "sha256": "767eec175c7bade590a84bc6b3bb694532794c451d424db89c36637e68e21a80"
+    },
+    "calc_currency_demo_before.xlsx": {
+      "bytes": 4871,
+      "sha256": "c424dff537b04fc20ce7bda98d6da0b9c56f7eb120096d8c7c7a0797dd5b3416"
+    },
+    "calc_currency_gold.xlsx": {
+      "bytes": 4938,
+      "sha256": "b77efe613b5f811b56ceae729df129c5016cf6694860ae15df00272b7ade70c8"
+    },
+    "calc_currency_initial.xlsx": {
+      "bytes": 4895,
+      "sha256": "e0f9dbc31e84a686fd50bf5961e7fb3231aa5289350b758f683df9ee4030be21"
+    },
+    "calc_header_demo.mp4": {
+      "bytes": 62453,
+      "sha256": "56a138bd383087474df1d9ff6a9483328369d6256ed54981722a9ec797c46b83"
+    },
+    "calc_header_demo_after.xlsx": {
+      "bytes": 4960,
+      "sha256": "96951ff47295f69a0e64d1c25b06695f70e05371ded091e742d08c6448d93988"
+    },
+    "calc_header_demo_before.xlsx": {
+      "bytes": 4894,
+      "sha256": "a16f00183bf80eb5a8b6b9a5d1e63b668b59a5252f46c495d126ca50beabc329"
+    },
+    "calc_header_gold.xlsx": {
+      "bytes": 4953,
+      "sha256": "916883bd9704c35a5432b2d043a9eff9ee343cdfb996af61dee9df14eb4a53d0"
+    },
+    "calc_header_initial.xlsx": {
+      "bytes": 4883,
+      "sha256": "f1f13c3ec7be655e6b1a76ab2bc87f1d034547313dd8d659929b545080befce9"
+    },
+    "impress_background_demo.mp4": {
+      "bytes": 62494,
+      "sha256": "3a23d2a498423a4f78e00e13ec9cbe31e00468ca3c2643285155d5fea49062dc"
+    },
+    "impress_background_demo_after.pptx": {
+      "bytes": 28358,
+      "sha256": "6ad8002609d1e7729c5f9f9a681a88a7f8a7b5e59042730a162b8f0be4489716"
+    },
+    "impress_background_demo_before.pptx": {
+      "bytes": 28361,
+      "sha256": "eb6256093573d2487f1a0bdf4822e95e239a1559e1ea1457e12c7d57cdadea79"
+    },
+    "impress_background_gold.pptx": {
+      "bytes": 28359,
+      "sha256": "118b93edf8f51dfef5cfcfd8c442cb329df37560dcbe1017d78ac79624875893"
+    },
+    "impress_background_initial.pptx": {
+      "bytes": 28362,
+      "sha256": "089a2789cb273e61cbfa39b951070b5a7372c412f3ea10c5fbd46cd03ce75026"
+    },
+    "impress_title_demo.mp4": {
+      "bytes": 72799,
+      "sha256": "bc79daeadb4039b77edd634d783d19eb9beacd0ac6a1b62abb213c1e1fe4932c"
+    },
+    "impress_title_demo_after.pptx": {
+      "bytes": 28372,
+      "sha256": "93ff2c3b33c845294e93aac4c877521f104e8210faa60b13b0e9bf4e8b13d2c0"
+    },
+    "impress_title_demo_before.pptx": {
+      "bytes": 28363,
+      "sha256": "c58e63bdeff0c1a087ef47a96efcfee92d7d0d18a7462cc9de3222293117c1fb"
+    },
+    "impress_title_gold.pptx": {
+      "bytes": 28372,
+      "sha256": "10f46ac0b711f803a67b8d8632f9ab0493ad1cde206c3777f17ce059d3776ba2"
+    },
+    "impress_title_initial.pptx": {
+      "bytes": 28363,
+      "sha256": "d36566ca5ff8c3d882ebc7b90b8c1dd11df35b60238741a88740bdfd4f6400e4"
+    }
+  },
+  "generator": "scripts/python/generate_phase0_fixtures.py",
+  "schema_version": "1.0"
+}

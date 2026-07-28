@@ -135,6 +135,42 @@ def _probe_accessibility(ports: LocalPorts) -> None:
         _info("accessibility", f"{url} -> HTTP {response.status_code}")
 
 
+def _assert_office(ports: LocalPorts, stage: str = "office") -> None:
+    url = f"http://{ports.host}:{ports.server}/setup/execute"
+    command = [
+        "bash",
+        "-lc",
+        (
+            "set -eu; "
+            "libreoffice --headless --version; "
+            "command -v xinput >/dev/null; "
+            "dpkg-query -W libreoffice-calc libreoffice-impress; "
+            "test -s /etc/osworld/snapshot-manifest.json; "
+            "python3 -m json.tool /etc/osworld/snapshot-manifest.json >/dev/null"
+        ),
+    ]
+    response = requests.post(
+        url,
+        json={"command": command, "shell": False},
+        timeout=(_REQUEST_TIMEOUT[0], 60.0),
+    )
+    if response.status_code != 200:
+        raise DaytonaSmokeError(
+            f"POST {url} returned HTTP {response.status_code}: {response.text!r}"
+        )
+    payload = response.json()
+    if payload.get("returncode") != 0:
+        raise DaytonaSmokeError(
+            f"Office probe failed: {payload.get('error') or payload.get('output')!r}"
+        )
+    output = payload.get("output", "")
+    if "LibreOffice" not in output:
+        raise DaytonaSmokeError(
+            f"Office probe did not report a LibreOffice version: {output!r}"
+        )
+    _pass(stage, "Calc, Impress, xinput, and snapshot manifest are available")
+
+
 def _is_not_found(exc: Exception) -> bool:
     message = str(exc).lower()
     return (
@@ -230,6 +266,11 @@ def main() -> int:
         _probe_accessibility(ports)
         timings["accessibility"] = time.monotonic() - t0
 
+        failed_stage = "office"
+        t0 = time.monotonic()
+        _assert_office(ports)
+        timings["office"] = time.monotonic() - t0
+
         if os.environ.get("DAYTONA_SMOKE_SKIP_SNAPSHOT") == "1":
             _pass("snapshot/revert", "skipped (DAYTONA_SMOKE_SKIP_SNAPSHOT=1)")
         else:
@@ -269,6 +310,11 @@ def main() -> int:
             restored_ports = _parse_ip_ports(restored_ip_ports)
             _assert_platform(restored_ports, "platform_restored")
             timings["platform_restored"] = time.monotonic() - t0
+
+            failed_stage = "office_restored"
+            t0 = time.monotonic()
+            _assert_office(restored_ports, "office_restored")
+            timings["office_restored"] = time.monotonic() - t0
 
     except Exception as exc:  # noqa: BLE001 - smoke test reports one-line failure.
         print(f"[FAIL] {failed_stage}: {exc}", file=sys.stderr)

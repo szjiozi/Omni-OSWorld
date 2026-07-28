@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://os-world.github.io/schemas/video-learning/task-extension-1.0.json",
+  "title": "OSWorld Video Learning Task Extension",
+  "type": "object",
+  "required": [
+    "id",
+    "snapshot",
+    "instruction",
+    "config",
+    "related_apps",
+    "evaluator",
+    "video_learning"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "snapshot": {
+      "type": "string",
+      "minLength": 1
+    },
+    "instruction": {
+      "type": "string",
+      "minLength": 1
+    },
+    "config": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "parameters"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "parameters": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "related_apps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "evaluator": {
+      "type": "object",
+      "required": [
+        "func",
+        "result"
+      ],
+      "properties": {
+        "func": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          ]
+        },
+        "result": {
+          "oneOf": [
+            {
+              "type": "object"
+            },
+            {
+              "type": "array"
+            }
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "video_learning": {
+      "$ref": "#/$defs/videoLearning"
+    }
+  },
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "required": [
+        "type",
+        "path"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "local_file",
+            "cloud_file"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "videoLearning": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "demo_video",
+        "delivery_mode",
+        "transfer_family",
+        "skill_ir",
+        "split_group"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "demo_video": {
+          "$ref": "#/$defs/artifact"
+        },
+        "delivery_mode": {
+          "enum": [
+            "context",
+            "ui",
+            "compiled"
+          ]
+        },
+        "transfer_family": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]*$"
+        },
+        "source_artifact": {
+          "type": "string",
+          "minLength": 1
+        },
+        "demo_result_artifact": {
+          "type": "string",
+          "minLength": 1
+        },
+        "skill_ir": {
+          "type": "string",
+          "minLength": 1
+        },
+        "split_group": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "name": "calc_currency_format",
+  "description": "Apply the demonstrated US-dollar format to numeric amount cells.",
+  "preconditions": [
+    {
+      "subject": "application",
+      "operator": "eq",
+      "value": "libreoffice_calc"
+    },
+    {
+      "subject": "sheet.amount_column",
+      "operator": "exists",
+      "value": true
+    }
+  ],
+  "goal_spec": {
+    "required": [
+      {
+        "subject": "sheet.amount_cells.number_format",
+        "operator": "eq",
+        "value": "$#,##0.00"
+      }
+    ],
+    "optional": [],
+    "invariants": [
+      {
+        "subject": "workbook.cell_values",
+        "operator": "eq",
+        "value": "initial"
+      }
+    ]
+  },
+  "parameters": {
+    "number_format": "$#,##0.00"
+  },
+  "steps": [
+    {
+      "id": "select-amounts",
+      "action": "select_semantic_range",
+      "target": "sheet.amount_cells",
+      "args": {
+        "exclude_header": true
+      },
+      "observation_required": true
+    },
+    {
+      "id": "format-currency",
+      "action": "set_number_format",
+      "target": "selection",
+      "args": {
+        "format": "$number_format"
+      },
+      "observation_required": false
+    },
+    {
+      "id": "save",
+      "action": "save",
+      "target": "workbook",
+      "args": {},
+      "observation_required": true
+    }
+  ],
+  "verification": [
+    {
+      "subject": "sheet.amount_cells.number_format",
+      "operator": "eq",
+      "value": "$#,##0.00"
+    }
+  ],
+  "fallbacks": []
+}

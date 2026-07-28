@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "name": "calc_header_style",
+  "description": "Apply the demonstrated blue header row with bold white text.",
+  "preconditions": [
+    {
+      "subject": "application",
+      "operator": "eq",
+      "value": "libreoffice_calc"
+    },
+    {
+      "subject": "sheet.header_row",
+      "operator": "exists",
+      "value": true
+    }
+  ],
+  "goal_spec": {
+    "required": [
+      {
+        "subject": "sheet.header_row.font_bold",
+        "operator": "eq",
+        "value": true
+      },
+      {
+        "subject": "sheet.header_row.font_color",
+        "operator": "eq",
+        "value": "#FFFFFF"
+      },
+      {
+        "subject": "sheet.header_row.background_color",
+        "operator": "eq",
+        "value": "#1F4E78"
+      }
+    ],
+    "optional": [],
+    "invariants": [
+      {
+        "subject": "workbook.cell_values",
+        "operator": "eq",
+        "value": "initial"
+      }
+    ]
+  },
+  "parameters": {
+    "font_bold": true,
+    "font_color": "#FFFFFF",
+    "background_color": "#1F4E78"
+  },
+  "steps": [
+    {
+      "id": "select-header",
+      "action": "select_semantic_range",
+      "target": "sheet.header_row",
+      "args": {},
+      "observation_required": true
+    },
+    {
+      "id": "apply-header-style",
+      "action": "set_cell_style",
+      "target": "selection",
+      "args": {
+        "font_bold": "$font_bold",
+        "font_color": "$font_color",
+        "background_color": "$background_color"
+      },
+      "observation_required": false
+    },
+    {
+      "id": "save",
+      "action": "save",
+      "target": "workbook",
+      "args": {},
+      "observation_required": true
+    }
+  ],
+  "verification": [
+    {
+      "subject": "sheet.header_row.background_color",
+      "operator": "eq",
+      "value": "#1F4E78"
+    }
+  ],
+  "fallbacks": []
+}

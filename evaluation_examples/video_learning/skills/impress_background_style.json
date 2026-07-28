@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0",
+  "name": "impress_background_style",
+  "description": "Transfer a dark blue slide treatment while preserving all text.",
+  "preconditions": [
+    {
+      "subject": "application",
+      "operator": "eq",
+      "value": "libreoffice_impress"
+    }
+  ],
+  "goal_spec": {
+    "required": [
+      {
+        "subject": "slide.background_color",
+        "operator": "eq",
+        "value": "#1F4E78"
+      },
+      {
+        "subject": "slide.title.font_color",
+        "operator": "eq",
+        "value": "#FFFFFF"
+      },
+      {
+        "subject": "slide.body.font_color",
+        "operator": "eq",
+        "value": "#FFFFFF"
+      }
+    ],
+    "optional": [],
+    "invariants": [
+      {
+        "subject": "presentation.text_content",
+        "operator": "eq",
+        "value": "initial"
+      }
+    ]
+  },
+  "parameters": {
+    "background_color": "#1F4E78",
+    "text_color": "#FFFFFF"
+  },
+  "steps": [
+    {
+      "id": "set-background",
+      "action": "set_background_color",
+      "target": "slide",
+      "args": {
+        "color": "$background_color"
+      },
+      "observation_required": true
+    },
+    {
+      "id": "set-title-color",
+      "action": "set_text_color",
+      "target": "slide.title",
+      "args": {
+        "color": "$text_color"
+      },
+      "observation_required": false
+    },
+    {
+      "id": "set-body-color",
+      "action": "set_text_color",
+      "target": "slide.body",
+      "args": {
+        "color": "$text_color"
+      },
+      "observation_required": false
+    },
+    {
+      "id": "save",
+      "action": "save",
+      "target": "presentation",
+      "args": {},
+      "observation_required": true
+    }
+  ],
+  "verification": [
+    {
+      "subject": "slide.background_color",
+      "operator": "eq",
+      "value": "#1F4E78"
+    }
+  ],
+  "fallbacks": []
+}

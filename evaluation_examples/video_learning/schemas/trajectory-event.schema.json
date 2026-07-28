@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://os-world.github.io/schemas/video-learning/trajectory-event-1.0.json",
+  "title": "OSWorld Unified Trajectory Event",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "episode_id",
+    "task_id",
+    "actor",
+    "event_id",
+    "group_id",
+    "event_type",
+    "timestamps_ns",
+    "latency_ms",
+    "outcome",
+    "error"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "episode_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actor": {
+      "enum": [
+        "human",
+        "agent"
+      ]
+    },
+    "event_id": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "group_id": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "event_type": {
+      "enum": [
+        "observation",
+        "plan",
+        "action",
+        "verification",
+        "result"
+      ]
+    },
+    "semantic_action": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "verb": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        },
+        "args": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "verb",
+        "target",
+        "args"
+      ],
+      "additionalProperties": false
+    },
+    "raw_action": {},
+    "timestamps_ns": {
+      "type": "object",
+      "required": [
+        "started",
+        "finished"
+      ],
+      "properties": {
+        "started": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "finished": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "latency_ms": {
+      "type": "object",
+      "required": [
+        "model",
+        "grounding",
+        "environment",
+        "settle"
+      ],
+      "properties": {
+        "model": {
+          "type": "number",
+          "minimum": 0
+        },
+        "grounding": {
+          "type": "number",
+          "minimum": 0
+        },
+        "environment": {
+          "type": "number",
+          "minimum": 0
+        },
+        "settle": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "observation_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "a11y_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "window": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "app": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "outcome": {
+      "enum": [
+        "ok",
+        "error",
+        "skipped"
+      ]
+    },
+    "error": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

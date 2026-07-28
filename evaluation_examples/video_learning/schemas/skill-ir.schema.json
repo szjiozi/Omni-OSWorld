@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://os-world.github.io/schemas/video-learning/skill-ir-1.0.json",
+  "title": "OSWorld Video Learning SkillIR",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "name",
+    "description",
+    "preconditions",
+    "goal_spec",
+    "parameters",
+    "steps",
+    "verification",
+    "fallbacks"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]*$"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "preconditions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/predicate"
+      }
+    },
+    "goal_spec": {
+      "type": "object",
+      "required": [
+        "required",
+        "optional",
+        "invariants"
+      ],
+      "properties": {
+        "required": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/predicate"
+          }
+        },
+        "optional": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/predicate"
+          }
+        },
+        "invariants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/predicate"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "number",
+          "integer",
+          "boolean",
+          "array",
+          "object",
+          "null"
+        ]
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/step"
+      }
+    },
+    "verification": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/predicate"
+      }
+    },
+    "fallbacks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "when",
+          "steps"
+        ],
+        "properties": {
+          "when": {
+            "$ref": "#/$defs/predicate"
+          },
+          "steps": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/step"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "predicate": {
+      "type": "object",
+      "required": [
+        "subject",
+        "operator",
+        "value"
+      ],
+      "properties": {
+        "subject": {
+          "type": "string",
+          "minLength": 1
+        },
+        "operator": {
+          "enum": [
+            "eq",
+            "neq",
+            "contains",
+            "exists",
+            "matches",
+            "approximately"
+          ]
+        },
+        "value": {},
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "step": {
+      "type": "object",
+      "required": [
+        "id",
+        "action",
+        "target",
+        "args",
+        "observation_required"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "args": {
+          "type": "object"
+        },
+        "observation_required": {
+          "type": "boolean"
+        },
+        "preconditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/predicate"
+          }
+        },
+        "postconditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/predicate"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

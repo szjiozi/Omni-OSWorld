@@ -11,11 +11,13 @@ pip install daytona
 # 2. Get an API key from the Daytona dashboard
 export DAYTONA_API_KEY=...
 
-# 3. Build the OSWorld snapshot once
-python -m desktop_env.providers.daytona.build_snapshot --name osworld-ubuntu-v1
+# 3. Build the auditable Office snapshot once
+python -m desktop_env.providers.daytona.build_snapshot \
+  --name osworld-video-office-v1 \
+  --manifest-out results/osworld-video-office-v1.manifest.json
 
 # 4. Use the built snapshot for launches
-export DAYTONA_OSWORLD_SNAPSHOT=osworld-ubuntu-v1
+export DAYTONA_OSWORLD_SNAPSHOT=osworld-video-office-v1
 
 # 5. Smoke test the provider
 DAYTONA_API_KEY=... DAYTONA_OSWORLD_SNAPSHOT=... python -m desktop_env.providers.daytona.smoke_test
@@ -44,14 +46,21 @@ Sandboxes are created with Daytona auto-stop disabled (`auto_stop_interval=0`) s
 
 ## Building the snapshot
 
-Build the baseline OSWorld snapshot once per Daytona org:
+Build the Office OSWorld snapshot once per Daytona org:
 
 ```bash
-python -m desktop_env.providers.daytona.build_snapshot --name osworld-ubuntu-v1
-export DAYTONA_OSWORLD_SNAPSHOT=osworld-ubuntu-v1
+python -m desktop_env.providers.daytona.build_snapshot \
+  --name osworld-video-office-v1 \
+  --manifest-out results/osworld-video-office-v1.manifest.json
+export DAYTONA_OSWORLD_SNAPSHOT=osworld-video-office-v1
 ```
 
-The snapshot build installs the OSWorld server and desktop basics into a Daytona snapshot. Keep the snapshot name stable for repeatable runs, or export the new name before running `quickstart.py`.
+The snapshot build installs the OSWorld server, desktop basics, Calc, Impress,
+fixed Office fonts, and `xinput` for human trajectory collection. It writes
+`/etc/osworld/snapshot-manifest.json` into the snapshot with package versions,
+the OSWorld commit, build-script hash, and capabilities. Keep the snapshot name
+stable for repeatable runs, or export the new name before running
+`quickstart.py`.
 
 ## Running
 
@@ -70,6 +79,32 @@ python quickstart.py --provider_name daytona --headless True
 ```
 
 The OSWorld server log is written inside the sandbox at `/root/osworld-server.log`.
+
+Before collecting Phase 0 data, run the repeated replacement-reset soak. This
+performs ten clean resets without creating temporary snapshots and writes a
+machine-readable report:
+
+```bash
+python -m desktop_env.providers.daytona.soak_test \
+  --iterations 10 \
+  --report results/daytona_phase0_soak.json
+```
+
+Validate the four Phase 0 Office tasks through the real setup/evaluator path:
+
+```bash
+python scripts/python/generate_phase0_fixtures.py
+python scripts/python/validate_phase0_tasks.py \
+  --daytona \
+  --report results/phase0_daytona_tasks.json
+```
+
+After the snapshot is built and both required environment variables are set,
+the complete smoke, ten-reset soak, and four-task validation can be run with:
+
+```bash
+bash scripts/bash/validate_phase0_daytona.sh
+```
 
 ## Environment variables
 
@@ -90,7 +125,12 @@ The OSWorld server log is written inside the sandbox at `/root/osworld-server.lo
 
 ## Task coverage caveat
 
-The built snapshot carries the OSWorld server, desktop basics, the baked apt set (including `wmctrl` for guest-server window management), and LibreOffice. LibreOffice is included because `/accessibility` checks it and because it is a core task app. Other benchmark task apps (GIMP, VLC, Thunderbird, Chrome/Chromium with profiles…) are not baked into the baseline; extend `build_snapshot.py`'s apt step for the app set you evaluate.
+The built snapshot carries the OSWorld server, desktop basics, the baked apt
+set (including `wmctrl` and `xinput`), fixed Office fonts, and LibreOffice Calc
+and Impress. LibreOffice is included because `/accessibility` checks it and
+because it is the Phase 0 task target. Other benchmark task apps (GIMP, VLC,
+Thunderbird, Chrome/Chromium with profiles…) are not baked into the baseline;
+extend `build_snapshot.py`'s apt step for the app set you evaluate.
 
 Do not assume coverage matches the upstream Ubuntu qcow2 image. If a task depends on an application, browser profile, extension, desktop setting, or fixture file, bake that dependency into the Daytona snapshot before using it for evaluation.
 

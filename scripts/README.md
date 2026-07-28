@@ -19,7 +19,7 @@ The `python/` directory contains Python scripts for running different models and
 
 - **Single model scripts**: `run_autoglm.py`, `run_coact.py`, `run_maestro.py`
 - **Multi-environment scripts**: `run_multienv_*.py` - Scripts for running models in multiple environments
-- **Manual examination**: `manual_examine.py` - Tool for manually verifying and examining specific benchmark tasks
+- **Manual exploration**: `manual_explore.py` - Tool for manually verifying tasks and recording human demonstrations
 
 ## Bash Scripts
 
@@ -66,20 +66,17 @@ For manual verification and examination of specific benchmark tasks:
 
 ```bash
 # From the OSWorld root directory
-python scripts/python/manual_examine.py \
+python scripts/python/manual_explore.py \
+    --provider_name daytona \
     --headless \
-    --observation_type screenshot \
     --result_dir ./results_human_examine \
-    --test_all_meta_path evaluation_examples/test_all.json \
-    --domain libreoffice_impress \
-    --example_id a669ef01-ded5-4099-9ea9-25e99b569840 \
-    --max_steps 3
+    --task-config evaluation_examples/examples/libreoffice_impress/a669ef01-ded5-4099-9ea9-25e99b569840.json
 ```
 
 This tool allows you to:
 - Manually execute tasks in the environment
-- Verify task correctness and evaluation metrics
-- Record the execution process with screenshots and videos
+- Verify task correctness with the configured evaluator
+- Record aligned screenshots, video, X11 input events, and a result manifest
 - Examine specific problematic tasks
 
 See `scripts/bash/run_manual_examine.sh` for example task IDs across different domains.

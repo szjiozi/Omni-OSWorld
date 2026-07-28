@@ -221,23 +221,21 @@ The script will display:
 - With `--detailed` flag: compact format showing "score/total" for each domain
 
 ### Manual Task Examination
-For manual verification and examination of specific benchmark tasks, you can use the manual examination tool:
+For manual verification, human demonstration capture, and examination of a
+specific benchmark task, use the manual exploration tool:
 
 ```bash
-python scripts/python/manual_examine.py \
+python scripts/python/manual_explore.py \
+    --provider_name daytona \
     --headless \
-    --observation_type screenshot \
     --result_dir ./results_human_examine \
-    --test_all_meta_path evaluation_examples/test_all.json \
-    --domain libreoffice_impress \
-    --example_id a669ef01-ded5-4099-9ea9-25e99b569840 \
-    --max_steps 3
+    --task-config evaluation_examples/examples/libreoffice_impress/a669ef01-ded5-4099-9ea9-25e99b569840.json
 ```
 
 This tool allows you to:
 - Manually execute tasks in the environment
-- Verify task correctness and evaluation metrics
-- Record the execution process with screenshots and videos
+- Verify task correctness with the configured evaluator
+- Record aligned screenshots, video, input events, and a versioned manifest
 - Examine specific problematic tasks
 
 See `scripts/bash/run_manual_examine.sh` for example task IDs across different domains.

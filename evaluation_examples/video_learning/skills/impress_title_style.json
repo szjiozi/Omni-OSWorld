@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "name": "impress_title_style",
+  "description": "Transfer the demonstrated title typography without changing slide content.",
+  "preconditions": [
+    {
+      "subject": "application",
+      "operator": "eq",
+      "value": "libreoffice_impress"
+    },
+    {
+      "subject": "slide.title",
+      "operator": "exists",
+      "value": true
+    }
+  ],
+  "goal_spec": {
+    "required": [
+      {
+        "subject": "slide.title.font_name",
+        "operator": "eq",
+        "value": "Liberation Serif"
+      },
+      {
+        "subject": "slide.title.font_size_pt",
+        "operator": "eq",
+        "value": 32
+      },
+      {
+        "subject": "slide.title.font_color",
+        "operator": "eq",
+        "value": "#1F4E78"
+      }
+    ],
+    "optional": [],
+    "invariants": [
+      {
+        "subject": "presentation.text_content",
+        "operator": "eq",
+        "value": "initial"
+      }
+    ]
+  },
+  "parameters": {
+    "font_name": "Liberation Serif",
+    "font_size_pt": 32,
+    "font_color": "#1F4E78"
+  },
+  "steps": [
+    {
+      "id": "select-title",
+      "action": "select_object",
+      "target": "slide.title",
+      "args": {},
+      "observation_required": true
+    },
+    {
+      "id": "apply-title-style",
+      "action": "set_text_style",
+      "target": "slide.title",
+      "args": {
+        "font_name": "$font_name",
+        "font_size_pt": "$font_size_pt",
+        "font_color": "$font_color"
+      },
+      "observation_required": false
+    },
+    {
+      "id": "save",
+      "action": "save",
+      "target": "presentation",
+      "args": {},
+      "observation_required": true
+    }
+  ],
+  "verification": [
+    {
+      "subject": "slide.title.font_name",
+      "operator": "eq",
+      "value": "Liberation Serif"
+    }
+  ],
+  "fallbacks": []
+}

@@ -34,11 +34,8 @@
 # - 02ce9a50-7af2-47ed-8596-af0c230501f8
 
 # Example usage:
-python scripts/python/manual_examine.py \
+python scripts/python/manual_explore.py \
+    --provider_name daytona \
     --headless \
-    --observation_type screenshot \
     --result_dir ./results_human_examine \
-    --test_all_meta_path evaluation_examples/test_all.json \
-    --domain libreoffice_impress \
-    --example_id a669ef01-ded5-4099-9ea9-25e99b569840 \
-    --max_steps 3
+    --task-config evaluation_examples/examples/libreoffice_impress/a669ef01-ded5-4099-9ea9-25e99b569840.json

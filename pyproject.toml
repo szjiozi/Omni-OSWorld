@@ -47,6 +47,7 @@ dependencies = [
     "lxml",
     "cssselect",
     "xmltodict",
+    "jsonschema>=4.21",
     "openpyxl",
     "python-docx",
     "python-pptx",

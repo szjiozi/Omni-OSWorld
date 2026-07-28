@@ -8,11 +8,15 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 import shlex
+import subprocess
 import sys
 import tempfile
 import time
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath
 from typing import NoReturn
 
@@ -30,6 +34,26 @@ from desktop_env.providers.daytona.lifecycle import create_sandbox_snapshot, del
 
 _SERVER_FILES = ("main.py", "pyxcursor.py", "requirements.txt")
 _BUILD_TMP_DIR = "/tmp/osworld-build"
+_GUEST_MANIFEST_PATH = "/etc/osworld/snapshot-manifest.json"
+_APT_PACKAGES = (
+    "python3-pip",
+    "python3-tk",
+    "python3-pyatspi",
+    "at-spi2-core",
+    "gnome-screenshot",
+    "ffmpeg",
+    "curl",
+    "python-is-python3",
+    "wmctrl",
+    "xinput",
+    "fonts-liberation",
+    "fonts-dejavu-core",
+)
+_OFFICE_APT_PACKAGES = (
+    "libreoffice",
+    "libreoffice-calc",
+    "libreoffice-impress",
+)
 _WRAPPER_BODY = (
     "import os\n"
     "import sys\n"
@@ -72,11 +96,17 @@ def _parse_args() -> argparse.Namespace:
         action="store_true",
         help="Leave the build sandbox running for debugging.",
     )
+    parser.add_argument(
+        "--manifest-out",
+        type=Path,
+        default=None,
+        help="Optionally save a copy of the snapshot manifest on the host.",
+    )
     return parser.parse_args()
 
 
 def _stage(number: int, message: str) -> None:
-    print(f"[{number}/9] {message}", flush=True)
+    print(f"[{number}/10] {message}", flush=True)
 
 
 def _delete_build_sandbox(context: BuildContext | None, sandbox) -> None:
@@ -193,6 +223,88 @@ def _upload_linux_requirements(context: BuildContext, sandbox) -> None:
     _copy_tmp_to_guest(context, sandbox, "requirements-linux.txt", _guest_server_path("requirements-linux.txt"))
 
 
+def _git_revision() -> str | None:
+    repo_root = Path(__file__).resolve().parents[3]
+    response = subprocess.run(
+        ["git", "rev-parse", "HEAD"],
+        cwd=repo_root,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    return response.stdout.strip() or None
+
+
+def _installed_package_versions(
+    context: BuildContext,
+    sandbox,
+) -> dict[str, str]:
+    packages = (*_APT_PACKAGES, *_OFFICE_APT_PACKAGES)
+    query = (
+        "dpkg-query -W -f='${binary:Package}\\t${Version}\\n' "
+        + " ".join(shlex.quote(package) for package in packages)
+    )
+    response = run(context, sandbox, query)
+    versions: dict[str, str] = {}
+    for line in response.result.splitlines():
+        name, separator, version = line.partition("\t")
+        if separator:
+            versions[name] = version
+    return versions
+
+
+def _write_snapshot_manifest(
+    context: BuildContext,
+    sandbox,
+    args: argparse.Namespace,
+) -> dict:
+    libreoffice = run(
+        context,
+        sandbox,
+        "libreoffice --headless --version",
+    ).result.strip()
+    build_script = Path(__file__).resolve()
+    manifest = {
+        "schema_version": "1.0",
+        "snapshot_name": args.name,
+        "base_snapshot": args.base,
+        "profile": "office",
+        "built_at": datetime.now(timezone.utc).isoformat(),
+        "osworld_git_revision": _git_revision(),
+        "build_script_sha256": hashlib.sha256(build_script.read_bytes()).hexdigest(),
+        "libreoffice_version": libreoffice,
+        "packages": _installed_package_versions(context, sandbox),
+        "desktop": {
+            "display": ":0",
+            "locale": "C.UTF-8",
+        },
+        "capabilities": [
+            "osworld_server",
+            "screenshots",
+            "accessibility",
+            "screen_recording",
+            "x11_input_events",
+            "libreoffice_calc",
+            "libreoffice_impress",
+        ],
+    }
+    content = (json.dumps(manifest, indent=2, sort_keys=True) + "\n").encode()
+    remote_tmp = f"{_BUILD_TMP_DIR}/snapshot-manifest.json"
+    _upload_bytes(sandbox, content, remote_tmp)
+    _copy_tmp_to_guest(
+        context,
+        sandbox,
+        "snapshot-manifest.json",
+        _GUEST_MANIFEST_PATH,
+    )
+
+    if args.manifest_out is not None:
+        args.manifest_out.parent.mkdir(parents=True, exist_ok=True)
+        args.manifest_out.write_bytes(content)
+        print(f"Host manifest: {args.manifest_out}", flush=True)
+    return manifest
+
+
 def _verify_server(context: BuildContext, sandbox) -> None:
     run(context, sandbox, "sudo touch /root/.Xauthority")
     run(context, sandbox, "DISPLAY=:0 xhost +local:")
@@ -225,6 +337,19 @@ def _verify_server(context: BuildContext, sandbox) -> None:
     accessibility_code = accessibility.result.strip()
     if accessibility_code != "200":
         _fail(context, sandbox, f"/accessibility returned HTTP {accessibility_code!r}, expected '200'", accessibility.result)
+
+    run(
+        context,
+        sandbox,
+        "test -s /etc/osworld/snapshot-manifest.json && "
+        "python3 -m json.tool /etc/osworld/snapshot-manifest.json >/dev/null",
+    )
+    run(
+        context,
+        sandbox,
+        "command -v libreoffice && command -v xinput && "
+        "dpkg-query -W libreoffice-calc libreoffice-impress",
+    )
 
     run(context, sandbox, "sudo pkill -f wrapper.py || true")
     run(context, sandbox, f"sudo rm -f {shlex.quote(GUEST_SERVER_LOG)}")
@@ -259,7 +384,9 @@ def main() -> int:
             context,
             sandbox,
             # python-is-python3: OSWorld controllers exec bare `python -c ...` in the guest.
-            "sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3-pip python3-tk python3-pyatspi at-spi2-core gnome-screenshot ffmpeg curl python-is-python3 wmctrl",
+            "sudo apt-get update && "
+            "sudo DEBIAN_FRONTEND=noninteractive apt-get install -y "
+            + " ".join(shlex.quote(package) for package in _APT_PACKAGES),
             timeout=600,
         )
         # LibreOffice is a hard dependency of the guest server itself — the
@@ -269,7 +396,11 @@ def main() -> int:
         run(
             context,
             sandbox,
-            "sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends libreoffice",
+            "sudo DEBIAN_FRONTEND=noninteractive apt-get install -y "
+            "--no-install-recommends "
+            + " ".join(
+                shlex.quote(package) for package in _OFFICE_APT_PACKAGES
+            ),
             timeout=900,
         )
 
@@ -282,15 +413,18 @@ def main() -> int:
             timeout=900,
         )
 
-        _stage(7, "Verifying the in-sandbox OSWorld server.")
+        _stage(7, "Writing the auditable Office snapshot manifest.")
+        _write_snapshot_manifest(context, sandbox, args)
+
+        _stage(8, "Verifying the in-sandbox OSWorld server and Office apps.")
         _verify_server(context, sandbox)
 
-        _stage(8, f"Creating Daytona snapshot {args.name!r}.")
+        _stage(9, f"Creating Daytona snapshot {args.name!r}.")
         snapshot_name = create_sandbox_snapshot(client, sandbox.id, args.name)
         print(f"Snapshot: {snapshot_name}", flush=True)
         print(f"export DAYTONA_OSWORLD_SNAPSHOT={snapshot_name}", flush=True)
 
-        _stage(9, "Cleaning up the build sandbox.")
+        _stage(10, "Cleaning up the build sandbox.")
         _delete_build_sandbox(context, sandbox)
         sandbox = None
         return 0

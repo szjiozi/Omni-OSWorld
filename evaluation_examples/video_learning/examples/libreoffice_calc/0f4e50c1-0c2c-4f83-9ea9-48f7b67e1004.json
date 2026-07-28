@@ -1,0 +1,99 @@
+{
+  "id": "0f4e50c1-0c2c-4f83-9ea9-48f7b67e1004",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Watch the demonstration and apply the same header-row treatment to the current table. Keep every cell value unchanged.",
+  "source": "OSWorld-VideoLearn Phase 0 self-authored fixture",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/video_learning/fixtures/generated/calc_header_initial.xlsx",
+            "path": "/home/user/Desktop/calc_header.xlsx"
+          },
+          {
+            "local_path": "evaluation_examples/video_learning/fixtures/generated/calc_header_demo.mp4",
+            "path": "/home/user/Desktop/demo.mp4"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/calc_header.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "video_learning": {
+    "schema_version": "1.0",
+    "demo_video": {
+      "type": "local_file",
+      "path": "evaluation_examples/video_learning/fixtures/generated/calc_header_demo.mp4",
+      "dest": "demo.mp4"
+    },
+    "delivery_mode": "context",
+    "transfer_family": "calc_header_style",
+    "source_artifact": "evaluation_examples/video_learning/fixtures/generated/calc_header_demo_before.xlsx",
+    "demo_result_artifact": "evaluation_examples/video_learning/fixtures/generated/calc_header_demo_after.xlsx",
+    "skill_ir": "evaluation_examples/video_learning/skills/calc_header_style.json",
+    "split_group": "phase0_calc_header_style"
+  },
+  "evaluator": {
+    "postconfig": [
+      {
+        "type": "execute",
+        "parameters": {
+          "command": [
+            "python",
+            "-c",
+            "import pyautogui; pyautogui.hotkey('ctrl', 's')"
+          ]
+        }
+      },
+      {
+        "type": "sleep",
+        "parameters": {
+          "seconds": 0.5
+        }
+      }
+    ],
+    "func": "compare_table",
+    "expected": {
+      "type": "local_file",
+      "path": "evaluation_examples/video_learning/fixtures/generated/calc_header_gold.xlsx",
+      "dest": "calc_header_gold.xlsx"
+    },
+    "result": {
+      "type": "vm_file",
+      "path": "/home/user/Desktop/calc_header.xlsx",
+      "dest": "calc_header_result.xlsx"
+    },
+    "options": {
+      "rules": [
+        {
+          "type": "sheet_data",
+          "sheet_idx0": 0,
+          "sheet_idx1": "EI0"
+        },
+        {
+          "type": "style",
+          "sheet_idx0": 0,
+          "sheet_idx1": "EI0",
+          "props": [
+            "font_bold",
+            "font_color",
+            "bgcolor"
+          ]
+        }
+      ]
+    }
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}
