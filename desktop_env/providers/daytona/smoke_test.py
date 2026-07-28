@@ -38,6 +38,7 @@ logging.basicConfig(
 )
 
 _REQUEST_TIMEOUT: tuple[float, float] = (10.0, 10.0)
+_SCREENSHOT_REQUEST_TIMEOUT: tuple[float, float] = (10.0, 30.0)
 _OLD_SANDBOX_TEARDOWN_TIMEOUT_SEC = DELETE_RETRY_DEADLINE_SEC + 60.0
 _OLD_SANDBOX_TEARDOWN_POLL_SEC = 3.0
 
@@ -108,7 +109,7 @@ def _assert_platform(ports: LocalPorts, stage: str) -> None:
 
 def _assert_screenshot(ports: LocalPorts) -> None:
     url = f"http://{ports.host}:{ports.server}/screenshot"
-    response = _get(url)
+    response = requests.get(url, timeout=_SCREENSHOT_REQUEST_TIMEOUT)
     if response.status_code != 200:
         raise DaytonaSmokeError(f"GET {url} returned HTTP {response.status_code}")
     if not response.content:
