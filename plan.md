@@ -531,8 +531,23 @@ desktop_env/
 - [x] `manual_explore.py` 的任务加载、录屏、周期截图、X11 输入事件和 evaluator。
 - [x] Daytona Office snapshot manifest、Office smoke 和 10-reset soak 工具。
 - [x] 2 个 Impress + 2 个 Calc 任务、确定性 fixture 和本地验证报告。
-- [x] 本地定向测试：`5 passed, 1 skipped`；四任务验证均满足 initial=0、gold=1。
-- [ ] 在计算节点使用真实 Daytona 凭据执行 snapshot build、10-reset soak 和四任务 `--daytona` 验收。当前本地进程未设置 `DAYTONA_API_KEY` / `DAYTONA_OSWORLD_SNAPSHOT`，因此不能伪造此项结果。
+- [x] 本地与计算节点定向测试：`5 passed, 1 skipped`；跳过项是
+  `osworld_env` 的 Python 3.10 无法导入项目声明需要 Python >=3.12 的默认
+  runner 测试。其余测试与四任务本地验证通过。
+- [x] 使用真实 Daytona 凭据构建 `osworld-video-office-v1`，Office smoke
+  通过，10/10 replacement reset soak 通过。
+- [x] 四任务原生 Daytona setup/evaluator 验收通过：每个任务均为
+  initial=0、gold=1，本次运行创建的 sandbox 已全部清理。
+
+验收说明：
+
+- 计算节点报告位于 `results/daytona_phase0_soak.json`、
+  `results/phase0_daytona_tasks.json` 和
+  `results/osworld-video-office-v1-manifest.json`。
+- 完整 smoke 创建的临时 snapshot `osworld-smoke-4cb8902168` 因当前 Daytona
+  凭据没有 snapshot delete 权限（HTTP 403）而保留，需要在 Dashboard
+  手工删除；后续一键验收默认跳过临时 snapshot 创建，由 10-reset soak
+  覆盖恢复能力。
 
 交付物：
 

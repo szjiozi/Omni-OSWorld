@@ -72,6 +72,12 @@ DAYTONA_API_KEY=... DAYTONA_OSWORLD_SNAPSHOT=... python -m desktop_env.providers
 - `DAYTONA_SMOKE_REQUIRE_A11Y=1` makes the smoke test require `/accessibility` to return HTTP 200.
 - `DAYTONA_SMOKE_SKIP_SNAPSHOT=1` skips the snapshot/revert part of the smoke test.
 
+Some Daytona accounts can create snapshots but receive HTTP 403 when deleting
+them. For those accounts, use `DAYTONA_SMOKE_SKIP_SNAPSHOT=1` for routine smoke
+tests and rely on the immutable-snapshot soak below for replacement-reset
+coverage. A full smoke run may leave an `osworld-smoke-*` snapshot that must be
+removed in the Daytona Dashboard.
+
 Then run OSWorld with the Daytona provider:
 
 ```bash
@@ -105,6 +111,10 @@ the complete smoke, ten-reset soak, and four-task validation can be run with:
 ```bash
 bash scripts/bash/validate_phase0_daytona.sh
 ```
+
+The one-shot script skips creation of a disposable smoke snapshot; the
+following ten-reset soak still verifies repeated restores from the configured
+Office snapshot.
 
 ## Environment variables
 

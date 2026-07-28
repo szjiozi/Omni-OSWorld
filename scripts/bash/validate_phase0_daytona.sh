@@ -12,7 +12,10 @@ if [[ -z "${DAYTONA_OSWORLD_SNAPSHOT:-}" ]]; then
 fi
 
 python scripts/python/generate_phase0_fixtures.py
-python -m desktop_env.providers.daytona.smoke_test
+# The soak below covers replacement restores. Avoid creating a disposable
+# smoke snapshot on Daytona accounts that can create but cannot delete one.
+DAYTONA_SMOKE_SKIP_SNAPSHOT=1 \
+  python -m desktop_env.providers.daytona.smoke_test
 python -m desktop_env.providers.daytona.soak_test \
   --iterations 10 \
   --report results/daytona_phase0_soak.json
