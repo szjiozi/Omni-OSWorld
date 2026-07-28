@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import sys
 import zipfile
 from pathlib import Path
@@ -27,6 +28,11 @@ DEFAULT_OUTPUT_DIR = (
     / "video_learning"
     / "fixtures"
     / "generated"
+)
+FIXED_OFFICE_TIMESTAMP = b"2000-01-01T00:00:00Z"
+CORE_TIMESTAMP_PATTERN = re.compile(
+    rb"(<dcterms:(?:created|modified)\b[^>]*>)[^<]*"
+    rb"(</dcterms:(?:created|modified)>)"
 )
 
 
@@ -93,6 +99,16 @@ def _normalize_office_zip(path: Path) -> None:
     ) as target:
         for name in sorted(source.namelist()):
             source_info = source.getinfo(name)
+            contents = source.read(name)
+            if name == "docProps/core.xml":
+                contents = CORE_TIMESTAMP_PATTERN.sub(
+                    lambda match: (
+                        match.group(1)
+                        + FIXED_OFFICE_TIMESTAMP
+                        + match.group(2)
+                    ),
+                    contents,
+                )
             target_info = zipfile.ZipInfo(
                 filename=name,
                 date_time=(1980, 1, 1, 0, 0, 0),
@@ -100,7 +116,7 @@ def _normalize_office_zip(path: Path) -> None:
             target_info.compress_type = zipfile.ZIP_DEFLATED
             target_info.external_attr = source_info.external_attr
             target_info.create_system = source_info.create_system
-            target.writestr(target_info, source.read(name))
+            target.writestr(target_info, contents)
     os.replace(tmp_path, path)
 
 

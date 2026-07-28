@@ -5,80 +5,80 @@
       "sha256": "746f0863655fa8ec78fc1a731187c3b243d4b803142f71ad03da9e42b3738db5"
     },
     "calc_currency_demo_after.xlsx": {
-      "bytes": 4918,
-      "sha256": "767eec175c7bade590a84bc6b3bb694532794c451d424db89c36637e68e21a80"
+      "bytes": 4913,
+      "sha256": "03d8d16a610ba20071276151ae73435f79c6250241b337d98b986a0fecec5b4e"
     },
     "calc_currency_demo_before.xlsx": {
-      "bytes": 4871,
-      "sha256": "c424dff537b04fc20ce7bda98d6da0b9c56f7eb120096d8c7c7a0797dd5b3416"
+      "bytes": 4866,
+      "sha256": "f672fa124de452a3e39b789e5180ee423c011bf6550669b97bdfa94daabd9f2c"
     },
     "calc_currency_gold.xlsx": {
-      "bytes": 4938,
-      "sha256": "b77efe613b5f811b56ceae729df129c5016cf6694860ae15df00272b7ade70c8"
+      "bytes": 4933,
+      "sha256": "4033c7fdcb12ab5166fcdbad0bd7376f1d74a76f00d3d3f38980ce501bac3203"
     },
     "calc_currency_initial.xlsx": {
-      "bytes": 4895,
-      "sha256": "e0f9dbc31e84a686fd50bf5961e7fb3231aa5289350b758f683df9ee4030be21"
+      "bytes": 4890,
+      "sha256": "3df32ce0cbb45ab881bbe8581c805430b2a139a780ad56d2c3b407ede2c43a0e"
     },
     "calc_header_demo.mp4": {
       "bytes": 62453,
       "sha256": "56a138bd383087474df1d9ff6a9483328369d6256ed54981722a9ec797c46b83"
     },
     "calc_header_demo_after.xlsx": {
-      "bytes": 4960,
-      "sha256": "96951ff47295f69a0e64d1c25b06695f70e05371ded091e742d08c6448d93988"
+      "bytes": 4955,
+      "sha256": "eee800f1c9bee99588adb7405bc9063f4ccb3b128a373f6134eb1d742ee17ac7"
     },
     "calc_header_demo_before.xlsx": {
-      "bytes": 4894,
-      "sha256": "a16f00183bf80eb5a8b6b9a5d1e63b668b59a5252f46c495d126ca50beabc329"
+      "bytes": 4889,
+      "sha256": "dec1943edd0fdd8cd1c909659c890d0819fec47a6ff68801984b40abcfafca78"
     },
     "calc_header_gold.xlsx": {
-      "bytes": 4953,
-      "sha256": "916883bd9704c35a5432b2d043a9eff9ee343cdfb996af61dee9df14eb4a53d0"
+      "bytes": 4948,
+      "sha256": "e392d61d670e41e3ffaadc55b9cd673e0fc7a932e22654a546eed0554795b100"
     },
     "calc_header_initial.xlsx": {
-      "bytes": 4883,
-      "sha256": "f1f13c3ec7be655e6b1a76ab2bc87f1d034547313dd8d659929b545080befce9"
+      "bytes": 4878,
+      "sha256": "903ee290fa1f7399df88d4e52db8d6c484ccbd16bd2e346351b7031516d801cb"
     },
     "impress_background_demo.mp4": {
       "bytes": 62494,
       "sha256": "3a23d2a498423a4f78e00e13ec9cbe31e00468ca3c2643285155d5fea49062dc"
     },
     "impress_background_demo_after.pptx": {
-      "bytes": 28358,
-      "sha256": "6ad8002609d1e7729c5f9f9a681a88a7f8a7b5e59042730a162b8f0be4489716"
+      "bytes": 28348,
+      "sha256": "f6fde55275d5beeafa756ee64ee97e6b2fd0cbddb2f197dab831c5babd783198"
     },
     "impress_background_demo_before.pptx": {
-      "bytes": 28361,
-      "sha256": "eb6256093573d2487f1a0bdf4822e95e239a1559e1ea1457e12c7d57cdadea79"
+      "bytes": 28351,
+      "sha256": "a6f3f9343f3aebe1ffa5264ff987f7a57dc58b6d6aa6907715e99957968b02c2"
     },
     "impress_background_gold.pptx": {
-      "bytes": 28359,
-      "sha256": "118b93edf8f51dfef5cfcfd8c442cb329df37560dcbe1017d78ac79624875893"
+      "bytes": 28349,
+      "sha256": "0b84fd5dc7cbc944bdeede82b3d00ce4715a3fbd2e91d2c5ea36bd726fde0c81"
     },
     "impress_background_initial.pptx": {
-      "bytes": 28362,
-      "sha256": "089a2789cb273e61cbfa39b951070b5a7372c412f3ea10c5fbd46cd03ce75026"
+      "bytes": 28352,
+      "sha256": "96c71a0c988f3b42f0ac808a73d6b5650b6405139818ccceaa2ed31bc84aff01"
     },
     "impress_title_demo.mp4": {
       "bytes": 72799,
       "sha256": "bc79daeadb4039b77edd634d783d19eb9beacd0ac6a1b62abb213c1e1fe4932c"
     },
     "impress_title_demo_after.pptx": {
-      "bytes": 28372,
-      "sha256": "93ff2c3b33c845294e93aac4c877521f104e8210faa60b13b0e9bf4e8b13d2c0"
+      "bytes": 28362,
+      "sha256": "9f9f243adde013dc7969c31c117ace179c63433dbf4d4a4bd8c26eb2c4d06c33"
     },
     "impress_title_demo_before.pptx": {
-      "bytes": 28363,
-      "sha256": "c58e63bdeff0c1a087ef47a96efcfee92d7d0d18a7462cc9de3222293117c1fb"
+      "bytes": 28353,
+      "sha256": "3af4901edf1c182a4db098131efb9d422373785262272f297fc290849ee5d186"
     },
     "impress_title_gold.pptx": {
-      "bytes": 28372,
-      "sha256": "10f46ac0b711f803a67b8d8632f9ab0493ad1cde206c3777f17ce059d3776ba2"
+      "bytes": 28362,
+      "sha256": "f23b3fc2199dd7a1ffd18ec7479653403765a20aa7de88580d4d1fa4778a89c3"
     },
     "impress_title_initial.pptx": {
-      "bytes": 28363,
-      "sha256": "d36566ca5ff8c3d882ebc7b90b8c1dd11df35b60238741a88740bdfd4f6400e4"
+      "bytes": 28353,
+      "sha256": "4d9df4713927dc7cee7ee2030dd91e7ae13e6f9764bf612bffda1dd6950e8739"
     }
   },
   "generator": "scripts/python/generate_phase0_fixtures.py",
