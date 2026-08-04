@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "pilot_id": "calc-reference-task-pilot-v1",
+  "seed": 20260804,
+  "model": "gpt-5.6-terra",
+  "status": "complete",
+  "attempt_count": 3,
+  "candidate_count": 3,
+  "rejection_count": 0,
+  "input_tokens": 5274,
+  "cached_input_tokens": 0,
+  "output_tokens": 2286,
+  "estimated_cost_usd": 0.03798,
+  "pricing_complete": true,
+  "unresolved_skill_ids": [],
+  "attempts": [
+    {
+      "attempt": 1,
+      "sampled_skill_ids": [
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04",
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01"
+      ],
+      "decision": "candidate",
+      "rejection_reason": "",
+      "request_id": "cf4930a9-75b0-49e8-9939-b706810527c6",
+      "prompt_sha256": "39a49bdb912d38662df3d246f4179fde541d177119bd70989ed6da8a16e45e51",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 1619,
+      "cached_input_tokens": 0,
+      "output_tokens": 719,
+      "estimated_cost_usd": 0.011866
+    },
+    {
+      "attempt": 2,
+      "sampled_skill_ids": [
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04",
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03",
+        "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02"
+      ],
+      "decision": "candidate",
+      "rejection_reason": "",
+      "request_id": "c845472e-c40e-429b-a05b-9d71deca24fa",
+      "prompt_sha256": "badb3f18b7b8c8e44c107f4a53e158f574c8486309b9bc08a83883a69ca7eacb",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 1792,
+      "cached_input_tokens": 0,
+      "output_tokens": 748,
+      "estimated_cost_usd": 0.01256
+    },
+    {
+      "attempt": 3,
+      "sampled_skill_ids": [
+        "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05",
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01",
+        "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02"
+      ],
+      "decision": "candidate",
+      "rejection_reason": "",
+      "request_id": "cd735607-e16e-4c17-be22-d6a3dae5fbb2",
+      "prompt_sha256": "5fa0ddc01e9a600a6496716293ef91ffe851370ee0df143061f182aca23ec623",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 1863,
+      "cached_input_tokens": 0,
+      "output_tokens": 819,
+      "estimated_cost_usd": 0.013554
+    }
+  ],
+  "developer_iteration_totals": {
+    "successful_calls": 6,
+    "pre_inference_schema_rejections": 2,
+    "input_tokens": 9117,
+    "output_tokens": 4505,
+    "estimated_cost_usd": 0.072294
+  },
+  "quality_review": {
+    "candidate_coverage_complete": true,
+    "human_approval_complete": false,
+    "review_status": "pending",
+    "notes": [
+      "All candidates keep sampled skills explicit and use initial artifact state instead of silently requiring unsampled substantive prerequisites.",
+      "Reference task 001 is intentionally demonstration-oriented and asks for an unconfigured Pivot Table; a human reviewer must decide whether it is sufficiently natural.",
+      "Reference task 003 includes the complete two-skill conditional-formatting source set and is automatically flagged for human similarity review."
+    ]
+  }
+}

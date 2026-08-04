@@ -1,0 +1,278 @@
+{
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "@",
+        "@",
+        "@",
+        "0",
+        "$#,##0.00",
+        "General"
+      ],
+      "column_types": [
+        "text",
+        "text",
+        "text",
+        "integer",
+        "decimal",
+        "decimal"
+      ],
+      "formulas": [],
+      "freeze_header_row": true,
+      "headers": [
+        "Work Order",
+        "Coordinator",
+        "Service Tier",
+        "Units",
+        "Hourly Rate",
+        "Billed Charge"
+      ],
+      "name": "Service Log",
+      "rows": [
+        {
+          "values": [
+            "WO-4101",
+            "Avery Cole",
+            "Setup",
+            "3",
+            "68.50",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4102",
+            "Imani Park",
+            "Repair",
+            "5",
+            "92.75",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4103",
+            "Jules Rowan",
+            "Training",
+            "2",
+            "125.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4104",
+            "Morgan Lee",
+            "Inspection",
+            "6",
+            "54.25",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4105",
+            "Tessa Vale",
+            "Delivery",
+            "4",
+            "78.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4106",
+            "Avery Cole",
+            "Repair",
+            "7",
+            "63.50",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4107",
+            "Imani Park",
+            "Setup",
+            "1",
+            "110.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4108",
+            "Jules Rowan",
+            "Inspection",
+            "8",
+            "42.50",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4109",
+            "Morgan Lee",
+            "Training",
+            "3",
+            "98.25",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4110",
+            "Tessa Vale",
+            "Delivery",
+            "5",
+            "71.75",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4111",
+            "Avery Cole",
+            "Inspection",
+            "2",
+            "56.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4112",
+            "Imani Park",
+            "Training",
+            "6",
+            "84.50",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4113",
+            "Jules Rowan",
+            "Setup",
+            "4",
+            "47.25",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4114",
+            "Morgan Lee",
+            "Repair",
+            "8",
+            "115.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4115",
+            "Tessa Vale",
+            "Inspection",
+            "3",
+            "66.75",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4116",
+            "Avery Cole",
+            "Delivery",
+            "5",
+            "59.50",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4117",
+            "Imani Park",
+            "Repair",
+            "2",
+            "102.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4118",
+            "Jules Rowan",
+            "Training",
+            "7",
+            "73.25",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4119",
+            "Morgan Lee",
+            "Setup",
+            "1",
+            "88.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4120",
+            "Tessa Vale",
+            "Delivery",
+            "6",
+            "49.75",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4121",
+            "Avery Cole",
+            "Training",
+            "4",
+            "95.50",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4122",
+            "Imani Park",
+            "Inspection",
+            "8",
+            "61.25",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4123",
+            "Jules Rowan",
+            "Repair",
+            "3",
+            "107.50",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WO-4124",
+            "Morgan Lee",
+            "Setup",
+            "5",
+            "76.00",
+            ""
+          ]
+        }
+      ]
+    }
+  ],
+  "workbook_title": "Workshop Service Billing"
+}

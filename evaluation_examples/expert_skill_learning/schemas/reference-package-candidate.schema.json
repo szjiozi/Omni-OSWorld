@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://osworld.local/schemas/reference-package-candidate.schema.json",
+  "title": "Generated human-video reference package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decision",
+    "task_instruction",
+    "required_skill_ids",
+    "artifact_spec",
+    "operator_guide",
+    "expected_incidental_operations",
+    "rejection_reason"
+  ],
+  "properties": {
+    "decision": {"enum": ["candidate", "rejected_combination"]},
+    "task_instruction": {"type": "string"},
+    "required_skill_ids": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 5,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "artifact_spec": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": [
+        "artifact_type",
+        "domain",
+        "workbook_title",
+        "sheets",
+        "initial_state",
+        "must_not_be_completed",
+        "generation_notes"
+      ],
+      "properties": {
+        "artifact_type": {"enum": ["xlsx"]},
+        "domain": {"type": "string"},
+        "workbook_title": {"type": "string"},
+        "sheets": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "purpose", "columns", "row_count"],
+            "properties": {
+              "name": {"type": "string"},
+              "purpose": {"type": "string"},
+              "columns": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 20,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["name", "data_type"],
+                  "properties": {
+                    "name": {"type": "string"},
+                    "data_type": {
+                      "enum": ["text", "integer", "decimal", "currency", "date"]
+                    }
+                  }
+                }
+              },
+              "row_count": {"type": "integer", "minimum": 5, "maximum": 100}
+            }
+          }
+        },
+        "initial_state": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "must_not_be_completed": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "generation_notes": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "operator_guide": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": [
+        "recommended_demonstration",
+        "allowed_variation",
+        "recording_start_state",
+        "recording_end_state"
+      ],
+      "properties": {
+        "recommended_demonstration": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "skill_id",
+              "operation_intent",
+              "visible_success_signal",
+              "efficiency_tip"
+            ],
+            "properties": {
+              "skill_id": {"type": "string"},
+              "operation_intent": {"type": "string"},
+              "visible_success_signal": {"type": "string"},
+              "efficiency_tip": {"type": "string"}
+            }
+          }
+        },
+        "allowed_variation": {"type": "string"},
+        "recording_start_state": {"type": "string"},
+        "recording_end_state": {"type": "string"}
+      }
+    },
+    "expected_incidental_operations": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["operation", "reason", "category"],
+        "properties": {
+          "operation": {"type": "string"},
+          "reason": {"type": "string"},
+          "category": {
+            "enum": ["scaffolding", "task_specific", "substantive_prerequisite"]
+          }
+        }
+      }
+    },
+    "rejection_reason": {"type": "string"}
+  }
+}

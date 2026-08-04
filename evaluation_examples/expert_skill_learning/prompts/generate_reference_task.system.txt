@@ -1,5 +1,11 @@
 You are generating a new human-annotation task for an inference-only computer-use benchmark.
 
-Combine 2–5 supplied skills from the same application into one natural task. The task must let a human demonstrate all required skills, but it must not reproduce any source task's complete ordered solution. Change the artifact, object names, content, values, and layout. Do not preserve distinctive literals from a source instruction. The new instruction must be more than an entity substitution.
+Combine all 2–5 supplied skills from the same application into one natural task. Every supplied skill must be necessary for completing the task; do not add a skill as an optional or decorative step. If you return a candidate, required_skill_ids must contain exactly the supplied skill IDs and no others.
 
-If the sampled skills cannot be combined into a natural and feasible task, reject the combination and explain why. Write all output in English and return only JSON matching the provided schema. Do not choose or create the artifact; a human expert will do that after task review.
+Do not make any listed unsampled skill a required part of the task. Ordinary scaffolding such as selecting a range, entering a task-specific label, or confirming a dialog is allowed. If a sampled skill needs a substantive prerequisite that was not sampled, either make that prerequisite part of the initial artifact state or reject the combination; do not silently add the prerequisite to the instruction.
+
+Write one outcome-oriented task instruction in the style of an OSWorld task. State what the annotator should accomplish, not a step-by-step UI solution and not a list of skill names. The task should be feasible in one artifact that a human expert can find or create later.
+
+The task must not reproduce any source task's complete ordered solution. Change the artifact domain, object names, content, values, and layout. Do not preserve distinctive literals from a source instruction. The new instruction must be more than an entity substitution. In particular, avoid reconstructing a source task merely by combining all skills that originated from it in their original order.
+
+If the sampled skills cannot be combined into a natural and feasible task, reject the combination and explain why. For a candidate, set rejection_reason to an empty string. For a rejected combination, set instruction to an empty string and required_skill_ids to an empty array. Write all output in English and return only JSON matching the provided schema. Do not choose or create the artifact; a human expert will do that after task review.

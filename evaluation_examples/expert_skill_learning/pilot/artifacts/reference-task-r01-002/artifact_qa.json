@@ -1,0 +1,13 @@
+{
+  "workbook_title": "Workshop Grant Reconciliation",
+  "output_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-002/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Funding Log",
+      "preview_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-002/previews/Funding_Log.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Funding Log\",\"address\":\"A1:I12\",\"rows\":12,\"cols\":9,\"values\":[[\"Workshop ID\",\"Award Received\",\"Credit Reversal\",\"Asset Recovery\",\"Service Area\",\"Venue Cost\",\"Materials Cost\",\"Facilitator Cost\",\"Net Allocation\"],[\"W-101\",18400,350,125,\"Northside\",2100,980,640,null],[\"W-102\",22150,0,300,\"Northside\",1860,1425,720,null],[\"W-103\",16750,225,0,\"Harbor\",1940,760,515,null],[\"W-104\",19600,410,185,\"Harbor\",1725,1190,680,null],[\"W-105\",23800,0,450,\"Meadow\",2450,1380,940,null],[\"W-106\",15450,190,75,\"Meadow\",1280,845,390,null],[\"W-107\",20700,600,220,\"Northside\",2185,1110,765,null],[\"W-108\",18100,0,160,\"Harbor\",1560,920,575,null],[\"W-109\",24900,525,0,\"Meadow\",2690,1540,880,null],[\"W-110\",17200,140,210,\"Northside\",1495,875,460,null],[\"W-111\",21450,0,330,\"Harbor\",2050,1260,710,null]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

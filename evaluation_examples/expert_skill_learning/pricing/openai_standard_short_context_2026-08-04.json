@@ -21,5 +21,11 @@
       "cached_input_per_million": 0.5,
       "output_per_million": 8.0
     }
+  },
+  "embedding_models": {
+    "text-embedding-3-small": {
+      "input_per_million": 0.02,
+      "source": "https://developers.openai.com/api/docs/guides/embeddings#embedding-models"
+    }
   }
 }

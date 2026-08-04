@@ -1,6 +1,6 @@
 # OSWorld 专家轨迹技能学习 Benchmark 开发计划
 
-更新日期：2026-08-04
+更新日期：2026-08-05
 
 ## 2026-08-04 当前实施主线：Reference Task Construction Pilot
 
@@ -12,9 +12,9 @@
 → instruction + single-action
 → LLM 提取英文 app-operation skills
 → 同 app 随机组合 2–5 个 skills
-→ LLM 生成非 1:1 reference task
-→ 人工审核与 Pilot coverage
-→ 人工寻找/制作 artifact
+→ LLM 生成非 1:1 reference package（task + artifact spec + operator guide）
+→ embedding semantic audit + 人工审核与 approved coverage
+→ LLM 生成并确定性构建 initial artifact
 → setup-only OSWorld config
 → AWS 专家标注与录屏
 → 第二位标注者本地看视频并交叉验证
@@ -39,7 +39,8 @@ reference-video-to-skill-to-agent 协议继续作为后续 benchmark 目标保�
   不作自动 hard reject；
 - Pilot coverage 只要求每个 skill 至少进入一个人工批准的 reference task；
 - skill、procedure、efficiency tip 和 reference instruction 统一使用英文；
-- artifact 由 expert 在 Pilot 中人工寻找或制作，skill guide 只作参考，允许按实际 UI 调整；
+- artifact 默认由 LLM 根据 artifact spec 生成 blueprint，再由确定性 builder 导出并 QA；
+  expert 仍可人工检查、修订或替换，skill guide 只作参考，允许按实际 UI 调整；
 - 标注脚本一键启动 AWS/noVNC 和 artifact，由终端 Enter 明确开始、停止录屏；
 - 第二位标注者在本地观看 `recording.mp4`；只有检查或复现 artifact 时才启动 AWS 环境；
 - metadata、task config、artifact 和 MP4 先推送 GitHub remote；若普通 Git 不适合视频大小，
@@ -62,15 +63,20 @@ reference-video-to-skill-to-agent 协议继续作为后续 benchmark 目标保�
    - 本地注入 source task/action IDs，输出 Pilot skill pool 和逐 attempt cost log。
 3. **C2 Reference task generation**
    - seeded same-app 2–5 skill sampler；
-   - natural-task generation/rejection；
-   - literals、ordered sequence 等自动提示与人工 similarity checklist；
+   - 输出 task instruction、artifact spec、operator guide 和 incidental operations；
+   - 只要求 sampled skills；允许少量自然的 task-specific/prerequisite/repeated operations；
+   - lexical audit + embedding cosine similarity，仅供人工审核；
    - rejected skills 返回 pool，达到 max attempts 时输出 unresolved list。
 4. **C3 Human review 与 coverage loop**
-   - approve/reject、review notes、covered skill IDs；
+   - approved/revision_requested/rejected、reason codes 和 revision instructions；
+   - rejected exact combination 不重试；revision 保持 skill set 并携带反馈；
+   - 全局 coverage 只合并 approved packages，pending/rejected 不计数；
    - 每个 skill 至少一次 approved coverage；
    - 不在 Pilot 引入多次覆盖或复杂 balance 指标。
 5. **C4 Artifact intake 与 setup-only task package**
-   - expert 人工指定 artifact；
+   - LLM 从 artifact spec 生成 strict Calc blueprint；
+   - artifact-tool 确定性构建 XLSX、逐 sheet render、formula error scan 和 SHA256；
+   - frozen blueprint 支持 build-only，不重复调用 LLM；expert 可人工替换 artifact；
    - SHA256、敏感信息检查和 Git 文件大小预检；
    - 生成只含 snapshot/instruction/config/related_apps/reference metadata 的 OSWorld config，
      不含 evaluator。
@@ -101,9 +107,20 @@ reference-video-to-skill-to-agent 协议继续作为后续 benchmark 目标保�
 - [x] 使用真实 OpenAI API 完成 atomic skill extraction 和开发者质量检查：12 skills、38
   substantive source actions、2 scaffolding actions、0 duplicate assignments；最终 accepted
   run `$0.034368`，含此前 prompt 迭代的总开发成本 `$0.209436`；
-- [ ] C2 reference task sampler/generator；
-- [ ] C3 review/coverage loop；
-- [ ] C4-C6 annotation package、AWS runner 和本地 cross-validation；
+- [x] C2 reference package generator：跨进程可复现的 seeded 2–5 skill sampler、严格
+  sampled-ID 校验、task/artifact/operator 三件套、允许并声明有限 incidental operations；
+- [x] 真正的 semantic similarity：`text-embedding-3-small` 批量 embedding + cosine；保留
+  sequence similarity 作为 lexical audit，二者均不自动 reject；
+- [x] 使用 `seed=20260805` 冻结首轮 4 个 Calc packages，candidate-level 覆盖全部 12
+  skills；package generation 为 4 calls、6400/8485 tokens、`$0.114620`，embedding 337
+  tokens、`$0.00000674`；全部仍为 `pending`，不计作 approved coverage；
+- [x] C3 review/coverage 软件闭环：approved/revision/rejected schema、全局 approved
+  coverage、blocked combinations、revision feedback 和 resume；当前尚未进行人工 review，
+  所以状态为 0/12 approved；
+- [x] C4a LLM artifact generation：4 个 strict blueprints、4 个真实 XLSX、逐 sheet render、
+  formula error scan、SHA256、精确 number formats/AutoFilter 和 build-only 重放；最终 frozen
+  blueprint run 为 4 calls、9167/3447 tokens、`$0.059698`，4 个 artifacts 均无需 manual setup；
+- [ ] C4b setup-only OSWorld config、C5 AWS runner、C6 本地 cross-validation；
 - [ ] C7 Pilot 验收。
 
 ## A. Benchmark 定位

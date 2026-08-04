@@ -1,0 +1,777 @@
+{
+  "schema_version": "2.0",
+  "pilot_id": "calc-reference-package-pilot-v2",
+  "generation_round": 1,
+  "app": "libreoffice_calc",
+  "skill_pool": "evaluation_examples/expert_skill_learning/pilot/skill_pool.json",
+  "candidate_coverage": {
+    "all_skill_ids": [
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05",
+      "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01",
+      "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05"
+    ],
+    "covered_skill_ids": [
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05",
+      "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01",
+      "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05"
+    ],
+    "unresolved_skill_ids": [],
+    "complete": true,
+    "note": "Candidate coverage is not approved human-review coverage."
+  },
+  "human_similarity_checklist": [
+    "The artifact, domain, object names, values, and layout differ materially from every source task.",
+    "The instruction is a natural task rather than a list of skill names or UI steps.",
+    "No distinctive source literal or complete ordered source solution is reproduced.",
+    "Every required skill is necessary to complete the task rather than decorative or optional."
+  ],
+  "reference_packages": [
+    {
+      "reference_task_id": "reference-task-r01-001",
+      "generation_round": 1,
+      "parent_reference_task_id": null,
+      "app": "libreoffice_calc",
+      "task_instruction": "In the Workshop Enrollment Queue, create a new \"Program Registration Counts\" summary that shows how many enrollment records each Program has, using Participant Code as the registration measure. Also make Review entries in the Enrollment Log's Queue Flag column stand out with a formula-driven custom pale-amber background (#FCE4D6), while leaving Ready and Confirmed entries unhighlighted.",
+      "required_skill_ids": [
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04",
+        "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01",
+        "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02"
+      ],
+      "artifact_spec": {
+        "artifact_type": "xlsx",
+        "domain": "community workshop enrollment coordination",
+        "generation_notes": [
+          "Create a privacy-safe synthetic workbook titled \"Workshop Enrollment Queue\".",
+          "Populate the Enrollment Log sheet with 28 data rows plus a header row. Use unique synthetic participant codes P-1001 through P-1028; all Participant Code cells must be nonblank text.",
+          "Use four Program values with these exact record totals: Community Garden (8), Digital Basics (7), First Aid (6), and Resume Lab (7). Arrange the rows in a mixed order rather than grouping by Program.",
+          "Use plausible 2026 session dates, neighborhood names, and Attendance Type values such as In Person, Online, and Waitlist.",
+          "Set Queue Flag to \"Review\" for exactly 8 records distributed across at least three programs; set the remaining records to \"Ready\" or \"Confirmed\". Include at least two different non-Review values.",
+          "Apply ordinary header styling and date formatting only. Do not create a pivot table, conditional-formatting rule, or custom colored cell style required by the task."
+        ],
+        "initial_state": [
+          "The workbook opens with Enrollment Log as the active sheet.",
+          "Enrollment Log contains a contiguous, filter-free data table in A1:G29 with no blank rows or blank columns inside the table.",
+          "Session Date is formatted as a date, while identifiers and categorical fields are text.",
+          "There is no pre-existing summary sheet, pivot table, native conditional-format rule, or custom pale-amber cell style.",
+          "The Queue Flag column is visible and contains the Review, Ready, and Confirmed values described in the generation notes."
+        ],
+        "must_not_be_completed": [
+          "Do not pre-create the Program Registration Counts sheet or any pivot output.",
+          "Do not apply conditional formatting to Queue Flag or any other range.",
+          "Do not create a custom style with the required pale-amber background before the recorded task."
+        ],
+        "sheets": [
+          {
+            "columns": [
+              {
+                "data_type": "text",
+                "name": "Registration ID"
+              },
+              {
+                "data_type": "text",
+                "name": "Program"
+              },
+              {
+                "data_type": "date",
+                "name": "Session Date"
+              },
+              {
+                "data_type": "text",
+                "name": "Participant Code"
+              },
+              {
+                "data_type": "text",
+                "name": "Neighborhood"
+              },
+              {
+                "data_type": "text",
+                "name": "Attendance Type"
+              },
+              {
+                "data_type": "text",
+                "name": "Queue Flag"
+              }
+            ],
+            "name": "Enrollment Log",
+            "purpose": "Synthetic enrollment records for community workshops and queue review.",
+            "row_count": 28
+          }
+        ],
+        "workbook_title": "Workshop Enrollment Queue"
+      },
+      "operator_guide": {
+        "allowed_variation": "The operator may create the summary sheet before or during pivot creation and may use any equivalent Calc dialogs or menus. The custom style may be named freely, provided it is newly created for the rule and has the specified pale-amber background.",
+        "recommended_demonstration": [
+          {
+            "efficiency_tip": "After adding Participant Code to the pivot values, open its value settings immediately and set the summary type before confirming the pivot layout.",
+            "operation_intent": "Build a program-level registration summary on a new sheet, grouping the enrollment records by Program and counting nonblank Participant Code entries rather than totaling any numeric field.",
+            "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04",
+            "visible_success_signal": "The new summary shows one row for each of the four programs with counts 8, 7, 6, and 7, for a total of 28 registrations."
+          },
+          {
+            "efficiency_tip": "Select the full Queue Flag data range first and use a row-relative formula such as =G2=\"Review\" so the same rule evaluates each flag cell.",
+            "operation_intent": "Apply one formula-based conditional-formatting rule to Queue Flag cells that evaluates true only when the corresponding flag is Review.",
+            "skill_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01",
+            "visible_success_signal": "All and only the eight Queue Flag cells containing Review receive the conditional appearance; Ready and Confirmed cells remain unchanged."
+          },
+          {
+            "efficiency_tip": "Create the style from the conditional-formatting workflow so it can be assigned directly to the formula rule instead of manually coloring individual cells.",
+            "operation_intent": "Create and assign a new custom style with a pale amber background (#FCE4D6) for the Review condition.",
+            "skill_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02",
+            "visible_success_signal": "The Review cells visibly have the new pale-amber fill, and the assigned formatting is a reusable custom style rather than direct cell formatting."
+          }
+        ],
+        "recording_end_state": "A new Program Registration Counts sheet contains a pivot summary that counts Participant Code registrations by Program, and Enrollment Log Queue Flag cells with Review are conditionally filled pale amber using a newly created custom style.",
+        "recording_start_state": "The workbook opens on Enrollment Log with the raw 28-row enrollment table and no pivot table, conditional-formatting rule, or required custom style."
+      },
+      "expected_incidental_operations": [
+        {
+          "category": "substantive_prerequisite",
+          "operation": "Create a new worksheet to hold the program-level registration summary.",
+          "reason": "A separate destination is needed for the requested pivot-based summary."
+        },
+        {
+          "category": "substantive_prerequisite",
+          "operation": "Select the Enrollment Log data and arrange Program as the grouping field and Participant Code as the value field in a pivot layout.",
+          "reason": "These are the minimum pivot setup actions needed before the value aggregation can be set to Count."
+        },
+        {
+          "category": "scaffolding",
+          "operation": "Select the Queue Flag data cells before defining the conditional formatting rule.",
+          "reason": "The formula-based rule must have a target range containing the queue-status values."
+        }
+      ],
+      "review_status": "pending",
+      "source_contribution": {
+        "by_source_task": [
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "skill_count": 1,
+            "skill_fraction": 0.333333
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "skill_count": 2,
+            "skill_fraction": 0.666667
+          }
+        ],
+        "dominant_source_task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+        "dominant_source_skill_fraction": 0.666667,
+        "complete_source_skill_sets_included": [
+          "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14"
+        ]
+      },
+      "similarity_reference": {
+        "lexical": {
+          "most_similar_source_task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+          "max_sequence_similarity": 0.204633,
+          "exact_source_instruction_match": false,
+          "by_source_task": [
+            {
+              "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+              "sequence_similarity": 0.035488
+            },
+            {
+              "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+              "sequence_similarity": 0.204633
+            },
+            {
+              "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+              "sequence_similarity": 0.193814
+            }
+          ]
+        },
+        "semantic": {
+          "model": "text-embedding-3-small",
+          "most_similar_source_task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+          "max_cosine_similarity": 0.319971,
+          "by_source_task": [
+            {
+              "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+              "cosine_similarity": 0.306518
+            },
+            {
+              "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+              "cosine_similarity": 0.319971
+            },
+            {
+              "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+              "cosine_similarity": 0.275692
+            }
+          ],
+          "embedding_request_id": "7ee6513d-fcfd-40d9-ace3-7a5b2a7b61fa"
+        }
+      },
+      "generation": {
+        "attempt": 1,
+        "kind": "new_combination",
+        "request_id": "a3e567e8-ab80-4dfe-bd4e-e22ff8d6a155",
+        "prompt_sha256": "4abf52d2c64e2a821a8b7eaebce15d860d50dca2c1ace394dfb5951746e512ae"
+      }
+    },
+    {
+      "reference_task_id": "reference-task-r01-002",
+      "generation_round": 1,
+      "parent_reference_task_id": null,
+      "app": "libreoffice_calc",
+      "task_instruction": "Reconcile the workshop grants by calculating each workshop's Net Allocation after reversals, recoveries, and all listed delivery costs, then create a new-sheet Pivot Table that shows the total Net Allocation for each Service Area.",
+      "required_skill_ids": [
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01"
+      ],
+      "artifact_spec": {
+        "artifact_type": "xlsx",
+        "domain": "community workshop grant reconciliation",
+        "generation_notes": [
+          "All records are synthetic and privacy-safe. Create a single worksheet named \"Funding Log\" with a bold, lightly shaded header row, autofilter enabled on A1:I17, and 16 data records in rows 2-17.",
+          "Populate rows 2-17 with the following tab-separated values, in the stated column order: W-101\t18400\t350\t125\tNorthside\t2100\t980\t640; W-102\t22150\t0\t300\tNorthside\t1860\t1425\t720; W-103\t16750\t225\t0\tHarbor\t1940\t760\t515; W-104\t19600\t410\t185\tHarbor\t1725\t1190\t680; W-105\t23800\t0\t450\tMeadow\t2450\t1380\t940; W-106\t15450\t190\t75\tMeadow\t1280\t845\t390; W-107\t20700\t600\t220\tNorthside\t2185\t1110\t765; W-108\t18100\t0\t160\tHarbor\t1560\t920\t575; W-109\t24900\t525\t0\tMeadow\t2690\t1540\t880; W-110\t17200\t140\t210\tNorthside\t1495\t875\t460; W-111\t21450\t0\t330\tHarbor\t2050\t1260\t710; W-112\t15900\t285\t95\tMeadow\t1375\t690\t425; W-113\t22800\t365\t140\tNorthside\t2320\t1450\t830; W-114\t18850\t0\t250\tHarbor\t1680\t1040\t605; W-115\t20350\t455\t110\tMeadow\t1905\t1175\t695; W-116\t17600\t210\t0\tNorthside\t1430\t815\t480.",
+          "Format columns B:D and F:I as currency with zero decimal places. Keep column E as text. Set reasonable widths so every header and ordinary value is readable.",
+          "Do not seed any formulas in column I and do not create a pivot table, pivot output sheet, conditional formatting, charts, or summary values."
+        ],
+        "initial_state": [
+          "The workbook title is \"Workshop Grant Reconciliation\".",
+          "Only the \"Funding Log\" sheet exists initially.",
+          "The data range is contiguous from A1:I17. Row 1 contains headers and rows 2-17 contain the provided source values.",
+          "Column I is headed \"Net Allocation\" but cells I2:I17 are blank.",
+          "Columns A through H contain: Workshop ID, Award Received, Credit Reversal, Asset Recovery, Service Area, Venue Cost, Materials Cost, and Facilitator Cost, respectively."
+        ],
+        "must_not_be_completed": [
+          "Do not prefill a Net Allocation formula or values in any row.",
+          "Do not pre-create any native Pivot Table or a separate summary sheet.",
+          "Do not add unrelated calculations, charts, or extra datasets."
+        ],
+        "sheets": [
+          {
+            "columns": [
+              {
+                "data_type": "text",
+                "name": "Workshop ID"
+              },
+              {
+                "data_type": "currency",
+                "name": "Award Received"
+              },
+              {
+                "data_type": "currency",
+                "name": "Credit Reversal"
+              },
+              {
+                "data_type": "currency",
+                "name": "Asset Recovery"
+              },
+              {
+                "data_type": "text",
+                "name": "Service Area"
+              },
+              {
+                "data_type": "currency",
+                "name": "Venue Cost"
+              },
+              {
+                "data_type": "currency",
+                "name": "Materials Cost"
+              },
+              {
+                "data_type": "currency",
+                "name": "Facilitator Cost"
+              },
+              {
+                "data_type": "currency",
+                "name": "Net Allocation"
+              }
+            ],
+            "name": "Funding Log",
+            "purpose": "Source reconciliation records whose calculated net allocations will be summarized by service area.",
+            "row_count": 16
+          }
+        ],
+        "workbook_title": "Workshop Grant Reconciliation"
+      },
+      "operator_guide": {
+        "allowed_variation": "The expert may use formula fill, copy/paste, or another efficient equivalent to populate the calculated column, and may use any suitable native LibreOffice Calc Pivot Table workflow and layout so long as the completed workbook visibly provides the requested summed service-area summary.",
+        "recommended_demonstration": [
+          {
+            "efficiency_tip": "Enter the expression once in the first data row using one SUM range for the three adjacent cost columns, then fill it down the populated table.",
+            "operation_intent": "Calculate Net Allocation as the award less the credit reversal, asset recovery, and combined venue-to-facilitator costs for each workshop record.",
+            "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01",
+            "visible_success_signal": "I2 contains a row-relative formula equivalent to =B2-C2-D2-SUM(F2:H2), and I2:I17 display currency results with references adjusted by row."
+          },
+          {
+            "efficiency_tip": "Start from the full contiguous table so the detected Pivot Table source already contains the headers, all records, and the calculated measure.",
+            "operation_intent": "Create a native Pivot Table on a new worksheet that summarizes the sum of Net Allocation for each Service Area.",
+            "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01",
+            "visible_success_signal": "A separate pivot output sheet visibly lists Northside, Harbor, and Meadow with a summed Net Allocation value for each."
+          }
+        ],
+        "recording_end_state": "Funding Log retains all 16 records with completed Net Allocation formulas, and a new worksheet contains a native Pivot Table showing total Net Allocation grouped by Service Area.",
+        "recording_start_state": "The workbook opens to the single Funding Log sheet with the populated source table and a blank Net Allocation column."
+      },
+      "expected_incidental_operations": [
+        {
+          "category": "scaffolding",
+          "operation": "Extend the completed Net Allocation formula from the first record through the remaining populated records.",
+          "reason": "Every record needs a calculated value for the requested service-area summary."
+        },
+        {
+          "category": "substantive_prerequisite",
+          "operation": "Use the complete contiguous Funding Log data range, including the calculated Net Allocation column, as the Pivot Table source.",
+          "reason": "The pivot summary must include both the grouping field and calculated measure."
+        },
+        {
+          "category": "task_specific",
+          "operation": "Configure the new Pivot Table to group by Service Area and aggregate Net Allocation as a sum on a new worksheet.",
+          "reason": "This produces the requested reconciliation summary rather than an unconfigured pivot object."
+        }
+      ],
+      "review_status": "pending",
+      "source_contribution": {
+        "by_source_task": [
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "skill_count": 1,
+            "skill_fraction": 0.5
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "skill_count": 1,
+            "skill_fraction": 0.5
+          }
+        ],
+        "dominant_source_task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "dominant_source_skill_fraction": 0.5,
+        "complete_source_skill_sets_included": []
+      },
+      "similarity_reference": {
+        "lexical": {
+          "most_similar_source_task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+          "max_sequence_similarity": 0.319018,
+          "exact_source_instruction_match": false,
+          "by_source_task": [
+            {
+              "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+              "sequence_similarity": 0.031746
+            },
+            {
+              "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+              "sequence_similarity": 0.200557
+            },
+            {
+              "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+              "sequence_similarity": 0.319018
+            }
+          ]
+        },
+        "semantic": {
+          "model": "text-embedding-3-small",
+          "most_similar_source_task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+          "max_cosine_similarity": 0.437947,
+          "by_source_task": [
+            {
+              "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+              "cosine_similarity": 0.437947
+            },
+            {
+              "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+              "cosine_similarity": 0.233487
+            },
+            {
+              "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+              "cosine_similarity": 0.407739
+            }
+          ],
+          "embedding_request_id": "7ee6513d-fcfd-40d9-ace3-7a5b2a7b61fa"
+        }
+      },
+      "generation": {
+        "attempt": 2,
+        "kind": "new_combination",
+        "request_id": "562e67e9-0946-4d77-88e8-425dfb4ceeeb",
+        "prompt_sha256": "dde9220f5cf5c7820bf4a4c39786e82ed248669c04b0e9d96b4ec2ce89f0ae76"
+      }
+    },
+    {
+      "reference_task_id": "reference-task-r01-003",
+      "generation_round": 1,
+      "parent_reference_task_id": null,
+      "app": "libreoffice_calc",
+      "task_instruction": "Build a delivery route review dashboard: add and name a new worksheet \"Route Dashboard\", create a list of route-and-tracking tags from the Dispatch Log for every dispatch, and include a Pivot Table showing the number of tracking codes handled by each carrier.",
+      "required_skill_ids": [
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05",
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04",
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03",
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05"
+      ],
+      "artifact_spec": {
+        "artifact_type": "xlsx",
+        "domain": "regional delivery dispatches",
+        "generation_notes": [
+          "Use entirely synthetic, privacy-safe dispatch records with fictional carrier names, route labels, and tracking codes.",
+          "Create one formatted data table with a bold header row and 30 dispatch-record rows. Use ordinary spreadsheet styling only; do not create a Pivot Table or conditional-format rules.",
+          "Use tracking codes such as TRK-4101 through TRK-4130, with repeated carrier names across records so a count-by-carrier Pivot Table is meaningful.",
+          "Use route labels such as North Loop, Harbor Run, Central Link, and West Ridge. Include dates within a single fictional month and parcel counts from 1 to 8."
+        ],
+        "initial_state": [
+          "The workbook opens with exactly one visible worksheet named \"Dispatch Log\".",
+          "Dispatch Log contains the source table in A1:E31, with headers in row 1 and 30 populated records in rows 2:31.",
+          "No additional worksheet exists when the workbook opens.",
+          "No Pivot Table exists anywhere in the workbook.",
+          "No cross-sheet tag formula or filled-down formula results exist anywhere in the workbook."
+        ],
+        "must_not_be_completed": [
+          "Do not pre-create the dashboard worksheet that the operator must insert and rename.",
+          "Do not pre-create the carrier-count Pivot Table.",
+          "Do not pre-populate the route/tracking tag column or its formulas."
+        ],
+        "sheets": [
+          {
+            "columns": [
+              {
+                "data_type": "date",
+                "name": "Dispatch Date"
+              },
+              {
+                "data_type": "text",
+                "name": "Carrier"
+              },
+              {
+                "data_type": "text",
+                "name": "Tracking Code"
+              },
+              {
+                "data_type": "text",
+                "name": "Route"
+              },
+              {
+                "data_type": "integer",
+                "name": "Parcel Count"
+              }
+            ],
+            "name": "Dispatch Log",
+            "purpose": "Source dispatch records for a delivery operations dashboard.",
+            "row_count": 30
+          }
+        ],
+        "workbook_title": "Dispatch Route Review"
+      },
+      "operator_guide": {
+        "allowed_variation": "The expert may place the tag list and Pivot Table in any non-overlapping regions of the new worksheet, use an equivalent Calc-supported method to open the Pivot Table layout, and use a semantically equivalent separator in the concatenated tag formula.",
+        "recommended_demonstration": [
+          {
+            "efficiency_tip": "Use the plus control at the sheet-tab bar so the blank dashboard sheet is created directly in the workbook.",
+            "operation_intent": "Insert a blank worksheet to hold the delivery review dashboard.",
+            "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04",
+            "visible_success_signal": "A new blank worksheet tab is visible and active beside Dispatch Log."
+          },
+          {
+            "efficiency_tip": "Rename the newly active tab before creating formulas or reports so the dashboard has a meaningful, stable name.",
+            "operation_intent": "Rename the inserted worksheet to \"Route Dashboard\".",
+            "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05",
+            "visible_success_signal": "The active worksheet tab visibly reads \"Route Dashboard\"."
+          },
+          {
+            "efficiency_tip": "Use a formula with a fixed source-sheet reference and relative row references, such as joining Route and Tracking Code, so the copied rows update automatically.",
+            "operation_intent": "Create the first Route Dashboard tag by concatenating the Dispatch Log Route and Tracking Code values with a readable separator, then use the fill handle to extend it through all 30 dispatch rows.",
+            "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05",
+            "visible_success_signal": "The first tag displays both source values as one text label, and the completed tag column contains corresponding route/tracking labels for rows 2 through 31."
+          },
+          {
+            "efficiency_tip": "Drag the first formula cell's fill handle directly to the last adjacent dispatch row instead of copying formulas row by row.",
+            "operation_intent": "Propagate the initial cross-sheet tag formula down the full dispatch-record list using the fill handle.",
+            "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03",
+            "visible_success_signal": "Each filled tag row has adjusted source-row references and no manual repeated formula entry is needed."
+          },
+          {
+            "efficiency_tip": "After Carrier has been used as the grouping field, add Tracking Code to the data area to produce a count summary for each carrier.",
+            "operation_intent": "In the Pivot Table layout, add Tracking Code as a value/data field for the carrier summary.",
+            "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03",
+            "visible_success_signal": "The Pivot Table visibly shows carrier groups with a numeric Tracking Code count/value column."
+          }
+        ],
+        "recording_end_state": "Route Dashboard is a renamed inserted worksheet containing a filled list of cross-sheet route/tracking tags and a non-overlapping Pivot Table that summarizes Tracking Code counts by Carrier.",
+        "recording_start_state": "The workbook contains only the populated Dispatch Log source sheet, with no dashboard sheet, Pivot Table, or tag formulas."
+      },
+      "expected_incidental_operations": [
+        {
+          "category": "substantive_prerequisite",
+          "operation": "Create a Pivot Table from the Dispatch Log source range and place it on the newly inserted dashboard worksheet.",
+          "reason": "A Pivot Table container is required before its fields can be arranged."
+        },
+        {
+          "category": "substantive_prerequisite",
+          "operation": "Place Carrier in the Pivot Table row fields.",
+          "reason": "Carrier groups are needed so the Tracking Code value summary is interpretable as a count by carrier."
+        },
+        {
+          "category": "task_specific",
+          "operation": "Enter a descriptive header for the route/tracking tags and position that helper list away from the Pivot Table output.",
+          "reason": "This makes the concatenated cross-sheet results understandable and avoids overlapping the Pivot Table."
+        },
+        {
+          "category": "task_specific",
+          "operation": "Enter the first cross-sheet concatenation formula referencing Route and Tracking Code from Dispatch Log before filling it down.",
+          "reason": "The fill-handle operation needs an initial relative-reference formula to propagate."
+        }
+      ],
+      "review_status": "pending",
+      "source_contribution": {
+        "by_source_task": [
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "skill_count": 3,
+            "skill_fraction": 0.6
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "skill_count": 2,
+            "skill_fraction": 0.4
+          }
+        ],
+        "dominant_source_task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "dominant_source_skill_fraction": 0.6,
+        "complete_source_skill_sets_included": []
+      },
+      "similarity_reference": {
+        "lexical": {
+          "most_similar_source_task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+          "max_sequence_similarity": 0.268041,
+          "exact_source_instruction_match": false,
+          "by_source_task": [
+            {
+              "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+              "sequence_similarity": 0.015175
+            },
+            {
+              "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+              "sequence_similarity": 0.268041
+            },
+            {
+              "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+              "sequence_similarity": 0.230986
+            }
+          ]
+        },
+        "semantic": {
+          "model": "text-embedding-3-small",
+          "most_similar_source_task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+          "max_cosine_similarity": 0.329174,
+          "by_source_task": [
+            {
+              "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+              "cosine_similarity": 0.275893
+            },
+            {
+              "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+              "cosine_similarity": 0.204955
+            },
+            {
+              "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+              "cosine_similarity": 0.329174
+            }
+          ],
+          "embedding_request_id": "7ee6513d-fcfd-40d9-ace3-7a5b2a7b61fa"
+        }
+      },
+      "generation": {
+        "attempt": 3,
+        "kind": "new_combination",
+        "request_id": "cd476238-2d08-49a8-beca-6332a2adce56",
+        "prompt_sha256": "4ddfe37e65a8042f34a605105528958660980d951606888ccadc6547a8d4ea61"
+      }
+    },
+    {
+      "reference_task_id": "reference-task-r01-004",
+      "generation_round": 1,
+      "parent_reference_task_id": null,
+      "app": "libreoffice_calc",
+      "task_instruction": "Complete the billed-charge calculation for every workshop service record and present those results as currency. Then create a new Pivot Table summary that lists each coordinator and their total billed charge.",
+      "required_skill_ids": [
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02"
+      ],
+      "artifact_spec": {
+        "artifact_type": "xlsx",
+        "domain": "community workshop service billing",
+        "generation_notes": [
+          "All records are synthetic and contain no personal, customer, or financial account information.",
+          "Create 24 service-log records with distinct Work Order IDs such as WO-4101 through WO-4124.",
+          "Use five repeating Coordinator names: Avery Cole, Imani Park, Jules Rowan, Morgan Lee, and Tessa Vale.",
+          "Use plausible Service Tier values such as Setup, Repair, Training, Inspection, and Delivery.",
+          "Populate Units with integers from 1 to 8 and Hourly Rate with varied positive decimal values from 42.50 to 125.00 so that Billed Charge calculations produce varied nonzero amounts.",
+          "Format the Hourly Rate column as currency in the initial workbook; this makes the source data readable but does not pre-format the calculated results column.",
+          "Do not include any Pivot Table object, Pivot Table sheet, conditional formatting, or hidden helper data."
+        ],
+        "initial_state": [
+          "The workbook opens on the Service Log sheet.",
+          "Service Log contains a single header row and 24 populated data rows.",
+          "The Billed Charge cells are blank, have no formulas, and use General number formatting.",
+          "The source data is a contiguous table with no blank rows or blank headers.",
+          "No pivot-summary sheet exists initially."
+        ],
+        "must_not_be_completed": [
+          "Do not enter or fill formulas in Billed Charge.",
+          "Do not apply a currency format to Billed Charge.",
+          "Do not create a Pivot Table or a coordinator summary sheet."
+        ],
+        "sheets": [
+          {
+            "columns": [
+              {
+                "data_type": "text",
+                "name": "Work Order"
+              },
+              {
+                "data_type": "text",
+                "name": "Coordinator"
+              },
+              {
+                "data_type": "text",
+                "name": "Service Tier"
+              },
+              {
+                "data_type": "integer",
+                "name": "Units"
+              },
+              {
+                "data_type": "decimal",
+                "name": "Hourly Rate"
+              },
+              {
+                "data_type": "decimal",
+                "name": "Billed Charge"
+              }
+            ],
+            "name": "Service Log",
+            "purpose": "Source records for workshop services. Billed Charge is intentionally blank and should be calculated as Units multiplied by Hourly Rate.",
+            "row_count": 24
+          }
+        ],
+        "workbook_title": "Workshop Service Billing"
+      },
+      "operator_guide": {
+        "allowed_variation": "The expert may calculate and format the source results before creating the Pivot Table, or use any equivalent Calc workflow that produces the requested source calculations and a new-sheet pivot summary. The destination sheet name and the order of distinct coordinator labels may vary.",
+        "recommended_demonstration": [
+          {
+            "efficiency_tip": "Format the first calculated result cell with the toolbar before filling the formula down when that workflow preserves the number format; otherwise select the completed result range once and format it together.",
+            "operation_intent": "Present every calculated Billed Charge value in the Service Log as a currency amount using Calc's currency toolbar control.",
+            "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02",
+            "visible_success_signal": "The Billed Charge column shows currency symbols and two-decimal monetary displays rather than unformatted numeric products."
+          },
+          {
+            "efficiency_tip": "Move Coordinator directly from the available Pivot Table fields into the Row Fields area, then ensure the billed amount is summarized as a sum.",
+            "operation_intent": "In the new Pivot Table layout, place Coordinator in the row-label area for a coordinator-level billed-charge summary.",
+            "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02",
+            "visible_success_signal": "The resulting Pivot Table displays one row label for each coordinator, with a corresponding total Billed Charge value."
+          }
+        ],
+        "recording_end_state": "Service Log has calculated, currency-formatted Billed Charge values for all 24 records, and a newly created Pivot Table sheet summarizes summed billed charge by Coordinator in row labels.",
+        "recording_start_state": "The workbook contains only the populated Service Log source sheet; Billed Charge is blank and unformatted, and no Pivot Table exists."
+      },
+      "expected_incidental_operations": [
+        {
+          "category": "substantive_prerequisite",
+          "operation": "Enter a Units × Hourly Rate formula for the first Billed Charge record and fill it through the remaining service-log rows.",
+          "reason": "The calculated monetary measure is needed before it can be formatted and summarized."
+        },
+        {
+          "category": "scaffolding",
+          "operation": "Select the Billed Charge result range before using the currency toolbar control.",
+          "reason": "The requested display format must be applied to the calculated values."
+        },
+        {
+          "category": "substantive_prerequisite",
+          "operation": "Select the complete Service Log data range with headers and initiate creation of a Pivot Table on a new worksheet.",
+          "reason": "A Pivot Table object and destination sheet are required to expose the Row Fields layout."
+        },
+        {
+          "category": "task_specific",
+          "operation": "Configure Billed Charge as a summed data/value field in the Pivot Table.",
+          "reason": "The requested coordinator summary needs a total billed amount alongside the row labels."
+        }
+      ],
+      "review_status": "pending",
+      "source_contribution": {
+        "by_source_task": [
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "skill_count": 1,
+            "skill_fraction": 0.5
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "skill_count": 1,
+            "skill_fraction": 0.5
+          }
+        ],
+        "dominant_source_task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "dominant_source_skill_fraction": 0.5,
+        "complete_source_skill_sets_included": []
+      },
+      "similarity_reference": {
+        "lexical": {
+          "most_similar_source_task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+          "max_sequence_similarity": 0.296053,
+          "exact_source_instruction_match": false,
+          "by_source_task": [
+            {
+              "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+              "sequence_similarity": 0.023026
+            },
+            {
+              "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+              "sequence_similarity": 0.178042
+            },
+            {
+              "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+              "sequence_similarity": 0.296053
+            }
+          ]
+        },
+        "semantic": {
+          "model": "text-embedding-3-small",
+          "most_similar_source_task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+          "max_cosine_similarity": 0.449874,
+          "by_source_task": [
+            {
+              "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+              "cosine_similarity": 0.394321
+            },
+            {
+              "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+              "cosine_similarity": 0.234193
+            },
+            {
+              "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+              "cosine_similarity": 0.449874
+            }
+          ],
+          "embedding_request_id": "7ee6513d-fcfd-40d9-ace3-7a5b2a7b61fa"
+        }
+      },
+      "generation": {
+        "attempt": 4,
+        "kind": "new_combination",
+        "request_id": "1c9a53e0-ad18-4427-b386-06f9a82efd77",
+        "prompt_sha256": "8adac6dcaab3a7a5eb8112cc7b97e2ef9b41daa51fa6000250df74853502a462"
+      }
+    }
+  ]
+}

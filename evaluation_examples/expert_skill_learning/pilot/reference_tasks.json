@@ -1,0 +1,177 @@
+{
+  "schema_version": "1.0",
+  "pilot_id": "calc-reference-task-pilot-v1",
+  "app": "libreoffice_calc",
+  "skill_pool": "evaluation_examples/expert_skill_learning/pilot/skill_pool.json",
+  "candidate_coverage": {
+    "all_skill_ids": [
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05",
+      "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01",
+      "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05"
+    ],
+    "covered_skill_ids": [
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05",
+      "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01",
+      "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05"
+    ],
+    "unresolved_skill_ids": [],
+    "complete": true,
+    "note": "Candidate coverage is not approved human-review coverage."
+  },
+  "human_similarity_checklist": [
+    "The artifact, domain, object names, values, and layout differ materially from every source task.",
+    "The instruction is a natural task rather than a list of skill names or UI steps.",
+    "No distinctive source literal or complete ordered source solution is reproduced.",
+    "Every required skill is necessary to complete the task rather than decorative or optional."
+  ],
+  "reference_tasks": [
+    {
+      "reference_task_id": "reference-task-001",
+      "app": "libreoffice_calc",
+      "instruction": "The workbook contains a populated worksheet named Intake, with a Batch Code in column B and a Dock ID in column H. Add a new worksheet using the sheet-tab bar and, on that new sheet, create a label in A1 and a formula in A2 that automatically combines the Intake values from B2 and H2 into one tracking key separated by a forward slash. Also create a Pivot Table whose source is the complete contiguous data table on Intake; no row, column, or value-field layout is required.",
+      "required_skill_ids": [
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04",
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01"
+      ],
+      "review_status": "pending",
+      "source_contribution": {
+        "by_source_task": [
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "skill_count": 2,
+            "skill_fraction": 0.666667
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "skill_count": 1,
+            "skill_fraction": 0.333333
+          }
+        ],
+        "dominant_source_task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "dominant_source_skill_fraction": 0.666667,
+        "complete_source_skill_sets_included": []
+      },
+      "similarity_reference": {
+        "most_similar_source_task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+        "instruction_sequence_similarity": 0.139073,
+        "exact_source_instruction_match": false
+      },
+      "generation": {
+        "attempt": 1,
+        "request_id": "cf4930a9-75b0-49e8-9939-b706810527c6",
+        "prompt_sha256": "39a49bdb912d38662df3d246f4179fde541d177119bd70989ed6da8a16e45e51"
+      }
+    },
+    {
+      "reference_task_id": "reference-task-002",
+      "app": "libreoffice_calc",
+      "instruction": "In the prepared service-claims workbook, complete the Claims sheet by extending the already-entered reimbursable-balance formula from the first record through all remaining claim records and displaying the resulting balances as currency. Update the existing conditional-format rule for unusually large balances so it uses a newly created background style in dark teal. Then finish the draft pivot report on the Summary sheet so each distinct Case Code is shown as a row label and the existing Case Code data field reports the number of claims rather than a numeric total.",
+      "required_skill_ids": [
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04",
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03",
+        "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02"
+      ],
+      "review_status": "pending",
+      "source_contribution": {
+        "by_source_task": [
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "skill_count": 2,
+            "skill_fraction": 0.4
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "skill_count": 2,
+            "skill_fraction": 0.4
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "skill_count": 1,
+            "skill_fraction": 0.2
+          }
+        ],
+        "dominant_source_task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "dominant_source_skill_fraction": 0.4,
+        "complete_source_skill_sets_included": []
+      },
+      "similarity_reference": {
+        "most_similar_source_task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+        "instruction_sequence_similarity": 0.154286,
+        "exact_source_instruction_match": false
+      },
+      "generation": {
+        "attempt": 2,
+        "request_id": "c845472e-c40e-429b-a05b-9d71deca24fa",
+        "prompt_sha256": "badb3f18b7b8c8e44c107f4a53e158f574c8486309b9bc08a83883a69ca7eacb"
+      }
+    },
+    {
+      "reference_task_id": "reference-task-003",
+      "app": "libreoffice_calc",
+      "instruction": "In the existing dispatch-budget workbook, rename the worksheet tab currently named \"Review Draft\" to \"Route Control.\" On that sheet, complete the Unallocated Funds calculation in cell J14 as approved budget minus fuel, toll, and permit costs minus the total of the three adjacent miscellaneous-charge cells (C14-D14-E14-SUM(G14:I14)). For the Unallocated Funds range J5:J14, create a formula-based conditional-formatting rule that marks only nonblank negative balances with a custom light-orange background style. The existing Route Overview Pivot Table is already grouped by depot; add the Driver ID field to its value area so the summary also reports a value for Driver ID by depot.",
+      "required_skill_ids": [
+        "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05",
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01",
+        "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02"
+      ],
+      "review_status": "pending",
+      "source_contribution": {
+        "by_source_task": [
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "skill_count": 1,
+            "skill_fraction": 0.2
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "skill_count": 2,
+            "skill_fraction": 0.4
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "skill_count": 2,
+            "skill_fraction": 0.4
+          }
+        ],
+        "dominant_source_task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+        "dominant_source_skill_fraction": 0.4,
+        "complete_source_skill_sets_included": [
+          "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14"
+        ]
+      },
+      "similarity_reference": {
+        "most_similar_source_task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+        "instruction_sequence_similarity": 0.154982,
+        "exact_source_instruction_match": false
+      },
+      "generation": {
+        "attempt": 3,
+        "request_id": "cd735607-e16e-4c17-be22-d6a3dae5fbb2",
+        "prompt_sha256": "5fa0ddc01e9a600a6496716293ef91ffe851370ee0df143061f182aca23ec623"
+      }
+    }
+  ]
+}

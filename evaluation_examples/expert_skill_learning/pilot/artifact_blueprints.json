@@ -1,0 +1,1247 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xlsx",
+  "blueprints": [
+    {
+      "reference_task_id": "reference-task-r01-001",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "@",
+              "yyyy-mm-dd",
+              "@",
+              "@",
+              "@",
+              "@"
+            ],
+            "column_types": [
+              "text",
+              "text",
+              "date",
+              "text",
+              "text",
+              "text",
+              "text"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Registration ID",
+              "Program",
+              "Session Date",
+              "Participant Code",
+              "Neighborhood",
+              "Attendance Type",
+              "Queue Flag"
+            ],
+            "name": "Enrollment Log",
+            "rows": [
+              {
+                "values": [
+                  "REG-2026-001",
+                  "Digital Basics",
+                  "2026-02-03",
+                  "P-1001",
+                  "Riverside",
+                  "In Person",
+                  "Ready"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-002",
+                  "Community Garden",
+                  "2026-02-07",
+                  "P-1002",
+                  "Maplewood",
+                  "In Person",
+                  "Review"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-003",
+                  "Resume Lab",
+                  "2026-02-10",
+                  "P-1003",
+                  "Eastgate",
+                  "Online",
+                  "Confirmed"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-004",
+                  "First Aid",
+                  "2026-02-14",
+                  "P-1004",
+                  "Lakeside",
+                  "In Person",
+                  "Ready"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-005",
+                  "Community Garden",
+                  "2026-02-21",
+                  "P-1005",
+                  "Hillcrest",
+                  "Waitlist",
+                  "Review"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-006",
+                  "Digital Basics",
+                  "2026-02-24",
+                  "P-1006",
+                  "Riverside",
+                  "Online",
+                  "Confirmed"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-007",
+                  "Resume Lab",
+                  "2026-03-03",
+                  "P-1007",
+                  "Maplewood",
+                  "In Person",
+                  "Ready"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-008",
+                  "First Aid",
+                  "2026-03-07",
+                  "P-1008",
+                  "Eastgate",
+                  "In Person",
+                  "Review"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-009",
+                  "Community Garden",
+                  "2026-03-14",
+                  "P-1009",
+                  "Lakeside",
+                  "In Person",
+                  "Confirmed"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-010",
+                  "Digital Basics",
+                  "2026-03-17",
+                  "P-1010",
+                  "Hillcrest",
+                  "Waitlist",
+                  "Ready"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-011",
+                  "Resume Lab",
+                  "2026-03-21",
+                  "P-1011",
+                  "Riverside",
+                  "Online",
+                  "Review"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-012",
+                  "First Aid",
+                  "2026-03-24",
+                  "P-1012",
+                  "Maplewood",
+                  "In Person",
+                  "Confirmed"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-013",
+                  "Community Garden",
+                  "2026-04-04",
+                  "P-1013",
+                  "Eastgate",
+                  "In Person",
+                  "Ready"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-014",
+                  "Digital Basics",
+                  "2026-04-07",
+                  "P-1014",
+                  "Lakeside",
+                  "Online",
+                  "Review"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-015",
+                  "Resume Lab",
+                  "2026-04-11",
+                  "P-1015",
+                  "Hillcrest",
+                  "In Person",
+                  "Confirmed"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-016",
+                  "First Aid",
+                  "2026-04-14",
+                  "P-1016",
+                  "Riverside",
+                  "Waitlist",
+                  "Ready"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-017",
+                  "Community Garden",
+                  "2026-04-18",
+                  "P-1017",
+                  "Maplewood",
+                  "In Person",
+                  "Review"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-018",
+                  "Digital Basics",
+                  "2026-04-21",
+                  "P-1018",
+                  "Eastgate",
+                  "In Person",
+                  "Confirmed"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-019",
+                  "Resume Lab",
+                  "2026-04-25",
+                  "P-1019",
+                  "Lakeside",
+                  "Online",
+                  "Ready"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-020",
+                  "First Aid",
+                  "2026-04-28",
+                  "P-1020",
+                  "Hillcrest",
+                  "In Person",
+                  "Review"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-021",
+                  "Community Garden",
+                  "2026-05-02",
+                  "P-1021",
+                  "Riverside",
+                  "Waitlist",
+                  "Confirmed"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-022",
+                  "Digital Basics",
+                  "2026-05-05",
+                  "P-1022",
+                  "Maplewood",
+                  "In Person",
+                  "Ready"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-023",
+                  "Resume Lab",
+                  "2026-05-09",
+                  "P-1023",
+                  "Eastgate",
+                  "In Person",
+                  "Confirmed"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-024",
+                  "First Aid",
+                  "2026-05-12",
+                  "P-1024",
+                  "Lakeside",
+                  "Online",
+                  "Ready"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-025",
+                  "Community Garden",
+                  "2026-05-16",
+                  "P-1025",
+                  "Hillcrest",
+                  "In Person",
+                  "Ready"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-026",
+                  "Digital Basics",
+                  "2026-05-19",
+                  "P-1026",
+                  "Riverside",
+                  "Waitlist",
+                  "Confirmed"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-027",
+                  "Resume Lab",
+                  "2026-05-23",
+                  "P-1027",
+                  "Maplewood",
+                  "In Person",
+                  "Review"
+                ]
+              },
+              {
+                "values": [
+                  "REG-2026-028",
+                  "Community Garden",
+                  "2026-05-30",
+                  "P-1028",
+                  "Eastgate",
+                  "Online",
+                  "Ready"
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Workshop Enrollment Queue"
+      },
+      "developer_qc_adjustments": [
+        "Changed Enrollment Log!G26 from Review to Ready so the generated artifact exactly matches the artifact_spec requirement of eight Review records."
+      ],
+      "generation": {
+        "request_id": "e98cdbe2-3291-4d00-9662-f5cc55db37ee",
+        "prompt_sha256": "98ae9f0f13c39145e1e2e39598dc9ff8b65ede7a9f4bd8b899e3b863960e5f02",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2315,
+        "output_tokens": 1110,
+        "estimated_cost_usd": 0.01795
+      }
+    },
+    {
+      "reference_task_id": "reference-task-r01-002",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": "A1:I17",
+            "column_number_formats": [
+              "@",
+              "$#,##0.00",
+              "$#,##0.00",
+              "$#,##0.00",
+              "@",
+              "$#,##0.00",
+              "$#,##0.00",
+              "$#,##0.00",
+              "$#,##0.00"
+            ],
+            "column_types": [
+              "text",
+              "currency",
+              "currency",
+              "currency",
+              "text",
+              "currency",
+              "currency",
+              "currency",
+              "currency"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Workshop ID",
+              "Award Received",
+              "Credit Reversal",
+              "Asset Recovery",
+              "Service Area",
+              "Venue Cost",
+              "Materials Cost",
+              "Facilitator Cost",
+              "Net Allocation"
+            ],
+            "name": "Funding Log",
+            "rows": [
+              {
+                "values": [
+                  "W-101",
+                  "18400",
+                  "350",
+                  "125",
+                  "Northside",
+                  "2100",
+                  "980",
+                  "640",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "W-102",
+                  "22150",
+                  "0",
+                  "300",
+                  "Northside",
+                  "1860",
+                  "1425",
+                  "720",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "W-103",
+                  "16750",
+                  "225",
+                  "0",
+                  "Harbor",
+                  "1940",
+                  "760",
+                  "515",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "W-104",
+                  "19600",
+                  "410",
+                  "185",
+                  "Harbor",
+                  "1725",
+                  "1190",
+                  "680",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "W-105",
+                  "23800",
+                  "0",
+                  "450",
+                  "Meadow",
+                  "2450",
+                  "1380",
+                  "940",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "W-106",
+                  "15450",
+                  "190",
+                  "75",
+                  "Meadow",
+                  "1280",
+                  "845",
+                  "390",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "W-107",
+                  "20700",
+                  "600",
+                  "220",
+                  "Northside",
+                  "2185",
+                  "1110",
+                  "765",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "W-108",
+                  "18100",
+                  "0",
+                  "160",
+                  "Harbor",
+                  "1560",
+                  "920",
+                  "575",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "W-109",
+                  "24900",
+                  "525",
+                  "0",
+                  "Meadow",
+                  "2690",
+                  "1540",
+                  "880",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "W-110",
+                  "17200",
+                  "140",
+                  "210",
+                  "Northside",
+                  "1495",
+                  "875",
+                  "460",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "W-111",
+                  "21450",
+                  "0",
+                  "330",
+                  "Harbor",
+                  "2050",
+                  "1260",
+                  "710",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "W-112",
+                  "15900",
+                  "285",
+                  "95",
+                  "Meadow",
+                  "1375",
+                  "690",
+                  "425",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "W-113",
+                  "22800",
+                  "365",
+                  "140",
+                  "Northside",
+                  "2320",
+                  "1450",
+                  "830",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "W-114",
+                  "18850",
+                  "0",
+                  "250",
+                  "Harbor",
+                  "1680",
+                  "1040",
+                  "605",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "W-115",
+                  "20350",
+                  "455",
+                  "110",
+                  "Meadow",
+                  "1905",
+                  "1175",
+                  "695",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "W-116",
+                  "17600",
+                  "210",
+                  "0",
+                  "Northside",
+                  "1430",
+                  "815",
+                  "480",
+                  ""
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Workshop Grant Reconciliation"
+      },
+      "generation": {
+        "request_id": "5c96160b-f63a-471d-80c2-68bbee3c74c4",
+        "prompt_sha256": "106ff162c2eac4dffa740e36beb0756c156071b48d84e33da3d0656014621be6",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2403,
+        "output_tokens": 723,
+        "estimated_cost_usd": 0.013482
+      }
+    },
+    {
+      "reference_task_id": "reference-task-r01-003",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "yyyy-mm-dd",
+              "@",
+              "@",
+              "@",
+              "0"
+            ],
+            "column_types": [
+              "date",
+              "text",
+              "text",
+              "text",
+              "integer"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Dispatch Date",
+              "Carrier",
+              "Tracking Code",
+              "Route",
+              "Parcel Count"
+            ],
+            "name": "Dispatch Log",
+            "rows": [
+              {
+                "values": [
+                  "2026-04-01",
+                  "Atlas Parcel Co",
+                  "TRK-4101",
+                  "North Loop",
+                  "4"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-02",
+                  "Blue Finch Express",
+                  "TRK-4102",
+                  "Harbor Run",
+                  "2"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-03",
+                  "Cedar Transit",
+                  "TRK-4103",
+                  "Central Link",
+                  "6"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-04",
+                  "Dune Courier",
+                  "TRK-4104",
+                  "West Ridge",
+                  "3"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-05",
+                  "Atlas Parcel Co",
+                  "TRK-4105",
+                  "Harbor Run",
+                  "8"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-06",
+                  "Blue Finch Express",
+                  "TRK-4106",
+                  "Central Link",
+                  "1"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-07",
+                  "Cedar Transit",
+                  "TRK-4107",
+                  "West Ridge",
+                  "5"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-08",
+                  "Dune Courier",
+                  "TRK-4108",
+                  "North Loop",
+                  "4"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-09",
+                  "Atlas Parcel Co",
+                  "TRK-4109",
+                  "Central Link",
+                  "7"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-10",
+                  "Blue Finch Express",
+                  "TRK-4110",
+                  "West Ridge",
+                  "3"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-11",
+                  "Cedar Transit",
+                  "TRK-4111",
+                  "North Loop",
+                  "2"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-12",
+                  "Dune Courier",
+                  "TRK-4112",
+                  "Harbor Run",
+                  "6"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-13",
+                  "Atlas Parcel Co",
+                  "TRK-4113",
+                  "West Ridge",
+                  "5"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-14",
+                  "Blue Finch Express",
+                  "TRK-4114",
+                  "North Loop",
+                  "8"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-15",
+                  "Cedar Transit",
+                  "TRK-4115",
+                  "Harbor Run",
+                  "1"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-16",
+                  "Dune Courier",
+                  "TRK-4116",
+                  "Central Link",
+                  "4"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-17",
+                  "Atlas Parcel Co",
+                  "TRK-4117",
+                  "North Loop",
+                  "3"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-18",
+                  "Blue Finch Express",
+                  "TRK-4118",
+                  "Harbor Run",
+                  "7"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-19",
+                  "Cedar Transit",
+                  "TRK-4119",
+                  "Central Link",
+                  "5"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-20",
+                  "Dune Courier",
+                  "TRK-4120",
+                  "West Ridge",
+                  "2"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-21",
+                  "Atlas Parcel Co",
+                  "TRK-4121",
+                  "Harbor Run",
+                  "6"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-22",
+                  "Blue Finch Express",
+                  "TRK-4122",
+                  "Central Link",
+                  "4"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-23",
+                  "Cedar Transit",
+                  "TRK-4123",
+                  "West Ridge",
+                  "8"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-24",
+                  "Dune Courier",
+                  "TRK-4124",
+                  "North Loop",
+                  "1"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-25",
+                  "Atlas Parcel Co",
+                  "TRK-4125",
+                  "Central Link",
+                  "5"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-26",
+                  "Blue Finch Express",
+                  "TRK-4126",
+                  "West Ridge",
+                  "2"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-27",
+                  "Cedar Transit",
+                  "TRK-4127",
+                  "North Loop",
+                  "7"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-28",
+                  "Dune Courier",
+                  "TRK-4128",
+                  "Harbor Run",
+                  "3"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-29",
+                  "Atlas Parcel Co",
+                  "TRK-4129",
+                  "West Ridge",
+                  "4"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-30",
+                  "Blue Finch Express",
+                  "TRK-4130",
+                  "North Loop",
+                  "6"
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Dispatch Route Review"
+      },
+      "generation": {
+        "request_id": "503fa35f-6706-42bc-bd1d-0ba7351fb867",
+        "prompt_sha256": "19a906e8d7ba94730218730d4aff7770291f334de8ac7e469dbeb9fcc1d59422",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2399,
+        "output_tokens": 926,
+        "estimated_cost_usd": 0.01591
+      }
+    },
+    {
+      "reference_task_id": "reference-task-r01-004",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "@",
+              "@",
+              "0",
+              "$#,##0.00",
+              "General"
+            ],
+            "column_types": [
+              "text",
+              "text",
+              "text",
+              "integer",
+              "decimal",
+              "decimal"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Work Order",
+              "Coordinator",
+              "Service Tier",
+              "Units",
+              "Hourly Rate",
+              "Billed Charge"
+            ],
+            "name": "Service Log",
+            "rows": [
+              {
+                "values": [
+                  "WO-4101",
+                  "Avery Cole",
+                  "Setup",
+                  "3",
+                  "68.50",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4102",
+                  "Imani Park",
+                  "Repair",
+                  "5",
+                  "92.75",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4103",
+                  "Jules Rowan",
+                  "Training",
+                  "2",
+                  "125.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4104",
+                  "Morgan Lee",
+                  "Inspection",
+                  "6",
+                  "54.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4105",
+                  "Tessa Vale",
+                  "Delivery",
+                  "4",
+                  "78.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4106",
+                  "Avery Cole",
+                  "Repair",
+                  "7",
+                  "63.50",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4107",
+                  "Imani Park",
+                  "Setup",
+                  "1",
+                  "110.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4108",
+                  "Jules Rowan",
+                  "Inspection",
+                  "8",
+                  "42.50",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4109",
+                  "Morgan Lee",
+                  "Training",
+                  "3",
+                  "98.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4110",
+                  "Tessa Vale",
+                  "Delivery",
+                  "5",
+                  "71.75",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4111",
+                  "Avery Cole",
+                  "Inspection",
+                  "2",
+                  "56.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4112",
+                  "Imani Park",
+                  "Training",
+                  "6",
+                  "84.50",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4113",
+                  "Jules Rowan",
+                  "Setup",
+                  "4",
+                  "47.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4114",
+                  "Morgan Lee",
+                  "Repair",
+                  "8",
+                  "115.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4115",
+                  "Tessa Vale",
+                  "Inspection",
+                  "3",
+                  "66.75",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4116",
+                  "Avery Cole",
+                  "Delivery",
+                  "5",
+                  "59.50",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4117",
+                  "Imani Park",
+                  "Repair",
+                  "2",
+                  "102.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4118",
+                  "Jules Rowan",
+                  "Training",
+                  "7",
+                  "73.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4119",
+                  "Morgan Lee",
+                  "Setup",
+                  "1",
+                  "88.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4120",
+                  "Tessa Vale",
+                  "Delivery",
+                  "6",
+                  "49.75",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4121",
+                  "Avery Cole",
+                  "Training",
+                  "4",
+                  "95.50",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4122",
+                  "Imani Park",
+                  "Inspection",
+                  "8",
+                  "61.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4123",
+                  "Jules Rowan",
+                  "Repair",
+                  "3",
+                  "107.50",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WO-4124",
+                  "Morgan Lee",
+                  "Setup",
+                  "5",
+                  "76.00",
+                  ""
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Workshop Service Billing"
+      },
+      "generation": {
+        "request_id": "adbd0e18-2aa5-428f-9f34-e954d6bfaf60",
+        "prompt_sha256": "ab46b83860499b1f46587e2f24f3fb8ce3ff46f887e9437a49ec4ce7ea49b571",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2050,
+        "output_tokens": 688,
+        "estimated_cost_usd": 0.012356
+      }
+    }
+  ],
+  "totals": {
+    "calls": 4,
+    "input_tokens": 9167,
+    "output_tokens": 3447,
+    "estimated_cost_usd": 0.059698,
+    "pricing_complete": true
+  }
+}

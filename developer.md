@@ -1,6 +1,6 @@
 # OSWorld 专家轨迹技能学习 Benchmark 开发注意事项
 
-更新日期：2026-08-04
+更新日期：2026-08-05
 
 ## 2026-08-04 当前开发入口
 
@@ -66,6 +66,87 @@ technique”，而不是每个 click 一个 skill。相同 technique 在同一 t
 保留非连续 action IDs；每个 action ID 最多归属一个 skill；普通 header 输入和纯确认等
 scaffolding 可以不入 skill pool。冻结结果为 38 substantive actions、2 scaffolding actions、
 0 duplicate assignments。
+
+C2 的旧 task-only 入口仍保留用于历史复现，但当前开发入口已经升级为 reference package：
+
+```bash
+python scripts/python/generate_reference_packages.py \
+  --skill-pool \
+    evaluation_examples/expert_skill_learning/pilot/skill_pool.json \
+  --source-manifest \
+    evaluation_examples/expert_skill_learning/pilot/source_tasks.json \
+  --seed 20260805
+```
+
+sampler 对所有候选 ID 排序后再用 seeded RNG shuffle，保证不同 Python 进程结果一致；
+每组 2–5 个同 app skills。模型必须把 sampled skills 全部作为主要演示要求，但允许少量
+task-specific、substantive prerequisite 和重复操作来保持任务自然；它们必须单独写入
+`expected_incidental_operations`，不算 coverage。输出不再只有 instruction，而是：
+
+- outcome-oriented `task_instruction`；
+- 可由 LLM/人工制作的 `artifact_spec`；
+- 给 expert 参考、但不强制逐步照抄的 `operator_guide`；
+- incidental operations 明细。
+
+本地代码要求 candidate IDs 与 sampled set 完全一致且无重复；model rejection 返回 pool。
+相似度同时记录 `difflib` sequence ratio 和真实 embedding cosine。semantic backend 批量调用
+`text-embedding-3-small`；两个分数都只供 reviewer 参考，不能自动拒绝。
+
+旧冻结输出 `pilot/reference_tasks.json` 与
+`pilot/reference_task_generation_run.json` 保留。当前冻结输出：
+
+- `pilot/reference_packages.json`：4 个 `pending` packages、source contribution、lexical 与
+  semantic similarity；
+- `pilot/reference_package_generation_run.json`：seed/model/prompt hashes/token/cost/attempts；
+- `pilot/reference_package_reviews.json`：append-only 人工决定，初始为空；
+- `pilot/coverage_state.json`：由 review CLI 重算，当前 0/12 approved。
+
+当前 package run 为 4 calls、6400 input、8485 output、估算 `$0.114620`；semantic
+embedding 为 337 input tokens、`$0.00000674`，合计 `$0.11462674`。当前 12 skills 只是
+candidate coverage 全覆盖，四个 packages 仍需 human review，不能写成 approved coverage。
+
+review 文件中的 decision 只能是 `approved`、`revision_requested` 或 `rejected`。运行：
+
+```bash
+python scripts/python/review_reference_packages.py \
+  --skill-pool evaluation_examples/expert_skill_learning/pilot/skill_pool.json \
+  --packages evaluation_examples/expert_skill_learning/pilot/reference_packages.json \
+  --reviews evaluation_examples/expert_skill_learning/pilot/reference_package_reviews.json \
+  --output evaluation_examples/expert_skill_learning/pilot/coverage_state.json
+```
+
+有 unresolved skills 时 exit code 为 2，这是预期状态。只有 previous packages 全部 review 后
+才允许 resume；`revision_requested` 会保留原 sampled skill set 并把 reviewer instructions
+发给 LLM，`rejected` 的 exact combination 被 blocked，其他 uncovered skills 重新采样。
+
+C4a artifact generation 入口：
+
+```bash
+python scripts/python/generate_reference_artifacts.py \
+  --packages evaluation_examples/expert_skill_learning/pilot/reference_packages.json \
+  --build-output-dir results/expert_skill_learning/artifacts \
+  --node <bundled-node> \
+  --node-modules <directory-containing-@oai/artifact-tool>
+```
+
+LLM 只生成 strict Calc blueprint；builder 负责真实 XLSX、number formats、必要 AutoFilter、
+列宽/冻结表头、逐 sheet PNG、formula error scan 和 manifest SHA256。native Pivot Table 不会
+预建，因为当前四个任务都要求 expert 在录制中创建。已冻结的 blueprint 可零 API 成本重建：
+
+```bash
+python scripts/python/generate_reference_artifacts.py \
+  --blueprints-input \
+    evaluation_examples/expert_skill_learning/pilot/artifact_blueprints.json \
+  --build-output-dir evaluation_examples/expert_skill_learning/pilot/artifacts \
+  --node <bundled-node> \
+  --node-modules <directory-containing-@oai/artifact-tool>
+```
+
+最终 frozen artifact run 为 4 calls、9167/3447 tokens、`$0.059698`。四个 workbooks 均
+`manual_setup_required=false`，公式错误扫描为 0。此前为完善 number-format/AutoFilter
+contract 做过一次 4-call artifact iteration，成本 `$0.059986`；不要把它误算为 frozen run。
+LLM 首次把 Enrollment Log 生成成 9 个 Review rows，developer QC 改为 spec 要求的 8 个；
+调整记录在 `pilot/artifact_blueprints.json` 的 `developer_qc_adjustments`。
 
 LLM 只收到原 instruction 和带零开始索引的 single steps。task ID、app 和最终 source
 字段由本地代码注入；prompt 中不得新增 artifact、evaluator、grouped actions 或原 task

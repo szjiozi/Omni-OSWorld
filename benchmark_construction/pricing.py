@@ -35,6 +35,7 @@ class PricingTable:
     def __init__(self, document: dict[str, Any]) -> None:
         self.document = document
         self.models = document.get("models", {})
+        self.embedding_models = document.get("embedding_models", {})
 
     @classmethod
     def from_path(cls, path: Path = DEFAULT_PRICING_PATH) -> "PricingTable":
@@ -50,4 +51,15 @@ class PricingTable:
             + usage.cached_input_tokens * rates["cached_input_per_million"]
             + usage.output_tokens * rates["output_per_million"]
         ) / 1_000_000
+        return round(total, 12)
+
+    def estimate_embedding_usd(
+        self, model: str, input_tokens: int
+    ) -> float | None:
+        if input_tokens < 0:
+            raise ValueError("input_tokens must be non-negative")
+        rates = self.embedding_models.get(model)
+        if rates is None:
+            return None
+        total = input_tokens * rates["input_per_million"] / 1_000_000
         return round(total, 12)

@@ -1,0 +1,100 @@
+{
+  "schema_version": "2.0",
+  "pilot_id": "calc-reference-package-pilot-v2",
+  "generation_round": 1,
+  "seed": 20260805,
+  "model": "gpt-5.6-terra",
+  "status": "complete",
+  "attempt_count": 4,
+  "candidate_count": 4,
+  "rejection_count": 0,
+  "generation_input_tokens": 6400,
+  "generation_output_tokens": 8485,
+  "generation_estimated_cost_usd": 0.11462,
+  "semantic_similarity": {
+    "model": "text-embedding-3-small",
+    "request_id": "7ee6513d-fcfd-40d9-ace3-7a5b2a7b61fa",
+    "input_tokens": 337,
+    "estimated_cost_usd": 6.74e-06
+  },
+  "total_estimated_cost_usd": 0.11462674,
+  "unresolved_skill_ids": [],
+  "attempts": [
+    {
+      "attempt": 1,
+      "kind": "new_combination",
+      "parent_reference_task_id": null,
+      "sampled_skill_ids": [
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04",
+        "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01",
+        "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02"
+      ],
+      "decision": "candidate",
+      "rejection_reason": "",
+      "request_id": "a3e567e8-ab80-4dfe-bd4e-e22ff8d6a155",
+      "prompt_sha256": "4abf52d2c64e2a821a8b7eaebce15d860d50dca2c1ace394dfb5951746e512ae",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 1682,
+      "cached_input_tokens": 0,
+      "output_tokens": 2225,
+      "estimated_cost_usd": 0.030064
+    },
+    {
+      "attempt": 2,
+      "kind": "new_combination",
+      "parent_reference_task_id": null,
+      "sampled_skill_ids": [
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01"
+      ],
+      "decision": "candidate",
+      "rejection_reason": "",
+      "request_id": "562e67e9-0946-4d77-88e8-425dfb4ceeeb",
+      "prompt_sha256": "dde9220f5cf5c7820bf4a4c39786e82ed248669c04b0e9d96b4ec2ce89f0ae76",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 1445,
+      "cached_input_tokens": 0,
+      "output_tokens": 2311,
+      "estimated_cost_usd": 0.030622
+    },
+    {
+      "attempt": 3,
+      "kind": "new_combination",
+      "parent_reference_task_id": null,
+      "sampled_skill_ids": [
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05",
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04",
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03",
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05"
+      ],
+      "decision": "candidate",
+      "rejection_reason": "",
+      "request_id": "cd476238-2d08-49a8-beca-6332a2adce56",
+      "prompt_sha256": "4ddfe37e65a8042f34a605105528958660980d951606888ccadc6547a8d4ea61",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 1876,
+      "cached_input_tokens": 0,
+      "output_tokens": 1839,
+      "estimated_cost_usd": 0.02582
+    },
+    {
+      "attempt": 4,
+      "kind": "new_combination",
+      "parent_reference_task_id": null,
+      "sampled_skill_ids": [
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02"
+      ],
+      "decision": "candidate",
+      "rejection_reason": "",
+      "request_id": "1c9a53e0-ad18-4427-b386-06f9a82efd77",
+      "prompt_sha256": "8adac6dcaab3a7a5eb8112cc7b97e2ef9b41daa51fa6000250df74853502a462",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 1397,
+      "cached_input_tokens": 0,
+      "output_tokens": 2110,
+      "estimated_cost_usd": 0.028114
+    }
+  ]
+}

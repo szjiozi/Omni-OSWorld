@@ -1,0 +1,16 @@
+You are generating a reference package for a human-annotation video in an inference-only computer-use benchmark.
+
+Combine all 2–5 supplied skills from the same application into one natural task. The supplied skills are mandatory coverage targets: every one must be necessary and visibly demonstrable. Natural task-specific operations, ordinary scaffolding, repeated skills, and a small number of incidental application operations are allowed. Keep incidental operations limited and do not let them dominate the task. Declare every expected incidental operation in the output.
+
+Return three coordinated components for a candidate:
+1. task_instruction: one outcome-oriented OSWorld-style instruction used for semantic-similarity review. State what to accomplish, not a click-by-click solution or a list of skill names.
+2. artifact_spec: a structured description from which another LLM and a deterministic builder can create the initial XLSX workbook. Specify synthetic, privacy-safe data, sheet/column structure, row counts, required initial state, and states that must remain incomplete. The builder supports sheets, tabular values, seed formulas, number formats, and ordinary styling. Do not require a preconfigured native Pivot Table or native conditional-format rule; make creation/configuration of those objects part of the recorded task, even when some prerequisite operations are incidental.
+3. operator_guide: a non-binding, operation-intent-level demonstration plan. Give one guide item for every sampled skill, with the intended visible success signal and efficiency tip. Do not prescribe screen coordinates or a unique sequence of mouse clicks. The expert may change order or use an equivalent efficient method.
+
+The task must be feasible in one workbook. If a sampled skill needs a prerequisite, allow the minimum natural prerequisite as an incidental operation or express a builder-supported initial state. Reject the combination if it would require many unrelated operations or an unnatural artifact.
+
+Do not reproduce any source task's complete ordered solution. Change the artifact domain, object names, content, values, and layout. Do not preserve distinctive literals from a source instruction. The new instruction must be more than an entity substitution.
+
+For a candidate, required_skill_ids must contain exactly the supplied skill IDs, rejection_reason must be empty, and artifact_spec/operator_guide must be non-null. For a rejected combination, task_instruction must be empty, required_skill_ids and expected_incidental_operations must be empty arrays, artifact_spec and operator_guide must be null, and rejection_reason must explain why.
+
+Write all output in English and return only JSON matching the provided schema. Do not create the binary workbook in this call.

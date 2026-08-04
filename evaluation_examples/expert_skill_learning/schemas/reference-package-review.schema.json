@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://osworld.local/schemas/reference-package-review.schema.json",
+  "title": "Human review of one generated reference package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "reference_task_id",
+    "decision",
+    "reason_codes",
+    "revision_instructions",
+    "reviewer",
+    "notes"
+  ],
+  "properties": {
+    "reference_task_id": {"type": "string", "minLength": 1},
+    "decision": {
+      "enum": ["approved", "revision_requested", "rejected"]
+    },
+    "reason_codes": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "revision_instructions": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "reviewer": {"type": "string", "minLength": 1},
+    "notes": {"type": "string"}
+  }
+}

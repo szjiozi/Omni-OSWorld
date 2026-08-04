@@ -1,0 +1,13 @@
+{
+  "workbook_title": "Workshop Service Billing",
+  "output_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-004/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Service Log",
+      "preview_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-004/previews/Service_Log.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Service Log\",\"address\":\"A1:F12\",\"rows\":12,\"cols\":6,\"values\":[[\"Work Order\",\"Coordinator\",\"Service Tier\",\"Units\",\"Hourly Rate\",\"Billed Charge\"],[\"WO-4101\",\"Avery Cole\",\"Setup\",3,68.5,null],[\"WO-4102\",\"Imani Park\",\"Repair\",5,92.75,null],[\"WO-4103\",\"Jules Rowan\",\"Training\",2,125,null],[\"WO-4104\",\"Morgan Lee\",\"Inspection\",6,54.25,null],[\"WO-4105\",\"Tessa Vale\",\"Delivery\",4,78,null],[\"WO-4106\",\"Avery Cole\",\"Repair\",7,63.5,null],[\"WO-4107\",\"Imani Park\",\"Setup\",1,110,null],[\"WO-4108\",\"Jules Rowan\",\"Inspection\",8,42.5,null],[\"WO-4109\",\"Morgan Lee\",\"Training\",3,98.25,null],[\"WO-4110\",\"Tessa Vale\",\"Delivery\",5,71.75,null],[\"WO-4111\",\"Avery Cole\",\"Inspection\",2,56,null]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

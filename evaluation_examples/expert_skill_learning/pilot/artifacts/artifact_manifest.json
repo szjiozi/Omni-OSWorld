@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "artifacts": [
+    {
+      "reference_task_id": "reference-task-r01-001",
+      "artifact_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-001/initial_artifact.xlsx",
+      "artifact_sha256": "818d50433cae5308ab4bdc0f7d98f405304500c97321713de72c1fb8304e1203",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-001/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-001/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-r01-002",
+      "artifact_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-002/initial_artifact.xlsx",
+      "artifact_sha256": "1650801e76c8fc10f433be0daee18beeee521e4f1a326ebce68c87ea8ef35317",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-002/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-002/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-r01-003",
+      "artifact_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-003/initial_artifact.xlsx",
+      "artifact_sha256": "ea53a2c14313267c1db4b7debf6d1c3a930a4e59577b8d37e310eeed19809755",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-003/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-003/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-r01-004",
+      "artifact_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-004/initial_artifact.xlsx",
+      "artifact_sha256": "5ac0f01ddba6c807b50cdfea011911f6f4b32a98233f7225f7231382fe58cb52",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-004/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-004/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    }
+  ]
+}

@@ -4,7 +4,12 @@ Application:
 Sampled skill cards:
 {{SAMPLED_SKILLS}}
 
+Other pool skills that must not be required by this task:
+{{UNSAMPLED_SKILLS}}
+
 Source instructions for similarity avoidance:
 {{SOURCE_INSTRUCTIONS}}
 
 Generate one reference task or reject this combination. Ensure the task demonstrates every sampled skill.
+
+For a candidate, copy exactly the supplied skill_id values into required_skill_ids. Do not infer or invent skill IDs.

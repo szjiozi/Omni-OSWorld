@@ -1,0 +1,13 @@
+{
+  "workbook_title": "Dispatch Route Review",
+  "output_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-003/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Dispatch Log",
+      "preview_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-003/previews/Dispatch_Log.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Dispatch Log\",\"address\":\"A1:E12\",\"rows\":12,\"cols\":5,\"values\":[[\"Dispatch Date\",\"Carrier\",\"Tracking Code\",\"Route\",\"Parcel Count\"],[\"2026-04-01T00:00:00.000Z\",\"Atlas Parcel Co\",\"TRK-4101\",\"North Loop\",4],[\"2026-04-02T00:00:00.000Z\",\"Blue Finch Express\",\"TRK-4102\",\"Harbor Run\",2],[\"2026-04-03T00:00:00.000Z\",\"Cedar Transit\",\"TRK-4103\",\"Central Link\",6],[\"2026-04-04T00:00:00.000Z\",\"Dune Courier\",\"TRK-4104\",\"West Ridge\",3],[\"2026-04-05T00:00:00.000Z\",\"Atlas Parcel Co\",\"TRK-4105\",\"Harbor Run\",8],[\"2026-04-06T00:00:00.000Z\",\"Blue Finch Express\",\"TRK-4106\",\"Central Link\",1],[\"2026-04-07T00:00:00.000Z\",\"Cedar Transit\",\"TRK-4107\",\"West Ridge\",5],[\"2026-04-08T00:00:00.000Z\",\"Dune Courier\",\"TRK-4108\",\"North Loop\",4],[\"2026-04-09T00:00:00.000Z\",\"Atlas Parcel Co\",\"TRK-4109\",\"Central Link\",7],[\"2026-04-10T00:00:00.000Z\",\"Blue Finch Express\",\"TRK-4110\",\"West Ridge\",3],[\"2026-04-11T00:00:00.000Z\",\"Cedar Transit\",\"TRK-4111\",\"North Loop\",2]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

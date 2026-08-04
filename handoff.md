@@ -1,5 +1,39 @@
 # OSWorld 专家轨迹技能学习 Benchmark 与历史项目 Handoff
 
+## 2026-08-05 Reference Package、Review Loop 与 Artifact Generation
+
+C2 已从 task-only 输出升级为可直接支持人工 reference-video 标注的 package：每个候选包含
+`task_instruction`、`artifact_spec`、非强制逐步照抄的 `operator_guide` 和显式
+`expected_incidental_operations`。只有 sampled 2–5 skills 是 mandatory coverage；有限的
+task-specific、prerequisite 和重复操作可以存在，以免任务不自然。
+
+当前冻结数据：
+
+- `pilot/reference_packages.json`：4 个英文 Calc packages，candidate-level 覆盖 12/12；
+- `pilot/reference_package_generation_run.json`：4 calls、6400/8485 tokens，generation
+  `$0.114620`；
+- `similarity_reference.semantic`：`text-embedding-3-small` cosine，不再是字符串近似；本轮
+  337 tokens、`$0.00000674`；lexical sequence similarity 继续保留为辅助；
+- `pilot/reference_package_reviews.json`：当前为空，4 个 packages 均 pending；
+- `pilot/coverage_state.json`：0/12 approved，证明 candidate coverage 没被误当 approved。
+
+C3 软件闭环已经实现。Reviewer 可选择 `approved`、`revision_requested` 或 `rejected`。
+全局 coverage 只合并 approved packages；revision 保持同一组 sampled skills 并携带反馈；
+rejected exact combination 被 blocked，包含的 unresolved skills 会进入后续重新采样。只要还有
+未 review 的 package，resume CLI 就会拒绝继续，防止生成状态分叉。
+
+C4a artifact generation 也已实现：construction LLM 根据 package 的 `artifact_spec` 生成 strict
+Calc blueprint，Node builder 使用 `@oai/artifact-tool` 生成真实 XLSX，应用初始 number format
+和 AutoFilter，逐 sheet 渲染 PNG、扫描公式错误并记录 SHA256。冻结输出位于
+`pilot/artifact_blueprints.json` 和 `pilot/artifacts/`，4 个 workbook 都是合成数据且
+`manual_setup_required=false`。final blueprint run 为 4 calls、9167/3447 tokens、`$0.059698`。
+一次早期 artifact iteration 花费 `$0.059986`。Enrollment artifact 首次有 9 个 Review rows，
+developer QC 按 spec 修正为 8 个，调整已显式写入 `developer_qc_adjustments`。
+
+下一步不是继续自动生成，而是由用户/annotator 人工 review 这 4 个 packages。review 完成后
+重算 `coverage_state.json`；只有出现 rejected/revision/uncovered skills 时才运行 round 2。
+之后进入 C4b setup-only OSWorld config 和 C5 Enter-controlled AWS recording runner。
+
 ## 2026-08-04 Reference Task Construction Pilot
 
 研究目标仍是 inference-only benchmark：评测 omni-model 能否从专家 reference 操作中
@@ -15,7 +49,7 @@
 - 同 app 随机采样 2–5 skills 生成自然的新任务，不自然时允许拒绝；
 - 新任务不复用原 artifact、关键内容或完整有序解法，source contribution 只人工判断；
 - Pilot coverage 为每个 skill 至少进入一个 approved task；
-- expert 人工寻找/制作 artifact，skill guide 可以按实际界面调整；
+- LLM 默认生成 initial artifact，expert 负责检查、修订或替换；skill guide 可以按实际界面调整；
 - deliverable 是 setup-only OSWorld config、artifact、skill cards、recording 和 review；
 - AWS/noVNC 用于标注，终端 Enter 开始/停止录制；
 - 第二位标注者在本地看 MP4，只在需要时启动 AWS 检查/复现 artifact；
@@ -38,8 +72,22 @@ Table。三个 task 的 40 个 `single_actions`、raw relative path 和 SHA256 �
 source actions；普通 header 输入的 2 个 actions 作为 scaffolding 保留但不提升为 skill；
 所有已分配 action 均无重复归属。`pilot/extraction_run.json` 记录最终 3 calls 的 prompt
 hash、3690/2249 input/output tokens 和 `$0.034368` 估算成本。包含此前所有 prompt 迭代，
-本次开发总 API 成本约 `$0.209436`。下一步直接进入 C2 reference task
-sampler/generator。
+截至 C1 atomic skill extraction，开发 API 成本约 `$0.209436`。
+
+2026-08-04 C2 已继续完成：新增 `benchmark_construction/reference_generation.py` 和
+`scripts/python/generate_reference_tasks.py`。sampler 使用真正跨进程可复现的 seeded RNG，
+按同 app 随机组合 2–5 skills；模型可以 reject，失败组合返回 uncovered pool；本地严格检查
+candidate IDs 等于 sampled set。prompt 会列出未采样 pool skills，防止模型为了让组合自然
+而偷偷增加未计入 coverage 的 substantive 操作；缺少前置技能时只能依赖明确 initial state
+或 reject。
+
+冻结的 `pilot/reference_tasks.json` 有 3 个英文 Calc candidates，candidate coverage 覆盖
+全部 12 skills，但全都保持 `review_status=pending`。`pilot/reference_task_generation_run.json`
+记录最终 3 calls、5274/2286 tokens、`$0.037980`。包含一次早期付费 generation iteration，
+C2 开发调用合计 `$0.072294`；两次 schema 400 在推理前失败，成本为 0。Task 001 的空布局
+Pivot 要求偏演示型，Task 003 包含某个 source task 的完整两-skill set，均已明确留给 C3
+human review，而不是自动批准。该 task-only 输出现作为历史记录保留；当前 C3 软件闭环与
+package/artifact 输出见上方 2026-08-05 更新。
 
 旧的完整专家轨迹拆分、reference video bank、Qwen Stage 1/Stage 2、效率 evaluator 和
 PowerPoint/AWS 历史内容继续保留；若与本节冲突，以本节、最新 `plan.md` 和

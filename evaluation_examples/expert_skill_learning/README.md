@@ -20,14 +20,36 @@ cover 38 source actions without duplicate assignments; two actions that only
 type and commit a task-specific header are retained in the source manifest as
 scaffolding but are intentionally not promoted to skills.
 
+The original task-only C2 output remains in `pilot/reference_tasks.json` for
+provenance. The current package output is `pilot/reference_packages.json`: each
+candidate contains an outcome-oriented task instruction, an initial XLSX
+artifact specification, a non-binding operator guide, and declared incidental
+operations. Its generation metadata is in
+`pilot/reference_package_generation_run.json`.
+
+The current round has four pending packages and covers all 12 skills at the
+candidate level. `similarity_reference.semantic` is real cosine similarity from
+`text-embedding-3-small`; the old sequence similarity is retained as a lexical
+audit only. Neither score is an automatic accept/reject threshold. Approved
+coverage is computed only from `pilot/reference_package_reviews.json`; the
+initial `pilot/coverage_state.json` therefore remains 0/12 approved.
+
+`pilot/artifact_blueprints.json` and `pilot/artifacts/` contain four generated,
+rendered, formula-error-scanned XLSX workbooks. All are synthetic and need no
+manual pre-recording setup. One post-generation QC edit is explicitly recorded
+in the blueprint document: an enrollment flag was changed so the workbook has
+the requested eight Review rows rather than nine.
+
 Current scope:
 
 1. extract English app-operation skills with concrete procedures and examples;
 2. combine 2–5 same-app skills into non-1:1 reference tasks;
-3. let a human review tasks and manually find or create an artifact;
-4. launch a setup-only OSWorld environment and record the expert using explicit
+3. let a human approve, request revision, or reject each package;
+4. generate the initial artifact from the approved/pending artifact spec, then
+   let a human inspect or replace it when needed;
+5. launch a setup-only OSWorld environment and record the expert using explicit
    Enter-to-start and Enter-to-stop controls;
-5. let a second annotator watch the MP4 locally and optionally relaunch the
+6. let a second annotator watch the MP4 locally and optionally relaunch the
    artifact environment for inspection.
 
 Agent execution, model training, automatic final-state evaluation, and formal
@@ -43,6 +65,7 @@ official prices are recorded from:
 
 - https://developers.openai.com/api/docs/pricing
 - https://developers.openai.com/api/docs/models/gpt-5.6-terra
+- https://developers.openai.com/api/docs/guides/embeddings#obtaining-the-embeddings
 
 Example extraction command after selecting the three source task IDs:
 
@@ -56,6 +79,54 @@ python scripts/python/extract_reference_skills.py \
 The source manifest includes all 40 copied `single_actions` and can run without
 an external OSWorld-Human clone. Add `--source-root /path/to/osworld-human` to
 verify every copied task against its pinned raw-file SHA256 before extraction.
+
+Generate reference packages with a reproducible seed and semantic audit:
+
+```bash
+python scripts/python/generate_reference_packages.py \
+  --skill-pool \
+    evaluation_examples/expert_skill_learning/pilot/skill_pool.json \
+  --source-manifest \
+    evaluation_examples/expert_skill_learning/pilot/source_tasks.json \
+  --seed 20260805
+```
+
+Only sampled skills are mandatory. Limited task-specific, prerequisite, and
+repeated operations are allowed when they keep the task natural, and must be
+declared separately. The sampler groups 2–5 same-app skills, retries model
+rejections, and reports unresolved skills if `--max-attempts` is exhausted.
+
+After editing the append-only review file, recompute approved coverage:
+
+```bash
+python scripts/python/review_reference_packages.py \
+  --skill-pool evaluation_examples/expert_skill_learning/pilot/skill_pool.json \
+  --packages evaluation_examples/expert_skill_learning/pilot/reference_packages.json \
+  --reviews evaluation_examples/expert_skill_learning/pilot/reference_package_reviews.json \
+  --output evaluation_examples/expert_skill_learning/pilot/coverage_state.json
+```
+
+Exit code 2 means review is incomplete, not that schema validation failed.
+Resume generation only after every previous package has a decision. Rejected
+exact combinations are blocked; revision requests regenerate the same sampled
+skills with the reviewer instructions; uncovered skills are resampled globally.
+
+Generate new artifact blueprints and XLSX files:
+
+```bash
+python scripts/python/generate_reference_artifacts.py \
+  --packages evaluation_examples/expert_skill_learning/pilot/reference_packages.json \
+  --build-output-dir results/expert_skill_learning/artifacts \
+  --node <bundled-node> \
+  --node-modules <directory-containing-artifact-tool>
+```
+
+Rebuild already frozen blueprints deterministically, without an API call, by
+replacing `--packages` with
+`--blueprints-input evaluation_examples/expert_skill_learning/pilot/artifact_blueprints.json`.
+The builder preserves deliberately incomplete result columns, applies exact
+initial number formats and AutoFilter requirements, renders every sheet, and
+scans for spreadsheet formula errors.
 
 Do not commit API keys, raw credentials, private user data, or authenticated
 browser profiles. Pilot artifacts and recordings may initially be pushed to the
