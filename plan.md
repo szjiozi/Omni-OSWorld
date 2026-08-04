@@ -1,703 +1,717 @@
-# OSWorld Video Learning 任务开发计划
+# OSWorld 专家轨迹技能学习 Benchmark 开发计划
+
+更新日期：2026-08-03
+
+## A. Benchmark 定位
+
+当前首要方向从 PowerPoint `video-to-design/video-to-animation` 转为：
+
+> 评测 omni-model 能否从专家操作轨迹中归纳高效、可迁移的 computer-use skill，
+> 并通过该 skill 帮助固定 downstream agent 更准确、更高效地完成原始 OSWorld 任务。
+
+本项目只构建 benchmark、数据、推理协议、baseline 和 evaluator，不进行 SFT、RL、
+微调或任何模型训练。参评 omni-model 在 inference 阶段读取专家轨迹并生成 skill；
+downstream agent 在 inference 阶段消费该 skill。模型如何获得能力不属于本项目范围。
+
+PowerPoint Web、AWS 环境、动画 evaluator 和旧 video-learning Phase 0 不删除，继续
+作为已完成基础设施和未来可复用 task domain；原 W2-W5 暂停。
+
+本项目直接扩展 OSWorld，不另造一套替代任务。目标 task、instruction、initial state、setup
+和 final-state evaluator 均沿用 OSWorld；新增的是专家轨迹标注、拆分重组后的 reference
+video bank、skill induction 和效率评测。
+
+## B. 两阶段评测协议
+
+```text
+OSWorld-Human 标注或人工录制的完整专家轨迹
+        ↓ 拆分为 action group / subskill，并跨轨迹重组
+reference video bank（不含 1:1 完整解法）
+        ↓
+omni-model skill induction（inference only）
+        ↓
+frozen skill artifact
+        ↓
+fixed omni-agent + 原始 OSWorld target task
+        ↓
+OSWorld task evaluator + efficiency evaluator
+        ↓
+相对同一 agent/no-skill baseline 的 accuracy 与 efficiency uplift
+```
+
+### B.1 Stage 1：Skill induction
+
+Omni-model 接收为 target 构建的若干 reference videos。每个视频只展示一个或多个操作
+片段，这些片段分散来自不同专家轨迹或不同上下文；任何单个视频都不能构成 target 的
+完整、有序 golden solution。第一阶段可同时提供 target instruction，帮助模型从 reference
+bank 中选择相关操作，但不提供 target 的 hidden evaluator state 或完整操作顺序。
+
+Reference bank 的源信息可包含：
+
+- raw/per-task/multi-task video；
+- 对齐截图或采样帧；
+- normalized semantic actions 和 action groups；
+- 片段所在原始 task 的局部上下文、成功结果和必要的时间边界。
+
+模型必须输出冻结、可审计的 skill artifact。第一版支持：
+
+- bounded text playbook；
+- schema-validated structured SkillIR。
+
+Skill induction 在 target episode 开始前完成。模型不得看到未拆分的 target expert video、
+完整 ordered action list、gold artifact 或 evaluator state。Skill artifact 一经生成，在同一
+benchmark cell 中不得针对单次 rollout 手工修改。
+
+### B.2 Stage 2：Downstream execution
+
+固定 downstream agent 接收 target instruction、正常 observation 和 Stage 1 的 skill
+artifact，在原始 OSWorld target task 上执行。Benchmark 比较同一个 agent、同一个 target、
+同一环境与预算下的 paired rollout：
+
+- without skill；
+- with learned skill；
+- with control/oracle skill。
+
+核心被测对象是 omni-model 产生的 skill utility，而不是 downstream agent 的绝对能力。
+报告必须分离 skill induction 的 token/latency/cost 与 downstream execution 的
+token/latency/cost；可额外报告 skill 被多个 target 复用后的 amortized cost。
+
+## C. 数据与 contamination 边界
+
+截至 2026-08-03，`WukLab/osworld-human` 已公开原 OSWorld 369 个任务的人工
+`single-action`、`grouped-action` 标注和 WES scorer，但没有公开真实逐帧视频、坐标、
+输入事件、时间戳或完整 state-action episode。
+
+官方仓库明确说明这些标注不应被用于训练；本项目没有训练环节。对 pilot 中选定的
+OSWorld task，标注按以下优先级使用：
+
+1. 若 OSWorld-Human 提供可用的 `single-action` / `grouped-action` golden 标注，则复用其
+   操作语义、最短步骤与分组边界；由于仓库没有原始视频、坐标和完整 state-action event，
+   仍需在 OSWorld 环境中人工 replay 并录制；
+2. 若没有对应标注或粒度不足，则人工完成并标注该 OSWorld task 的专家轨迹；
+3. 完整轨迹只保存在 hidden provenance/evaluator 区，不直接提供给参评模型；模型只能看到
+   由 action group/subskill 拆分、跨轨迹重排后生成的 reference videos。
+
+主 benchmark 条件必须满足：
+
+- reference 和 target 不是一条完整轨迹对一个任务的 1:1 replay；
+- 任何单个 reference video 都不包含 target 的完整 ordered solution；
+- target 所需操作被拆散到至少两个 reference videos，并混合不同上下文或无关片段；
+- reference video 顺序不编码 target action 顺序，不显示 hidden gold artifact；
+- manifest 记录每个片段来自哪条专家轨迹、原 action group、剪辑边界和重组方式；
+- 报告 `operation coverage`、最长有序公共子序列和 task-specific visual overlap，量化泄漏风险。
+
+完整 golden video 只可作为 diagnostic upper bound，必须单独标记，不能计入主 benchmark
+结果。项目不建立训练集，所有轨迹和视频仅用于 inference-time benchmark context 与评测。
+
+任何 OSWorld-Human 数字都必须标明 single-action 或 grouped-action WES 以及所用版本。
+
+## D. Benchmark 任务单元
+
+每个 benchmark task 继续对应一个原始 OSWorld task，并至少包含：
+
+- `osworld_task`：原 task ID、instruction、snapshot、setup 和 evaluator；
+- `expert_trajectories`：OSWorld-Human 标注或人工录制的完整专家轨迹，仅构建/evaluator 可见；
+- `skill_fragments`：按 action group/subskill 拆出的带 provenance 片段；
+- `reference_videos`：跨轨迹、跨上下文重组后的多个可学习视频；
+- `hidden_target_expert`：仅 efficiency evaluator 可见的完整高效参考；
+- `skill_contract`：允许的 text/SkillIR 长度、schema 和禁止信息；
+- `downstream_agent_config`：固定 agent、模型、action space 和预算；
+- `evaluator`：最终状态 accuracy + trajectory efficiency；
+- `provenance`：轨迹来源、采集者、环境、时间、OSWorld-Human 版本、片段映射和重组 seed。
+
+Reference 难度分层：
+
+- R0 `golden_replay`：完整 1:1 golden video，仅用于检查视频理解/执行上界；
+- R1 `ordered_fragments`：拆成多个视频但仍按 target 顺序排列，作为弱诊断；
+- R2 `recomposed`：操作片段分散、乱序并处于不同上下文，作为第一阶段主条件；
+- R3 `recomposed+distractors`：加入相似但无关操作、恢复片段或 UI 变化，测试选择与组合。
+
+正式主分数不包含 R0；第一阶段以 R2 对 C0 no-reference 的增益为核心。
+
+## E. 现有代码支持度
+
+### E.1 可直接复用
+
+| 能力 | 位置 | Benchmark 用途 |
+| --- | --- | --- |
+| Task setup 与最终状态 evaluator | `desktop_env`、`evaluation_examples` | accuracy gate |
+| 统一 episode/event recorder | `desktop_env/trajectory/recorder.py` | expert/agent 同构记录 |
+| actor、`group_id`、纳秒时间 | trajectory-event v1 | action group 与时延对齐 |
+| plan/action/observation/result events | `lib_run_single.py` | downstream 执行记录 |
+| 视频、截图、A11y、raw trajectory | runner/controller | expert context modalities |
+| 人工演示和 guest input capture | `scripts/python/manual_explore.py` | expert trajectory 采集 |
+| SkillIR schema | `evaluation_examples/video_learning/schemas` | skill artifact contract |
+| AWS/Daytona 环境与录屏 | providers | 可复现实机 benchmark |
+| Office/PowerPoint tasks | Phase 0、W1 | pilot family 候选 |
+
+### E.2 部分支持与缺口
+
+- 人工采集能得到 MP4、周期截图和 `xinput`，但还不能输出完整 semantic action groups。
+- 默认 runner 写 normalized events，多数 agent-specific runner 尚未统一。
+- `group_id` 已存在，但还没有 frozen skill artifact、skill provenance 和 condition ID。
+- 缺少 benchmark orchestrator：Stage 1 生成一次 skill，Stage 2 在多个 target/seed 复用。
+- 缺少 no-skill/learned/raw/oracle/mismatched 条件的 paired result aggregator。
+- 缺少 expert trajectory replay、fragment cutter/recomposer 和 reference leakage report。
+- 缺少统一 efficiency report 与 OSWorld-Human scorer parity。
+- 缺少 text/SkillIR/video/long-video 的统一 context-budget adapter。
+
+结论：现有代码库足以支撑 expert capture、downstream execution 和 accuracy gate；需要
+新增的是 benchmark orchestration 与 evaluator，而不是模型训练系统。
+
+## F. 指标与因果归因
+
+每个 condition 至少报告：
+
+- task success / 原 OSWorld evaluator score；
+- raw executable action、decision/action-group、observation、model-call 数；
+- planning、grounding、verification、environment latency；
+- active execution time、wall time、token 和成本；
+- 相对 hidden expert single/grouped step 的倍率；
+- WES+、WES-、总 WES；
+- 重复动作、无状态变化动作、回退和恢复数量。
+
+Omni-model skill 的核心效果使用 paired uplift：
+
+- `ΔSuccess = Success(with_skill) - Success(no_skill)`；
+- `ΔWES = WES(with_skill) - WES(no_skill)`；
+- decision/model-call/action/time/cost 的相对变化；
+- 相对 oracle skill 的剩余 gap；
+- mismatched skill 相对 learned skill 的下降，用于排除“只是多了一段提示词”。
+
+Accuracy 与 efficiency 必须分别报告，并展示 Pareto frontier。效率提升只有在 success
+non-inferiority 成立时才可作为正面结论。关键 condition 对同一 target 做 paired seeds；
+不得通过缩短 `max_steps`、跳过保存/验证/evaluator 或修改 downstream agent 来制造 uplift。
+
+## G. 必要对照组
+
+- C0 `no_skill`：downstream agent 只接收 target instruction；
+- C1 `golden_video_upper_bound`：完整 1:1 golden video，仅作 diagnostic，不进入主分数；
+- C2 `recomposed_video_direct`：重组 reference videos 直接给 omni-agent；
+- C3 `learned_text_skill`：omni-model 输出 bounded text playbook；
+- C4 `learned_structured_skill`：omni-model 输出 schema-valid SkillIR；
+- C5 `oracle_skill`：人工编写但不泄露 target-specific 解法的可迁移 skill；
+- C6 `mismatched_skill`：来自其他 family 的同长度 skill；
+- C7 `empty/length_control`：与 learned skill 等长度但无操作信息的文本。
+
+专家 context modality 另做正交 ablation：structured events、sampled frames、per-task video、
+多任务 long video。这样才能区分“omni-model 学到了 skill”与“downstream agent 直接模仿
+raw demo”或“只是获得了更多 token”。
+
+多任务长视频必须包含 task/time/action-group index；同时限制总 frame/token budget，
+并与等预算的分段视频、采样帧和 structured trajectory 比较。
+
+## H. 分阶段实施
+
+### Phase E0：3-task pilot contract
+
+- 从现有 OSWorld 中人工选择 3 个任务，不修改其 instruction、setup 和 evaluator；
+- 冻结 expert/fragment/reference-video/skill-artifact contract；
+- 定义 action、decision group、model call 和 active/wall time 口径；
+- 定义 R0-R3、C0-C7、provenance、reference leakage audit 和 result schema；
+- 冻结一个 video-capable Qwen omni-model 与一个 Qwen-based omni-agent 的具体版本、prompt、
+  decoding 和执行预算。
+
+退出条件：metric contract、skill schema、paired condition 和 leakage rules 都有测试；
+3 个 task 的原始 OSWorld evaluator 可重复运行。
+
+### Phase E1：3-task expert trajectory annotation
+
+- 检查 3 个 task 是否有 OSWorld-Human golden action/group 标注；
+- 有则人工 replay 并录制，无或粒度不足则自行完成专家操作并标注；
+- 每个 task 至少得到一条 evaluator 成功的完整专家轨迹；
+- 将 `xinput`、截图、MP4、semantic actions 和 evaluator result 对齐；
+- 标注 action group、state boundary、shortcut、verification 和 recovery。
+
+退出条件：3 条专家轨迹均通过原始 task evaluator；每个 action group 可追溯到视频时间、
+输入事件和 OSWorld-Human 标注或人工标注来源。
+
+### Phase E2：Fragment/recompose reference videos
+
+- 将每条完整专家轨迹按 action group/subskill 拆分；
+- 把 target 所需操作分散到多个视频，跨 task/trajectory 重排并加入必要上下文；
+- 生成 R0-R3 reference set 和 machine-readable fragment manifest；
+- 自动检查完整 ordered solution、视频顺序、视觉状态和 action overlap。
+
+退出条件：R2 中无单个视频含完整解法，target 操作覆盖分散到至少两个视频，重组可由
+manifest 确定性复现。
+
+### Phase E3：Qwen inference pilot
+
+- 固定 omni-model inference interface 和 context budget；
+- 实现 text playbook 与 SkillIR 两种 frozen artifact；
+- 记录 reference video/fragment IDs、prompt/model/version、token/latency/cost 和 artifact hash；
+- 由选定 Qwen omni-model 读取 reference videos 生成 skill；
+- 由固定 Qwen omni-agent 在 3 个原始 OSWorld task 上执行 C0-C6 paired runs。
+
+退出条件：得到 no-reference、R2 recomposed、mismatched 和 R0 golden upper-bound 的首份
+accuracy/efficiency 对照结果；无论是否提升都保存可诊断 artifacts。
+
+### Phase E4：Downstream paired evaluation and scale-up
+
+- 固定至少一个 downstream agent；
+- 对 C0-C7 做 paired task/seed 执行；
+- 汇总 accuracy/efficiency uplift、oracle gap 和 mismatched control；
+- 比较 structured、frames、per-task video 和 long-video source context。
+
+退出条件：至少一个 learned-skill condition 在 success 不下降的前提下减少 decision step、
+model call 或 active time；若无提升，也能定位是 induction、skill contract 还是 agent use
+失败。
+
+- 扩展 OSWorld task、application、reference 难度和 downstream agents；
+- 校准 expert efficiency、人工 skill oracle 和 evaluator 可靠性；
+- 做 contamination audit、重复运行、bootstrap confidence interval 和人工 error review；
+- 发布 benchmark card、数据 provenance、baseline 和复现命令。
+
+退出条件：benchmark 能稳定区分 no-skill、learned、mismatched 和 oracle；结论跨多个
+downstream agent 不完全反转；所有模型交互均为 inference-only。
+
+## I. 近期执行清单
+
+1. [ ] 从现有 OSWorld 选择 3 个 pilot task 并冻结原 task/evaluator 版本。
+2. [ ] 核对这 3 个 task 的 OSWorld-Human golden action/group 标注覆盖。
+3. [ ] 人工 replay/标注并录制 3 条 evaluator-success 专家轨迹。
+4. [ ] 实现 action-group fragment manifest 与 R2 reference video recomposer。
+5. [ ] 冻结 Qwen omni-model、Qwen omni-agent、prompt 和 budget。
+6. [ ] 跑 C0 no-reference、R2 recomposed、mismatched 和 R0 golden upper-bound。
+7. [ ] 输出 3-task accuracy、WES、action/group/model-call/time/cost 与泄漏诊断报告。
+
+---
+
+# 历史计划：PowerPoint Web Video-to-Animation（已暂停，内容保留）
+
+以下 W0/W1 结果仍有效；W2-W5 暂停，未来可作为高效轨迹学习的 PowerPoint 应用域。
 
 ## 1. 项目目标
 
-本项目基于 OSWorld 和 Daytona，开发一组“从视频中学习桌面任务”的数据、环境与评测工具，研究两个相互关联的问题：
+项目暂时只研究一个场景：
 
-1. **从视频理解难以用语言完整描述的任务目标**
-   - 输入不再只是自然语言，而是一个演示视频、一个待编辑文件和一条很短的指令。
-   - Agent 需要从视频中识别目标状态、关键编辑操作、可迁移的风格或规则，再在一个不同但同构的文件上完成任务。
-   - 任务从网页/动画复现扩展到 PPT、表格、图片和视频编辑。
+> 在 AWS Ubuntu 环境的 PowerPoint for the web 中，根据参考视频复刻较复杂的排版和
+> 动画效果，同时保持初始 PPT 的内容、颜色和素材，输出可继续编辑的 `.pptx`。
 
-2. **从人类轨迹学习更高效且不损失准确率的执行方式**
-   - 收集带时间戳的人类 GUI 操作、截图、录屏和最终产物。
-   - 将人类轨迹和成功的 Agent 轨迹对齐、去冗余、组合成可执行的高效轨迹。
-   - 同时优化成功率、决策步数、原子动作数、端到端时延和模型调用成本。
-
-建议将项目暂命名为 **OSWorld-VideoLearn**。第一版不追求覆盖全部 OSWorld 应用，而是先在 evaluator 最稳定的 LibreOffice Impress 和 Calc 上建立闭环。
-
-## 2. 关键设计决策
-
-### 2.1 两条研究线共用一种中间表示
-
-引入可执行的 **SkillIR**，作为视频、人类轨迹和 Agent 执行之间的统一表示：
+开发链路：
 
 ```text
-演示视频 ──> 目标/操作解析 ──> SkillIR ──> OSWorld 执行 ──> 最终状态 evaluator
-人类轨迹 ──> 对齐/剪枝/组合 ──┘                  └──> 效率 evaluator
+initial.pptx + reference.mp4 + short instruction
+        ↓
+OSWorld 官方 Ubuntu AMI + Chrome + PowerPoint Web
+        ↓
+上传、编辑、播放、录制、下载
+        ↓
+PPTX 结构评测 + 浏览器渲染视频评测 + 内容保持 gate
 ```
 
-SkillIR 不应只是自然语言摘要，也不应绑定某个视频里的绝对坐标。它至少包含：
+原 Windows Server + Office LTSC 路线因固定成本过高而取消。LibreOffice Impress
+继续作为离线开发和兼容性诊断工具，不作为主执行应用。旧 HKUST HPC + Daytona 流程
+归档在 `hkust_hpc developer.md`，历史状态见 `handoff.md`。
 
-- `name`：技能名称，例如“将标题统一为参考页的字体与颜色”。
-- `preconditions`：应用、文件类型、对象是否存在、当前选择状态等。
-- `goal_spec`：最终状态约束，区分必须满足与允许变化的属性。
-- `parameters`：颜色、字体、布局、公式范围等可迁移参数。
-- `steps`：语义动作或可执行动作块，而非单纯逐帧复述。
-- `observations_needed`：每个动作块之后是否必须重新观察。
-- `verification`：完成后如何检查结果。
-- `fallbacks`：菜单、快捷键或对象定位失败时的恢复策略。
+## 2. 范围
 
-### 2.2 主评测看最终状态，不要求复刻演示路径
+### 2.1 当前包含
 
-同一个目标通常存在多条有效轨迹。主要分数必须来自 OSWorld 的最终状态 evaluator；轨迹相似度只用于诊断，不作为正确性的必要条件。
+- AWS EC2 Ubuntu，优先复用 OSWorld 官方 AMI。
+- Chrome 中的 PowerPoint for the web。
+- 输入：初始 PPT、参考视频、短指令。
+- 输出：从 PowerPoint Web 下载的原生 `.pptx`。
+- 从视频理解对象角色、布局、进入/强调/退出方式、顺序和节奏。
+- 保持初始 PPT 的文本、颜色、图片和其他素材。
+- OOXML 动画结构、静态布局和浏览器播放视频的混合评测。
 
-### 2.3 先做 Office，再扩展视觉编辑
+### 2.2 第一版动画边界
 
-首个 MVP 选择 Impress 和 Calc，原因是仓库已经具有 `compare_pptx_files`、`compare_table` 及多种细粒度规则，可进行结构化、可重复的目标验证。
+允许：
 
-第二阶段再加入：
+- Appear、Fade、Fly、Wipe、Split、Zoom 等网页端可添加效果；
+- On Click、With Previous、After Previous；
+- Duration、Delay、顺序和单对象多效果；
+- 网页端可编辑的 slide transition。
 
-- GIMP：调色、裁剪、蒙版、排版、局部替换和风格迁移。
-- VLC/视频工具：字幕、裁剪、转码、拼接、播放设置等可验证编辑。
-- 多应用任务：从视频提取规则，在 PPT、表格或图片应用中完成迁移。
+暂不包含：
 
-### 2.4 OSWorld-Human 只作为评测参照
+- animation trigger；
+- 桌面 PowerPoint 专有效果；
+- Morph；
+- VBA、add-in、ActiveX；
+- 音频同步、复杂媒体控制；
+- Calc、Excel、GIMP、VLC；
+- 大规模轨迹训练或 SFT。
 
-OSWorld-Human 提供单动作和分组动作的人类参考轨迹及 WES 指标，但其官方仓库明确说明不应将公开解答用于训练。项目应采用以下隔离策略：
+任务必须匹配 PowerPoint Web 实际能力，不能把桌面端效果当作 Agent 必须完成的目标。
 
-- OSWorld-Human 原始任务和轨迹只进入锁定的评测集。
-- 训练轨迹来自本项目新建的任务、公开许可的视频或重新采集的人类示范。
-- 训练集和测试集按“目标变换族”划分，而不只是按文件或视频 ID 随机划分。
-- 任何从评测轨迹生成的 SkillIR 都不得进入训练、检索库或 prompt 示例。
+## 3. 当前基础与缺口
 
-## 3. 研究问题与可检验假设
+### 3.1 可复用
 
-### RQ1：视频是否比长自然语言更适合表达复杂编辑目标？
+- Video-learning task、SkillIR 和 trajectory event v1 schema。
+- `TrajectoryRecorder`、统一计时和 episode manifest。
+- `manual_explore.py` 的任务加载、截图、录屏与 evaluator 入口。
+- OSWorld AWS manager/provider、TTL 和官方 Ubuntu AMI。
+- Chrome、文件上传/下载和现有 browser automation 能力。
+- `compare_pptx_files` 的文本、形状和静态几何比较。
+- Phase 0 的 initial/gold 双向 evaluator 验证方法。
 
-对同一批任务比较四种条件：
+### 3.2 关键缺口
 
-1. 仅短文本。
-2. 详细文本。
-3. 短文本 + 演示视频。
-4. 短文本 + 从视频编译出的 SkillIR。
+1. 还没有最小正式 PowerPoint Web task/config。
+2. 还没有正式 OOXML animation timeline parser 和 rendered evaluator。
+3. 还没有 session 过期检测、AMI 轮换和敏感镜像删除工具。
+4. PowerPoint Web 会持续更新，不能像桌面 Office 一样固定 build。
+5. `compare_pptx_files` 和 `check_transition` 不足以评测 animation timeline。
+6. 已验证的浏览器播放、点击、录制和下载流程还没有固化为 runner 协议。
 
-主要假设：视频在风格、空间布局和多步操作目标上提高最终状态得分；SkillIR 能保留这种增益，同时降低执行阶段的上下文长度与推理时延。
+下一优先级是把已验证的低成本单实例闭环固化为 task、runner 和 evaluator。
 
-### RQ2：视频中学到的是轨迹，还是可迁移的目标？
+## 4. 系统设计
 
-对演示文件和执行文件进行内容替换，保持编辑规则相同。例如演示视频编辑销售 PPT，而测试文件是课程 PPT。若 Agent 只复刻坐标或文本会失败，只有正确提取变换规则才能成功。
+### 4.1 本地控制面
 
-### RQ3：人类轨迹能否提高效率而不降低准确率？
+本地负责代码、task/evaluator、AWS API、结果回收和离线评测。只安装最小 Conda
+开发环境，不安装完整 OSWorld GUI 或模型依赖。
 
-比较：
+本地不得保存明文 AWS 密钥、Microsoft 密码、cookie 或 session token。AWS 使用
+IAM Identity Center profile `osworld-dev`。
 
-- 原始 Agent。
-- 检索人类 SkillIR 的 Agent。
-- 经过成功轨迹蒸馏/SFT 的 Agent。
-- 使用动作分组和验证策略的 Agent。
+### 4.2 AWS 执行面
 
-主要假设：语义动作块、快捷键和减少不必要观察可以降低模型调用次数；保留关键验证点能够避免单纯压缩步数造成成功率下降。
+每个 environment 从 OSWorld 官方 Ubuntu 1920×1080 AMI 启动，包含：
 
-### RQ4：组合多条高效轨迹是否优于模仿单条“最短”轨迹？
+- OSWorld server/controller；
+- Chrome；
+- screenshot、输入、文件传输和录屏；
+- benchmark 字体和媒体工具；
+- 1920×1080、固定 locale/timezone；
+- 受控的 PowerPoint Web authenticated browser profile。
 
-单条最短轨迹可能脆弱。应将多条成功轨迹合成一个带分支的技能图，比较它与单轨迹模仿在不同分辨率、窗口状态和轻微界面变化下的鲁棒性。
+PowerPoint Web 是在线服务，无法固定后端 build。每个 run 必须记录浏览器版本、运行
+日期和可见 UI 版本；gold 与 candidate 尽量在同一时间窗口和相同执行镜像中播放。
 
-## 4. 任务定义
+### 4.3 Microsoft 测试账户
 
-### 4.1 每个任务的输入
+- 新建专用免费 Microsoft 账户，不使用用户个人主账户。
+- 账户无私人文件、邮件、联系人和付款信息。
+- OneDrive 只保存当前 benchmark 的临时输入与输出。
+- authenticated profile 视为 secret，只存在于私有镜像或受控存储。
+- 密码、MFA、cookie 和 token 不进入代码、task、日志或公开 artifact。
+- Session 失效必须显式失败并人工更新，不能静默使用匿名或错误账户。
 
-每个 episode 包含：
+### 4.4 生命周期与网络
 
-- 初始桌面 snapshot。
-- 待编辑的目标文件。
-- 演示视频。
-- 简短指令，例如“参照演示视频，把当前演示文稿改成同样风格”。
-- 可选的源文件，用于区分视频中的原始状态和编辑后状态。
-- 仅供 evaluator 使用的目标文件或目标属性规则。
+- 开发期 `num_envs=1`。
+- default VPC + public subnet；专用 security group 仅允许当前出口 IP `/32`。
+- 不使用 `0.0.0.0/0` 暴露管理或 OSWorld 端口。
+- 正常退出主动 terminate；180 分钟 TTL 处理异常退出。
+- 每次运行后审计 EC2、EBS、ENI、Elastic IP 和 scheduler。
+- 每个 task 下载结果后删除 OneDrive 临时文件。
 
-建议同时支持三种视频交付方式：
+## 5. AWS 成本基线
 
-| 模式 | 说明 | 用途 |
-|---|---|---|
-| `context` | Runner 将视频采样帧、时间信息或视频路径交给支持视频的 Agent adapter | 主研究设置，减少“操作播放器”造成的干扰 |
-| `ui` | 视频文件放在桌面并用 VLC 播放，Agent 必须像用户一样观看、暂停和拖动 | 纯 CUA / UI-only 设置 |
-| `compiled` | 直接提供离线生成的 SkillIR | 隔离执行能力，作为诊断上界 |
+冻结配置：
 
-MVP 先实现 `context` 和 `compiled`，`ui` 模式在 VLC snapshot 稳定后加入。
+- region：`us-east-1`；
+- instance：OSWorld 仓库官方默认 `t3.xlarge`；
+- root volume：30 GiB gp3，4000 IOPS / 1000 MiB/s；
+- TTL：180 分钟；
+- 项目 Budget 警戒线：`USD 20/月`，仅统计
+  `Project=OSWorld-PPT-Web`；
+- 不创建 Managed AD、Office LTSC 或 RDS SAL。
 
-### 4.2 任务类型
+粗略成本：
 
-#### A. 目标复现
+| 配置 | 3 小时单次 | 20 次/月 |
+|---|---:|---:|
+| 官方 `t3.xlarge` + 官方 gp3 性能 + public IPv4 | 约 `$0.75–0.80` | 约 `$15–16` |
 
-演示与测试文件结构接近，Agent 需要复现最终状态。适合验证最小闭环，但不应成为主要难度来源。
+manager/provider 已通过统一的 `launch_config.py` 读取实例和磁盘配置；EC2 DryRun
+已验证启动参数有效。2026-07-29 的实测表明降到 `t3.large` 和基线 gp3 不能解决
+readiness 问题，因此恢复官方规格并通过实际 EC2/EBS describe 验证。
 
-示例：
+2026-07-30 发现原 `osworld-ppt-web-monthly` 没有 cost filter，邮件中的
+`$198.63 actual / $218.75 forecast` 是整个 AWS 账户的费用，不是本项目 W1
+费用。其 actual/forecast 通知已关闭。项目专属配置已由
+`scripts/python/setup_aws_project_budget.py` 准备；待 Billing 发现并激活
+`Project` 成本分配标签后才应用，避免创建一个暂时统计不到费用的 Budget。
 
-- 将 PPT 中特定文本统一为演示中的字体、字号和颜色。
-- 将表格中的某列设置为演示中的数字格式和条件格式。
+## 6. PowerPoint Web 任务定义
 
-#### B. 风格迁移
-
-内容不同，风格规则相同。重点评测参数抽取、对象匹配和泛化。
-
-示例：
-
-- 将参考视频中的标题、正文和背景风格迁移到另一套幻灯片。
-- 将演示中的表格主题、边框和交替行样式迁移到不同数据表。
-
-#### C. 编辑意图迁移
-
-演示具体操作，但测试文件需要根据语义选择不同对象。
-
-示例：
-
-- 演示把最大值高亮为绿色；测试表格的最大值位于其他单元格。
-- 演示统一所有章节页版式；测试 PPT 的章节页数量和位置不同。
-
-#### D. 多技能组合
-
-一段视频包含多个可分离目标，Agent 需要确定顺序和依赖。
-
-示例：
-
-- 清理表格数据、添加公式、生成图表并统一图表样式。
-- 修改 PPT 主题、重排对象、添加页码并保存为指定文件名。
-
-#### E. 视觉编辑
-
-第二阶段加入，目标主要依赖视觉而非明确属性。
-
-示例：
+### 6.1 任务语义
 
-- 将图片调成演示中的色调与对比度。
-- 复现蒙版、裁剪和文本叠加风格。
-- 将视频做成演示中的画幅、字幕和转场样式。
-
-## 5. 数据与轨迹格式
-
-### 5.1 扩展 OSWorld task JSON
+参考视频表达动画与排版规则，而不是要复制的文字和颜色。Agent 必须：
 
-保留现有 `id`、`snapshot`、`instruction`、`config`、`related_apps` 和 `evaluator`，增加一个向后兼容的 `video_learning` 字段。以下路径和字段均为本项目拟新增内容：
+- 识别参考中的标题、正文、图片、装饰形状等对象角色；
+- 推断空间关系、z-order、进入/退出方式、并行关系和节奏；
+- 将这些规则映射到初始 PPT 的不同内容；
+- 保持初始 PPT 的文字、颜色和媒体；
+- 使用原生可编辑对象和动画，不得用整页图片、GIF 或视频作弊；
+- 从 PowerPoint Web 下载到指定 `.pptx`。
 
-```json
-{
-  "id": "uuid",
-  "snapshot": "libreoffice_impress",
-  "instruction": "参考演示视频，把当前演示文稿改成同样的标题风格。",
-  "config": [],
-  "related_apps": ["libreoffice_impress"],
-  "video_learning": {
-    "demo_video": {
-      "type": "cloud_file",
-      "path": "<dataset URL>",
-      "dest": "demo.mp4",
-      "sha256": "<content hash>"
-    },
-    "delivery_mode": "context",
-    "transfer_family": "ppt_title_style",
-    "source_artifact": "demo_before.pptx",
-    "demo_result_artifact": "demo_after.pptx",
-    "skill_ir": "skill.json",
-    "split_group": "ppt_title_style_family_03"
-  },
-  "evaluator": {}
-}
-```
-
-数据 loader 对不认识的字段应保持忽略，以免破坏现有 OSWorld 任务。
-
-### 5.2 统一轨迹事件 schema
-
-当前 `lib_run_single.py` 的不同 runner 写入不同字段，且多数只有字符串时间戳，无法准确拆分模型推理、动作执行和等待时间。应新增统一版本化 schema：
-
-```json
-{
-  "schema_version": "1.0",
-  "episode_id": "uuid",
-  "task_id": "uuid",
-  "actor": "human|agent",
-  "event_id": 17,
-  "group_id": 6,
-  "event_type": "observation|plan|action|verification|result",
-  "semantic_action": {
-    "verb": "set_font",
-    "target": "slide.title",
-    "args": {"font": "Aptos Display"}
-  },
-  "raw_action": "pyautogui.hotkey(...)",
-  "timestamps_ns": {
-    "started": 0,
-    "finished": 0
-  },
-  "latency_ms": {
-    "model": 0,
-    "grounding": 0,
-    "environment": 0,
-    "settle": 0
-  },
-  "observation_ref": "frames/000017.png",
-  "a11y_ref": "a11y/000017.xml",
-  "window": {"app": "libreoffice_impress", "title": "..."},
-  "outcome": "ok",
-  "error": null
-}
-```
-
-原始数据不可丢弃。标准化脚本生成统一轨迹，原 runner 的 `traj.jsonl` 继续作为 raw artifact 保存。
-
-### 5.3 人类示范采集
-
-Daytona 的 noVNC 适合远程操作，但仅录屏不足以学习精确动作。采集器需要同步记录：
-
-- OSWorld controller 的 `recording.mp4`。
-- 初始截图和动作后截图。
-- 客户端或 guest X11 层面的键盘、鼠标事件与单调时钟时间戳。
-- 活动窗口、屏幕分辨率和缩放。
-- 可用时的 accessibility tree。
-- 最终文件、evaluator 得分和任务完成确认。
-- 示范者 ID 的匿名哈希、熟练度和重试次数，不收集个人内容。
-
-建议先验证两种实现，再选择更稳定的一种：
-
-1. 在 noVNC/RFB 客户端层记录输入事件。
-2. 在 Daytona guest 中用 X11 输入事件监听器记录事件。
-
-每个任务至少采集 3 条成功轨迹，其中至少 1 条来自熟练用户。轨迹必须在干净 snapshot 上重放或人工复核，并通过最终状态 evaluator。
-
-## 6. Video → SkillIR 流水线
-
-### 6.1 视频预处理
-
-- 使用视频时间戳而不是仅按固定帧率抽帧。
-- 结合画面差分、鼠标/键盘事件和窗口变化识别关键帧。
-- OCR 提取菜单、对象和属性面板文本。
-- 将连续输入、拖拽、快捷键组合成候选动作段。
-- 对 Office 任务读取演示前后文件的结构差异，作为弱监督目标；模型不可在测试时访问 gold diff。
-
-### 6.2 目标解析
-
-将观察到的变化分成：
-
-- 内容变化：文本、数值、公式、媒体。
-- 样式变化：字体、颜色、边框、背景、主题。
-- 布局变化：位置、尺寸、对齐、层级、合并。
-- 文档级变化：页数、sheet、保存路径、格式。
-- 过程约束：必须使用某应用或功能。
-- 不变量：视频中未改变、迁移时也不应破坏的属性。
-
-目标解析阶段输出带置信度的 `goal_spec`。低置信度属性不应默认为硬约束，而应记录为可选目标或触发补充观察。
-
-### 6.3 轨迹抽象与参数化
-
-- 将绝对坐标转换为 UI 元素、文档对象或相对位置。
-- 将演示中的具体内容转换为参数，例如“最大值所在单元格”。
-- 将连续且无需新观察的动作分成一个 grouped action。
-- 标注每个步骤的前置状态、后置状态和失败恢复点。
-- 删除等待、重复点击、无效菜单探索等冗余动作，但保留对准确率有帮助的验证步骤。
-
-### 6.4 SkillIR 验证
-
-每个生成的 SkillIR 必须经过：
-
-1. schema 校验。
-2. 在演示初始状态上的 replay 或执行验证。
-3. 在至少一个内容不同的同族任务上的迁移验证。
-4. 最终状态 evaluator 校验。
-5. 重置环境后至少 3 次重复执行，记录成功率和方差。
-
-## 7. 高效轨迹学习
-
-### 7.1 先建立准确的时延分解
-
-端到端时延应从“首个可操作 observation 就绪”计到“最后一个有效动作完成”，并单独报告：
-
-- 环境创建和 snapshot reset。
-- 演示视频预处理。
-- 模型规划。
-- UI grounding。
-- 动作执行。
-- 动作后等待。
-- 验证和恢复。
-- evaluator 运行。
-
-仓库目前 `lib_run_single.py` 存在固定的 60 秒启动等待和 20/30 秒结束等待。这些时间不能混进 Agent 执行时延；后续应改为 readiness/settled 条件或至少单独计量。
-
-### 7.2 构建高效轨迹
-
-对同一任务的多条成功轨迹进行：
-
-1. 按 UI 状态和语义动作对齐。
-2. 标出重复观察、无效点击、反向操作和错误恢复。
-3. 将可交换步骤合并为局部 DAG。
-4. 从多条轨迹选择低成本且高成功率的边。
-5. 把稳定快捷键和批量操作优先加入候选轨迹。
-6. 在干净环境中自动 replay，只有 evaluator 通过的组合轨迹才进入训练集。
-
-不要把“最少原子事件”直接当作最优。更合理的优化目标是：
+### 6.2 Hidden gold
 
 ```text
-cost =
-  λ_step * decision_steps
-  + λ_action * atomic_actions
-  + λ_time * wall_clock
-  + λ_model * model_calls
-  + λ_error * recoveries
+Agent 可见：
+  initial.pptx + reference.mp4 + short instruction
+
+Evaluator 可见：
+  gold.pptx + gold browser render + structural rubric
 ```
 
-并附加 `task_success >= baseline_success - δ` 的准确率非劣约束。
+Gold 由人工在同一 PowerPoint Web 能力边界内制作。每个动画族映射到至少两个不同内容
+的 initial，验证迁移而不是像素复制。
 
-### 7.3 训练路线
+### 6.3 难度
 
-按实现成本从低到高推进：
+1. Tier A1：单页、自动播放、4–7 个对象、基础 entrance/exit。
+2. Tier A2：单页、多个效果、并行/串行、Duration/Delay。
+3. Tier B：多个 click group 和网页端 transition。
+4. Tier C：多页动画一致性。
 
-1. **Skill 检索基线**：根据当前任务检索相似 SkillIR，Agent 在线适配参数。
-2. **Prompt/Context 蒸馏**：将高效动作块作为少量示例，减少每步长历史输入。
-3. **行为克隆/SFT**：用标准化成功轨迹学习语义动作与 grouped action。
-4. **偏好优化**：同一状态下，以“成功且低成本”的动作块优于冗余或失败轨迹。
-5. **带约束的在线优化**：奖励成功和效率，同时对文件损坏、错误退出和低 evaluator 分数施加高惩罚。
+Morph、trigger、motion path 等桌面专用或网页端不可编辑能力不进入当前 benchmark。
 
-第一版优先完成 1 和 2；只有数据量和 replay 质量达到门槛后再做 SFT。
+## 7. 混合评测
 
-### 7.4 保持准确率的机制
+### 7.1 Gate 0：有效性
 
-- 每个 SkillIR 明确关键验证点，而不是每步都反思。
-- 对高风险操作保留一次 observation，例如删除、覆盖或批量格式化之后。
-- 低风险、确定性动作允许 action chunking。
-- 执行前检查 preconditions，执行后检查 goal predicates。
-- 快捷路径失败时回退到更慢但稳健的菜单路径。
-- 报告准确率—效率 Pareto 曲线，不只报告单一加权分数。
+- 下载的 `.pptx` 可打开且不要求修复；
+- 浏览器 slideshow 能完整播放；
+- 文件保存到正确位置；
+- 输出不是整页栅格、视频或 GIF；
+- task 云端副本和输出 artifact 可对应。
 
-## 8. 评测体系
+### 7.2 Gate 1：内容保持
 
-### 8.1 核心指标
+- 文本 token 保持；
+- 图片/媒体 hash 保持；
+- 主题色和对象颜色在容差内保持；
+- slide 数量和顺序保持；
+- 非目标对象没有额外变化；
+- 目标对象仍可编辑。
 
-| 维度 | 指标 |
+Gate 失败时不得进入高分区间。
+
+### 7.3 Layout
+
+按文本 hash、图片 hash、对象类型和角色匹配候选与 gold，比较：
+
+- 中心点、宽高、旋转和裁剪；
+- z-order、grouping、对齐和间距；
+- 最终关键帧；
+- 文本越界、遮挡和可读性。
+
+### 7.4 Animation structure
+
+解析 `.pptx` OOXML `<p:timing>` 与 `<p:transition>`：
+
+- target object；
+- effect family；
+- On Click / With Previous / After Previous；
+- click group、顺序和并行关系；
+- duration、delay、repeat；
+- transition。
+
+结构报告拆成 Coverage、Order 和 Detail。第一版不依赖 PowerPoint COM。
+
+### 7.5 Rendered behavior
+
+Gold 和 candidate 在同一 Ubuntu AMI、Chrome 配置、分辨率和录制协议中播放：
+
+- 只比较 animated region；
+- appearance 使用感知特征和受约束 DTW；
+- temporal 使用方向、速度、可见面积和对象 mask 时间序列；
+- click group 分段，不允许 DTW 跨组匹配；
+- 同时报告原始总时长误差，防止 DTW 掩盖错误节奏。
+
+主报告保留 Preservation、Layout、Animation Coverage、Order、Detail、Rendered
+Appearance、Rendered Temporal 和 Robustness，不用单一像素分数替代诊断。
+
+## 8. 分阶段实施
+
+### Phase W0：路径与成本决策
+
+状态：已完成。
+
+- [x] 主路径切换为 Ubuntu + PowerPoint Web。
+- [x] Windows/Office license-included 路线取消。
+- [x] `osworld-dev` SSO 和 `us-east-1` 确认。
+- [x] 官方 OSWorld Ubuntu AMI 确认。
+- [x] 官方 `t3.xlarge`、4000 IOPS / 1000 MiB/s gp3、180 分钟 TTL、
+  `$20/月`警戒线冻结。
+- [x] 专用 Microsoft 测试账户和安全边界冻结。
+- [x] `scripts/python/preflight_aws_ppt_web_w0.py --stage w0 --strict` 通过。
+
+### Phase W1：PowerPoint Web 单实例闭环
+
+状态：已完成。2026-07-30 已通过核心闭环、私有加密 AMI session 恢复、正式诊断
+task/evaluator 和 10 次 lifecycle soak。
+
+交付物：
+
+- [x] 关闭无 cost filter 的账户级 Budget 误报通知；
+- [x] 准备按 `Project=OSWorld-PPT-Web` 过滤的项目 Budget 配置；
+- [ ] Billing 激活 `Project` 成本分配标签并应用项目 Budget；
+- [x] subnet 选择和 `/32` security group；
+- [x] provider 可配置 instance type、连接模式和默认加密的基线 gp3；
+- [x] reset 路径只创建一个 TTL schedule；
+- [x] EC2 DryRun 验证官方 AMI 和启动参数；
+- [x] TTL scheduler role、180 分钟 schedule 创建与失败清理；
+- [x] 单实例 smoke 验证 EC2、EBS、TTL、noVNC 和 `/32` 网络；
+- [x] 创建 SSM diagnostic instance profile，读取 `osworld.service` journal；
+- [x] 当前实例完成 Microsoft 登录并确认 PowerPoint Web authenticated session；
+- [x] 私有加密 AMI 持久化 authenticated Chrome profile；
+- [x] upload/open/edit/slideshow/record/download smoke；
+- [x] 最小 PowerPoint Web task；
+- [x] 修复 `osworld.service` 在 X11 前启动并耗尽 systemd start limit 的竞争；
+- [x] reset/close/失败路径删除对应 TTL schedule。
+
+退出条件：
+
+- [x] 一台全新实例无需个人账户介入即可恢复受控测试 session；
+- [x] initial 上传并下载 round-trip 成功；
+- [x] 添加一个动画后播放、录制、下载成功；
+- [x] 下载的 `.pptx` 可通过 ZIP、`python-pptx` 和 OOXML timing 检查；
+- [x] 正式 evaluator 可读取并评分；
+- [x] 10 次 create/reset/close 无云资源残留；
+- [x] Pricing API 当前配置折算 3 小时约 `$0.6884`，低于 `$0.80`。
+
+2026-07-30 smoke 使用单页自制 fixture。标题对象成功写入并播放
+`Fade / On Click / 0.50 s`；下载稿保留原始文字，OOXML 中存在
+`clickEffect`、`animEffect filter="fade"` 和 500 ms timing。OSWorld 录屏生成
+H.264、1920×1080、30 fps MP4。这验证了 Ubuntu + PowerPoint Web 主路径对
+对象动画任务的技术可行性。
+
+正式 W1 task ID 为 `5f24d8c2-4779-4f6d-9b8c-6e3bc97ed441`。initial 的
+static-content/animation 分数为 `1/0`，gold 为 `1/1`。认证 AMI 不保证重跑
+cloud-init UserData，因此 launch/reset 现在通过 SSM 主动安装、重启并验证 X11
+等待 drop-in，UserData 仅作干净 AMI 后备。当前代码的 10 次 soak readiness 为
+`98.143–186.995 s`，总墙钟约 38 分 47 秒；每轮均通过
+TTL/API/GNOME-X11/drop-in/截图 gate，结束后 EC2/EBS/ENI/TTL schedule 全为 0。
+Cost Explorer 对本次运行仍显示 `Estimated=true` 且尚未入账；实际账单值待延迟后
+复核，不能用价格估算冒充。
+
+这个单页 Fade task 是 W1 诊断 fixture，不是最终 fancy benchmark demo。复杂排版与
+多对象动画仍由 W2/W3 实现和评测。
+
+登录态 AMI 为 `ami-0c68ad8829df7c05e`
+（`osworld-ppt-web-auth-20260730`），backing snapshot 为
+`snap-0832dc22794c270f2`。AMI 与 snapshot 均加密、私有且未共享。从该 AMI 启动
+全新实例并按 OSWorld 标准方式启动 Chrome 后，PowerPoint Web 直接恢复登录首页。
+Conda 环境已设置 `AWS_AMI_ID`，provider 和主 runner 在该变量存在时优先使用私有
+AMI，未设置时仍回退官方 `IMAGE_ID_MAP`。
+
+### Phase W2：Evaluator v0
+
+交付物：
+
+- PowerPoint Web 标准播放/录制/下载协议；
+- OOXML animation timeline parser；
+- 内容/颜色保持 gate；
+- Layout、Coverage、Order、Detail evaluator；
+- rendered appearance + temporal evaluator 原型。
+
+退出条件：
+
+- 同一 gold 连续渲染 5 次方差低于阈值；
+- 删除、换序、改时长、改颜色和栅格化反例均被检出；
+- 合法但实现细节不同的结果不过度受罚。
+
+### Phase W3：首批 demo
+
+- 3 个公开许可或自制动画族；
+- 每族 2 个不同内容 initial；
+- 共 6 个 Tier A 任务；
+- 每个任务包含 initial、reference、hidden gold、rubric 和来源 manifest；
+- text-only、video、oracle rubric/SkillIR 三个基线。
+
+### Phase W4：click group 与复杂网页动画
+
+- Tier B 任务；
+- 标准化点击协议；
+- 分段录制和分段 DTW；
+- click 数量、组间顺序和组内节奏的独立诊断；
+- 自动评测与人工 pairwise judgment 校准。
+
+### Phase W5：Agent 基线与规模化
+
+- video context adapter；
+- PowerPoint Web agent baseline；
+- 单环境 soak 后受控并发；
+- 成本、成功率和多维指标报告；
+- 每个任务至少 3 次独立运行；
+- 每次批量运行后云资源和 OneDrive 清理审计。
+
+Desktop PowerPoint 只作为未来可选 validation backend，重新立项前不创建任何相关
+AWS 许可资源。
+
+## 9. 测试门槛
+
+### 本地
+
+- task/SkillIR/trajectory schema；
+- AWS 配置和成本参数；
+- OOXML timing parser fixtures；
+- 内容、颜色、Layout、Coverage、Order、Detail 正反例；
+- 不相关属性变化的容忍。
+
+### AWS smoke
+
+- EC2 创建/readiness/Chrome/截图；
+- PowerPoint Web session health；
+- 上传、打开、保存、下载；
+- slideshow 和录屏；
+- evaluator artifact 回收；
+- SIGINT、异常、超时后的 terminate。
+
+### AWS soak
+
+- 10 次顺序 reset；
+- 5 次相同 gold 渲染一致性；
+- session 过期可诊断；
+- 启动、episode、下载时间和费用；
+- EC2/EBS/ENI/scheduler/OneDrive 清理。
+
+## 10. 近期执行清单
+
+1. [x] 修改 AWS provider：读取实例、连接和基线 gp3 配置。
+2. [x] 配置 TTL scheduler IAM role。
+3. [x] 关闭账户级 Budget 误报，准备 `$20` 项目专属 Budget，并创建 `/32`
+   security group。
+4. [ ] Billing 发现后激活 `Project` 成本分配标签，应用项目 Budget。
+5. [x] 验证官方 OSWorld Ubuntu AMI、Chrome 和 PowerPoint Web 可访问。
+6. [x] 使用当前 Microsoft 账户建立私有 encrypted authenticated AMI；
+   批量运行前再评估迁移到专用测试账户。
+7. [x] 跑通 `.pptx` upload/download round-trip。
+8. [x] 跑通单动画 edit/slideshow/record/download。
+9. [x] 跑通 10-reset 和异常清理。
+10. [x] 实现 W1 所需的语义 OOXML animation timeline parser 和静态内容保持
+    gate。
+11. [ ] 扩展为 W2 Layout、Coverage、Order、Detail evaluator。
+12. [ ] 制作第一个真正需要视频描述的 Tier A fancy hidden gold demo。
+11. [ ] 实现 Animation2Code 风格 rendered evaluator 原型并用反例校准。
+
+第 8 项完成前不批量制作任务；第 11 项完成前不运行大规模 Agent benchmark。
+
+## 11. 主要风险
+
+| 风险 | 缓解 |
 |---|---|
-| 正确性 | OSWorld evaluator score、严格成功率、部分完成得分 |
-| 目标理解 | goal predicate precision/recall、目标参数误差、未要求属性的破坏率 |
-| 决策效率 | Agent decision steps、grouped action 数、模型调用数 |
-| 操作效率 | 原子动作数、冗余动作率、恢复次数 |
-| 时间效率 | 执行总时延及 planning/grounding/action/settle 分解 |
-| 成本 | 输入/输出 token、模型费用、Daytona sandbox-minutes |
-| 鲁棒性 | 3 次重复成功率、不同分辨率/窗口状态下成功率 |
-
-### 8.2 OSWorld-Human 兼容指标
-
-保留：
-
-- Single-Action WES+。
-- Grouped-Action WES+。
-- WES-。
-- Agent steps / human reference steps。
-
-另外增加不依赖单条人类最短路径的指标：
-
-- `Success@HumanBudget`：在人类 grouped step 预算内的成功率。
-- `NormalizedExcessSteps`：相对人类参考多出的步骤比例。
-- `LatencySlowdown`：Agent 有效执行时延 / 人类有效执行时延。
-- `AccuracyAtEfficiency`：满足指定效率阈值时的成功率。
-
-### 8.3 对照与消融
-
-至少包含：
-
-- Text-only Agent。
-- Video end-to-end Agent。
-- Video → SkillIR → Agent。
-- Oracle SkillIR。
-- 原始 Agent 与 human-skill retrieval Agent。
-- 单动作与 grouped-action。
-- 有/无 post-action verification。
-- 有/无轨迹剪枝。
-
-所有模型在相同 Daytona snapshot、分辨率、最大步数、等待策略和 evaluator 版本下运行。
-
-## 9. Daytona 开发与运行方案
-
-### 9.1 基本原则
-
-本项目不依赖服务器 Docker 权限。Daytona sandbox 本身就是桌面，不在 sandbox 内启动嵌套 VM，也不使用上游 qcow2/KVM 路径。
-
-按 `DEVELOPMENT.md` 的开发方式：
-
-1. 本地完成小步修改和测试。
-2. 提交并推送当前分支到 `omni`。
-3. 在计算节点 `git fetch/switch/pull`。
-4. 激活 `osworld_env`。
-5. 用 Daytona provider 运行集成测试。
-
-凭据只通过环境变量提供，绝不写入 task JSON、snapshot、日志或仓库。
-
-### 9.2 Snapshot 分层
-
-建议维护两个不可变 snapshot：
-
-- `osworld-video-office-v1`：LibreOffice、字体、录屏与 Office evaluator 依赖。
-- `osworld-video-media-v1`：在 Office 基础上增加 VLC、GIMP、ffmpeg/ffprobe 和媒体依赖。
-
-每个 snapshot 记录：
-
-- 构建脚本 commit SHA。
-- 包版本与字体清单。
-- 屏幕分辨率、locale 和时区。
-- OSWorld server 版本。
-- smoke test 结果。
-- snapshot 名称和创建时间。
-
-Daytona 基线 snapshot 不保证 GIMP、VLC、Chrome 等应用齐全，因此媒体任务不能在未扩展的基线上直接宣称通过。
-
-### 9.3 Daytona 验证命令
-
-以下命令均在计算节点仓库根目录、`conda activate osworld_env` 后运行。API key 由环境变量预先注入，不在命令历史里写明文：
-
-```bash
-python -m desktop_env.providers.daytona.build_snapshot \
-  --name osworld-video-office-v1
-
-export DAYTONA_OSWORLD_SNAPSHOT=osworld-video-office-v1
-
-python -m desktop_env.providers.daytona.smoke_test
-
-python scripts/python/manual_explore.py \
-  --provider-name daytona \
-  --headless \
-  --ssh-host hkust-compute
-
-python scripts/python/run_multienv.py \
-  --provider_name daytona \
-  --headless \
-  --observation_type screenshot \
-  --max_steps 30 \
-  --num_envs 1 \
-  --result_dir ./results/video_learning_smoke
-```
-
-注意事项：
-
-- Daytona Tier 1/2 可能限制任意网络访问。任务资源应预下载、缓存并带 SHA-256，避免 episode 运行时依赖不稳定外网。
-- reset 会先创建替代 sandbox，再后台删除旧 sandbox，短时间内一个 environment 会占用两个 sandbox。并发数必须给配额留出至少一倍 reset 余量。
-- 开发阶段始终从 `--num_envs 1` 开始，通过 10 个连续 episode 无泄漏后再增加并发。
-- 每次异常退出后检查带 `osworld.managed` / `osworld.alloc` 标签的残留 sandbox。
-- smoke test、Office task smoke 和媒体 task smoke 应分开，避免“控制面正常”被误认为“所有应用任务可用”。
-
-## 10. 拟议代码与数据结构
-
-以下是后续实现阶段拟新增或修改的范围，不代表这些文件当前已经存在：
-
-```text
-evaluation_examples/
-└── video_learning/
-    ├── test_mvp.json
-    ├── examples/
-    │   ├── libreoffice_impress/
-    │   └── libreoffice_calc/
-    ├── skills/
-    └── schemas/
-
-scripts/python/
-├── collect_human_trajectory.py
-├── normalize_trajectory.py
-├── compile_video_skill.py
-├── validate_video_task.py
-└── score_video_learning.py
-
-desktop_env/
-└── trajectory/
-    ├── recorder.py
-    ├── schema.py
-    └── grouping.py
-```
-
-预计修改：
-
-- `scripts/python/manual_explore.py`
-  - 支持加载具体 task JSON。
-  - 启动/停止录屏和输入事件采集。
-  - 结束后运行 evaluator 并保存 manifest。
-- `lib_run_single.py`
-  - 接入统一 trajectory recorder。
-  - 使用单调时钟记录各阶段时延。
-  - 保留原 runner 输出，逐步迁移，避免一次性重构所有 agent 分支。
-- `scripts/python/run_multienv.py`
-  - 增加 video context adapter、schema 版本和计时配置。
-- `desktop_env/evaluators/metrics/slides.py`
-  - 优先复用现有规则，只对缺失的风格/布局属性增加小型 evaluator。
-- `desktop_env/evaluators/metrics/table.py`
-  - 增加 MVP 任务确实需要、现有 `compare_table` 无法表达的规则。
-- `desktop_env/providers/daytona/build_snapshot.py`
-  - 分层安装 Office/媒体依赖，并输出可审计 manifest。
-
-每项行为变更都应带单元测试；snapshot 和完整 GUI 流程则通过 Daytona smoke/integration test 验证。
-
-## 11. 分阶段里程碑
-
-### Phase 0：环境与契约冻结（第 1 周）
-
-实现状态（2026-07-28）：
-
-- [x] Task extension、SkillIR、trajectory event 三个 v1 JSON Schema。
-- [x] 默认 runner 的统一事件、单调计时和原子 episode manifest。
-- [x] `manual_explore.py` 的任务加载、录屏、周期截图、X11 输入事件和 evaluator。
-- [x] Daytona Office snapshot manifest、Office smoke 和 10-reset soak 工具。
-- [x] 2 个 Impress + 2 个 Calc 任务、确定性 fixture 和本地验证报告。
-- [x] 本地与计算节点定向测试：`5 passed, 1 skipped`；跳过项是
-  `osworld_env` 的 Python 3.10 无法导入项目声明需要 Python >=3.12 的默认
-  runner 测试。其余测试与四任务本地验证通过。
-- [x] 使用真实 Daytona 凭据构建 `osworld-video-office-v1`，Office smoke
-  通过，10/10 replacement reset soak 通过。
-- [x] 四任务原生 Daytona setup/evaluator 验收通过：每个任务均为
-  initial=0、gold=1，本次运行创建的 sandbox 已全部清理。
-
-验收说明：
-
-- 计算节点报告位于 `results/daytona_phase0_soak.json`、
-  `results/phase0_daytona_tasks.json` 和
-  `results/osworld-video-office-v1-manifest.json`。
-- 完整 smoke 创建的临时 snapshot `osworld-smoke-4cb8902168` 因当前 Daytona
-  凭据没有 snapshot delete 权限（HTTP 403）而保留，需要在 Dashboard
-  手工删除；后续一键验收默认跳过临时 snapshot 创建，由 10-reset soak
-  覆盖恢复能力。
-
-交付物：
-
-- Daytona Office snapshot 可以稳定 reset。
-- 修复或替代失效的 `manual_examine.py` 文档路径。
-- Task JSON、SkillIR 和 trajectory schema v1。
-- 统一计时定义和结果 manifest。
-- 2 个 Impress + 2 个 Calc 手工任务端到端通过。
-
-退出条件：
-
-- 连续 10 次 reset/episode 无残留 sandbox。
-- 同一 gold 文件的 evaluator 结果稳定。
-- 录屏、动作、截图和单调时间戳可对齐。
-
-### Phase 1：MVP 数据集（第 2–3 周）
-
-规模：
-
-- Impress 12 个任务。
-- Calc 12 个任务。
-- 6 个目标变换族，每族至少 4 个不同内容文件。
-- 每个任务 3 条成功人类示范。
-
-交付物：
-
-- 24 个 task JSON、演示视频、初始文件、gold 文件和 SkillIR。
-- 数据校验器与 replay 验证报告。
-- Text-only、Video、Compiled SkillIR 三个基线。
-
-退出条件：
-
-- 100% task 配置可从干净 snapshot 初始化。
-- 100% gold artifact evaluator 通过。
-- 至少 90% 人类轨迹 replay 或人工复核通过。
-- train/dev/test 不共享目标变换实例或源文件。
-
-### Phase 2：效率学习基线（第 4–5 周）
-
-交付物：
-
-- 统一人类/Agent trajectory normalizer。
-- 单动作和 grouped-action 统计。
-- Skill 检索、动作分组和关键点验证基线。
-- 准确率—效率 Pareto 报告。
-
-退出条件：
-
-- 相对原始 Agent，成功率下降不超过 2 个百分点。
-- 成功 episode 的 decision steps 中位数下降至少 20%。
-- 时延分解覆盖至少 95% 的有效执行时间。
-
-### Phase 3：轨迹蒸馏与组合（第 6–7 周）
-
-交付物：
-
-- 多轨迹对齐、剪枝和技能图生成。
-- 组合轨迹自动 replay gate。
-- SFT 或偏好优化的小规模实验。
-- 对窗口位置、分辨率和轻微 UI 扰动的鲁棒性测试。
-
-退出条件：
-
-- 组合轨迹全部通过 clean-snapshot evaluator。
-- 相比单条最短轨迹，组合技能图的重复执行成功率更高或持平。
-- 训练过程不访问锁定评测轨迹。
-
-### Phase 4：视觉编辑扩展（第 8 周及以后）
-
-交付物：
-
-- Daytona media snapshot。
-- GIMP/VLC 各 10–20 个可复现任务。
-- 结构化属性 + 感知指标 + 人工抽检的混合 evaluator。
-- Office 与视觉编辑的统一榜单和分域结果。
-
-退出条件：
-
-- 媒体依赖和字体被固定在 snapshot manifest。
-- 感知 evaluator 与双人盲评的一致性达到预设阈值。
-- 不以单一像素相似度误判内容正确但编码不同的结果。
-
-## 12. 测试与发布门槛
-
-### 12.1 单元测试
-
-- Task/SkillIR/trajectory schema 校验。
-- 时间戳单调性和事件排序。
-- 单动作到 grouped-action 的转换。
-- 轨迹成本与 WES 计算。
-- 数据 split 去重与内容 hash 检查。
-- PPT/Calc 新 evaluator 的正例、反例和无关属性扰动。
-
-### 12.2 集成测试
-
-- Daytona snapshot 创建、启动、reset、关闭。
-- 演示视频下载或缓存校验。
-- task config 初始化。
-- 人类采集完成后 artifact 落盘。
-- Agent runner 读取视频 context。
-- 最终文件提取和 evaluator 运行。
-- 中断后清理 sandbox。
-
-### 12.3 数据质量
-
-每个任务必须通过自动校验：
-
-- 所有资源 URL 或缓存路径可解析。
-- SHA-256 与 manifest 一致。
-- 初始文件不已满足目标。
-- gold 文件满足全部目标谓词。
-- evaluator 对至少一个故意错误的输出给出低分。
-- 视频能解码、时长合理、无隐私信息和未授权内容。
-- 人类轨迹最终得分达标。
-
-## 13. 主要风险与缓解
-
-| 风险 | 影响 | 缓解 |
-|---|---|---|
-| 视频只是泄露具体答案，不能测迁移 | 结果虚高 | 使用不同内容的执行文件，按变换族拆分 |
-| 最终状态 evaluator 过拟合 gold 文件 | 合法解法被误判 | 使用属性规则、容差和多 gold；人工抽检 |
-| 轨迹越短但越脆弱 | 效率提升、准确率下降 | 准确率非劣约束、关键验证点、重复执行 |
-| OSWorld-Human 评测泄漏 | 研究结论无效 | 锁定评测集，不训练、不检索其解答 |
-| noVNC 只有视频没有动作 | 无法做精确轨迹学习 | 增加客户端或 X11 输入事件 recorder |
-| Daytona snapshot 与上游 qcow2 不一致 | 大量任务初始化失败 | 分层 snapshot、应用级 smoke、版本 manifest |
-| Daytona reset 短暂双倍占用配额 | 并发失败或资源泄漏 | 单环境起步，按两倍峰值规划并发 |
-| 固定 sleep 污染时延 | 效率结论错误 | readiness 条件和分阶段计时 |
-| 字体、locale、分辨率差异 | Office/视觉得分波动 | 固定 snapshot 配置并记录 manifest |
-| 视频版权与隐私 | 数据无法发布 | 使用自录或明确许可素材，自动隐私检查 |
-
-## 14. 第一轮实施清单
-
-建议下一轮开发只完成下面这些小而可验收的事项：
-
-1. 定义三个 JSON Schema：task extension、SkillIR、trajectory event。
-2. 扩展 `manual_explore.py`，使其能加载指定 task、录屏并在退出时运行 evaluator。
-3. 为 Daytona Office snapshot 增加 manifest 和应用级 smoke test。
-4. 制作 2 个 Impress 和 2 个 Calc 的 video-learning task。
-5. 给 `lib_run_single.py` 的默认 runner 增加单调计时和统一 recorder；暂不改全部 agent-specific runner。
-6. 实现一个不训练模型的 Video → SkillIR 基线，以及一个 Oracle SkillIR 上界。
-7. 输出首份报告：四个任务的正确性、步数、分组步数和时延分解。
-
-完成这 7 项后，再决定是优先扩大数据量，还是先投入人类轨迹的 SFT/偏好优化。
-
-## 15. 参考资料
-
-- [OSWorld 仓库与任务格式](https://github.com/xlang-ai/OSWorld)
-- [OSWorld-Human 论文](https://arxiv.org/abs/2506.16042)
-- [OSWorld-Human 官方实现与 WES 评分](https://github.com/WukLab/osworld-human)
-- 本仓库 `DEVELOPMENT.md`
-- 本仓库 `desktop_env/providers/daytona/DAYTONA_GUIDELINE.md`
-- 本仓库 `evaluation_examples/README.md`
-- 本仓库 `desktop_env/evaluators/README.md`
+| PowerPoint Web UI 持续更新 | 记录浏览器/日期/UI，gold 与 candidate 同窗口重渲染 |
+| Microsoft session 过期或触发 MFA | 专用账户、session health check、显式失败、人工续期 |
+| Agent 接触个人云数据 | 不使用个人账户；测试账户无私人数据 |
+| 网页版能力不足以复刻参考 | 数据生成时做 capability gate，超范围参考不入库 |
+| OneDrive 自动保存但下载失败 | 下载 artifact hash/存在性作为完成条件 |
+| PPTX 动画 OOXML 与网页播放不一致 | 结构 + 浏览器 render 双评测 |
+| gp3 或实例过度配置 | provider 参数化并用 Budget/manifest 记录实际成本 |
+| 公网端口暴露 | `/32` security group，后续评估私网/SSM |
+| EC2 异常退出持续计费 | 主动 terminate + TTL + 资源审计 |
+| fancy 示例版权不清 | 官方/许可素材或自制 reference |
+
+## 12. 参考
+
+- `handoff.md`
+- `hkust_hpc developer.md`
+- `desktop_env/providers/aws/AWS_GUIDELINE.md`
+- `desktop_env/providers/aws/AWS_PPT_WEB_W0_DECISIONS.md`
+- [PowerPoint for the web 入门](https://support.microsoft.com/en-us/powerpoint/get-started-with-powerpoint-for-the-web)
+- [PowerPoint Web 动画效果](https://support.microsoft.com/en-US/PowerPoint/animation-effects-available-in-powerpoint-for-the-web)
+- [PowerPoint 平台功能比较](https://support.microsoft.com/en-us/powerpoint/compare-powerpoint-features-on-different-platforms)
+- [PowerPoint Web animation timing](https://support.microsoft.com/en-US/PowerPoint/set-the-start-time-and-speed-of-an-animation-effect)
+- [Animation2Code](https://arxiv.org/html/2606.28593)
+- [PPT-Eval](https://arxiv.org/html/2606.31154)
+- [Animation Needs Attention](https://arxiv.org/html/2507.03916)

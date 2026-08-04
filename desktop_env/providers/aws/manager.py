@@ -2,15 +2,21 @@ import os
 import boto3
 import logging
 import dotenv
+import re
 import signal
 from datetime import datetime, timedelta, timezone
+from typing import Mapping
 
 # TTL configuration
 from desktop_env.providers.aws.config import ENABLE_TTL, DEFAULT_TTL_MINUTES, AWS_SCHEDULER_ROLE_ARN
-from desktop_env.providers.aws.scheduler_utils import schedule_instance_termination
-
-
-INSTANCE_TYPE = "t3.xlarge" 
+from desktop_env.providers.aws.launch_config import load_launch_config
+from desktop_env.providers.aws.scheduler_utils import (
+    delete_instance_termination_schedules,
+    schedule_instance_termination,
+)
+from desktop_env.providers.aws.service_bootstrap import (
+    ensure_osworld_service_x11_wait,
+)
 
 # Load environment variables from .env file
 dotenv.load_dotenv()
@@ -54,13 +60,37 @@ IMAGE_ID_MAP = {
 }
 
 
-def _allocate_vm(region=DEFAULT_REGION, screen_size=(1920, 1080)):
-    
+def resolve_ami_id(
+    region: str,
+    screen_size: tuple[int, int],
+    environ: Mapping[str, str] | None = None,
+) -> str:
+    """Resolve an optional private AMI override before the official image map."""
+
+    env = os.environ if environ is None else environ
+    override = env.get("AWS_AMI_ID", "").strip()
+    if override:
+        if not re.fullmatch(r"ami-[0-9a-f]{8,17}", override):
+            raise ValueError("AWS_AMI_ID has an unexpected format")
+        return override
+
     if region not in IMAGE_ID_MAP:
-        raise ValueError(f"Region {region} is not supported. Supported regions are: {list(IMAGE_ID_MAP.keys())}")
+        raise ValueError(
+            f"Region {region} is not supported. "
+            f"Supported regions are: {list(IMAGE_ID_MAP.keys())}"
+        )
     if screen_size not in IMAGE_ID_MAP[region]:
-        raise ValueError(f"Screen size {screen_size} not supported for region {region}. Supported: {list(IMAGE_ID_MAP[region].keys())}")
-    ami_id = IMAGE_ID_MAP[region][screen_size]
+        raise ValueError(
+            f"Screen size {screen_size} not supported for region {region}. "
+            f"Supported: {list(IMAGE_ID_MAP[region].keys())}"
+        )
+    return IMAGE_ID_MAP[region][screen_size]
+
+
+def _allocate_vm(region=DEFAULT_REGION, screen_size=(1920, 1080)):
+
+    ami_id = resolve_ami_id(region, screen_size)
+    launch_config = load_launch_config()
 
     ec2_client = boto3.client('ec2', region_name=region)
     instance_id = None
@@ -74,6 +104,18 @@ def _allocate_vm(region=DEFAULT_REGION, screen_size=(1920, 1080)):
             try:
                 ec2_client.terminate_instances(InstanceIds=[instance_id])
                 logger.info(f"Successfully terminated instance {instance_id} after {signal_name}.")
+                try:
+                    delete_instance_termination_schedules(
+                        region,
+                        instance_id,
+                        logger,
+                    )
+                except Exception as cleanup_error:
+                    logger.warning(
+                        "Failed to delete TTL schedule after %s: %s",
+                        signal_name,
+                        cleanup_error,
+                    )
             except Exception as cleanup_error:
                 logger.error(f"Failed to terminate instance {instance_id} after {signal_name}: {str(cleanup_error)}")
         
@@ -110,9 +152,10 @@ def _allocate_vm(region=DEFAULT_REGION, screen_size=(1920, 1080)):
             "MaxCount": 1,
             "MinCount": 1,
             "ImageId": ami_id,
-            "InstanceType": INSTANCE_TYPE,
+            "InstanceType": launch_config.instance_type,
             "EbsOptimized": True,
             "InstanceInitiatedShutdownBehavior": "terminate",
+            "TagSpecifications": launch_config.tag_specifications(),
             "NetworkInterfaces": [
                 {
                     "SubnetId": os.getenv('AWS_SUBNET_ID'),
@@ -123,19 +166,10 @@ def _allocate_vm(region=DEFAULT_REGION, screen_size=(1920, 1080)):
                     ]
                 }
             ],
-            "BlockDeviceMappings": [
-                {
-                    "DeviceName": "/dev/sda1", 
-                    "Ebs": {
-                        # "VolumeInitializationRate": 300
-                        "VolumeSize": 30,  # Size in GB
-                        "VolumeType": "gp3",  # General Purpose SSD
-                        "Throughput": 1000,
-                        "Iops": 4000  # Adjust IOPS as needed
-                    }
-                }
-            ]
+            "BlockDeviceMappings": [launch_config.block_device_mapping()]
         }
+        run_instances_params.update(launch_config.instance_profile_parameter())
+        run_instances_params.update(launch_config.user_data_parameter())
         
         response = ec2_client.run_instances(**run_instances_params)
         instance_id = response['Instances'][0]['InstanceId']
@@ -152,6 +186,17 @@ def _allocate_vm(region=DEFAULT_REGION, screen_size=(1920, 1080)):
         logger.info(f"Waiting for instance {instance_id} to be running...")
         waiter.wait(InstanceIds=[instance_id])
         logger.info(f"Instance {instance_id} is ready.")
+        if launch_config.instance_profile_name:
+            ensure_osworld_service_x11_wait(
+                region,
+                instance_id,
+                logger,
+            )
+        else:
+            logger.warning(
+                "No EC2 instance profile configured; relying on UserData "
+                "for the OSWorld X11 wait drop-in"
+            )
 
         try:
             instance_details = ec2_client.describe_instances(InstanceIds=[instance_id])
@@ -173,12 +218,34 @@ def _allocate_vm(region=DEFAULT_REGION, screen_size=(1920, 1080)):
         if instance_id:
             logger.info(f"Terminating instance {instance_id} due to interruption.")
             ec2_client.terminate_instances(InstanceIds=[instance_id])
+            try:
+                delete_instance_termination_schedules(
+                    region,
+                    instance_id,
+                    logger,
+                )
+            except Exception as cleanup_error:
+                logger.warning(
+                    "Failed to delete TTL schedule after interruption: %s",
+                    cleanup_error,
+                )
         raise
     except Exception as e:
         logger.error(f"Failed to allocate VM: {e}", exc_info=True)
         if instance_id:
             logger.info(f"Terminating instance {instance_id} due to an error.")
             ec2_client.terminate_instances(InstanceIds=[instance_id])
+            try:
+                delete_instance_termination_schedules(
+                    region,
+                    instance_id,
+                    logger,
+                )
+            except Exception as cleanup_error:
+                logger.warning(
+                    "Failed to delete TTL schedule after allocation error: %s",
+                    cleanup_error,
+                )
         raise
     finally:
         # Restore original signal handlers

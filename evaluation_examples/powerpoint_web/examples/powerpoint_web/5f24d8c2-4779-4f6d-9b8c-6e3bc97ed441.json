@@ -1,0 +1,113 @@
+{
+  "id": "5f24d8c2-4779-4f6d-9b8c-6e3bc97ed441",
+  "snapshot": "chrome",
+  "instruction": "Watch the provided demonstration video and reproduce its title entrance animation in the current presentation using PowerPoint for the web. Preserve all wording, colors, fonts, sizes, and layout. Upload /home/user/Desktop/osworld_w1_fade_task.pptx, apply the demonstrated animation only to the title, verify it in Slide Show, then use File > Create a copy > Download a copy. The completed native PPTX must be downloaded as /home/user/Downloads/osworld_w1_fade_task.pptx.",
+  "source": "OSWorld PowerPoint Web W1 self-authored diagnostic fixture",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/powerpoint_web/fixtures/osworld_w1_fade_initial.pptx",
+            "path": "/home/user/Desktop/osworld_w1_fade_task.pptx"
+          },
+          {
+            "local_path": "evaluation_examples/powerpoint_web/fixtures/osworld_w1_fade_demo.mp4",
+            "path": "/home/user/Desktop/osworld_w1_fade_demo.mp4"
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "parameters": {
+        "command": [
+          "google-chrome",
+          "--remote-debugging-port=1337"
+        ],
+        "wait_for_cdp": true
+      }
+    },
+    {
+      "type": "launch",
+      "parameters": {
+        "command": [
+          "socat",
+          "tcp-listen:9222,fork,reuseaddr",
+          "tcp:localhost:1337"
+        ]
+      }
+    },
+    {
+      "type": "chrome_open_tabs",
+      "parameters": {
+        "urls_to_open": [
+          "https://www.microsoft365.com/launch/powerpoint"
+        ]
+      }
+    },
+    {
+      "type": "activate_window",
+      "parameters": {
+        "window_name": "Google Chrome"
+      }
+    }
+  ],
+  "related_apps": [
+    "chrome"
+  ],
+  "video_learning": {
+    "schema_version": "1.0",
+    "demo_video": {
+      "type": "local_file",
+      "path": "evaluation_examples/powerpoint_web/fixtures/osworld_w1_fade_demo.mp4",
+      "dest": "osworld_w1_fade_demo.mp4"
+    },
+    "delivery_mode": "context",
+    "transfer_family": "ppt_title_entrance_animation",
+    "source_artifact": "evaluation_examples/powerpoint_web/fixtures/osworld_w1_fade_initial.pptx",
+    "demo_result_artifact": "evaluation_examples/powerpoint_web/fixtures/osworld_w1_fade_gold.pptx",
+    "split_group": "w1_powerpoint_web_diagnostic"
+  },
+  "evaluator": {
+    "func": [
+      "compare_pptx_static_content",
+      "compare_pptx_animation_timelines"
+    ],
+    "conj": "and",
+    "expected": [
+      {
+        "type": "local_file",
+        "path": "evaluation_examples/powerpoint_web/fixtures/osworld_w1_fade_initial.pptx",
+        "dest": "osworld_w1_fade_initial.pptx"
+      },
+      {
+        "type": "local_file",
+        "path": "evaluation_examples/powerpoint_web/fixtures/osworld_w1_fade_gold.pptx",
+        "dest": "osworld_w1_fade_gold.pptx"
+      }
+    ],
+    "result": [
+      {
+        "type": "vm_file",
+        "path": "/home/user/Downloads/osworld_w1_fade_task.pptx",
+        "dest": "osworld_w1_fade_result_design.pptx"
+      },
+      {
+        "type": "vm_file",
+        "path": "/home/user/Downloads/osworld_w1_fade_task.pptx",
+        "dest": "osworld_w1_fade_result_animation.pptx"
+      }
+    ],
+    "options": [
+      {},
+      {
+        "duration_tolerance_ms": 50
+      }
+    ]
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

@@ -3,19 +3,38 @@ from botocore.exceptions import ClientError
 
 import logging
 import os
-import time
-from datetime import datetime, timedelta, timezone
 from desktop_env.providers.base import Provider
 
 # TTL configuration
 from desktop_env.providers.aws.config import ENABLE_TTL, DEFAULT_TTL_MINUTES, AWS_SCHEDULER_ROLE_ARN
-from desktop_env.providers.aws.scheduler_utils import schedule_instance_termination
+from desktop_env.providers.aws.launch_config import load_launch_config
+from desktop_env.providers.aws.scheduler_utils import (
+    delete_instance_termination_schedules,
+    schedule_instance_termination,
+)
+from desktop_env.providers.aws.service_bootstrap import (
+    ensure_osworld_service_x11_wait,
+)
 
 logger = logging.getLogger("desktopenv.providers.aws.AWSProvider")
 logger.setLevel(logging.INFO)
 
 WAIT_DELAY = 15
 MAX_ATTEMPTS = 10
+
+
+def select_connection_address(instance: dict, connection_mode: str | None = None) -> str:
+    """Select an instance address explicitly for local or in-VPC controllers."""
+
+    mode = (connection_mode or os.getenv("AWS_CONNECTION_MODE", "private")).strip().lower()
+    if mode not in {"private", "public"}:
+        raise ValueError("AWS_CONNECTION_MODE must be 'private' or 'public'")
+
+    field = "PublicIpAddress" if mode == "public" else "PrivateIpAddress"
+    address = instance.get(field, "")
+    if not address:
+        raise ValueError(f"Instance does not have a {mode} IP address")
+    return address
 
 
 class AWSProvider(Provider):
@@ -80,7 +99,7 @@ class AWSProvider(Provider):
                     else:
                         logger.warning("No public IP address available for VNC access")
                     
-                    return private_ip_address
+                    return select_connection_address(instance)
             return ''  # Return an empty string if no IP address is found
         except ClientError as e:
             logger.error(f"Failed to retrieve IP address for the instance {path_to_vm}: {str(e)}")
@@ -102,6 +121,7 @@ class AWSProvider(Provider):
     def revert_to_snapshot(self, path_to_vm: str, snapshot_name: str):
         logger.info(f"Reverting AWS VM to snapshot AMI: {snapshot_name}...")
         ec2_client = boto3.client('ec2', region_name=self.region)
+        new_instance_id = None
 
         try:
             # Step 1: Retrieve the original instance details
@@ -134,10 +154,9 @@ class AWSProvider(Provider):
                     else:
                         raise ValueError("SubnetId not available on instance, NetworkInterfaces, or environment")
 
-            # Resolve instance type with fallbacks
-            instance_type = instance.get('InstanceType') or os.getenv('AWS_INSTANCE_TYPE') or 't3.large'
-            if instance.get('InstanceType') is None:
-                logger.info(f"InstanceType missing on instance; using '{instance_type}' from env/default")
+            launch_config = load_launch_config(
+                default_instance_type=instance.get("InstanceType") or "t3.xlarge"
+            )
             
             # Step 2: Terminate the old instance (skip if already terminated/shutting-down)
             state = (instance.get('State') or {}).get('Name')
@@ -153,6 +172,11 @@ class AWSProvider(Provider):
                         logger.info(f"Ignore termination error for {path_to_vm}: {error_code}")
                     else:
                         raise
+            delete_instance_termination_schedules(
+                self.region,
+                path_to_vm,
+                logger,
+            )
 
             # Step 3: Launch a new instance from the snapshot(AMI) with performance optimization
             logger.info(f"Launching a new instance from AMI {snapshot_name}...")
@@ -166,9 +190,10 @@ class AWSProvider(Provider):
                 "MaxCount": 1,
                 "MinCount": 1,
                 "ImageId": snapshot_name,
-                "InstanceType": instance_type,
+                "InstanceType": launch_config.instance_type,
                 "EbsOptimized": True,
                 "InstanceInitiatedShutdownBehavior": "terminate",
+                "TagSpecifications": launch_config.tag_specifications(),
                 "NetworkInterfaces": [
                     {
                         "SubnetId": subnet_id,
@@ -177,60 +202,47 @@ class AWSProvider(Provider):
                         "Groups": security_groups
                     }
                 ],
-                "BlockDeviceMappings": [
-                    {
-                        "DeviceName": "/dev/sda1", 
-                        "Ebs": {
-                            # "VolumeInitializationRate": 300
-                            "VolumeSize": 30,  # Size in GB
-                            "VolumeType": "gp3",  # General Purpose SSD
-                            "Throughput": 1000,
-                            "Iops": 4000  # Adjust IOPS as needed
-                        }
-                    }
-                ]
+                "BlockDeviceMappings": [launch_config.block_device_mapping()]
             }
+            run_instances_params.update(launch_config.instance_profile_parameter())
+            run_instances_params.update(launch_config.user_data_parameter())
             
             new_instance = ec2_client.run_instances(**run_instances_params)
             new_instance_id = new_instance['Instances'][0]['InstanceId']
             logger.info(f"New instance {new_instance_id} launched from AMI {snapshot_name}.")
+
+            # Schedule termination before waiting or bootstrapping so that an
+            # interrupted reset still has a cloud-side cleanup path.
+            try:
+                if enable_ttl:
+                    schedule_instance_termination(
+                        self.region,
+                        new_instance_id,
+                        ttl_seconds,
+                        AWS_SCHEDULER_ROLE_ARN,
+                        logger,
+                    )
+            except Exception as e:
+                logger.warning(
+                    f"Failed to create EventBridge Scheduler for "
+                    f"{new_instance_id}: {e}"
+                )
+
             logger.info(f"Waiting for instance {new_instance_id} to be running...")
             ec2_client.get_waiter('instance_running').wait(InstanceIds=[new_instance_id])
 
             logger.info(f"Instance {new_instance_id} is ready.")
-            # Schedule cloud-side termination via EventBridge Scheduler (auto-resolve role ARN)
-            try:
-                if enable_ttl:
-                    schedule_instance_termination(self.region, new_instance_id, ttl_seconds, AWS_SCHEDULER_ROLE_ARN, logger)
-            except Exception as e:
-                logger.warning(f"Failed to create EventBridge Scheduler for {new_instance_id}: {e}")
-
-            # Schedule cloud-side termination via EventBridge Scheduler (same as allocation path)
-            try:
-                if enable_ttl and os.getenv('AWS_SCHEDULER_ROLE_ARN'):
-                    scheduler_client = boto3.client('scheduler', region_name=self.region)
-                    schedule_name = f"osworld-ttl-{new_instance_id}-{int(time.time())}"
-                    eta_scheduler = datetime.now(timezone.utc) + timedelta(seconds=ttl_seconds)
-                    schedule_expression = f"at({eta_scheduler.strftime('%Y-%m-%dT%H:%M:%S')})"
-                    target_arn = "arn:aws:scheduler:::aws-sdk:ec2:terminateInstances"
-                    input_payload = '{"InstanceIds":["' + new_instance_id + '"]}'
-                    scheduler_client.create_schedule(
-                        Name=schedule_name,
-                        ScheduleExpression=schedule_expression,
-                        FlexibleTimeWindow={"Mode": "OFF"},
-                        Target={
-                            "Arn": target_arn,
-                            "RoleArn": os.getenv('AWS_SCHEDULER_ROLE_ARN'),
-                            "Input": input_payload
-                        },
-                        State='ENABLED',
-                        Description=f"OSWorld TTL terminate for {new_instance_id}"
-                    )
-                    logger.info(f"Scheduled EC2 termination via EventBridge Scheduler for snapshot revert: name={schedule_name}, when={eta_scheduler.isoformat()} (UTC)")
-                else:
-                    logger.info("TTL enabled but AWS_SCHEDULER_ROLE_ARN not set; skipping scheduler for snapshot revert.")
-            except Exception as e:
-                logger.warning(f"Failed to create EventBridge Scheduler for {new_instance_id}: {e}")
+            if launch_config.instance_profile_name:
+                ensure_osworld_service_x11_wait(
+                    self.region,
+                    new_instance_id,
+                    logger,
+                )
+            else:
+                logger.warning(
+                    "No EC2 instance profile configured; relying on UserData "
+                    "for the OSWorld X11 wait drop-in"
+                )
 
             try:
                 instance_details = ec2_client.describe_instances(InstanceIds=[new_instance_id])
@@ -250,8 +262,23 @@ class AWSProvider(Provider):
 
             return new_instance_id
 
-        except ClientError as e:
+        except Exception as e:
             logger.error(f"Failed to revert to snapshot {snapshot_name} for the instance {path_to_vm}: {str(e)}")
+            if new_instance_id:
+                logger.info(
+                    "Terminating replacement instance %s after reset failure.",
+                    new_instance_id,
+                )
+                try:
+                    ec2_client.terminate_instances(
+                        InstanceIds=[new_instance_id]
+                    )
+                finally:
+                    delete_instance_termination_schedules(
+                        self.region,
+                        new_instance_id,
+                        logger,
+                    )
             raise
 
 
@@ -263,5 +290,20 @@ class AWSProvider(Provider):
             ec2_client.terminate_instances(InstanceIds=[path_to_vm])
             logger.info(f"Instance {path_to_vm} has been terminated.")
         except ClientError as e:
-            logger.error(f"Failed to stop the AWS VM {path_to_vm}: {str(e)}")
-            raise
+            error_code = e.response.get("Error", {}).get("Code")
+            if error_code not in {
+                "InvalidInstanceID.NotFound",
+                "IncorrectInstanceState",
+            }:
+                logger.error(f"Failed to stop the AWS VM {path_to_vm}: {str(e)}")
+                raise
+            logger.info(
+                "Instance %s is already absent or terminal: %s",
+                path_to_vm,
+                error_code,
+            )
+        delete_instance_termination_schedules(
+            self.region,
+            path_to_vm,
+            logger,
+        )

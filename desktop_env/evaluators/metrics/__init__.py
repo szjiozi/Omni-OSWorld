@@ -125,6 +125,10 @@ from .slides import (
     check_page_number_colors,
     check_auto_saving_time
 )
+from ..pptx_animation import (
+    compare_pptx_animation_timelines,
+    compare_pptx_static_content,
+)
 from .table import (
     compare_table,
     compare_csv,

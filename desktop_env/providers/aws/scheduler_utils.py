@@ -6,6 +6,44 @@ import boto3
 from botocore.exceptions import ClientError
 
 
+def delete_instance_termination_schedules(
+    region: str,
+    instance_id: str,
+    logger=None,
+) -> int:
+    """Delete every OSWorld TTL schedule associated with one instance."""
+
+    scheduler_client = boto3.client("scheduler", region_name=region)
+    prefix = f"osworld-ttl-{instance_id}-"
+    deleted = 0
+    next_token = None
+    while True:
+        parameters = {"NamePrefix": prefix}
+        if next_token:
+            parameters["NextToken"] = next_token
+        response = scheduler_client.list_schedules(**parameters)
+        for schedule in response.get("Schedules", []):
+            try:
+                scheduler_client.delete_schedule(
+                    Name=schedule["Name"],
+                    GroupName=schedule.get("GroupName", "default"),
+                )
+                deleted += 1
+            except ClientError as exc:
+                if exc.response.get("Error", {}).get("Code") != "ResourceNotFoundException":
+                    raise
+        next_token = response.get("NextToken")
+        if not next_token:
+            break
+    if logger:
+        logger.info(
+            "Deleted %d TTL schedule(s) for instance %s",
+            deleted,
+            instance_id,
+        )
+    return deleted
+
+
 def _resolve_scheduler_role_arn(logger) -> str:
     # 1) Explicit env takes precedence
     role_arn = os.getenv('AWS_SCHEDULER_ROLE_ARN', '').strip()
@@ -22,7 +60,7 @@ def _resolve_scheduler_role_arn(logger) -> str:
         try:
             role = iam.get_role(RoleName=role_name)["Role"]
         except ClientError:
-            auto_create = os.getenv('AWS_AUTO_CREATE_SCHEDULER_ROLE', 'true').lower() == 'true'
+            auto_create = os.getenv('AWS_AUTO_CREATE_SCHEDULER_ROLE', 'false').lower() == 'true'
             if not auto_create:
                 logger.warning(f"Scheduler role '{role_name}' not found and auto-create disabled.")
                 return ''
@@ -149,5 +187,3 @@ def schedule_instance_termination(region: str, instance_id: str, ttl_seconds: in
     if last_err is not None:
         # If we exhausted retries, re-raise to surface warning upstream
         raise last_err
-
-

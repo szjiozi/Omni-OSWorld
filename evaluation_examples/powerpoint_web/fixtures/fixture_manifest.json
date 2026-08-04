@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "source": "OSWorld PowerPoint Web W1 self-authored diagnostic smoke",
+  "artifacts": {
+    "osworld_w1_fade_initial.pptx": {
+      "sha256": "b27938d78dc7ba593d7b03009247d48829da602e4dd0417f4f9785979af0ce3b",
+      "role": "animation-free initial deck derived from the verified gold"
+    },
+    "osworld_w1_fade_gold.pptx": {
+      "sha256": "ecb3e79667810ffe6cf75f3efa7590bae9a4fad30960ee992f40b058ad615f20",
+      "role": "native PPTX downloaded from PowerPoint for the web"
+    },
+    "osworld_w1_fade_demo.mp4": {
+      "sha256": "e00721487d11e2cd0d0fec4b65ad00d33a8acadbed017c472bbf8afa6c1b5015",
+      "role": "H.264 1920x1080 30 fps slideshow recording from the W1 smoke"
+    }
+  }
+}

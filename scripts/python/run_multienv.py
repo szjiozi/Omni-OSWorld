@@ -190,9 +190,9 @@ def run_env_tasks(task_queue: Queue, args: argparse.Namespace, shared_scores: li
             vm_secret_mounts=args.vm_secret_mount,
         )
         if args.provider_name == "aws":
-            from desktop_env.providers.aws.manager import IMAGE_ID_MAP
+            from desktop_env.providers.aws.manager import resolve_ami_id
             REGION = args.region
-            ami_id = IMAGE_ID_MAP[REGION].get(screen_size, IMAGE_ID_MAP[REGION][(1920, 1080)])
+            ami_id = resolve_ami_id(REGION, screen_size)
             env_kwargs["region"] = REGION
             env_kwargs["snapshot_name"] = ami_id
         elif args.provider_name == "daytona":

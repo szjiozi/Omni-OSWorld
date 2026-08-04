@@ -14,6 +14,7 @@ import gymnasium as gym
 from desktop_env.controllers.python import PythonController
 from desktop_env.controllers.setup import SetupController
 from desktop_env.evaluators import metrics, getters
+from desktop_env.network import add_no_proxy_host
 from desktop_env.providers import create_vm_manager_and_provider
 
 logger = logging.getLogger("desktopenv.env")
@@ -207,6 +208,7 @@ class DesktopEnv(gym.Env):
             ip_ports_str = self.provider.get_ip_address(self.path_to_vm)
             vm_ip_ports = ip_ports_str.rsplit(':', 4)
             self.vm_ip = vm_ip_ports[0]
+            add_no_proxy_host(self.vm_ip)
             # Providers that don't embed ports return just "<host>" → rsplit yields a single
             # element and we keep the class-level port defaults.
             if len(vm_ip_ports) == 5:
