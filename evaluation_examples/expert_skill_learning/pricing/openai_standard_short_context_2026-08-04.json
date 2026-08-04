@@ -1,0 +1,25 @@
+{
+  "version": "openai-standard-short-context-2026-08-04",
+  "currency": "USD",
+  "unit": "per_1m_tokens",
+  "service_tier": "standard",
+  "context_tier": "short",
+  "source": "https://developers.openai.com/api/docs/pricing",
+  "models": {
+    "gpt-5.6-terra": {
+      "input_per_million": 2.0,
+      "cached_input_per_million": 0.2,
+      "output_per_million": 12.0
+    },
+    "gpt-5.6-luna": {
+      "input_per_million": 0.2,
+      "cached_input_per_million": 0.02,
+      "output_per_million": 1.2
+    },
+    "gpt-4.1": {
+      "input_per_million": 2.0,
+      "cached_input_per_million": 0.5,
+      "output_per_million": 8.0
+    }
+  }
+}

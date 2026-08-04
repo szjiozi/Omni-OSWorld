@@ -1,0 +1,10 @@
+Application:
+{{APP}}
+
+Sampled skill cards:
+{{SAMPLED_SKILLS}}
+
+Source instructions for similarity avoidance:
+{{SOURCE_INSTRUCTIONS}}
+
+Generate one reference task or reject this combination. Ensure the task demonstrates every sampled skill.

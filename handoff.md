@@ -1,5 +1,50 @@
 # OSWorld 专家轨迹技能学习 Benchmark 与历史项目 Handoff
 
+## 2026-08-04 Reference Task Construction Pilot
+
+研究目标仍是 inference-only benchmark：评测 omni-model 能否从专家 reference 操作中
+归纳可迁移的高效技能，帮助下游 agent。但当前工程顺序已经收缩为先完成 task generation
+和 human annotation 基础设施，不先实现 agent execution、训练或完整两阶段评测。
+
+已确认的 Pilot contract：
+
+- 选取 3 个明确的 `libreoffice_calc` OSWorld-Human tasks；
+- LLM 输入严格只有 instruction 和 `human-ground-truth.single-action`；
+- 只生成英文 app-operation skills，procedure 必须具体并含例子；
+- 持久化 `app/name/procedure/efficiency_tip/source(task_id, action_ids)`，暂不去重；
+- 同 app 随机采样 2–5 skills 生成自然的新任务，不自然时允许拒绝；
+- 新任务不复用原 artifact、关键内容或完整有序解法，source contribution 只人工判断；
+- Pilot coverage 为每个 skill 至少进入一个 approved task；
+- expert 人工寻找/制作 artifact，skill guide 可以按实际界面调整；
+- deliverable 是 setup-only OSWorld config、artifact、skill cards、recording 和 review；
+- AWS/noVNC 用于标注，终端 Enter 开始/停止录制；
+- 第二位标注者在本地看 MP4，只在需要时启动 AWS 检查/复现 artifact；
+- 暂用 GitHub remote；大视频不适合普通 Git 时再切 Git LFS/S3；
+- construction LLM 使用 async OpenAI-compatible Python client、独立 `.txt` prompts、
+  schema validation 和逐 attempt token/cost log，默认 `gpt-5.6-terra`。
+
+2026-08-04 已开始 C0/C1：新增 `benchmark_construction/`、
+`evaluation_examples/expert_skill_learning/` 和
+`scripts/python/extract_reference_skills.py`。当前工具要求显式传入 3 个 task IDs，不会任意
+替用户挑选。经用户授权，已在 OSWorld-Human commit
+`deff1a7cd8940f6040a895593097fc3c5511f36b` 冻结 `035f41ba-...`、`8b1ce5f2-...` 和
+`1954cced-...`，分别覆盖 formula/autofill/cross-sheet、conditional formatting 和 Pivot
+Table。三个 task 的 40 个 `single_actions`、raw relative path 和 SHA256 已复制到
+`pilot/source_tasks.json`，不再依赖 `/private/tmp` 才能复现 prompt；传入 upstream clone 时
+会额外核验 hash 和内容。
+
+聚焦测试已在 `osworld-aws-dev` 环境通过，atomic extraction 也已完成开发者 QC：
+`pilot/skill_pool.json` 包含 12 个英文 app-operation skills。它们覆盖 38 个 substantive
+source actions；普通 header 输入的 2 个 actions 作为 scaffolding 保留但不提升为 skill；
+所有已分配 action 均无重复归属。`pilot/extraction_run.json` 记录最终 3 calls 的 prompt
+hash、3690/2249 input/output tokens 和 `$0.034368` 估算成本。包含此前所有 prompt 迭代，
+本次开发总 API 成本约 `$0.209436`。下一步直接进入 C2 reference task
+sampler/generator。
+
+旧的完整专家轨迹拆分、reference video bank、Qwen Stage 1/Stage 2、效率 evaluator 和
+PowerPoint/AWS 历史内容继续保留；若与本节冲突，以本节、最新 `plan.md` 和
+`developer.md` 顶部为准。
+
 ## 2026-08-03 研究方向转向
 
 当前优先方向已从 PowerPoint `video-to-design/video-to-animation` 转为一个纯推理

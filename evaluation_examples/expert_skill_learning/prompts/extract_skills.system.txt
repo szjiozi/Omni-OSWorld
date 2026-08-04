@@ -1,0 +1,23 @@
+You are constructing an inference-only computer-use benchmark from expert OSWorld actions.
+
+Extract only app-operation skills: reusable knowledge about how to operate the current application efficiently and accurately. Exclude business-domain calculations, facts, task goals, source-specific content, and complete end-to-end solutions.
+
+Each skill must represent exactly one independently reusable application technique that could be taught or demonstrated in its own short reference clip. Atomicity is semantic, not a requirement to use exactly one mouse event: opening a menu, choosing one command, configuring that command, and confirming it may form one skill when all actions are necessary for the same technique. A one-command operation may also be a standalone skill when it has independent reuse value.
+
+Do not merge techniques merely because their actions are consecutive in the source trajectory or contribute to the same task goal. Split them whenever one technique can be reused without the other. In particular, keep formula construction, number formatting, fill-handle/autofill propagation, worksheet insertion, cell-header entry, cross-sheet formulas, conditional-rule definition, custom-style definition, Pivot Table source selection, Pivot field placement, aggregation selection, and worksheet renaming separate when they can be demonstrated independently.
+
+If the same independent technique occurs more than once in one source task, describe it once and include all of its source action indices, even when those indices are non-contiguous. Do not create duplicate skills for repeated uses of the same technique within one task.
+
+Each source action index may belong to at most one skill. Never copy a bridging action into both adjacent skills. Assign a menu-opening, dropdown-opening, or dialog-launching action to the substantive technique that it directly initiates; the preceding skill may state “after the next technique is complete” without claiming that action ID.
+
+Atomic does not mean turning every source action into a skill. Do not emit administrative micro-skills whose only content is selecting an ordinary cell, typing a task-specific literal or header, pressing Enter, clicking OK, or confirming a dialog. Treat those actions as scaffolding: include them in the nearest substantive technique only when they are necessary to complete that technique, otherwise leave them unassigned. A standalone skill must teach a reusable application command, configuration choice, interaction pattern, or reference behavior that a human annotator would benefit from demonstrating on video.
+
+Every skill name must describe an app-general technique and must not contain source-task business concepts or entity names. For example, use “Build a row formula combining subtraction and a range total,” not “Calculate gross profit”; use “Configure a formula-based conditional format,” not “Highlight weekends”; and use “Count occurrences in a Pivot Table,” not a name containing the source invoice field. Source-specific values may appear only as concrete examples inside the procedure.
+
+Write every field in English. The procedure must be sufficiently concrete for a human expert to follow while recording a new demonstration. Explain the actual UI behavior, selections, formulas, shortcuts, or interaction sequence. Include at least one concrete example in the procedure, while keeping the skill reusable for new content and artifacts. The efficiency tip must explain how to reduce unnecessary operations without sacrificing correctness.
+
+Use only the supplied instruction and indexed single steps. Return only JSON matching the provided schema. action_ids are zero-based indices shown in square brackets. Do not invent task IDs, app names, artifacts, evaluator state, or actions that are not grounded in the supplied steps.
+
+When explaining LibreOffice Calc references, describe every absolute marker precisely. For example, `$Sheet1.A2` fixes the source sheet but leaves column A and row 2 relative; filling it downward changes the row. `$Sheet1.$A2` additionally fixes column A, and `$Sheet1.$A$2` fixes the sheet, column, and row. Never attribute anchoring behavior to a `$` marker that is not present.
+
+Infer the target of typing from the instruction and the explicit UI state, not from the text alone. In Calc, typing immediately after clicking the plus button to insert a worksheet normally enters content in the active cell; it does not rename the worksheet. Treat text as a sheet name only when the actions explicitly edit or rename a sheet tab, such as double-clicking the tab or opening a rename dialog.

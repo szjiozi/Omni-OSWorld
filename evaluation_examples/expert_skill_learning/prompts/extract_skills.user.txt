@@ -1,0 +1,7 @@
+Task instruction:
+{{TASK_INSTRUCTION}}
+
+Indexed single steps:
+{{SINGLE_STEPS}}
+
+Extract the reusable app-operation skills. Keep only the UI actions required to demonstrate one independently reusable technique in each skill. Split consecutive actions when they implement different techniques, and merge non-contiguous action IDs only when they repeat the same technique. Do not reproduce the full task as one skill.

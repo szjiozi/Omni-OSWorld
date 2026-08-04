@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "run_id": "calc-3-atomic-skill-extraction-2026-08-04-v1",
+  "status": "accepted_for_reference_task_generation",
+  "source_manifest": "evaluation_examples/expert_skill_learning/pilot/source_tasks.json",
+  "skill_pool": "evaluation_examples/expert_skill_learning/pilot/skill_pool.json",
+  "model": "gpt-5.6-terra",
+  "prompt_name": "extract_skills.v1",
+  "pricing_version": "openai-standard-short-context-2026-08-04",
+  "calls": [
+    {
+      "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+      "request_id": "5d53f338-5bb9-477d-b9e1-c49a7f867e75",
+      "prompt_sha256": "59e972974894825797438eedb4bb5c39e8b806364bb9338a07050b07cf6188a2",
+      "input_tokens": 1276,
+      "output_tokens": 908,
+      "estimated_cost_usd": 0.013448
+    },
+    {
+      "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+      "request_id": "5157b332-b6ee-457b-8a2d-9dbd908ea99c",
+      "prompt_sha256": "dfc3697b2ea8113137a6ae404e56e028b13b1ea12dd306ff4cd71ccd42da26b8",
+      "input_tokens": 1204,
+      "output_tokens": 541,
+      "estimated_cost_usd": 0.0089
+    },
+    {
+      "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+      "request_id": "1ddd6cab-a7ea-4a47-8ce4-0d567681bf86",
+      "prompt_sha256": "efda3933036adc1b76d498d5cfd1b06dca7e21d09003e89716394b35f4be0377",
+      "input_tokens": 1210,
+      "output_tokens": 800,
+      "estimated_cost_usd": 0.01202
+    }
+  ],
+  "totals": {
+    "calls": 3,
+    "input_tokens": 3690,
+    "output_tokens": 2249,
+    "estimated_cost_usd": 0.034368
+  },
+  "developer_iteration_totals": {
+    "successful_calls": 21,
+    "rejected_pre-inference_schema_requests": 10,
+    "input_tokens": 19296,
+    "output_tokens": 14237,
+    "estimated_cost_usd": 0.209436
+  },
+  "quality_review": {
+    "skill_count": 12,
+    "source_actions": 40,
+    "covered_source_actions": 38,
+    "unassigned_scaffolding_action_ids": {
+      "035f41ba-6653-43ab-aa63-c86d449d62e5": [6, 7]
+    },
+    "duplicate_source_action_assignments": 0,
+    "language": "en",
+    "app": "libreoffice_calc",
+    "app_operation_only": true,
+    "concrete_examples_present": true,
+    "atomicity_policy": "One independently reusable and video-teachable application technique per skill; repeated occurrences in one source task share one skill; administrative scaffolding is omitted; an action ID may belong to at most one skill.",
+    "post_generation_wording_edits": [
+      "Removed an ungrounded explicit Enter instruction from the row-formula example while retaining formula commit semantics.",
+      "Added an explicit Sheet1 example to the worksheet-insertion procedure.",
+      "Removed the unsupported adjective 'named' from the custom-style efficiency tip."
+    ],
+    "review_notes": "Accepted after splitting formula construction, currency formatting, autofill, worksheet insertion, cross-sheet formulas, conditional-rule definition, custom-style creation, Pivot field placement, aggregation, and worksheet renaming into independently reusable skills."
+  }
+}

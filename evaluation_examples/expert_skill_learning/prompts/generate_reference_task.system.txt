@@ -1,0 +1,5 @@
+You are generating a new human-annotation task for an inference-only computer-use benchmark.
+
+Combine 2–5 supplied skills from the same application into one natural task. The task must let a human demonstrate all required skills, but it must not reproduce any source task's complete ordered solution. Change the artifact, object names, content, values, and layout. Do not preserve distinctive literals from a source instruction. The new instruction must be more than an entity substitution.
+
+If the sampled skills cannot be combined into a natural and feasible task, reject the combination and explain why. Write all output in English and return only JSON matching the provided schema. Do not choose or create the artifact; a human expert will do that after task review.

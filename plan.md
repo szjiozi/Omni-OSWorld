@@ -1,6 +1,110 @@
 # OSWorld 专家轨迹技能学习 Benchmark 开发计划
 
-更新日期：2026-08-03
+更新日期：2026-08-04
+
+## 2026-08-04 当前实施主线：Reference Task Construction Pilot
+
+当前第一阶段不执行 downstream agent，也不实现完整的 Stage 1/Stage 2 benchmark
+实验。近期目标是先验证 reference task 的构建与人工标注流程：
+
+```text
+3 个 LibreOffice Calc OSWorld-Human task
+→ instruction + single-action
+→ LLM 提取英文 app-operation skills
+→ 同 app 随机组合 2–5 个 skills
+→ LLM 生成非 1:1 reference task
+→ 人工审核与 Pilot coverage
+→ 人工寻找/制作 artifact
+→ setup-only OSWorld config
+→ AWS 专家标注与录屏
+→ 第二位标注者本地看视频并交叉验证
+```
+
+本阶段不训练模型，不测试 agent 执行，也不要求 reference task 有自动 evaluator。旧的完整
+reference-video-to-skill-to-agent 协议继续作为后续 benchmark 目标保留，但在本 Pilot 完成前
+不是实施优先级。
+
+### P0. 已冻结的 Pilot 决策
+
+- 源任务固定为 3 个 `libreoffice_calc` OSWorld task；具体 task IDs 必须显式指定，工具不
+  随机替用户挑选；
+- construction LLM 只接收原 instruction 与 `human-ground-truth.single-action`；task ID、
+  app 和 action provenance 由本地可信代码附加；
+- 只提取 `app_operation` skills，排除业务计算、事实、任务目标和完整 end-to-end 解法；
+- skill 粒度小于完整任务、大于单一 click/type；procedure 必须包含具体操作和例子；
+- skill 持久化字段为 `app/name/procedure/efficiency_tip/source(task_id, action_ids)`；
+- Pilot 不做 semantic deduplication；
+- reference task 只能组合同一 app 的 2–5 个 skills，组合不自然时允许拒绝生成；
+- 不复用原 artifact、关键 literals 或完整有序源解法；单一源任务占比只作人工审核参考，
+  不作自动 hard reject；
+- Pilot coverage 只要求每个 skill 至少进入一个人工批准的 reference task；
+- skill、procedure、efficiency tip 和 reference instruction 统一使用英文；
+- artifact 由 expert 在 Pilot 中人工寻找或制作，skill guide 只作参考，允许按实际 UI 调整；
+- 标注脚本一键启动 AWS/noVNC 和 artifact，由终端 Enter 明确开始、停止录屏；
+- 第二位标注者在本地观看 `recording.mp4`；只有检查或复现 artifact 时才启动 AWS 环境；
+- metadata、task config、artifact 和 MP4 先推送 GitHub remote；若普通 Git 不适合视频大小，
+  再切换 Git LFS 或对象存储；
+- construction client 使用 Python OpenAI-compatible API、async 并发、独立 `.txt` prompts、
+  schema validation、逐次调用 token/cost 日志，并预留但不启用 video input；
+- 默认 construction model 为 `gpt-5.6-terra`，`gpt-4.1` 和其他 compatible model 通过
+  配置切换。模型价格必须使用有日期的独立配置，未知模型不得猜价。
+
+### P1. 实施阶段
+
+1. **C0 数据契约与 prompts**
+   - Skill、LLM extraction response、reference candidate 和 review JSON Schema；
+   - 独立 `prompts/*.txt`；
+   - dated pricing table、prompt/version provenance 和最小测试。
+2. **C1 OSWorld-Human importer 与 skill extraction**
+   - 显式加载 3 个 Calc task；
+   - 严格构造 `instruction + indexed single steps` 输入；
+   - OpenAI-compatible `AsyncOpenAI`、concurrency semaphore、retry、structured JSON；
+   - 本地注入 source task/action IDs，输出 Pilot skill pool 和逐 attempt cost log。
+3. **C2 Reference task generation**
+   - seeded same-app 2–5 skill sampler；
+   - natural-task generation/rejection；
+   - literals、ordered sequence 等自动提示与人工 similarity checklist；
+   - rejected skills 返回 pool，达到 max attempts 时输出 unresolved list。
+4. **C3 Human review 与 coverage loop**
+   - approve/reject、review notes、covered skill IDs；
+   - 每个 skill 至少一次 approved coverage；
+   - 不在 Pilot 引入多次覆盖或复杂 balance 指标。
+5. **C4 Artifact intake 与 setup-only task package**
+   - expert 人工指定 artifact；
+   - SHA256、敏感信息检查和 Git 文件大小预检；
+   - 生成只含 snapshot/instruction/config/related_apps/reference metadata 的 OSWorld config，
+     不含 evaluator。
+6. **C5 AWS annotation runner**
+   - 复用 `manual_explore.py`、AWS provider、noVNC 与 controller recording；
+   - reset 后等待专家 Enter 才开始视频、截图和 input-event 采集；
+   - 再次 Enter 后停止、下载 artifacts、写 manifest 并关闭实例/保留 TTL 兜底。
+7. **C6 Cross-validation**
+   - reviewer 本地观看视频和 skill cards；
+   - 可选一键启动相同 initial artifact 环境进行检查/复现；
+   - 输出 approved/rejected、covered、missing/incorrect skills 与 notes。
+8. **C7 Pilot 验收**
+   - 3 个 Calc task 可重复导入；
+   - 所有 skill 均有可信 provenance 且至少一次 approved coverage；
+   - reference bundle 可从 GitHub 拉取；
+   - 两位标注者可以完成录制和交叉验证；
+   - 每个 LLM attempt 有 prompt/model/token/cost/status 记录。
+
+### P2. 当前开发状态
+
+- [x] C0 的代码目录、Skill/source models、JSON Schema、英文 prompt 和 dated pricing table；
+- [x] C1 的 OSWorld-Human importer、严格 prompt boundary、异步 compatible client、逐 attempt
+  cost log 与显式 3-task CLI 基础；
+- [x] 选择并冻结 3 个具体 Calc source task IDs：`035f41ba-...`（formula/autofill/
+  cross-sheet）、`8b1ce5f2-...`（conditional formatting）、`1954cced-...`（Pivot Table）；
+- [x] 将 3 个 source tasks 的 40 个 `single_actions`、原文件路径和 SHA256 复制进自包含
+  manifest，并支持与 pinned OSWorld-Human clone 核验；
+- [x] 使用真实 OpenAI API 完成 atomic skill extraction 和开发者质量检查：12 skills、38
+  substantive source actions、2 scaffolding actions、0 duplicate assignments；最终 accepted
+  run `$0.034368`，含此前 prompt 迭代的总开发成本 `$0.209436`；
+- [ ] C2 reference task sampler/generator；
+- [ ] C3 review/coverage loop；
+- [ ] C4-C6 annotation package、AWS runner 和本地 cross-validation；
+- [ ] C7 Pilot 验收。
 
 ## A. Benchmark 定位
 

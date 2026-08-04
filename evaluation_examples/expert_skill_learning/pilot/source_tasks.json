@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.1",
+  "pilot_id": "calc-3-task-v1",
+  "app": "libreoffice_calc",
+  "language": "en",
+  "source_repository": "https://github.com/WukLab/osworld-human",
+  "source_commit": "deff1a7cd8940f6040a895593097fc3c5511f36b",
+  "selection_policy": "Three tasks with substantially different Calc operation mechanisms and reusable skills that can later be combined into natural reference tasks.",
+  "tasks": [
+    {
+      "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+      "source_file": "libreoffice_calc/035f41ba-6653-43ab-aa63-c86d449d62e5.json",
+      "source_sha256": "41d073d911f056035054c67d858f016c264874aade5a68fd1923abe12799f29f",
+      "instruction": "Help me fill in the Gross profit column by subtracting all the available expenses including discounts, allowances, material and labor charges, and overhead from the actual sale, i.e., the sales after deducting the returns. Then under column A named \"Year_Profit\" in a new sheet, display the Year Column in Sheet 1 as text appended by a \"_\" with the corresponding integer digits of Gross Profit value.",
+      "single_action_count": 11,
+      "single_actions": [
+        "`CLICK` on cell J2",
+        "`TYPING` '=B2-C2-D2-SUM(F2:H2)'",
+        "`CLICK` format as currency icon",
+        "`MOVE_TO` bottom right corner of the cell J2`",
+        "`DRAG_TO` bottom right corner of the cell J10",
+        "`CLICK` on + to left of sheet1",
+        "`TYPING` 'Year_Profit'",
+        "`PRESS` enter",
+        "`TYPING` '=$Sheet1.A2&\"_\"&$Sheet1.J2'",
+        "`MOVE_TO` bottom right corner of the cell A2`",
+        "`DRAG_TO` bottom right corner of the cell A10"
+      ],
+      "selection_focus": [
+        "relative formulas and range aggregation",
+        "fill-handle propagation",
+        "cross-sheet references and text concatenation"
+      ]
+    },
+    {
+      "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+      "source_file": "libreoffice_calc/8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.json",
+      "source_sha256": "f34e79d20d60a9c96c7d4ec14c9bab241903c3087be3187e04be86b61ddbf535",
+      "instruction": "Given a partial calendar, please highlight all the weekends (Satureday & Sunday) by setting the cell background as red (#ff0000).",
+      "single_action_count": 15,
+      "single_actions": [
+        "`HOTKEY` ctrl-A",
+        "`CLICK` format",
+        "`MOVE_TO` conditional...",
+        "`CLICK` condition",
+        "`CLICK` cell value dropdown",
+        "`CLICK` formula is",
+        "`CLICK` formula text field",
+        "`TYPING` =AND(WEEKDAY(A1,2)>5, NOT(ISBLANK(A1)))",
+        "`CLICK` Apply style dropdown",
+        "`CLICK` New Style...",
+        "`CLICK` Background",
+        "`CLICK` Color",
+        "`CLICK` red",
+        "`CLICK` OK",
+        "`CLICK` OK"
+      ],
+      "selection_focus": [
+        "formula-based conditional formatting",
+        "custom style creation",
+        "applying a rule to a selected range"
+      ]
+    },
+    {
+      "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+      "source_file": "libreoffice_calc/1954cced-e748-45c4-9c26-9855b97fbc5e.json",
+      "source_sha256": "88b73909cfbcfbec460f84e08b18385eae7354dcf71d855af373a6a6b7e88491",
+      "instruction": "Create a Pivot Table in a new sheet (Sheet2) to count how many times each \"Invoice No.\" appears.",
+      "single_action_count": 14,
+      "single_actions": [
+        "`CLICK` on grey cell box A for selecting entire column",
+        "`CLICK` on pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` invoice no. in available fields box",
+        "`DRAG_TO` row fields box",
+        "`MOVE_TO` invoice no. in available fields box",
+        "`DRAG_TO` data fields box",
+        "`DOUBLE_CLICK on invoice no. box in data fields",
+        "`CLICK` Count",
+        "`PRESS` enter",
+        "`CLICK` ok",
+        "`DOUBLE_CLICK` Pivot Table Sheet1_1",
+        "`TYPING` Sheet2",
+        "`PRESS` enter"
+      ],
+      "selection_focus": [
+        "Pivot Table creation",
+        "row and data field placement",
+        "count aggregation and result-sheet naming"
+      ]
+    }
+  ]
+}

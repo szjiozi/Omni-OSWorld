@@ -8,7 +8,7 @@ dependencies = [
     "numpy",
     "backoff",
     "pandas",
-    "openai",
+    "openai>=1.55,<3",
     "anthropic",
     "fastapi",
     "filelock",

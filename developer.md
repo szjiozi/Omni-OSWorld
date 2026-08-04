@@ -1,6 +1,87 @@
 # OSWorld 专家轨迹技能学习 Benchmark 开发注意事项
 
-更新日期：2026-08-03
+更新日期：2026-08-04
+
+## 2026-08-04 当前开发入口
+
+当前先实现 3-task LibreOffice Calc reference-task construction Pilot，不先跑 downstream
+agent。下文原有 expert video bank、skill induction、Qwen agent 和效率 evaluator 内容是
+后续 benchmark 设计；近期开发以根目录 `plan.md` 的 P0-P2 为准。
+
+新增代码和数据契约：
+
+```text
+benchmark_construction/                         # construction Python primitives
+scripts/python/extract_reference_skills.py      # 显式 3-task extraction CLI
+evaluation_examples/expert_skill_learning/
+├── prompts/                                    # 独立英文 .txt prompts
+├── schemas/                                    # LLM/final/review JSON Schema
+└── pricing/                                    # 有日期的 token 单价
+```
+
+本地环境需要 OpenAI Python SDK v1+ 的 `AsyncOpenAI`。更新最小开发环境：
+
+```bash
+conda env update -n osworld-aws-dev -f environment.aws-dev.yml --prune
+conda activate osworld-aws-dev
+python -c "from openai import AsyncOpenAI; print('AsyncOpenAI ready')"
+```
+
+API key 只能通过环境变量提供，不能写进 prompt、命令历史示例、JSON、日志或 Git：
+
+```bash
+export OPENAI_API_KEY=<provided-outside-the-repository>
+```
+
+冻结的 3 个 OSWorld-Human Calc task 记录在
+`evaluation_examples/expert_skill_learning/pilot/source_tasks.json`。运行：
+
+```bash
+python scripts/python/extract_reference_skills.py \
+  --source-manifest \
+    evaluation_examples/expert_skill_learning/pilot/source_tasks.json
+```
+
+该 manifest 已复制全部 40 个 `single_actions`，可独立复现 prompt。需要核对上游时额外传
+`--source-root /path/to/osworld-human`；工具将验证 pinned raw JSON 的 SHA256、instruction
+和 actions。
+
+默认输出：
+
+- `results/expert_skill_learning/pilot_skill_pool.json`；
+- `results/expert_skill_learning/llm_calls.jsonl`。
+
+当前 accepted Pilot 输出已冻结在：
+
+- `evaluation_examples/expert_skill_learning/pilot/skill_pool.json`；
+- `evaluation_examples/expert_skill_learning/pilot/extraction_run.json`。
+
+最终 atomic accepted run 为 3 calls、3690 input tokens、2249 output tokens，估算
+`$0.034368`。包含此前所有 prompt QC 迭代，本次开发累计估算 `$0.209436`。第一次
+Structured Outputs schema 的 10 个 400 attempts 在模型推理前被拒，usage/cost 均为 0；
+client 已改为不重试永久 4xx。
+
+当前 pool 有 12 个 skills。原子性定义是“一种可独立复用、值得单独录制的 application
+technique”，而不是每个 click 一个 skill。相同 technique 在同一 task 多次出现时合并并
+保留非连续 action IDs；每个 action ID 最多归属一个 skill；普通 header 输入和纯确认等
+scaffolding 可以不入 skill pool。冻结结果为 38 substantive actions、2 scaffolding actions、
+0 duplicate assignments。
+
+LLM 只收到原 instruction 和带零开始索引的 single steps。task ID、app 和最终 source
+字段由本地代码注入；prompt 中不得新增 artifact、evaluator、grouped actions 或原 task
+其他内容。默认模型 `gpt-5.6-terra`，可通过 `--model` 和 `--base-url` 切换 compatible
+provider。未知模型仍记录 token usage，但 estimated cost 必须为 `null`。
+
+当前 Chat Completions construction backend 只发送 text。`MediaInput(video, ...)` 已作为
+未来接口保留，但 backend 必须明确拒绝不支持的视频，不能静默丢弃。现用 Terra、Luna、
+GPT-4.1 均不能按 native video 输入处理。
+
+后续 annotation runner 必须改变 `manual_explore.py` 目前 reset 后立即开始 recording 的
+行为：先完成环境启动和 artifact 检查，第一次 Enter 开始录制，第二次 Enter 停止。Review
+时视频在 annotator 本地播放；AWS 只用于可选 artifact 检查/复现，不上传或播放视频。
+
+GitHub 暂作 Pilot remote。提交前必须检查 MP4/artifact 是否包含个人信息或凭据，并做文件
+大小预检；普通 Git 失败后再决定 Git LFS/S3，不在当前代码中自动上传外部服务。
 
 本文档是当前默认开发流程。2026-08-03 起，主线转为在原始 OSWorld task 上评测
 omni-model 能否从拆分重组的专家 reference videos 中归纳高效操作技能，并让固定的

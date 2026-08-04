@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://osworld.local/schemas/reference-task-candidate.schema.json",
+  "title": "Generated reference task candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["decision", "instruction", "required_skill_ids", "rejection_reason"],
+  "properties": {
+    "decision": {"enum": ["candidate", "rejected_combination"]},
+    "instruction": {"type": ["string", "null"]},
+    "required_skill_ids": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 5,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "rejection_reason": {"type": ["string", "null"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"decision": {"const": "candidate"}}},
+      "then": {
+        "properties": {
+          "instruction": {"type": "string", "minLength": 1},
+          "required_skill_ids": {"minItems": 2},
+          "rejection_reason": {"type": "null"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"decision": {"const": "rejected_combination"}}},
+      "then": {
+        "properties": {
+          "instruction": {"type": "null"},
+          "required_skill_ids": {"maxItems": 0},
+          "rejection_reason": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "schema_version": "1.0",
+  "skills": [
+    {
+      "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Build a row formula that subtracts a range total",
+      "procedure": [
+        "Select the output cell in the row to calculate.",
+        "Enter and commit a formula that subtracts individual values and a contiguous range total from a starting value. For example, use `=B2-C2-D2-SUM(F2:H2)`.",
+        "When reused on another table, replace the cell references with the relevant sale, return, adjustment, and expense columns."
+      ],
+      "efficiency_tip": "Use a single SUM range for adjacent expense columns instead of subtracting each expense cell separately.",
+      "source": {
+        "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "action_ids": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Apply currency formatting with the toolbar",
+      "procedure": [
+        "Keep the cell or range containing monetary results selected.",
+        "Click the toolbar's Format as Currency button to apply the currency number format.",
+        "For example, after calculating a value in J2, select J2 and use the currency icon so the numeric result displays as an amount."
+      ],
+      "efficiency_tip": "Format the first result cell before filling the formula down so copied results retain the same number format.",
+      "source": {
+        "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "action_ids": [
+          2
+        ]
+      }
+    },
+    {
+      "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03",
+      "app": "libreoffice_calc",
+      "name": "Fill a formula down using the fill handle",
+      "procedure": [
+        "Select the cell containing the formula to propagate, such as J2 or A2.",
+        "Move to the small square at the selection's bottom-right corner until the fill-handle cursor is available.",
+        "Drag the handle down to the final target row, for example from row 2 through row 10.",
+        "Calc copies the formula into each row and adjusts relative row references automatically."
+      ],
+      "efficiency_tip": "Drag the fill handle directly to the last adjacent row of data rather than copying and pasting formulas one row at a time.",
+      "source": {
+        "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "action_ids": [
+          3,
+          4,
+          9,
+          10
+        ]
+      }
+    },
+    {
+      "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04",
+      "app": "libreoffice_calc",
+      "name": "Insert a new worksheet from the sheet tab bar",
+      "procedure": [
+        "Click the plus button beside the existing worksheet tabs; for example, use the plus control next to Sheet1 to add a blank sheet.",
+        "Calc creates and activates a new worksheet, ready for cell entry."
+      ],
+      "efficiency_tip": "Use the sheet-tab plus button to add a worksheet immediately, without opening a worksheet-management dialog.",
+      "source": {
+        "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "action_ids": [
+          5
+        ]
+      }
+    },
+    {
+      "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05",
+      "app": "libreoffice_calc",
+      "name": "Concatenate cross-sheet cell values in a formula",
+      "procedure": [
+        "In the destination cell, enter a concatenation formula that joins source values with text separators. For example, type `=$Sheet1.A2&\"_\"&$Sheet1.J2`.",
+        "The `&` operator joins the two references and the quoted underscore literal into one text result.",
+        "In `$Sheet1.A2`, the `$` fixes the source sheet name `Sheet1`; column A and row 2 remain relative, so filling downward changes it to `$Sheet1.A3`. The same behavior applies to `$Sheet1.J2`."
+      ],
+      "efficiency_tip": "Reference the source sheet directly in the formula so the result updates automatically when the source values change.",
+      "source": {
+        "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "action_ids": [
+          8
+        ]
+      }
+    },
+    {
+      "skill_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Create a formula-based conditional formatting rule",
+      "procedure": [
+        "Select the cells to evaluate; for example, press Ctrl+A to select the current sheet’s used range or select a specific calendar range.",
+        "Open Format > Conditional > Condition.",
+        "In the condition type drop-down, choose Formula is.",
+        "Enter a formula that returns TRUE for cells to format. For example, `=AND(WEEKDAY(A1,2)>5,NOT(ISBLANK(A1)))` evaluates weekend dates while excluding blank cells.",
+        "After assigning or creating the desired style, confirm the conditional-formatting dialog to save the rule. The relative reference `A1` is evaluated relative to each cell in the formatted range."
+      ],
+      "efficiency_tip": "Select the entire target range before opening Conditional Formatting so one rule applies to all cells at once; use relative references such as A1 so Calc evaluates the corresponding cell in each position.",
+      "source": {
+        "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          14
+        ]
+      }
+    },
+    {
+      "skill_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Create a custom cell style with a background color",
+      "procedure": [
+        "In the conditional-formatting dialog’s Apply Style control, open the style drop-down and choose New Style.",
+        "In the style dialog, open the Background settings, then open the color chooser.",
+        "Choose the required background color; for example, select red (`#ff0000`).",
+        "Confirm the style dialog with OK so the new style is available for assignment to the conditional rule."
+      ],
+      "efficiency_tip": "Create a custom style from the conditional-format dialog rather than manually filling cells; the same style can then be reused by other conditional rules.",
+      "source": {
+        "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+        "action_ids": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      }
+    },
+    {
+      "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Create a Pivot Table from selected worksheet data",
+      "procedure": [
+        "Select the data to summarize. For example, click a column header to use that entire column as the source when the column contains the needed records.",
+        "Click the Pivot Table toolbar icon to open the Pivot Table creation workflow.",
+        "Confirm the detected source selection, for example by pressing Enter when the proposed range is correct."
+      ],
+      "efficiency_tip": "Select the complete contiguous source range before launching the command when possible; this avoids correcting an automatically detected range in the Pivot Table source dialog.",
+      "source": {
+        "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Place a field in Pivot Table row labels",
+      "procedure": [
+        "In the Pivot Table layout dialog, locate the desired field in the Available Fields list.",
+        "Drag the field into the Row Fields area. For example, drag an identifier field there to produce one row label per distinct identifier."
+      ],
+      "efficiency_tip": "Drag a field directly from Available Fields to Row Fields rather than adding it elsewhere first and repositioning it afterward.",
+      "source": {
+        "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+        "action_ids": [
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03",
+      "app": "libreoffice_calc",
+      "name": "Add a field as a Pivot Table value",
+      "procedure": [
+        "Locate the field in the Available Fields list in the Pivot Table layout dialog.",
+        "Drag it to the Data Fields area. For example, adding an identifier field as a data field creates a value summary for each row-label group."
+      ],
+      "efficiency_tip": "Use the same source field in both Row Fields and Data Fields when you need a grouped list together with a summary of each group.",
+      "source": {
+        "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04",
+      "app": "libreoffice_calc",
+      "name": "Set a Pivot Table value aggregation to Count",
+      "procedure": [
+        "Double-click the field shown in the Data Fields area to open its data-field settings.",
+        "Choose the Count aggregation option instead of a numeric summary such as Sum.",
+        "Confirm the aggregation setting, then confirm the Pivot Table layout to create or update the table."
+      ],
+      "efficiency_tip": "Open the data-field settings immediately after placing a field so its aggregation is correct before finalizing the layout.",
+      "source": {
+        "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+        "action_ids": [
+          7,
+          8,
+          9,
+          10
+        ]
+      }
+    },
+    {
+      "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05",
+      "app": "libreoffice_calc",
+      "name": "Rename a worksheet tab",
+      "procedure": [
+        "Double-click the worksheet tab to enter tab-name editing mode.",
+        "Type the replacement name, for example `Sheet2`, and press Enter to apply it."
+      ],
+      "efficiency_tip": "Rename a newly created sheet immediately while its tab is active, so later formulas and references can use a meaningful sheet name.",
+      "source": {
+        "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+        "action_ids": [
+          11,
+          12,
+          13
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://osworld.local/schemas/reference-task-review.schema.json",
+  "title": "Human review for a generated or recorded reference task",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["reference_task_id", "decision", "covered_skill_ids", "missing_or_incorrect_skill_ids", "reviewer", "notes"],
+  "properties": {
+    "reference_task_id": {"type": "string", "minLength": 1},
+    "decision": {"enum": ["approved", "rejected"]},
+    "covered_skill_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "missing_or_incorrect_skill_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "reviewer": {"type": "string", "minLength": 1},
+    "notes": {"type": "string"}
+  }
+}

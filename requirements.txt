@@ -42,7 +42,7 @@ formulas
 pydrive
 fastdtw
 odfpy
-openai
+openai>=1.55,<3
 func-timeout
 beautifulsoup4
 dashscope
