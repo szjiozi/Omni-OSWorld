@@ -1,0 +1,7 @@
+Create the constrained OSWorld annotation setup blueprint for this input.
+
+REFERENCE_PACKAGE:
+{{REFERENCE_PACKAGE}}
+
+ARTIFACT_MANIFEST_ENTRY:
+{{ARTIFACT_MANIFEST_ENTRY}}

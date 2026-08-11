@@ -1,0 +1,402 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-r01-003",
+  "package": {
+    "reference_task_id": "reference-task-r01-003",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_calc",
+    "task_instruction": "Build a delivery route review dashboard: add and name a new worksheet \"Route Dashboard\", create a list of route-and-tracking tags from the Dispatch Log for every dispatch, and include a Pivot Table showing the number of tracking codes handled by each carrier.",
+    "required_skill_ids": [
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05"
+    ],
+    "artifact_spec": {
+      "artifact_type": "xlsx",
+      "domain": "regional delivery dispatches",
+      "generation_notes": [
+        "Use entirely synthetic, privacy-safe dispatch records with fictional carrier names, route labels, and tracking codes.",
+        "Create one formatted data table with a bold header row and 30 dispatch-record rows. Use ordinary spreadsheet styling only; do not create a Pivot Table or conditional-format rules.",
+        "Use tracking codes such as TRK-4101 through TRK-4130, with repeated carrier names across records so a count-by-carrier Pivot Table is meaningful.",
+        "Use route labels such as North Loop, Harbor Run, Central Link, and West Ridge. Include dates within a single fictional month and parcel counts from 1 to 8."
+      ],
+      "initial_state": [
+        "The workbook opens with exactly one visible worksheet named \"Dispatch Log\".",
+        "Dispatch Log contains the source table in A1:E31, with headers in row 1 and 30 populated records in rows 2:31.",
+        "No additional worksheet exists when the workbook opens.",
+        "No Pivot Table exists anywhere in the workbook.",
+        "No cross-sheet tag formula or filled-down formula results exist anywhere in the workbook."
+      ],
+      "must_not_be_completed": [
+        "Do not pre-create the dashboard worksheet that the operator must insert and rename.",
+        "Do not pre-create the carrier-count Pivot Table.",
+        "Do not pre-populate the route/tracking tag column or its formulas."
+      ],
+      "sheets": [
+        {
+          "columns": [
+            {
+              "data_type": "date",
+              "name": "Dispatch Date"
+            },
+            {
+              "data_type": "text",
+              "name": "Carrier"
+            },
+            {
+              "data_type": "text",
+              "name": "Tracking Code"
+            },
+            {
+              "data_type": "text",
+              "name": "Route"
+            },
+            {
+              "data_type": "integer",
+              "name": "Parcel Count"
+            }
+          ],
+          "name": "Dispatch Log",
+          "purpose": "Source dispatch records for a delivery operations dashboard.",
+          "row_count": 30
+        }
+      ],
+      "workbook_title": "Dispatch Route Review"
+    },
+    "operator_guide": {
+      "allowed_variation": "The expert may place the tag list and Pivot Table in any non-overlapping regions of the new worksheet, use an equivalent Calc-supported method to open the Pivot Table layout, and use a semantically equivalent separator in the concatenated tag formula.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Use the plus control at the sheet-tab bar so the blank dashboard sheet is created directly in the workbook.",
+          "operation_intent": "Insert a blank worksheet to hold the delivery review dashboard.",
+          "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04",
+          "visible_success_signal": "A new blank worksheet tab is visible and active beside Dispatch Log."
+        },
+        {
+          "efficiency_tip": "Rename the newly active tab before creating formulas or reports so the dashboard has a meaningful, stable name.",
+          "operation_intent": "Rename the inserted worksheet to \"Route Dashboard\".",
+          "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05",
+          "visible_success_signal": "The active worksheet tab visibly reads \"Route Dashboard\"."
+        },
+        {
+          "efficiency_tip": "Use a formula with a fixed source-sheet reference and relative row references, such as joining Route and Tracking Code, so the copied rows update automatically.",
+          "operation_intent": "Create the first Route Dashboard tag by concatenating the Dispatch Log Route and Tracking Code values with a readable separator, then use the fill handle to extend it through all 30 dispatch rows.",
+          "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05",
+          "visible_success_signal": "The first tag displays both source values as one text label, and the completed tag column contains corresponding route/tracking labels for rows 2 through 31."
+        },
+        {
+          "efficiency_tip": "Drag the first formula cell's fill handle directly to the last adjacent dispatch row instead of copying formulas row by row.",
+          "operation_intent": "Propagate the initial cross-sheet tag formula down the full dispatch-record list using the fill handle.",
+          "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03",
+          "visible_success_signal": "Each filled tag row has adjusted source-row references and no manual repeated formula entry is needed."
+        },
+        {
+          "efficiency_tip": "After Carrier has been used as the grouping field, add Tracking Code to the data area to produce a count summary for each carrier.",
+          "operation_intent": "In the Pivot Table layout, add Tracking Code as a value/data field for the carrier summary.",
+          "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03",
+          "visible_success_signal": "The Pivot Table visibly shows carrier groups with a numeric Tracking Code count/value column."
+        }
+      ],
+      "recording_end_state": "Route Dashboard is a renamed inserted worksheet containing a filled list of cross-sheet route/tracking tags and a non-overlapping Pivot Table that summarizes Tracking Code counts by Carrier.",
+      "recording_start_state": "The workbook contains only the populated Dispatch Log source sheet, with no dashboard sheet, Pivot Table, or tag formulas."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Create a Pivot Table from the Dispatch Log source range and place it on the newly inserted dashboard worksheet.",
+        "reason": "A Pivot Table container is required before its fields can be arranged."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Place Carrier in the Pivot Table row fields.",
+        "reason": "Carrier groups are needed so the Tracking Code value summary is interpretable as a count by carrier."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Enter a descriptive header for the route/tracking tags and position that helper list away from the Pivot Table output.",
+        "reason": "This makes the concatenated cross-sheet results understandable and avoids overlapping the Pivot Table."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Enter the first cross-sheet concatenation formula referencing Route and Tracking Code from Dispatch Log before filling it down.",
+        "reason": "The fill-handle operation needs an initial relative-reference formula to propagate."
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+          "skill_count": 3,
+          "skill_fraction": 0.6
+        },
+        {
+          "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+          "skill_count": 2,
+          "skill_fraction": 0.4
+        }
+      ],
+      "dominant_source_task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+      "dominant_source_skill_fraction": 0.6,
+      "complete_source_skill_sets_included": []
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+        "max_sequence_similarity": 0.268041,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "sequence_similarity": 0.015175
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "sequence_similarity": 0.268041
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "sequence_similarity": 0.230986
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+        "max_cosine_similarity": 0.329174,
+        "by_source_task": [
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "cosine_similarity": 0.275893
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "cosine_similarity": 0.204955
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "cosine_similarity": 0.329174
+          }
+        ],
+        "embedding_request_id": "7ee6513d-fcfd-40d9-ace3-7a5b2a7b61fa"
+      }
+    },
+    "generation": {
+      "attempt": 3,
+      "kind": "new_combination",
+      "request_id": "cd476238-2d08-49a8-beca-6332a2adce56",
+      "prompt_sha256": "4ddfe37e65a8042f34a605105528958660980d951606888ccadc6547a8d4ea61"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05",
+      "app": "libreoffice_calc",
+      "name": "Rename a worksheet tab",
+      "procedure": [
+        "Double-click the worksheet tab to enter tab-name editing mode.",
+        "Type the replacement name, for example `Sheet2`, and press Enter to apply it."
+      ],
+      "efficiency_tip": "Rename a newly created sheet immediately while its tab is active, so later formulas and references can use a meaningful sheet name.",
+      "source": {
+        "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+        "action_ids": [
+          11,
+          12,
+          13
+        ]
+      }
+    },
+    {
+      "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04",
+      "app": "libreoffice_calc",
+      "name": "Insert a new worksheet from the sheet tab bar",
+      "procedure": [
+        "Click the plus button beside the existing worksheet tabs; for example, use the plus control next to Sheet1 to add a blank sheet.",
+        "Calc creates and activates a new worksheet, ready for cell entry."
+      ],
+      "efficiency_tip": "Use the sheet-tab plus button to add a worksheet immediately, without opening a worksheet-management dialog.",
+      "source": {
+        "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "action_ids": [
+          5
+        ]
+      }
+    },
+    {
+      "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03",
+      "app": "libreoffice_calc",
+      "name": "Fill a formula down using the fill handle",
+      "procedure": [
+        "Select the cell containing the formula to propagate, such as J2 or A2.",
+        "Move to the small square at the selection's bottom-right corner until the fill-handle cursor is available.",
+        "Drag the handle down to the final target row, for example from row 2 through row 10.",
+        "Calc copies the formula into each row and adjusts relative row references automatically."
+      ],
+      "efficiency_tip": "Drag the fill handle directly to the last adjacent row of data rather than copying and pasting formulas one row at a time.",
+      "source": {
+        "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "action_ids": [
+          3,
+          4,
+          9,
+          10
+        ]
+      }
+    },
+    {
+      "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03",
+      "app": "libreoffice_calc",
+      "name": "Add a field as a Pivot Table value",
+      "procedure": [
+        "Locate the field in the Available Fields list in the Pivot Table layout dialog.",
+        "Drag it to the Data Fields area. For example, adding an identifier field as a data field creates a value summary for each row-label group."
+      ],
+      "efficiency_tip": "Use the same source field in both Row Fields and Data Fields when you need a grouped list together with a summary of each group.",
+      "source": {
+        "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05",
+      "app": "libreoffice_calc",
+      "name": "Concatenate cross-sheet cell values in a formula",
+      "procedure": [
+        "In the destination cell, enter a concatenation formula that joins source values with text separators. For example, type `=$Sheet1.A2&\"_\"&$Sheet1.J2`.",
+        "The `&` operator joins the two references and the quoted underscore literal into one text result.",
+        "In `$Sheet1.A2`, the `$` fixes the source sheet name `Sheet1`; column A and row 2 remain relative, so filling downward changes it to `$Sheet1.A3`. The same behavior applies to `$Sheet1.J2`."
+      ],
+      "efficiency_tip": "Reference the source sheet directly in the formula so the result updates automatically when the source values change.",
+      "source": {
+        "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "action_ids": [
+          8
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+      "instruction": "Help me fill in the Gross profit column by subtracting all the available expenses including discounts, allowances, material and labor charges, and overhead from the actual sale, i.e., the sales after deducting the returns. Then under column A named \"Year_Profit\" in a new sheet, display the Year Column in Sheet 1 as text appended by a \"_\" with the corresponding integer digits of Gross Profit value.",
+      "required_skill_ids": [
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04",
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03",
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 3,
+          "action": "`MOVE_TO` bottom right corner of the cell J2`"
+        },
+        {
+          "action_id": 4,
+          "action": "`DRAG_TO` bottom right corner of the cell J10"
+        },
+        {
+          "action_id": 5,
+          "action": "`CLICK` on + to left of sheet1"
+        },
+        {
+          "action_id": 8,
+          "action": "`TYPING` '=$Sheet1.A2&\"_\"&$Sheet1.J2'"
+        },
+        {
+          "action_id": 9,
+          "action": "`MOVE_TO` bottom right corner of the cell A2`"
+        },
+        {
+          "action_id": 10,
+          "action": "`DRAG_TO` bottom right corner of the cell A10"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell J2",
+        "`TYPING` '=B2-C2-D2-SUM(F2:H2)'",
+        "`CLICK` format as currency icon",
+        "`MOVE_TO` bottom right corner of the cell J2`",
+        "`DRAG_TO` bottom right corner of the cell J10",
+        "`CLICK` on + to left of sheet1",
+        "`TYPING` 'Year_Profit'",
+        "`PRESS` enter",
+        "`TYPING` '=$Sheet1.A2&\"_\"&$Sheet1.J2'",
+        "`MOVE_TO` bottom right corner of the cell A2`",
+        "`DRAG_TO` bottom right corner of the cell A10"
+      ]
+    },
+    {
+      "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+      "instruction": "Create a Pivot Table in a new sheet (Sheet2) to count how many times each \"Invoice No.\" appears.",
+      "required_skill_ids": [
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 5,
+          "action": "`MOVE_TO` invoice no. in available fields box"
+        },
+        {
+          "action_id": 6,
+          "action": "`DRAG_TO` data fields box"
+        },
+        {
+          "action_id": 11,
+          "action": "`DOUBLE_CLICK` Pivot Table Sheet1_1"
+        },
+        {
+          "action_id": 12,
+          "action": "`TYPING` Sheet2"
+        },
+        {
+          "action_id": 13,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on grey cell box A for selecting entire column",
+        "`CLICK` on pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` invoice no. in available fields box",
+        "`DRAG_TO` row fields box",
+        "`MOVE_TO` invoice no. in available fields box",
+        "`DRAG_TO` data fields box",
+        "`DOUBLE_CLICK on invoice no. box in data fields",
+        "`CLICK` Count",
+        "`PRESS` enter",
+        "`CLICK` ok",
+        "`DOUBLE_CLICK` Pivot Table Sheet1_1",
+        "`TYPING` Sheet2",
+        "`PRESS` enter"
+      ]
+    }
+  ],
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-r01-003",
+      "artifact_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-003/initial_artifact.xlsx",
+      "artifact_sha256": "ea53a2c14313267c1db4b7debf6d1c3a930a4e59577b8d37e310eeed19809755",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-003/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-003/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.xlsx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-r01-003",
+      "task_config_path": "evaluation_examples/expert_skill_learning/pilot/task_configs/reference-task-r01-003.json",
+      "artifact_sha256": "ea53a2c14313267c1db4b7debf6d1c3a930a4e59577b8d37e310eeed19809755",
+      "blueprint_request_id": "1f81e500-850a-4ce8-b138-10f92439210f"
+    },
+    "packet_path": "task_config.json"
+  }
+}

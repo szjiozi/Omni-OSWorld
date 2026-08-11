@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "scripts/python/manage_reference_review_packets.py export",
+  "reference_task_id": "reference-task-r01-001",
+  "context_fingerprint": "cd69ce793a36978334cdd000b45aaa8e798b21899e4e717161642e823a562896",
+  "inputs": [
+    {
+      "role": "artifact",
+      "path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-001/initial_artifact.xlsx",
+      "sha256": "818d50433cae5308ab4bdc0f7d98f405304500c97321713de72c1fb8304e1203"
+    },
+    {
+      "role": "artifact_blueprint",
+      "path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-001/artifact_blueprint.json",
+      "sha256": "f2d36ac7a4e80742f1e294bff39b4c043cbd72f0dcdd4eba49d1a1f3908f1f4a"
+    },
+    {
+      "role": "artifact_qa",
+      "path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-001/artifact_qa.json",
+      "sha256": "be542b8fced30fffe2921c383220d6e55d7ade907e3ba9bbfb84fa95828fbcdc"
+    },
+    {
+      "role": "task_config",
+      "path": "evaluation_examples/expert_skill_learning/pilot/task_configs/reference-task-r01-001.json",
+      "sha256": "252a4e8c175881864757a9ecd1d7be2abcb3552c5819053c3202214b9fb4a976"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-001/previews/Enrollment_Log.png",
+      "sha256": "dc06194c598bf6d598ad1204a1a1b9daf7c09935aeaf256650a18670e29da1e2"
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "TASK.md",
+      "sha256": "40a978f7df9f9886a0db85190c96e923b884ee5b89470f1b9d610ca90742f81d"
+    },
+    {
+      "path": "context.json",
+      "sha256": "3e206f1036ec12061e4e28b2a14b9f645db75ce040d607f80c3b2348d076115c"
+    },
+    {
+      "path": "task_config.json",
+      "sha256": "252a4e8c175881864757a9ecd1d7be2abcb3552c5819053c3202214b9fb4a976"
+    },
+    {
+      "path": "artifact/initial_artifact.xlsx",
+      "sha256": "818d50433cae5308ab4bdc0f7d98f405304500c97321713de72c1fb8304e1203"
+    },
+    {
+      "path": "artifact/artifact_blueprint.json",
+      "sha256": "f2d36ac7a4e80742f1e294bff39b4c043cbd72f0dcdd4eba49d1a1f3908f1f4a"
+    },
+    {
+      "path": "artifact/artifact_qa.json",
+      "sha256": "be542b8fced30fffe2921c383220d6e55d7ade907e3ba9bbfb84fa95828fbcdc"
+    },
+    {
+      "path": "artifact/previews/Enrollment_Log.png",
+      "sha256": "dc06194c598bf6d598ad1204a1a1b9daf7c09935aeaf256650a18670e29da1e2"
+    }
+  ],
+  "editable_review": {
+    "path": "review.json",
+    "excluded_from_generated_file_hashes": true
+  }
+}

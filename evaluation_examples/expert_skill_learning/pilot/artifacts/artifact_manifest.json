@@ -31,7 +31,7 @@
     {
       "reference_task_id": "reference-task-r01-004",
       "artifact_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-004/initial_artifact.xlsx",
-      "artifact_sha256": "5ac0f01ddba6c807b50cdfea011911f6f4b32a98233f7225f7231382fe58cb52",
+      "artifact_sha256": "c2be3f7a6990cc8cf5d561c018120cf50120e6d5a96aff9038a5da1a2511f0c6",
       "blueprint_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-004/artifact_blueprint.json",
       "qa_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-004/artifact_qa.json",
       "manual_setup_required": false,

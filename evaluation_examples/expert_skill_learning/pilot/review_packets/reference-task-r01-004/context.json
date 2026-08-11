@@ -1,0 +1,298 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-r01-004",
+  "package": {
+    "reference_task_id": "reference-task-r01-004",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_calc",
+    "task_instruction": "Complete the billed-charge calculation for every workshop service record and present those results as currency. Then create a new Pivot Table summary that lists each coordinator and their total billed charge.",
+    "required_skill_ids": [
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02"
+    ],
+    "artifact_spec": {
+      "artifact_type": "xlsx",
+      "domain": "community workshop service billing",
+      "generation_notes": [
+        "All records are synthetic and contain no personal, customer, or financial account information.",
+        "Create 24 service-log records with distinct Work Order IDs such as WO-4101 through WO-4124.",
+        "Use five repeating Coordinator names: Avery Cole, Imani Park, Jules Rowan, Morgan Lee, and Tessa Vale.",
+        "Use plausible Service Tier values such as Setup, Repair, Training, Inspection, and Delivery.",
+        "Populate Units with integers from 1 to 8 and Hourly Rate with varied positive decimal values from 42.50 to 125.00 so that Billed Charge calculations produce varied nonzero amounts.",
+        "Format the Hourly Rate column as plain decimal numbers with two decimal places in the initial workbook so formulas entered in Billed Charge do not inherit a currency format.",
+        "Do not include any Pivot Table object, Pivot Table sheet, conditional formatting, or hidden helper data."
+      ],
+      "initial_state": [
+        "The workbook opens on the Service Log sheet.",
+        "Service Log contains a single header row and 24 populated data rows.",
+        "The Billed Charge cells are blank, have no formulas, and use General number formatting.",
+        "The source data is a contiguous table with no blank rows or blank headers.",
+        "No pivot-summary sheet exists initially."
+      ],
+      "must_not_be_completed": [
+        "Do not enter or fill formulas in Billed Charge.",
+        "Do not apply a currency format to Billed Charge.",
+        "Do not create a Pivot Table or a coordinator summary sheet."
+      ],
+      "sheets": [
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "Work Order"
+            },
+            {
+              "data_type": "text",
+              "name": "Coordinator"
+            },
+            {
+              "data_type": "text",
+              "name": "Service Tier"
+            },
+            {
+              "data_type": "integer",
+              "name": "Units"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Hourly Rate"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Billed Charge"
+            }
+          ],
+          "name": "Service Log",
+          "purpose": "Source records for workshop services. Billed Charge is intentionally blank and should be calculated as Units multiplied by Hourly Rate.",
+          "row_count": 24
+        }
+      ],
+      "workbook_title": "Workshop Service Billing"
+    },
+    "operator_guide": {
+      "allowed_variation": "The expert may calculate and format the source results before creating the Pivot Table, or use any equivalent Calc workflow that produces the requested source calculations and a new-sheet pivot summary. The destination sheet name and the order of distinct coordinator labels may vary.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Format the first calculated result cell with the toolbar before filling the formula down when that workflow preserves the number format; otherwise select the completed result range once and format it together.",
+          "operation_intent": "Present every calculated Billed Charge value in the Service Log as a currency amount using Calc's currency toolbar control.",
+          "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02",
+          "visible_success_signal": "The Billed Charge column shows currency symbols and two-decimal monetary displays rather than unformatted numeric products."
+        },
+        {
+          "efficiency_tip": "Move Coordinator directly from the available Pivot Table fields into the Row Fields area, then ensure the billed amount is summarized as a sum.",
+          "operation_intent": "In the new Pivot Table layout, place Coordinator in the row-label area for a coordinator-level billed-charge summary.",
+          "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02",
+          "visible_success_signal": "The resulting Pivot Table displays one row label for each coordinator, with a corresponding total Billed Charge value."
+        }
+      ],
+      "recording_end_state": "Service Log has calculated, currency-formatted Billed Charge values for all 24 records, and a newly created Pivot Table sheet summarizes summed billed charge by Coordinator in row labels.",
+      "recording_start_state": "The workbook contains only the populated Service Log source sheet; Billed Charge is blank and unformatted, and no Pivot Table exists."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Enter a Units × Hourly Rate formula for the first Billed Charge record and fill it through the remaining service-log rows.",
+        "reason": "The calculated monetary measure is needed before it can be formatted and summarized."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Select the Billed Charge result range before using the currency toolbar control.",
+        "reason": "The requested display format must be applied to the calculated values."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Select the complete Service Log data range with headers and initiate creation of a Pivot Table on a new worksheet.",
+        "reason": "A Pivot Table object and destination sheet are required to expose the Row Fields layout."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Configure Billed Charge as a summed data/value field in the Pivot Table.",
+        "reason": "The requested coordinator summary needs a total billed amount alongside the row labels."
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+          "skill_count": 1,
+          "skill_fraction": 0.5
+        },
+        {
+          "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+          "skill_count": 1,
+          "skill_fraction": 0.5
+        }
+      ],
+      "dominant_source_task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+      "dominant_source_skill_fraction": 0.5,
+      "complete_source_skill_sets_included": []
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+        "max_sequence_similarity": 0.296053,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "sequence_similarity": 0.023026
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "sequence_similarity": 0.178042
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "sequence_similarity": 0.296053
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+        "max_cosine_similarity": 0.449874,
+        "by_source_task": [
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "cosine_similarity": 0.394321
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "cosine_similarity": 0.234193
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "cosine_similarity": 0.449874
+          }
+        ],
+        "embedding_request_id": "7ee6513d-fcfd-40d9-ace3-7a5b2a7b61fa"
+      }
+    },
+    "generation": {
+      "attempt": 4,
+      "kind": "new_combination",
+      "request_id": "1c9a53e0-ad18-4427-b386-06f9a82efd77",
+      "prompt_sha256": "8adac6dcaab3a7a5eb8112cc7b97e2ef9b41daa51fa6000250df74853502a462"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Apply currency formatting with the toolbar",
+      "procedure": [
+        "Keep the cell or range containing monetary results selected.",
+        "Click the toolbar's Format as Currency button to apply the currency number format.",
+        "For example, after calculating a value in J2, select J2 and use the currency icon so the numeric result displays as an amount."
+      ],
+      "efficiency_tip": "Format the first result cell before filling the formula down so copied results retain the same number format.",
+      "source": {
+        "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "action_ids": [
+          2
+        ]
+      }
+    },
+    {
+      "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Place a field in Pivot Table row labels",
+      "procedure": [
+        "In the Pivot Table layout dialog, locate the desired field in the Available Fields list.",
+        "Drag the field into the Row Fields area. For example, drag an identifier field there to produce one row label per distinct identifier."
+      ],
+      "efficiency_tip": "Drag a field directly from Available Fields to Row Fields rather than adding it elsewhere first and repositioning it afterward.",
+      "source": {
+        "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+        "action_ids": [
+          3,
+          4
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+      "instruction": "Help me fill in the Gross profit column by subtracting all the available expenses including discounts, allowances, material and labor charges, and overhead from the actual sale, i.e., the sales after deducting the returns. Then under column A named \"Year_Profit\" in a new sheet, display the Year Column in Sheet 1 as text appended by a \"_\" with the corresponding integer digits of Gross Profit value.",
+      "required_skill_ids": [
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 2,
+          "action": "`CLICK` format as currency icon"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell J2",
+        "`TYPING` '=B2-C2-D2-SUM(F2:H2)'",
+        "`CLICK` format as currency icon",
+        "`MOVE_TO` bottom right corner of the cell J2`",
+        "`DRAG_TO` bottom right corner of the cell J10",
+        "`CLICK` on + to left of sheet1",
+        "`TYPING` 'Year_Profit'",
+        "`PRESS` enter",
+        "`TYPING` '=$Sheet1.A2&\"_\"&$Sheet1.J2'",
+        "`MOVE_TO` bottom right corner of the cell A2`",
+        "`DRAG_TO` bottom right corner of the cell A10"
+      ]
+    },
+    {
+      "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+      "instruction": "Create a Pivot Table in a new sheet (Sheet2) to count how many times each \"Invoice No.\" appears.",
+      "required_skill_ids": [
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 3,
+          "action": "`MOVE_TO` invoice no. in available fields box"
+        },
+        {
+          "action_id": 4,
+          "action": "`DRAG_TO` row fields box"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on grey cell box A for selecting entire column",
+        "`CLICK` on pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` invoice no. in available fields box",
+        "`DRAG_TO` row fields box",
+        "`MOVE_TO` invoice no. in available fields box",
+        "`DRAG_TO` data fields box",
+        "`DOUBLE_CLICK on invoice no. box in data fields",
+        "`CLICK` Count",
+        "`PRESS` enter",
+        "`CLICK` ok",
+        "`DOUBLE_CLICK` Pivot Table Sheet1_1",
+        "`TYPING` Sheet2",
+        "`PRESS` enter"
+      ]
+    }
+  ],
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-r01-004",
+      "artifact_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-004/initial_artifact.xlsx",
+      "artifact_sha256": "c2be3f7a6990cc8cf5d561c018120cf50120e6d5a96aff9038a5da1a2511f0c6",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-004/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-004/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.xlsx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-r01-004",
+      "task_config_path": "evaluation_examples/expert_skill_learning/pilot/task_configs/reference-task-r01-004.json",
+      "artifact_sha256": "c2be3f7a6990cc8cf5d561c018120cf50120e6d5a96aff9038a5da1a2511f0c6",
+      "blueprint_request_id": "6f58d7a2-ad3a-4010-8c65-a4ba24597c24"
+    },
+    "packet_path": "task_config.json"
+  }
+}

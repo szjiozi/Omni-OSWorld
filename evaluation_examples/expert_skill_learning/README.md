@@ -1,5 +1,10 @@
 # Expert Skill Reference Task Construction
 
+Human reviewers should follow the field-by-field and decision guidance in
+[`reviewer.md`](reviewer.md) before editing the pilot review form.
+Human experts should follow [`annotator.md`](annotator.md) before launching an
+AWS recording session.
+
 This directory contains the version-controlled contracts for the first pilot of
 the OSWorld expert-skill benchmark. The pilot uses exactly three
 `libreoffice_calc` source tasks from OSWorld-Human.
@@ -33,6 +38,13 @@ candidate level. `similarity_reference.semantic` is real cosine similarity from
 audit only. Neither score is an automatic accept/reject threshold. Approved
 coverage is computed only from `pilot/reference_package_reviews.json`; the
 initial `pilot/coverage_state.json` therefore remains 0/12 approved.
+The generator pre-populates one review form per package. A deterministic packet
+exporter then gathers each task's instruction, full skill guides, exact source
+actions, artifact, previews, task config, and editable review into
+`pilot/review_packets/<reference-task-id>/`. Reviewers work one directory at a
+time and edit only its `review.json`; untouched forms are treated as pending.
+The packet collector validates those forms, merges them into the pipeline's
+central `pilot/reference_package_reviews.json`, and recomputes approved coverage.
 
 `pilot/artifact_blueprints.json` and `pilot/artifacts/` contain four generated,
 rendered, formula-error-scanned XLSX workbooks. All are synthetic and need no
@@ -96,7 +108,31 @@ repeated operations are allowed when they keep the task natural, and must be
 declared separately. The sampler groups 2–5 same-app skills, retries model
 rejections, and reports unresolved skills if `--max-attempts` is exhausted.
 
-After editing the append-only review file, recompute approved coverage:
+Create or refresh the self-contained reviewer directories:
+
+```bash
+python scripts/python/manage_reference_review_packets.py export
+```
+
+Start at `pilot/review_packets/index.md`, open one task's `TASK.md`, inspect the
+copied artifact and preview, and fill that directory's standalone `review.json`.
+The exporter preserves local review edits. If an already-reviewed task's inputs
+change, it refuses to refresh the stale packet; `--force` explicitly refreshes
+the packet and resets that local decision so the changed task must be reviewed
+again.
+
+After reviewing, validate and collect all per-task forms:
+
+```bash
+python scripts/python/manage_reference_review_packets.py collect
+```
+
+The collector is the normal write path for the central review file. It verifies
+packet input and output hashes, merges reviews in stable package order, writes
+`pilot/reference_package_reviews.json`, and updates `pilot/coverage_state.json`.
+It can operate on one packet with `--task-id <reference-task-id>`.
+
+The lower-level coverage command remains available for validation or debugging:
 
 ```bash
 python scripts/python/review_reference_packages.py \
@@ -127,6 +163,36 @@ replacing `--packages` with
 The builder preserves deliberately incomplete result columns, applies exact
 initial number formats and AutoFilter requirements, renders every sheet, and
 scans for spreadsheet formula errors.
+
+Generate constrained annotation setup blueprints and inject trusted standard
+OSWorld actions:
+
+```bash
+conda run -n osworld-aws-dev python \
+  scripts/python/generate_reference_task_configs.py
+```
+
+The LLM never receives or emits the trusted host artifact path, SHA256, or raw
+setup commands. Local code verifies the artifact and writes exactly one
+`upload_file` followed by one `open`; reference configs never contain an
+evaluator. Frozen Pilot outputs are in
+`pilot/annotation_setup_blueprints.json`, `pilot/task_configs/`, and
+`pilot/task_config_manifest.json`. The accepted four-call run used 6712 input
+tokens and 678 output tokens, with an estimated cost of `$0.021560`.
+
+After a package is approved, launch and record it on AWS:
+
+```bash
+python scripts/python/record_reference_task.py \
+  --reference-task-id reference-task-r01-001
+```
+
+Use `--allow-pending` only for an engineering smoke. The first Enter begins
+timestamped XInput/MP4/screenshot collection; the second Enter stops recording,
+normalizes privacy-filtered shortcut events, burns a bottom-centered key overlay
+into the default `recording.mp4`, preserves `recording_raw.mp4`, saves and
+downloads the final XLSX, writes the annotation bundle, and requests instance
+termination. See `annotator.md` for the complete preflight and recovery flow.
 
 Do not commit API keys, raw credentials, private user data, or authenticated
 browser profiles. Pilot artifacts and recordings may initially be pushed to the

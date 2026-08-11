@@ -25,6 +25,7 @@ from benchmark_construction.reference_review import (
     compute_review_state,
     load_reference_packages,
     load_reference_reviews,
+    write_reference_review_template,
 )
 from benchmark_construction.semantic_similarity import (
     EmbeddingConfig,
@@ -80,6 +81,17 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=Path(
             "results/expert_skill_learning/semantic_similarity_calls.jsonl"
+        ),
+    )
+    parser.add_argument(
+        "--reviews-output",
+        type=Path,
+        default=Path(
+            "results/expert_skill_learning/reference_package_reviews.json"
+        ),
+        help=(
+            "Create or extend a human-fillable review form without overwriting "
+            "existing review entries."
         ),
     )
     parser.add_argument("--pricing", type=Path, default=DEFAULT_PRICING_PATH)
@@ -157,8 +169,15 @@ async def run(args: argparse.Namespace) -> int:
         model=args.model,
         skill_pool_path=args.skill_pool,
     )
+    added_reviews = write_reference_review_template(
+        args.reviews_output, result.packages
+    )
     print(f"Wrote {len(result.packages)} packages to {args.output}")
     print(f"Generation metadata: {args.run_output}")
+    print(
+        f"Review form: {args.reviews_output} "
+        f"({added_reviews} new entries)"
+    )
     if result.unresolved_skill_ids:
         print(f"Unresolved candidate skills: {len(result.unresolved_skill_ids)}")
         return 2

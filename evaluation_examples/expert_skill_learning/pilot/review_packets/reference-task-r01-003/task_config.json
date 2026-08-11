@@ -1,0 +1,111 @@
+{
+  "id": "reference-task-r01-003",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Build a delivery route review dashboard: add and name a new worksheet \"Route Dashboard\", create a list of route-and-tracking tags from the Dispatch Log for every dispatch, and include a Pivot Table showing the number of tracking codes handled by each carrier.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-003/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/dispatch_review.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/dispatch_review.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-r01-003",
+    "artifact_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-003/initial_artifact.xlsx",
+    "artifact_sha256": "ea53a2c14313267c1db4b7debf6d1c3a930a4e59577b8d37e310eeed19809755",
+    "guest_artifact_path": "/home/user/Desktop/dispatch_review.xlsx",
+    "required_skill_ids": [
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03",
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The expert may place the tag list and Pivot Table in any non-overlapping regions of the new worksheet, use an equivalent Calc-supported method to open the Pivot Table layout, and use a semantically equivalent separator in the concatenated tag formula.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Use the plus control at the sheet-tab bar so the blank dashboard sheet is created directly in the workbook.",
+          "operation_intent": "Insert a blank worksheet to hold the delivery review dashboard.",
+          "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04",
+          "visible_success_signal": "A new blank worksheet tab is visible and active beside Dispatch Log."
+        },
+        {
+          "efficiency_tip": "Rename the newly active tab before creating formulas or reports so the dashboard has a meaningful, stable name.",
+          "operation_intent": "Rename the inserted worksheet to \"Route Dashboard\".",
+          "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05",
+          "visible_success_signal": "The active worksheet tab visibly reads \"Route Dashboard\"."
+        },
+        {
+          "efficiency_tip": "Use a formula with a fixed source-sheet reference and relative row references, such as joining Route and Tracking Code, so the copied rows update automatically.",
+          "operation_intent": "Create the first Route Dashboard tag by concatenating the Dispatch Log Route and Tracking Code values with a readable separator, then use the fill handle to extend it through all 30 dispatch rows.",
+          "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05",
+          "visible_success_signal": "The first tag displays both source values as one text label, and the completed tag column contains corresponding route/tracking labels for rows 2 through 31."
+        },
+        {
+          "efficiency_tip": "Drag the first formula cell's fill handle directly to the last adjacent dispatch row instead of copying formulas row by row.",
+          "operation_intent": "Propagate the initial cross-sheet tag formula down the full dispatch-record list using the fill handle.",
+          "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03",
+          "visible_success_signal": "Each filled tag row has adjusted source-row references and no manual repeated formula entry is needed."
+        },
+        {
+          "efficiency_tip": "After Carrier has been used as the grouping field, add Tracking Code to the data area to produce a count summary for each carrier.",
+          "operation_intent": "In the Pivot Table layout, add Tracking Code as a value/data field for the carrier summary.",
+          "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03",
+          "visible_success_signal": "The Pivot Table visibly shows carrier groups with a numeric Tracking Code count/value column."
+        }
+      ],
+      "recording_end_state": "Route Dashboard is a renamed inserted worksheet containing a filled list of cross-sheet route/tracking tags and a non-overlapping Pivot Table that summarizes Tracking Code counts by Carrier.",
+      "recording_start_state": "The workbook contains only the populated Dispatch Log source sheet, with no dashboard sheet, Pivot Table, or tag formulas."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Create a Pivot Table from the Dispatch Log source range and place it on the newly inserted dashboard worksheet.",
+        "reason": "A Pivot Table container is required before its fields can be arranged."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Place Carrier in the Pivot Table row fields.",
+        "reason": "Carrier groups are needed so the Tracking Code value summary is interpretable as a count by carrier."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Enter a descriptive header for the route/tracking tags and position that helper list away from the Pivot Table output.",
+        "reason": "This makes the concatenated cross-sheet results understandable and avoids overlapping the Pivot Table."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Enter the first cross-sheet concatenation formula referencing Route and Tracking Code from Dispatch Log before filling it down.",
+        "reason": "The fill-handle operation needs an initial relative-reference formula to propagate."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc is open with a workbook showing exactly one visible sheet tab named \"Dispatch Log\".",
+      "The Dispatch Log sheet contains a formatted source table in A1:E31 with five headers and 30 populated dispatch records.",
+      "No \"Route Dashboard\" worksheet, Pivot Table, or route/tracking tag list is visible."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

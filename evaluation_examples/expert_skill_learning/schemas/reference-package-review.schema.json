@@ -15,7 +15,7 @@
   "properties": {
     "reference_task_id": {"type": "string", "minLength": 1},
     "decision": {
-      "enum": ["approved", "revision_requested", "rejected"]
+      "enum": ["", "approved", "revision_requested", "rejected"]
     },
     "reason_codes": {
       "type": "array",
@@ -25,7 +25,7 @@
       "type": "array",
       "items": {"type": "string", "minLength": 1}
     },
-    "reviewer": {"type": "string", "minLength": 1},
+    "reviewer": {"type": "string"},
     "notes": {"type": "string"}
   }
 }

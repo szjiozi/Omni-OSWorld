@@ -1,0 +1,94 @@
+{
+  "id": "reference-task-r01-001",
+  "snapshot": "libreoffice_calc",
+  "instruction": "In the Workshop Enrollment Queue, create a new \"Program Registration Counts\" summary that shows how many enrollment records each Program has, using Participant Code as the registration measure. Also make Review entries in the Enrollment Log's Queue Flag column stand out with a formula-driven custom pale-amber background (#FCE4D6), while leaving Ready and Confirmed entries unhighlighted.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-001/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/workshop_enrollment.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/workshop_enrollment.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-r01-001",
+    "artifact_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-001/initial_artifact.xlsx",
+    "artifact_sha256": "818d50433cae5308ab4bdc0f7d98f405304500c97321713de72c1fb8304e1203",
+    "guest_artifact_path": "/home/user/Desktop/workshop_enrollment.xlsx",
+    "required_skill_ids": [
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04",
+      "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01",
+      "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The operator may create the summary sheet before or during pivot creation and may use any equivalent Calc dialogs or menus. The custom style may be named freely, provided it is newly created for the rule and has the specified pale-amber background.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "After adding Participant Code to the pivot values, open its value settings immediately and set the summary type before confirming the pivot layout.",
+          "operation_intent": "Build a program-level registration summary on a new sheet, grouping the enrollment records by Program and counting nonblank Participant Code entries rather than totaling any numeric field.",
+          "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04",
+          "visible_success_signal": "The new summary shows one row for each of the four programs with counts 8, 7, 6, and 7, for a total of 28 registrations."
+        },
+        {
+          "efficiency_tip": "Select the full Queue Flag data range first and use a row-relative formula such as =G2=\"Review\" so the same rule evaluates each flag cell.",
+          "operation_intent": "Apply one formula-based conditional-formatting rule to Queue Flag cells that evaluates true only when the corresponding flag is Review.",
+          "skill_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01",
+          "visible_success_signal": "All and only the eight Queue Flag cells containing Review receive the conditional appearance; Ready and Confirmed cells remain unchanged."
+        },
+        {
+          "efficiency_tip": "Create the style from the conditional-formatting workflow so it can be assigned directly to the formula rule instead of manually coloring individual cells.",
+          "operation_intent": "Create and assign a new custom style with a pale amber background (#FCE4D6) for the Review condition.",
+          "skill_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02",
+          "visible_success_signal": "The Review cells visibly have the new pale-amber fill, and the assigned formatting is a reusable custom style rather than direct cell formatting."
+        }
+      ],
+      "recording_end_state": "A new Program Registration Counts sheet contains a pivot summary that counts Participant Code registrations by Program, and Enrollment Log Queue Flag cells with Review are conditionally filled pale amber using a newly created custom style.",
+      "recording_start_state": "The workbook opens on Enrollment Log with the raw 28-row enrollment table and no pivot table, conditional-formatting rule, or required custom style."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Create a new worksheet to hold the program-level registration summary.",
+        "reason": "A separate destination is needed for the requested pivot-based summary."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Select the Enrollment Log data and arrange Program as the grouping field and Participant Code as the value field in a pivot layout.",
+        "reason": "These are the minimum pivot setup actions needed before the value aggregation can be set to Count."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Select the Queue Flag data cells before defining the conditional formatting rule.",
+        "reason": "The formula-based rule must have a target range containing the queue-status values."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc is open with the Enrollment Log sheet active.",
+      "A contiguous table is visible in A1:G29 with headers including Program, Participant Code, and Queue Flag.",
+      "The Queue Flag column is visible and contains Review, Ready, and Confirmed entries.",
+      "No Program Registration Counts summary sheet or pivot output is present.",
+      "No Queue Flag cells have pale-amber highlighting."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

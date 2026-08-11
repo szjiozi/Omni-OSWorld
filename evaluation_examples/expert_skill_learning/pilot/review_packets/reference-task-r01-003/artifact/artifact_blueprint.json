@@ -1,0 +1,305 @@
+{
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "yyyy-mm-dd",
+        "@",
+        "@",
+        "@",
+        "0"
+      ],
+      "column_types": [
+        "date",
+        "text",
+        "text",
+        "text",
+        "integer"
+      ],
+      "formulas": [],
+      "freeze_header_row": true,
+      "headers": [
+        "Dispatch Date",
+        "Carrier",
+        "Tracking Code",
+        "Route",
+        "Parcel Count"
+      ],
+      "name": "Dispatch Log",
+      "rows": [
+        {
+          "values": [
+            "2026-04-01",
+            "Atlas Parcel Co",
+            "TRK-4101",
+            "North Loop",
+            "4"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-02",
+            "Blue Finch Express",
+            "TRK-4102",
+            "Harbor Run",
+            "2"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-03",
+            "Cedar Transit",
+            "TRK-4103",
+            "Central Link",
+            "6"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-04",
+            "Dune Courier",
+            "TRK-4104",
+            "West Ridge",
+            "3"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-05",
+            "Atlas Parcel Co",
+            "TRK-4105",
+            "Harbor Run",
+            "8"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-06",
+            "Blue Finch Express",
+            "TRK-4106",
+            "Central Link",
+            "1"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-07",
+            "Cedar Transit",
+            "TRK-4107",
+            "West Ridge",
+            "5"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-08",
+            "Dune Courier",
+            "TRK-4108",
+            "North Loop",
+            "4"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-09",
+            "Atlas Parcel Co",
+            "TRK-4109",
+            "Central Link",
+            "7"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-10",
+            "Blue Finch Express",
+            "TRK-4110",
+            "West Ridge",
+            "3"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-11",
+            "Cedar Transit",
+            "TRK-4111",
+            "North Loop",
+            "2"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-12",
+            "Dune Courier",
+            "TRK-4112",
+            "Harbor Run",
+            "6"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-13",
+            "Atlas Parcel Co",
+            "TRK-4113",
+            "West Ridge",
+            "5"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-14",
+            "Blue Finch Express",
+            "TRK-4114",
+            "North Loop",
+            "8"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-15",
+            "Cedar Transit",
+            "TRK-4115",
+            "Harbor Run",
+            "1"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-16",
+            "Dune Courier",
+            "TRK-4116",
+            "Central Link",
+            "4"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-17",
+            "Atlas Parcel Co",
+            "TRK-4117",
+            "North Loop",
+            "3"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-18",
+            "Blue Finch Express",
+            "TRK-4118",
+            "Harbor Run",
+            "7"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-19",
+            "Cedar Transit",
+            "TRK-4119",
+            "Central Link",
+            "5"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-20",
+            "Dune Courier",
+            "TRK-4120",
+            "West Ridge",
+            "2"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-21",
+            "Atlas Parcel Co",
+            "TRK-4121",
+            "Harbor Run",
+            "6"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-22",
+            "Blue Finch Express",
+            "TRK-4122",
+            "Central Link",
+            "4"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-23",
+            "Cedar Transit",
+            "TRK-4123",
+            "West Ridge",
+            "8"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-24",
+            "Dune Courier",
+            "TRK-4124",
+            "North Loop",
+            "1"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-25",
+            "Atlas Parcel Co",
+            "TRK-4125",
+            "Central Link",
+            "5"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-26",
+            "Blue Finch Express",
+            "TRK-4126",
+            "West Ridge",
+            "2"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-27",
+            "Cedar Transit",
+            "TRK-4127",
+            "North Loop",
+            "7"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-28",
+            "Dune Courier",
+            "TRK-4128",
+            "Harbor Run",
+            "3"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-29",
+            "Atlas Parcel Co",
+            "TRK-4129",
+            "West Ridge",
+            "4"
+          ]
+        },
+        {
+          "values": [
+            "2026-04-30",
+            "Blue Finch Express",
+            "TRK-4130",
+            "North Loop",
+            "6"
+          ]
+        }
+      ]
+    }
+  ],
+  "workbook_title": "Dispatch Route Review"
+}

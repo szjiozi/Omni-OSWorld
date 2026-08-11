@@ -1,4 +1,37 @@
 {
   "schema_version": "1.0",
-  "reviews": []
+  "reviews": [
+    {
+      "reference_task_id": "reference-task-r01-001",
+      "decision": "",
+      "reason_codes": [],
+      "revision_instructions": [],
+      "reviewer": "",
+      "notes": ""
+    },
+    {
+      "reference_task_id": "reference-task-r01-002",
+      "decision": "",
+      "reason_codes": [],
+      "revision_instructions": [],
+      "reviewer": "",
+      "notes": ""
+    },
+    {
+      "reference_task_id": "reference-task-r01-003",
+      "decision": "",
+      "reason_codes": [],
+      "revision_instructions": [],
+      "reviewer": "",
+      "notes": ""
+    },
+    {
+      "reference_task_id": "reference-task-r01-004",
+      "decision": "",
+      "reason_codes": [],
+      "revision_instructions": [],
+      "reviewer": "",
+      "notes": ""
+    }
+  ]
 }

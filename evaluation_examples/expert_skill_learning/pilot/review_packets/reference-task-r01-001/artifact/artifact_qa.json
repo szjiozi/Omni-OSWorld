@@ -1,0 +1,13 @@
+{
+  "workbook_title": "Workshop Enrollment Queue",
+  "output_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-001/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Enrollment Log",
+      "preview_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-001/previews/Enrollment_Log.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Enrollment Log\",\"address\":\"A1:G12\",\"rows\":12,\"cols\":7,\"values\":[[\"Registration ID\",\"Program\",\"Session Date\",\"Participant Code\",\"Neighborhood\",\"Attendance Type\",\"Queue Flag\"],[\"REG-2026-001\",\"Digital Basics\",\"2026-02-03T00:00:00.000Z\",\"P-1001\",\"Riverside\",\"In Person\",\"Ready\"],[\"REG-2026-002\",\"Community Garden\",\"2026-02-07T00:00:00.000Z\",\"P-1002\",\"Maplewood\",\"In Person\",\"Review\"],[\"REG-2026-003\",\"Resume Lab\",\"2026-02-10T00:00:00.000Z\",\"P-1003\",\"Eastgate\",\"Online\",\"Confirmed\"],[\"REG-2026-004\",\"First Aid\",\"2026-02-14T00:00:00.000Z\",\"P-1004\",\"Lakeside\",\"In Person\",\"Ready\"],[\"REG-2026-005\",\"Community Garden\",\"2026-02-21T00:00:00.000Z\",\"P-1005\",\"Hillcrest\",\"Waitlist\",\"Review\"],[\"REG-2026-006\",\"Digital Basics\",\"2026-02-24T00:00:00.000Z\",\"P-1006\",\"Riverside\",\"Online\",\"Confirmed\"],[\"REG-2026-007\",\"Resume Lab\",\"2026-03-03T00:00:00.000Z\",\"P-1007\",\"Maplewood\",\"In Person\",\"Ready\"],[\"REG-2026-008\",\"First Aid\",\"2026-03-07T00:00:00.000Z\",\"P-1008\",\"Eastgate\",\"In Person\",\"Review\"],[\"REG-2026-009\",\"Community Garden\",\"2026-03-14T00:00:00.000Z\",\"P-1009\",\"Lakeside\",\"In Person\",\"Confirmed\"],[\"REG-2026-010\",\"Digital Basics\",\"2026-03-17T00:00:00.000Z\",\"P-1010\",\"Hillcrest\",\"Waitlist\",\"Ready\"],[\"REG-2026-011\",\"Resume Lab\",\"2026-03-21T00:00:00.000Z\",\"P-1011\",\"Riverside\",\"Online\",\"Review\"]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

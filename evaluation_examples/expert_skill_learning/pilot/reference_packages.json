@@ -616,7 +616,7 @@
           "Use five repeating Coordinator names: Avery Cole, Imani Park, Jules Rowan, Morgan Lee, and Tessa Vale.",
           "Use plausible Service Tier values such as Setup, Repair, Training, Inspection, and Delivery.",
           "Populate Units with integers from 1 to 8 and Hourly Rate with varied positive decimal values from 42.50 to 125.00 so that Billed Charge calculations produce varied nonzero amounts.",
-          "Format the Hourly Rate column as currency in the initial workbook; this makes the source data readable but does not pre-format the calculated results column.",
+          "Format the Hourly Rate column as plain decimal numbers with two decimal places in the initial workbook so formulas entered in Billed Charge do not inherit a currency format.",
           "Do not include any Pivot Table object, Pivot Table sheet, conditional formatting, or hidden helper data."
         ],
         "initial_state": [

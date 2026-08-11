@@ -39,7 +39,11 @@ from benchmark_construction.reference_packages import (
     build_reference_package_request,
     validate_reference_package_response,
 )
-from benchmark_construction.reference_review import compute_review_state
+from benchmark_construction.reference_review import (
+    compute_review_state,
+    load_reference_reviews,
+    write_reference_review_template,
+)
 from benchmark_construction.schema import load_schema
 from benchmark_construction.semantic_similarity import (
     EmbeddingBatchResult,
@@ -504,6 +508,48 @@ def test_review_state_recomputes_global_approved_coverage_after_rejection():
     assert state.revisions[0].feedback == ("Use one source sheet only.",)
 
 
+def test_review_template_prefills_fields_and_treats_blanks_as_pending(tmp_path):
+    packages = [
+        {"reference_task_id": "task-a"},
+        {"reference_task_id": "task-b"},
+    ]
+    review_path = tmp_path / "reviews.json"
+
+    assert write_reference_review_template(review_path, packages) == 2
+    document = json.loads(review_path.read_text(encoding="utf-8"))
+    assert document["reviews"] == [
+        {
+            "reference_task_id": "task-a",
+            "decision": "",
+            "reason_codes": [],
+            "revision_instructions": [],
+            "reviewer": "",
+            "notes": "",
+        },
+        {
+            "reference_task_id": "task-b",
+            "decision": "",
+            "reason_codes": [],
+            "revision_instructions": [],
+            "reviewer": "",
+            "notes": "",
+        },
+    ]
+    assert load_reference_reviews(review_path) == []
+
+    document["reviews"][0].update(
+        {
+            "decision": "approved",
+            "reviewer": "reviewer-1",
+            "notes": "Keep this package.",
+        }
+    )
+    review_path.write_text(json.dumps(document), encoding="utf-8")
+    completed = load_reference_reviews(review_path)
+    assert [review["reference_task_id"] for review in completed] == ["task-a"]
+    assert write_reference_review_template(review_path, packages) == 0
+
+
 def test_artifact_blueprint_matches_package_spec_and_preserves_incomplete_state():
     skills, _ = _pilot_construction_inputs()
     package = _reference_package_response(skills[:2])
@@ -578,6 +624,25 @@ def test_frozen_artifact_blueprints_can_be_loaded_without_llm(tmp_path):
     results = load_artifact_blueprints(blueprint_path)
     assert results[0].reference_task_id == "task-a"
     assert results[0].blueprint["sheets"][0]["autofilter_range"] is None
+
+
+def test_task_four_keeps_hourly_rate_plain_for_currency_skill_demo():
+    pilot_root = (
+        Path(__file__).resolve().parents[1]
+        / "evaluation_examples"
+        / "expert_skill_learning"
+        / "pilot"
+    )
+    results = load_artifact_blueprints(pilot_root / "artifact_blueprints.json")
+    task = next(
+        item
+        for item in results
+        if item.reference_task_id == "reference-task-r01-004"
+    )
+    service_log = task.blueprint["sheets"][0]
+
+    assert service_log["headers"][4:6] == ["Hourly Rate", "Billed Charge"]
+    assert service_log["column_number_formats"][4:6] == ["0.00", "General"]
 
 
 def test_reference_response_must_return_exact_sampled_skill_ids():

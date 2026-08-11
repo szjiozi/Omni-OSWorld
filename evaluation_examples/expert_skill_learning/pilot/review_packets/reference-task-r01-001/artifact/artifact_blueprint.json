@@ -1,0 +1,349 @@
+{
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "@",
+        "@",
+        "yyyy-mm-dd",
+        "@",
+        "@",
+        "@",
+        "@"
+      ],
+      "column_types": [
+        "text",
+        "text",
+        "date",
+        "text",
+        "text",
+        "text",
+        "text"
+      ],
+      "formulas": [],
+      "freeze_header_row": true,
+      "headers": [
+        "Registration ID",
+        "Program",
+        "Session Date",
+        "Participant Code",
+        "Neighborhood",
+        "Attendance Type",
+        "Queue Flag"
+      ],
+      "name": "Enrollment Log",
+      "rows": [
+        {
+          "values": [
+            "REG-2026-001",
+            "Digital Basics",
+            "2026-02-03",
+            "P-1001",
+            "Riverside",
+            "In Person",
+            "Ready"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-002",
+            "Community Garden",
+            "2026-02-07",
+            "P-1002",
+            "Maplewood",
+            "In Person",
+            "Review"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-003",
+            "Resume Lab",
+            "2026-02-10",
+            "P-1003",
+            "Eastgate",
+            "Online",
+            "Confirmed"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-004",
+            "First Aid",
+            "2026-02-14",
+            "P-1004",
+            "Lakeside",
+            "In Person",
+            "Ready"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-005",
+            "Community Garden",
+            "2026-02-21",
+            "P-1005",
+            "Hillcrest",
+            "Waitlist",
+            "Review"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-006",
+            "Digital Basics",
+            "2026-02-24",
+            "P-1006",
+            "Riverside",
+            "Online",
+            "Confirmed"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-007",
+            "Resume Lab",
+            "2026-03-03",
+            "P-1007",
+            "Maplewood",
+            "In Person",
+            "Ready"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-008",
+            "First Aid",
+            "2026-03-07",
+            "P-1008",
+            "Eastgate",
+            "In Person",
+            "Review"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-009",
+            "Community Garden",
+            "2026-03-14",
+            "P-1009",
+            "Lakeside",
+            "In Person",
+            "Confirmed"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-010",
+            "Digital Basics",
+            "2026-03-17",
+            "P-1010",
+            "Hillcrest",
+            "Waitlist",
+            "Ready"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-011",
+            "Resume Lab",
+            "2026-03-21",
+            "P-1011",
+            "Riverside",
+            "Online",
+            "Review"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-012",
+            "First Aid",
+            "2026-03-24",
+            "P-1012",
+            "Maplewood",
+            "In Person",
+            "Confirmed"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-013",
+            "Community Garden",
+            "2026-04-04",
+            "P-1013",
+            "Eastgate",
+            "In Person",
+            "Ready"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-014",
+            "Digital Basics",
+            "2026-04-07",
+            "P-1014",
+            "Lakeside",
+            "Online",
+            "Review"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-015",
+            "Resume Lab",
+            "2026-04-11",
+            "P-1015",
+            "Hillcrest",
+            "In Person",
+            "Confirmed"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-016",
+            "First Aid",
+            "2026-04-14",
+            "P-1016",
+            "Riverside",
+            "Waitlist",
+            "Ready"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-017",
+            "Community Garden",
+            "2026-04-18",
+            "P-1017",
+            "Maplewood",
+            "In Person",
+            "Review"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-018",
+            "Digital Basics",
+            "2026-04-21",
+            "P-1018",
+            "Eastgate",
+            "In Person",
+            "Confirmed"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-019",
+            "Resume Lab",
+            "2026-04-25",
+            "P-1019",
+            "Lakeside",
+            "Online",
+            "Ready"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-020",
+            "First Aid",
+            "2026-04-28",
+            "P-1020",
+            "Hillcrest",
+            "In Person",
+            "Review"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-021",
+            "Community Garden",
+            "2026-05-02",
+            "P-1021",
+            "Riverside",
+            "Waitlist",
+            "Confirmed"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-022",
+            "Digital Basics",
+            "2026-05-05",
+            "P-1022",
+            "Maplewood",
+            "In Person",
+            "Ready"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-023",
+            "Resume Lab",
+            "2026-05-09",
+            "P-1023",
+            "Eastgate",
+            "In Person",
+            "Confirmed"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-024",
+            "First Aid",
+            "2026-05-12",
+            "P-1024",
+            "Lakeside",
+            "Online",
+            "Ready"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-025",
+            "Community Garden",
+            "2026-05-16",
+            "P-1025",
+            "Hillcrest",
+            "In Person",
+            "Ready"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-026",
+            "Digital Basics",
+            "2026-05-19",
+            "P-1026",
+            "Riverside",
+            "Waitlist",
+            "Confirmed"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-027",
+            "Resume Lab",
+            "2026-05-23",
+            "P-1027",
+            "Maplewood",
+            "In Person",
+            "Review"
+          ]
+        },
+        {
+          "values": [
+            "REG-2026-028",
+            "Community Garden",
+            "2026-05-30",
+            "P-1028",
+            "Eastgate",
+            "Online",
+            "Ready"
+          ]
+        }
+      ]
+    }
+  ],
+  "workbook_title": "Workshop Enrollment Queue"
+}

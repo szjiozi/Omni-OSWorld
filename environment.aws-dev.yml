@@ -8,6 +8,7 @@ dependencies:
   - pip
   - pip:
       - boto3>=1.42,<2
+      - gymnasium>=0.28,<0.29
       - python-dotenv>=1,<2
       - requests>=2.31,<3
       - pytest>=8,<9

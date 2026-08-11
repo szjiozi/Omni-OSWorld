@@ -98,14 +98,19 @@ task-specific、substantive prerequisite 和重复操作来保持任务自然；
 - `pilot/reference_packages.json`：4 个 `pending` packages、source contribution、lexical 与
   semantic similarity；
 - `pilot/reference_package_generation_run.json`：seed/model/prompt hashes/token/cost/attempts；
-- `pilot/reference_package_reviews.json`：append-only 人工决定，初始为空；
+- `pilot/reference_package_reviews.json`：每个 package 一条预填 task ID 的 review form；
+  `decision/reviewer/notes` 初始留空，空白记录按 pending 处理；
 - `pilot/coverage_state.json`：由 review CLI 重算，当前 0/12 approved。
 
 当前 package run 为 4 calls、6400 input、8485 output、估算 `$0.114620`；semantic
 embedding 为 337 input tokens、`$0.00000674`，合计 `$0.11462674`。当前 12 skills 只是
 candidate coverage 全覆盖，四个 packages 仍需 human review，不能写成 approved coverage。
 
-review 文件中的 decision 只能是 `approved`、`revision_requested` 或 `rejected`。运行：
+review 文件中的空字符串只表示尚未填写；完成 review 后 decision 只能是 `approved`、
+`revision_requested` 或 `rejected`。运行：
+
+`generate_reference_packages.py` 会通过 `--reviews-output` 创建或扩展 review form，只补充
+缺失的 package IDs，不覆盖已经填写的记录。
 
 ```bash
 python scripts/python/review_reference_packages.py \
@@ -157,9 +162,94 @@ provider。未知模型仍记录 token usage，但 estimated cost 必须为 `nul
 未来接口保留，但 backend 必须明确拒绝不支持的视频，不能静默丢弃。现用 Terra、Luna、
 GPT-4.1 均不能按 native video 输入处理。
 
-后续 annotation runner 必须改变 `manual_explore.py` 目前 reset 后立即开始 recording 的
-行为：先完成环境启动和 artifact 检查，第一次 Enter 开始录制，第二次 Enter 停止。Review
-时视频在 annotator 本地播放；AWS 只用于可选 artifact 检查/复现，不上传或播放视频。
+C4b/C5 已新增：
+
+```bash
+# LLM 生成 constrained setup blueprint，再由本地代码注入可信 actions
+conda run -n osworld-aws-dev python \
+  scripts/python/generate_reference_task_configs.py
+
+# 已有 frozen blueprint 时零 API 成本重建 configs
+conda run -n osworld-aws-dev python \
+  scripts/python/generate_reference_task_configs.py \
+  --blueprints-input \
+    evaluation_examples/expert_skill_learning/pilot/annotation_setup_blueprints.json
+
+# 正式标注；pending 工程 smoke 额外添加 --allow-pending
+python scripts/python/record_reference_task.py \
+  --reference-task-id reference-task-r01-001
+```
+
+LLM blueprint 不包含 host path、SHA256 或任意 command。本地 assembler 校验 artifact hash，
+只注入 `upload_file → open`，config 不含 evaluator。当前 frozen run 为 4 calls、6712/678
+tokens、`$0.021560`。
+
+Runner 不改变通用 `manual_explore.py` 的行为，而是复用其 observation、xinput 和 screenshot
+helpers：reset/upload/open 完成后等待第一次 Enter 才开始 MP4/input，第二次 Enter 立即停止，
+随后 `Ctrl+S`、回收最终 XLSX、写 bundle，并在 `finally` 调用 `env.close()`。Reference
+annotation 的 `--sample-interval` 默认是 `0`，不启动周期 PNG sampler；initial、recording-start、
+final 三张关键截图仍保留。只有工程诊断显式传正数才启用周期截图，通用 OSWorld 实验配置不变。
+
+Reference annotation 不再调用 AMI 内官方 `/start_recording`。2026-08-12 发现官方 server 将
+FFmpeg stderr 接到 `subprocess.PIPE` 却不在录制期间读取，约 278–283 秒后 pipe 填满并阻塞，
+导致 task 3 的 355.4 秒窗口只录到 277.8 秒。专用 guest recorder 现在使用
+`libx264 -preset ultrafast -crf 23`，把 warning stderr 写到
+`recording_capture.ffmpeg.log`；第二次 Enter 后先停止视频，再回收 XInput。Raw MP4 duration
+必须与 guest monotonic start/stop 相差不超过 5 秒，否则 fail closed。该修复不修改通用
+OSWorld server 或正式实验录制设定。
+正式运行只接受 approved package；pending 仅能用 `--allow-pending`，revision/rejected 不能
+绕过。Guide 显示在本地终端，不进入 noVNC 录制画面；cross-validator 本地看 MP4。
+
+默认 input overlay 从同一份 timestamped XI2 日志生成：快捷键和特殊键写入
+`key_events.jsonl`；左键、双击、右键和滚轮写入 `pointer_events.jsonl`。鼠标提示显示在实际
+坐标附近；按下/释放位移超过 10 px 视为拖拽，不显示额外提示。`input_timing.json` 保存 guest
+ffmpeg start monotonic ns，用于把输入事件对齐到视频 PTS。`key_overlay.ass` 由 guest ffmpeg
+burn-in 为正式 `recording.mp4`，无提示的 `recording_raw.mp4` 永久保留。
+
+AWS runner 固定 `osworld-dev`，默认 annotation region 由
+`AWS_ANNOTATION_REGION` 决定，当前主路径为香港 `ap-east-1`。香港官方公共 AMI ID 已失效，
+因此 `AWS_AP_EAST_1_AMI_ID` 指向从 `us-east-1` 官方干净 AMI 跨区复制的私有加密副本；
+`AWS_AP_EAST_1_SUBNET_ID/AWS_AP_EAST_1_SECURITY_GROUP_ID` 也必须是香港资源。显式传入
+`--aws-region us-east-1` 时仍回退原有通用 subnet/SG 和官方公共 AMI。解析器禁止把通用
+美国资源静默用于香港。
+
+所有实例继续标记为 `Project=OSWorld-Expert-Skill-Learning`。香港默认使用 SSM+SSH：SSM
+只承载一条到 guest SSH 的连接，SSH 在其上复用本地动态 API/noVNC 端口；因此不查询
+`checkip.amazonaws.com`，也不更新 5000/5910 公网 ingress。一次性 Ed25519 公钥通过
+`AWS-RunShellScript` 注入临时实例，私钥只保存在本机 temporary directory，runner 退出时
+清理。美国 public fallback 才把专用 SG 的 5000/5910 规则更新为当前出口 `/32`；两种模式
+都不能传共享 security group。完整 annotator 操作见
+`evaluation_examples/expert_skill_learning/annotator.md`。香港 private AMI 对应的 EBS
+snapshot 是持续计费资源；当前标准 snapshot 单价为 `$0.055/GB-month`，删除前应保留在项目
+成本审计中。
+
+2026-08-12 的香港交互诊断确认：guest 内 noVNC HTML 约 `0.01s`、screenshot 约 `0.13s`，
+实例 load average 约 `0.14`；本地经 SSM 仅约 `6.6 KiB/s`，公网 443 SSH 也只有约
+`12–15 KiB/s`。瓶颈是当前大陆 ISP 到 AWS 香港 EC2 的线路，不是 CPU、内存、noVNC、代理或
+实例规格。当前标注按用户决定继续使用香港，未来 migration next step 见 `plan.md` 的
+Alibaba Cloud Shenzhen deferred smoke。
+
+同次诊断发现 EventBridge TTL schedule 虽在正确 UTC 时间创建并保持 `ENABLED`，却未执行
+terminate；当前 SSO PowerUser 无权读取/修复 execution role inline policy。Runner 因此在
+SSM Online 后额外 arm guest systemd poweroff backstop；EC2 launch config 的
+`InstanceInitiatedShutdownBehavior=terminate` 会把该 poweroff 转为实例终止。Scheduler 仍保留
+为第一层保护，guest timer 为第二层，`finally env.close()` 为正常退出路径。后续获得 IAM
+权限后必须审核 `osworld-scheduler-ec2-terminate-inline`，不能把“schedule 已创建”视为已验证。
+
+阿里云迁移目前仅记录、不实施。代码库已有 `desktop_env/providers/aliyun`，但正式复用前必须
+处理 `ALIYUN_USE_PRIVATE_IP=0`、x86 QCOW2 导入、专用 `/32` SG、SSH tunnel、AWS-only runner、
+镜像 provenance、终态资源审计与异常回收；目标 region 为 `cn-shenzhen`，先做单实例延迟
+A/B smoke，再决定是否迁移 annotation pipeline。
+
+本地 reference annotation 相关测试和 2026-08-11 付费单实例 AWS smoke 均已通过。该 smoke
+使用 pending `reference-task-r01-001 --allow-pending`，run ID 为 `20260811T130617Z`；
+正式 `recording.mp4` 和 raw MP4、11 个隐私过滤后的按键事件、最终 XLSX 与 completed manifest
+均已回收。抽取 `Ctrl+A` 时间点的帧确认 overlay 实际烧录在视频底部中央；普通文字未进入
+`key_events.jsonl`。结束后 EC2 为 `terminated`，EBS、ENI 和 TTL schedule 均无残留。
+
+这次从 OSWorld HTTP API 回传约 5.8 MiB raw MP4 和 6.3 MiB overlay MP4 明显偏慢，但 TCP
+持续前进且结果完整。正式批量标注前应把大文件回收改成可观测的 streaming download，避免
+长时间无终端输出被误判为死锁；在此之前不要因等待而手动终止仍有接收字节增长的 runner。
 
 GitHub 暂作 Pilot remote。提交前必须检查 MP4/artifact 是否包含个人信息或凭据，并做文件
 大小预检；普通 Git 失败后再决定 Git LFS/S3，不在当前代码中自动上传外部服务。
@@ -521,8 +611,39 @@ PowerPoint Web 自动保存到 OneDrive。Evaluator 必须使用明确下载得�
 
 ### 8.1 noVNC 页面无法打开或一直加载
 
-若终端 smoke 已通过，但日常 Chrome 中 noVNC 无法打开或一直加载，先区分 AWS
-白名单问题和浏览器代理对 WebSocket 的影响。
+香港主路径必须使用 runner 输出的
+`http://127.0.0.1:<dynamic-port>/vnc.html`。不要单独运行
+`AWS-StartPortForwardingSession` 把本机端口直接映射到 guest 5910：2026-08-11 smoke 中，
+HTML 和 WebSocket 在实例内均正常，但 Chrome 的多个并发连接会占住该原生 SSM forward，
+页面持续 loading。当前 runner 使用 SSM 转发 guest 22，再由一条 SSH 连接复用 5000/5910；
+实测本地 HTML 返回 200、WebSocket 返回 101。
+
+香港故障先检查 runner、Session Manager plugin 与 SSH 三层进程，以及 localhost URL：
+
+```bash
+ps -ax -o pid,ppid,stat,command | \
+  rg 'record_reference_task|session-manager-plugin|ssh -N'
+lsof -nP -iTCP:<dynamic-port>
+curl --noproxy '*' -sS -I --connect-timeout 8 --max-time 12 \
+  'http://127.0.0.1:<dynamic-port>/vnc.html'
+```
+
+不要把 localhost URL 改成实例公网 IP，也不要为此开放公网 SSH/5910。若要绕过日常 Chrome
+profile 的代理扩展，可用 runner URL 启动临时直连窗口。
+
+Runner 现在优先固定本地 API/noVNC 为 `15000/15910`，端口冲突时才使用 ephemeral ports，
+以便浏览器缓存跨实例复用同一 localhost origin。链接交付前的 readiness 不再只检查 listener：
+必须依次取得 noVNC HTML 200、WebSocket 101 和 `RFB 003.008` banner。香港链路实测首次完整
+加载仍可能需要 10–30 秒；通过 readiness 后持续 loading 应先等待首帧，不要反复刷新或同时
+打开多个 profile。Runner URL 固定附加
+`autoconnect=true&resize=scale&quality=0&compression=9`，只降低 noVNC JPEG 交互预览带宽；
+guest geometry 和正式录屏仍保持 OSWorld 要求的 1920×1080。不要通过 `xrandr` 降低 guest
+分辨率，也不要在 noVNC 设置面板中把 quality 调回默认 6。公网 5910 从当前大陆出口实测
+timeout，不是可靠 fallback。
+
+以下公网 IP/白名单/WebSocket 流程仅适用于显式的美国 public fallback。若终端 smoke 已
+通过，但日常 Chrome 中 noVNC 无法打开或一直加载，先区分 AWS 白名单问题和浏览器代理对
+WebSocket 的影响。
 
 ```bash
 export OSWORLD_HOST=<instance-public-ip>

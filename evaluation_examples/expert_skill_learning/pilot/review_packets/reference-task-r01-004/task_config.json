@@ -1,0 +1,94 @@
+{
+  "id": "reference-task-r01-004",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Complete the billed-charge calculation for every workshop service record and present those results as currency. Then create a new Pivot Table summary that lists each coordinator and their total billed charge.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-004/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/workshop_billing.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/workshop_billing.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-r01-004",
+    "artifact_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-004/initial_artifact.xlsx",
+    "artifact_sha256": "c2be3f7a6990cc8cf5d561c018120cf50120e6d5a96aff9038a5da1a2511f0c6",
+    "guest_artifact_path": "/home/user/Desktop/workshop_billing.xlsx",
+    "required_skill_ids": [
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The expert may calculate and format the source results before creating the Pivot Table, or use any equivalent Calc workflow that produces the requested source calculations and a new-sheet pivot summary. The destination sheet name and the order of distinct coordinator labels may vary.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Format the first calculated result cell with the toolbar before filling the formula down when that workflow preserves the number format; otherwise select the completed result range once and format it together.",
+          "operation_intent": "Present every calculated Billed Charge value in the Service Log as a currency amount using Calc's currency toolbar control.",
+          "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02",
+          "visible_success_signal": "The Billed Charge column shows currency symbols and two-decimal monetary displays rather than unformatted numeric products."
+        },
+        {
+          "efficiency_tip": "Move Coordinator directly from the available Pivot Table fields into the Row Fields area, then ensure the billed amount is summarized as a sum.",
+          "operation_intent": "In the new Pivot Table layout, place Coordinator in the row-label area for a coordinator-level billed-charge summary.",
+          "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02",
+          "visible_success_signal": "The resulting Pivot Table displays one row label for each coordinator, with a corresponding total Billed Charge value."
+        }
+      ],
+      "recording_end_state": "Service Log has calculated, currency-formatted Billed Charge values for all 24 records, and a newly created Pivot Table sheet summarizes summed billed charge by Coordinator in row labels.",
+      "recording_start_state": "The workbook contains only the populated Service Log source sheet; Billed Charge is blank and unformatted, and no Pivot Table exists."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Enter a Units × Hourly Rate formula for the first Billed Charge record and fill it through the remaining service-log rows.",
+        "reason": "The calculated monetary measure is needed before it can be formatted and summarized."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Select the Billed Charge result range before using the currency toolbar control.",
+        "reason": "The requested display format must be applied to the calculated values."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Select the complete Service Log data range with headers and initiate creation of a Pivot Table on a new worksheet.",
+        "reason": "A Pivot Table object and destination sheet are required to expose the Row Fields layout."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Configure Billed Charge as a summed data/value field in the Pivot Table.",
+        "reason": "The requested coordinator summary needs a total billed amount alongside the row labels."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc is open with the workbook displaying the Service Log sheet.",
+      "Service Log has one header row and 24 populated service records with contiguous columns from Work Order through Billed Charge.",
+      "Hourly Rate values are displayed as plain numbers with two decimal places, while all Billed Charge cells are blank and displayed in General format.",
+      "Only the Service Log sheet is present; no Pivot Table or coordinator summary sheet exists."
+    ],
+    "setup_notes": [
+      "The workbook contains synthetic community workshop service billing records only.",
+      "No manual setup is required before recording."
+    ],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

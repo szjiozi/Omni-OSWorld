@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "scripts/python/manage_reference_review_packets.py export",
+  "reference_task_id": "reference-task-r01-002",
+  "context_fingerprint": "5e8f11a7f870484914e56790f2ce269fcee2ba75e4c448d3ccab918aebf268fe",
+  "inputs": [
+    {
+      "role": "artifact",
+      "path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-002/initial_artifact.xlsx",
+      "sha256": "1650801e76c8fc10f433be0daee18beeee521e4f1a326ebce68c87ea8ef35317"
+    },
+    {
+      "role": "artifact_blueprint",
+      "path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-002/artifact_blueprint.json",
+      "sha256": "bba18022e7f3cad5fdb685efa37a491a9f29a26dd047ab96daaedcb02f52a1f0"
+    },
+    {
+      "role": "artifact_qa",
+      "path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-002/artifact_qa.json",
+      "sha256": "f0273f3b777799ba46f736dfe9c50fa6ba902209031f36ffffe060946d489910"
+    },
+    {
+      "role": "task_config",
+      "path": "evaluation_examples/expert_skill_learning/pilot/task_configs/reference-task-r01-002.json",
+      "sha256": "a5226b7a16524051d86782b05d1be3a998177e0513306f721dc46ce269d5e684"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-002/previews/Funding_Log.png",
+      "sha256": "ad4e46c31d7b1a12ae1d6aac3bff4cc1472b4f5b95756c72380228f69abab958"
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "TASK.md",
+      "sha256": "5d49a1192094ebbd382e30e508af3e82751ccfe56b87a378f7dc5f5be634bf57"
+    },
+    {
+      "path": "context.json",
+      "sha256": "b263742de46a42aefa7ac5ab0441be606e85fc6ff4292ecf2b90617cacb4bf0d"
+    },
+    {
+      "path": "task_config.json",
+      "sha256": "a5226b7a16524051d86782b05d1be3a998177e0513306f721dc46ce269d5e684"
+    },
+    {
+      "path": "artifact/initial_artifact.xlsx",
+      "sha256": "1650801e76c8fc10f433be0daee18beeee521e4f1a326ebce68c87ea8ef35317"
+    },
+    {
+      "path": "artifact/artifact_blueprint.json",
+      "sha256": "bba18022e7f3cad5fdb685efa37a491a9f29a26dd047ab96daaedcb02f52a1f0"
+    },
+    {
+      "path": "artifact/artifact_qa.json",
+      "sha256": "f0273f3b777799ba46f736dfe9c50fa6ba902209031f36ffffe060946d489910"
+    },
+    {
+      "path": "artifact/previews/Funding_Log.png",
+      "sha256": "ad4e46c31d7b1a12ae1d6aac3bff4cc1472b4f5b95756c72380228f69abab958"
+    }
+  ],
+  "editable_review": {
+    "path": "review.json",
+    "excluded_from_generated_file_hashes": true
+  }
+}

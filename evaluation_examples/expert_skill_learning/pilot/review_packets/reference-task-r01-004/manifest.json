@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "scripts/python/manage_reference_review_packets.py export",
+  "reference_task_id": "reference-task-r01-004",
+  "context_fingerprint": "a188db46e04bfb0144785cbf6a431c2015494f2a2c7fc2173bce6e80c6c34167",
+  "inputs": [
+    {
+      "role": "artifact",
+      "path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-004/initial_artifact.xlsx",
+      "sha256": "c2be3f7a6990cc8cf5d561c018120cf50120e6d5a96aff9038a5da1a2511f0c6"
+    },
+    {
+      "role": "artifact_blueprint",
+      "path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-004/artifact_blueprint.json",
+      "sha256": "08b6a5aca8e8e5b23330ef8f58a86e5c6e97fc5389e4e553b4c1e836f4f4a5b3"
+    },
+    {
+      "role": "artifact_qa",
+      "path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-004/artifact_qa.json",
+      "sha256": "685dcc85722dc594b3d32bc46ba824e3e69f59802c347c6180b8795ee8b771fd"
+    },
+    {
+      "role": "task_config",
+      "path": "evaluation_examples/expert_skill_learning/pilot/task_configs/reference-task-r01-004.json",
+      "sha256": "4f9a660381bbf4f814ffc99b1b8a4d7674052e61e31caa51926c843ba950e2cc"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-004/previews/Service_Log.png",
+      "sha256": "419e90652a011d29c0a09b4c38d7fda3484d28bc54c8681856e7fd6afd4ec8a2"
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "TASK.md",
+      "sha256": "6119d3134d8d33454976fce36419c1d50f6dbdd8c4ef4dcb46203909b6cc5c43"
+    },
+    {
+      "path": "context.json",
+      "sha256": "013318b7e49c3f02f8581e8ad9e315ef1d3e5426aa5539538cde70c3607294c5"
+    },
+    {
+      "path": "task_config.json",
+      "sha256": "4f9a660381bbf4f814ffc99b1b8a4d7674052e61e31caa51926c843ba950e2cc"
+    },
+    {
+      "path": "artifact/initial_artifact.xlsx",
+      "sha256": "c2be3f7a6990cc8cf5d561c018120cf50120e6d5a96aff9038a5da1a2511f0c6"
+    },
+    {
+      "path": "artifact/artifact_blueprint.json",
+      "sha256": "08b6a5aca8e8e5b23330ef8f58a86e5c6e97fc5389e4e553b4c1e836f4f4a5b3"
+    },
+    {
+      "path": "artifact/artifact_qa.json",
+      "sha256": "685dcc85722dc594b3d32bc46ba824e3e69f59802c347c6180b8795ee8b771fd"
+    },
+    {
+      "path": "artifact/previews/Service_Log.png",
+      "sha256": "419e90652a011d29c0a09b4c38d7fda3484d28bc54c8681856e7fd6afd4ec8a2"
+    }
+  ],
+  "editable_review": {
+    "path": "review.json",
+    "excluded_from_generated_file_hashes": true
+  }
+}

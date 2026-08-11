@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "blueprints": [
+    {
+      "reference_task_id": "reference-task-r01-001",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "workshop_enrollment.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with the Enrollment Log sheet active.",
+          "A contiguous table is visible in A1:G29 with headers including Program, Participant Code, and Queue Flag.",
+          "The Queue Flag column is visible and contains Review, Ready, and Confirmed entries.",
+          "No Program Registration Counts summary sheet or pivot output is present.",
+          "No Queue Flag cells have pale-amber highlighting."
+        ],
+        "setup_notes": [],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "b8e3c1b6-4a36-4ea6-8104-e5cf07d6a9c4",
+        "prompt_sha256": "b309407f2727fb4f6214ab081ccd0ffedb70455680296f724cd8c9a8fa98c127",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1724,
+        "output_tokens": 176,
+        "estimated_cost_usd": 0.00556
+      }
+    },
+    {
+      "reference_task_id": "reference-task-r01-002",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "workshop_grants.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with the workbook showing only the \"Funding Log\" sheet.",
+          "The contiguous source table spans A1:I17 with a bold, lightly shaded header row and filter controls.",
+          "Rows 2 through 17 contain workshop records, and column I is labeled \"Net Allocation\" with blank cells I2:I17.",
+          "Columns B:D and F:I display currency values with zero decimal places."
+        ],
+        "setup_notes": [],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "7c06fdb5-71ac-4ba5-9364-19180af149fe",
+        "prompt_sha256": "66e5c1640e34d05fef42a8bb569575febf2242c28f31a6606a676e11112d7772",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1848,
+        "output_tokens": 196,
+        "estimated_cost_usd": 0.006048
+      }
+    },
+    {
+      "reference_task_id": "reference-task-r01-003",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "dispatch_review.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with a workbook showing exactly one visible sheet tab named \"Dispatch Log\".",
+          "The Dispatch Log sheet contains a formatted source table in A1:E31 with five headers and 30 populated dispatch records.",
+          "No \"Route Dashboard\" worksheet, Pivot Table, or route/tracking tag list is visible."
+        ],
+        "setup_notes": [],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "1f81e500-850a-4ce8-b138-10f92439210f",
+        "prompt_sha256": "4cdd6b278395a701fde6700c667510c5e3ac986750710774d12786b586e1cb2c",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1704,
+        "output_tokens": 163,
+        "estimated_cost_usd": 0.005364
+      }
+    },
+    {
+      "reference_task_id": "reference-task-r01-004",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "workshop_billing.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with the workbook displaying the Service Log sheet.",
+          "Service Log has one header row and 24 populated service records with contiguous columns from Work Order through Billed Charge.",
+          "Hourly Rate values are displayed as plain numbers with two decimal places, while all Billed Charge cells are blank and displayed in General format.",
+          "Only the Service Log sheet is present; no Pivot Table or coordinator summary sheet exists."
+        ],
+        "setup_notes": [
+          "The workbook contains synthetic community workshop service billing records only.",
+          "No manual setup is required before recording."
+        ],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "6f58d7a2-ad3a-4010-8c65-a4ba24597c24",
+        "prompt_sha256": "747417a300302f349e09755f169e37578d77c1f8da52b46fceb9c2e3ae5947f8",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1436,
+        "output_tokens": 143,
+        "estimated_cost_usd": 0.004588
+      }
+    }
+  ],
+  "totals": {
+    "calls": 4,
+    "input_tokens": 6712,
+    "output_tokens": 678,
+    "estimated_cost_usd": 0.02156,
+    "pricing_complete": true
+  }
+}

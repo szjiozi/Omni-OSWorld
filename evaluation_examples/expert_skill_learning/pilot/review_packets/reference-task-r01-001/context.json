@@ -1,0 +1,410 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-r01-001",
+  "package": {
+    "reference_task_id": "reference-task-r01-001",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_calc",
+    "task_instruction": "In the Workshop Enrollment Queue, create a new \"Program Registration Counts\" summary that shows how many enrollment records each Program has, using Participant Code as the registration measure. Also make Review entries in the Enrollment Log's Queue Flag column stand out with a formula-driven custom pale-amber background (#FCE4D6), while leaving Ready and Confirmed entries unhighlighted.",
+    "required_skill_ids": [
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04",
+      "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01",
+      "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02"
+    ],
+    "artifact_spec": {
+      "artifact_type": "xlsx",
+      "domain": "community workshop enrollment coordination",
+      "generation_notes": [
+        "Create a privacy-safe synthetic workbook titled \"Workshop Enrollment Queue\".",
+        "Populate the Enrollment Log sheet with 28 data rows plus a header row. Use unique synthetic participant codes P-1001 through P-1028; all Participant Code cells must be nonblank text.",
+        "Use four Program values with these exact record totals: Community Garden (8), Digital Basics (7), First Aid (6), and Resume Lab (7). Arrange the rows in a mixed order rather than grouping by Program.",
+        "Use plausible 2026 session dates, neighborhood names, and Attendance Type values such as In Person, Online, and Waitlist.",
+        "Set Queue Flag to \"Review\" for exactly 8 records distributed across at least three programs; set the remaining records to \"Ready\" or \"Confirmed\". Include at least two different non-Review values.",
+        "Apply ordinary header styling and date formatting only. Do not create a pivot table, conditional-formatting rule, or custom colored cell style required by the task."
+      ],
+      "initial_state": [
+        "The workbook opens with Enrollment Log as the active sheet.",
+        "Enrollment Log contains a contiguous, filter-free data table in A1:G29 with no blank rows or blank columns inside the table.",
+        "Session Date is formatted as a date, while identifiers and categorical fields are text.",
+        "There is no pre-existing summary sheet, pivot table, native conditional-format rule, or custom pale-amber cell style.",
+        "The Queue Flag column is visible and contains the Review, Ready, and Confirmed values described in the generation notes."
+      ],
+      "must_not_be_completed": [
+        "Do not pre-create the Program Registration Counts sheet or any pivot output.",
+        "Do not apply conditional formatting to Queue Flag or any other range.",
+        "Do not create a custom style with the required pale-amber background before the recorded task."
+      ],
+      "sheets": [
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "Registration ID"
+            },
+            {
+              "data_type": "text",
+              "name": "Program"
+            },
+            {
+              "data_type": "date",
+              "name": "Session Date"
+            },
+            {
+              "data_type": "text",
+              "name": "Participant Code"
+            },
+            {
+              "data_type": "text",
+              "name": "Neighborhood"
+            },
+            {
+              "data_type": "text",
+              "name": "Attendance Type"
+            },
+            {
+              "data_type": "text",
+              "name": "Queue Flag"
+            }
+          ],
+          "name": "Enrollment Log",
+          "purpose": "Synthetic enrollment records for community workshops and queue review.",
+          "row_count": 28
+        }
+      ],
+      "workbook_title": "Workshop Enrollment Queue"
+    },
+    "operator_guide": {
+      "allowed_variation": "The operator may create the summary sheet before or during pivot creation and may use any equivalent Calc dialogs or menus. The custom style may be named freely, provided it is newly created for the rule and has the specified pale-amber background.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "After adding Participant Code to the pivot values, open its value settings immediately and set the summary type before confirming the pivot layout.",
+          "operation_intent": "Build a program-level registration summary on a new sheet, grouping the enrollment records by Program and counting nonblank Participant Code entries rather than totaling any numeric field.",
+          "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04",
+          "visible_success_signal": "The new summary shows one row for each of the four programs with counts 8, 7, 6, and 7, for a total of 28 registrations."
+        },
+        {
+          "efficiency_tip": "Select the full Queue Flag data range first and use a row-relative formula such as =G2=\"Review\" so the same rule evaluates each flag cell.",
+          "operation_intent": "Apply one formula-based conditional-formatting rule to Queue Flag cells that evaluates true only when the corresponding flag is Review.",
+          "skill_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01",
+          "visible_success_signal": "All and only the eight Queue Flag cells containing Review receive the conditional appearance; Ready and Confirmed cells remain unchanged."
+        },
+        {
+          "efficiency_tip": "Create the style from the conditional-formatting workflow so it can be assigned directly to the formula rule instead of manually coloring individual cells.",
+          "operation_intent": "Create and assign a new custom style with a pale amber background (#FCE4D6) for the Review condition.",
+          "skill_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02",
+          "visible_success_signal": "The Review cells visibly have the new pale-amber fill, and the assigned formatting is a reusable custom style rather than direct cell formatting."
+        }
+      ],
+      "recording_end_state": "A new Program Registration Counts sheet contains a pivot summary that counts Participant Code registrations by Program, and Enrollment Log Queue Flag cells with Review are conditionally filled pale amber using a newly created custom style.",
+      "recording_start_state": "The workbook opens on Enrollment Log with the raw 28-row enrollment table and no pivot table, conditional-formatting rule, or required custom style."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Create a new worksheet to hold the program-level registration summary.",
+        "reason": "A separate destination is needed for the requested pivot-based summary."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Select the Enrollment Log data and arrange Program as the grouping field and Participant Code as the value field in a pivot layout.",
+        "reason": "These are the minimum pivot setup actions needed before the value aggregation can be set to Count."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Select the Queue Flag data cells before defining the conditional formatting rule.",
+        "reason": "The formula-based rule must have a target range containing the queue-status values."
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+          "skill_count": 1,
+          "skill_fraction": 0.333333
+        },
+        {
+          "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+          "skill_count": 2,
+          "skill_fraction": 0.666667
+        }
+      ],
+      "dominant_source_task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+      "dominant_source_skill_fraction": 0.666667,
+      "complete_source_skill_sets_included": [
+        "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14"
+      ]
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+        "max_sequence_similarity": 0.204633,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "sequence_similarity": 0.035488
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "sequence_similarity": 0.204633
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "sequence_similarity": 0.193814
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+        "max_cosine_similarity": 0.319971,
+        "by_source_task": [
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "cosine_similarity": 0.306518
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "cosine_similarity": 0.319971
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "cosine_similarity": 0.275692
+          }
+        ],
+        "embedding_request_id": "7ee6513d-fcfd-40d9-ace3-7a5b2a7b61fa"
+      }
+    },
+    "generation": {
+      "attempt": 1,
+      "kind": "new_combination",
+      "request_id": "a3e567e8-ab80-4dfe-bd4e-e22ff8d6a155",
+      "prompt_sha256": "4abf52d2c64e2a821a8b7eaebce15d860d50dca2c1ace394dfb5951746e512ae"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04",
+      "app": "libreoffice_calc",
+      "name": "Set a Pivot Table value aggregation to Count",
+      "procedure": [
+        "Double-click the field shown in the Data Fields area to open its data-field settings.",
+        "Choose the Count aggregation option instead of a numeric summary such as Sum.",
+        "Confirm the aggregation setting, then confirm the Pivot Table layout to create or update the table."
+      ],
+      "efficiency_tip": "Open the data-field settings immediately after placing a field so its aggregation is correct before finalizing the layout.",
+      "source": {
+        "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+        "action_ids": [
+          7,
+          8,
+          9,
+          10
+        ]
+      }
+    },
+    {
+      "skill_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Create a formula-based conditional formatting rule",
+      "procedure": [
+        "Select the cells to evaluate; for example, press Ctrl+A to select the current sheet’s used range or select a specific calendar range.",
+        "Open Format > Conditional > Condition.",
+        "In the condition type drop-down, choose Formula is.",
+        "Enter a formula that returns TRUE for cells to format. For example, `=AND(WEEKDAY(A1,2)>5,NOT(ISBLANK(A1)))` evaluates weekend dates while excluding blank cells.",
+        "After assigning or creating the desired style, confirm the conditional-formatting dialog to save the rule. The relative reference `A1` is evaluated relative to each cell in the formatted range."
+      ],
+      "efficiency_tip": "Select the entire target range before opening Conditional Formatting so one rule applies to all cells at once; use relative references such as A1 so Calc evaluates the corresponding cell in each position.",
+      "source": {
+        "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          14
+        ]
+      }
+    },
+    {
+      "skill_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Create a custom cell style with a background color",
+      "procedure": [
+        "In the conditional-formatting dialog’s Apply Style control, open the style drop-down and choose New Style.",
+        "In the style dialog, open the Background settings, then open the color chooser.",
+        "Choose the required background color; for example, select red (`#ff0000`).",
+        "Confirm the style dialog with OK so the new style is available for assignment to the conditional rule."
+      ],
+      "efficiency_tip": "Create a custom style from the conditional-format dialog rather than manually filling cells; the same style can then be reused by other conditional rules.",
+      "source": {
+        "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+        "action_ids": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+      "instruction": "Create a Pivot Table in a new sheet (Sheet2) to count how many times each \"Invoice No.\" appears.",
+      "required_skill_ids": [
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 7,
+          "action": "`DOUBLE_CLICK on invoice no. box in data fields"
+        },
+        {
+          "action_id": 8,
+          "action": "`CLICK` Count"
+        },
+        {
+          "action_id": 9,
+          "action": "`PRESS` enter"
+        },
+        {
+          "action_id": 10,
+          "action": "`CLICK` ok"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on grey cell box A for selecting entire column",
+        "`CLICK` on pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` invoice no. in available fields box",
+        "`DRAG_TO` row fields box",
+        "`MOVE_TO` invoice no. in available fields box",
+        "`DRAG_TO` data fields box",
+        "`DOUBLE_CLICK on invoice no. box in data fields",
+        "`CLICK` Count",
+        "`PRESS` enter",
+        "`CLICK` ok",
+        "`DOUBLE_CLICK` Pivot Table Sheet1_1",
+        "`TYPING` Sheet2",
+        "`PRESS` enter"
+      ]
+    },
+    {
+      "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+      "instruction": "Given a partial calendar, please highlight all the weekends (Satureday & Sunday) by setting the cell background as red (#ff0000).",
+      "required_skill_ids": [
+        "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01",
+        "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`HOTKEY` ctrl-A"
+        },
+        {
+          "action_id": 1,
+          "action": "`CLICK` format"
+        },
+        {
+          "action_id": 2,
+          "action": "`MOVE_TO` conditional..."
+        },
+        {
+          "action_id": 3,
+          "action": "`CLICK` condition"
+        },
+        {
+          "action_id": 4,
+          "action": "`CLICK` cell value dropdown"
+        },
+        {
+          "action_id": 5,
+          "action": "`CLICK` formula is"
+        },
+        {
+          "action_id": 6,
+          "action": "`CLICK` formula text field"
+        },
+        {
+          "action_id": 7,
+          "action": "`TYPING` =AND(WEEKDAY(A1,2)>5, NOT(ISBLANK(A1)))"
+        },
+        {
+          "action_id": 8,
+          "action": "`CLICK` Apply style dropdown"
+        },
+        {
+          "action_id": 9,
+          "action": "`CLICK` New Style..."
+        },
+        {
+          "action_id": 10,
+          "action": "`CLICK` Background"
+        },
+        {
+          "action_id": 11,
+          "action": "`CLICK` Color"
+        },
+        {
+          "action_id": 12,
+          "action": "`CLICK` red"
+        },
+        {
+          "action_id": 13,
+          "action": "`CLICK` OK"
+        },
+        {
+          "action_id": 14,
+          "action": "`CLICK` OK"
+        }
+      ],
+      "single_actions": [
+        "`HOTKEY` ctrl-A",
+        "`CLICK` format",
+        "`MOVE_TO` conditional...",
+        "`CLICK` condition",
+        "`CLICK` cell value dropdown",
+        "`CLICK` formula is",
+        "`CLICK` formula text field",
+        "`TYPING` =AND(WEEKDAY(A1,2)>5, NOT(ISBLANK(A1)))",
+        "`CLICK` Apply style dropdown",
+        "`CLICK` New Style...",
+        "`CLICK` Background",
+        "`CLICK` Color",
+        "`CLICK` red",
+        "`CLICK` OK",
+        "`CLICK` OK"
+      ]
+    }
+  ],
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-r01-001",
+      "artifact_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-001/initial_artifact.xlsx",
+      "artifact_sha256": "818d50433cae5308ab4bdc0f7d98f405304500c97321713de72c1fb8304e1203",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-001/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-001/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.xlsx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-r01-001",
+      "task_config_path": "evaluation_examples/expert_skill_learning/pilot/task_configs/reference-task-r01-001.json",
+      "artifact_sha256": "818d50433cae5308ab4bdc0f7d98f405304500c97321713de72c1fb8304e1203",
+      "blueprint_request_id": "b8e3c1b6-4a36-4ea6-8104-e5cf07d6a9c4"
+    },
+    "packet_path": "task_config.json"
+  }
+}

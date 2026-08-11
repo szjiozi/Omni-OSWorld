@@ -1,5 +1,70 @@
 # OSWorld 专家轨迹技能学习 Benchmark 与历史项目 Handoff
 
+## 2026-08-12 香港标注与 Deferred Aliyun 迁移
+
+用户决定当前 reference annotation 继续使用 AWS 香港 `ap-east-1`。交互性能诊断证明 guest
+内部服务健康，但当前大陆 ISP 到香港 EC2 线路只有约 `6.6 KiB/s`（SSM）或
+`12–15 KiB/s`（公网 443 SSH）；关闭代理或升级实例不能解决。阿里云迁移已作为 deferred
+下一步写入 `plan.md`：目标 `cn-shenzhen`、x86 4 vCPU/16 GiB、10 Mbps 按流量，先跑最小
+A/B smoke，确认亚秒级交互后再扩展现有 Aliyun provider 和 AWS-only annotation runner。
+
+同日发现一台香港 smoke instance 超过 180 分钟仍运行：EventBridge schedule 时间正确但执行
+失败，当前 PowerUser 无权检查 execution role inline policy。遗留实例、schedule、手工隧道和
+临时 443 ingress 已清理。Runner 新增 guest systemd 180 分钟 poweroff backstop；由于实例启动
+行为为 terminate，它与 Scheduler、`finally env.close()` 共同构成三层回收。后续仍需用更高
+IAM 权限审核 `osworld-scheduler-ec2-terminate` 实际 policy。
+
+noVNC recurrent-loading 根因也已固化：SSM+SSH 功能正常，但香港跨境链路首次静态资源和首帧
+需要约 10–30 秒，公网 5910 则直接 timeout。Runner 下次优先固定 localhost `15000/15910`
+以复用浏览器缓存，并在交付链接前硬性验证 HTML 200、WebSocket 101 与 RFB banner；不再用
+“端口已监听”作为成功条件。Runner URL 还固定附加
+`autoconnect=true&resize=scale&quality=0&compression=9`，只降低 noVNC 交互预览的带宽；
+guest geometry 与正式 MP4 仍保持 OSWorld 要求的 1920×1080，不能通过降低 guest 分辨率
+换取速度。2026-08-12 的 task 1 mouse-overlay smoke 已完成并终止实例。
+
+## 2026-08-05 C4b Setup Config 与 C5 AWS Annotation Runner
+
+C4b 已完成。`generate_reference_task_configs.py` 让 construction LLM 只生成受 schema 约束的
+setup blueprint；可信本地 assembler 再校验 initial XLSX SHA256，注入固定
+`upload_file → open` actions。LLM 不接触 host path/hash，也不能生成 shell command、下载、
+额外文件或 evaluator。冻结输出为 `pilot/annotation_setup_blueprints.json`、
+`pilot/task_configs/*.json` 和 `pilot/task_config_manifest.json`。最终 4 calls 使用 6712/678
+input/output tokens，估算 `$0.021560`。四个 config 均无 evaluator。
+
+C5 runner `record_reference_task.py` 已实现 approved-only gate，并保留 `--allow-pending` 供
+工程 smoke；revision/rejected 不能绕过。它固定使用 `osworld-dev`，默认
+annotation region 已切换为香港 `ap-east-1`。由于官方香港公共 AMI 已失效，香港使用从
+`us-east-1` 官方干净 AMI 复制得到的私有加密副本，并通过 `AWS_AP_EAST_1_*` 隔离 subnet、
+security group 和 AMI；`--aws-region us-east-1` 保留为 fallback。香港默认通过 SSM 注入
+一次性 SSH 公钥，以单 SSH 连接复用本地动态 API/noVNC 端口，不依赖公网 ingress 或本机代理；
+美国 public fallback 才把专用 SG 的 5000/5910 ingress 更新为当前 IPv4 `/32`。Artifact
+打开后第一次 Enter 才启动 timestamped
+XInput/MP4，第二次 Enter 停止。Reference annotation 默认关闭周期 PNG 截图以免占满与 noVNC
+共享的 SSM+SSH 隧道，但仍保留 initial/start/final 三张关键截图；通用 OSWorld 实验与
+`manual_explore.py` 保持原设定。默认会把快捷键和特殊键规范化到
+`key_events.jsonl`，把左键、双击、右键和滚轮规范化到 `pointer_events.jsonl`；拖拽不显示
+额外提示。`input_timing.json` 保存视频/XInput monotonic 对齐点，`key_overlay.ass` 使用 guest
+ffmpeg burn-in 为正式 `recording.mp4`，同时保留无提示的 `recording_raw.mp4`；普通文字输入
+不会逐键显示。随后 runner 保存并回收 final XLSX、写完整 bundle，并在 `finally`
+terminate。Operator guide
+只显示在本地终端。`--no-key-overlay` 仅供工程调试；正式录制对 capture/burn-in fail closed。
+
+2026-08-12 发现官方 `/start_recording` 的 FFmpeg stderr PIPE 无消费者，约 4:38 后会阻塞；task 3
+的 5:55 操作窗口因此只产生 4:37.8 视频。Reference runner 已改用独立 guest recorder：stderr
+落文件、`ultrafast` 实时编码、第二次 Enter 先停视频、MP4 duration 对 guest monotonic 窗口
+做 5 秒容差校验。截断 run 会标记 failed；通用 OSWorld server/正式实验路径未改。
+
+新增本地测试覆盖 schema、prompt trust boundary、artifact hash、标准 actions、review gate、
+SG `/32` 更新、evaluator 拒绝、final workbook 回收，以及 shortcut privacy filter、XInput
+时间对齐、ASS 渲染和 guest overlay lifecycle。2026-08-11 已用 pending
+`reference-task-r01-001` 完成一次付费 AWS 单实例 smoke（run
+`20260811T130617Z`）：真实 XInput 捕获并过滤为 11 个可公开事件，`Ctrl+A`、
+`Ctrl+Shift+V`、Tab、方向键和 Enter 均正确，普通文字未进入事件文件；guest ffmpeg 成功
+烧录 1920×1080 overlay，抽帧确认提示位于底部中央。结果包、raw/overlay MP4、最终 XLSX 和
+manifest 均完整，EC2 最终为 `terminated`，EBS、ENI、TTL schedule 均无残留。当前四个
+packages 仍是 pending，正式标注前仍需完成人工 review。Annotator 操作见
+`evaluation_examples/expert_skill_learning/annotator.md`。
+
 ## 2026-08-05 Reference Package、Review Loop 与 Artifact Generation
 
 C2 已从 task-only 输出升级为可直接支持人工 reference-video 标注的 package：每个候选包含
@@ -14,7 +79,8 @@ task-specific、prerequisite 和重复操作可以存在，以免任务不自然
   `$0.114620`；
 - `similarity_reference.semantic`：`text-embedding-3-small` cosine，不再是字符串近似；本轮
   337 tokens、`$0.00000674`；lexical sequence similarity 继续保留为辅助；
-- `pilot/reference_package_reviews.json`：当前为空，4 个 packages 均 pending；
+- `pilot/reference_package_reviews.json`：已有 4 条预填 task ID 的空白 review forms；空白
+  decision 按 pending 处理，不会误判为 rejected；
 - `pilot/coverage_state.json`：0/12 approved，证明 candidate coverage 没被误当 approved。
 
 C3 软件闭环已经实现。Reviewer 可选择 `approved`、`revision_requested` 或 `rejected`。

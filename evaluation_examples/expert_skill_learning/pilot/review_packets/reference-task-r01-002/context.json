@@ -1,0 +1,313 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-r01-002",
+  "package": {
+    "reference_task_id": "reference-task-r01-002",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_calc",
+    "task_instruction": "Reconcile the workshop grants by calculating each workshop's Net Allocation after reversals, recoveries, and all listed delivery costs, then create a new-sheet Pivot Table that shows the total Net Allocation for each Service Area.",
+    "required_skill_ids": [
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01"
+    ],
+    "artifact_spec": {
+      "artifact_type": "xlsx",
+      "domain": "community workshop grant reconciliation",
+      "generation_notes": [
+        "All records are synthetic and privacy-safe. Create a single worksheet named \"Funding Log\" with a bold, lightly shaded header row, autofilter enabled on A1:I17, and 16 data records in rows 2-17.",
+        "Populate rows 2-17 with the following tab-separated values, in the stated column order: W-101\t18400\t350\t125\tNorthside\t2100\t980\t640; W-102\t22150\t0\t300\tNorthside\t1860\t1425\t720; W-103\t16750\t225\t0\tHarbor\t1940\t760\t515; W-104\t19600\t410\t185\tHarbor\t1725\t1190\t680; W-105\t23800\t0\t450\tMeadow\t2450\t1380\t940; W-106\t15450\t190\t75\tMeadow\t1280\t845\t390; W-107\t20700\t600\t220\tNorthside\t2185\t1110\t765; W-108\t18100\t0\t160\tHarbor\t1560\t920\t575; W-109\t24900\t525\t0\tMeadow\t2690\t1540\t880; W-110\t17200\t140\t210\tNorthside\t1495\t875\t460; W-111\t21450\t0\t330\tHarbor\t2050\t1260\t710; W-112\t15900\t285\t95\tMeadow\t1375\t690\t425; W-113\t22800\t365\t140\tNorthside\t2320\t1450\t830; W-114\t18850\t0\t250\tHarbor\t1680\t1040\t605; W-115\t20350\t455\t110\tMeadow\t1905\t1175\t695; W-116\t17600\t210\t0\tNorthside\t1430\t815\t480.",
+        "Format columns B:D and F:I as currency with zero decimal places. Keep column E as text. Set reasonable widths so every header and ordinary value is readable.",
+        "Do not seed any formulas in column I and do not create a pivot table, pivot output sheet, conditional formatting, charts, or summary values."
+      ],
+      "initial_state": [
+        "The workbook title is \"Workshop Grant Reconciliation\".",
+        "Only the \"Funding Log\" sheet exists initially.",
+        "The data range is contiguous from A1:I17. Row 1 contains headers and rows 2-17 contain the provided source values.",
+        "Column I is headed \"Net Allocation\" but cells I2:I17 are blank.",
+        "Columns A through H contain: Workshop ID, Award Received, Credit Reversal, Asset Recovery, Service Area, Venue Cost, Materials Cost, and Facilitator Cost, respectively."
+      ],
+      "must_not_be_completed": [
+        "Do not prefill a Net Allocation formula or values in any row.",
+        "Do not pre-create any native Pivot Table or a separate summary sheet.",
+        "Do not add unrelated calculations, charts, or extra datasets."
+      ],
+      "sheets": [
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "Workshop ID"
+            },
+            {
+              "data_type": "currency",
+              "name": "Award Received"
+            },
+            {
+              "data_type": "currency",
+              "name": "Credit Reversal"
+            },
+            {
+              "data_type": "currency",
+              "name": "Asset Recovery"
+            },
+            {
+              "data_type": "text",
+              "name": "Service Area"
+            },
+            {
+              "data_type": "currency",
+              "name": "Venue Cost"
+            },
+            {
+              "data_type": "currency",
+              "name": "Materials Cost"
+            },
+            {
+              "data_type": "currency",
+              "name": "Facilitator Cost"
+            },
+            {
+              "data_type": "currency",
+              "name": "Net Allocation"
+            }
+          ],
+          "name": "Funding Log",
+          "purpose": "Source reconciliation records whose calculated net allocations will be summarized by service area.",
+          "row_count": 16
+        }
+      ],
+      "workbook_title": "Workshop Grant Reconciliation"
+    },
+    "operator_guide": {
+      "allowed_variation": "The expert may use formula fill, copy/paste, or another efficient equivalent to populate the calculated column, and may use any suitable native LibreOffice Calc Pivot Table workflow and layout so long as the completed workbook visibly provides the requested summed service-area summary.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Enter the expression once in the first data row using one SUM range for the three adjacent cost columns, then fill it down the populated table.",
+          "operation_intent": "Calculate Net Allocation as the award less the credit reversal, asset recovery, and combined venue-to-facilitator costs for each workshop record.",
+          "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01",
+          "visible_success_signal": "I2 contains a row-relative formula equivalent to =B2-C2-D2-SUM(F2:H2), and I2:I17 display currency results with references adjusted by row."
+        },
+        {
+          "efficiency_tip": "Start from the full contiguous table so the detected Pivot Table source already contains the headers, all records, and the calculated measure.",
+          "operation_intent": "Create a native Pivot Table on a new worksheet that summarizes the sum of Net Allocation for each Service Area.",
+          "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01",
+          "visible_success_signal": "A separate pivot output sheet visibly lists Northside, Harbor, and Meadow with a summed Net Allocation value for each."
+        }
+      ],
+      "recording_end_state": "Funding Log retains all 16 records with completed Net Allocation formulas, and a new worksheet contains a native Pivot Table showing total Net Allocation grouped by Service Area.",
+      "recording_start_state": "The workbook opens to the single Funding Log sheet with the populated source table and a blank Net Allocation column."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Extend the completed Net Allocation formula from the first record through the remaining populated records.",
+        "reason": "Every record needs a calculated value for the requested service-area summary."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Use the complete contiguous Funding Log data range, including the calculated Net Allocation column, as the Pivot Table source.",
+        "reason": "The pivot summary must include both the grouping field and calculated measure."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Configure the new Pivot Table to group by Service Area and aggregate Net Allocation as a sum on a new worksheet.",
+        "reason": "This produces the requested reconciliation summary rather than an unconfigured pivot object."
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+          "skill_count": 1,
+          "skill_fraction": 0.5
+        },
+        {
+          "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+          "skill_count": 1,
+          "skill_fraction": 0.5
+        }
+      ],
+      "dominant_source_task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+      "dominant_source_skill_fraction": 0.5,
+      "complete_source_skill_sets_included": []
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+        "max_sequence_similarity": 0.319018,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "sequence_similarity": 0.031746
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "sequence_similarity": 0.200557
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "sequence_similarity": 0.319018
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "max_cosine_similarity": 0.437947,
+        "by_source_task": [
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "cosine_similarity": 0.437947
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "cosine_similarity": 0.233487
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "cosine_similarity": 0.407739
+          }
+        ],
+        "embedding_request_id": "7ee6513d-fcfd-40d9-ace3-7a5b2a7b61fa"
+      }
+    },
+    "generation": {
+      "attempt": 2,
+      "kind": "new_combination",
+      "request_id": "562e67e9-0946-4d77-88e8-425dfb4ceeeb",
+      "prompt_sha256": "dde9220f5cf5c7820bf4a4c39786e82ed248669c04b0e9d96b4ec2ce89f0ae76"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Build a row formula that subtracts a range total",
+      "procedure": [
+        "Select the output cell in the row to calculate.",
+        "Enter and commit a formula that subtracts individual values and a contiguous range total from a starting value. For example, use `=B2-C2-D2-SUM(F2:H2)`.",
+        "When reused on another table, replace the cell references with the relevant sale, return, adjustment, and expense columns."
+      ],
+      "efficiency_tip": "Use a single SUM range for adjacent expense columns instead of subtracting each expense cell separately.",
+      "source": {
+        "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "action_ids": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Create a Pivot Table from selected worksheet data",
+      "procedure": [
+        "Select the data to summarize. For example, click a column header to use that entire column as the source when the column contains the needed records.",
+        "Click the Pivot Table toolbar icon to open the Pivot Table creation workflow.",
+        "Confirm the detected source selection, for example by pressing Enter when the proposed range is correct."
+      ],
+      "efficiency_tip": "Select the complete contiguous source range before launching the command when possible; this avoids correcting an automatically detected range in the Pivot Table source dialog.",
+      "source": {
+        "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+      "instruction": "Help me fill in the Gross profit column by subtracting all the available expenses including discounts, allowances, material and labor charges, and overhead from the actual sale, i.e., the sales after deducting the returns. Then under column A named \"Year_Profit\" in a new sheet, display the Year Column in Sheet 1 as text appended by a \"_\" with the corresponding integer digits of Gross Profit value.",
+      "required_skill_ids": [
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`CLICK` on cell J2"
+        },
+        {
+          "action_id": 1,
+          "action": "`TYPING` '=B2-C2-D2-SUM(F2:H2)'"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell J2",
+        "`TYPING` '=B2-C2-D2-SUM(F2:H2)'",
+        "`CLICK` format as currency icon",
+        "`MOVE_TO` bottom right corner of the cell J2`",
+        "`DRAG_TO` bottom right corner of the cell J10",
+        "`CLICK` on + to left of sheet1",
+        "`TYPING` 'Year_Profit'",
+        "`PRESS` enter",
+        "`TYPING` '=$Sheet1.A2&\"_\"&$Sheet1.J2'",
+        "`MOVE_TO` bottom right corner of the cell A2`",
+        "`DRAG_TO` bottom right corner of the cell A10"
+      ]
+    },
+    {
+      "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+      "instruction": "Create a Pivot Table in a new sheet (Sheet2) to count how many times each \"Invoice No.\" appears.",
+      "required_skill_ids": [
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`CLICK` on grey cell box A for selecting entire column"
+        },
+        {
+          "action_id": 1,
+          "action": "`CLICK` on pivot table icon"
+        },
+        {
+          "action_id": 2,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on grey cell box A for selecting entire column",
+        "`CLICK` on pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` invoice no. in available fields box",
+        "`DRAG_TO` row fields box",
+        "`MOVE_TO` invoice no. in available fields box",
+        "`DRAG_TO` data fields box",
+        "`DOUBLE_CLICK on invoice no. box in data fields",
+        "`CLICK` Count",
+        "`PRESS` enter",
+        "`CLICK` ok",
+        "`DOUBLE_CLICK` Pivot Table Sheet1_1",
+        "`TYPING` Sheet2",
+        "`PRESS` enter"
+      ]
+    }
+  ],
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-r01-002",
+      "artifact_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-002/initial_artifact.xlsx",
+      "artifact_sha256": "1650801e76c8fc10f433be0daee18beeee521e4f1a326ebce68c87ea8ef35317",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-002/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-002/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.xlsx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-r01-002",
+      "task_config_path": "evaluation_examples/expert_skill_learning/pilot/task_configs/reference-task-r01-002.json",
+      "artifact_sha256": "1650801e76c8fc10f433be0daee18beeee521e4f1a326ebce68c87ea8ef35317",
+      "blueprint_request_id": "7c06fdb5-71ac-4ba5-9364-19180af149fe"
+    },
+    "packet_path": "task_config.json"
+  }
+}

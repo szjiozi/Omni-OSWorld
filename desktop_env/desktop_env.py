@@ -12,8 +12,6 @@ from typing import List, Dict, Union
 import gymnasium as gym
 
 from desktop_env.controllers.python import PythonController
-from desktop_env.controllers.setup import SetupController
-from desktop_env.evaluators import metrics, getters
 from desktop_env.network import add_no_proxy_host
 from desktop_env.providers import create_vm_manager_and_provider
 
@@ -103,6 +101,7 @@ class DesktopEnv(gym.Env):
             enable_proxy: bool = False,
             client_password: str = "",
             vm_secret_mounts: Optional[List[VMSecretMount]] = None,
+            setup_only: bool = False,
     ):
         """
         Args:
@@ -122,11 +121,14 @@ class DesktopEnv(gym.Env):
             vm_secret_mounts (list): optional local-to-guest secret file mounts,
               using local_path:guest_path strings, (local_path, guest_path)
               tuples, or {"local_path": ..., "path": ...} dictionaries.
+            setup_only (bool): use the lightweight upload/open controller and
+              allow task configs without evaluators.
         """
         # Initialize VM manager and vitualization provider
         self.region = region
         self.provider_name = provider_name
         self.enable_proxy = enable_proxy  # Store proxy enablement setting
+        self.setup_only = setup_only
         if client_password == "":
             if self.provider_name == "aws":
                 self.client_password = "osworld-public-evaluation"
@@ -217,7 +219,15 @@ class DesktopEnv(gym.Env):
                 self.vnc_port = int(vm_ip_ports[3])
                 self.vlc_port = int(vm_ip_ports[4])
             self.controller = PythonController(vm_ip=self.vm_ip, server_port=self.server_port)
-            self.setup_controller = SetupController(vm_ip=self.vm_ip, server_port=self.server_port, chromium_port=self.chromium_port, vlc_port=self.vlc_port, cache_dir=self.cache_dir_base, client_password=self.client_password, screen_width=self.screen_width, screen_height=self.screen_height)
+            if self.setup_only:
+                from desktop_env.controllers.setup_only import SetupOnlyController
+
+                setup_controller_class = SetupOnlyController
+            else:
+                from desktop_env.controllers.setup import SetupController
+
+                setup_controller_class = SetupController
+            self.setup_controller = setup_controller_class(vm_ip=self.vm_ip, server_port=self.server_port, chromium_port=self.chromium_port, vlc_port=self.vlc_port, cache_dir=self.cache_dir_base, client_password=self.client_password, screen_width=self.screen_width, screen_height=self.screen_height)
             self._inject_vm_secret_mounts()
 
         except Exception as e:
@@ -366,10 +376,15 @@ class DesktopEnv(gym.Env):
         self.instruction = task_config["instruction"]
         self.config = task_config["config"] if "config" in task_config else []
 
-        self._set_evaluator_info(task_config)
+        if "evaluator" in task_config:
+            self._set_evaluator_info(task_config)
+        else:
+            self.evaluator = None
 
     def _set_evaluator_info(self, task_config: Dict[str, Any]):
         """Set evaluator information from task config"""
+        from desktop_env.evaluators import getters, metrics
+
         # evaluator dict
         # func -> metric function string, or list of metric function strings
         # conj -> conjunction of multiple metrics if func is a list with length > 1, "and"/"or"
@@ -461,6 +476,9 @@ class DesktopEnv(gym.Env):
         """
         Evaluate whether the task is successfully completed.
         """
+
+        if self.evaluator is None:
+            raise RuntimeError("This task config does not define an evaluator")
 
         postconfig = self.evaluator.get("postconfig", [])
         self.setup_controller.setup(postconfig, self.enable_proxy)

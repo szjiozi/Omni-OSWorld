@@ -1,0 +1,86 @@
+{
+  "id": "reference-task-r01-002",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Reconcile the workshop grants by calculating each workshop's Net Allocation after reversals, recoveries, and all listed delivery costs, then create a new-sheet Pivot Table that shows the total Net Allocation for each Service Area.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-002/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/workshop_grants.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/workshop_grants.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-r01-002",
+    "artifact_path": "evaluation_examples/expert_skill_learning/pilot/artifacts/reference-task-r01-002/initial_artifact.xlsx",
+    "artifact_sha256": "1650801e76c8fc10f433be0daee18beeee521e4f1a326ebce68c87ea8ef35317",
+    "guest_artifact_path": "/home/user/Desktop/workshop_grants.xlsx",
+    "required_skill_ids": [
+      "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01",
+      "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The expert may use formula fill, copy/paste, or another efficient equivalent to populate the calculated column, and may use any suitable native LibreOffice Calc Pivot Table workflow and layout so long as the completed workbook visibly provides the requested summed service-area summary.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Enter the expression once in the first data row using one SUM range for the three adjacent cost columns, then fill it down the populated table.",
+          "operation_intent": "Calculate Net Allocation as the award less the credit reversal, asset recovery, and combined venue-to-facilitator costs for each workshop record.",
+          "skill_id": "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01",
+          "visible_success_signal": "I2 contains a row-relative formula equivalent to =B2-C2-D2-SUM(F2:H2), and I2:I17 display currency results with references adjusted by row."
+        },
+        {
+          "efficiency_tip": "Start from the full contiguous table so the detected Pivot Table source already contains the headers, all records, and the calculated measure.",
+          "operation_intent": "Create a native Pivot Table on a new worksheet that summarizes the sum of Net Allocation for each Service Area.",
+          "skill_id": "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01",
+          "visible_success_signal": "A separate pivot output sheet visibly lists Northside, Harbor, and Meadow with a summed Net Allocation value for each."
+        }
+      ],
+      "recording_end_state": "Funding Log retains all 16 records with completed Net Allocation formulas, and a new worksheet contains a native Pivot Table showing total Net Allocation grouped by Service Area.",
+      "recording_start_state": "The workbook opens to the single Funding Log sheet with the populated source table and a blank Net Allocation column."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Extend the completed Net Allocation formula from the first record through the remaining populated records.",
+        "reason": "Every record needs a calculated value for the requested service-area summary."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Use the complete contiguous Funding Log data range, including the calculated Net Allocation column, as the Pivot Table source.",
+        "reason": "The pivot summary must include both the grouping field and calculated measure."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Configure the new Pivot Table to group by Service Area and aggregate Net Allocation as a sum on a new worksheet.",
+        "reason": "This produces the requested reconciliation summary rather than an unconfigured pivot object."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc is open with the workbook showing only the \"Funding Log\" sheet.",
+      "The contiguous source table spans A1:I17 with a bold, lightly shaded header row and filter controls.",
+      "Rows 2 through 17 contain workshop records, and column I is labeled \"Net Allocation\" with blank cells I2:I17.",
+      "Columns B:D and F:I display currency values with zero decimal places."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

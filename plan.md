@@ -120,8 +120,34 @@ reference-video-to-skill-to-agent 协议继续作为后续 benchmark 目标保�
 - [x] C4a LLM artifact generation：4 个 strict blueprints、4 个真实 XLSX、逐 sheet render、
   formula error scan、SHA256、精确 number formats/AutoFilter 和 build-only 重放；最终 frozen
   blueprint run 为 4 calls、9167/3447 tokens、`$0.059698`，4 个 artifacts 均无需 manual setup；
-- [ ] C4b setup-only OSWorld config、C5 AWS runner、C6 本地 cross-validation；
+- [x] C4b setup-only OSWorld config：LLM constrained blueprint + 本地可信 assembler；冻结
+  4 个 config，均严格为 `upload_file → open`、无 evaluator；最终 run 为 4 calls、6712/678
+  tokens、`$0.021560`；
+- [x] C5 AWS annotation runner 的代码与本地测试：approved gate、`--allow-pending`、官方干净
+  Ubuntu AMI、当前公网 IP `/32`、第一次 Enter 开始、第二次 Enter 停止、最终 XLSX/结果包
+  回收和 `finally` terminate；
+- [x] C5 单实例 AWS 实机 smoke 与终态资源审计；
+- [ ] C6 本地 cross-validation；
 - [ ] C7 Pilot 验收。
+
+### Deferred infrastructure next step: Alibaba Cloud Shenzhen
+
+当前 human annotation 继续使用 AWS 香港 `ap-east-1`；阿里云迁移不阻塞本轮 reference
+video 标注。若 AWS 香港交互延迟影响批量标注，下一基础设施步骤是在阿里云中国站完成一个
+`cn-shenzhen` A/B smoke，而不是直接迁移整条 pipeline：
+
+- 使用已实名的阿里云中国站账号、RAM 最小权限凭据、专用 VPC/VSwitch/security group；
+- 导入 x86_64 OSWorld Ubuntu QCOW2 到同 region OSS/ECS，不能选 ARM `g8y`；
+- 首选当区可用的 x86 general-purpose 4 vCPU / 16 GiB、50 GiB ESSD、按流量 10 Mbps；
+- security group 只允许当前 annotator IPv4 `/32`，通过加密 SSH tunnel 暴露本地
+  API/noVNC，不照旧 guide 使用 `0.0.0.0/0`；
+- 先对比 `Ctrl+A` 可见延迟、17 KiB noVNC HTML、约 173 KiB screenshot 和 10 分钟人工操作，
+  达到亚秒级交互后才扩展 `record_reference_task.py`；
+- 复用现有 `desktop_env/providers/aliyun` 的 create/delete/TTL 基础，但修正默认 private IP、
+  AWS-only runner、current-IP ingress、镜像 provenance、资源审计和异常清理。
+
+成本暂按 3 小时 smoke 约人民币 4–8 元、长期 50 GiB 快照约数元/月预留，实际以
+`cn-shenzhen` 控制台报价和有效快照容量为准。
 
 ## A. Benchmark 定位
 
@@ -395,6 +421,7 @@ downstream agent 不完全反转；所有模型交互均为 inference-only。
 5. [ ] 冻结 Qwen omni-model、Qwen omni-agent、prompt 和 budget。
 6. [ ] 跑 C0 no-reference、R2 recomposed、mismatched 和 R0 golden upper-bound。
 7. [ ] 输出 3-task accuracy、WES、action/group/model-call/time/cost 与泄漏诊断报告。
+8. [ ] （Deferred）AWS 香港批量标注仍不可接受时，执行阿里云深圳最小 A/B smoke。
 
 ---
 
