@@ -21,6 +21,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from benchmark_construction.artifact_generation import (
     generate_artifact_blueprints,
+    generate_artifact_blueprints_checkpointed,
     load_artifact_blueprints,
     write_artifact_blueprints,
 )
@@ -44,6 +45,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--base-url", default=None)
     parser.add_argument("--api-key-env", default="OPENAI_API_KEY")
     parser.add_argument("--concurrency", type=int, default=3)
+    parser.add_argument(
+        "--checkpoint-dir",
+        type=Path,
+        help="Write one validated blueprint checkpoint per reference task.",
+    )
+    parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--semantic-retries", type=int, default=2)
     parser.add_argument(
         "--blueprints-output",
         type=Path,
@@ -177,7 +185,18 @@ async def run(args: argparse.Namespace) -> int:
         call_log=args.call_log,
         pricing=PricingTable.from_path(args.pricing),
     )
-    results = await generate_artifact_blueprints(packages, client)
+    if args.checkpoint_dir:
+        results = await generate_artifact_blueprints_checkpointed(
+            packages,
+            client,
+            checkpoint_dir=args.checkpoint_dir,
+            resume=args.resume,
+            semantic_retries=args.semantic_retries,
+        )
+    else:
+        if args.resume:
+            raise SystemExit("--resume requires --checkpoint-dir")
+        results = await generate_artifact_blueprints(packages, client)
     write_artifact_blueprints(args.blueprints_output, results)
     print(f"Wrote {len(results)} blueprints to {args.blueprints_output}")
     if args.build_output_dir:

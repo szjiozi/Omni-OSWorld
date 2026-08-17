@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "dataset_id": "libreoffice_calc-full-v1",
+  "coverage_policy": "Completed pilot annotations are inherited and must not be regenerated or re-recorded.",
+  "source_package_manifest": "evaluation_examples/expert_skill_learning/pilot/reference_packages.json",
+  "annotations": [
+    {
+      "reference_task_id": "reference-task-r01-001",
+      "episode_id": "20260811T175625Z",
+      "episode_manifest": "results/reference_annotations/reference-task-r01-001/20260811T175625Z/episode_manifest.json",
+      "status": "annotation_completed",
+      "covered_skill_ids": [
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04",
+        "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01",
+        "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02"
+      ]
+    },
+    {
+      "reference_task_id": "reference-task-r01-002",
+      "episode_id": "20260811T182149Z",
+      "episode_manifest": "results/reference_annotations/reference-task-r01-002/20260811T182149Z/episode_manifest.json",
+      "status": "annotation_completed",
+      "covered_skill_ids": [
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01"
+      ]
+    },
+    {
+      "reference_task_id": "reference-task-r01-003",
+      "episode_id": "20260811T191914Z",
+      "episode_manifest": "results/reference_annotations/reference-task-r01-003/20260811T191914Z/episode_manifest.json",
+      "status": "annotation_completed",
+      "covered_skill_ids": [
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05",
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04",
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03",
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05"
+      ]
+    },
+    {
+      "reference_task_id": "reference-task-r01-004",
+      "episode_id": "20260811T195556Z",
+      "episode_manifest": "results/reference_annotations/reference-task-r01-004/20260811T195556Z/episode_manifest.json",
+      "status": "annotation_completed",
+      "covered_skill_ids": [
+        "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02",
+        "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02"
+      ]
+    }
+  ]
+}

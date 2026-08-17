@@ -1,0 +1,13 @@
+{
+  "workbook_title": "Workshop Supply Reimbursements",
+  "output_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-016/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Reimbursements",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-016/previews/Reimbursements.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Reimbursements\",\"address\":\"A1:G12\",\"rows\":12,\"cols\":7,\"values\":[[\"Request ID\",\"Workshop\",\"Supply Category\",\"Materials Cost\",\"Shipping Cost\",\"Sponsor Credit\",\"Net Reimbursement\"],[\"CWS-2401\",\"Clay Studio Basics\",\"Ceramic Tools\",184.5,16.25,25,175.75],[\"CWS-2402\",\"Neighborhood Print Lab\",\"Ink and Paper\",236.8,22.4,30,null],[\"CWS-2403\",\"Youth Woodworking\",\"Safety Equipment\",312.6,28.75,45,null],[\"CWS-2404\",\"Community Garden Build\",\"Fasteners\",148.35,14.9,20,null],[\"CWS-2405\",\"Internal Materials Test\",\"Sample Supplies\",96.4,11.6,15,null],[\"CWS-2406\",\"Textile Repair Circle\",\"Fabric and Thread\",275.25,19.95,35,null],[\"CWS-2407\",\"Open Electronics Bench\",\"Soldering Supplies\",421.7,31.2,60,null],[\"CWS-2408\",\"Mural Design Session\",\"Paint and Brushes\",358.9,26.5,50,null],[\"CWS-2409\",\"Kitchen Skills Lab\",\"Utensils\",167.45,18.3,22,null],[\"CWS-2410\",\"Bike Maintenance Clinic\",\"Replacement Parts\",489.35,34.65,75,null],[\"CWS-2411\",\"Bookbinding Workshop\",\"Paper Stock\",214.2,17.8,28,null]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

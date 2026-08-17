@@ -46,6 +46,26 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--generation-round", type=int, default=1)
     parser.add_argument("--seed", type=int, default=20260805)
     parser.add_argument("--max-attempts", type=int, default=24)
+    parser.add_argument(
+        "--max-candidates",
+        type=int,
+        default=20,
+        help="Maximum accepted candidate packages in this generation round.",
+    )
+    parser.add_argument(
+        "--task-id-prefix",
+        default="reference-task",
+        help="Prefix before -rNN-NNN in generated reference task IDs.",
+    )
+    parser.add_argument(
+        "--initial-covered-packages",
+        type=Path,
+        action="append",
+        help=(
+            "Packages with already completed annotations; their required skills "
+            "start this run covered without being regenerated."
+        ),
+    )
     parser.add_argument("--model", default="gpt-5.6-terra")
     parser.add_argument("--embedding-model", default="text-embedding-3-small")
     parser.add_argument("--skip-semantic-similarity", action="store_true")
@@ -110,6 +130,25 @@ async def run(args: argparse.Namespace) -> int:
     initial_uncovered = None
     blocked_groups = ()
     revisions = ()
+    if args.initial_covered_packages:
+        legacy_packages = load_reference_packages(args.initial_covered_packages)
+        skill_ids = {skill.skill_id for skill in skills}
+        initial_covered = {
+            skill_id
+            for package in legacy_packages
+            for skill_id in package["required_skill_ids"]
+        }
+        unknown = initial_covered.difference(skill_ids)
+        if unknown:
+            raise SystemExit(
+                "Initial covered packages reference unknown skills: "
+                + ", ".join(sorted(unknown))
+            )
+        initial_uncovered = [
+            skill.skill_id
+            for skill in skills
+            if skill.skill_id not in initial_covered
+        ]
     if args.previous_packages:
         packages = load_reference_packages(args.previous_packages)
         reviews = load_reference_reviews(args.reviews)
@@ -153,6 +192,8 @@ async def run(args: argparse.Namespace) -> int:
         seed=args.seed,
         generation_round=args.generation_round,
         max_attempts=args.max_attempts,
+        max_candidates=args.max_candidates,
+        task_id_prefix=args.task_id_prefix,
         initial_uncovered_skill_ids=initial_uncovered,
         blocked_groups=blocked_groups,
         revisions=revisions,

@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-002",
+  "base_prompt_sha256": "d082215aa219be3a192ce6369b7433985acf874025c0b36d554816097df3aa13",
+  "blueprint": {
+    "manual_setup_steps": [],
+    "sheets": [
+      {
+        "autofilter_range": null,
+        "column_number_formats": [
+          "@",
+          "$#,##0.00",
+          "General"
+        ],
+        "column_types": [
+          "text",
+          "currency",
+          "currency"
+        ],
+        "formulas": [],
+        "freeze_header_row": false,
+        "headers": [
+          "Initiative",
+          "Planned Allocation (USD)",
+          "Board View"
+        ],
+        "name": "Funding Plan",
+        "rows": [
+          {
+            "values": [
+              "North Transit",
+              "12450000000",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "River Resilience",
+              "8750000000",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Community Clinics",
+              "3620000000",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Grid Modernization",
+              "15180000000",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Digital Access",
+              "2190000000",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Coastal Protection",
+              "10440000000",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "School Renewal",
+              "5970000000",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Water Reliability",
+              "7310000000",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Housing Retrofit",
+              "2860000000",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Emergency Logistics",
+              "12990000000",
+              ""
+            ]
+          }
+        ]
+      }
+    ],
+    "workbook_title": "Regional Funding Board View"
+  },
+  "generation": {
+    "request_id": "7681e9de-b10d-4d79-9079-1c318b6692c7",
+    "prompt_sha256": "d082215aa219be3a192ce6369b7433985acf874025c0b36d554816097df3aa13",
+    "model": "gpt-5.6-terra",
+    "input_tokens": 1969,
+    "output_tokens": 221,
+    "estimated_cost_usd": 0.0030512
+  }
+}

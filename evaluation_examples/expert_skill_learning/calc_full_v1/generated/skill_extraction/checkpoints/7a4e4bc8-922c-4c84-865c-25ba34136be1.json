@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+  "app": "libreoffice_calc",
+  "single_action_count": 12,
+  "prompt_sha256": "06c4ffd1fc11f1a2834eed9ee2ae53cff1533f6042d1a518e4760929bd781c26",
+  "request_id": "f3c8c071-1f69-4740-8308-b753816e50b3",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1299,
+    "cached_input_tokens": 1073,
+    "output_tokens": 870,
+    "estimated_cost_usd": 0.0111066
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "efficiency_tip": "Select the whole column from its header before dragging, so the move applies to every row and does not require later copying or cleanup.",
+        "name": "Insert a column at a new position with Alt-drag",
+        "procedure": [
+          "Click the source column header to select the entire column.",
+          "Hold Alt while dragging the selected column by its header to the desired insertion position. For example, drag column E toward column A to insert the E column before the existing first column.",
+          "Release the mouse to place the column; the surrounding columns shift to make room rather than requiring manual cut-and-paste."
+        ]
+      },
+      {
+        "action_ids": [
+          4,
+          5,
+          6
+        ],
+        "efficiency_tip": "Drag from the selected column's header rather than from a cell inside the column; this avoids moving only a cell range or opening cell-edit behavior.",
+        "name": "Reposition a single worksheet column by dragging its header",
+        "procedure": [
+          "Click the header of the column to move, such as column C, to select the full column.",
+          "Drag from the selected column header to the target column position, such as toward column E, and release when the insertion location is indicated.",
+          "Verify that the full column moved and that the other columns shifted accordingly."
+        ]
+      },
+      {
+        "action_ids": [
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "efficiency_tip": "Use Shift to select adjacent columns as one block, then move them together instead of repeating separate column drags.",
+        "name": "Move adjacent worksheet columns as a block",
+        "procedure": [
+          "Click the first column header in the contiguous block, for example column A.",
+          "Hold Shift and click the last adjacent column header, such as column B, to select columns A through B together.",
+          "Drag from a header in the selected block to the desired destination position and release to move the selected columns together."
+        ]
+      }
+    ]
+  }
+}

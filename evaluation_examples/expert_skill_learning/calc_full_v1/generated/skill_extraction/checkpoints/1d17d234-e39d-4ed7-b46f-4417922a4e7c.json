@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+  "app": "libreoffice_calc",
+  "single_action_count": 22,
+  "prompt_sha256": "00f2321c80101119f262caf35a1f198d913c7d821f339870a4f87976a311d5a1",
+  "request_id": "3e6c370d-49df-4536-ac06-d8b24f8ae5e0",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1427,
+    "cached_input_tokens": 1073,
+    "output_tokens": 210,
+    "estimated_cost_usd": 0.0034426
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          8,
+          9,
+          10,
+          11,
+          12,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "efficiency_tip": "Use Shift-click to select a contiguous range in two clicks, then repeat the same Merge Cells command for each separate block rather than selecting and merging cells one at a time.",
+        "name": "Merge a contiguous cell range using Shift-click and the context menu",
+        "procedure": [
+          "Click the first cell of the range, then hold Shift and click the opposite corner to select the full rectangular range. For example, click A1 and Shift-click C1 to select A1:C1.",
+          "Right-click anywhere in the selected range and choose Merge Cells. The selected cells become one merged cell anchored at the upper-left cell.",
+          "Repeat independently for other ranges as needed; for example, select A2:B2 and merge it, then select C2:D2 and merge it."
+        ]
+      }
+    ]
+  }
+}

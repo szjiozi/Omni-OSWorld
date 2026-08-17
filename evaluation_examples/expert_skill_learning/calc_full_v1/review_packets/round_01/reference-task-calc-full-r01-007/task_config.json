@@ -1,0 +1,115 @@
+{
+  "id": "reference-task-calc-full-r01-007",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Complete the Field Service Payment Review: calculate each technician's earned amount from the hourly rate and logged service duration, display the payment figures using German-style decimal separators, and mark earned amounts above 200 with a custom bright-green font. Then create a chart comparing technician earnings and place it on a newly added worksheet named Payment Overview.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-007/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/field_service_payments.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/field_service_payments.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-calc-full-r01-007",
+    "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-007/initial_artifact.xlsx",
+    "artifact_sha256": "c25f81596bbe4e6fc53b3f1f1b770f31f8ee9cf52d5e66d1bad9195c9c23eb90",
+    "guest_artifact_path": "/home/user/Desktop/field_service_payments.xlsx",
+    "required_skill_ids": [
+      "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-03",
+      "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-05",
+      "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-05",
+      "a01fbce3-2793-461f-ab86-43680ccbae25.skill-01",
+      "357ef137-7eeb-4c80-a3bb-0951f26a8aff.skill-01"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The expert may use menu commands, dialogs, keyboard shortcuts, autofill, or equivalent Calc workflows. Chart type and threshold may follow the task wording as long as the result clearly compares technician earnings and the specified visual and worksheet outcomes are present.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Enter the decimal-hour conversion directly in the earnings calculation and fill it down, avoiding helper columns.",
+          "operation_intent": "Calculate each Earned Amount by multiplying the hourly rate by the service duration converted from hours and minutes to decimal hours.",
+          "skill_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff.skill-01",
+          "visible_success_signal": "Every populated shift row has a numeric Earned Amount consistent with its rate and displayed duration."
+        },
+        {
+          "efficiency_tip": "Select all target payment cells before opening the formatting dialog so one locale choice updates the full selection.",
+          "operation_intent": "Apply a German locale-specific numeric display format to the Hourly Rate and Earned Amount values while preserving their values and precision.",
+          "skill_id": "a01fbce3-2793-461f-ab86-43680ccbae25.skill-01",
+          "visible_success_signal": "The targeted payment numbers visibly use comma decimal separators, while calculations remain numeric."
+        },
+        {
+          "efficiency_tip": "Create the custom conditional-format style from the rule's style selector so it can be reused rather than manually formatting individual cells.",
+          "operation_intent": "Add a conditional-format rule that identifies Earned Amount values above 200 and uses a custom font color of #00FF00 for matching cells.",
+          "skill_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-05",
+          "visible_success_signal": "At least one qualifying Earned Amount is shown in bright green text, and nonqualifying values are not."
+        },
+        {
+          "efficiency_tip": "Cut and paste the completed chart rather than recreating it, preserving its chart settings and links.",
+          "operation_intent": "Create a technician-versus-earned-amount chart, insert a fresh worksheet, and move the chart object onto that new worksheet.",
+          "skill_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-03",
+          "visible_success_signal": "The chart is no longer on Shift Log and is visible on its own newly inserted worksheet with linked earnings data."
+        },
+        {
+          "efficiency_tip": "Rename the new tab as soon as it is created, before continuing work on the chart sheet.",
+          "operation_intent": "Rename the newly inserted chart worksheet to Payment Overview.",
+          "skill_id": "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-05",
+          "visible_success_signal": "The workbook tab for the chart sheet visibly reads Payment Overview."
+        }
+      ],
+      "recording_end_state": "Shift Log contains calculated payment values with German-style numeric display and green-font conditional emphasis for earnings above 200; a chart comparing technician earnings is located on a separate worksheet named Payment Overview.",
+      "recording_start_state": "One-sheet workbook with the populated Shift Log source table, blank Earned Amount cells, and no chart, conditional formatting, or additional worksheet."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Create a chart from the completed Technician and Earned Amount data before relocating it.",
+        "reason": "A chart object must exist in order to demonstrate moving it to a newly inserted worksheet."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Fill or copy the decimal-hours earnings formula down through all populated shift rows.",
+        "reason": "The review requires a complete calculated earnings column rather than a single isolated result."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Create a conditional-format rule for unusually high earned amounts and assign the newly created custom-font-color style to that rule.",
+        "reason": "The requested high-payment emphasis requires both a rule and the mandated reusable custom style."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Select the completed numeric payment range before applying the locale-specific number format.",
+        "reason": "The locale display change should consistently cover all relevant rate and earnings values."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc is open with a single active worksheet named Shift Log.",
+      "Shift Log shows a styled header row in A1:E1 and 12 populated data rows from 2 through 13.",
+      "Service Duration cells C2:C13 display using the [HH]:MM time format.",
+      "Hourly Rate values are numeric with two decimal places, and Earned Amount cells E2:E13 are blank.",
+      "No additional worksheets, chart objects, or conditional formatting are present."
+    ],
+    "setup_notes": [
+      "The Service Duration values in C2:C13 are stored as Calc time serials and must display with the [HH]:MM number format before recording."
+    ],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "scripts/python/manage_reference_review_packets.py export",
+  "reference_task_id": "reference-task-calc-full-r01-020",
+  "context_fingerprint": "c794b785016b5d63874e0d172c6315d13c47d919f0e22ee4927d7a6b3fb1821b",
+  "inputs": [
+    {
+      "role": "artifact",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-020/initial_artifact.xlsx",
+      "sha256": "faeb79de93d679439a5a0a2f69f8bb2faaca51be9f21420f43071f8755d79cb1"
+    },
+    {
+      "role": "artifact_blueprint",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-020/artifact_blueprint.json",
+      "sha256": "da4b179b1611ef91b75596d86e2195e73074c85f14070605d7cb1d8d1aaeff94"
+    },
+    {
+      "role": "artifact_qa",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-020/artifact_qa.json",
+      "sha256": "6ec49da2566dfc8fffcc5750c071fe347a46fc269b26b086e03dd5240509b728"
+    },
+    {
+      "role": "task_config",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-020.json",
+      "sha256": "bfbd775de724c19b491ea7d96fd53872e74bc36babdd461228a39ee22759a848"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-020/previews/Supply_Plan.png",
+      "sha256": "31d465dde64a20165b13f762dc584ea3df83e498a1663054e154800262fa564e"
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "TASK.md",
+      "sha256": "c1ce6c73d9a064ce9641ec6e64ccdc2020ac5086c6635e9aa8210959a8b187c3"
+    },
+    {
+      "path": "TASK_DETAIL.md",
+      "sha256": "698766cd9dc2e4bb8b05455898a987bb71f7e618b60b45fabee28606cdb16822"
+    },
+    {
+      "path": "context.json",
+      "sha256": "0a43200ee18874716b15ffc90be3722507814edaa4eceebfc2e156d663fd799a"
+    },
+    {
+      "path": "task_config.json",
+      "sha256": "bfbd775de724c19b491ea7d96fd53872e74bc36babdd461228a39ee22759a848"
+    },
+    {
+      "path": "artifact/initial_artifact.xlsx",
+      "sha256": "faeb79de93d679439a5a0a2f69f8bb2faaca51be9f21420f43071f8755d79cb1"
+    },
+    {
+      "path": "artifact/artifact_blueprint.json",
+      "sha256": "da4b179b1611ef91b75596d86e2195e73074c85f14070605d7cb1d8d1aaeff94"
+    },
+    {
+      "path": "artifact/artifact_qa.json",
+      "sha256": "6ec49da2566dfc8fffcc5750c071fe347a46fc269b26b086e03dd5240509b728"
+    },
+    {
+      "path": "artifact/previews/Supply_Plan.png",
+      "sha256": "31d465dde64a20165b13f762dc584ea3df83e498a1663054e154800262fa564e"
+    }
+  ],
+  "editable_review": {
+    "path": "review.json",
+    "excluded_from_generated_file_hashes": true
+  }
+}

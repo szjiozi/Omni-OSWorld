@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "scripts/python/manage_reference_review_packets.py export",
+  "reference_task_id": "reference-task-calc-full-r01-002",
+  "context_fingerprint": "2019846a3f42cf21ceafec8bf38dbb60ef4abca0081d0ab6a3bfc6d7248d8c4b",
+  "inputs": [
+    {
+      "role": "artifact",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-002/initial_artifact.xlsx",
+      "sha256": "ea718dabd14e9cedb8b71b434de07a38d9f788d3be8d64e27008c57ac755a78f"
+    },
+    {
+      "role": "artifact_blueprint",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-002/artifact_blueprint.json",
+      "sha256": "dddab42e1a67f85ec46fc7ecbb302b3f9ece03033f6e0470f5943c23bec8bfd2"
+    },
+    {
+      "role": "artifact_qa",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-002/artifact_qa.json",
+      "sha256": "c2ca1fb008bb08fbfd462c84fea5ff05af32093222ef8968aee3dcefd63ac70d"
+    },
+    {
+      "role": "task_config",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-002.json",
+      "sha256": "e1dfe6a8ca193bd4d8918b0451b90d9082b928c608e2c4129922c2613fdc02b9"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-002/previews/Funding_Plan.png",
+      "sha256": "7a5e3f4e6dfcd24845d37095c81a7b6a3d32c6b2b2b6efea06730a98eb96c07f"
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "TASK.md",
+      "sha256": "d7dabab89b81e78d6193a661b6899dc27ef63c32ac2bc27d617fe481c0c8ef5a"
+    },
+    {
+      "path": "TASK_DETAIL.md",
+      "sha256": "0a6356d138605183b8124da3c1f8dd74b7a35e58e590fa28ca0a40a5cbcfa8fd"
+    },
+    {
+      "path": "context.json",
+      "sha256": "e6d8931f22d385f4805f56eb0132f0c8c35fba90c412668cca3815c3cdf85da3"
+    },
+    {
+      "path": "task_config.json",
+      "sha256": "e1dfe6a8ca193bd4d8918b0451b90d9082b928c608e2c4129922c2613fdc02b9"
+    },
+    {
+      "path": "artifact/initial_artifact.xlsx",
+      "sha256": "ea718dabd14e9cedb8b71b434de07a38d9f788d3be8d64e27008c57ac755a78f"
+    },
+    {
+      "path": "artifact/artifact_blueprint.json",
+      "sha256": "dddab42e1a67f85ec46fc7ecbb302b3f9ece03033f6e0470f5943c23bec8bfd2"
+    },
+    {
+      "path": "artifact/artifact_qa.json",
+      "sha256": "c2ca1fb008bb08fbfd462c84fea5ff05af32093222ef8968aee3dcefd63ac70d"
+    },
+    {
+      "path": "artifact/previews/Funding_Plan.png",
+      "sha256": "7a5e3f4e6dfcd24845d37095c81a7b6a3d32c6b2b2b6efea06730a98eb96c07f"
+    }
+  ],
+  "editable_review": {
+    "path": "review.json",
+    "excluded_from_generated_file_hashes": true
+  }
+}

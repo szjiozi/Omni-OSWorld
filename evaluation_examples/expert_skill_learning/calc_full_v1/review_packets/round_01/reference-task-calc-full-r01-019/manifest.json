@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "scripts/python/manage_reference_review_packets.py export",
+  "reference_task_id": "reference-task-calc-full-r01-019",
+  "context_fingerprint": "4f0fefdbdc62ca89f291d22fb626ddff6e384611a1ea98c53bcf7d3fe68296db",
+  "inputs": [
+    {
+      "role": "artifact",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-019/initial_artifact.xlsx",
+      "sha256": "04087d18eb27e22dc8221a555177963f826bf5729109ad8fa211a97c402d56df"
+    },
+    {
+      "role": "artifact_blueprint",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-019/artifact_blueprint.json",
+      "sha256": "20ee2a3f8272cf3ed778ecbfd423278d4cf7670ffc3e0be210cea61b4452428f"
+    },
+    {
+      "role": "artifact_qa",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-019/artifact_qa.json",
+      "sha256": "9c22e9eb57673f4c857bf83fef0ff965e4392e8ed555f0831ece697817ac6217"
+    },
+    {
+      "role": "task_config",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-019.json",
+      "sha256": "f760beeca16ee40bceecb74bbc058834def674297c4d2240286e83b3e7e6ba38"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-019/previews/Volunteer_Activity.png",
+      "sha256": "20a446cc7e625bccd648a47bfc33c3bdbce85cdb1c179d152ab5da3a323012bb"
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "TASK.md",
+      "sha256": "f801d48b00152d0cac14e54a3d9e7d51f89c374e0ef481f19a649c839687b030"
+    },
+    {
+      "path": "TASK_DETAIL.md",
+      "sha256": "b3235a9923bac02a60d13bb244855c219c4c08655a2fe3f589d37de144b349b9"
+    },
+    {
+      "path": "context.json",
+      "sha256": "386983c9cdb403df4e9f4d3d272262712e5a3e84496f85ec45af017ee0f155db"
+    },
+    {
+      "path": "task_config.json",
+      "sha256": "f760beeca16ee40bceecb74bbc058834def674297c4d2240286e83b3e7e6ba38"
+    },
+    {
+      "path": "artifact/initial_artifact.xlsx",
+      "sha256": "04087d18eb27e22dc8221a555177963f826bf5729109ad8fa211a97c402d56df"
+    },
+    {
+      "path": "artifact/artifact_blueprint.json",
+      "sha256": "20ee2a3f8272cf3ed778ecbfd423278d4cf7670ffc3e0be210cea61b4452428f"
+    },
+    {
+      "path": "artifact/artifact_qa.json",
+      "sha256": "9c22e9eb57673f4c857bf83fef0ff965e4392e8ed555f0831ece697817ac6217"
+    },
+    {
+      "path": "artifact/previews/Volunteer_Activity.png",
+      "sha256": "20a446cc7e625bccd648a47bfc33c3bdbce85cdb1c179d152ab5da3a323012bb"
+    }
+  ],
+  "editable_review": {
+    "path": "review.json",
+    "excluded_from_generated_file_hashes": true
+  }
+}

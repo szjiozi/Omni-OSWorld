@@ -1,0 +1,295 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-006",
+  "base_prompt_sha256": "74e30f5a12f3a812c4aec9468bc0ac26a154d7d188ded4537bc592ec1ca9b589",
+  "blueprint": {
+    "manual_setup_steps": [],
+    "sheets": [
+      {
+        "autofilter_range": null,
+        "column_number_formats": [
+          "yyyy-mm-dd",
+          "0",
+          "0",
+          "@"
+        ],
+        "column_types": [
+          "date",
+          "integer",
+          "integer",
+          "text"
+        ],
+        "formulas": [],
+        "freeze_header_row": true,
+        "headers": [
+          "Service Date",
+          "Output Volume",
+          "Crew Hours",
+          "Service Route"
+        ],
+        "name": "Daily Metrics",
+        "rows": [
+          {
+            "values": [
+              "2026-07-01",
+              "1840",
+              "96",
+              "North Loop"
+            ]
+          },
+          {
+            "values": [
+              "2026-07-02",
+              "1915",
+              "98",
+              "Harbor Spur"
+            ]
+          },
+          {
+            "values": [
+              "2026-07-03",
+              "1870",
+              "94",
+              "Cedar Link"
+            ]
+          },
+          {
+            "values": [
+              "2026-07-04",
+              "2035",
+              "102",
+              "North Loop"
+            ]
+          },
+          {
+            "values": [
+              "2026-07-05",
+              "1980",
+              "100",
+              "Ridge Run"
+            ]
+          },
+          {
+            "values": [
+              "2026-07-06",
+              "2110",
+              "105",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "2026-07-07",
+              "2075",
+              "103",
+              "Quarry Way"
+            ]
+          },
+          {
+            "values": [
+              "2026-07-08",
+              "2160",
+              "108",
+              "Harbor Spur"
+            ]
+          },
+          {
+            "values": [
+              "2026-07-09",
+              "2095",
+              "104",
+              "Canal Point"
+            ]
+          },
+          {
+            "values": [
+              "2026-07-10",
+              "2215",
+              "110",
+              "Cedar Link"
+            ]
+          },
+          {
+            "values": [
+              "2026-07-11",
+              "2180",
+              "109",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "2026-07-12",
+              "2260",
+              "112",
+              "Ridge Run"
+            ]
+          }
+        ]
+      },
+      {
+        "autofilter_range": null,
+        "column_number_formats": [
+          "yyyy-mm-dd",
+          "General",
+          "0.00",
+          "@"
+        ],
+        "column_types": [
+          "date",
+          "integer",
+          "decimal",
+          "text"
+        ],
+        "formulas": [],
+        "freeze_header_row": true,
+        "headers": [
+          "Service Date",
+          "Working Output",
+          "Daily Change",
+          "Distinct Route Roster"
+        ],
+        "name": "Route Review",
+        "rows": [
+          {
+            "values": [
+              "",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "2026-07-01",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "2026-07-02",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "2026-07-03",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "2026-07-04",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "2026-07-05",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "2026-07-06",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "2026-07-07",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "2026-07-08",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "2026-07-09",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "2026-07-10",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "2026-07-11",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "2026-07-12",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "",
+              "",
+              "",
+              ""
+            ]
+          }
+        ]
+      }
+    ],
+    "workbook_title": "Route Operations Review"
+  },
+  "generation": {
+    "request_id": "f6bd0a2a-cbeb-43bd-b835-e02fa7c0ca6e",
+    "prompt_sha256": "48b95fcbe91df7310ff4db690d2e9290a0ed8f6927e8bea02466b201e791439b",
+    "model": "gpt-5.6-terra",
+    "input_tokens": 2800,
+    "output_tokens": 1589,
+    "estimated_cost_usd": 0.024668
+  }
+}

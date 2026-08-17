@@ -1,0 +1,13 @@
+{
+  "workbook_title": "Regional Funding Board View",
+  "output_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-002/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Funding Plan",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-002/previews/Funding_Plan.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Funding Plan\",\"address\":\"A1:C11\",\"rows\":11,\"cols\":3,\"values\":[[\"Initiative\",\"Planned Allocation (USD)\",\"Board View\"],[\"North Transit\",12450000000,null],[\"River Resilience\",8750000000,null],[\"Community Clinics\",3620000000,null],[\"Grid Modernization\",15180000000,null],[\"Digital Access\",2190000000,null],[\"Coastal Protection\",10440000000,null],[\"School Renewal\",5970000000,null],[\"Water Reliability\",7310000000,null],[\"Housing Retrofit\",2860000000,null],[\"Emergency Logistics\",12990000000,null]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

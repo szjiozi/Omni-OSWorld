@@ -1,0 +1,99 @@
+{
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "@",
+        "$#,##0.00",
+        "General"
+      ],
+      "column_types": [
+        "text",
+        "currency",
+        "currency"
+      ],
+      "formulas": [],
+      "freeze_header_row": false,
+      "headers": [
+        "Initiative",
+        "Planned Allocation (USD)",
+        "Board View"
+      ],
+      "name": "Funding Plan",
+      "rows": [
+        {
+          "values": [
+            "North Transit",
+            "12450000000",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "River Resilience",
+            "8750000000",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Community Clinics",
+            "3620000000",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Grid Modernization",
+            "15180000000",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Digital Access",
+            "2190000000",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Coastal Protection",
+            "10440000000",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "School Renewal",
+            "5970000000",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Water Reliability",
+            "7310000000",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Housing Retrofit",
+            "2860000000",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Emergency Logistics",
+            "12990000000",
+            ""
+          ]
+        }
+      ]
+    }
+  ],
+  "workbook_title": "Regional Funding Board View"
+}

@@ -7,6 +7,7 @@ import html
 import json
 import os
 import re
+import shlex
 import shutil
 import tempfile
 from pathlib import Path
@@ -514,6 +515,8 @@ def _render_task_markdown(
     preview_names: Sequence[str],
     review: dict[str, Any],
     reviewer_guide: dict[str, Any],
+    collect_command: str,
+    reviewer_doc_link: str,
 ) -> str:
     task_id = package["reference_task_id"]
     artifact_spec = package.get("artifact_spec", {})
@@ -642,10 +645,10 @@ def _render_task_markdown(
             "repository root:",
             "",
             "```bash",
-            "python scripts/python/manage_reference_review_packets.py collect",
+            collect_command,
             "```",
             "",
-            "Detailed field guidance is in [`reviewer.md`](../../../reviewer.md).",
+            f"Detailed field guidance is in [`reviewer.md`]({reviewer_doc_link}).",
         ]
     )
     return "\n".join(lines) + "\n"
@@ -869,6 +872,19 @@ def export_review_packets(
     )
     reviewer_guides = load_reviewer_guides(reviewer_guides_path)
     output_root.mkdir(parents=True, exist_ok=True)
+    coverage_path = reviews_path.with_name("coverage_state.json")
+    collect_command = _collect_command(
+        skill_pool_path=skill_pool_path,
+        packages_path=packages_path,
+        source_tasks_path=source_tasks_path,
+        reviews_path=reviews_path,
+        artifact_manifest_path=artifact_manifest_path,
+        task_config_manifest_path=task_config_manifest_path,
+        task_detail_root=task_detail_root,
+        reviewer_guides_path=reviewer_guides_path,
+        coverage_path=coverage_path,
+        packet_root=output_root,
+    )
 
     prepared: list[dict[str, Any]] = []
     for package in packages:
@@ -964,6 +980,14 @@ def export_review_packets(
                 [path.name for path in item["preview_paths"]],
                 item["review"],
                 item["reviewer_guide_entry"]["guide"],
+                collect_command,
+                Path(
+                    os.path.relpath(
+                        repo_root
+                        / "evaluation_examples/expert_skill_learning/reviewer.md",
+                        packet_dir,
+                    )
+                ).as_posix(),
             ),
         )
 
@@ -1003,14 +1027,47 @@ def export_review_packets(
         for package in all_packages
         if (output_root / package["reference_task_id"] / "TASK.md").is_file()
     ]
-    _write_index(output_root, all_packages, available_ids)
+    _write_index(output_root, all_packages, available_ids, collect_command)
     return exported
+
+
+def _collect_command(
+    *,
+    skill_pool_path: Path,
+    packages_path: Path,
+    source_tasks_path: Path,
+    reviews_path: Path,
+    artifact_manifest_path: Path,
+    task_config_manifest_path: Path,
+    task_detail_root: Path,
+    reviewer_guides_path: Path,
+    coverage_path: Path,
+    packet_root: Path,
+) -> str:
+    options = [
+        ("--skill-pool", skill_pool_path),
+        ("--packages", packages_path),
+        ("--source-tasks", source_tasks_path),
+        ("--reviews", reviews_path),
+        ("--artifact-manifest", artifact_manifest_path),
+        ("--task-config-manifest", task_config_manifest_path),
+        ("--task-detail-root", task_detail_root),
+        ("--reviewer-guides", reviewer_guides_path),
+        ("--coverage", coverage_path),
+        ("--packet-root", packet_root),
+    ]
+    lines = ["python scripts/python/manage_reference_review_packets.py collect \\"]
+    for index, (name, value) in enumerate(options):
+        suffix = " \\" if index < len(options) - 1 else ""
+        lines.append(f"  {name} {shlex.quote(str(value))}{suffix}")
+    return "\n".join(lines)
 
 
 def _write_index(
     output_root: Path,
     packages: Sequence[dict[str, Any]],
     exported_ids: Sequence[str],
+    collect_command: str,
 ) -> None:
     exported = set(exported_ids)
     rows = [
@@ -1038,7 +1095,7 @@ def _write_index(
             "After reviewing tasks, run:",
             "",
             "```bash",
-            "python scripts/python/manage_reference_review_packets.py collect",
+            collect_command,
             "```",
             "",
         ]

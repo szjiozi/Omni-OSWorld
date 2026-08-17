@@ -1,0 +1,266 @@
+{
+  "manual_setup_steps": [
+    "Before recording, replace Allocation Summary!A1 with the text \"Workshop Allocation Share\", apply a dark navy fill (#203864) and bold styling, and leave the font color at its default dark/black color. Clear any remaining cells in the summary area so the area beginning at A3 is blank for the native Pivot Table."
+  ],
+  "sheets": [
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "@",
+        "0.00",
+        "0.00",
+        "0.00",
+        "General"
+      ],
+      "column_types": [
+        "text",
+        "decimal",
+        "decimal",
+        "decimal",
+        "text"
+      ],
+      "formulas": [],
+      "freeze_header_row": true,
+      "headers": [
+        "Batch Code",
+        "Scheduled Units",
+        "Completed Units",
+        "Rework Units",
+        "Record Summary"
+      ],
+      "name": "Activity Log",
+      "rows": [
+        {
+          "values": [
+            "WSA-201",
+            "84.50",
+            "79.25",
+            "2.10",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WSA-202",
+            "116.00",
+            "108.75",
+            "4.50",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WSA-203",
+            "72.25",
+            "68.00",
+            "1.75",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WSA-204",
+            "95.00",
+            "91.50",
+            "3.25",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WSA-205",
+            "128.75",
+            "121.00",
+            "5.50",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WSA-206",
+            "63.50",
+            "59.25",
+            "2.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WSA-207",
+            "102.00",
+            "97.80",
+            "3.60",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WSA-208",
+            "88.25",
+            "83.50",
+            "2.75",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WSA-209",
+            "145.00",
+            "136.25",
+            "6.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WSA-210",
+            "77.50",
+            "72.00",
+            "2.25",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WSA-211",
+            "110.25",
+            "104.50",
+            "4.10",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WSA-212",
+            "69.00",
+            "65.75",
+            "1.50",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WSA-213",
+            "134.50",
+            "126.00",
+            "5.25",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WSA-214",
+            "91.75",
+            "87.25",
+            "2.80",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WSA-215",
+            "120.00",
+            "113.40",
+            "4.75",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WSA-216",
+            "58.25",
+            "54.80",
+            "1.20",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WSA-217",
+            "106.50",
+            "100.00",
+            "3.90",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "WSA-218",
+            "82.00",
+            "77.60",
+            "2.40",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "@"
+      ],
+      "column_types": [
+        "text"
+      ],
+      "formulas": [],
+      "freeze_header_row": false,
+      "headers": [
+        "Reserved blank summary area"
+      ],
+      "name": "Allocation Summary",
+      "rows": [
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        }
+      ]
+    }
+  ],
+  "workbook_title": "Workshop Allocation Review"
+}

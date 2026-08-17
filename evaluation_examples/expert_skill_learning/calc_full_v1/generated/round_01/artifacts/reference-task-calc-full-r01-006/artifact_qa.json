@@ -1,0 +1,18 @@
+{
+  "workbook_title": "Route Operations Review",
+  "output_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-006/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Daily Metrics",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-006/previews/Daily_Metrics.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Daily Metrics\",\"address\":\"A1:D12\",\"rows\":12,\"cols\":4,\"values\":[[\"Service Date\",\"Output Volume\",\"Crew Hours\",\"Service Route\"],[\"2026-07-01T00:00:00.000Z\",1840,96,\"North Loop\"],[\"2026-07-02T00:00:00.000Z\",1915,98,\"Harbor Spur\"],[\"2026-07-03T00:00:00.000Z\",1870,94,\"Cedar Link\"],[\"2026-07-04T00:00:00.000Z\",2035,102,\"North Loop\"],[\"2026-07-05T00:00:00.000Z\",1980,100,\"Ridge Run\"],[\"2026-07-06T00:00:00.000Z\",2110,105,null],[\"2026-07-07T00:00:00.000Z\",2075,103,\"Quarry Way\"],[\"2026-07-08T00:00:00.000Z\",2160,108,\"Harbor Spur\"],[\"2026-07-09T00:00:00.000Z\",2095,104,\"Canal Point\"],[\"2026-07-10T00:00:00.000Z\",2215,110,\"Cedar Link\"],[\"2026-07-11T00:00:00.000Z\",2180,109,null]]}"
+    },
+    {
+      "name": "Route Review",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-006/previews/Route_Review.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Route Review\",\"address\":\"A1:D12\",\"rows\":12,\"cols\":4,\"values\":[[\"Service Date\",\"Working Output\",\"Daily Change\",\"Distinct Route Roster\"],[null,null,null,null],[null,null,null,null],[null,null,null,null],[\"2026-07-01T00:00:00.000Z\",null,null,null],[\"2026-07-02T00:00:00.000Z\",null,null,null],[\"2026-07-03T00:00:00.000Z\",null,null,null],[\"2026-07-04T00:00:00.000Z\",null,null,null],[\"2026-07-05T00:00:00.000Z\",null,null,null],[\"2026-07-06T00:00:00.000Z\",null,null,null],[\"2026-07-07T00:00:00.000Z\",null,null,null],[\"2026-07-08T00:00:00.000Z\",null,null,null]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

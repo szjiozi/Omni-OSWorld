@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+  "app": "libreoffice_calc",
+  "single_action_count": 3,
+  "prompt_sha256": "93941e57d5795dbc283e00d79ceae3ea2fafc8cd18dfeafa9fca1bd2291c4d6e",
+  "request_id": "bd09c479-c7db-446e-94e2-7e78c6462e15",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1269,
+    "cached_input_tokens": 1073,
+    "output_tokens": 197,
+    "estimated_cost_usd": 0.0029706
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2
+        ],
+        "efficiency_tip": "Enter the conversion directly within the multiplication formula so Calc calculates a numeric amount in one cell, rather than creating helper cells solely to convert the duration.",
+        "name": "Multiply a numeric rate by a duration converted to decimal hours",
+        "procedure": [
+          "Select the destination cell where the numeric product should appear.",
+          "Enter a formula that multiplies the rate by the duration expressed as hours plus minutes divided by 60. For example, use `=F3*(HOUR(D3)+MINUTE(D3)/60)`, where `F3` contains a numeric rate and `D3` contains a time or duration value.",
+          "Press Enter to calculate the result. `HOUR(D3)` supplies the whole-hour component, while `MINUTE(D3)/60` converts the remaining minutes into a fractional hour before multiplication."
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "id": "reference-task-calc-full-r01-011",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Complete the Event Ledger for the community workshop program: calculate Gross Revenue as Registrations multiplied by Fee per Registration and Community Share as Gross Revenue plus Sponsor Grant for every event. Populate the Upload handoff sheet with the complete Event Code column, then add a clustered column chart on Event Ledger comparing Gross Revenue and Community Share for each Event Code.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-011/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/community_event_ledger.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/community_event_ledger.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-calc-full-r01-011",
+    "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-011/initial_artifact.xlsx",
+    "artifact_sha256": "8e5adb2f184d09c3daa509884df2b877a6b71d5c8339d29bfdd87dde77117262",
+    "guest_artifact_path": "/home/user/Desktop/community_event_ledger.xlsx",
+    "required_skill_ids": [
+      "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-05",
+      "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-02",
+      "1273e544-688f-496b-8d89-3e0f40aa0606.skill-01",
+      "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-01"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The expert may complete the two calculated columns in either order, use keyboard shortcuts where appropriate, and use any efficient equivalent chart-insertion path, provided the intended full-column copy, formula fills, and clustered comparison chart are visibly demonstrated.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Use the existing populated records in the adjacent input columns as the boundary, avoiding a manual drag through the event list.",
+          "operation_intent": "Extend the Gross Revenue seed calculation from B2 through every listed event by double-clicking its fill handle.",
+          "skill_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-05",
+          "visible_success_signal": "Gross Revenue cells B2:B19 display calculated currency amounts, with the formula filled through the last event row."
+        },
+        {
+          "efficiency_tip": "After Gross Revenue is available, double-click the Community Share seed cell's fill handle so row-relative references are extended consistently.",
+          "operation_intent": "Extend the Community Share seed calculation from C2 through every listed event by double-clicking its fill handle.",
+          "skill_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-02",
+          "visible_success_signal": "Community Share cells C2:C19 are filled with calculated currency values, including the final event row."
+        },
+        {
+          "efficiency_tip": "Select the A column header directly rather than selecting only the visible event-code cells, so the header and complete column are copied together.",
+          "operation_intent": "Copy the entire Event Code column from Event Ledger for the Upload handoff sheet.",
+          "skill_id": "1273e544-688f-496b-8d89-3e0f40aa0606.skill-01",
+          "visible_success_signal": "The full Event Code column is visibly selected and copied; after the ordinary paste step, Upload shows the Event Code header and all event codes in column A."
+        },
+        {
+          "efficiency_tip": "Select the already contiguous A1:C19 comparison table before chart insertion so Event Code labels and both calculated series are detected without later source-range edits.",
+          "operation_intent": "Insert a clustered column chart comparing Gross Revenue and Community Share by Event Code.",
+          "skill_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-01",
+          "visible_success_signal": "An embedded clustered column chart is present on Event Ledger with Event Code categories and separate Gross Revenue and Community Share series."
+        }
+      ],
+      "recording_end_state": "Event Ledger has completed B2:C19 calculations and an embedded clustered column comparison chart sourced from A1:C19; Upload A1:A19 contains the copied Event Code header and event-code list.",
+      "recording_start_state": "Event Ledger is active with only B2 and C2 seeded as formulas, all lower calculated cells blank, no chart, and Upload containing only its header."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Enter or confirm the seeded Gross Revenue formula in B2 and the seeded Community Share formula in C2 before extending each formula column.",
+        "reason": "The two formula-fill demonstrations require a completed starting formula in the first data row of each calculated column."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Move the copied Event Code column to the Upload sheet and paste it beginning at A1.",
+        "reason": "Copying the full source column produces the requested populated handoff template."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc is open with the Event Ledger sheet active.",
+      "Event Ledger shows a contiguous A1:F19 table with event records in rows 2 through 19.",
+      "Only B2 and C2 contain seed formulas; B3:C19 are blank.",
+      "The Upload sheet exists with Event Code in A1 and blank cells A2:A19.",
+      "No chart is present on Event Ledger."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

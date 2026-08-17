@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+  "app": "libreoffice_calc",
+  "single_action_count": 5,
+  "prompt_sha256": "e4d6fdb81b77c9a4fe0416a5dd26e8b919c2deba7baf7bf94c381651c620b4dc",
+  "request_id": "c3730928-0c91-4560-9bcd-da6f929d4d9c",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1219,
+    "cached_input_tokens": 1073,
+    "output_tokens": 307,
+    "estimated_cost_usd": 0.0041906
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2
+        ],
+        "efficiency_tip": "Enter the formula once in the first data row; do not manually type a separate sequence label in every row.",
+        "name": "Create a row-based text sequence formula",
+        "procedure": [
+          "Select the first output cell in the sequence column, for example B2.",
+          "Type a concatenation formula such as `=\"No. \" & ROW(B2)-1` and press Enter. `ROW(B2)` returns 2, so subtracting 1 makes the first result `No. 1`.",
+          "Adjust the referenced starting row or offset when the sequence begins elsewhere; for example, in row 5 use `=\"No. \" & ROW(B5)-4` to begin at `No. 1`."
+        ]
+      },
+      {
+        "action_ids": [
+          3,
+          4
+        ],
+        "efficiency_tip": "Double-clicking the fill handle is faster than dragging it through a long table and typically stops at the end of adjacent populated data.",
+        "name": "Autofill a formula down a contiguous data range",
+        "procedure": [
+          "Select the cell containing the formula to propagate, for example B2.",
+          "Move to the small square at the cell's bottom-right corner (the fill handle) and double-click it.",
+          "Calc fills the formula downward alongside the contiguous neighboring data range, adjusting relative references for each row. For example, `ROW(B2)` in B2 becomes `ROW(B3)` in B3."
+        ]
+      }
+    ]
+  }
+}

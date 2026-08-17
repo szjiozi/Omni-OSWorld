@@ -1,0 +1,253 @@
+{
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "@",
+        "0",
+        "$#,##0.00",
+        "$#,##0.00"
+      ],
+      "column_types": [
+        "text",
+        "integer",
+        "currency",
+        "currency"
+      ],
+      "formulas": [
+        {
+          "cell": "D4",
+          "formula": "=B4*C4"
+        }
+      ],
+      "freeze_header_row": false,
+      "headers": [
+        "Supply Item",
+        "Units",
+        "Unit Cost",
+        "Line Cost"
+      ],
+      "name": "Supply Plan",
+      "rows": [
+        {
+          "values": [
+            "Raised bed lumber 2x8x8",
+            "24",
+            "18.75",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Cedar corner stakes",
+            "32",
+            "4.25",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Compost blend bag",
+            "40",
+            "8.50",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Topsoil bag",
+            "30",
+            "5.75",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Seed starting mix bag",
+            "12",
+            "11.25",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Tomato seedling tray",
+            "6",
+            "16.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Pepper seedling tray",
+            "4",
+            "15.50",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Lettuce seed packet",
+            "18",
+            "2.40",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Carrot seed packet",
+            "12",
+            "2.15",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Bean seed packet",
+            "10",
+            "3.10",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Sunflower seed packet",
+            "8",
+            "3.75",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Garden hose 50 ft",
+            "2",
+            "29.95",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Hose nozzle",
+            "3",
+            "12.50",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Watering can 2 gal",
+            "4",
+            "18.25",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Drip irrigation kit",
+            "3",
+            "42.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Mulch straw bale",
+            "15",
+            "7.80",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Plant labels pack",
+            "10",
+            "4.60",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Garden gloves pair",
+            "12",
+            "6.95",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Hand trowel",
+            "8",
+            "9.75",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Pruning shears",
+            "5",
+            "14.50",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Tomato cage",
+            "24",
+            "5.25",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Trellis netting roll",
+            "6",
+            "11.80",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Organic fertilizer bag",
+            "10",
+            "19.95",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Slug barrier pellets",
+            "8",
+            "9.40",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Harvest basket",
+            "6",
+            "13.25",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Rain gauge",
+            "3",
+            "10.75",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Tool storage bin",
+            "4",
+            "22.50",
+            ""
+          ]
+        }
+      ]
+    }
+  ],
+  "workbook_title": "Community Garden Supply Budget"
+}

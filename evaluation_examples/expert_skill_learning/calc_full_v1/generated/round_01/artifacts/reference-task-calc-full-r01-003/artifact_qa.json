@@ -1,0 +1,23 @@
+{
+  "workbook_title": "Service Estimate Review",
+  "output_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-003/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Rate Card",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-003/previews/Rate_Card.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Rate Card\",\"address\":\"A1:B7\",\"rows\":7,\"cols\":2,\"values\":[[\"Service Code\",\"Unit Rate\"],[\"DIAG\",42.5],[\"CALIB\",68],[\"REPAIR\",115.75],[\"INSTALL\",89.25],[\"TRAIN\",54],[\"AUDIT\",76.5]]}"
+    },
+    {
+      "name": "Service Requests",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-003/previews/Service_Requests.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Service Requests\",\"address\":\"A1:E12\",\"rows\":12,\"cols\":5,\"values\":[[\"Request ID\",\"Service Code\",\"Units\",\"Adjustment\",\"Estimate Note\"],[\"SR-4101\",\"DIAG\",2,0,null],[\"SR-4102\",\"CALIB\",1,0.1,null],[\"SR-4103\",\"REPAIR\",3,0.05,null],[\"SR-4104\",\"INSTALL\",2,0,null],[\"SR-4105\",\"TRAIN\",4,0.15,null],[\"SR-4106\",\"AUDIT\",1,0,null],[\"SR-4107\",\"DIAG\",5,0.2,null],[\"SR-4108\",\"REPAIR\",1,0.1,null],[\"SR-4109\",\"CALIB\",3,0,null],[\"SR-4110\",\"INSTALL\",4,0.05,null],[\"SR-4111\",\"TRAIN\",2,0,null]]}"
+    },
+    {
+      "name": "Overview",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-003/previews/Overview.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Overview\",\"address\":\"A1:A7\",\"rows\":7,\"cols\":1,\"values\":[[\"Checklist labels source and destination area\"],[null],[\"Rate verified\"],[\"Adjustment reviewed\"],[\"Estimate prepared\"],[\"Ready to send\"],[null]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

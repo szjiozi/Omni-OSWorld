@@ -1,0 +1,903 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-013",
+  "package": {
+    "reference_task_id": "reference-task-calc-full-r01-013",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_calc",
+    "task_instruction": "Prepare the garden supply delivery review by creating a bar chart that compares delivered units across the garden zones in the Route Snapshot sheet, then open the Pivot Table layout for the Deliveries records so the delivery data is ready for a garden-zone analysis. Leave the Pivot Table layout open rather than creating its output.",
+    "required_skill_ids": [
+      "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-06",
+      "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-04"
+    ],
+    "artifact_spec": {
+      "artifact_type": "xlsx",
+      "domain": "community garden supply deliveries",
+      "generation_notes": [
+        "All names, route labels, item names, and values are synthetic and privacy-safe.",
+        "Use ordinary header styling: bold text with a muted green fill for header rows; keep all data in standard cell ranges rather than Excel tables.",
+        "Do not create any native Pivot Table, chart, named range, or conditional-format rule in the initial workbook.",
+        "The Route Snapshot values are precomputed static summary values, so they can be charted without requiring a formula or Pivot Table."
+      ],
+      "initial_state": [
+        "The workbook opens on the Deliveries sheet, with cell A1 active.",
+        "Deliveries contains a contiguous source-data range A1:G37 with no blank rows or columns inside the range.",
+        "Route Snapshot contains a contiguous chart-source range A1:B7.",
+        "There are no charts and no Pivot Tables in the workbook."
+      ],
+      "must_not_be_completed": [
+        "Do not preconfigure or insert a native Pivot Table; opening its layout/configuration dialog is part of the recorded work.",
+        "Do not preconfigure or insert a chart; creating the bar chart is part of the recorded work.",
+        "Do not add a completed Pivot Table result sheet or output table."
+      ],
+      "sheets": [
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "Delivery ID"
+            },
+            {
+              "data_type": "date",
+              "name": "Delivery Date"
+            },
+            {
+              "data_type": "text",
+              "name": "Garden Zone"
+            },
+            {
+              "data_type": "text",
+              "name": "Supply Category"
+            },
+            {
+              "data_type": "text",
+              "name": "Item"
+            },
+            {
+              "data_type": "integer",
+              "name": "Units Delivered"
+            },
+            {
+              "data_type": "currency",
+              "name": "Delivery Cost"
+            }
+          ],
+          "name": "Deliveries",
+          "purpose": "Source records for a planned Pivot Table analysis of garden-supply deliveries.",
+          "row_count": 36
+        },
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "Garden Zone"
+            },
+            {
+              "data_type": "integer",
+              "name": "Delivered Units"
+            }
+          ],
+          "name": "Route Snapshot",
+          "purpose": "Prepared zone-level delivery totals to use as the source for a bar chart.",
+          "row_count": 6
+        }
+      ],
+      "workbook_title": "Garden Supply Delivery Review"
+    },
+    "operator_guide": {
+      "allowed_variation": "The demonstrator may create the chart before or after opening the Pivot Table layout, may select source ranges by dragging or through the name box, and may use menus, toolbar controls, or equivalent keyboard commands. The final recording should show the completed bar chart and the Pivot Table layout dialog open for the delivery source.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Use the contiguous data block on Deliveries so Calc can infer the full source immediately; confirm the inferred range rather than manually rebuilding it.",
+          "operation_intent": "Open the Pivot Table layout using the selected delivery-record source range, ready for a garden-zone delivery analysis.",
+          "skill_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-06",
+          "visible_success_signal": "The Calc Pivot Table Layout dialog is open and its source corresponds to the Deliveries data range."
+        },
+        {
+          "efficiency_tip": "Select both columns of the compact Route Snapshot range, including headers, before launching chart creation so zone labels and delivered-unit values are detected together.",
+          "operation_intent": "Create a bar chart that compares delivered units across garden zones from the Route Snapshot summary.",
+          "skill_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-04",
+          "visible_success_signal": "A bar chart is visibly inserted on Route Snapshot, with garden-zone categories and bars representing Delivered Units."
+        }
+      ],
+      "recording_end_state": "A bar chart based on Route Snapshot is visible in the workbook, and the Pivot Table Layout dialog for Deliveries is open without a Pivot Table output having been created.",
+      "recording_start_state": "The workbook is open on Deliveries with only the two ordinary data sheets and no charts or Pivot Tables."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Navigate between the Deliveries and Route Snapshot worksheets as needed.",
+        "reason": "The Pivot Table source and chart source are intentionally on separate sheets."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Select the complete contiguous source range on Deliveries before invoking Pivot Table.",
+        "reason": "Calc needs a source selection in order to infer the Pivot Table input range."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Accept the inferred Pivot Table source selection.",
+        "reason": "This opens the Pivot Table layout dialog for the selected delivery records."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Select the Garden Zone and Delivered Units chart-source range on Route Snapshot.",
+        "reason": "The bar chart must use the supplied category labels and summary values."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Confirm the chart creation dialog after choosing the Bar chart type and leave the resulting chart visible on Route Snapshot.",
+        "reason": "Calc requires confirmation to insert the requested chart object."
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+          "skill_count": 1,
+          "skill_fraction": 0.5
+        },
+        {
+          "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+          "skill_count": 1,
+          "skill_fraction": 0.5
+        }
+      ],
+      "dominant_source_task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+      "dominant_source_skill_fraction": 0.5,
+      "complete_source_skill_sets_included": []
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+        "max_sequence_similarity": 0.307054,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "sequence_similarity": 0.19802
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "sequence_similarity": 0.020864
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "sequence_similarity": 0.030014
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "sequence_similarity": 0.082437
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "sequence_similarity": 0.246753
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "sequence_similarity": 0.276986
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "sequence_similarity": 0.00713
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "sequence_similarity": 0.15914
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "sequence_similarity": 0.20438
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "sequence_similarity": 0.244604
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "sequence_similarity": 0.205128
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "sequence_similarity": 0.044199
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "sequence_similarity": 0.288066
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "sequence_similarity": 0.148148
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "sequence_similarity": 0.261538
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "sequence_similarity": 0.016694
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "sequence_similarity": 0.168467
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "sequence_similarity": 0.183529
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "sequence_similarity": 0.025496
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.288425
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.017167
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "sequence_similarity": 0.227171
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "sequence_similarity": 0.257669
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "sequence_similarity": 0.003466
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "sequence_similarity": 0.207506
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "sequence_similarity": 0.194175
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "sequence_similarity": 0.217659
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "sequence_similarity": 0.011958
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "sequence_similarity": 0.207921
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "sequence_similarity": 0.018382
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "sequence_similarity": 0.04
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "sequence_similarity": 0.181818
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "sequence_similarity": 0.189376
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "sequence_similarity": 0.2125
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "sequence_similarity": 0.157761
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "sequence_similarity": 0.121065
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "sequence_similarity": 0.025926
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "sequence_similarity": 0.157761
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "sequence_similarity": 0.177489
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "sequence_similarity": 0.036563
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "sequence_similarity": 0.053691
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "sequence_similarity": 0.024138
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "sequence_similarity": 0.307054
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "sequence_similarity": 0.161663
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "sequence_similarity": 0.285124
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "sequence_similarity": 0.024518
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "sequence_similarity": 0.173028
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+        "max_cosine_similarity": 0.47598,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "cosine_similarity": 0.246391
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "cosine_similarity": 0.429895
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "cosine_similarity": 0.331575
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "cosine_similarity": 0.311761
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "cosine_similarity": 0.410441
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "cosine_similarity": 0.16941
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "cosine_similarity": 0.286916
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "cosine_similarity": 0.394283
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "cosine_similarity": 0.338186
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "cosine_similarity": 0.190202
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "cosine_similarity": 0.385011
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "cosine_similarity": 0.330331
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "cosine_similarity": 0.413511
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "cosine_similarity": 0.29829
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "cosine_similarity": 0.237745
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "cosine_similarity": 0.213854
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "cosine_similarity": 0.361784
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "cosine_similarity": 0.432823
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "cosine_similarity": 0.387891
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.359423
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.215199
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "cosine_similarity": 0.216534
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "cosine_similarity": 0.389356
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "cosine_similarity": 0.269725
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "cosine_similarity": 0.242906
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "cosine_similarity": 0.263417
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "cosine_similarity": 0.314299
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "cosine_similarity": 0.299141
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "cosine_similarity": 0.212231
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "cosine_similarity": 0.119808
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "cosine_similarity": 0.47598
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "cosine_similarity": 0.255429
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "cosine_similarity": 0.467457
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "cosine_similarity": 0.288862
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "cosine_similarity": 0.199484
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "cosine_similarity": 0.285797
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "cosine_similarity": 0.234177
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "cosine_similarity": 0.218659
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "cosine_similarity": 0.206059
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "cosine_similarity": 0.241618
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "cosine_similarity": 0.15681
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "cosine_similarity": 0.276471
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "cosine_similarity": 0.254539
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "cosine_similarity": 0.247492
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "cosine_similarity": 0.313204
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "cosine_similarity": 0.271615
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "cosine_similarity": 0.275843
+          }
+        ],
+        "embedding_request_id": "e9df3ea8-8c8e-4f8c-9056-df67ef6090d3"
+      }
+    },
+    "generation": {
+      "attempt": 13,
+      "kind": "new_combination",
+      "request_id": "9f09f33c-f5f7-4b56-849b-ce406a3494ec",
+      "prompt_sha256": "b4fb7c4f229bb1a56f4f9a26d515ba2eda8b6a2a2d8ef2d52d29dfe61df05f8c"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-06",
+      "app": "libreoffice_calc",
+      "name": "Open the Pivot Table layout from a selected data range",
+      "procedure": [
+        "Switch to the worksheet containing the source data and select the relevant source range or column; for example, click a column header to select that column.",
+        "Click the Pivot Table toolbar icon.",
+        "Accept the inferred source selection, for example by pressing Enter, to open the Pivot Table layout dialog."
+      ],
+      "efficiency_tip": "Select the intended source column before invoking Pivot Table so Calc can infer the source selection immediately.",
+      "source": {
+        "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+        "action_ids": [
+          16,
+          17,
+          18,
+          19,
+          36,
+          37,
+          38,
+          39,
+          56,
+          57,
+          58,
+          59
+        ]
+      }
+    },
+    {
+      "skill_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-04",
+      "app": "libreoffice_calc",
+      "name": "Insert a bar chart from the selected spreadsheet range",
+      "procedure": [
+        "With the chart source ranges selected, click the chart icon in the spreadsheet interface.",
+        "Choose the Bar chart type to create a bar chart from the selected labels and values."
+      ],
+      "efficiency_tip": "Select the intended source ranges first, then choose the chart type directly from the chart control so the chart is created with the correct data and type in one pass.",
+      "source": {
+        "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+        "action_ids": [
+          16,
+          17
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+      "instruction": "Calculate the total sales in an underneath row called \"Total\" and display the total of each month as bars. Then calculate the month-on-month growth percentage for Feb to Jun in another row called \"Growth\" and show them in a line chart (Jan should be omitted in the chart as well). Set the chart titles as the two row headers respectively.",
+      "required_skill_ids": [
+        "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-04"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 16,
+          "action": "`CLICK` chart icon"
+        },
+        {
+          "action_id": 17,
+          "action": "`CLICK` Bar"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell A12",
+        "`TYPING` 'Total'",
+        "`PRESS` tab",
+        "`TYPING` '=SUM(B2:B11)'",
+        "`PRESS` enter",
+        "`CLICK` cell B12",
+        "`MOVE_TO bottom right corner of the cell B12`",
+        "`DRAG_TO` bottom right corner of the cell G12",
+        "`MOVE_TO` middle of cell A1",
+        "`DRAG_TO` middle of cell G1",
+        "`KEY_DOWN` ctrl",
+        "`CLICK` cell A12",
+        "`KEY_UP` ctrl",
+        "`KEY_DOWN` shift",
+        "`CLICK` cell G12",
+        "`KEY_UP` shift",
+        "`CLICK` chart icon",
+        "`CLICK` Bar",
+        "`CLICK` Chart elements",
+        "`CLICK` title text box",
+        "`TYPING` 'Total'",
+        "`PRESS` enter",
+        "`CLICK` cell A13",
+        "`TYPING` 'Growth'",
+        "`CLICK` cell C13",
+        "`TYPING` '=(C12-B12)/B12'",
+        "`PRESS` enter",
+        "`CLICK` cell C13",
+        "`MOVE_TO bottom right corner of the cell C13`",
+        "`DRAG_TO` bottom right corner of the cell G13",
+        "`MOVE_TO` middle of cell C1",
+        "`DRAG_TO` middle of cell G1",
+        "`KEY_DOWN` ctrl",
+        "`CLICK` cell C13",
+        "`KEY_UP` ctrl",
+        "`KEY_DOWN` shift",
+        "`CLICK` cell G13",
+        "`KEY_UP` shift",
+        "`CLICK` chart icon",
+        "`CLICK` Line",
+        "`CLICK` icon representing lines only (3rd from the right)",
+        "`CLICK` Chart elements",
+        "`CLICK` title text box",
+        "`TYPING` 'Growth'",
+        "`PRESS` enter"
+      ]
+    },
+    {
+      "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+      "instruction": "Please create a new sheet. Keep its sheet name as \"Sheet2\". Merge cells A1:C1 in the new sheet and write \"Demographic Profile\" with blue (#0000ff) fill and bold white text. Then I want to create three pivot tables to show the percentage of Sex, Civil Status, and Highest Educational Attainment. They should be stacked one by one in Sheet2, each separated with a blank line.",
+      "required_skill_ids": [
+        "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-06"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 16,
+          "action": "`CLICK` Sheet1"
+        },
+        {
+          "action_id": 17,
+          "action": "`CLICK` column B grey cell"
+        },
+        {
+          "action_id": 18,
+          "action": "`CLICK` pivot table icon"
+        },
+        {
+          "action_id": 19,
+          "action": "`PRESS` enter"
+        },
+        {
+          "action_id": 36,
+          "action": "`CLICK` Sheet1"
+        },
+        {
+          "action_id": 37,
+          "action": "`CLICK` column C grey cell"
+        },
+        {
+          "action_id": 38,
+          "action": "`CLICK` pivot table icon"
+        },
+        {
+          "action_id": 39,
+          "action": "`PRESS` enter"
+        },
+        {
+          "action_id": 56,
+          "action": "`CLICK` Sheet1"
+        },
+        {
+          "action_id": 57,
+          "action": "`CLICK` column D grey cell"
+        },
+        {
+          "action_id": 58,
+          "action": "`CLICK` pivot table icon"
+        },
+        {
+          "action_id": 59,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on + to left of sheet1",
+        "`KEY_DOWN` shift",
+        "`CLICK` C1",
+        "`RIGHT_CLICK` selection",
+        "`CLICK` merge cells",
+        "`TYPING` Demographic Profile",
+        "`PRESS` enter",
+        "`CLICK` cell A1",
+        "`CLICK` arrow next to paint button dropdown",
+        "`CLICK` Custom color",
+        "`DOUBLE_CLICK` on text inside Hex # box",
+        "`TYPING` 0000ff",
+        "`PRESS` enter",
+        "`CLICK` font color arrow icon, which is to left of bucket",
+        "`CLICK` top right color in the color palette (white)",
+        "`CLICK` bold icon",
+        "`CLICK` Sheet1",
+        "`CLICK` column B grey cell",
+        "`CLICK` pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` 'Sex' in available fields",
+        "`DRAG_TO` box in row fields",
+        "`MOVE_TO` 'Sex' in available fields",
+        "`DRAG_TO` box in data fields",
+        "`DOUBLE_CLICK on sex box in data fields",
+        "`CLICK` Count",
+        "`CLICK` 'displayed value' dropdown",
+        "`CLICK` Normal dropdown next to 'Type'",
+        "`CLICK` '% of total'",
+        "`CLICK` ok",
+        "`CLICK` source and destination dropdown",
+        "`CLICK` 'Selection' under destination",
+        "`CLICK` text box",
+        "`TYPING` '$Sheet2.$A$2'",
+        "`CLICK` ok",
+        "`CLICK` Sheet2",
+        "`CLICK` Sheet1",
+        "`CLICK` column C grey cell",
+        "`CLICK` pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` 'Civil Status' in available fields",
+        "`DRAG_TO` box in row fields",
+        "`MOVE_TO` 'Civil Status' in available fields",
+        "`DRAG_TO` box in data fields",
+        "`DOUBLE_CLICK on civil status box in data fields",
+        "`CLICK` Count",
+        "`CLICK` 'displayed value' dropdown",
+        "`CLICK` Normal dropdown next to 'Type'",
+        "`CLICK` '% of total'",
+        "`PRESS` enter",
+        "`CLICK` source and destination dropdown",
+        "`CLICK` 'Selection' under destination",
+        "`CLICK` text box",
+        "`TYPING` '$Sheet2.$A$7'",
+        "`CLICK` ok",
+        "`CLICK` Sheet2",
+        "`CLICK` Sheet1",
+        "`CLICK` column D grey cell",
+        "`CLICK` pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` 'Highest Educational Attainment' in available fields",
+        "`DRAG_TO` box in row fields",
+        "`MOVE_TO` 'Highest Educational Attainment' in available fields",
+        "`DRAG_TO` box in data fields",
+        "`DOUBLE_CLICK on Highest Educational Attainment box in data fields",
+        "`CLICK` Count",
+        "`CLICK` 'displayed value' dropdown",
+        "`CLICK` Normal dropdown next to 'Type'",
+        "`CLICK` '% of total'",
+        "`PRESS` enter",
+        "`CLICK` source and destination dropdown",
+        "`CLICK` 'Selection' under destination",
+        "`CLICK` text box",
+        "`TYPING` '$Sheet2.$A$13'",
+        "`CLICK` ok"
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-calc-full-r01-013",
+    "task_detail_sha256": "f5d6895a74fd5db80de7ab11d2b8727aad8da8950781b989db5f9ee8afbe15af",
+    "guide": {
+      "final_verification": [
+        "在“Route Snapshot”工作表中可以看到已插入的条形图，分类为各 Garden Zone，数据系列表示 Delivered Units。",
+        "“Pivot Table Layout”对话框仍保持打开状态，且其数据源对应 Deliveries 工作表的 A1:G37 连续记录区域。",
+        "未确认或生成任何数据透视表输出；工作簿中不应出现新的透视表结果工作表或透视表结果区域。"
+      ],
+      "language": "zh-CN",
+      "overview": "本操作先使用“Route Snapshot”中的预汇总区域创建按花园分区比较 Delivered Units 的条形图，再返回“Deliveries”并打开其数据源的 Pivot Table 布局对话框。最终保留图表和布局对话框，但不创建 Pivot Table 输出。",
+      "reference_task_id": "reference-task-calc-full-r01-013",
+      "starting_state_checks": [
+        "确认工作簿当前只有“Deliveries”和“Route Snapshot”两个普通数据工作表，且尚未插入图表或 Pivot Table。",
+        "确认“Deliveries”中 A1:G37 是包含字段标题的连续交付记录区域；“Route Snapshot”中 A1:B7 是包含标题的连续汇总区域。",
+        "如果当前活动单元格为 Deliveries!A1，这是预期的初始状态；不要先创建新工作表或修改现有数据。"
+      ],
+      "steps": [
+        {
+          "efficiency_tip": "一次选中 A1:B7（包括标题）可让 Calc 同时识别分类标签和数值系列，避免分别指定标签范围与数值范围。",
+          "instructions": [
+            "单击底部工作表标签“Route Snapshot”切换到路线汇总表。",
+            "选中完整图表源区域 A1:B7。可从 A1 拖动到 B7，或先单击名称框、输入 A1:B7 后按 Enter。选区必须包括“Garden Zone”和“Delivered Units”标题行。",
+            "确认选区中第一列是 Garden Zone 标签，第二列是 Delivered Units 数值。"
+          ],
+          "skill_ids": [],
+          "step_number": 1,
+          "title": "选择路线汇总图表数据",
+          "visible_success_signal": "“Route Snapshot”中 A1:B7 被高亮选中，且可见两列标题 Garden Zone 与 Delivered Units。"
+        },
+        {
+          "efficiency_tip": "在已选好数据时直接选择 Bar 类型，通常能保留正确的数据区域；不要取消图表向导后重新选择数据。",
+          "instructions": [
+            "在保持 A1:B7 选中的状态下，使用工具栏的图表按钮，或选择“插入”>“图表”。",
+            "在图表向导的图表类型中选择“Bar”。如有方向选项，保持条形图的默认方向即可。",
+            "检查预览：应按 Garden Zone 显示类别，并以 Delivered Units 的数值显示条形。",
+            "完成图表向导以插入图表。不要更改源数据单元格。"
+          ],
+          "skill_ids": [
+            "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-04"
+          ],
+          "step_number": 2,
+          "title": "插入 Delivered Units 条形图",
+          "visible_success_signal": "“Route Snapshot”工作表上出现一个可见的条形图，含花园分区类别及对应 Delivered Units 条形。"
+        },
+        {
+          "efficiency_tip": "从连续数据块内任意单元格开始选择时，Calc 通常可以自动识别整个 A1:G37 数据区域；保留标题行有助于正确识别字段。",
+          "instructions": [
+            "单击工作表标签“Deliveries”返回交付记录表。",
+            "选中完整数据源 A1:G37，包括第 1 行字段标题和所有 36 条记录。可单击 A1 后拖动至 G37，或在名称框中输入 A1:G37 并按 Enter。",
+            "核对选区包含 Delivery ID、Delivery Date、Garden Zone、Supply Category、Item、Units Delivered 和 Delivery Cost 七个字段。"
+          ],
+          "skill_ids": [],
+          "step_number": 3,
+          "title": "选择交付记录数据源",
+          "visible_success_signal": "Deliveries!A1:G37 被选中，选区内没有遗漏标题行、数据列或记录行。"
+        },
+        {
+          "efficiency_tip": "选中完整连续区域后立即打开 Pivot Table，可直接接受 Calc 推断的数据源，无需手动重建范围。",
+          "instructions": [
+            "保持 Deliveries!A1:G37 处于选中状态，单击 Pivot Table 工具栏图标；也可使用“数据”菜单中用于插入或创建 Pivot Table 的命令。",
+            "如果 Calc 先显示用于确认源数据范围的提示或对话框，确认显示的是 Deliveries 的 A1:G37 数据范围，然后接受该推断范围（例如按 Enter 或确认）。",
+            "等待 Pivot Table Layout 对话框打开。此时不要将 Garden Zone、Units Delivered 或其他字段拖入布局区域，也不要确认创建结果。",
+            "保留 Pivot Table Layout 对话框打开，以便数据已准备好进行 garden-zone 分析但尚未输出 Pivot Table。"
+          ],
+          "skill_ids": [
+            "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-06"
+          ],
+          "step_number": 4,
+          "title": "打开 Deliveries 的 Pivot Table 布局",
+          "visible_success_signal": "Pivot Table Layout 对话框处于打开状态，字段来自 Deliveries 数据源；工作簿中尚未生成 Pivot Table 输出。"
+        }
+      ]
+    },
+    "generation": {
+      "request_id": "fcf9c84e-432c-4592-b910-e17480155af6",
+      "prompt_sha256": "23470d3aab6ffa61a29f9dbb117aa9d207438efd681072182c7ba658300c2107",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 2730,
+      "output_tokens": 1185,
+      "estimated_cost_usd": 0.01968
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-013",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-013/initial_artifact.xlsx",
+      "artifact_sha256": "1b44b6f976f1ab66d2b3554152fa305d7e4b75f596f6ffa435b7df2efdd4f1e9",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-013/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-013/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.xlsx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-013",
+      "task_config_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-013.json",
+      "artifact_sha256": "1b44b6f976f1ab66d2b3554152fa305d7e4b75f596f6ffa435b7df2efdd4f1e9",
+      "blueprint_request_id": "18bbe22e-2996-4dd4-9b56-cf844bff5154"
+    },
+    "packet_path": "task_config.json"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+  "app": "libreoffice_calc",
+  "single_action_count": 1,
+  "prompt_sha256": "9c067eee02239f0024c9b1d1265395fbd4a23e5e072832428dd56a4c4ad6662b",
+  "request_id": "9445e746-6df6-4ad9-bf1b-e4531d74f279",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1172,
+    "cached_input_tokens": 1073,
+    "output_tokens": 39,
+    "estimated_cost_usd": 0.0008806
+  },
+  "response": {
+    "decision": "no_reusable_skill",
+    "decision_reason": "The only indexed step is a failure marker and contains no application operation to extract.",
+    "skills": []
+  }
+}

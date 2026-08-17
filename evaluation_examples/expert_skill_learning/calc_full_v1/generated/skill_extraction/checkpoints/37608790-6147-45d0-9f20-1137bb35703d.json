@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+  "app": "libreoffice_calc",
+  "single_action_count": 10,
+  "prompt_sha256": "a967111b6022151ce13e03cf033b111efd02d0a6c11faa8637ef49340fbfd110",
+  "request_id": "29dcaf09-0618-4c4a-a170-44a7c1b43a97",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1272,
+    "cached_input_tokens": 1073,
+    "output_tokens": 286,
+    "estimated_cost_usd": 0.0040446
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "efficiency_tip": "Copy the entire contiguous source range in one drag-and-paste operation rather than copying cells individually; this preserves the original data while creating a working copy.",
+        "name": "Copy a contiguous cell range to another column",
+        "procedure": [
+          "Select the first cell of the source range, then drag to the last cell to select all contiguous cells. For example, select A2 through A22.",
+          "Press Ctrl+C, click the destination's top cell (for example, B2), and press Ctrl+V.",
+          "Calc pastes the copied values into the destination range starting at the selected cell."
+        ]
+      },
+      {
+        "action_ids": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "efficiency_tip": "Choose only the delimiter actually present in the selected data. Clearing unused delimiters before confirming avoids unnecessary splits and post-cleanup.",
+        "name": "Split selected text into columns using a space delimiter",
+        "procedure": [
+          "Select the cells containing the combined text, then open Data > Text to Columns.",
+          "In the separator options, clear Tab if it is enabled and select Space as the delimiter.",
+          "Confirm with OK. Calc separates each selected text value at spaces and places the resulting parts into adjacent columns. For example, a value such as \"Alex Morgan Captain\" is split across three columns."
+        ]
+      }
+    ]
+  }
+}

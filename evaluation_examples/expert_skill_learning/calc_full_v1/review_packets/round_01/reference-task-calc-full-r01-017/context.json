@@ -1,0 +1,892 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-017",
+  "package": {
+    "reference_task_id": "reference-task-calc-full-r01-017",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_calc",
+    "task_instruction": "Complete the daily net-delivery and target-variance calculations for all solar microgrid readings, then create a line chart of net delivery by reading date. Title it 'Daily Net Delivery Trend' and place it in the open area to the right of the data table.",
+    "required_skill_ids": [
+      "4172ea6e-6b77-4edb-a9cc-c0014bd1603b.skill-02",
+      "347ef137-7eeb-4c80-a3bb-0951f26a8aff.skill-02",
+      "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-02",
+      "7efeb4b1-3d19-4762-b163-63328d66303b.skill-02"
+    ],
+    "artifact_spec": {
+      "artifact_type": "xlsx",
+      "domain": "Solar microgrid performance monitoring",
+      "generation_notes": [
+        "All data is synthetic and privacy-safe.",
+        "Create a single worksheet named 'Daily Readings'.",
+        "Populate rows 1-25 with a contiguous daily table. Row 1 contains headers and rows 2-25 contain 24 consecutive synthetic daily readings.",
+        "Use realistic decimal values: Generated kWh should range roughly from 380 to 760, Exported kWh from 250 to 610, and Target kWh from 400 to 650.",
+        "Seed the formula in E2 as =B2-C2 and format column E as a decimal number with two places.",
+        "Seed the formula in F2 as =E2-D2 and format column F as a decimal number with two places.",
+        "Do not create a chart in the initial workbook; the chart needed for the task will be created during the demonstration."
+      ],
+      "initial_state": [
+        "The workbook title is 'Solar Microgrid Review'.",
+        "The 'Daily Readings' sheet is active.",
+        "Columns A:D are fully populated without blank rows from row 1 through row 25.",
+        "E1 is labeled 'Net Delivered kWh' and only E2 contains its seed formula; E3:E25 are blank.",
+        "F1 is labeled 'Variance to Target kWh' and only F2 contains its seed formula; F3:F25 are blank.",
+        "There is ample empty worksheet space to the right of the table, beginning around column H, for positioning a chart.",
+        "No chart title or chart object exists initially."
+      ],
+      "must_not_be_completed": [
+        "Do not prefill E3:E25 or F3:F25.",
+        "Do not pre-create, title, or position the chart.",
+        "Do not alter the input readings in columns A:D."
+      ],
+      "sheets": [
+        {
+          "columns": [
+            {
+              "data_type": "date",
+              "name": "Reading Date"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Generated kWh"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Exported kWh"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Target kWh"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Net Delivered kWh"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Variance to Target kWh"
+            }
+          ],
+          "name": "Daily Readings",
+          "purpose": "Daily synthetic solar microgrid readings and calculated delivery metrics",
+          "row_count": 24
+        }
+      ],
+      "workbook_title": "Solar Microgrid Review"
+    },
+    "operator_guide": {
+      "allowed_variation": "The expert may create the chart before or after completing the calculations, use an equivalent line-chart creation path, and place the finished chart anywhere clearly to the right of the source table without covering headers or data.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Use the fill handle’s double-click behavior rather than dragging through all 24 records.",
+          "operation_intent": "Propagate the seeded Net Delivered kWh calculation from E2 through the contiguous daily-record range.",
+          "skill_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b.skill-02",
+          "visible_success_signal": "Every daily row from E2 through E25 displays a row-adjusted net-delivery result, with no blanks in the calculated column."
+        },
+        {
+          "efficiency_tip": "Use the fill handle’s double-click behavior so the calculation stops with the adjacent uninterrupted table.",
+          "operation_intent": "Propagate the seeded Variance to Target kWh calculation from F2 through the same contiguous daily-record range.",
+          "skill_id": "7efeb4b1-3d19-4762-b163-63328d66303b.skill-02",
+          "visible_success_signal": "Every daily row from F2 through F25 displays a row-adjusted variance result, with no blanks in the calculated column."
+        },
+        {
+          "efficiency_tip": "After creating the line chart, edit its title through the chart title/element controls rather than rebuilding the chart.",
+          "operation_intent": "Set the line chart title to 'Daily Net Delivery Trend'.",
+          "skill_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-02",
+          "visible_success_signal": "The displayed line chart visibly shows the exact title 'Daily Net Delivery Trend'."
+        },
+        {
+          "efficiency_tip": "Drag the chart by its outer object boundary or top edge, not by an individual plotted series.",
+          "operation_intent": "Move the completed chart into the empty area to the right of the daily readings table.",
+          "skill_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff.skill-02",
+          "visible_success_signal": "The titled chart is visibly positioned in the open right-side worksheet area and does not obscure the source table."
+        }
+      ],
+      "recording_end_state": "Both calculation columns are fully populated through the last reading, and a titled line chart of net delivery is visibly placed to the right of the table.",
+      "recording_start_state": "The active Daily Readings sheet contains the populated input table, only the two seed formulas in row 2, and no chart."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Create a line chart using Reading Date as the category axis and the completed Net Delivered kWh values as the plotted series.",
+        "reason": "A chart object must exist before its title can be set and it can be repositioned."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Select the relevant chart source range and place the newly created chart initially on the Daily Readings sheet.",
+        "reason": "This is the minimal setup needed to produce the requested visible chart deliverable."
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        }
+      ],
+      "dominant_source_task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+      "dominant_source_skill_fraction": 0.25,
+      "complete_source_skill_sets_included": []
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+        "max_sequence_similarity": 0.37561,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "sequence_similarity": 0.233846
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "sequence_similarity": 0.037162
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "sequence_similarity": 0.027523
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "sequence_similarity": 0.050104
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "sequence_similarity": 0.302872
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "sequence_similarity": 0.213592
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "sequence_similarity": 0.012448
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "sequence_similarity": 0.160622
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "sequence_similarity": 0.283133
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "sequence_similarity": 0.224852
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "sequence_similarity": 0.108571
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "sequence_similarity": 0.030172
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "sequence_similarity": 0.373464
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "sequence_similarity": 0.314496
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "sequence_similarity": 0.294785
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "sequence_similarity": 0.023077
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "sequence_similarity": 0.171875
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "sequence_similarity": 0.219653
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "sequence_similarity": 0.022329
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.290179
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.048387
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "sequence_similarity": 0.194595
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "sequence_similarity": 0.37561
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "sequence_similarity": 0.028112
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "sequence_similarity": 0.235294
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "sequence_similarity": 0.24024
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "sequence_similarity": 0.240196
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "sequence_similarity": 0.030508
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "sequence_similarity": 0.196923
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "sequence_similarity": 0.017204
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "sequence_similarity": 0.038217
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "sequence_similarity": 0.189024
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "sequence_similarity": 0.101695
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "sequence_similarity": 0.144638
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "sequence_similarity": 0.229299
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "sequence_similarity": 0.149701
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "sequence_similarity": 0.034707
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "sequence_similarity": 0.178344
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "sequence_similarity": 0.214099
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "sequence_similarity": 0.017094
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "sequence_similarity": 0.054159
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "sequence_similarity": 0.023952
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "sequence_similarity": 0.258065
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "sequence_similarity": 0.276836
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "sequence_similarity": 0.202469
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "sequence_similarity": 0.020325
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "sequence_similarity": 0.229299
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+        "max_cosine_similarity": 0.49437,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "cosine_similarity": 0.271626
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "cosine_similarity": 0.49437
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "cosine_similarity": 0.36179
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "cosine_similarity": 0.37572
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "cosine_similarity": 0.478162
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "cosine_similarity": 0.19444
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "cosine_similarity": 0.273346
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "cosine_similarity": 0.413045
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "cosine_similarity": 0.331998
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "cosine_similarity": 0.162753
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "cosine_similarity": 0.262139
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "cosine_similarity": 0.331197
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "cosine_similarity": 0.31469
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "cosine_similarity": 0.320941
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "cosine_similarity": 0.367471
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "cosine_similarity": 0.244066
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "cosine_similarity": 0.366285
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "cosine_similarity": 0.48628
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "cosine_similarity": 0.342121
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.390317
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.257437
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "cosine_similarity": 0.190028
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "cosine_similarity": 0.412577
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "cosine_similarity": 0.274882
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "cosine_similarity": 0.336541
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "cosine_similarity": 0.220872
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "cosine_similarity": 0.334284
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "cosine_similarity": 0.329818
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "cosine_similarity": 0.247123
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "cosine_similarity": 0.212681
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "cosine_similarity": 0.36697
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "cosine_similarity": 0.237909
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "cosine_similarity": 0.328134
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "cosine_similarity": 0.319513
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "cosine_similarity": 0.246466
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "cosine_similarity": 0.257559
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "cosine_similarity": 0.191532
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "cosine_similarity": 0.233834
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "cosine_similarity": 0.277202
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "cosine_similarity": 0.251746
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "cosine_similarity": 0.205886
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "cosine_similarity": 0.3236
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "cosine_similarity": 0.190484
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "cosine_similarity": 0.299656
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "cosine_similarity": 0.262849
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "cosine_similarity": 0.278637
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "cosine_similarity": 0.328661
+          }
+        ],
+        "embedding_request_id": "e9df3ea8-8c8e-4f8c-9056-df67ef6090d3"
+      }
+    },
+    "generation": {
+      "attempt": 17,
+      "kind": "new_combination",
+      "request_id": "97e77ff0-0285-452f-af6d-dabd34040b3f",
+      "prompt_sha256": "ae619f2fa00820bc32192ae299853eb6ff344ee628cf80833895387a6cf5a1f0"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Autofill a formula down a contiguous column",
+      "procedure": [
+        "Select the cell containing the formula at the top of the output column.",
+        "Double-click the small fill handle at the cell’s bottom-right corner. Calc extends the formula downward alongside the adjacent contiguous data range, adjusting relative references for each row.",
+        "For example, double-clicking the fill handle of C2 containing `=A2+B2` fills subsequent rows with row-adjusted formulas such as `=A3+B3`."
+      ],
+      "efficiency_tip": "Double-clicking the fill handle is faster than dragging it through a long contiguous table and avoids manually estimating the last row.",
+      "source": {
+        "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "skill_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Reposition a chart object by dragging",
+      "procedure": [
+        "Click or point at the chart object's edge to target the chart rather than an individual data series.",
+        "Drag the chart from its top edge toward the desired location, such as moving it to the right side of the worksheet page.",
+        "Scroll horizontally if necessary to reach or verify the new placement while keeping the chart layout organized."
+      ],
+      "efficiency_tip": "Reposition a chart by dragging it directly rather than reopening chart settings; scroll only as needed to expose the intended destination.",
+      "source": {
+        "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+        "action_ids": [
+          13,
+          14,
+          15
+        ]
+      }
+    },
+    {
+      "skill_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Set a chart title using chart elements",
+      "procedure": [
+        "Click the chart, then open its Chart Elements controls in the right sidebar.",
+        "Enable or select the chart title element and click the title text box.",
+        "Type the desired title, for example `Sales & COGS`, and press Enter to apply the text."
+      ],
+      "efficiency_tip": "Edit the title directly through the chart-elements title control instead of reopening the full chart wizard.",
+      "source": {
+        "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+        "action_ids": [
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "skill_id": "7efeb4b1-3d19-4762-b163-63328d66303b.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Autofill a formula down a contiguous data range",
+      "procedure": [
+        "Select the cell containing the formula to propagate, for example B2.",
+        "Move to the small square at the cell's bottom-right corner (the fill handle) and double-click it.",
+        "Calc fills the formula downward alongside the contiguous neighboring data range, adjusting relative references for each row. For example, `ROW(B2)` in B2 becomes `ROW(B3)` in B3."
+      ],
+      "efficiency_tip": "Double-clicking the fill handle is faster than dragging it through a long table and typically stops at the end of adjacent populated data.",
+      "source": {
+        "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+        "action_ids": [
+          3,
+          4
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+      "instruction": "Create a clustered column chart showing the Sales and COGS data for each week in a new sheet. Set the chart title as \"Sales & COGS\".",
+      "required_skill_ids": [
+        "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 2,
+          "action": "`CLICK` chart elements on right sidebar"
+        },
+        {
+          "action_id": 3,
+          "action": "`CLICK` title text box"
+        },
+        {
+          "action_id": 4,
+          "action": "`TYPING` 'Sales & COGS'"
+        },
+        {
+          "action_id": 5,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`HOTKEY` ctrl-A",
+        "`CLICK` insert chart icon",
+        "`CLICK` chart elements on right sidebar",
+        "`CLICK` title text box",
+        "`TYPING` 'Sales & COGS'",
+        "`PRESS` enter",
+        "`CLICK` on cell A1 to cancel out of current menu",
+        "`CLICK` on chart to select it",
+        "`HOTKEY` ctrl-X",
+        "`CLICK` on + to left of sheet1",
+        "`HOTKEY` ctrl+v"
+      ]
+    },
+    {
+      "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+      "instruction": "Here are two tables recording the per-month costs in 2019 and 2020. I want to create two column bar charts reflecting per-month total costs for each year from these data. Help me, Mr. Assistant!",
+      "required_skill_ids": [
+        "347ef137-7eeb-4c80-a3bb-0951f26a8aff.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 13,
+          "action": "`MOVE_TO` top edge of chart"
+        },
+        {
+          "action_id": 14,
+          "action": "`DRAG_TO` right edge of page"
+        },
+        {
+          "action_id": 15,
+          "action": "`SCROLL_LEFT`"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` to expand window top right corner",
+        "`CLICK` A3",
+        "`KEY_DOWN` Shift",
+        "`CLICK` A14",
+        "`KEY_UP` Shift",
+        "`KEY_DOWN` Ctrl",
+        "`CLICK` I3",
+        "`KEY_UP` Ctrl",
+        "`KEY_DOWN` Shift",
+        "`CLICK` I14",
+        "`KEY_UP` Shift",
+        "`CLICK` Insert chart icon",
+        "`PRESS` enter",
+        "`MOVE_TO` top edge of chart",
+        "`DRAG_TO` right edge of page",
+        "`SCROLL_LEFT`",
+        "`CLICK` A20",
+        "`KEY_DOWN` Shift",
+        "`CLICK` A31",
+        "`KEY_UP` Shift",
+        "`KEY_DOWN` Ctrl",
+        "`CLICK` I20",
+        "`KEY_UP` Ctrl",
+        "`KEY_DOWN` Shift",
+        "`CLICK` I31",
+        "`KEY_UP` Shift",
+        "`CLICK` Insert chart icon",
+        "`PRESS` enter"
+      ]
+    },
+    {
+      "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+      "instruction": "I want to work out the maturity date for all the loans. Please do it for me in a new column with header \"Maturity Date\".",
+      "required_skill_ids": [
+        "4172ea6e-6b77-4edb-a9cc-c0014bd1603b.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 5,
+          "action": "`CLICK` cell C2`"
+        },
+        {
+          "action_id": 6,
+          "action": "`DOUBLE_CLICK` bottom right corner of the cell C2`"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` cell C1",
+        "`TYPING` 'Maturity Date'",
+        "`PRESS` enter",
+        "`TYPING` '=A2+B2'",
+        "`PRESS` enter",
+        "`CLICK` cell C2`",
+        "`DOUBLE_CLICK` bottom right corner of the cell C2`"
+      ]
+    },
+    {
+      "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+      "instruction": "Fill the Sequence Numbers as \"No. #\" in the \"Seq No.\" column",
+      "required_skill_ids": [
+        "7efeb4b1-3d19-4762-b163-63328d66303b.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 3,
+          "action": "`CLICK` B2"
+        },
+        {
+          "action_id": 4,
+          "action": "`DOUBLE_CLICK` bottom right corner of cell"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` B2",
+        "`TYPING` =\"No. \" & ROW(B2)-1 ",
+        "`PRESS` Enter.",
+        "`CLICK` B2",
+        "`DOUBLE_CLICK` bottom right corner of cell"
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-calc-full-r01-017",
+    "task_detail_sha256": "8d1b91f1d86409a83901f8e59fe2bc62ae3814296193fcb8b6c5539fd82eae5b",
+    "guide": {
+      "final_verification": [
+        "在“Daily Readings”工作表中，E2:E25 均有计算结果，且任意数据行的公式遵循“Generated kWh - Exported kWh”的逻辑；例如 E2 为 `=B2-C2`。",
+        "F2:F25 均有计算结果，且任意数据行的公式遵循“Net Delivered kWh - Target kWh”的逻辑；例如 F2 为 `=E2-D2`。",
+        "“Net Delivered kWh”和“Variance to Target kWh”两列的数值以两位小数显示。",
+        "工作表上有且有一个折线图；横轴使用 Reading Date，绘制的数据系列为 Net Delivered kWh。",
+        "图表可见的标题精确为 `Daily Net Delivery Trend`，并且图表位于数据表右侧的空白区域，没有遮挡 A:F 列的表头或读数。"
+      ],
+      "language": "zh-CN",
+      "overview": "本指南完成每日净交付量与目标差异的计算，并在“Daily Readings”工作表右侧创建和整理一张按日期显示净交付量的折线图。先利用现有的种子公式快速填满两列，再以 Reading Date 和 Net Delivered kWh 创建图表、设置标题并移动到右侧空白区域。",
+      "reference_task_id": "reference-task-calc-full-r01-017",
+      "starting_state_checks": [
+        "确认当前打开的工作簿标题为“Solar Microgrid Review”，且活动工作表标签为“Daily Readings”。",
+        "确认第 1 行有 Reading Date、Generated kWh、Exported kWh、Target kWh、Net Delivered kWh、Variance to Target kWh 等表头，A:D 列从第 2 行至第 25 行连续有数据。",
+        "确认 E2 已有公式 `=B2-C2` 而 E3:E25 为空；F2 已有公式 `=E2-D2` 而 F3:F25 为空。",
+        "确认 H 列附近及其右侧有空白工作表区域，并且当前尚未插入图表。"
+      ],
+      "steps": [
+        {
+          "efficiency_tip": "填充柄双击会依据相邻的连续数据自动判断终止行，比拖动到第 25 行更快，也不容易少填或多填。",
+          "instructions": [
+            "单击单元格 E2，使其成为当前选中单元格；可在输入栏确认其中是公式 `=B2-C2`。",
+            "将鼠标移到 E2 选区右下角的小方块（填充柄）。当指针显示为可填充状态时，双击该小方块。",
+            "如需确认公式引用已随行号变化，可单击例如 E3，并在输入栏查看类似 `=B3-C3` 的公式。"
+          ],
+          "skill_ids": [
+            "4172ea6e-6b77-4edb-a9cc-c0014bd1603b.skill-02"
+          ],
+          "step_number": 1,
+          "title": "向下填充 Net Delivered kWh 公式",
+          "visible_success_signal": "E2 到 E25 都显示数值，没有空白单元格；每行的净交付量均以本行的 Generated kWh 减去 Exported kWh 得出。"
+        },
+        {
+          "efficiency_tip": "同样使用双击填充柄，让 Calc 沿着连续的读取记录自动填充，不必手动复制 24 行。",
+          "instructions": [
+            "单击 F2，并确认该单元格包含种子公式 `=E2-D2`。",
+            "将鼠标移到 F2 右下角的填充柄，然后双击它。",
+            "任选 F3 或更靠后的一个已填充单元格查看输入栏，确认公式已变为相应行号的引用，例如 `=E3-D3`。"
+          ],
+          "skill_ids": [
+            "7efeb4b1-3d19-4762-b163-63328d66303b.skill-02"
+          ],
+          "step_number": 2,
+          "title": "向下填充 Variance to Target kWh 公式",
+          "visible_success_signal": "F2 到 F25 都显示差异数值且没有空白；每一行使用该行的 Net Delivered kWh 与 Target kWh 计算。"
+        },
+        {
+          "efficiency_tip": "先选择不相邻的两列，可避免把 Generated、Exported 和 Target 等不需要的列误加入图表。",
+          "instructions": [
+            "选中日期区域 A1:A25。",
+            "按住 Ctrl 键不放，再选中 E1:E25；现在应同时选中 Reading Date 和 Net Delivered kWh 两个区域，其中第 1 行的单元格会作为标签。",
+            "选择“插入”>“图表”。在图表向导中选择“折线图”类型。",
+            "在数据范围或预览中确认只有一个数据系列，系列名称为 `Net Delivered kWh`，类别轴使用 `Reading Date`。如向导提供标签选项，勾选“第一行作为标签”和“第一列作为标签”。",
+            "完成图表向导，将图表插入当前“Daily Readings”工作表。"
+          ],
+          "skill_ids": [],
+          "step_number": 3,
+          "title": "创建按日期显示净交付量的折线图",
+          "visible_success_signal": "工作表中出现一张折线图，图中只有 Net Delivered kWh 的折线，横轴标签来自 Reading Date。"
+        },
+        {
+          "efficiency_tip": "通过图表的标题元素直接修改文字，比重新打开完整图表向导更快，并能保留已设置的数据范围和折线类型。",
+          "instructions": [
+            "双击新建的图表，进入图表编辑状态。",
+            "如果右侧边栏未显示，使用“视图”>“侧边栏”将其显示出来，然后打开图表的“图表元素”控制。",
+            "启用或选择图表标题元素，单击出现的标题文本框。",
+            "输入 `Daily Net Delivery Trend`，然后按 Enter 应用。",
+            "单击图表外的工作表空白处，退出标题文字编辑。"
+          ],
+          "skill_ids": [
+            "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-02"
+          ],
+          "step_number": 4,
+          "title": "设置图表标题",
+          "visible_success_signal": "折线图上方或标题位置清晰显示完全一致的文字 `Daily Net Delivery Trend`。"
+        },
+        {
+          "efficiency_tip": "拖动图表对象的外框或顶部边缘即可改变位置，无需重新创建图表；只在需要检查右侧位置时再使用水平滚动条。",
+          "instructions": [
+            "单击图表一次以选中整个图表对象；如果仍处于图表内部编辑状态，先单击图表外部空白处，再单击图表的外框。",
+            "将指针放到图表对象的顶部边缘或外部边框上，避免点到折线、坐标轴或标题文字。",
+            "按住鼠标左键，将整张图表拖到数据表右侧、约从 H 列开始的空白区域，然后释放鼠标。",
+            "如右侧区域暂时看不全，可用底部水平滚动条检查图表位置；确认图表没有覆盖 A:F 列的数据或表头。"
+          ],
+          "skill_ids": [
+            "347ef137-7eeb-4c80-a3bb-0951f26a8aff.skill-02"
+          ],
+          "step_number": 5,
+          "title": "将完成的图表移动到数据表右侧",
+          "visible_success_signal": "带有标题的图表位于日读数表右边的开放区域，源数据表仍完整可见。"
+        }
+      ]
+    },
+    "generation": {
+      "request_id": "9b408ace-0a1f-4ff0-b9e2-1f7a91e78baf",
+      "prompt_sha256": "3d286379237d5b90ec8693ad1d82cf024a91b3a4948615a7e356d9e2217cf29c",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 3308,
+      "output_tokens": 1999,
+      "estimated_cost_usd": 0.030604
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-017",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-017/initial_artifact.xlsx",
+      "artifact_sha256": "b08e6b97ba50384de5e5999819e5682601657f2d41c12b149a2f6095ae7cd53d",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-017/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-017/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.xlsx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-017",
+      "task_config_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-017.json",
+      "artifact_sha256": "b08e6b97ba50384de5e5999819e5682601657f2d41c12b149a2f6095ae7cd53d",
+      "blueprint_request_id": "ac76c57b-69a6-43c4-af99-f8258ce761ba"
+    },
+    "packet_path": "task_config.json"
+  }
+}

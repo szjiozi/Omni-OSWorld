@@ -1,0 +1,426 @@
+{
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "@",
+        "@"
+      ],
+      "column_types": [
+        "text",
+        "text"
+      ],
+      "formulas": [],
+      "freeze_header_row": true,
+      "headers": [
+        "SKU",
+        "Supply Group"
+      ],
+      "name": "Catalog",
+      "rows": [
+        {
+          "values": [
+            "SKU-104",
+            "Fasteners"
+          ]
+        },
+        {
+          "values": [
+            "SKU-118",
+            "Safety"
+          ]
+        },
+        {
+          "values": [
+            "SKU-203",
+            "Packaging"
+          ]
+        },
+        {
+          "values": [
+            "SKU-217",
+            "Adhesives"
+          ]
+        },
+        {
+          "values": [
+            "SKU-305",
+            "Hand Tools"
+          ]
+        },
+        {
+          "values": [
+            "SKU-322",
+            "Electrical"
+          ]
+        },
+        {
+          "values": [
+            "SKU-411",
+            "Cleaning"
+          ]
+        },
+        {
+          "values": [
+            "SKU-426",
+            "Storage"
+          ]
+        }
+      ]
+    },
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "General",
+        "@",
+        "0",
+        "$#,##0.00",
+        "@",
+        "@"
+      ],
+      "column_types": [
+        "integer",
+        "text",
+        "integer",
+        "currency",
+        "text",
+        "text"
+      ],
+      "formulas": [],
+      "freeze_header_row": true,
+      "headers": [
+        "Ticket Number",
+        "SKU",
+        "Units Dispatched",
+        "Restock Cost",
+        "Supply Group",
+        "Ticket Code"
+      ],
+      "name": "Dispatch_Log",
+      "rows": [
+        {
+          "values": [
+            "4821",
+            "SKU-305",
+            "14",
+            "238.50",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "930",
+            "SKU-104",
+            "60",
+            "84.00",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "17654",
+            "SKU-426",
+            "8",
+            "416.00",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "7210",
+            "SKU-217",
+            "25",
+            "187.50",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "365",
+            "SKU-203",
+            "90",
+            "135.00",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "11902",
+            "SKU-322",
+            "12",
+            "324.00",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "2548",
+            "SKU-118",
+            "18",
+            "270.00",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "8061",
+            "SKU-411",
+            "35",
+            "157.50",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "402",
+            "SKU-104",
+            "40",
+            "56.00",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "14870",
+            "SKU-305",
+            "9",
+            "153.00",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "6103",
+            "SKU-203",
+            "120",
+            "180.00",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "996",
+            "SKU-426",
+            "5",
+            "260.00",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "21509",
+            "SKU-217",
+            "30",
+            "225.00",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "7334",
+            "SKU-322",
+            "20",
+            "540.00",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "1876",
+            "SKU-118",
+            "10",
+            "150.00",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "320",
+            "SKU-411",
+            "22",
+            "99.00",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "16801",
+            "SKU-305",
+            "16",
+            "272.00",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "5097",
+            "SKU-203",
+            "75",
+            "112.50",
+            "",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "@",
+        "@"
+      ],
+      "column_types": [
+        "text",
+        "text"
+      ],
+      "formulas": [],
+      "freeze_header_row": true,
+      "headers": [
+        "Metric",
+        "Value"
+      ],
+      "name": "Summary",
+      "rows": [
+        {
+          "values": [
+            "Total Units Dispatched",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Review Note",
+            "Highest restock cost is flagged in Dispatch_Log"
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            ""
+          ]
+        }
+      ]
+    }
+  ],
+  "workbook_title": "Replenishment Review"
+}

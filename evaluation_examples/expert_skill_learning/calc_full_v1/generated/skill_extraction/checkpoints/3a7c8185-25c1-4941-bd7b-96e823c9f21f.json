@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+  "app": "libreoffice_calc",
+  "single_action_count": 10,
+  "prompt_sha256": "efa6ba8b0641d16b5e81119de17d5f078dcfaec5220d8a833be2e954bc6bfd05",
+  "request_id": "0178b47c-e2cd-49d6-a066-621f0a12be6e",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1311,
+    "cached_input_tokens": 1073,
+    "output_tokens": 507,
+    "estimated_cost_usd": 0.0067746
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2
+        ],
+        "efficiency_tip": "Select a cell or the full key column before using the toolbar sort button; when Calc offers to extend the selection, choose it so every row stays intact rather than sorting just one column.",
+        "name": "Sort a full table by a column in ascending order",
+        "procedure": [
+          "Click the header of the column that should control the ordering, such as column A, to select the entire column.",
+          "Click the ascending-sort toolbar icon (A–Z with a downward arrow).",
+          "If Calc asks whether to extend the selection, choose “Extend selection” so values in adjacent columns move together with their original rows."
+        ]
+      },
+      {
+        "action_ids": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "efficiency_tip": "Use Ctrl-click on column headers to select only the non-adjacent fields needed for the chart, avoiding temporary helper ranges or selecting unrelated columns.",
+        "name": "Create a line chart from non-adjacent worksheet columns",
+        "procedure": [
+          "Click the header of the first data column to use, for example column A.",
+          "Hold Ctrl and click the header of another non-adjacent column, for example column E, so both columns are included in the chart source selection.",
+          "Click the Insert Chart toolbar icon.",
+          "Choose the Line chart category.",
+          "Choose the line-only subtype (the line-chart option without markers, such as the third icon from the right in the subtype choices).",
+          "Press Enter to confirm and insert the chart. Calc uses the selected first column as the category/X-axis data and the other selected column as the plotted series."
+        ]
+      }
+    ]
+  }
+}

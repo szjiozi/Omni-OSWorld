@@ -1,0 +1,13 @@
+{
+  "workbook_title": "Garden Supply Round Reconciliation",
+  "output_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-004/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Supply Rounds",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-004/previews/Supply_Rounds.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Supply Rounds\",\"address\":\"A1:D12\",\"rows\":12,\"cols\":4,\"values\":[[\"Item\",\"Prepared Packs\",\"Issued Packs\",\"Remaining Packs\"],[\"Round A — Tuesday\",null,null,null],[\"Seed Trays\",84,29,null],[\"Compost Bags\",63,18,null],[\"Bamboo Stakes\",120,46,null],[\"Watering Cans\",28,9,null],[\"Plant Labels\",150,72,null],[null,null,null,null],[\"Round B — Thursday\",null,null,null],[\"Seed Trays\",76,31,null],[\"Compost Bags\",58,21,null],[\"Bamboo Stakes\",110,39,null]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

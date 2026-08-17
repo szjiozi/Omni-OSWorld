@@ -1,0 +1,300 @@
+{
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "@",
+        "$#,##0.00"
+      ],
+      "column_types": [
+        "text",
+        "currency"
+      ],
+      "formulas": [],
+      "freeze_header_row": false,
+      "headers": [
+        "Service Code",
+        "Unit Rate"
+      ],
+      "name": "Rate Card",
+      "rows": [
+        {
+          "values": [
+            "DIAG",
+            "42.50"
+          ]
+        },
+        {
+          "values": [
+            "CALIB",
+            "68.00"
+          ]
+        },
+        {
+          "values": [
+            "REPAIR",
+            "115.75"
+          ]
+        },
+        {
+          "values": [
+            "INSTALL",
+            "89.25"
+          ]
+        },
+        {
+          "values": [
+            "TRAIN",
+            "54.00"
+          ]
+        },
+        {
+          "values": [
+            "AUDIT",
+            "76.50"
+          ]
+        }
+      ]
+    },
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "@",
+        "@",
+        "0",
+        "0.00",
+        "General"
+      ],
+      "column_types": [
+        "text",
+        "text",
+        "integer",
+        "decimal",
+        "text"
+      ],
+      "formulas": [],
+      "freeze_header_row": true,
+      "headers": [
+        "Request ID",
+        "Service Code",
+        "Units",
+        "Adjustment",
+        "Estimate Note"
+      ],
+      "name": "Service Requests",
+      "rows": [
+        {
+          "values": [
+            "SR-4101",
+            "DIAG",
+            "2",
+            "0.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "SR-4102",
+            "CALIB",
+            "1",
+            "0.10",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "SR-4103",
+            "REPAIR",
+            "3",
+            "0.05",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "SR-4104",
+            "INSTALL",
+            "2",
+            "0.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "SR-4105",
+            "TRAIN",
+            "4",
+            "0.15",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "SR-4106",
+            "AUDIT",
+            "1",
+            "0.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "SR-4107",
+            "DIAG",
+            "5",
+            "0.20",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "SR-4108",
+            "REPAIR",
+            "1",
+            "0.10",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "SR-4109",
+            "CALIB",
+            "3",
+            "0.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "SR-4110",
+            "INSTALL",
+            "4",
+            "0.05",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "SR-4111",
+            "TRAIN",
+            "2",
+            "0.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "SR-4112",
+            "AUDIT",
+            "3",
+            "0.10",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "SR-4113",
+            "DIAG",
+            "1",
+            "0.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "SR-4114",
+            "REPAIR",
+            "2",
+            "0.15",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "SR-4115",
+            "CALIB",
+            "4",
+            "0.05",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "SR-4116",
+            "INSTALL",
+            "1",
+            "0.00",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "SR-4117",
+            "TRAIN",
+            "3",
+            "0.10",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "SR-4118",
+            "AUDIT",
+            "2",
+            "0.00",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "@"
+      ],
+      "column_types": [
+        "text"
+      ],
+      "formulas": [],
+      "freeze_header_row": false,
+      "headers": [
+        "Checklist labels source and destination area"
+      ],
+      "name": "Overview",
+      "rows": [
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Rate verified"
+          ]
+        },
+        {
+          "values": [
+            "Adjustment reviewed"
+          ]
+        },
+        {
+          "values": [
+            "Estimate prepared"
+          ]
+        },
+        {
+          "values": [
+            "Ready to send"
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        }
+      ]
+    }
+  ],
+  "workbook_title": "Service Estimate Review"
+}

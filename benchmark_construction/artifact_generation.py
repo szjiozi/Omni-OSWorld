@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 
+import asyncio
+from datetime import date
 import json
+import os
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -123,7 +126,12 @@ def validate_artifact_blueprint(
             raise ValueError(
                 f"Blueprint column types differ for sheet {sheet['name']}"
             )
-        if len(sheet["column_number_formats"]) != len(sheet["headers"]):
+        width = len(sheet["headers"])
+        if len(sheet["column_types"]) != width:
+            raise ValueError(
+                f"Blueprint column types differ in width for sheet {sheet['name']}"
+            )
+        if len(sheet["column_number_formats"]) != width:
             raise ValueError(
                 f"Blueprint number formats differ in width for sheet {sheet['name']}"
             )
@@ -131,12 +139,30 @@ def validate_artifact_blueprint(
             raise ValueError(
                 f"Blueprint row count differs for sheet {sheet['name']}"
             )
-        width = len(sheet["headers"])
         for index, row in enumerate(sheet["rows"], start=2):
             if len(row["values"]) != width:
                 raise ValueError(
                     f"Sheet {sheet['name']} row {index} has the wrong width"
                 )
+            for column_index, (value, data_type) in enumerate(
+                zip(row["values"], sheet["column_types"]), start=1
+            ):
+                if value == "" or data_type == "text":
+                    continue
+                try:
+                    if data_type == "integer":
+                        if not re.fullmatch(r"[+-]?\d+", value.strip()):
+                            raise ValueError
+                        int(value)
+                    elif data_type in {"decimal", "currency"}:
+                        float(value)
+                    elif data_type == "date":
+                        date.fromisoformat(value)
+                except (TypeError, ValueError) as exc:
+                    raise ValueError(
+                        f"Sheet {sheet['name']} row {index} column "
+                        f"{column_index} has invalid {data_type} value: {value!r}"
+                    ) from exc
         formula_cells: set[str] = set()
         for formula in sheet["formulas"]:
             cell = formula["cell"].upper()
@@ -195,6 +221,163 @@ async def generate_artifact_blueprints(
             )
         )
     return blueprints
+
+
+def _artifact_result(
+    package: dict[str, Any],
+    request: JSONRequest,
+    result: Any,
+) -> ArtifactBlueprintResult:
+    validate_artifact_blueprint(package, result.data)
+    return ArtifactBlueprintResult(
+        reference_task_id=package["reference_task_id"],
+        blueprint=result.data,
+        request_id=result.request_id,
+        prompt_sha256=request.prompt_sha256,
+        model=result.model,
+        input_tokens=result.usage.input_tokens,
+        output_tokens=result.usage.output_tokens,
+        estimated_cost_usd=result.estimated_cost_usd,
+    )
+
+
+def _write_blueprint_checkpoint(
+    path: Path,
+    result: ArtifactBlueprintResult,
+    *,
+    base_prompt_sha256: str,
+) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(f".{path.name}.tmp")
+    temporary.write_text(
+        json.dumps(
+            {
+                "schema_version": "1.0",
+                "reference_task_id": result.reference_task_id,
+                "base_prompt_sha256": base_prompt_sha256,
+                "blueprint": result.blueprint,
+                "generation": {
+                    "request_id": result.request_id,
+                    "prompt_sha256": result.prompt_sha256,
+                    "model": result.model,
+                    "input_tokens": result.input_tokens,
+                    "output_tokens": result.output_tokens,
+                    "estimated_cost_usd": result.estimated_cost_usd,
+                },
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    os.replace(temporary, path)
+
+
+async def generate_artifact_blueprints_checkpointed(
+    packages: Sequence[dict[str, Any]],
+    client: OpenAICompatibleAsyncClient,
+    *,
+    checkpoint_dir: Path,
+    resume: bool,
+    semantic_retries: int = 2,
+) -> list[ArtifactBlueprintResult]:
+    """Retain validated results and retry only locally invalid blueprints."""
+
+    if semantic_retries < 0:
+        raise ValueError("semantic_retries must be non-negative")
+
+    async def process(package: dict[str, Any]) -> ArtifactBlueprintResult:
+        base_request = build_artifact_blueprint_request(package)
+        checkpoint = checkpoint_dir / f"{package['reference_task_id']}.json"
+        if resume and checkpoint.is_file():
+            document = json.loads(checkpoint.read_text(encoding="utf-8"))
+            if document.get("reference_task_id") != package["reference_task_id"]:
+                raise ValueError(f"Checkpoint task ID mismatch: {checkpoint}")
+            if document.get("base_prompt_sha256") != base_request.prompt_sha256:
+                raise ValueError(f"Checkpoint prompt differs: {checkpoint}")
+            blueprint = document.get("blueprint")
+            try:
+                validate_artifact_blueprint(package, blueprint)
+            except ValueError:
+                pass
+            else:
+                generation = document.get("generation", {})
+                return ArtifactBlueprintResult(
+                    reference_task_id=package["reference_task_id"],
+                    blueprint=blueprint,
+                    request_id=str(generation.get("request_id", "")),
+                    prompt_sha256=str(generation.get("prompt_sha256", "")),
+                    model=str(generation.get("model", "")),
+                    input_tokens=int(generation.get("input_tokens", 0)),
+                    output_tokens=int(generation.get("output_tokens", 0)),
+                    estimated_cost_usd=generation.get("estimated_cost_usd"),
+                )
+
+        request = base_request
+        last_error: ValueError | None = None
+        for attempt in range(semantic_retries + 1):
+            result = await client.generate_json(request)
+            try:
+                validated = _artifact_result(package, request, result)
+            except ValueError as exc:
+                last_error = exc
+                if attempt >= semantic_retries:
+                    break
+                required_contract = [
+                    {
+                        "name": sheet["name"],
+                        "headers": [
+                            column["name"] for column in sheet["columns"]
+                        ],
+                        "column_types": [
+                            column["data_type"] for column in sheet["columns"]
+                        ],
+                        "row_count": sheet["row_count"],
+                    }
+                    for sheet in package["artifact_spec"]["sheets"]
+                ]
+                request = JSONRequest(
+                    prompt_name=base_request.prompt_name,
+                    system_prompt=base_request.system_prompt,
+                    user_prompt=(
+                        base_request.user_prompt
+                        + f"\n\nCorrection attempt {attempt + 1}. Your previous "
+                        "response failed local validation: "
+                        + str(exc)
+                        + ". Return a corrected complete blueprint. Every sheet "
+                        "must exactly match this local contract, including exact "
+                        "header spelling/order and exact row count:\n"
+                        + json.dumps(
+                            required_contract, indent=2, ensure_ascii=False
+                        )
+                    ),
+                    response_schema=base_request.response_schema,
+                    schema_name=base_request.schema_name,
+                )
+                continue
+            _write_blueprint_checkpoint(
+                checkpoint,
+                validated,
+                base_prompt_sha256=base_request.prompt_sha256,
+            )
+            return validated
+        raise ValueError(
+            f"Artifact blueprint remained invalid for "
+            f"{package['reference_task_id']}: {last_error}"
+        )
+
+    outcomes = await asyncio.gather(
+        *(process(package) for package in packages), return_exceptions=True
+    )
+    failures = [item for item in outcomes if isinstance(item, BaseException)]
+    if failures:
+        details = "; ".join(f"{type(item).__name__}: {item}" for item in failures)
+        raise RuntimeError(
+            f"{len(failures)} artifact blueprint task(s) failed; validated "
+            f"checkpoints were retained: {details}"
+        )
+    return list(outcomes)
 
 
 def write_artifact_blueprints(

@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "scripts/python/manage_reference_review_packets.py export",
+  "reference_task_id": "reference-task-calc-full-r01-018",
+  "context_fingerprint": "749efb4b6b4bc882e766676685b56e5b9d7c518b2acb26aed602f165543db73a",
+  "inputs": [
+    {
+      "role": "artifact",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-018/initial_artifact.xlsx",
+      "sha256": "c537d9000466d100788c368d21aa1c16cf3cf7400c96722acee746ac97801d28"
+    },
+    {
+      "role": "artifact_blueprint",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-018/artifact_blueprint.json",
+      "sha256": "e12624a89846e27316204f4e13ca3d226a5bff7349009498687790853464fbd1"
+    },
+    {
+      "role": "artifact_qa",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-018/artifact_qa.json",
+      "sha256": "3a9268448d302bee8fd0d5379bc24234285243f73a1c006eaf222437c5c81f9b"
+    },
+    {
+      "role": "task_config",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-018.json",
+      "sha256": "6d3071c6ba5964e83abe1d4f550754b5272aeb7902eae29bad7614d4ec6f8e5a"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-018/previews/Attendance_Log.png",
+      "sha256": "a8155b00658edc1edf19605766ec0ba7eb3d49232815f9eed403dfe27783a75f"
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "TASK.md",
+      "sha256": "f00c5a41667c3450e7757949058f209ab8328b8cc54948d86ae100c76d59cb2f"
+    },
+    {
+      "path": "TASK_DETAIL.md",
+      "sha256": "b3a20770041b0fac4eb5eb47907f239f620127b6a6dfaffbf4f9acff6f40e6ab"
+    },
+    {
+      "path": "context.json",
+      "sha256": "84dacaefc46b54037eaa37476cabee1f524fd581b20bd77205f4fef7d8ba1e72"
+    },
+    {
+      "path": "task_config.json",
+      "sha256": "6d3071c6ba5964e83abe1d4f550754b5272aeb7902eae29bad7614d4ec6f8e5a"
+    },
+    {
+      "path": "artifact/initial_artifact.xlsx",
+      "sha256": "c537d9000466d100788c368d21aa1c16cf3cf7400c96722acee746ac97801d28"
+    },
+    {
+      "path": "artifact/artifact_blueprint.json",
+      "sha256": "e12624a89846e27316204f4e13ca3d226a5bff7349009498687790853464fbd1"
+    },
+    {
+      "path": "artifact/artifact_qa.json",
+      "sha256": "3a9268448d302bee8fd0d5379bc24234285243f73a1c006eaf222437c5c81f9b"
+    },
+    {
+      "path": "artifact/previews/Attendance_Log.png",
+      "sha256": "a8155b00658edc1edf19605766ec0ba7eb3d49232815f9eed403dfe27783a75f"
+    }
+  ],
+  "editable_review": {
+    "path": "review.json",
+    "excluded_from_generated_file_hashes": true
+  }
+}

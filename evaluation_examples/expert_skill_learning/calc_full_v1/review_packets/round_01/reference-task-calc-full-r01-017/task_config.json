@@ -1,0 +1,97 @@
+{
+  "id": "reference-task-calc-full-r01-017",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Complete the daily net-delivery and target-variance calculations for all solar microgrid readings, then create a line chart of net delivery by reading date. Title it 'Daily Net Delivery Trend' and place it in the open area to the right of the data table.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-017/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/solar_microgrid.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/solar_microgrid.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-calc-full-r01-017",
+    "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-017/initial_artifact.xlsx",
+    "artifact_sha256": "b08e6b97ba50384de5e5999819e5682601657f2d41c12b149a2f6095ae7cd53d",
+    "guest_artifact_path": "/home/user/Desktop/solar_microgrid.xlsx",
+    "required_skill_ids": [
+      "4172ea6e-6b77-4edb-a9cc-c0014bd1603b.skill-02",
+      "347ef137-7eeb-4c80-a3bb-0951f26a8aff.skill-02",
+      "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-02",
+      "7efeb4b1-3d19-4762-b163-63328d66303b.skill-02"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The expert may create the chart before or after completing the calculations, use an equivalent line-chart creation path, and place the finished chart anywhere clearly to the right of the source table without covering headers or data.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Use the fill handle’s double-click behavior rather than dragging through all 24 records.",
+          "operation_intent": "Propagate the seeded Net Delivered kWh calculation from E2 through the contiguous daily-record range.",
+          "skill_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b.skill-02",
+          "visible_success_signal": "Every daily row from E2 through E25 displays a row-adjusted net-delivery result, with no blanks in the calculated column."
+        },
+        {
+          "efficiency_tip": "Use the fill handle’s double-click behavior so the calculation stops with the adjacent uninterrupted table.",
+          "operation_intent": "Propagate the seeded Variance to Target kWh calculation from F2 through the same contiguous daily-record range.",
+          "skill_id": "7efeb4b1-3d19-4762-b163-63328d66303b.skill-02",
+          "visible_success_signal": "Every daily row from F2 through F25 displays a row-adjusted variance result, with no blanks in the calculated column."
+        },
+        {
+          "efficiency_tip": "After creating the line chart, edit its title through the chart title/element controls rather than rebuilding the chart.",
+          "operation_intent": "Set the line chart title to 'Daily Net Delivery Trend'.",
+          "skill_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-02",
+          "visible_success_signal": "The displayed line chart visibly shows the exact title 'Daily Net Delivery Trend'."
+        },
+        {
+          "efficiency_tip": "Drag the chart by its outer object boundary or top edge, not by an individual plotted series.",
+          "operation_intent": "Move the completed chart into the empty area to the right of the daily readings table.",
+          "skill_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff.skill-02",
+          "visible_success_signal": "The titled chart is visibly positioned in the open right-side worksheet area and does not obscure the source table."
+        }
+      ],
+      "recording_end_state": "Both calculation columns are fully populated through the last reading, and a titled line chart of net delivery is visibly placed to the right of the table.",
+      "recording_start_state": "The active Daily Readings sheet contains the populated input table, only the two seed formulas in row 2, and no chart."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Create a line chart using Reading Date as the category axis and the completed Net Delivered kWh values as the plotted series.",
+        "reason": "A chart object must exist before its title can be set and it can be repositioned."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Select the relevant chart source range and place the newly created chart initially on the Daily Readings sheet.",
+        "reason": "This is the minimal setup needed to produce the requested visible chart deliverable."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc is open with the 'Daily Readings' sheet active.",
+      "The worksheet shows a contiguous daily readings table in A1:F25, with input data populated in columns A:D.",
+      "E2 and F2 contain the only seeded calculation formulas; E3:E25 and F3:F25 are blank.",
+      "The area beginning around column H is empty, and no chart object is present."
+    ],
+    "setup_notes": [
+      "The initial workbook intentionally contains no chart and must retain blank calculation cells below the seed formulas before recording."
+    ],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

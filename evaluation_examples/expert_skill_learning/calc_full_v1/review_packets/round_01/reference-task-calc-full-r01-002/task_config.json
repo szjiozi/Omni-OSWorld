@@ -1,0 +1,81 @@
+{
+  "id": "reference-task-calc-full-r01-002",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Prepare the board-ready funding view by duplicating each initiative's planned allocation into the blank Board View column and displaying those copied amounts as rounded billions with one decimal place and a spaced B suffix.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-002/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/regional_funding_plan.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/regional_funding_plan.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-calc-full-r01-002",
+    "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-002/initial_artifact.xlsx",
+    "artifact_sha256": "ea718dabd14e9cedb8b71b434de07a38d9f788d3be8d64e27008c57ac755a78f",
+    "guest_artifact_path": "/home/user/Desktop/regional_funding_plan.xlsx",
+    "required_skill_ids": [
+      "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-03",
+      "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-04"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The expert may use keyboard shortcuts, menus, the format dialog, or another equivalent LibreOffice Calc method. The pasted values must remain numeric and the Board View display must visibly use a single decimal place, a space, and the B suffix.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Copy the contiguous source range once, then paste starting at the top destination cell so Calc fills the matching range in one action.",
+          "operation_intent": "Paste the copied planned-allocation values into the blank Board View column beginning at C2.",
+          "skill_id": "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-03",
+          "visible_success_signal": "C2:C11 are populated with the same underlying numeric amounts as B2:B11, while the Initiative and source columns remain unchanged."
+        },
+        {
+          "efficiency_tip": "Apply a comma-scaled custom number format to the whole Board View range rather than changing the underlying amounts; use a one-decimal billions format with a literal spaced B suffix (for example, `0.0,,, \\B`).",
+          "operation_intent": "Format the populated Board View values as rounded billions with one decimal place and a space before the B unit suffix.",
+          "skill_id": "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-04",
+          "visible_success_signal": "The Board View column shows values such as 12.5 B, 8.8 B, and 3.6 B, while the formula/input line retains the full raw amounts."
+        }
+      ],
+      "recording_end_state": "The Funding Plan sheet has B2:B11 copied into C2:C11, and every Board View entry displays as a one-decimal rounded number of billions followed by a spaced B suffix.",
+      "recording_start_state": "The Funding Plan sheet is open with populated source values in B2:B11 and a blank Board View destination range C2:C11."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Select and copy the numeric source range B2:B11 so the values are available on the clipboard.",
+        "reason": "A copied cell range is required before the mandatory paste operation can be demonstrated."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Select the pasted Board View cells when applying the number format.",
+        "reason": "The custom display format must be targeted to the completed board-view range."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc is open with the \"Funding Plan\" sheet active.",
+      "Rows 2 through 11 show the ten synthetic initiatives and their planned allocations in column B.",
+      "Column C is headed \"Board View\" and cells C2:C11 are blank.",
+      "Column B displays USD currency amounts with thousands separators and no decimal places."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

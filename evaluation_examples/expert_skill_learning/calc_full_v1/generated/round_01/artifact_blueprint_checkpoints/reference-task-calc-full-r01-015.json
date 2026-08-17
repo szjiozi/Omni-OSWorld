@@ -1,0 +1,338 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-015",
+  "base_prompt_sha256": "7cc1db0ff497b1af1b73b69774f38baa879942144260c129844c133448b10e18",
+  "blueprint": {
+    "manual_setup_steps": [
+      "After building the workbook, place the text label \"Total estimated liters\" in Dispatch Log!D28 while leaving Dispatch Log!E28 blank. This preserves the required blank rows 26 and 27 and the designated total-result cell without adding extra source-table records."
+    ],
+    "sheets": [
+      {
+        "autofilter_range": null,
+        "column_number_formats": [
+          "@",
+          "@",
+          "0.00",
+          "0.00",
+          "0.00"
+        ],
+        "column_types": [
+          "text",
+          "text",
+          "decimal",
+          "decimal",
+          "decimal"
+        ],
+        "formulas": [
+          {
+            "cell": "E2",
+            "formula": "=C2*D2"
+          }
+        ],
+        "freeze_header_row": true,
+        "headers": [
+          "Route Code",
+          "Zone",
+          "Distance (km)",
+          "Liters per km",
+          "Estimated Liters"
+        ],
+        "name": "Dispatch Log",
+        "rows": [
+          {
+            "values": [
+              "RT-HB-101",
+              "Harbor",
+              "18.40",
+              "0.27",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-NS-102",
+              "Northside",
+              "24.75",
+              "0.31",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-RG-103",
+              "Ridge",
+              "31.20",
+              "0.29",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-HB-104",
+              "Harbor",
+              "12.65",
+              "0.26",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-NS-105",
+              "Northside",
+              "28.90",
+              "0.30",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-RG-106",
+              "Ridge",
+              "22.35",
+              "0.28",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-HB-107",
+              "Harbor",
+              "35.80",
+              "0.32",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-NS-108",
+              "Northside",
+              "16.50",
+              "0.25",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-RG-109",
+              "Ridge",
+              "27.45",
+              "0.30",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-HB-110",
+              "Harbor",
+              "20.10",
+              "0.28",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-NS-111",
+              "Northside",
+              "33.60",
+              "0.33",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-RG-112",
+              "Ridge",
+              "14.80",
+              "0.24",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-HB-113",
+              "Harbor",
+              "29.25",
+              "0.31",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-NS-114",
+              "Northside",
+              "21.70",
+              "0.29",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-RG-115",
+              "Ridge",
+              "38.40",
+              "0.34",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-HB-116",
+              "Harbor",
+              "15.90",
+              "0.25",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-NS-117",
+              "Northside",
+              "26.30",
+              "0.30",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-RG-118",
+              "Ridge",
+              "19.65",
+              "0.27",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-HB-119",
+              "Harbor",
+              "32.15",
+              "0.33",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-NS-120",
+              "Northside",
+              "13.40",
+              "0.24",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-RG-121",
+              "Ridge",
+              "25.85",
+              "0.29",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-HB-122",
+              "Harbor",
+              "23.50",
+              "0.28",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-NS-123",
+              "Northside",
+              "30.75",
+              "0.32",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "RT-RG-124",
+              "Ridge",
+              "17.25",
+              "0.26",
+              ""
+            ]
+          }
+        ]
+      },
+      {
+        "autofilter_range": null,
+        "column_number_formats": [
+          "@"
+        ],
+        "column_types": [
+          "text"
+        ],
+        "formulas": [],
+        "freeze_header_row": false,
+        "headers": [
+          "(blank output sheet)"
+        ],
+        "name": "Analysis",
+        "rows": [
+          {
+            "values": [
+              ""
+            ]
+          },
+          {
+            "values": [
+              ""
+            ]
+          },
+          {
+            "values": [
+              ""
+            ]
+          },
+          {
+            "values": [
+              ""
+            ]
+          },
+          {
+            "values": [
+              ""
+            ]
+          },
+          {
+            "values": [
+              ""
+            ]
+          },
+          {
+            "values": [
+              ""
+            ]
+          },
+          {
+            "values": [
+              ""
+            ]
+          },
+          {
+            "values": [
+              ""
+            ]
+          },
+          {
+            "values": [
+              ""
+            ]
+          }
+        ]
+      }
+    ],
+    "workbook_title": "Fleet Fuel Planning"
+  },
+  "generation": {
+    "request_id": "bc12444f-cfbf-4624-80bc-c8d3dd8898bf",
+    "prompt_sha256": "25d22f2088ac367ff76c2b1430e5871b98234e421989b0b52c232865558b76df",
+    "model": "gpt-5.6-terra",
+    "input_tokens": 2616,
+    "output_tokens": 1217,
+    "estimated_cost_usd": 0.019836
+  }
+}

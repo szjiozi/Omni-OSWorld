@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+  "app": "libreoffice_calc",
+  "single_action_count": 3,
+  "prompt_sha256": "f23663bac6e9a98d8045dbd5fe4119c1d86407b7654c01df48d3e7099b9c88bb",
+  "request_id": "a0d41f18-25ee-4387-9fe9-236e5aaaf5ed",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1192,
+    "cached_input_tokens": 1073,
+    "output_tokens": 192,
+    "estimated_cost_usd": 0.0027566
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2
+        ],
+        "efficiency_tip": "Click a cell or the column header in the intended sort key before using the toolbar sort button; choose to extend the selection when adjacent columns belong to the same records, so rows stay intact.",
+        "name": "Sort a table by a selected column in ascending order",
+        "procedure": [
+          "Select the column that contains the values to use as the sort key, for example click column D.",
+          "Click the ascending-sort toolbar icon (the sort icon with a down arrow) to order the selected column from smallest to largest or A to Z.",
+          "When Calc asks whether to sort only the selected column or include neighboring data, choose Extend selection to move complete rows together with the sort key. For example, values in column D are reordered while the corresponding data in columns A–C remains on the same rows."
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,902 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-016",
+  "package": {
+    "reference_task_id": "reference-task-calc-full-r01-016",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_calc",
+    "task_instruction": "Complete the Net Reimbursement calculation for every workshop supply request, keep the internal test requests on rows 6, 13, and 20 out of view without removing them, and show the overall reimbursement total beside the Total Reimbursement label.",
+    "required_skill_ids": [
+      "7e429b8d-a3f0-4ed0-9b58-08957d00b127.skill-02",
+      "6054afcb-5bab-4702-90a0-b259b5d3217c.skill-01",
+      "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-01"
+    ],
+    "artifact_spec": {
+      "artifact_type": "xlsx",
+      "domain": "Community workshop supply reimbursements",
+      "generation_notes": [
+        "Use entirely synthetic, privacy-safe workshop and supply data.",
+        "Apply ordinary header styling (bold text with a light fill) to the header row and currency number formatting to the monetary columns.",
+        "Populate rows 2 through 25 with varied positive currency values. Ensure every data row has a nonblank value in the adjacent input columns so the data region is contiguous for autofill.",
+        "Set G2 to the seed formula =D2+E2-F2. Leave G3:G25 blank.",
+        "Leave G27 blank for the final range-total formula."
+      ],
+      "initial_state": [
+        "The workbook contains one sheet named Reimbursements.",
+        "Row 1 contains headers and rows 2:25 contain reimbursement records.",
+        "The formula seed exists only in G2; the rest of the Net Reimbursement column is intentionally uncalculated.",
+        "Rows 6, 13, and 20 are ordinary visible records at the start and must remain present rather than being deleted.",
+        "Row 26 is a blank spacer row.",
+        "A label Total Reimbursement is present in F27, immediately to the left of the blank result cell G27."
+      ],
+      "must_not_be_completed": [
+        "Do not pre-fill G3:G25 with formulas or values.",
+        "Do not pre-enter a formula in G27.",
+        "Do not hide rows 6, 13, or 20 initially.",
+        "Do not delete, filter out, or alter the values of any reimbursement record."
+      ],
+      "sheets": [
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "Request ID"
+            },
+            {
+              "data_type": "text",
+              "name": "Workshop"
+            },
+            {
+              "data_type": "text",
+              "name": "Supply Category"
+            },
+            {
+              "data_type": "currency",
+              "name": "Materials Cost"
+            },
+            {
+              "data_type": "currency",
+              "name": "Shipping Cost"
+            },
+            {
+              "data_type": "currency",
+              "name": "Sponsor Credit"
+            },
+            {
+              "data_type": "currency",
+              "name": "Net Reimbursement"
+            }
+          ],
+          "name": "Reimbursements",
+          "purpose": "Source table for calculating per-request net reimbursements, concealing selected internal test records, and reporting the overall reimbursement total.",
+          "row_count": 27
+        }
+      ],
+      "workbook_title": "Workshop Supply Reimbursements"
+    },
+    "operator_guide": {
+      "allowed_variation": "The expert may calculate and verify the total before or after hiding the specified records, provided all per-record net formulas are filled, the required records are hidden rather than removed, and the total formula covers the complete record range.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Use the seeded formula in G2 and the fill handle’s double-click behavior; the neighboring data columns are continuous through row 25.",
+          "operation_intent": "Propagate the Net Reimbursement formula from the seeded first record through all remaining contiguous reimbursement records.",
+          "skill_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127.skill-02",
+          "visible_success_signal": "G3:G25 display calculated currency results with row-relative formulas, while G2 remains the original seed."
+        },
+        {
+          "efficiency_tip": "Use a single multi-selection of row headers and issue the hide command once rather than hiding records individually.",
+          "operation_intent": "Hide the three internal test reimbursement records on rows 6, 13, and 20 without deleting their data.",
+          "skill_id": "6054afcb-5bab-4702-90a0-b259b5d3217c.skill-01",
+          "visible_success_signal": "The row-number sequence visibly skips 6, 13, and 20, and the surrounding records remain in place."
+        },
+        {
+          "efficiency_tip": "Enter one SUM formula referencing the complete Net Reimbursement data range; the blank spacer row prevents accidental inclusion of the total cell.",
+          "operation_intent": "Calculate the overall reimbursement amount in G27 next to the Total Reimbursement label.",
+          "skill_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-01",
+          "visible_success_signal": "G27 shows a currency total produced by a range-total formula covering G2:G25."
+        }
+      ],
+      "recording_end_state": "All reimbursement records have calculated net values, rows 6, 13, and 20 are hidden, and G27 contains the range total for G2:G25.",
+      "recording_start_state": "The Reimbursements sheet is visible with populated source records, only G2 containing the seeded formula, and all rows visible."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Navigate to the Reimbursements sheet and select the seeded formula cell and later the total-result cell.",
+        "reason": "Cell selection is needed to propagate the existing calculation and place the requested total."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Enter a SUM range formula in G27 that totals the Net Reimbursement results from the record rows.",
+        "reason": "This is the natural calculation needed to produce the requested overall reimbursement total."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Select the specified non-adjacent row headers using a multi-selection modifier before applying the row-hide command.",
+        "reason": "The requested records must be concealed together while preserving their contents."
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+          "skill_count": 1,
+          "skill_fraction": 0.333333
+        },
+        {
+          "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+          "skill_count": 1,
+          "skill_fraction": 0.333333
+        },
+        {
+          "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+          "skill_count": 1,
+          "skill_fraction": 0.333333
+        }
+      ],
+      "dominant_source_task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+      "dominant_source_skill_fraction": 0.333333,
+      "complete_source_skill_sets_included": [
+        "6054afcb-5bab-4702-90a0-b259b5d3217c"
+      ]
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+        "max_sequence_similarity": 0.317618,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "sequence_similarity": 0.234177
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "sequence_similarity": 0.044597
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "sequence_similarity": 0.031008
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "sequence_similarity": 0.046809
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "sequence_similarity": 0.28877
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "sequence_similarity": 0.317618
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "sequence_similarity": 0.012685
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "sequence_similarity": 0.244032
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "sequence_similarity": 0.247678
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "sequence_similarity": 0.194529
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "sequence_similarity": 0.234604
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "sequence_similarity": 0.030769
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "sequence_similarity": 0.125628
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "sequence_similarity": 0.281407
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "sequence_similarity": 0.273148
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "sequence_similarity": 0.035225
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "sequence_similarity": 0.282667
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "sequence_similarity": 0.207715
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "sequence_similarity": 0.038835
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.314351
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.032733
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "sequence_similarity": 0.260388
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "sequence_similarity": 0.239401
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "sequence_similarity": 0.03681
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "sequence_similarity": 0.268493
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "sequence_similarity": 0.216049
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "sequence_similarity": 0.260652
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "sequence_similarity": 0.051635
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "sequence_similarity": 0.189873
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "sequence_similarity": 0.026316
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "sequence_similarity": 0.025974
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "sequence_similarity": 0.219436
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "sequence_similarity": 0.26087
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "sequence_similarity": 0.132653
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "sequence_similarity": 0.209836
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "sequence_similarity": 0.147692
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "sequence_similarity": 0.022124
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "sequence_similarity": 0.15082
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "sequence_similarity": 0.229947
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "sequence_similarity": 0.026144
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "sequence_similarity": 0.031496
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "sequence_similarity": 0.02439
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "sequence_similarity": 0.253807
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "sequence_similarity": 0.301449
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "sequence_similarity": 0.156566
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "sequence_similarity": 0.028986
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "sequence_similarity": 0.288525
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "max_cosine_similarity": 0.454457,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "cosine_similarity": 0.297196
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "cosine_similarity": 0.368072
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "cosine_similarity": 0.454457
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "cosine_similarity": 0.344373
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "cosine_similarity": 0.378016
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "cosine_similarity": 0.265308
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "cosine_similarity": 0.329131
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "cosine_similarity": 0.338877
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "cosine_similarity": 0.379661
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "cosine_similarity": 0.180955
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "cosine_similarity": 0.346395
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "cosine_similarity": 0.352232
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "cosine_similarity": 0.373694
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "cosine_similarity": 0.36475
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "cosine_similarity": 0.299645
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "cosine_similarity": 0.299672
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "cosine_similarity": 0.350009
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "cosine_similarity": 0.337657
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "cosine_similarity": 0.295942
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.367037
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.334344
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "cosine_similarity": 0.248256
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "cosine_similarity": 0.22612
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "cosine_similarity": 0.216313
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "cosine_similarity": 0.319079
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "cosine_similarity": 0.256287
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "cosine_similarity": 0.437232
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "cosine_similarity": 0.349954
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "cosine_similarity": 0.254367
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "cosine_similarity": 0.240961
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "cosine_similarity": 0.438545
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "cosine_similarity": 0.305655
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "cosine_similarity": 0.357899
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "cosine_similarity": 0.350656
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "cosine_similarity": 0.337428
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "cosine_similarity": 0.276571
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "cosine_similarity": 0.259485
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "cosine_similarity": 0.326167
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "cosine_similarity": 0.285481
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "cosine_similarity": 0.297075
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "cosine_similarity": 0.21282
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "cosine_similarity": 0.277304
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "cosine_similarity": 0.243557
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "cosine_similarity": 0.319358
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "cosine_similarity": 0.306652
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "cosine_similarity": 0.321726
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "cosine_similarity": 0.444374
+          }
+        ],
+        "embedding_request_id": "e9df3ea8-8c8e-4f8c-9056-df67ef6090d3"
+      }
+    },
+    "generation": {
+      "attempt": 16,
+      "kind": "new_combination",
+      "request_id": "6c17d395-0d24-4b72-b851-b6e9fed1e255",
+      "prompt_sha256": "203d14b96c9d9ed0b552f460960c8921d8b65b3882fca3064464f364e13a18fd"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Auto-fill a formula down a contiguous data region",
+      "procedure": [
+        "Select the cell that already contains the formula to propagate.",
+        "Double-click the small fill handle at the cell's bottom-right corner.",
+        "Calc fills the formula downward through the contiguous neighboring data rows, adjusting relative references. For example, a formula beginning with `E2` in the selected row becomes `E3`, `E4`, and so on in subsequent rows, while an absolute range such as `$A$2:$B$7` remains fixed."
+      ],
+      "efficiency_tip": "Double-clicking the fill handle is faster than dragging it for long adjacent datasets, but verify that the neighboring column has continuous rows because Calc uses that region to determine the fill length.",
+      "source": {
+        "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+        "action_ids": [
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "6054afcb-5bab-4702-90a0-b259b5d3217c.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Hide multiple non-adjacent rows",
+      "procedure": [
+        "Click the header of the first row to hide.",
+        "Hold Ctrl and click each additional row header that should be hidden; for example, select rows 3, 6, 8, and 9 while retaining the earlier selections.",
+        "Release Ctrl after all target row headers are selected.",
+        "Right-click any selected row header and choose Hide rows.",
+        "The selected rows are hidden without deleting their contents; they can later be restored with the corresponding unhide command."
+      ],
+      "efficiency_tip": "Hold Ctrl while selecting all non-adjacent row headers, then use Hide rows once; this is faster and less error-prone than hiding each row individually.",
+      "source": {
+        "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    },
+    {
+      "skill_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Create a range-total formula in a spreadsheet cell",
+      "procedure": [
+        "Select the result cell next to the label, type a SUM formula for the cells to total, and confirm it. For example, enter `=SUM(B2:B11)` in B12 to total that column's values from rows 2 through 11.",
+        "Use relative references when the formula will be copied across columns: `B2:B11` shifts to `C2:C11`, `D2:D11`, and so on when filled right."
+      ],
+      "efficiency_tip": "Enter the formula once in the first result cell; use autofill afterward rather than manually rewriting the formula for each adjacent column.",
+      "source": {
+        "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+        "action_ids": [
+          2,
+          3,
+          4
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+      "instruction": "Work out the monthly total sales in a new row called \"Total\" and then create a line chart to show the results (x-axis be Months).",
+      "required_skill_ids": [
+        "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 2,
+          "action": "`PRESS` tab"
+        },
+        {
+          "action_id": 3,
+          "action": "`TYPING` '=SUM(B2:B11)'"
+        },
+        {
+          "action_id": 4,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell A12",
+        "`TYPING` 'Total'",
+        "`PRESS` tab",
+        "`TYPING` '=SUM(B2:B11)'",
+        "`PRESS` enter",
+        "`CLICK` cell B12",
+        "`MOVE_TO bottom right corner of the cell B12`",
+        "`DRAG_TO` bottom right corner of the cell G12",
+        "`MOVE_TO` middle of cell A1",
+        "`DRAG_TO` middle of cell G1",
+        "`KEY_DOWN` ctrl",
+        "`CLICK` cell A12",
+        "`KEY_UP` ctrl",
+        "`KEY_DOWN` shift",
+        "`CLICK` cell G12",
+        "`KEY_UP` shift",
+        "`CLICK` chart icon",
+        "`CLICK` Line",
+        "`CLICK` icon representing lines only (3rd from the right)",
+        "`CLICK` Finish"
+      ]
+    },
+    {
+      "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+      "instruction": "Some data are missed by now and are filled by 'N/A' temporarily. Please hide them in the table for now. Do not delete them and filter is no needed.",
+      "required_skill_ids": [
+        "6054afcb-5bab-4702-90a0-b259b5d3217c.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`CLICK` row 3"
+        },
+        {
+          "action_id": 1,
+          "action": "`KEY_DOWN` Ctrl"
+        },
+        {
+          "action_id": 2,
+          "action": "`CLICK` row 6"
+        },
+        {
+          "action_id": 3,
+          "action": "`CLICK` row 8"
+        },
+        {
+          "action_id": 4,
+          "action": "`CLICK` row 9"
+        },
+        {
+          "action_id": 5,
+          "action": "`CLICK` row 12"
+        },
+        {
+          "action_id": 6,
+          "action": "`CLICK` row 14"
+        },
+        {
+          "action_id": 7,
+          "action": "`CLICK` row 18"
+        },
+        {
+          "action_id": 8,
+          "action": "`CLICK` row 19"
+        },
+        {
+          "action_id": 9,
+          "action": "`CLICK` row 20"
+        },
+        {
+          "action_id": 10,
+          "action": "`CLICK` row 24"
+        },
+        {
+          "action_id": 11,
+          "action": "`CLICK` row 27"
+        },
+        {
+          "action_id": 12,
+          "action": "`CLICK` row 32"
+        },
+        {
+          "action_id": 13,
+          "action": "`CLICK` row 33"
+        },
+        {
+          "action_id": 14,
+          "action": "`KEY_UP` Ctrl"
+        },
+        {
+          "action_id": 15,
+          "action": "`RIGHT_CLICK`"
+        },
+        {
+          "action_id": 16,
+          "action": "`CLICK` Hide rows"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` row 3",
+        "`KEY_DOWN` Ctrl",
+        "`CLICK` row 6",
+        "`CLICK` row 8",
+        "`CLICK` row 9",
+        "`CLICK` row 12",
+        "`CLICK` row 14",
+        "`CLICK` row 18",
+        "`CLICK` row 19",
+        "`CLICK` row 20",
+        "`CLICK` row 24",
+        "`CLICK` row 27",
+        "`CLICK` row 32",
+        "`CLICK` row 33",
+        "`KEY_UP` Ctrl",
+        "`RIGHT_CLICK`",
+        "`CLICK` Hide rows"
+      ]
+    },
+    {
+      "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+      "instruction": "I have a lookup table for the officers of each branch. Please, here is another table in which I need to fill with the officer names according the headoffice (i.e., the branch name). Help me to complete this.",
+      "required_skill_ids": [
+        "7e429b8d-a3f0-4ed0-9b58-08957d00b127.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 3,
+          "action": "`CLICK` F2"
+        },
+        {
+          "action_id": 4,
+          "action": "`DOUBLE_CLICK` the bottom right corner of cell F2"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` F2",
+        "`TYPING` =VLOOKUP(E2, $A$2:$B$7, 2, FALSE)",
+        "`PRESS` Enter.",
+        "`CLICK` F2",
+        "`DOUBLE_CLICK` the bottom right corner of cell F2"
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-calc-full-r01-016",
+    "task_detail_sha256": "2f8c8481d5dee150098793598aa44a63f79375f3c1ebc8ac9f0be63fad0b4e72",
+    "guide": {
+      "final_verification": [
+        "在 Reimbursements 工作表中，G2:G25 的每条请求均显示 Net Reimbursement 计算结果；抽查任一行的公式栏，应符合“材料费 + 运费 - Sponsor Credit”的同一行引用逻辑。",
+        "左侧行号应出现跳号：5 后直接到 7、12 后直接到 14、19 后直接到 21，表示第 6、13、20 行已隐藏而非删除。",
+        "F27 仍显示标签 Total Reimbursement，G27 显示货币格式的总额；选中 G27 时，公式栏应为 =SUM(G2:G25)。",
+        "确认记录区域仍包含原有请求：隐藏行前后的可见记录没有被移动、筛选或清除。"
+      ],
+      "language": "zh-CN",
+      "overview": "本指南将在 Reimbursements 工作表中完成每条 workshop supply request 的 Net Reimbursement，隐藏指定的内部测试记录，并在 Total Reimbursement 标签右侧计算全部请求记录的总额。",
+      "reference_task_id": "reference-task-calc-full-r01-016",
+      "starting_state_checks": [
+        "确认已打开的工作簿包含名为 Reimbursements 的工作表，并切换到该工作表。",
+        "确认第 1 行是标题行，记录从第 2 行延续到第 25 行；第 26 行应为空白间隔行，F27 应为 Total Reimbursement，G27 应为空白。",
+        "确认 G2 已有公式 =D2+E2-F2，而 G3:G25 尚未填入计算结果。",
+        "确认第 6、13、20 行在开始时均可见；这些行是要隐藏的记录，不应删除或清空。"
+      ],
+      "steps": [
+        {
+          "efficiency_tip": "先利用已有的 G2 公式再自动填充，避免逐行输入相同结构的计算公式。",
+          "instructions": [
+            "在 Reimbursements 工作表中单击单元格 G2。",
+            "查看输入行或公式栏，确认该单元格的公式为 =D2+E2-F2；如不是该公式，应先停止并重新检查起始工作簿。"
+          ],
+          "skill_ids": [],
+          "step_number": 1,
+          "title": "确认 Net Reimbursement 的公式种子",
+          "visible_success_signal": "G2 被选中，并且公式栏显示 =D2+E2-F2；G3:G25 仍为空。"
+        },
+        {
+          "efficiency_tip": "双击填充柄比拖到第 25 行更快；由于相邻的记录列在第 2 至 25 行连续有数据，Calc 可据此确定填充终点。",
+          "instructions": [
+            "保持 G2 处于选中状态。",
+            "将指针移到 G2 选框右下角的小方块（填充柄）。",
+            "双击填充柄，让 Calc 将公式自动向下填充整个连续记录区。",
+            "检查 G3 到 G25 已出现计算结果。"
+          ],
+          "skill_ids": [
+            "7e429b8d-a3f0-4ed0-9b58-08957d00b127.skill-02"
+          ],
+          "step_number": 2,
+          "title": "向下自动填充 Net Reimbursement 公式",
+          "visible_success_signal": "G3:G25 显示货币计算结果；选中例如 G3 时，公式应按行号自动调整为 =D3+E3-F3，而 G2 保留原公式。"
+        },
+        {
+          "efficiency_tip": "按住 Ctrl 一次选中所有不相邻行，再执行一次隐藏命令，可避免逐行隐藏造成遗漏。",
+          "instructions": [
+            "单击左侧的行号 6，选中整行。",
+            "按住 Ctrl 键不放，依次单击行号 13 和行号 20，使这三个不相邻行同时处于选中状态。",
+            "释放 Ctrl 键。",
+            "在任一已选中的行号上右键单击，然后选择 Hide Rows（隐藏行）。"
+          ],
+          "skill_ids": [
+            "6054afcb-5bab-4702-90a0-b259b5d3217c.skill-01"
+          ],
+          "step_number": 3,
+          "title": "隐藏内部测试请求行",
+          "visible_success_signal": "左侧行号显示 5 后接 7、12 后接 14、19 后接 21；数据没有被删除，只是第 6、13、20 行暂时不可见。"
+        },
+        {
+          "efficiency_tip": "使用明确的完整数据范围 G2:G25；第 26 行为空白，因此不会把 G27 的总计单元格误包含到汇总范围中。",
+          "instructions": [
+            "单击 Total Reimbursement 标签右侧的单元格 G27。",
+            "输入公式 =SUM(G2:G25)。",
+            "按 Enter 确认公式。"
+          ],
+          "skill_ids": [
+            "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-01"
+          ],
+          "step_number": 4,
+          "title": "计算总体 reimbursement 总额",
+          "visible_success_signal": "G27 显示一个货币总额；选中 G27 时，公式栏显示 =SUM(G2:G25)。"
+        },
+        {
+          "efficiency_tip": "通过抽查公式栏和行号跳号即可快速确认计算、隐藏和汇总三项结果，无需逐项修改记录。",
+          "instructions": [
+            "抽查一个仍可见的 Net Reimbursement 单元格，例如 G10 或 G18，确认它包含本行 D、E、F 列的相对引用公式。",
+            "确认 G27 的 SUM 范围是 G2:G25，即使其中部分记录行已隐藏，仍会汇总完整记录范围。",
+            "确认 F27 的标签仍为 Total Reimbursement，且第 6、13、20 行没有被删除。"
+          ],
+          "skill_ids": [],
+          "step_number": 5,
+          "title": "核对最终工作表状态",
+          "visible_success_signal": "所有记录均已计算、指定三行保持隐藏、G27 已显示完整记录范围的总 reimbursement 金额。"
+        }
+      ]
+    },
+    "generation": {
+      "request_id": "69bfb008-97d4-4d63-a4ef-4967c118c303",
+      "prompt_sha256": "d8469a1d3a3b00474be611b34d6dbff2c25c8b7c7a1b685c5cdbce9de7f4effb",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 3232,
+      "output_tokens": 1343,
+      "estimated_cost_usd": 0.02258
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-016",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-016/initial_artifact.xlsx",
+      "artifact_sha256": "b475a352ce834769ecd99412dbd42dcaec8885d55803bf03ea8c9d0aa3af876a",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-016/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-016/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.xlsx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-016",
+      "task_config_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-016.json",
+      "artifact_sha256": "b475a352ce834769ecd99412dbd42dcaec8885d55803bf03ea8c9d0aa3af876a",
+      "blueprint_request_id": "4fef2219-3252-4a98-a19c-4d7ec4353852"
+    },
+    "packet_path": "task_config.json"
+  }
+}

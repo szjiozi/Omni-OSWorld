@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+  "app": "libreoffice_calc",
+  "single_action_count": 3,
+  "prompt_sha256": "a4a8838e9b2bbd512f7530fbb99baf7cf8afab34080c90ed060f83eebd430da6",
+  "request_id": "878832e9-cc10-4550-b2f2-1d1d8a8cb01f",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1241,
+    "cached_input_tokens": 1073,
+    "output_tokens": 173,
+    "estimated_cost_usd": 0.0026266
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2
+        ],
+        "efficiency_tip": "Enter the entire concatenation formula directly in the destination cell so Calc recalculates the displayed text automatically when the referenced value changes.",
+        "name": "Format a referenced number to fixed decimals within concatenated text",
+        "procedure": [
+          "Select the cell that should display the generated text.",
+          "Enter a concatenation formula using FIXED around the numeric reference, for example: =\"The price is \" & FIXED(C1; 2) & \" euros\". In Calc installations using comma argument separators, use FIXED(C1, 2) instead.",
+          "Press Enter to confirm. FIXED formats the referenced numeric value with exactly two decimal places before it is joined to the surrounding text."
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "id": "reference-task-calc-full-r01-004",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Finish the garden supply reconciliation: calculate Remaining Packs for every item in all three delivery rounds, then add an Archive worksheet containing a copied snapshot of Round A with its title, headers, items, and quantities.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-004/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/garden_supply_rounds.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/garden_supply_rounds.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-calc-full-r01-004",
+    "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-004/initial_artifact.xlsx",
+    "artifact_sha256": "c0dcbc446ba6b89dd5ba451e04d8684c1f4887668f519993efe11c9a0bcb37f3",
+    "guest_artifact_path": "/home/user/Desktop/garden_supply_rounds.xlsx",
+    "required_skill_ids": [
+      "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-01",
+      "1e8df695-bd1b-45b3-b557-e7d599cf7597.skill-01",
+      "f9584479-3d0d-4c79-affa-9ad7afdd8850.skill-03",
+      "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-02"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The expert may complete the archive copy before or after the calculations, and may use any equivalent Calc method to fill the first formula down, provided the displayed formulas and copied values have the required final relationships.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Copy the full Round A snapshot as one contiguous selection, including its title and headers, so the archive keeps its context.",
+          "operation_intent": "Copy the contiguous Round A range A1:C7 from Supply Rounds and paste it at A1 on the Archive worksheet.",
+          "skill_id": "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-01",
+          "visible_success_signal": "Archive visibly shows the Round A title, the three input headers, and all five Round A item and quantity records."
+        },
+        {
+          "efficiency_tip": "Use relative references in the first result row so a single formula can be efficiently propagated through the first block.",
+          "operation_intent": "In D3, create a subtraction formula that calculates remaining packs as Prepared Packs minus Issued Packs for that row.",
+          "skill_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597.skill-01",
+          "visible_success_signal": "D3 displays 55, and its formula subtracts the row's Issued Packs value from its Prepared Packs value."
+        },
+        {
+          "efficiency_tip": "After the Round A formulas are prepared, copy the entire five-cell formula range once and paste it at the top of each matching later-round result area.",
+          "operation_intent": "Copy the completed Round A formula range D3:D7 to both D11:D15 and D19:D23 so the later rounds calculate their own remaining packs.",
+          "skill_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850.skill-03",
+          "visible_success_signal": "Every Remaining Packs cell in Rounds B and C contains a result, with formulas referencing Prepared Packs and Issued Packs on the corresponding local row."
+        },
+        {
+          "efficiency_tip": "Use the sheet-tab plus control to immediately create the blank destination before renaming it for the archive.",
+          "operation_intent": "Insert a new blank worksheet using the sheet-tab plus button, then identify it as Archive for the copied snapshot.",
+          "skill_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-02",
+          "visible_success_signal": "A separate worksheet named Archive is present alongside Supply Rounds."
+        }
+      ],
+      "recording_end_state": "The workbook has Supply Rounds and Archive sheets. Supply Rounds has calculated Remaining Packs formulas in all three blocks, and Archive contains the copied Round A A1:C7 snapshot.",
+      "recording_start_state": "The workbook opens on the single Supply Rounds worksheet with the three populated input blocks, blank Remaining Packs cells, and no Archive worksheet."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Propagate the initial subtraction formula from the first Round A result cell through the other Round A result rows to create a complete formula range.",
+        "reason": "A populated Round A formula range is needed before that range can be copied to both later round blocks."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Rename the newly inserted blank worksheet to \"Archive\".",
+        "reason": "The requested copied snapshot needs a clearly identified destination worksheet."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc opens the workbook on the single worksheet named \"Supply Rounds\".",
+      "Three delivery-round blocks are visible in columns A:D for Round A, Round B, and Round C.",
+      "The Remaining Packs cells in each block are blank.",
+      "No worksheet named \"Archive\" is present."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

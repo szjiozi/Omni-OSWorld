@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "scripts/python/manage_reference_review_packets.py export",
+  "reference_task_id": "reference-task-calc-full-r01-016",
+  "context_fingerprint": "651e6c8ffd2bc769ca74c6f60a7bdb2345e7782d3201f58a31beb303201b0734",
+  "inputs": [
+    {
+      "role": "artifact",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-016/initial_artifact.xlsx",
+      "sha256": "b475a352ce834769ecd99412dbd42dcaec8885d55803bf03ea8c9d0aa3af876a"
+    },
+    {
+      "role": "artifact_blueprint",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-016/artifact_blueprint.json",
+      "sha256": "8011a7203768acf092dd843041e562e22bb09735b513548c5cbadae53c211288"
+    },
+    {
+      "role": "artifact_qa",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-016/artifact_qa.json",
+      "sha256": "3c6167795f5ac4b7fefc438f657423753e88f2bd67a05251c2f4364623369cf9"
+    },
+    {
+      "role": "task_config",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-016.json",
+      "sha256": "8c96236ce1a27411fa3fd3f5f758a433cc1e3e7369f88c2b6cefdfda5f66bcd3"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-016/previews/Reimbursements.png",
+      "sha256": "9b026cc608d37e799c5af94dae5a8e9a77ead0826d4c0a164fb4a4d9d1bc9c97"
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "TASK.md",
+      "sha256": "1a7cb5540d58abb1b002798d08bc8bd97501b4df96e0ac8f60abcf87022c38ce"
+    },
+    {
+      "path": "TASK_DETAIL.md",
+      "sha256": "2f8c8481d5dee150098793598aa44a63f79375f3c1ebc8ac9f0be63fad0b4e72"
+    },
+    {
+      "path": "context.json",
+      "sha256": "914748b32540d010f4a00b9d3e8a3fbf8a2bf2906d27950337ac7b14501a7555"
+    },
+    {
+      "path": "task_config.json",
+      "sha256": "8c96236ce1a27411fa3fd3f5f758a433cc1e3e7369f88c2b6cefdfda5f66bcd3"
+    },
+    {
+      "path": "artifact/initial_artifact.xlsx",
+      "sha256": "b475a352ce834769ecd99412dbd42dcaec8885d55803bf03ea8c9d0aa3af876a"
+    },
+    {
+      "path": "artifact/artifact_blueprint.json",
+      "sha256": "8011a7203768acf092dd843041e562e22bb09735b513548c5cbadae53c211288"
+    },
+    {
+      "path": "artifact/artifact_qa.json",
+      "sha256": "3c6167795f5ac4b7fefc438f657423753e88f2bd67a05251c2f4364623369cf9"
+    },
+    {
+      "path": "artifact/previews/Reimbursements.png",
+      "sha256": "9b026cc608d37e799c5af94dae5a8e9a77ead0826d4c0a164fb4a4d9d1bc9c97"
+    }
+  ],
+  "editable_review": {
+    "path": "review.json",
+    "excluded_from_generated_file_hashes": true
+  }
+}

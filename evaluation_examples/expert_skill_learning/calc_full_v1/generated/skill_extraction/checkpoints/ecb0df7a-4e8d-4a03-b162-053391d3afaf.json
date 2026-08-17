@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+  "app": "libreoffice_calc",
+  "single_action_count": 8,
+  "prompt_sha256": "432e60c369d74fc0318999e20874e2e2a22a90a8be7ecba01e6f77a4ae1d894e",
+  "request_id": "ff8edd6c-3c5c-41e8-8bb4-7ab9d2529f1f",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1287,
+    "cached_input_tokens": 1073,
+    "output_tokens": 181,
+    "estimated_cost_usd": 0.0028146
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "efficiency_tip": "Select the entire target range before opening the Validity dialog so the validation rule is created once and applied uniformly to every selected cell.",
+        "name": "Create a drop-down list with cell data validation",
+        "procedure": [
+          "Select the cells that should share the drop-down rule; for example, click D2 and drag through D29.",
+          "Open Data > Validity.",
+          "In the Criteria settings, open the Allow list and choose List.",
+          "Enter the permitted entries in the Source box, using separate lines for each item. For example: `Pass`, then `Fail`, then `Held` on separate lines.",
+          "Click OK. Each selected cell will provide the configured list as a drop-down choice."
+        ]
+      }
+    ]
+  }
+}

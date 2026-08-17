@@ -1,0 +1,81 @@
+{
+  "id": "reference-task-calc-full-r01-001",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Turn the Funding Plan sheet into a concise regional funding snapshot: display every Requested Funding amount as a rounded one-decimal figure in millions with a separated M suffix, then add a column chart comparing requests by region and title it \"Regional Funding Requests\".",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-001/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/regional_funding_snapshot.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/regional_funding_snapshot.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-calc-full-r01-001",
+    "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-001/initial_artifact.xlsx",
+    "artifact_sha256": "8e3b874c1d29bb9a0d13877869fcc7c596c8c212dbd7f94d089bd11baea5ea0a",
+    "guest_artifact_path": "/home/user/Desktop/regional_funding_snapshot.xlsx",
+    "required_skill_ids": [
+      "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-02",
+      "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-05"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The expert may use an equivalent Calc chart type that clearly compares funding across regions, may place the chart anywhere in the provided blank area, and may use either a selection-first or chart-wizard workflow. The amount display must remain a one-decimal millions representation with a visibly separated M suffix.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Select the entire numeric funding range before opening cell-format settings so that the custom display is applied once to all six values.",
+          "operation_intent": "Format all Requested Funding values to show rounded, one-decimal amounts in millions with a space before the M unit suffix.",
+          "skill_id": "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-02",
+          "visible_success_signal": "Each funding value in column C is displayed in a form such as 3.6 M while retaining its underlying full-dollar numeric value."
+        },
+        {
+          "efficiency_tip": "Set the title while the newly created chart is still active, using the chart-elements title control rather than returning to it later.",
+          "operation_intent": "Give the regional funding comparison chart the title Regional Funding Requests through its chart-elements title interface.",
+          "skill_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-05",
+          "visible_success_signal": "The visible chart title reads Regional Funding Requests above the chart."
+        }
+      ],
+      "recording_end_state": "Funding Plan shows all six Requested Funding cells in rounded millions with a spaced M suffix, plus a visible regional comparison chart titled Regional Funding Requests.",
+      "recording_start_state": "Funding Plan shows the unformatted source table with six regional records and a blank chart area; no chart is present."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Select the Region labels and Requested Funding values as the source data for the comparison chart.",
+        "reason": "The chart needs category labels and a numeric series before its title can be set."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Insert a column-style chart comparing requested funding by region in the available blank area of Funding Plan.",
+        "reason": "An active chart is required in order to use the chart-elements title control."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc is open with a workbook containing one worksheet named Funding Plan.",
+      "The Funding Plan sheet shows a contiguous table in A1:C7 with Region, Grant Theme, and Requested Funding headers.",
+      "Column C contains six numeric requested-funding values in a normal currency or general numeric display, without an M suffix or millions scaling.",
+      "The area beginning around E2 is blank, and no chart or chart title is visible."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-001",
+  "base_prompt_sha256": "d1c6d4daeb958da15fd5eba5d41939f482afe091fa9a6b7b61112d7651ed0e2e",
+  "blueprint": {
+    "manual_setup_steps": [],
+    "sheets": [
+      {
+        "autofilter_range": null,
+        "column_number_formats": [
+          "@",
+          "@",
+          "$#,##0.00"
+        ],
+        "column_types": [
+          "text",
+          "text",
+          "currency"
+        ],
+        "formulas": [],
+        "freeze_header_row": true,
+        "headers": [
+          "Region",
+          "Grant Theme",
+          "Requested Funding"
+        ],
+        "name": "Funding Plan",
+        "rows": [
+          {
+            "values": [
+              "North Coast",
+              "Youth Learning Hubs",
+              "3642500"
+            ]
+          },
+          {
+            "values": [
+              "River Valley",
+              "Neighborhood Food Access",
+              "2875000"
+            ]
+          },
+          {
+            "values": [
+              "Central Plains",
+              "Community Health Outreach",
+              "4198000"
+            ]
+          },
+          {
+            "values": [
+              "Eastern Ridge",
+              "Affordable Transit Links",
+              "3312500"
+            ]
+          },
+          {
+            "values": [
+              "South Basin",
+              "Climate Resilience Gardens",
+              "2568000"
+            ]
+          },
+          {
+            "values": [
+              "West Grove",
+              "Digital Skills Labs",
+              "3987500"
+            ]
+          }
+        ]
+      }
+    ],
+    "workbook_title": "Regional Community Grant Requests"
+  },
+  "generation": {
+    "request_id": "369633f7-1023-4a75-b2b1-b36479bf8ac4",
+    "prompt_sha256": "d1c6d4daeb958da15fd5eba5d41939f482afe091fa9a6b7b61112d7651ed0e2e",
+    "model": "gpt-5.6-terra",
+    "input_tokens": 1811,
+    "output_tokens": 256,
+    "estimated_cost_usd": 0.0034396
+  }
+}

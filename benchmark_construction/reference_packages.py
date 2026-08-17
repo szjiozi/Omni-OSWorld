@@ -42,6 +42,7 @@ class ReferencePackageGenerationResult:
     packages: tuple[dict[str, Any], ...]
     attempts: tuple[dict[str, Any], ...]
     all_skill_ids: tuple[str, ...]
+    initial_covered_skill_ids: tuple[str, ...]
     candidate_covered_skill_ids: tuple[str, ...]
     unresolved_skill_ids: tuple[str, ...]
     semantic_batch: EmbeddingBatchResult | None
@@ -218,6 +219,8 @@ async def generate_reference_packages(
     seed: int,
     generation_round: int = 1,
     max_attempts: int = 24,
+    max_candidates: int | None = None,
+    task_id_prefix: str = "reference-task",
     initial_uncovered_skill_ids: Sequence[str] | None = None,
     blocked_groups: Sequence[Sequence[str]] = (),
     revisions: Sequence[RevisionSample] = (),
@@ -225,6 +228,10 @@ async def generate_reference_packages(
 ) -> ReferencePackageGenerationResult:
     if generation_round < 1 or max_attempts < 1:
         raise ValueError("generation_round and max_attempts must be positive")
+    if max_candidates is not None and max_candidates < 1:
+        raise ValueError("max_candidates must be positive when provided")
+    if not task_id_prefix or not re.fullmatch(r"[a-z0-9-]+", task_id_prefix):
+        raise ValueError("task_id_prefix must contain lowercase letters, digits, or hyphens")
     skill_by_id = {skill.skill_id: skill for skill in skills}
     all_skill_ids = tuple(skill_by_id)
     uncovered = set(
@@ -235,6 +242,7 @@ async def generate_reference_packages(
     unknown = uncovered.difference(skill_by_id)
     if unknown:
         raise ValueError(f"Unknown initial uncovered skills: {sorted(unknown)}")
+    initial_covered = set(all_skill_ids).difference(uncovered)
 
     revision_groups = [revision.sample.skill_ids for revision in revisions]
     sampler = SeededCoverageSampler(
@@ -248,6 +256,11 @@ async def generate_reference_packages(
     async def process_jobs(
         jobs: Sequence[tuple[SkillSample, Sequence[str], str, str | None]]
     ) -> None:
+        if max_candidates is not None:
+            remaining_slots = max_candidates - len(packages)
+            if remaining_slots <= 0:
+                return
+            jobs = jobs[:remaining_slots]
         requests = [
             build_reference_package_request(
                 sample, source_tasks, review_feedback=feedback
@@ -272,7 +285,7 @@ async def generate_reference_packages(
             if result.data["decision"] != "candidate":
                 continue
             task_id = (
-                f"reference-task-r{generation_round:02d}-"
+                f"{task_id_prefix}-r{generation_round:02d}-"
                 f"{len(packages) + 1:03d}"
             )
             source_for_app = [
@@ -322,9 +335,21 @@ async def generate_reference_packages(
     if revision_jobs:
         await process_jobs(revision_jobs[:max_attempts])
 
-    while uncovered and len(attempts) < max_attempts:
+    while (
+        uncovered
+        and len(attempts) < max_attempts
+        and (max_candidates is None or len(packages) < max_candidates)
+    ):
+        candidate_budget = (
+            max_attempts - len(attempts)
+            if max_candidates is None
+            else min(
+                max_attempts - len(attempts),
+                max_candidates - len(packages),
+            )
+        )
         samples = sampler.sample_wave(
-            uncovered, limit=max_attempts - len(attempts)
+            uncovered, limit=candidate_budget
         )
         await process_jobs(
             [(sample, (), "new_combination", None) for sample in samples]
@@ -343,8 +368,9 @@ async def generate_reference_packages(
         for package, report in zip(packages, reports):
             package["similarity_reference"]["semantic"] = report
 
+    newly_covered = set(all_skill_ids).difference(uncovered, initial_covered)
     covered = tuple(
-        skill_id for skill_id in all_skill_ids if skill_id not in uncovered
+        skill_id for skill_id in all_skill_ids if skill_id in newly_covered
     )
     unresolved = tuple(
         skill_id for skill_id in all_skill_ids if skill_id in uncovered
@@ -353,6 +379,9 @@ async def generate_reference_packages(
         packages=tuple(packages),
         attempts=tuple(attempts),
         all_skill_ids=all_skill_ids,
+        initial_covered_skill_ids=tuple(
+            skill_id for skill_id in all_skill_ids if skill_id in initial_covered
+        ),
         candidate_covered_skill_ids=covered,
         unresolved_skill_ids=unresolved,
         semantic_batch=semantic_batch,
@@ -381,7 +410,18 @@ def write_reference_packages(
         "skill_pool": str(skill_pool_path),
         "candidate_coverage": {
             "all_skill_ids": list(result.all_skill_ids),
-            "covered_skill_ids": list(result.candidate_covered_skill_ids),
+            "initially_covered_skill_ids": list(result.initial_covered_skill_ids),
+            "round_candidate_covered_skill_ids": list(
+                result.candidate_covered_skill_ids
+            ),
+            "covered_skill_ids": list(
+                dict.fromkeys(
+                    [
+                        *result.initial_covered_skill_ids,
+                        *result.candidate_covered_skill_ids,
+                    ]
+                )
+            ),
             "unresolved_skill_ids": list(result.unresolved_skill_ids),
             "complete": not result.unresolved_skill_ids,
             "note": "Candidate coverage is not approved human-review coverage.",

@@ -1,0 +1,251 @@
+{
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "yyyy-mm-dd",
+        "@",
+        "@",
+        "@",
+        "@"
+      ],
+      "column_types": [
+        "date",
+        "text",
+        "text",
+        "text",
+        "text"
+      ],
+      "formulas": [],
+      "freeze_header_row": true,
+      "headers": [
+        "Session Date",
+        "Participant Alias",
+        "Workshop Track",
+        "Check-in Tag",
+        "Registration Type"
+      ],
+      "name": "Attendance Log",
+      "rows": [
+        {
+          "values": [
+            "2026-09-03",
+            "Avery Moss",
+            "Digital Storytelling",
+            "",
+            "Standard"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-03",
+            "Jordan Vale",
+            "Garden Design",
+            "",
+            "Community"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-03",
+            "Casey Rowan",
+            "Digital Storytelling",
+            "",
+            "Student"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-03",
+            "Morgan Pike",
+            "Repair Basics",
+            "",
+            "Standard"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-03",
+            "Riley North",
+            "Garden Design",
+            "",
+            "Community"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-03",
+            "Taylor Reed",
+            "Ceramics Studio",
+            "",
+            "Standard"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-03",
+            "Quinn Harper",
+            "Digital Storytelling",
+            "",
+            "Student"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-03",
+            "Skyler Lane",
+            "Repair Basics",
+            "",
+            "Standard"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-10",
+            "Emerson Frost",
+            "Garden Design",
+            "",
+            "Standard"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-10",
+            "Parker Wren",
+            "Ceramics Studio",
+            "",
+            "Community"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-10",
+            "Cameron Birch",
+            "Digital Storytelling",
+            "",
+            "Standard"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-10",
+            "Drew Solis",
+            "Repair Basics",
+            "",
+            "Student"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-10",
+            "Reese Calder",
+            "Garden Design",
+            "",
+            "Standard"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-10",
+            "Logan Finch",
+            "Ceramics Studio",
+            "",
+            "Community"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-10",
+            "Blair Sutton",
+            "Digital Storytelling",
+            "",
+            "Standard"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-10",
+            "Hayden Mercer",
+            "Repair Basics",
+            "",
+            "Standard"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-17",
+            "Sage Linden",
+            "Garden Design",
+            "",
+            "Student"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-17",
+            "Alex Monroe",
+            "Ceramics Studio",
+            "",
+            "Standard"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-17",
+            "Robin Ellis",
+            "Digital Storytelling",
+            "",
+            "Community"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-17",
+            "Jamie Brooks",
+            "Repair Basics",
+            "",
+            "Standard"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-17",
+            "Kendall Rivers",
+            "Garden Design",
+            "",
+            "Standard"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-17",
+            "Marley Stone",
+            "Ceramics Studio",
+            "",
+            "Student"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-17",
+            "Devon Hayes",
+            "Digital Storytelling",
+            "",
+            "Standard"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-17",
+            "Finley Hart",
+            "Repair Basics",
+            "",
+            "Community"
+          ]
+        }
+      ]
+    }
+  ],
+  "workbook_title": "Workshop Attendance Register"
+}

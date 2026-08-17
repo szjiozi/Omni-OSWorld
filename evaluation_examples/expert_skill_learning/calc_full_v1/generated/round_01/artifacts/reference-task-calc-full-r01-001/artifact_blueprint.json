@@ -1,0 +1,71 @@
+{
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "@",
+        "@",
+        "$#,##0.00"
+      ],
+      "column_types": [
+        "text",
+        "text",
+        "currency"
+      ],
+      "formulas": [],
+      "freeze_header_row": true,
+      "headers": [
+        "Region",
+        "Grant Theme",
+        "Requested Funding"
+      ],
+      "name": "Funding Plan",
+      "rows": [
+        {
+          "values": [
+            "North Coast",
+            "Youth Learning Hubs",
+            "3642500"
+          ]
+        },
+        {
+          "values": [
+            "River Valley",
+            "Neighborhood Food Access",
+            "2875000"
+          ]
+        },
+        {
+          "values": [
+            "Central Plains",
+            "Community Health Outreach",
+            "4198000"
+          ]
+        },
+        {
+          "values": [
+            "Eastern Ridge",
+            "Affordable Transit Links",
+            "3312500"
+          ]
+        },
+        {
+          "values": [
+            "South Basin",
+            "Climate Resilience Gardens",
+            "2568000"
+          ]
+        },
+        {
+          "values": [
+            "West Grove",
+            "Digital Skills Labs",
+            "3987500"
+          ]
+        }
+      ]
+    }
+  ],
+  "workbook_title": "Regional Community Grant Requests"
+}

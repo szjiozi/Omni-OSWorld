@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+  "app": "libreoffice_calc",
+  "single_action_count": 6,
+  "prompt_sha256": "aa402f727a044559bff1778873034460137ace5328205150c845b84df97e417e",
+  "request_id": "7df672a9-9297-4d0c-9b40-e2caeacbf851",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1252,
+    "cached_input_tokens": 1073,
+    "output_tokens": 160,
+    "estimated_cost_usd": 0.0024926
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "efficiency_tip": "Copy the full source range once, then use Paste Special directly at the destination's top-left cell; do not manually rearrange rows and columns.",
+        "name": "Paste a copied cell range with rows and columns transposed",
+        "procedure": [
+          "Select the rectangular source range to transpose. For example, drag from B2 through F5.",
+          "Copy the selected range with Ctrl+C.",
+          "Right-click the destination's top-left cell, such as B8, open Paste Special, and choose Transpose.",
+          "Calc pastes the copied values and formulas with the original rows becoming columns and the original columns becoming rows."
+        ]
+      }
+    ]
+  }
+}

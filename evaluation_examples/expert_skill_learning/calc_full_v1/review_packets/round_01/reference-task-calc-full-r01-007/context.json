@@ -1,0 +1,1054 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-007",
+  "package": {
+    "reference_task_id": "reference-task-calc-full-r01-007",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_calc",
+    "task_instruction": "Complete the Field Service Payment Review: calculate each technician's earned amount from the hourly rate and logged service duration, display the payment figures using German-style decimal separators, and mark earned amounts above 200 with a custom bright-green font. Then create a chart comparing technician earnings and place it on a newly added worksheet named Payment Overview.",
+    "required_skill_ids": [
+      "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-03",
+      "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-05",
+      "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-05",
+      "a01fbce3-2793-461f-ab86-43680ccbae25.skill-01",
+      "357ef137-7eeb-4c80-a3bb-0951f26a8aff.skill-01"
+    ],
+    "artifact_spec": {
+      "artifact_type": "xlsx",
+      "domain": "mobile equipment maintenance shift payments",
+      "generation_notes": [
+        "Use wholly synthetic technician names, work-order IDs, and payment values.",
+        "On the Shift Log sheet, populate 12 data rows (rows 2-13) with distinct technician names, work-order IDs, service durations between 1:15 and 7:45, and hourly rates between 28.50 and 46.75.",
+        "Store each Service Duration as a Calc time serial value and display it initially with the number format [HH]:MM.",
+        "Format Hourly Rate initially as a numeric value with two decimal places, not as currency.",
+        "Leave the Earned Amount cells empty; they are intended to be calculated during the task.",
+        "Use a German-language locale selection target for the numeric display requirement; the underlying numbers must remain unchanged.",
+        "Do not create native charts, conditional-format rules, or extra worksheets in the initial workbook."
+      ],
+      "initial_state": [
+        "The workbook opens with one active worksheet named Shift Log.",
+        "Shift Log contains a styled header row in A1:E1 and populated source data in rows 2:13.",
+        "There is no chart object anywhere in the workbook.",
+        "There is no conditional formatting on the Earned Amount range.",
+        "No worksheet exists for the payment chart.",
+        "Cells E2:E13 are blank and ready for formulas."
+      ],
+      "must_not_be_completed": [
+        "Do not prefill formulas or values in E2:E13.",
+        "Do not pre-create the conditional-format rule or its custom green font style.",
+        "Do not insert, rename, or prepopulate the chart worksheet.",
+        "Do not create the technician earnings chart."
+      ],
+      "sheets": [
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "Technician"
+            },
+            {
+              "data_type": "text",
+              "name": "Work Order"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Service Duration"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Hourly Rate"
+            },
+            {
+              "data_type": "currency",
+              "name": "Earned Amount"
+            }
+          ],
+          "name": "Shift Log",
+          "purpose": "Source log of paid field-service shifts, with a blank calculated earnings column.",
+          "row_count": 12
+        }
+      ],
+      "workbook_title": "Field Service Payment Review"
+    },
+    "operator_guide": {
+      "allowed_variation": "The expert may use menu commands, dialogs, keyboard shortcuts, autofill, or equivalent Calc workflows. Chart type and threshold may follow the task wording as long as the result clearly compares technician earnings and the specified visual and worksheet outcomes are present.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Enter the decimal-hour conversion directly in the earnings calculation and fill it down, avoiding helper columns.",
+          "operation_intent": "Calculate each Earned Amount by multiplying the hourly rate by the service duration converted from hours and minutes to decimal hours.",
+          "skill_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff.skill-01",
+          "visible_success_signal": "Every populated shift row has a numeric Earned Amount consistent with its rate and displayed duration."
+        },
+        {
+          "efficiency_tip": "Select all target payment cells before opening the formatting dialog so one locale choice updates the full selection.",
+          "operation_intent": "Apply a German locale-specific numeric display format to the Hourly Rate and Earned Amount values while preserving their values and precision.",
+          "skill_id": "a01fbce3-2793-461f-ab86-43680ccbae25.skill-01",
+          "visible_success_signal": "The targeted payment numbers visibly use comma decimal separators, while calculations remain numeric."
+        },
+        {
+          "efficiency_tip": "Create the custom conditional-format style from the rule's style selector so it can be reused rather than manually formatting individual cells.",
+          "operation_intent": "Add a conditional-format rule that identifies Earned Amount values above 200 and uses a custom font color of #00FF00 for matching cells.",
+          "skill_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-05",
+          "visible_success_signal": "At least one qualifying Earned Amount is shown in bright green text, and nonqualifying values are not."
+        },
+        {
+          "efficiency_tip": "Cut and paste the completed chart rather than recreating it, preserving its chart settings and links.",
+          "operation_intent": "Create a technician-versus-earned-amount chart, insert a fresh worksheet, and move the chart object onto that new worksheet.",
+          "skill_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-03",
+          "visible_success_signal": "The chart is no longer on Shift Log and is visible on its own newly inserted worksheet with linked earnings data."
+        },
+        {
+          "efficiency_tip": "Rename the new tab as soon as it is created, before continuing work on the chart sheet.",
+          "operation_intent": "Rename the newly inserted chart worksheet to Payment Overview.",
+          "skill_id": "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-05",
+          "visible_success_signal": "The workbook tab for the chart sheet visibly reads Payment Overview."
+        }
+      ],
+      "recording_end_state": "Shift Log contains calculated payment values with German-style numeric display and green-font conditional emphasis for earnings above 200; a chart comparing technician earnings is located on a separate worksheet named Payment Overview.",
+      "recording_start_state": "One-sheet workbook with the populated Shift Log source table, blank Earned Amount cells, and no chart, conditional formatting, or additional worksheet."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Create a chart from the completed Technician and Earned Amount data before relocating it.",
+        "reason": "A chart object must exist in order to demonstrate moving it to a newly inserted worksheet."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Fill or copy the decimal-hours earnings formula down through all populated shift rows.",
+        "reason": "The review requires a complete calculated earnings column rather than a single isolated result."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Create a conditional-format rule for unusually high earned amounts and assign the newly created custom-font-color style to that rule.",
+        "reason": "The requested high-payment emphasis requires both a rule and the mandated reusable custom style."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Select the completed numeric payment range before applying the locale-specific number format.",
+        "reason": "The locale display change should consistently cover all relevant rate and earnings values."
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+          "skill_count": 1,
+          "skill_fraction": 0.2
+        },
+        {
+          "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+          "skill_count": 1,
+          "skill_fraction": 0.2
+        },
+        {
+          "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+          "skill_count": 1,
+          "skill_fraction": 0.2
+        },
+        {
+          "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+          "skill_count": 1,
+          "skill_fraction": 0.2
+        },
+        {
+          "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+          "skill_count": 1,
+          "skill_fraction": 0.2
+        }
+      ],
+      "dominant_source_task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+      "dominant_source_skill_fraction": 0.2,
+      "complete_source_skill_sets_included": [
+        "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+        "a01fbce3-2793-461f-ab86-43680ccbae25"
+      ]
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+        "max_sequence_similarity": 0.266667,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "sequence_similarity": 0.181015
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "sequence_similarity": 0.019444
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "sequence_similarity": 0.01023
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "sequence_similarity": 0.036244
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "sequence_similarity": 0.262231
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "sequence_similarity": 0.266667
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "sequence_similarity": 0.006557
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "sequence_similarity": 0.210117
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "sequence_similarity": 0.230435
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "sequence_similarity": 0.16309
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "sequence_similarity": 0.167364
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "sequence_similarity": 0.013514
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "sequence_similarity": 0.231776
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "sequence_similarity": 0.201869
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "sequence_similarity": 0.203866
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "sequence_similarity": 0.021605
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "sequence_similarity": 0.210938
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "sequence_similarity": 0.206751
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "sequence_similarity": 0.037086
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.180556
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.016043
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "sequence_similarity": 0.176707
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "sequence_similarity": 0.241636
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "sequence_similarity": 0.028754
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "sequence_similarity": 0.199203
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "sequence_similarity": 0.160521
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "sequence_similarity": 0.235075
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "sequence_similarity": 0.038997
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "sequence_similarity": 0.238411
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "sequence_similarity": 0.016863
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "sequence_similarity": 0.016694
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "sequence_similarity": 0.175439
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "sequence_similarity": 0.161826
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "sequence_similarity": 0.124764
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "sequence_similarity": 0.167421
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "sequence_similarity": 0.155844
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "sequence_similarity": 0.023769
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "sequence_similarity": 0.158371
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "sequence_similarity": 0.133072
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "sequence_similarity": 0.02349
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "sequence_similarity": 0.027907
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "sequence_similarity": 0.025437
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "sequence_similarity": 0.090395
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "sequence_similarity": 0.19917
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "sequence_similarity": 0.206379
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "sequence_similarity": 0.022581
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "sequence_similarity": 0.140271
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "max_cosine_similarity": 0.427664,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "cosine_similarity": 0.2636
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "cosine_similarity": 0.422332
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "cosine_similarity": 0.427664
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "cosine_similarity": 0.365812
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "cosine_similarity": 0.417566
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "cosine_similarity": 0.219017
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "cosine_similarity": 0.281619
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "cosine_similarity": 0.364953
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "cosine_similarity": 0.349663
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "cosine_similarity": 0.164801
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "cosine_similarity": 0.273937
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "cosine_similarity": 0.351777
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "cosine_similarity": 0.353538
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "cosine_similarity": 0.378191
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "cosine_similarity": 0.41437
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "cosine_similarity": 0.33751
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "cosine_similarity": 0.333452
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "cosine_similarity": 0.354345
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "cosine_similarity": 0.333974
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.373801
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.413
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "cosine_similarity": 0.269383
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "cosine_similarity": 0.29833
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "cosine_similarity": 0.221455
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "cosine_similarity": 0.317973
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "cosine_similarity": 0.239887
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "cosine_similarity": 0.411215
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "cosine_similarity": 0.367793
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "cosine_similarity": 0.352501
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "cosine_similarity": 0.259166
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "cosine_similarity": 0.413224
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "cosine_similarity": 0.324474
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "cosine_similarity": 0.321333
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "cosine_similarity": 0.214505
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "cosine_similarity": 0.380023
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "cosine_similarity": 0.268903
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "cosine_similarity": 0.280459
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "cosine_similarity": 0.238277
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "cosine_similarity": 0.274543
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "cosine_similarity": 0.328229
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "cosine_similarity": 0.18677
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "cosine_similarity": 0.277477
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "cosine_similarity": 0.201822
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "cosine_similarity": 0.344791
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "cosine_similarity": 0.266522
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "cosine_similarity": 0.310857
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "cosine_similarity": 0.338618
+          }
+        ],
+        "embedding_request_id": "e9df3ea8-8c8e-4f8c-9056-df67ef6090d3"
+      }
+    },
+    "generation": {
+      "attempt": 7,
+      "kind": "new_combination",
+      "request_id": "e57f4c1e-1396-4010-9fca-1b9753b97263",
+      "prompt_sha256": "6b206b7b3d5be4a4e2e2f624f9359862426b6fa38e403c9d10335438aa624c79"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-03",
+      "app": "libreoffice_calc",
+      "name": "Move a chart to a newly inserted worksheet",
+      "procedure": [
+        "Select the chart object and cut it with Ctrl+X.",
+        "Click the plus button beside the sheet tabs to insert a new worksheet; the new sheet becomes active.",
+        "Paste with Ctrl+V to place the cut chart on the new worksheet."
+      ],
+      "efficiency_tip": "Use cut and paste rather than recreating the chart on the destination sheet; this preserves its data links, formatting, and title.",
+      "source": {
+        "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+        "action_ids": [
+          7,
+          8,
+          9,
+          10
+        ]
+      }
+    },
+    {
+      "skill_id": "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-05",
+      "app": "libreoffice_calc",
+      "name": "Rename a worksheet from its sheet tab",
+      "procedure": [
+        "Double-click the worksheet tab to make its name editable.",
+        "Type the desired new name, for example `Sheet2`, and press Enter to commit the rename."
+      ],
+      "efficiency_tip": "Rename the sheet tab immediately after creation so later formulas, navigation, and references use a meaningful sheet name.",
+      "source": {
+        "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+        "action_ids": [
+          18,
+          19,
+          20
+        ]
+      }
+    },
+    {
+      "skill_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-05",
+      "app": "libreoffice_calc",
+      "name": "Create a conditional-format style with a custom font color",
+      "procedure": [
+        "From the conditional-formatting style or accent dropdown, choose `New Style` to create a style for cells that meet the rule.",
+        "Open the style’s Font Effects settings, open the font-color picker, and choose `Custom Color`.",
+        "Enter a hexadecimal color such as `00ff00`, then confirm the color and the style dialogs. The resulting style applies green font color whenever it is assigned to a conditional-formatting rule."
+      ],
+      "efficiency_tip": "Create a reusable custom style from the conditional-formatting style selector instead of manually changing font color on each matching cell.",
+      "source": {
+        "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+        "action_ids": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ]
+      }
+    },
+    {
+      "skill_id": "a01fbce3-2793-461f-ab86-43680ccbae25.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Apply a locale-specific number format to a selected cell range",
+      "procedure": [
+        "Select the cells whose displayed numeric separators should follow a different locale; for example, drag from A2 through B20.",
+        "Right-click the selected range and choose Format Cells.",
+        "In the Format Cells dialog, open the Language dropdown, type or select the desired locale, such as “German (aus),” and press Enter to apply that selection.",
+        "Click OK. The selected cells retain their underlying numeric values and decimal precision, while their displayed decimal separator follows the chosen locale (for example, a comma)."
+      ],
+      "efficiency_tip": "Select the full target range before opening Format Cells so the locale change is applied in one operation rather than formatting cells individually.",
+      "source": {
+        "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "skill_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Multiply a numeric rate by a duration converted to decimal hours",
+      "procedure": [
+        "Select the destination cell where the numeric product should appear.",
+        "Enter a formula that multiplies the rate by the duration expressed as hours plus minutes divided by 60. For example, use `=F3*(HOUR(D3)+MINUTE(D3)/60)`, where `F3` contains a numeric rate and `D3` contains a time or duration value.",
+        "Press Enter to calculate the result. `HOUR(D3)` supplies the whole-hour component, while `MINUTE(D3)/60` converts the remaining minutes into a fractional hour before multiplication."
+      ],
+      "efficiency_tip": "Enter the conversion directly within the multiplication formula so Calc calculates a numeric amount in one cell, rather than creating helper cells solely to convert the duration.",
+      "source": {
+        "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+      "instruction": "Create a clustered column chart showing the Sales and COGS data for each week in a new sheet. Set the chart title as \"Sales & COGS\".",
+      "required_skill_ids": [
+        "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-03"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 7,
+          "action": "`CLICK` on chart to select it"
+        },
+        {
+          "action_id": 8,
+          "action": "`HOTKEY` ctrl-X"
+        },
+        {
+          "action_id": 9,
+          "action": "`CLICK` on + to left of sheet1"
+        },
+        {
+          "action_id": 10,
+          "action": "`HOTKEY` ctrl+v"
+        }
+      ],
+      "single_actions": [
+        "`HOTKEY` ctrl-A",
+        "`CLICK` insert chart icon",
+        "`CLICK` chart elements on right sidebar",
+        "`CLICK` title text box",
+        "`TYPING` 'Sales & COGS'",
+        "`PRESS` enter",
+        "`CLICK` on cell A1 to cancel out of current menu",
+        "`CLICK` on chart to select it",
+        "`HOTKEY` ctrl-X",
+        "`CLICK` on + to left of sheet1",
+        "`HOTKEY` ctrl+v"
+      ]
+    },
+    {
+      "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+      "instruction": "Please calculate the period rate for my data in a new column with header \"Period Rate (%)\", convert the results as number type, and highlight the highest result with green (#00ff00) font.",
+      "required_skill_ids": [
+        "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-05"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 15,
+          "action": "`CLICK` accent dropdown"
+        },
+        {
+          "action_id": 16,
+          "action": "`CLICK` new style"
+        },
+        {
+          "action_id": 17,
+          "action": "`CLICK` font effects"
+        },
+        {
+          "action_id": 18,
+          "action": "`CLICK` font color dropdown"
+        },
+        {
+          "action_id": 19,
+          "action": "`CLICK` custom color..."
+        },
+        {
+          "action_id": 20,
+          "action": "`DOUBLE_CLICK` Hex text box"
+        },
+        {
+          "action_id": 21,
+          "action": "`TYPING` '00ff00'"
+        },
+        {
+          "action_id": 22,
+          "action": "`PRESS` enter"
+        },
+        {
+          "action_id": 23,
+          "action": "`CLICK` OK"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell C1",
+        "`TYPING` 'Period Rate (%)'",
+        "`PRESS` enter",
+        "`TYPING` '=A2/B2'",
+        "`PRESS` enter",
+        "`CLICK` cell C2",
+        "`DOUBLE_CLICK` bottom right corner of the cell C2",
+        "`CLICK` on the 0.0 icon that converts the cell to number type",
+        "`CLICK` format",
+        "`MOVE_TO` 'conditional...'",
+        "`CLICK` 'condition'",
+        "`CLICK` 'cell value' dropdown",
+        "`CLICK` 'Formula is' option",
+        "`CLICK` text field",
+        "`TYPING` $C2=MAX($C$2:$C$25)",
+        "`CLICK` accent dropdown",
+        "`CLICK` new style",
+        "`CLICK` font effects",
+        "`CLICK` font color dropdown",
+        "`CLICK` custom color...",
+        "`DOUBLE_CLICK` Hex text box",
+        "`TYPING` '00ff00'",
+        "`PRESS` enter",
+        "`CLICK` OK",
+        "`CLICK` OK"
+      ]
+    },
+    {
+      "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+      "instruction": "I have calculated the total work hours from the everday hours. And I have an hourly rate. Now I want to multiply the total hours with the hourly rate to get a total earned amount. However, I can't get a correct answer by directly multiply the two cells. Here the \"total hours\" is of time and \"hourly rate\" is just a number. How can I get the correct product of them?",
+      "required_skill_ids": [
+        "357ef137-7eeb-4c80-a3bb-0951f26a8aff.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`CLICK` E3"
+        },
+        {
+          "action_id": 1,
+          "action": "`TYPING` '=F3*(HOUR(D3)+MINUTE(D3)/60)'"
+        },
+        {
+          "action_id": 2,
+          "action": "`PRESS` Enter"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` E3",
+        "`TYPING` '=F3*(HOUR(D3)+MINUTE(D3)/60)'",
+        "`PRESS` Enter"
+      ]
+    },
+    {
+      "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+      "instruction": "Calculate revenue in a new column according to the Retail Price sheet (consider product price and quantity and discount), and generate a Pivot Table in a new sheet (Sheet2) that summarizes the revenue of each product.",
+      "required_skill_ids": [
+        "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-05"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 18,
+          "action": "`DOUBLE_CLICK` Pivot Table Sheet1_1"
+        },
+        {
+          "action_id": 19,
+          "action": "`TYPING` Sheet2"
+        },
+        {
+          "action_id": 20,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` cell G1",
+        "`TYPING` 'Revenue'",
+        "`PRESS` enter",
+        "`CLICK` sheet 'Retail Price'",
+        "`CLICK` sheet 'Sheet1'",
+        "`TYPING` '=VLOOKUP(C2,$'Retail Price'.$A$2:$B$23,2,FALSE())*E2*(1-F2)'",
+        "`PRESS` enter",
+        "`CLICK` cell G2",
+        "`MOVE_TO` bottom right corner of the cell G2`",
+        "`DOUBLE_CLICK`",
+        "`HOTKEY` ctrl-A",
+        "`CLICK` pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` product in available fields box",
+        "`DRAG_TO` row fields box",
+        "`MOVE_TO` revenue in available fields box",
+        "`DRAG_TO` data fields box",
+        "`CLICK` ok",
+        "`DOUBLE_CLICK` Pivot Table Sheet1_1",
+        "`TYPING` Sheet2",
+        "`PRESS` enter"
+      ]
+    },
+    {
+      "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+      "instruction": "I need to set the decimal separator as a comma (,) for localized data representation and clarity in visualization. Can you help me to update all the numbers in the sheet? Also please keep the decimal numbers as-is.",
+      "required_skill_ids": [
+        "a01fbce3-2793-461f-ab86-43680ccbae25.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`MOVE_TO` cell A2"
+        },
+        {
+          "action_id": 1,
+          "action": "`DRAG_TO` cell B20"
+        },
+        {
+          "action_id": 2,
+          "action": "`RIGHT_CLICK`"
+        },
+        {
+          "action_id": 3,
+          "action": "`CLICK` Format Cells."
+        },
+        {
+          "action_id": 4,
+          "action": "`CLICK` Language dropdown"
+        },
+        {
+          "action_id": 5,
+          "action": "`TYPING` German (aus)"
+        },
+        {
+          "action_id": 6,
+          "action": "`PRESS` enter"
+        },
+        {
+          "action_id": 7,
+          "action": "`CLICK` OK."
+        }
+      ],
+      "single_actions": [
+        "`MOVE_TO` cell A2",
+        "`DRAG_TO` cell B20",
+        "`RIGHT_CLICK`",
+        "`CLICK` Format Cells.",
+        "`CLICK` Language dropdown",
+        "`TYPING` German (aus)",
+        "`PRESS` enter",
+        "`CLICK` OK."
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-calc-full-r01-007",
+    "task_detail_sha256": "a9f400b1784e3b27e19030e356063406c4deb832e524e73316915a8694215a8d",
+    "guide": {
+      "final_verification": [
+        "返回 Shift Log，确认 E2:E13 均包含计算结果而非空白；选中任一单元格时，编辑栏中可见以小时费率和服务时长计算的公式。",
+        "确认 D2:E13 的数值显示使用逗号作为小数分隔符，且服务时长 C2:C13 仍以 [HH]:MM 形式显示。",
+        "确认 E2:E13 中大于 200 的 Earned Amount 为亮绿色字体（#00FF00），而不大于 200 的金额没有此绿色字体。",
+        "确认底部存在名为 Payment Overview 的工作表标签。",
+        "打开 Payment Overview，确认可见比较 Technician 与 Earned Amount 的图表；返回 Shift Log 时不应再看到该图表对象。"
+      ],
+      "language": "zh-CN",
+      "overview": "本指南将在 Shift Log 中计算 12 位现场技术员的 Earned Amount，将 Hourly Rate 和 Earned Amount 以德国式小数显示，为超过 200 的收入添加亮绿色条件格式，并建立技术员收入比较图表，将图表移至新建并命名为 Payment Overview 的工作表。",
+      "reference_task_id": "reference-task-calc-full-r01-007",
+      "starting_state_checks": [
+        "确认当前打开的是目标工作簿，且当前工作表标签为 Shift Log。",
+        "确认第 1 行包含 Technician、Work Order、Service Duration、Hourly Rate 和 Earned Amount 标题，数据位于第 2 至第 13 行。",
+        "确认 E2:E13 仍为空白，C 列服务时长显示为类似 [HH]:MM 的时长，且工作簿中尚没有 Payment Overview 工作表或图表。"
+      ],
+      "steps": [
+        {
+          "efficiency_tip": "先只在 E2 建立正确公式，再使用填充柄或复制粘贴扩展到其余数据行，可避免逐行重复输入。",
+          "instructions": [
+            "在 Shift Log 工作表中单击 E2。",
+            "输入公式 `=D2*(HOUR(C2)+MINUTE(C2)/60)`，然后按 Enter。",
+            "该公式将 C2 的时长拆分为完整小时和分钟换算的小时小数，再乘以 D2 中的 Hourly Rate。",
+            "再次选中 E2，将单元格右下角的小方块（填充柄）向下拖动到 E13；也可以复制 E2，再选中 E3:E13 并粘贴。"
+          ],
+          "skill_ids": [
+            "357ef137-7eeb-4c80-a3bb-0951f26a8aff.skill-01"
+          ],
+          "step_number": 1,
+          "title": "计算全部 Earned Amount",
+          "visible_success_signal": "E2:E13 都显示数值结果；单击任一结果单元格时，公式栏中的行号会相应变化，例如 E13 使用 C13 和 D13。"
+        },
+        {
+          "efficiency_tip": "一次选中 D2:E13 后统一设置语言区域，可确保两列付款数字的显示规则一致，且不会改变实际计算值。",
+          "instructions": [
+            "拖动选中 D2:E13，其中包括 Hourly Rate 和 Earned Amount 两列的所有数据行。",
+            "在选区上右键单击，选择“设置单元格格式”。",
+            "在“设置单元格格式”对话框中，找到“语言”下拉列表，输入或选择 `German (aus)`，然后按 Enter 确认该语言选择。",
+            "单击“确定”关闭对话框。"
+          ],
+          "skill_ids": [
+            "a01fbce3-2793-461f-ab86-43680ccbae25.skill-01"
+          ],
+          "step_number": 2,
+          "title": "将付款数字设为德国式小数显示",
+          "visible_success_signal": "D2:E13 中带小数的付款数值使用逗号作为小数分隔符，例如显示为类似 35,50；这些单元格仍可参与计算。"
+        },
+        {
+          "efficiency_tip": "通过条件格式的样式选择器新建样式，绿色字体会随规则自动应用，不需要手工逐个修改高收入单元格。",
+          "instructions": [
+            "选中 Earned Amount 数据区域 E2:E13。",
+            "从“格式”菜单打开“条件格式”，选择用于添加条件的命令，例如“条件…”。",
+            "建立一个规则：当单元格值“大于” `200` 时应用格式。",
+            "在规则的样式或强调样式下拉列表中选择“新建样式”。",
+            "在新样式对话框中打开“字体效果”选项卡，展开字体颜色选择器并选择“自定义颜色”。",
+            "在十六进制颜色输入框中输入 `00ff00`，确认颜色选择；然后确认样式对话框和条件格式规则对话框。",
+            "如规则列表中尚未显示该规则，确认规则作用范围为 E2:E13 后再保存。"
+          ],
+          "skill_ids": [
+            "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-05"
+          ],
+          "step_number": 3,
+          "title": "突出显示超过 200 的收入",
+          "visible_success_signal": "E2:E13 中至少一个大于 200 的金额立即显示为亮绿色字体（#00FF00）；数值不大于 200 的金额保持非绿色字体。"
+        },
+        {
+          "efficiency_tip": "只将 Technician 标签和 Earned Amount 数据作为图表数据源，可避免 Work Order、服务时长或小时费率被误加入比较图。",
+          "instructions": [
+            "先选中 A1:A13 以包含 Technician 标题和全部技术员姓名；按住 Ctrl 后，再选中 E1:E13 以同时包含 Earned Amount 标题和全部计算结果。",
+            "使用“插入”菜单中的“图表”命令启动图表向导。",
+            "选择一种清晰比较各技术员收入的图表类型，例如柱形图；确认数据系列为 Earned Amount，分类标签为 Technician。",
+            "完成图表向导。可为图表设置能说明内容的标题，例如 `Technician Earnings`。",
+            "确认图表对象仍位于 Shift Log 后，单击图表外框使整个图表对象处于选中状态，而不是只选中图表内部元素。"
+          ],
+          "skill_ids": [],
+          "step_number": 4,
+          "title": "创建技术员收入比较图表",
+          "visible_success_signal": "Shift Log 上出现图表，图中每位 Technician 对应一项 Earned Amount 比较数据，且整个图表外框可被选中。"
+        },
+        {
+          "efficiency_tip": "剪切再粘贴已有图表可保留其数据链接、图表类型和标题，无需在新工作表中重新制作。",
+          "instructions": [
+            "保持整个图表对象被选中，按 Ctrl+X 剪切图表。",
+            "单击工作表标签旁的加号，新插入的工作表会成为当前工作表。",
+            "在新工作表中按 Ctrl+V 粘贴图表。"
+          ],
+          "skill_ids": [
+            "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-03"
+          ],
+          "step_number": 5,
+          "title": "将图表移至新工作表",
+          "visible_success_signal": "新工作表中可见完整图表，切换回 Shift Log 后图表不再显示在源数据表上。"
+        },
+        {
+          "efficiency_tip": "在新增工作表仍处于活动状态时立刻改名，之后更容易识别图表所在位置。",
+          "instructions": [
+            "在当前新工作表底部的工作表标签上双击，使标签名称进入编辑状态。",
+            "输入 `Payment Overview`，然后按 Enter 提交名称。"
+          ],
+          "skill_ids": [
+            "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-05"
+          ],
+          "step_number": 6,
+          "title": "命名图表工作表",
+          "visible_success_signal": "底部工作表标签清楚显示 `Payment Overview`，并且该工作表内保留技术员收入图表。"
+        }
+      ]
+    },
+    "generation": {
+      "request_id": "1b893ef1-1500-42b6-85e6-b6c528fb7ac7",
+      "prompt_sha256": "9240df360e0b876ef1dc630ff2afc8ef264c1087f65e26a7e046ca8894a817a5",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 4088,
+      "output_tokens": 2115,
+      "estimated_cost_usd": 0.033556
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-007",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-007/initial_artifact.xlsx",
+      "artifact_sha256": "c25f81596bbe4e6fc53b3f1f1b770f31f8ee9cf52d5e66d1bad9195c9c23eb90",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-007/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-007/artifact_qa.json",
+      "manual_setup_required": true,
+      "manual_setup_steps": [
+        "Set Shift Log!C2:C13 to the time number format [HH]:MM before recording; the stored values are decimal time serials."
+      ]
+    },
+    "packet_path": "artifact/initial_artifact.xlsx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-007",
+      "task_config_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-007.json",
+      "artifact_sha256": "c25f81596bbe4e6fc53b3f1f1b770f31f8ee9cf52d5e66d1bad9195c9c23eb90",
+      "blueprint_request_id": "77b03e91-83ca-43db-bb6b-32257cfe9a13"
+    },
+    "packet_path": "task_config.json"
+  }
+}

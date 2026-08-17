@@ -1,0 +1,15 @@
+{
+  "workbook_title": "Field Service Payment Review",
+  "output_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-007/initial_artifact.xlsx",
+  "manual_setup_steps": [
+    "Set Shift Log!C2:C13 to the time number format [HH]:MM before recording; the stored values are decimal time serials."
+  ],
+  "sheets": [
+    {
+      "name": "Shift Log",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-007/previews/Shift_Log.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Shift Log\",\"address\":\"A1:E12\",\"rows\":12,\"cols\":5,\"values\":[[\"Technician\",\"Work Order\",\"Service Duration\",\"Hourly Rate\",\"Earned Amount\"],[\"Avery Nolan\",\"WO-84017\",0.0520833333,31.25,null],[\"Briar Chen\",\"WO-84028\",0.1041666667,38.5,null],[\"Callum Reese\",\"WO-84039\",0.15625,42.75,null],[\"Dana Ibarra\",\"WO-84044\",0.1979166667,29.8,null],[\"Emery Voss\",\"WO-84056\",0.2395833333,46.75,null],[\"Farah Linden\",\"WO-84063\",0.2708333333,35.4,null],[\"Gavin Rowe\",\"WO-84071\",0.3229166667,40.25,null],[\"Hana Mercer\",\"WO-84082\",0.0729166667,33.6,null],[\"Ilan Porter\",\"WO-84095\",0.21875,44.1,null],[\"Jessa Quinn\",\"WO-84103\",0.125,28.5,null],[\"Kellan Moss\",\"WO-84116\",0.28125,39.95,null]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

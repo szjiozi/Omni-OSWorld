@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+  "app": "libreoffice_calc",
+  "single_action_count": 17,
+  "prompt_sha256": "12f6af6166036ba67a77931209a5f9e1d26e6b229493a4d2da7fbe62e9bd9b10",
+  "request_id": "ff11c03a-0a86-437d-9008-5f13805cba3b",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1375,
+    "cached_input_tokens": 1073,
+    "output_tokens": 530,
+    "estimated_cost_usd": 0.0071786
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "efficiency_tip": "Copying an existing populated range preserves its values and formulas, avoiding re-entry; paste starting at the top-left destination cell.",
+        "name": "Copy a contiguous cell range to another location",
+        "procedure": [
+          "Select the source range by clicking its first cell and dragging through its last cell; for example, select A2:A8.",
+          "Press Ctrl+C to copy the selected cells.",
+          "Click the top-left destination cell, such as B2, and press Ctrl+V to paste the range."
+        ]
+      },
+      {
+        "action_ids": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "efficiency_tip": "Apply the custom format to the full intended range before opening Format Cells when possible, so the format is configured once rather than cell by cell.",
+        "name": "Format values as rounded millions with a spaced unit suffix",
+        "procedure": [
+          "Select the cells to format, then right-click the selection and choose Format Cells.",
+          "Activate the format-code field and enter a custom numeric format such as `0.0,, \\M`, then confirm with Enter.",
+          "The two trailing commas scale the displayed value by one million, `0.0` displays one decimal place, and the literal space before `\\M` separates the number from the M suffix. For example, 12500000 displays as `12.5 M`."
+        ]
+      },
+      {
+        "action_ids": [
+          10,
+          11
+        ],
+        "efficiency_tip": "After copying, use Ctrl+V immediately in the target cell; this is faster and less error-prone than reselecting and duplicating content manually.",
+        "name": "Paste copied cells into a different column",
+        "procedure": [
+          "With copied cells still on the clipboard, click the top destination cell in another column, for example C2.",
+          "Press Ctrl+V to paste the copied range beginning at that cell."
+        ]
+      },
+      {
+        "action_ids": [
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "efficiency_tip": "Use comma scaling in a custom format instead of changing underlying values, so calculations retain their original precision and magnitude.",
+        "name": "Format values as rounded billions with a spaced unit suffix",
+        "procedure": [
+          "Select the cells to format, right-click, and choose Format Cells.",
+          "Activate the format-code field and enter `0.0,,, \\B`, then confirm with Enter.",
+          "The three trailing commas scale the display by one billion, `0.0` shows one decimal place, and the literal space before `\\B` leaves a space before the B suffix. For example, 12500000000 displays as `12.5 B`."
+        ]
+      }
+    ]
+  }
+}

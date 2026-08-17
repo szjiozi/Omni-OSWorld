@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+  "app": "libreoffice_calc",
+  "single_action_count": 8,
+  "prompt_sha256": "99459d68ed5c38d1dfc15f424b4a47c89de40f6615f248e661bdf39a9ebe33a5",
+  "request_id": "31c78a77-7746-491e-8fe0-7c56bd67eea0",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1263,
+    "cached_input_tokens": 1073,
+    "output_tokens": 187,
+    "estimated_cost_usd": 0.0028386
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "efficiency_tip": "Select the full target range before opening Format Cells so the locale change is applied in one operation rather than formatting cells individually.",
+        "name": "Apply a locale-specific number format to a selected cell range",
+        "procedure": [
+          "Select the cells whose displayed numeric separators should follow a different locale; for example, drag from A2 through B20.",
+          "Right-click the selected range and choose Format Cells.",
+          "In the Format Cells dialog, open the Language dropdown, type or select the desired locale, such as “German (aus),” and press Enter to apply that selection.",
+          "Click OK. The selected cells retain their underlying numeric values and decimal precision, while their displayed decimal separator follows the chosen locale (for example, a comma)."
+        ]
+      }
+    ]
+  }
+}

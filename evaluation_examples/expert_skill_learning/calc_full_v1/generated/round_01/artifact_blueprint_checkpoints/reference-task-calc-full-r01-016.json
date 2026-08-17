@@ -1,0 +1,360 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-016",
+  "base_prompt_sha256": "e695d1561a4aea2dd3fe51c3e15ea1d5bebc775e16e8cf197dde83c8410ca590",
+  "blueprint": {
+    "manual_setup_steps": [],
+    "sheets": [
+      {
+        "autofilter_range": null,
+        "column_number_formats": [
+          "@",
+          "@",
+          "@",
+          "$#,##0.00",
+          "$#,##0.00",
+          "$#,##0.00",
+          "$#,##0.00"
+        ],
+        "column_types": [
+          "text",
+          "text",
+          "text",
+          "currency",
+          "currency",
+          "currency",
+          "currency"
+        ],
+        "formulas": [
+          {
+            "cell": "G2",
+            "formula": "=D2+E2-F2"
+          },
+          {
+            "cell": "F27",
+            "formula": "=\"Total Reimbursement\""
+          }
+        ],
+        "freeze_header_row": true,
+        "headers": [
+          "Request ID",
+          "Workshop",
+          "Supply Category",
+          "Materials Cost",
+          "Shipping Cost",
+          "Sponsor Credit",
+          "Net Reimbursement"
+        ],
+        "name": "Reimbursements",
+        "rows": [
+          {
+            "values": [
+              "CWS-2401",
+              "Clay Studio Basics",
+              "Ceramic Tools",
+              "184.50",
+              "16.25",
+              "25.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2402",
+              "Neighborhood Print Lab",
+              "Ink and Paper",
+              "236.80",
+              "22.40",
+              "30.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2403",
+              "Youth Woodworking",
+              "Safety Equipment",
+              "312.60",
+              "28.75",
+              "45.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2404",
+              "Community Garden Build",
+              "Fasteners",
+              "148.35",
+              "14.90",
+              "20.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2405",
+              "Internal Materials Test",
+              "Sample Supplies",
+              "96.40",
+              "11.60",
+              "15.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2406",
+              "Textile Repair Circle",
+              "Fabric and Thread",
+              "275.25",
+              "19.95",
+              "35.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2407",
+              "Open Electronics Bench",
+              "Soldering Supplies",
+              "421.70",
+              "31.20",
+              "60.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2408",
+              "Mural Design Session",
+              "Paint and Brushes",
+              "358.90",
+              "26.50",
+              "50.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2409",
+              "Kitchen Skills Lab",
+              "Utensils",
+              "167.45",
+              "18.30",
+              "22.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2410",
+              "Bike Maintenance Clinic",
+              "Replacement Parts",
+              "489.35",
+              "34.65",
+              "75.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2411",
+              "Bookbinding Workshop",
+              "Paper Stock",
+              "214.20",
+              "17.80",
+              "28.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2412",
+              "Internal Checkout Test",
+              "Label Supplies",
+              "83.75",
+              "9.25",
+              "12.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2413",
+              "Screen Printing Studio",
+              "Mesh and Emulsion",
+              "396.60",
+              "29.40",
+              "55.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2414",
+              "Intro to Metalwork",
+              "Grinding Discs",
+              "257.85",
+              "21.15",
+              "40.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2415",
+              "Community Sewing Day",
+              "Needles and Notions",
+              "193.30",
+              "15.70",
+              "25.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2416",
+              "Photography Walk",
+              "Mounting Materials",
+              "228.95",
+              "20.05",
+              "30.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2417",
+              "Furniture Repair Lab",
+              "Wood Adhesive",
+              "341.40",
+              "24.60",
+              "48.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2418",
+              "Robotics Open House",
+              "Connector Kits",
+              "465.80",
+              "33.20",
+              "70.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2419",
+              "Internal Vendor Test",
+              "Packaging Samples",
+              "74.50",
+              "8.50",
+              "10.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2420",
+              "Paper Craft Afternoon",
+              "Cutting Mats",
+              "156.65",
+              "13.35",
+              "18.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2421",
+              "Community Audio Lab",
+              "Cable Supplies",
+              "304.75",
+              "25.25",
+              "42.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2422",
+              "Glass Mosaic Class",
+              "Tile Adhesive",
+              "287.90",
+              "23.10",
+              "38.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2423",
+              "Tool Sharpening Demo",
+              "Sharpening Stones",
+              "132.40",
+              "12.60",
+              "16.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "CWS-2424",
+              "Natural Dye Workshop",
+              "Dye Materials",
+              "369.55",
+              "27.45",
+              "52.00",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          }
+        ]
+      }
+    ],
+    "workbook_title": "Workshop Supply Reimbursements"
+  },
+  "generation": {
+    "request_id": "42052299-c29e-4b01-85d2-7874669228da",
+    "prompt_sha256": "f40f966a650aaab5603f8f8b89ee7951c17a89f2d531864387fc5b81682b3197",
+    "model": "gpt-5.6-terra",
+    "input_tokens": 2323,
+    "output_tokens": 1749,
+    "estimated_cost_usd": 0.025634
+  }
+}

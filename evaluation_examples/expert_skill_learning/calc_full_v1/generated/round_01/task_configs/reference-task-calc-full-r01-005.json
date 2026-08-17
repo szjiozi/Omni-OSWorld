@@ -1,0 +1,116 @@
+{
+  "id": "reference-task-calc-full-r01-005",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Prepare the replenishment review workbook for management: classify every dispatch record from the SKU catalog, create seven-digit ticket-code displays, flag the single largest restock cost, sort the complete dispatch log by SKU from A to Z, and show the total units dispatched on the Summary sheet.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/replenishment_review.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/replenishment_review.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-calc-full-r01-005",
+    "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/initial_artifact.xlsx",
+    "artifact_sha256": "1801c28ec72cbd18b122ee96a9cdae0fecc0fc29241e82568968100a52a05d93",
+    "guest_artifact_path": "/home/user/Desktop/replenishment_review.xlsx",
+    "required_skill_ids": [
+      "7e429b8d-a3f0-4ed0-9b58-08957d00b127.skill-01",
+      "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-04",
+      "0bf05a7d-b28b-44d2-955a-50b41e24012a.skill-01",
+      "26a8440e-c166-4c50-aef4-bfb77314b46b.skill-03",
+      "3a7c8185-25c1-4941-bd7b-96e823c9f21f.skill-01"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The expert may perform the sort before or after filling formulas and may use equivalent range-selection or autofill methods. Use LibreOffice Calc-compatible argument separators and an equivalent visible conditional style, while retaining an exact-match lookup and a formula-based maximum test.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Enter the first lookup with an absolute Catalog table range, then fill it down the Supply Group column so the fixed reference does not drift.",
+          "operation_intent": "Classify every Dispatch_Log record by looking up its SKU in Catalog and returning the corresponding Supply Group with an exact-match VLOOKUP.",
+          "skill_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127.skill-01",
+          "visible_success_signal": "Every previously blank Supply Group cell contains the appropriate category, including repeated SKUs returning the same category."
+        },
+        {
+          "efficiency_tip": "Apply one rule to the entire Restock Cost data range and use a relative current-row reference with an absolute maximum range.",
+          "operation_intent": "Create a formula-based conditional-formatting rule on Dispatch_Log Restock Cost values that visibly flags the unique highest cost in the log.",
+          "skill_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-04",
+          "visible_success_signal": "Only the row/cell containing the 540.00 Restock Cost receives the chosen highlight style."
+        },
+        {
+          "efficiency_tip": "Create the TEXT formula once from the numeric Ticket Number and fill it down rather than editing codes individually.",
+          "operation_intent": "Generate seven-character, leading-zero Ticket Code text values for all dispatch records from their numeric ticket numbers.",
+          "skill_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a.skill-01",
+          "visible_success_signal": "Ticket Code displays values such as 0004821 and 0000930 as fixed-width text for every record."
+        },
+        {
+          "efficiency_tip": "Use one SUM formula that references the Units Dispatched range on Dispatch_Log rather than manually adding values.",
+          "operation_intent": "Calculate the Total Units Dispatched metric in Summary from the Units Dispatched range on Dispatch_Log using a cross-sheet range-total formula.",
+          "skill_id": "26a8440e-c166-4c50-aef4-bfb77314b46b.skill-03",
+          "visible_success_signal": "Summary!B2 shows the aggregate dispatched-unit total, 649, and it is formula-derived."
+        },
+        {
+          "efficiency_tip": "Sort the whole contiguous log, or extend the selection when prompted, so ticket details, costs, and generated values travel with their SKU rows.",
+          "operation_intent": "Order the complete Dispatch_Log table by SKU in ascending alphabetical order.",
+          "skill_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f.skill-01",
+          "visible_success_signal": "Dispatch_Log records are in ascending SKU order from SKU-104 through SKU-426 with intact row associations."
+        }
+      ],
+      "recording_end_state": "The dispatch log is SKU-ascending, fully classified and assigned seven-digit text ticket codes, its unique largest restock cost is visibly formula-highlighted, and Summary shows the cross-sheet total of 649 units.",
+      "recording_start_state": "Open the supplied Replenishment Review workbook with the Catalog reference data, unsorted Dispatch_Log inputs, blank derived columns, and blank Summary total."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Select the relevant destination ranges and use a fill-down/autofill method to propagate first-row formulas through all 18 dispatch records.",
+        "reason": "The requested classifications and ticket-code displays must cover the complete log efficiently rather than only one row."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Navigate between Dispatch_Log, Catalog, and Summary sheets while entering or validating formulas.",
+        "reason": "The lookup source and aggregate source are on different sheets from their destinations."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Choose a clearly visible highlight style while saving the conditional-format rule.",
+        "reason": "A conditional-format rule needs an applied style for the maximum-cost exception to be observable."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Select the complete Dispatch_Log table or confirm extension of the selection when sorting.",
+        "reason": "All record fields must remain associated when the SKU ordering is changed."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc is open with the Replenishment Review workbook.",
+      "The workbook contains Catalog, Dispatch_Log, and Summary sheets.",
+      "Catalog has eight SKU and Supply Group data rows.",
+      "Dispatch_Log has 18 unsorted records; Supply Group and Ticket Code cells are blank beneath their headers.",
+      "Summary B2 for Total Units Dispatched is blank."
+    ],
+    "setup_notes": [
+      "Dispatch_Log Restock Cost values are formatted as currency with two decimal places.",
+      "Ticket Number is numeric General format, and no formulas, conditional formatting, filters, tables, pivot tables, charts, or sort state are pre-applied. The unique highest Restock Cost is 540.00."
+    ],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

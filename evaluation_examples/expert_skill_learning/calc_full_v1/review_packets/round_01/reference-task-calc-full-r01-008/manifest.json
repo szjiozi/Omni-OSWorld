@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "scripts/python/manage_reference_review_packets.py export",
+  "reference_task_id": "reference-task-calc-full-r01-008",
+  "context_fingerprint": "4c1b95f393994e3ebc1fbf25d9599b45d8c5c92902c99980190c20dfa5887e10",
+  "inputs": [
+    {
+      "role": "artifact",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-008/initial_artifact.xlsx",
+      "sha256": "19bf2b5ab4d974bb7190f12192f38c9785f8808f41f9159de74ac9310fc14405"
+    },
+    {
+      "role": "artifact_blueprint",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-008/artifact_blueprint.json",
+      "sha256": "571bd4286de77a0499cc789992e7c2e1af1db08b2aef90ca49f843d913de8427"
+    },
+    {
+      "role": "artifact_qa",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-008/artifact_qa.json",
+      "sha256": "6b4312719e3858febaa7ce966c1611e7df60d42edb11d7f72d6a1406de58aef5"
+    },
+    {
+      "role": "task_config",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-008.json",
+      "sha256": "14bebc3dbeb835e6fb45430b07e0a841c517b3aef6b289ea0d07db781b0d77f3"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-008/previews/Delivery_Log.png",
+      "sha256": "6c0685e309fcbcb707c651e88e3933cec09e92d58e31543fa75ecfd756c7b0d6"
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "TASK.md",
+      "sha256": "5ad80ea1af782ea571120f6d3de4f093f590c56e217e343d77a6cb2483e23196"
+    },
+    {
+      "path": "TASK_DETAIL.md",
+      "sha256": "bf42d172507bd3413aea517e1d77dab4683f92ff91df30c576b28f62903c3ac3"
+    },
+    {
+      "path": "context.json",
+      "sha256": "5985b264674cf3848d86bb839b327b7ddb804cf9d5b533793cb77041b248327d"
+    },
+    {
+      "path": "task_config.json",
+      "sha256": "14bebc3dbeb835e6fb45430b07e0a841c517b3aef6b289ea0d07db781b0d77f3"
+    },
+    {
+      "path": "artifact/initial_artifact.xlsx",
+      "sha256": "19bf2b5ab4d974bb7190f12192f38c9785f8808f41f9159de74ac9310fc14405"
+    },
+    {
+      "path": "artifact/artifact_blueprint.json",
+      "sha256": "571bd4286de77a0499cc789992e7c2e1af1db08b2aef90ca49f843d913de8427"
+    },
+    {
+      "path": "artifact/artifact_qa.json",
+      "sha256": "6b4312719e3858febaa7ce966c1611e7df60d42edb11d7f72d6a1406de58aef5"
+    },
+    {
+      "path": "artifact/previews/Delivery_Log.png",
+      "sha256": "6c0685e309fcbcb707c651e88e3933cec09e92d58e31543fa75ecfd756c7b0d6"
+    }
+  ],
+  "editable_review": {
+    "path": "review.json",
+    "excluded_from_generated_file_hashes": true
+  }
+}

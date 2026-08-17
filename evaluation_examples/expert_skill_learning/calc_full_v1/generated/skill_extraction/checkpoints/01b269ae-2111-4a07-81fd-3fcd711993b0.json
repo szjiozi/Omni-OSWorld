@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+  "app": "libreoffice_calc",
+  "single_action_count": 12,
+  "prompt_sha256": "ce706e0d3c2e1df7516439a1df3442eafdfa83fa38add841fc82b94dfebf8481",
+  "request_id": "0db0676c-bb2f-4da7-9619-6862cbec0f5d",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1331,
+    "cached_input_tokens": 1073,
+    "output_tokens": 460,
+    "estimated_cost_usd": 0.0062506
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "efficiency_tip": "Use a double-click on the fill handle when the adjacent column provides a clear boundary for the intended fill range; it is faster than dragging and avoids manually selecting the destination cells.",
+        "name": "Double-click the fill handle to propagate a cell value downward",
+        "procedure": [
+          "Select a cell containing the value to be repeated into cells directly below it.",
+          "Move to the small square at the cell’s bottom-right corner (the fill handle) until the pointer indicates a fill operation.",
+          "Double-click the fill handle. Calc extends the cell’s content downward through the applicable contiguous range, using neighboring populated cells to determine the fill extent.",
+          "For example, double-click the fill handle of B2 to copy B2’s value into the cells below until the adjacent data region ends. Repeat from later source cells when separate blank sections need to be filled."
+        ]
+      }
+    ]
+  }
+}

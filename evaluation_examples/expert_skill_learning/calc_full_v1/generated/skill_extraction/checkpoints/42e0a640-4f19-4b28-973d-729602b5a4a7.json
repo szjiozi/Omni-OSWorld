@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+  "app": "libreoffice_calc",
+  "single_action_count": 10,
+  "prompt_sha256": "9bc170f1ea7b1eea2c0723ea46fdfb3b8f0155d884d729c146c6159258fbf17c",
+  "request_id": "c7c31976-0cc8-45a6-ba10-177dec4f5d02",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1299,
+    "cached_input_tokens": 1073,
+    "output_tokens": 612,
+    "estimated_cost_usd": 0.0080106
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0
+        ],
+        "efficiency_tip": "Use the plus button when you only need a blank worksheet; it is faster than opening the Sheet menu and avoids changing existing sheets.",
+        "name": "Insert a new worksheet with the sheet-tab plus button",
+        "procedure": [
+          "Click the + button beside the worksheet tabs to create a new blank sheet.",
+          "The newly inserted sheet becomes active, so subsequent entry goes into that sheet."
+        ]
+      },
+      {
+        "action_ids": [
+          5,
+          6
+        ],
+        "efficiency_tip": "Write the formula once using relative row and column references where propagation is intended, rather than manually creating a separate formula for each destination column.",
+        "name": "Create a cross-sheet SUM formula with a fixed source sheet",
+        "procedure": [
+          "In the destination cell, enter a SUM formula that refers to a range on another sheet, then press Enter. For example, type `=SUM($Sheet1.A2:A20)`.",
+          "In `$Sheet1.A2:A20`, the `$` before `Sheet1` fixes the source sheet when the formula is copied; column `A` and rows `2` and `20` remain relative.",
+          "This lets a horizontal copy adjust the source column, such as changing the example to `=SUM($Sheet1.B2:B20)`, while continuing to read from Sheet1."
+        ]
+      },
+      {
+        "action_ids": [
+          7,
+          8,
+          9
+        ],
+        "efficiency_tip": "Drag from the fill handle rather than retyping similar formulas; Calc automatically adjusts relative references during the copy.",
+        "name": "Fill a formula horizontally using the fill handle",
+        "procedure": [
+          "Select the cell containing the formula, for example A2.",
+          "Move to the small square at the cell's bottom-right corner until the fill handle is available.",
+          "Drag the handle across the target adjacent cells, such as from A2 to B2, to copy the formula.",
+          "Calc adjusts relative references in the copied formula while retaining any fixed parts. For example, a formula containing `$Sheet1.A2:A20` copied from A2 to B2 becomes `$Sheet1.B2:B20`."
+        ]
+      }
+    ]
+  }
+}

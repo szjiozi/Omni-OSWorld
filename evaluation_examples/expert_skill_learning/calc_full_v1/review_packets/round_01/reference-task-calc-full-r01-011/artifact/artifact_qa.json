@@ -1,0 +1,18 @@
+{
+  "workbook_title": "Community Workshop Event Finance",
+  "output_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-011/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Event Ledger",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-011/previews/Event_Ledger.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Event Ledger\",\"address\":\"A1:F12\",\"rows\":12,\"cols\":6,\"values\":[[\"Event Code\",\"Gross Revenue\",\"Community Share\",\"Registrations\",\"Fee per Registration\",\"Sponsor Grant\"],[\"EVT-101\",840,960,24,35,120],[\"EVT-102\",null,null,18,40,80],[\"EVT-103\",null,null,31,28,150],[\"EVT-104\",null,null,16,45,60],[\"EVT-105\",null,null,27,32,110],[\"EVT-106\",null,null,22,38,90],[\"EVT-107\",null,null,35,25,175],[\"EVT-108\",null,null,19,42,70],[\"EVT-109\",null,null,29,30,130],[\"EVT-110\",null,null,14,50,55],[\"EVT-111\",null,null,33,27,160]]}"
+    },
+    {
+      "name": "Upload",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-011/previews/Upload.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Upload\",\"address\":\"A1:A12\",\"rows\":12,\"cols\":1,\"values\":[[\"Event Code\"],[null],[null],[null],[null],[null],[null],[null],[null],[null],[null],[null]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

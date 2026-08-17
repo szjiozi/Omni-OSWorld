@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+  "app": "libreoffice_calc",
+  "single_action_count": 24,
+  "prompt_sha256": "de9e41d3324b6f5f6f05c9f72bd2eb5b813334a27021db5e7e98d5c1ec908a7f",
+  "request_id": "a862bcb2-3142-48e7-9bcf-a6d26b3fd4c4",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1428,
+    "cached_input_tokens": 1073,
+    "output_tokens": 801,
+    "estimated_cost_usd": 0.0105366
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "efficiency_tip": "Select the entire source range before invoking the Pivot Table command so Calc can detect the source automatically, then drag fields directly into the layout areas rather than opening separate field-setting dialogs.",
+        "name": "Create a Pivot Table with a row field and summed data field",
+        "procedure": [
+          "Select the source data range, for example with Ctrl+A when the active sheet contains only the dataset.",
+          "Click the Pivot Table command and accept the detected source range in the initial dialog.",
+          "In the Pivot Table Layout dialog, drag the category field from Available Fields to Row Fields. For example, drag a field such as Product or Sales Channel to Row Fields.",
+          "Drag the numeric measure from Available Fields to Data Fields. For example, drag Revenue to Data Fields; Calc creates an aggregate, normally Sum, for that numeric field.",
+          "Confirm the layout with OK to generate the Pivot Table. Repeat the same layout pattern with different row fields as needed."
+        ]
+      },
+      {
+        "action_ids": [
+          8,
+          9,
+          10
+        ],
+        "efficiency_tip": "Rename a newly created sheet immediately after it is inserted so later cross-sheet references and destination selections use a clear, stable sheet name.",
+        "name": "Rename a worksheet from its sheet tab",
+        "procedure": [
+          "Double-click the worksheet tab whose name you want to change.",
+          "Type the new tab name, for example Sheet2, and press Enter to apply it.",
+          "The tab label updates, and the new name can be used in references such as $Sheet2.$A$15."
+        ]
+      },
+      {
+        "action_ids": [
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "efficiency_tip": "Specify the destination during Pivot Table creation instead of creating the table in the default location and moving it afterward.",
+        "name": "Place a Pivot Table at a specified cell on another worksheet",
+        "procedure": [
+          "In the Pivot Table dialog, open the Source and Destination section.",
+          "Choose Selection as the destination type, then activate the destination reference box.",
+          "Enter an absolute cross-sheet cell reference, for example $Sheet2.$A$15, and confirm with OK.",
+          "In $Sheet2.$A$15, the dollar sign before Sheet2 fixes the destination sheet, and the dollar signs before A and 15 fix both the destination column and row."
+        ]
+      }
+    ]
+  }
+}

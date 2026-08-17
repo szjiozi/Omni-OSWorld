@@ -1,0 +1,145 @@
+{
+  "manual_setup_steps": [
+    "Set Shift Log!C2:C13 to the time number format [HH]:MM before recording; the stored values are decimal time serials."
+  ],
+  "sheets": [
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "@",
+        "@",
+        "General",
+        "0.00",
+        "General"
+      ],
+      "column_types": [
+        "text",
+        "text",
+        "decimal",
+        "decimal",
+        "currency"
+      ],
+      "formulas": [],
+      "freeze_header_row": true,
+      "headers": [
+        "Technician",
+        "Work Order",
+        "Service Duration",
+        "Hourly Rate",
+        "Earned Amount"
+      ],
+      "name": "Shift Log",
+      "rows": [
+        {
+          "values": [
+            "Avery Nolan",
+            "WO-84017",
+            "0.0520833333",
+            "31.25",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Briar Chen",
+            "WO-84028",
+            "0.1041666667",
+            "38.50",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Callum Reese",
+            "WO-84039",
+            "0.1562500000",
+            "42.75",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Dana Ibarra",
+            "WO-84044",
+            "0.1979166667",
+            "29.80",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Emery Voss",
+            "WO-84056",
+            "0.2395833333",
+            "46.75",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Farah Linden",
+            "WO-84063",
+            "0.2708333333",
+            "35.40",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Gavin Rowe",
+            "WO-84071",
+            "0.3229166667",
+            "40.25",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Hana Mercer",
+            "WO-84082",
+            "0.0729166667",
+            "33.60",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Ilan Porter",
+            "WO-84095",
+            "0.2187500000",
+            "44.10",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Jessa Quinn",
+            "WO-84103",
+            "0.1250000000",
+            "28.50",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Kellan Moss",
+            "WO-84116",
+            "0.2812500000",
+            "39.95",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "Liora Park",
+            "WO-84129",
+            "0.1770833333",
+            "45.60",
+            ""
+          ]
+        }
+      ]
+    }
+  ],
+  "workbook_title": "Field Service Payment Review"
+}

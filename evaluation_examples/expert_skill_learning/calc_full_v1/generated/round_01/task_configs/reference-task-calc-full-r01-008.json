@@ -1,0 +1,100 @@
+{
+  "id": "reference-task-calc-full-r01-008",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Complete the Line Total calculation for every delivery in the Garden Supply Delivery Register, then add a default-named worksheet and use it to show a Pivot Table summary of total delivery spending for each Garden Zone.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-008/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/garden_delivery_register.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/garden_delivery_register.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-calc-full-r01-008",
+    "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-008/initial_artifact.xlsx",
+    "artifact_sha256": "19bf2b5ab4d974bb7190f12192f38c9785f8808f41f9159de74ac9310fc14405",
+    "guest_artifact_path": "/home/user/Desktop/garden_delivery_register.xlsx",
+    "required_skill_ids": [
+      "535364ea-05bd-46ea-9937-9f55c68507e8.skill-01",
+      "0bf05a7d-b28b-44d2-955a-50b41e24012a.skill-02",
+      "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-01",
+      "1de60575-bb6e-4c3d-9e6a-2fa699f9f197.skill-01"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The expert may insert Sheet2 before or after filling the line totals, may use menu or toolbar access to Pivot Table, and may choose any clear non-overlapping placement on Sheet2. Equivalent use of keyboard shortcuts is acceptable.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Keep the seeded formula cell adjacent to the contiguous Quantity data and double-click its fill handle to extend it through all delivery records efficiently.",
+          "operation_intent": "Propagate the seeded Line Total calculation from the first delivery row through the remaining contiguous delivery rows.",
+          "skill_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a.skill-02",
+          "visible_success_signal": "Every Line Total cell from E2 through E25 displays a calculated currency amount, with relative row references reflected in the formulas."
+        },
+        {
+          "efficiency_tip": "Use the sheet-tab plus control rather than a rename workflow, because the required default worksheet name is Sheet2.",
+          "operation_intent": "Insert one blank worksheet and retain its automatically assigned default name.",
+          "skill_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-01",
+          "visible_success_signal": "A new worksheet tab named Sheet2 is visible alongside Delivery Log."
+        },
+        {
+          "efficiency_tip": "Activate Delivery Log and select its one contiguous table in a single action so Calc detects the entire source range without manual range editing.",
+          "operation_intent": "Start Pivot Table creation using the current full delivery-table selection as the source.",
+          "skill_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197.skill-01",
+          "visible_success_signal": "The Pivot Table setup flow opens with the Delivery Log table range recognized as the data source."
+        },
+        {
+          "efficiency_tip": "In the layout dialog, drag Garden Zone directly to Row Fields and Line Total directly to Data Fields; the numeric amount should default to a Sum aggregation.",
+          "operation_intent": "Configure and generate a pivot summary on Sheet2 that groups delivery spending by Garden Zone and totals Line Total.",
+          "skill_id": "535364ea-05bd-46ea-9937-9f55c68507e8.skill-01",
+          "visible_success_signal": "Sheet2 visibly contains a pivot table with one row per Garden Zone and a summed Line Total amount for each zone, plus the pivot grand total."
+        }
+      ],
+      "recording_end_state": "Delivery Log contains calculated Line Total values for all 24 records, and Sheet2 contains the completed Garden Zone by summed Line Total pivot table.",
+      "recording_start_state": "Delivery Log is the only sheet; its 24-row delivery table has only E2 seeded with the Line Total formula, and no pivot table exists."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Navigate between Delivery Log and the newly inserted Sheet2 worksheet as needed.",
+        "reason": "The line-total source table and the requested pivot-table destination are on different sheets."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Confirm the pivot table source range and choose a placement location on Sheet2.",
+        "reason": "Calc requires a source-range confirmation and output destination to generate the requested summary."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Select the contiguous source table before opening the Pivot Table command.",
+        "reason": "This supplies the complete delivery data range for the pivot table."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc is open with a workbook containing exactly one worksheet named Delivery Log.",
+      "Delivery Log shows one contiguous table in A1:E25 with the headers Delivery Code, Garden Zone, Quantity, Unit Price, and Line Total.",
+      "The Line Total column has a seeded formula in E2, while E3:E25 are empty.",
+      "No worksheet named Sheet2 and no pivot table or summary table are present."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

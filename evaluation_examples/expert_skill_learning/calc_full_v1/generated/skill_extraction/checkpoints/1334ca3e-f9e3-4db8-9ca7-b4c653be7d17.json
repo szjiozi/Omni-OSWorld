@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+  "app": "libreoffice_calc",
+  "single_action_count": 1,
+  "prompt_sha256": "4c41a52b8aa2930e0c1e8254fb44e4aa70c194ae6d32ae247deff70c8633e8a0",
+  "request_id": "f0b7cd5f-0f0b-4ec6-8ef9-ff6ee6f53b39",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1190,
+    "cached_input_tokens": 1073,
+    "output_tokens": 142,
+    "estimated_cost_usd": 0.0021526
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0
+        ],
+        "efficiency_tip": "Use the slider for a quick incremental adjustment; click closer to the desired level rather than repeatedly clicking the decrease end when a larger reduction is needed.",
+        "name": "Decrease worksheet zoom with the status-bar zoom slider",
+        "procedure": [
+          "In LibreOffice Calc, locate the zoom slider in the bottom-right status bar.",
+          "Click on the left/decrease side of the slider to zoom the worksheet out. For example, one click reduces the displayed cell size so more rows and columns fit on screen.",
+          "Repeat only as needed until cells are comfortably selectable at the desired scale."
+        ]
+      }
+    ]
+  }
+}

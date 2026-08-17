@@ -23,6 +23,7 @@ from benchmark_construction.osworld_human import (
     load_source_manifest,
     load_source_task,
     resolve_task_paths,
+    vendor_osworld_human_app,
     verify_manifest_sources,
 )
 from benchmark_construction.pricing import PricingTable, TokenUsage
@@ -37,6 +38,7 @@ from benchmark_construction.reference_generation import (
 from benchmark_construction.reference_packages import (
     SkillSample as PackageSkillSample,
     build_reference_package_request,
+    generate_reference_packages,
     validate_reference_package_response,
 )
 from benchmark_construction.reference_review import (
@@ -53,6 +55,7 @@ from benchmark_construction.semantic_similarity import (
 from benchmark_construction.skill_extraction import (
     attach_skill_provenance,
     build_skill_request,
+    extract_skills_checkpointed,
 )
 
 
@@ -127,6 +130,43 @@ def test_osworld_human_loader_reads_only_required_fields(tmp_path):
     assert "calc-task-1" not in request.user_prompt
 
 
+def test_vendor_osworld_human_app_preserves_exact_source_bytes(tmp_path):
+    source_root = tmp_path / "upstream"
+    task_path = source_root / "libreoffice_calc" / "calc-task-1.json"
+    task_path.parent.mkdir(parents=True)
+    payload = (
+        b'{"id":"calc-task-1","snapshot":"libreoffice_calc",'
+        b'"instruction":"Format it.","human-ground-truth":'
+        b'{"single-action":["`CLICK` Format"],'
+        b'"grouped-action":[["`CLICK` Format"]]}}\n'
+    )
+    task_path.write_bytes(payload)
+    (source_root / "README.md").write_bytes(b"upstream readme\n")
+    output_root = tmp_path / "full"
+
+    manifest = vendor_osworld_human_app(
+        source_root,
+        output_root,
+        app="libreoffice_calc",
+        source_repository="https://example.test/upstream",
+        source_commit="abc123",
+    )
+
+    vendored = (
+        output_root
+        / "source"
+        / "osworld_human"
+        / "abc123"
+        / "libreoffice_calc"
+        / "calc-task-1.json"
+    )
+    assert vendored.read_bytes() == payload
+    assert manifest["tasks"][0]["single_actions"] == ["`CLICK` Format"]
+    assert load_source_manifest(
+        output_root / "source_tasks.json", expected_app="libreoffice_calc"
+    )[0].task_id == "calc-task-1"
+
+
 def test_frozen_source_manifest_is_self_contained_and_matches_raw_sources():
     repo_root = Path(__file__).resolve().parents[1]
     manifest = (
@@ -150,6 +190,8 @@ def test_frozen_source_manifest_is_self_contained_and_matches_raw_sources():
 def test_skill_provenance_is_injected_locally_and_action_ids_are_checked():
     task = _source_task()
     response = {
+        "decision": "skills_extracted",
+        "decision_reason": "",
         "skills": [
             {
                 "name": "Fill a relative formula down a column",
@@ -180,6 +222,8 @@ def test_skill_provenance_is_injected_locally_and_action_ids_are_checked():
 def test_skill_provenance_rejects_action_ids_shared_by_multiple_skills():
     task = _source_task()
     response = {
+        "decision": "skills_extracted",
+        "decision_reason": "",
         "skills": [
             {
                 "name": "Build a formula",
@@ -198,6 +242,20 @@ def test_skill_provenance_rejects_action_ids_shared_by_multiple_skills():
 
     with pytest.raises(ValueError, match="multiple skills: \\[1\\]"):
         attach_skill_provenance(task, response)
+
+
+def test_skill_extraction_can_explicitly_return_no_reusable_skill():
+    response = {
+        "decision": "no_reusable_skill",
+        "decision_reason": "The actions only type a task-specific literal.",
+        "skills": [],
+    }
+
+    assert attach_skill_provenance(_source_task(), response) == []
+
+    response["decision_reason"] = ""
+    with pytest.raises(ValueError, match="must explain"):
+        attach_skill_provenance(_source_task(), response)
 
 
 def test_all_expert_skill_json_schemas_are_valid():
@@ -418,6 +476,55 @@ def test_reference_package_prompt_and_local_skill_guide_validation():
     ] = skills[2].skill_id
     with pytest.raises(ValueError, match="exactly one item"):
         validate_reference_package_response(sample, response)
+
+
+class _FakeReferencePackageClient:
+    def __init__(self, skills):
+        self.skill_by_id = {skill.skill_id: skill for skill in skills}
+
+    async def generate_many(self, requests):
+        results = []
+        for request in requests:
+            skill_ids = re.findall(r'"skill_id": "([^"]+)"', request.user_prompt)
+            selected = [self.skill_by_id[skill_id] for skill_id in skill_ids]
+            results.append(
+                JSONResult(
+                    request_id=request.request_id,
+                    model="fake-model",
+                    data=_reference_package_response(selected),
+                    usage=TokenUsage(10, 20, 0),
+                    estimated_cost_usd=0.001,
+                )
+            )
+        return results
+
+
+def test_reference_package_round_caps_candidates_and_tracks_initial_coverage():
+    skills, tasks = _pilot_construction_inputs()
+    initially_covered = [skills[0].skill_id, skills[1].skill_id]
+    initial_uncovered = [
+        skill.skill_id for skill in skills if skill.skill_id not in initially_covered
+    ]
+
+    result = asyncio.run(
+        generate_reference_packages(
+            skills,
+            tasks,
+            _FakeReferencePackageClient(skills),
+            seed=7,
+            max_attempts=4,
+            max_candidates=1,
+            task_id_prefix="reference-task-calc-full",
+            initial_uncovered_skill_ids=initial_uncovered,
+        )
+    )
+
+    assert len(result.packages) == 1
+    assert result.packages[0]["reference_task_id"] == (
+        "reference-task-calc-full-r01-001"
+    )
+    assert result.initial_covered_skill_ids == tuple(initially_covered)
+    assert result.candidate_covered_skill_ids
 
 
 class _FakeEmbeddingClient:
@@ -850,6 +957,8 @@ def test_async_client_validates_json_and_logs_each_attempt(tmp_path):
                 message=SimpleNamespace(
                     content=json.dumps(
                         {
+                            "decision": "skills_extracted",
+                            "decision_reason": "",
                             "skills": [
                                 {
                                     "name": "Use a fill handle",

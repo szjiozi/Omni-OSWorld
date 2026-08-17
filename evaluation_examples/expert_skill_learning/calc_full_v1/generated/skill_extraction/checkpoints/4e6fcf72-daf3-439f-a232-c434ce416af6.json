@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+  "app": "libreoffice_calc",
+  "single_action_count": 5,
+  "prompt_sha256": "5a5a751241eacd74b577f5fb59870e81e2d34b361c5f6086105c905ece942ad1",
+  "request_id": "0c3b245e-ff0d-41f0-b12a-1a78108ff8b4",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1247,
+    "cached_input_tokens": 1073,
+    "output_tokens": 297,
+    "estimated_cost_usd": 0.0041266
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2
+        ],
+        "efficiency_tip": "Enter the formula once in the first result cell, then use a propagation command such as the fill handle rather than retyping it for each row.",
+        "name": "Enter a date-difference formula that returns whole years",
+        "procedure": [
+          "Select the first output cell beside the date column, for example D2.",
+          "Type a formula such as `=DATEDIF(C2,TODAY(),\"Y\")` and press Enter. `C2` is a relative reference, so it can adjust to each row when propagated later.",
+          "The `\"Y\"` unit returns completed whole years between the date in C2 and the current date."
+        ]
+      },
+      {
+        "action_ids": [
+          3,
+          4
+        ],
+        "efficiency_tip": "Double-click the fill handle when the adjacent data column is contiguous; Calc automatically extends the formula through the matching rows.",
+        "name": "AutoFill a formula down a contiguous table column",
+        "procedure": [
+          "Select the cell containing the formula, for example D2.",
+          "Double-click the small fill handle at the bottom-right corner of the selected cell.",
+          "Calc copies the formula down through the contiguous neighboring data region, adjusting relative references by row; for example, `=DATEDIF(C2,TODAY(),\"Y\")` in D2 becomes `=DATEDIF(C3,TODAY(),\"Y\")` in D3."
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "reference-task-calc-full-r01-020",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Finish the Community Garden Supply Plan by giving the title cell A1 a #2F6B4F background and completing the Line Cost calculations for every listed supply item from the existing first calculation.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-020/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/garden_supply_plan.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/garden_supply_plan.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-calc-full-r01-020",
+    "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-020/initial_artifact.xlsx",
+    "artifact_sha256": "faeb79de93d679439a5a0a2f69f8bb2faaca51be9f21420f43071f8755d79cb1",
+    "guest_artifact_path": "/home/user/Desktop/garden_supply_plan.xlsx",
+    "required_skill_ids": [
+      "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-03",
+      "d681960f-7bc3-4286-9913-a8812ba3261a.skill-02"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The expert may use equivalent Calc menus, toolbar controls, keyboard navigation, or selection methods, provided the exact title color and the formula-filled line-cost range are visibly achieved.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Enter the exact hexadecimal value in the custom color control rather than choosing an approximate palette swatch.",
+          "operation_intent": "Apply the requested exact custom background color to the title cell A1.",
+          "skill_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-03",
+          "visible_success_signal": "A1, containing \"Community Garden Supply Plan,\" visibly displays the specified custom fill color #2F6B4F."
+        },
+        {
+          "efficiency_tip": "Use the formula cell's fill handle and double-click it so Calc follows the neighboring contiguous item data instead of manually dragging to the last row.",
+          "operation_intent": "Propagate the seeded Line Cost formula from D4 through every populated supply-item row.",
+          "skill_id": "d681960f-7bc3-4286-9913-a8812ba3261a.skill-02",
+          "visible_success_signal": "D4:D27 contain calculated currency amounts, with no blank Line Cost cells alongside populated rows 4:27."
+        }
+      ],
+      "recording_end_state": "The title cell A1 has fill #2F6B4F, and Line Cost is calculated in D4:D27 using the propagated relative-reference formula; no unrelated summaries or sheets have been added.",
+      "recording_start_state": "The Supply Plan sheet is open with unfilled title cell A1, populated input columns A:C for rows 4:27, formula only in D4, and blank D5:D27."
+    },
+    "expected_incidental_operations": [],
+    "ready_state_checks": [
+      "Calc is open on the single sheet named \"Supply Plan\".",
+      "Cell A1 shows \"Community Garden Supply Plan\" in bold, larger text with no custom background fill.",
+      "Row 3 contains the table headers, and rows 4 through 27 have continuous data in columns A:C.",
+      "D4 contains a Line Cost formula, while D5:D27 are blank.",
+      "No totals, charts, Pivot Tables, conditional formatting, or additional sheets are present."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

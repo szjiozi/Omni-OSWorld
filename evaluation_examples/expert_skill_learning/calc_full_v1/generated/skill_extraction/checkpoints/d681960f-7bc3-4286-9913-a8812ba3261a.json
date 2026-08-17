@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+  "app": "libreoffice_calc",
+  "single_action_count": 5,
+  "prompt_sha256": "5242cc47f52d2520e20f2653c2ce09dfe99e73263bfec39b5ef7cae267454106",
+  "request_id": "8f71148f-f297-449f-b24f-ee3a9601a6ce",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1233,
+    "cached_input_tokens": 1073,
+    "output_tokens": 365,
+    "estimated_cost_usd": 0.0049146
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2
+        ],
+        "efficiency_tip": "Use absolute references for lookup-table ranges so the table does not shift when the formula is later copied; only the lookup-value reference should normally remain relative.",
+        "name": "Enter an approximate-match VLOOKUP formula with a fixed lookup range",
+        "procedure": [
+          "Select the output cell where the lookup result should appear.",
+          "Enter a VLOOKUP formula using a relative lookup value, an absolute table range, the desired return-column index, and TRUE for approximate matching. For example: `=VLOOKUP(E10,$D$2:$E$7,2,TRUE)`.",
+          "Press Enter to calculate the result. In `$D$2:$E$7`, each `$` fixes its respective column or row, so the lookup table remains unchanged when copied to other cells."
+        ]
+      },
+      {
+        "action_ids": [
+          3,
+          4
+        ],
+        "efficiency_tip": "Double-clicking the fill handle is faster and less error-prone than dragging across a long list, because Calc extends the formula through the adjacent contiguous data region.",
+        "name": "AutoFill a formula down by double-clicking the fill handle",
+        "procedure": [
+          "Select the cell that contains the formula to propagate.",
+          "Point to the small square at the selected cell's bottom-right corner (the fill handle).",
+          "Double-click the fill handle. Calc copies the formula downward through the rows indicated by the neighboring contiguous data, adjusting relative references for each destination row."
+        ]
+      }
+    ]
+  }
+}

@@ -109,6 +109,110 @@ def resolve_task_paths(source_root: Path, task_ids: Iterable[str]) -> list[Path]
     return paths
 
 
+def vendor_osworld_human_app(
+    source_root: Path,
+    output_root: Path,
+    *,
+    app: str,
+    source_repository: str,
+    source_commit: str,
+) -> dict:
+    """Copy one upstream app directory byte-for-byte and derive a frozen manifest."""
+
+    source_app_root = source_root / app
+    source_paths = sorted(source_app_root.glob("*.json"))
+    if not source_paths:
+        raise ValueError(f"No JSON tasks found under {source_app_root}")
+    destination_root = output_root / "source" / "osworld_human" / source_commit
+    destination_app_root = destination_root / app
+    tasks: list[dict] = []
+    checksum_lines: list[str] = []
+    seen_ids: set[str] = set()
+    for source_path in source_paths:
+        payload = source_path.read_bytes()
+        document = json.loads(payload)
+        task_id = document.get("id")
+        if not isinstance(task_id, str) or not task_id:
+            raise ValueError(f"{source_path} has no task ID")
+        if task_id in seen_ids:
+            raise ValueError(f"Duplicate task ID in upstream source: {task_id}")
+        if source_path.stem != task_id:
+            raise ValueError(f"Filename does not match task ID: {source_path}")
+        if document.get("snapshot") != app:
+            raise ValueError(f"{source_path} is not a {app} task")
+        ground_truth = document.get("human-ground-truth")
+        if not isinstance(ground_truth, dict):
+            raise ValueError(f"{source_path} has no human-ground-truth object")
+        single_actions = ground_truth.get("single-action")
+        grouped_actions = ground_truth.get("grouped-action")
+        if not isinstance(single_actions, list) or not single_actions:
+            raise ValueError(f"{source_path} has no single-action annotations")
+        if not isinstance(grouped_actions, list) or not grouped_actions:
+            raise ValueError(f"{source_path} has no grouped-action annotations")
+
+        destination = destination_app_root / source_path.name
+        if destination.exists() and destination.read_bytes() != payload:
+            raise ValueError(
+                f"Refusing to overwrite non-identical vendored source: {destination}"
+            )
+        if not destination.exists():
+            _write_bytes_atomic(destination, payload)
+        digest = _sha256_bytes(payload)
+        relative_source_file = f"{app}/{source_path.name}"
+        checksum_lines.append(f"{digest}  {relative_source_file}")
+        tasks.append(
+            {
+                "task_id": task_id,
+                "source_file": relative_source_file,
+                "source_sha256": digest,
+                "instruction": document.get("instruction", ""),
+                "single_action_count": len(single_actions),
+                "single_actions": single_actions,
+                "grouped_action_count": len(grouped_actions),
+            }
+        )
+        seen_ids.add(task_id)
+
+    upstream_readme = source_root / "README.md"
+    if upstream_readme.is_file():
+        readme_payload = upstream_readme.read_bytes()
+        vendored_readme = destination_root / "README.md"
+        if vendored_readme.exists() and vendored_readme.read_bytes() != readme_payload:
+            raise ValueError(
+                f"Refusing to overwrite non-identical upstream README: {vendored_readme}"
+            )
+        if not vendored_readme.exists():
+            _write_bytes_atomic(vendored_readme, readme_payload)
+
+    provenance = {
+        "schema_version": "1.0",
+        "source_repository": source_repository,
+        "source_commit": source_commit,
+        "app": app,
+        "task_count": len(tasks),
+        "copy_policy": "byte-for-byte",
+        "license_file_present_at_source_root": (source_root / "LICENSE").is_file(),
+    }
+    _write_json_atomic(destination_root / "PROVENANCE.json", provenance)
+    _write_bytes_atomic(
+        destination_root / "SHA256SUMS",
+        ("\n".join(checksum_lines) + "\n").encode("utf-8"),
+    )
+    manifest = {
+        "schema_version": "1.1",
+        "dataset_id": f"{app}-full-v1",
+        "app": app,
+        "language": "en",
+        "source_repository": source_repository,
+        "source_commit": source_commit,
+        "selection_policy": f"All {app} tasks at the pinned source commit.",
+        "vendored_source_root": str(destination_root),
+        "tasks": tasks,
+    }
+    _write_json_atomic(output_root / "source_tasks.json", manifest)
+    return manifest
+
+
 def _sha256_bytes(payload: bytes) -> str:
     return hashlib.sha256(payload).hexdigest()
 

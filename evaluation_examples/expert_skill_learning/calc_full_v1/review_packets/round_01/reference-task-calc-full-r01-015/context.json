@@ -1,0 +1,951 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-015",
+  "package": {
+    "reference_task_id": "reference-task-calc-full-r01-015",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_calc",
+    "task_instruction": "Complete the route fuel estimates for every dispatch record and add the overall estimated-liters total. Then rename the blank analysis worksheet to \"Zone Fuel Summary\" and use a Pivot Table there to report the summed estimated fuel for each zone.",
+    "required_skill_ids": [
+      "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-01",
+      "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-01",
+      "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-03",
+      "535364ea-05bd-46ea-9937-9f55c68507e8.skill-02"
+    ],
+    "artifact_spec": {
+      "artifact_type": "xlsx",
+      "domain": "municipal vehicle fuel planning",
+      "generation_notes": [
+        "Create a privacy-safe synthetic workbook titled \"Fleet Fuel Planning\" with realistic fictional route labels, zones, distances, and fuel-use rates.",
+        "On \"Dispatch Log\", create one contiguous source table in A1:E25. Row 1 is the header row and rows 2:25 contain 24 route records. Use at least three repeating Zone values (for example, Harbor, Northside, and Ridge) so a zone summary is meaningful.",
+        "Populate Route Code with unique synthetic IDs, Zone with repeating text categories, Distance (km) with positive decimal values, and Liters per km with positive decimal values. Ensure every data row has a nonblank value in columns A:D.",
+        "Set E1 to \"Estimated Liters\". Seed only E2 with the formula =C2*D2. Leave E3:E25 genuinely blank; do not seed formulas there.",
+        "Use decimal number formatting with two decimal places for C2:C25, D2:D25, and E2:E25. Style the header row distinctly, but do not create a native table, Pivot Table, or conditional formatting rule.",
+        "Leave rows 26 and 27 blank. In D28 place the label \"Total estimated liters\" and leave E28 blank as the designated overall-total result cell.",
+        "Create a second empty worksheet named \"Analysis\". It must contain no prebuilt report content or Pivot Table."
+      ],
+      "initial_state": [
+        "The workbook opens with \"Dispatch Log\" as the active sheet.",
+        "The source dataset is contiguous only through A1:E25, with an uninterrupted neighboring data region suitable for fill-handle propagation.",
+        "The only pre-existing calculated value in Estimated Liters is the seed formula in E2.",
+        "The overall total cell E28 is blank.",
+        "The output worksheet is still named \"Analysis\" and is blank."
+      ],
+      "must_not_be_completed": [
+        "Do not fill E3:E25 with formulas or values.",
+        "Do not enter a total formula or value in E28.",
+        "Do not rename the \"Analysis\" worksheet.",
+        "Do not create or preconfigure any Pivot Table."
+      ],
+      "sheets": [
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "Route Code"
+            },
+            {
+              "data_type": "text",
+              "name": "Zone"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Distance (km)"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Liters per km"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Estimated Liters"
+            }
+          ],
+          "name": "Dispatch Log",
+          "purpose": "Source records for route-level fuel estimates and the overall total.",
+          "row_count": 24
+        },
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "(blank output sheet)"
+            }
+          ],
+          "name": "Analysis",
+          "purpose": "Blank destination worksheet to be renamed and used for the zone fuel Pivot Table.",
+          "row_count": 10
+        }
+      ],
+      "workbook_title": "Fleet Fuel Planning"
+    },
+    "operator_guide": {
+      "allowed_variation": "The expert may create the Pivot Table before or after entering the overall total, and may use equivalent Calc commands or keyboard shortcuts. The finished Pivot Table may use a standard Calc-generated layout as long as it groups by Zone and sums Estimated Liters on the renamed output sheet.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Use the existing formula in E2 as the single source and double-click its fill handle; columns A:D have no gaps, so Calc can infer the final record row reliably.",
+          "operation_intent": "Propagate the route-level Estimated Liters calculation from the seeded first record through all remaining route records.",
+          "skill_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-01",
+          "visible_success_signal": "Every cell from E2 through E25 displays a calculated fuel estimate, with relative row references reflected in the formulas."
+        },
+        {
+          "efficiency_tip": "Enter one SUM over the completed Estimated Liters record range rather than adding individual records.",
+          "operation_intent": "Calculate the fleet-wide estimated fuel amount in the designated total cell E28.",
+          "skill_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-01",
+          "visible_success_signal": "E28 shows a numeric overall total generated by a SUM formula covering the Estimated Liters data rows."
+        },
+        {
+          "efficiency_tip": "Rename the blank destination sheet before configuring Pivot Table placement so its report role is clear in the destination selector.",
+          "operation_intent": "Rename the blank \"Analysis\" worksheet to \"Zone Fuel Summary\".",
+          "skill_id": "535364ea-05bd-46ea-9937-9f55c68507e8.skill-02",
+          "visible_success_signal": "The worksheet tab formerly labeled \"Analysis\" is visibly labeled \"Zone Fuel Summary\"."
+        },
+        {
+          "efficiency_tip": "Start from the contiguous source table including headers so Calc detects the source fields automatically, then assign the grouping and summed measure in the layout dialog.",
+          "operation_intent": "Create the zone-level fuel Pivot Table from the completed Dispatch Log data and place it on the renamed report sheet.",
+          "skill_id": "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-03",
+          "visible_success_signal": "\"Zone Fuel Summary\" contains a native Pivot Table listing zones and a sum of Estimated Liters for each zone."
+        }
+      ],
+      "recording_end_state": "The Dispatch Log has formula-derived estimates in E2:E25 and a SUM total in E28; the output tab is named \"Zone Fuel Summary\" and contains a Pivot Table that sums Estimated Liters by Zone.",
+      "recording_start_state": "\"Dispatch Log\" is active with the seeded E2 formula, blank E3:E25 and E28, and an empty worksheet tab named \"Analysis\"."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Select the complete contiguous route-record range including its header row as the Pivot Table source.",
+        "reason": "The Pivot Table must summarize the populated route data rather than the separated total area."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Configure the Pivot Table with Zone as the row grouping, Estimated Liters as a summed data field, and place the result on the renamed output sheet.",
+        "reason": "This produces the requested zone-level fuel summary and makes the Pivot Table outcome interpretable."
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        }
+      ],
+      "dominant_source_task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+      "dominant_source_skill_fraction": 0.25,
+      "complete_source_skill_sets_included": []
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+        "max_sequence_similarity": 0.325815,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "sequence_similarity": 0.233438
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "sequence_similarity": 0.044521
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "sequence_similarity": 0.012384
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "sequence_similarity": 0.03397
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "sequence_similarity": 0.154667
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "sequence_similarity": 0.30198
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "sequence_similarity": 0.012658
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "sequence_similarity": 0.222222
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "sequence_similarity": 0.296296
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "sequence_similarity": 0.151515
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "sequence_similarity": 0.280702
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "sequence_similarity": 0.02193
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "sequence_similarity": 0.325815
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "sequence_similarity": 0.150376
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "sequence_similarity": 0.318707
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "sequence_similarity": 0.058594
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "sequence_similarity": 0.18617
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "sequence_similarity": 0.171598
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "sequence_similarity": 0.029079
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.245455
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.013072
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "sequence_similarity": 0.160221
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "sequence_similarity": 0.134328
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "sequence_similarity": 0.040816
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "sequence_similarity": 0.202186
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "sequence_similarity": 0.252308
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "sequence_similarity": 0.125
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "sequence_similarity": 0.054983
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "sequence_similarity": 0.246057
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "sequence_similarity": 0.021882
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "sequence_similarity": 0.069114
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "sequence_similarity": 0.2
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "sequence_similarity": 0.283237
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "sequence_similarity": 0.16285
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "sequence_similarity": 0.163399
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "sequence_similarity": 0.245399
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "sequence_similarity": 0.030905
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "sequence_similarity": 0.091503
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "sequence_similarity": 0.181333
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "sequence_similarity": 0.026087
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "sequence_similarity": 0.019646
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "sequence_similarity": 0.024341
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "sequence_similarity": 0.237975
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "sequence_similarity": 0.213873
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "sequence_similarity": 0.206549
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "sequence_similarity": 0.033058
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "sequence_similarity": 0.189542
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+        "max_cosine_similarity": 0.410207,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "cosine_similarity": 0.288939
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "cosine_similarity": 0.375973
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "cosine_similarity": 0.393943
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "cosine_similarity": 0.314574
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "cosine_similarity": 0.394017
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "cosine_similarity": 0.268195
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "cosine_similarity": 0.290929
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "cosine_similarity": 0.291093
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "cosine_similarity": 0.31493
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "cosine_similarity": 0.135032
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "cosine_similarity": 0.284779
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "cosine_similarity": 0.344542
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "cosine_similarity": 0.364182
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "cosine_similarity": 0.310407
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "cosine_similarity": 0.292277
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "cosine_similarity": 0.260153
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "cosine_similarity": 0.341813
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "cosine_similarity": 0.344037
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "cosine_similarity": 0.332699
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.334718
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.353948
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "cosine_similarity": 0.307338
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "cosine_similarity": 0.303225
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "cosine_similarity": 0.209015
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "cosine_similarity": 0.291863
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "cosine_similarity": 0.203913
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "cosine_similarity": 0.400338
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "cosine_similarity": 0.339024
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "cosine_similarity": 0.237949
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "cosine_similarity": 0.185317
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "cosine_similarity": 0.410207
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "cosine_similarity": 0.283005
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "cosine_similarity": 0.368294
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "cosine_similarity": 0.277756
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "cosine_similarity": 0.318849
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "cosine_similarity": 0.248167
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "cosine_similarity": 0.263994
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "cosine_similarity": 0.307086
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "cosine_similarity": 0.157456
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "cosine_similarity": 0.247938
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "cosine_similarity": 0.159508
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "cosine_similarity": 0.268375
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "cosine_similarity": 0.239116
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "cosine_similarity": 0.280444
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "cosine_similarity": 0.25751
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "cosine_similarity": 0.315613
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "cosine_similarity": 0.393496
+          }
+        ],
+        "embedding_request_id": "e9df3ea8-8c8e-4f8c-9056-df67ef6090d3"
+      }
+    },
+    "generation": {
+      "attempt": 15,
+      "kind": "new_combination",
+      "request_id": "f8402611-a0f6-4a5b-b2ec-3357b0e89867",
+      "prompt_sha256": "5bf402d2413bc0d9308972f6a3f097509c924b2027b68ae31551c20e9ff20799"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Enter a range-total formula in a spreadsheet cell",
+      "procedure": [
+        "Select the first result cell in the totals row and type a SUM formula covering the source values for that column.",
+        "For example, enter `=SUM(B2:B11)` and press Enter to calculate the total for column B."
+      ],
+      "efficiency_tip": "Enter the formula once in the first result cell, then use the fill handle separately to propagate it rather than retyping the formula for every column.",
+      "source": {
+        "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+        "action_ids": [
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Autofill an existing formula down a column with the fill handle",
+      "procedure": [
+        "Select the cell that already contains the formula to propagate, such as B2.",
+        "Double-click the small square fill handle at the cell's bottom-right corner. Calc fills the formula downward to the end of the adjacent contiguous data region, adjusting relative references for each row.",
+        "Repeat the same operation for another formula column when needed, for example select D2 and double-click its fill handle."
+      ],
+      "efficiency_tip": "Double-clicking the fill handle is faster and less error-prone than dragging it through a long data range; verify that an adjacent column contains uninterrupted data so Calc can detect the intended last row.",
+      "source": {
+        "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "skill_id": "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-03",
+      "app": "libreoffice_calc",
+      "name": "Create a Pivot Table from the selected data range",
+      "procedure": [
+        "Click within the dataset and use `Ctrl+A` to select the current contiguous data range, including its header row.",
+        "Click the Pivot Table toolbar icon to open the Pivot Table creation flow.",
+        "Accept the detected selected range, for example by pressing Enter in the initial creation dialog, to open the Pivot Table field-layout dialog."
+      ],
+      "efficiency_tip": "Select the full current data region before creating the Pivot Table so Calc detects the source range automatically and no manual range entry is needed.",
+      "source": {
+        "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+        "action_ids": [
+          10,
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "skill_id": "535364ea-05bd-46ea-9937-9f55c68507e8.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Rename a worksheet from its sheet tab",
+      "procedure": [
+        "Double-click the worksheet tab whose name you want to change.",
+        "Type the new tab name, for example Sheet2, and press Enter to apply it.",
+        "The tab label updates, and the new name can be used in references such as $Sheet2.$A$15."
+      ],
+      "efficiency_tip": "Rename a newly created sheet immediately after it is inserted so later cross-sheet references and destination selections use a clear, stable sheet name.",
+      "source": {
+        "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+        "action_ids": [
+          8,
+          9,
+          10
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+      "instruction": "Calculate the total sales in an underneath row called \"Total\" and display the total of each month as bars. Then calculate the month-on-month growth percentage for Feb to Jun in another row called \"Growth\" and show them in a line chart (Jan should be omitted in the chart as well). Set the chart titles as the two row headers respectively.",
+      "required_skill_ids": [
+        "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 3,
+          "action": "`TYPING` '=SUM(B2:B11)'"
+        },
+        {
+          "action_id": 4,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell A12",
+        "`TYPING` 'Total'",
+        "`PRESS` tab",
+        "`TYPING` '=SUM(B2:B11)'",
+        "`PRESS` enter",
+        "`CLICK` cell B12",
+        "`MOVE_TO bottom right corner of the cell B12`",
+        "`DRAG_TO` bottom right corner of the cell G12",
+        "`MOVE_TO` middle of cell A1",
+        "`DRAG_TO` middle of cell G1",
+        "`KEY_DOWN` ctrl",
+        "`CLICK` cell A12",
+        "`KEY_UP` ctrl",
+        "`KEY_DOWN` shift",
+        "`CLICK` cell G12",
+        "`KEY_UP` shift",
+        "`CLICK` chart icon",
+        "`CLICK` Bar",
+        "`CLICK` Chart elements",
+        "`CLICK` title text box",
+        "`TYPING` 'Total'",
+        "`PRESS` enter",
+        "`CLICK` cell A13",
+        "`TYPING` 'Growth'",
+        "`CLICK` cell C13",
+        "`TYPING` '=(C12-B12)/B12'",
+        "`PRESS` enter",
+        "`CLICK` cell C13",
+        "`MOVE_TO bottom right corner of the cell C13`",
+        "`DRAG_TO` bottom right corner of the cell G13",
+        "`MOVE_TO` middle of cell C1",
+        "`DRAG_TO` middle of cell G1",
+        "`KEY_DOWN` ctrl",
+        "`CLICK` cell C13",
+        "`KEY_UP` ctrl",
+        "`KEY_DOWN` shift",
+        "`CLICK` cell G13",
+        "`KEY_UP` shift",
+        "`CLICK` chart icon",
+        "`CLICK` Line",
+        "`CLICK` icon representing lines only (3rd from the right)",
+        "`CLICK` Chart elements",
+        "`CLICK` title text box",
+        "`TYPING` 'Growth'",
+        "`PRESS` enter"
+      ]
+    },
+    {
+      "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+      "instruction": "I have compute the acceleration in row 2 and I want you to fill out other rows for column B and D. Next concatenate the values from columns A to D, including their headers (the pattern is \"Header: cell value, ..., Header: cell value\"), into a new column named \"Combined Data\" for all rows. In the new column, only keep 2 decimal digits.",
+      "required_skill_ids": [
+        "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`CLICK` on cell B2"
+        },
+        {
+          "action_id": 1,
+          "action": "`DOUBLE_CLICK` bottom right corner of the cell B2"
+        },
+        {
+          "action_id": 2,
+          "action": "`CLICK` on cell D2"
+        },
+        {
+          "action_id": 3,
+          "action": "`DOUBLE_CLICK` bottom right corner of the cell D2"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell B2",
+        "`DOUBLE_CLICK` bottom right corner of the cell B2",
+        "`CLICK` on cell D2",
+        "`DOUBLE_CLICK` bottom right corner of the cell D2",
+        "`CLICK` on cell E1",
+        "`TYPING` 'Combined Data'",
+        "`PRESS` enter",
+        "`TYPING` '=$A$1&\": \"&FIXED(A2,2)&\", \"&$B$1&\": \"&FIXED(B2,2)&\", \"&$C$1&\": \"&FIXED(C2,2)&\", \"&$D$1&\": \"&FIXED(D2,2)'",
+        "`CLICK` on cell E2",
+        "`DOUBLE_CLICK` bottom right corner of the cell E2"
+      ]
+    },
+    {
+      "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+      "instruction": "Calculate revenue in a new column according to the Retail Price sheet (consider product price and quantity and discount), and generate a Pivot Table in a new sheet (Sheet2) that summarizes the revenue of each product.",
+      "required_skill_ids": [
+        "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-03"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 10,
+          "action": "`HOTKEY` ctrl-A"
+        },
+        {
+          "action_id": 11,
+          "action": "`CLICK` pivot table icon"
+        },
+        {
+          "action_id": 12,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` cell G1",
+        "`TYPING` 'Revenue'",
+        "`PRESS` enter",
+        "`CLICK` sheet 'Retail Price'",
+        "`CLICK` sheet 'Sheet1'",
+        "`TYPING` '=VLOOKUP(C2,$'Retail Price'.$A$2:$B$23,2,FALSE())*E2*(1-F2)'",
+        "`PRESS` enter",
+        "`CLICK` cell G2",
+        "`MOVE_TO` bottom right corner of the cell G2`",
+        "`DOUBLE_CLICK`",
+        "`HOTKEY` ctrl-A",
+        "`CLICK` pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` product in available fields box",
+        "`DRAG_TO` row fields box",
+        "`MOVE_TO` revenue in available fields box",
+        "`DRAG_TO` data fields box",
+        "`CLICK` ok",
+        "`DOUBLE_CLICK` Pivot Table Sheet1_1",
+        "`TYPING` Sheet2",
+        "`PRESS` enter"
+      ]
+    },
+    {
+      "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+      "instruction": "Create two pivot tables in a new sheet showing the total revenue for each product and sales channel.",
+      "required_skill_ids": [
+        "535364ea-05bd-46ea-9937-9f55c68507e8.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 8,
+          "action": "`DOUBLE_CLICK` Pivot Table Sheet1_1"
+        },
+        {
+          "action_id": 9,
+          "action": "`TYPING` Sheet2"
+        },
+        {
+          "action_id": 10,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`HOTKEY` ctrl-a",
+        "`CLICK` pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` product in available fields box",
+        "`DRAG_TO` row fields box",
+        "`MOVE_TO` revenue in available fields box",
+        "`DRAG_TO` data fields box",
+        "`CLICK` ok",
+        "`DOUBLE_CLICK` Pivot Table Sheet1_1",
+        "`TYPING` Sheet2",
+        "`PRESS` enter",
+        "`CLICK` sheet 'Sheet1'",
+        "`HOTKEY` ctrl-a",
+        "`CLICK` pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` sales channel in available fields box",
+        "`DRAG_TO` row fields box",
+        "`MOVE_TO` revenue in available fields box",
+        "`DRAG_TO` data fields box",
+        "`CLICK` Source and Destination dropdown",
+        "`CLICK` 'Selection' under destination",
+        "`CLICK` text box",
+        "`TYPING` '$Sheet2.$A$15'",
+        "`CLICK` ok"
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-calc-full-r01-015",
+    "task_detail_sha256": "dc613c01b652b8449bd68ecfd090039520352e0d761b1e658b3600727fd2f050",
+    "guide": {
+      "final_verification": [
+        "在“Dispatch Log”中检查 E2:E25：每条路线都有两位小数的 Estimated Liters 计算结果；选中任一如 E3 的单元格时，编辑栏中的公式应按行引用（例如 `=C3*D3`）。",
+        "检查 D28 仍为“Total estimated liters”，且 E28 显示数值；选中 E28 时，编辑栏应显示 `=SUM(E2:E25)`。",
+        "确认工作表标签中不再有“Analysis”，而是有“Zone Fuel Summary”。",
+        "打开“Zone Fuel Summary”，确认其中是 Pivot Table 输出：Zone 为行分类，Estimated Liters 为求和数值字段，并且每个 Zone 有一条汇总结果。",
+        "可将各 Zone 的 Pivot Table 汇总值与“Dispatch Log”中对应 Zone 的 Estimated Liters 相加结果作抽查比对；各分区合计之和应与 E28 的总计一致。"
+      ],
+      "language": "zh-CN",
+      "overview": "本指南完成车队路线的预计燃油计算、全表燃油总计，并在重命名后的汇总工作表中建立按 Zone 分组、汇总 Estimated Liters 的 Pivot Table。开始时不要改动原始路线数据列 A:D；只需要利用 E2 中已有的计算公式。",
+      "reference_task_id": "reference-task-calc-full-r01-015",
+      "starting_state_checks": [
+        "确认当前打开的是“Dispatch Log”工作表。",
+        "确认源数据的表头位于 A1:E1，路线记录位于第 2 至第 25 行；A:D 各行均有连续数据。",
+        "确认 E1 的标题为“Estimated Liters”，E2 已含公式 `=C2*D2`，但 E3:E25 仍为空白。",
+        "确认第 26、27 行为空，D28 为“Total estimated liters”，E28 为空白。",
+        "确认存在一个空白工作表标签“Analysis”，且尚未建立任何 Pivot Table。"
+      ],
+      "steps": [
+        {
+          "efficiency_tip": "先确认 E2 是正确的种子公式，再用填充柄一次性向下填充，避免逐行输入公式或复制粘贴。",
+          "instructions": [
+            "在“Dispatch Log”中单击单元格 E2。查看输入栏，确认其公式为 `=C2*D2`。",
+            "将指针移到 E2 选中框右下角的小方块（填充柄）上；当指针可用于填充时，双击该小方块。",
+            "Calc 会根据相邻的连续路线数据自动向下填充。滚动或单击 E25，确认该列已填充至第 25 行。"
+          ],
+          "skill_ids": [
+            "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-01"
+          ],
+          "step_number": 1,
+          "title": "向下填充每条路线的预计燃油公式",
+          "visible_success_signal": "E2:E25 都显示数值结果；例如选中 E3 时，公式会变为相对引用形式 `=C3*D3`，而不是所有行都引用第 2 行。"
+        },
+        {
+          "efficiency_tip": "使用一个 `SUM` 公式汇总连续区域，比逐个单元格相加更快，也会在路线数变化时更容易检查。",
+          "instructions": [
+            "单击指定总计结果单元格 E28。",
+            "输入公式 `=SUM(E2:E25)`。",
+            "按 Enter 确认公式。保留 D28 中原有标签“Total estimated liters”。"
+          ],
+          "skill_ids": [
+            "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-01"
+          ],
+          "step_number": 2,
+          "title": "计算全车队预计燃油总计",
+          "visible_success_signal": "E28 显示一个数值总计；选中 E28 时，输入栏显示 `=SUM(E2:E25)`。"
+        },
+        {
+          "efficiency_tip": "在建立报表前立即重命名空白输出表，可避免在 Pivot Table 的结果位置设置中选错工作表。",
+          "instructions": [
+            "在窗口底部找到名为“Analysis”的工作表标签。",
+            "双击“Analysis”标签，使工作表名称进入编辑状态。",
+            "输入 `Zone Fuel Summary`，然后按 Enter。"
+          ],
+          "skill_ids": [
+            "535364ea-05bd-46ea-9937-9f55c68507e8.skill-02"
+          ],
+          "step_number": 3,
+          "title": "重命名分析工作表",
+          "visible_success_signal": "原先显示“Analysis”的工作表标签现在清晰显示为“Zone Fuel Summary”，且该工作表仍为空白。"
+        },
+        {
+          "efficiency_tip": "先只选中连续的源表 A1:E25，不要把空行或第 28 行总计包含进去；这样 Pivot Table 会正确识别字段和记录。",
+          "instructions": [
+            "返回“Dispatch Log”工作表，在 A1:E25 中任意单击一个单元格，例如 A1。",
+            "按 Ctrl+A 选择当前连续数据区域。确认选区包含表头 A1:E1 和第 2 至第 25 行记录，范围止于 E25。",
+            "从菜单选择“数据 > 数据透视表 > 插入或编辑…”。如果出现要求确认数据源范围的对话框，保留当前检测到的选定范围并确认，以打开数据透视表布局对话框。"
+          ],
+          "skill_ids": [
+            "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-03"
+          ],
+          "step_number": 4,
+          "title": "选择路线数据并打开 Pivot Table 布局",
+          "visible_success_signal": "数据透视表布局窗口打开，字段列表中可见 Zone 和 Estimated Liters 等源表字段。"
+        },
+        {
+          "efficiency_tip": "将分组字段放入行区域、数值字段放入数据区域；只放入这两个必需字段可得到简洁且易核对的分区燃油报告。",
+          "instructions": [
+            "在 Pivot Table 布局对话框中，将字段 `Zone` 拖到“行字段”区域。",
+            "将字段 `Estimated Liters` 拖到“数据字段”区域。",
+            "检查数据字段的汇总方式为“Sum（求和）”。如果默认不是求和，可双击该数据字段，在字段设置中选择 Sum，然后确认。",
+            "在布局对话框中选择结果位置设置（通常通过“结果”按钮或结果位置选项），选择将结果放在现有工作表，并指定“Zone Fuel Summary”工作表的起始单元格 A1。",
+            "确认布局和结果位置，完成创建 Pivot Table。"
+          ],
+          "skill_ids": [],
+          "step_number": 5,
+          "title": "按 Zone 配置求和 Pivot Table 并放置到汇总表",
+          "visible_success_signal": "“Zone Fuel Summary”中从 A1 附近出现原生 Pivot Table 输出：Zone 显示为行标签，各 Zone 的 Estimated Liters 显示为求和结果，并通常带有总计行。"
+        }
+      ]
+    },
+    "generation": {
+      "request_id": "ed8daa46-6ca2-4bf2-b189-f6d37aac12e7",
+      "prompt_sha256": "f5a5213d5d3aa2d160b71e436a7ad8b274fcbc01771d43e5ea29993f14a9b281",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 3535,
+      "output_tokens": 1734,
+      "estimated_cost_usd": 0.027878
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-015",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-015/initial_artifact.xlsx",
+      "artifact_sha256": "2efa8c66a5836bbedac8ceddbe2548b1857137dbe9c1d375e9047d0497b127b0",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-015/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-015/artifact_qa.json",
+      "manual_setup_required": true,
+      "manual_setup_steps": [
+        "After building the workbook, place the text label \"Total estimated liters\" in Dispatch Log!D28 while leaving Dispatch Log!E28 blank. This preserves the required blank rows 26 and 27 and the designated total-result cell without adding extra source-table records."
+      ]
+    },
+    "packet_path": "artifact/initial_artifact.xlsx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-015",
+      "task_config_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-015.json",
+      "artifact_sha256": "2efa8c66a5836bbedac8ceddbe2548b1857137dbe9c1d375e9047d0497b127b0",
+      "blueprint_request_id": "9ff0cf06-ebc2-42d7-84ba-2731b3f60eba"
+    },
+    "packet_path": "task_config.json"
+  }
+}

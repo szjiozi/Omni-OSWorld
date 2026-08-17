@@ -1,0 +1,894 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-014",
+  "package": {
+    "reference_task_id": "reference-task-calc-full-r01-014",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_calc",
+    "task_instruction": "Prepare the Repair Fair Handoff sheet for the event coordinator: present the coverage targets in a kiosk-by-shift layout, and add a Pivot Table that shows how many check-in ticket records were logged at each kiosk.",
+    "required_skill_ids": [
+      "eb03d19a-b88d-4de4-8a64-ca0ac66f426b.skill-01",
+      "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-08"
+    ],
+    "artifact_spec": {
+      "artifact_type": "xlsx",
+      "domain": "community repair fair check-in handoff",
+      "generation_notes": [
+        "All names, ticket codes, kiosks, and check-in records are synthetic and privacy-safe.",
+        "Populate CheckIn Log with 30 realistic records across three kiosks so that Ticket Code is non-empty in every data row. Repeat some ticket codes to make the count-based summary useful.",
+        "Use ordinary header styling only. Do not create a native Pivot Table, conditional-format rule, chart, filter, or transposed output in the initial workbook.",
+        "Leave sufficient empty area on the Handoff Summary sheet for both requested outputs."
+      ],
+      "initial_state": [
+        "The workbook opens with the Handoff Summary sheet active.",
+        "Handoff Summary is blank and will receive the transposed coverage layout and the Pivot Table.",
+        "Coverage Setup contains a completed rectangular source matrix in A1:D4: headers in row 1 are Shift, Kiosk North, Kiosk Central, and Kiosk South; rows 2-4 are Morning, Midday, and Afternoon with small integer volunteer-coverage targets.",
+        "CheckIn Log contains a normal contiguous table in A1:D31 with headers Check-in Time, Kiosk, Ticket Code, and Repair Type. Ticket Code is text and populated for every record; Kiosk contains Kiosk North, Kiosk Central, or Kiosk South.",
+        "No formulas are required in the initial workbook."
+      ],
+      "must_not_be_completed": [
+        "Do not transpose or otherwise recreate the Coverage Setup matrix on Handoff Summary.",
+        "Do not create a Pivot Table or any other summary of the CheckIn Log data.",
+        "Do not preconfigure the Pivot Table aggregation; the recorded task must visibly set the Ticket Code data field to Count."
+      ],
+      "sheets": [
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "Shift"
+            },
+            {
+              "data_type": "integer",
+              "name": "Kiosk North"
+            },
+            {
+              "data_type": "integer",
+              "name": "Kiosk Central"
+            },
+            {
+              "data_type": "integer",
+              "name": "Kiosk South"
+            }
+          ],
+          "name": "Coverage Setup",
+          "purpose": "Provides the 4-by-4 shift-by-kiosk coverage matrix to be transposed for the handoff view.",
+          "row_count": 40
+        },
+        {
+          "columns": [
+            {
+              "data_type": "date",
+              "name": "Check-in Time"
+            },
+            {
+              "data_type": "text",
+              "name": "Kiosk"
+            },
+            {
+              "data_type": "text",
+              "name": "Ticket Code"
+            },
+            {
+              "data_type": "text",
+              "name": "Repair Type"
+            }
+          ],
+          "name": "CheckIn Log",
+          "purpose": "Provides check-in records for a Pivot Table that counts tickets by kiosk.",
+          "row_count": 30
+        },
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "(blank initial sheet)"
+            }
+          ],
+          "name": "Handoff Summary",
+          "purpose": "Blank destination sheet for the transposed coverage layout and the kiosk check-in count Pivot Table.",
+          "row_count": 10
+        }
+      ],
+      "workbook_title": "Repair Fair Handoff"
+    },
+    "operator_guide": {
+      "allowed_variation": "The expert may choose any non-overlapping placement on Handoff Summary, provided the transposed matrix is clearly identifiable and the Pivot Table visibly reports Ticket Code occurrence counts by Kiosk. Equivalent Calc Pivot Table creation workflows are acceptable.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Copy the entire labeled source block once and use Paste Special with the transpose option at the chosen destination rather than retyping or rearranging values.",
+          "operation_intent": "Transpose the complete shift-by-kiosk coverage matrix from Coverage Setup into the upper area of Handoff Summary.",
+          "skill_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b.skill-01",
+          "visible_success_signal": "The pasted layout has kiosks listed vertically and shifts across the top, with all coverage target values preserved in their rotated positions."
+        },
+        {
+          "efficiency_tip": "After adding Ticket Code to the Pivot Table data fields, open its data-field settings immediately and select Count rather than accepting a numeric aggregation default.",
+          "operation_intent": "Create a kiosk-level Pivot Table from CheckIn Log and set the Ticket Code data field to count non-empty check-in occurrences.",
+          "skill_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-08",
+          "visible_success_signal": "The Pivot Table lists each kiosk and a count-based Ticket Code result; its data-field label indicates Count rather than Sum."
+        }
+      ],
+      "recording_end_state": "Handoff Summary visibly contains a transposed coverage-target layout and a separate Pivot Table counting Ticket Code check-ins for each kiosk.",
+      "recording_start_state": "The workbook is open on the blank Handoff Summary sheet; Coverage Setup and CheckIn Log contain the prepared source data only."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Navigate between the source sheets and the blank Handoff Summary sheet.",
+        "reason": "The two requested deliverables use separate source ranges and share a designated presentation sheet."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Create a Pivot Table from the CheckIn Log range and place it in an unused area of Handoff Summary.",
+        "reason": "A Pivot Table object is required before its row field and count data field can be configured."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Assign Kiosk as the Pivot Table row field and Ticket Code as its data field.",
+        "reason": "These field placements are necessary so the requested occurrence count is displayed by kiosk."
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+          "skill_count": 1,
+          "skill_fraction": 0.5
+        },
+        {
+          "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+          "skill_count": 1,
+          "skill_fraction": 0.5
+        }
+      ],
+      "dominant_source_task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+      "dominant_source_skill_fraction": 0.5,
+      "complete_source_skill_sets_included": [
+        "eb03d19a-b88d-4de4-8a64-ca0ac66f426b"
+      ]
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+        "max_sequence_similarity": 0.359673,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "sequence_similarity": 0.231579
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "sequence_similarity": 0.025362
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "sequence_similarity": 0.016287
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "sequence_similarity": 0.045558
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "sequence_similarity": 0.139942
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "sequence_similarity": 0.306452
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "sequence_similarity": 0.022624
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "sequence_similarity": 0.289017
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "sequence_similarity": 0.205479
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "sequence_similarity": 0.255034
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "sequence_similarity": 0.316129
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "sequence_similarity": 0.014151
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "sequence_similarity": 0.359673
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "sequence_similarity": 0.217984
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "sequence_similarity": 0.234414
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "sequence_similarity": 0.016667
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "sequence_similarity": 0.19186
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "sequence_similarity": 0.143791
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "sequence_similarity": 0.020443
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.191176
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.013793
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "sequence_similarity": 0.272727
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "sequence_similarity": 0.302703
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "sequence_similarity": 0.0131
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "sequence_similarity": 0.275449
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "sequence_similarity": 0.279863
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "sequence_similarity": 0.179348
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "sequence_similarity": 0.021818
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "sequence_similarity": 0.280702
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "sequence_similarity": 0.014118
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "sequence_similarity": 0.009281
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "sequence_similarity": 0.215278
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "sequence_similarity": 0.299363
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "sequence_similarity": 0.271468
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "sequence_similarity": 0.189781
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "sequence_similarity": 0.217687
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "sequence_similarity": 0.042755
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "sequence_similarity": 0.145985
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "sequence_similarity": 0.262391
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "sequence_similarity": 0.03271
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "sequence_similarity": 0.02935
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "sequence_similarity": 0.034707
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "sequence_similarity": 0.297521
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "sequence_similarity": 0.210191
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "sequence_similarity": 0.153425
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "sequence_similarity": 0.030973
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "sequence_similarity": 0.182482
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+        "max_cosine_similarity": 0.327701,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "cosine_similarity": 0.198398
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "cosine_similarity": 0.241472
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "cosine_similarity": 0.283964
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "cosine_similarity": 0.285718
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "cosine_similarity": 0.242882
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "cosine_similarity": 0.222468
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "cosine_similarity": 0.29893
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "cosine_similarity": 0.267858
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "cosine_similarity": 0.304968
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "cosine_similarity": 0.09905
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "cosine_similarity": 0.293904
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "cosine_similarity": 0.270098
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "cosine_similarity": 0.321623
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "cosine_similarity": 0.246949
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "cosine_similarity": 0.163104
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "cosine_similarity": 0.161756
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "cosine_similarity": 0.264015
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "cosine_similarity": 0.289646
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "cosine_similarity": 0.2977
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.230635
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.193209
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "cosine_similarity": 0.24999
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "cosine_similarity": 0.217908
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "cosine_similarity": 0.172994
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "cosine_similarity": 0.194651
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "cosine_similarity": 0.198881
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "cosine_similarity": 0.272464
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "cosine_similarity": 0.259621
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "cosine_similarity": 0.223885
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "cosine_similarity": 0.139179
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "cosine_similarity": 0.327701
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "cosine_similarity": 0.201507
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "cosine_similarity": 0.314119
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "cosine_similarity": 0.220135
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "cosine_similarity": 0.170495
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "cosine_similarity": 0.26081
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "cosine_similarity": 0.29526
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "cosine_similarity": 0.215608
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "cosine_similarity": 0.25145
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "cosine_similarity": 0.189366
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "cosine_similarity": 0.15224
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "cosine_similarity": 0.200625
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "cosine_similarity": 0.222797
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "cosine_similarity": 0.238611
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "cosine_similarity": 0.309696
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "cosine_similarity": 0.312589
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "cosine_similarity": 0.289698
+          }
+        ],
+        "embedding_request_id": "e9df3ea8-8c8e-4f8c-9056-df67ef6090d3"
+      }
+    },
+    "generation": {
+      "attempt": 14,
+      "kind": "new_combination",
+      "request_id": "e5d5c912-f8ba-4f7d-bd64-f44bc1d21e2b",
+      "prompt_sha256": "96ed2e2f8aeffab7c679a29a6fb3e6a30f0fe0e66648e65b52031f103d6e8daa"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Paste a copied cell range with rows and columns transposed",
+      "procedure": [
+        "Select the rectangular source range to transpose. For example, drag from B2 through F5.",
+        "Copy the selected range with Ctrl+C.",
+        "Right-click the destination's top-left cell, such as B8, open Paste Special, and choose Transpose.",
+        "Calc pastes the copied values and formulas with the original rows becoming columns and the original columns becoming rows."
+      ],
+      "efficiency_tip": "Copy the full source range once, then use Paste Special directly at the destination's top-left cell; do not manually rearrange rows and columns.",
+      "source": {
+        "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "skill_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-08",
+      "app": "libreoffice_calc",
+      "name": "Count occurrences in a Pivot Table data field",
+      "procedure": [
+        "Double-click the field entry in the Pivot Table Data Fields area to open its data-field options.",
+        "Choose Count as the aggregation. This counts non-empty occurrences of the selected field rather than summing numeric values."
+      ],
+      "efficiency_tip": "Configure the aggregation immediately after adding the data field, while its settings dialog is easy to access from the Data Fields area.",
+      "source": {
+        "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+        "action_ids": [
+          24,
+          25,
+          44,
+          45,
+          64,
+          65
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+      "instruction": "Please create a new sheet. Keep its sheet name as \"Sheet2\". Merge cells A1:C1 in the new sheet and write \"Demographic Profile\" with blue (#0000ff) fill and bold white text. Then I want to create three pivot tables to show the percentage of Sex, Civil Status, and Highest Educational Attainment. They should be stacked one by one in Sheet2, each separated with a blank line.",
+      "required_skill_ids": [
+        "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-08"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 24,
+          "action": "`DOUBLE_CLICK on sex box in data fields"
+        },
+        {
+          "action_id": 25,
+          "action": "`CLICK` Count"
+        },
+        {
+          "action_id": 44,
+          "action": "`DOUBLE_CLICK on civil status box in data fields"
+        },
+        {
+          "action_id": 45,
+          "action": "`CLICK` Count"
+        },
+        {
+          "action_id": 64,
+          "action": "`DOUBLE_CLICK on Highest Educational Attainment box in data fields"
+        },
+        {
+          "action_id": 65,
+          "action": "`CLICK` Count"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on + to left of sheet1",
+        "`KEY_DOWN` shift",
+        "`CLICK` C1",
+        "`RIGHT_CLICK` selection",
+        "`CLICK` merge cells",
+        "`TYPING` Demographic Profile",
+        "`PRESS` enter",
+        "`CLICK` cell A1",
+        "`CLICK` arrow next to paint button dropdown",
+        "`CLICK` Custom color",
+        "`DOUBLE_CLICK` on text inside Hex # box",
+        "`TYPING` 0000ff",
+        "`PRESS` enter",
+        "`CLICK` font color arrow icon, which is to left of bucket",
+        "`CLICK` top right color in the color palette (white)",
+        "`CLICK` bold icon",
+        "`CLICK` Sheet1",
+        "`CLICK` column B grey cell",
+        "`CLICK` pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` 'Sex' in available fields",
+        "`DRAG_TO` box in row fields",
+        "`MOVE_TO` 'Sex' in available fields",
+        "`DRAG_TO` box in data fields",
+        "`DOUBLE_CLICK on sex box in data fields",
+        "`CLICK` Count",
+        "`CLICK` 'displayed value' dropdown",
+        "`CLICK` Normal dropdown next to 'Type'",
+        "`CLICK` '% of total'",
+        "`CLICK` ok",
+        "`CLICK` source and destination dropdown",
+        "`CLICK` 'Selection' under destination",
+        "`CLICK` text box",
+        "`TYPING` '$Sheet2.$A$2'",
+        "`CLICK` ok",
+        "`CLICK` Sheet2",
+        "`CLICK` Sheet1",
+        "`CLICK` column C grey cell",
+        "`CLICK` pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` 'Civil Status' in available fields",
+        "`DRAG_TO` box in row fields",
+        "`MOVE_TO` 'Civil Status' in available fields",
+        "`DRAG_TO` box in data fields",
+        "`DOUBLE_CLICK on civil status box in data fields",
+        "`CLICK` Count",
+        "`CLICK` 'displayed value' dropdown",
+        "`CLICK` Normal dropdown next to 'Type'",
+        "`CLICK` '% of total'",
+        "`PRESS` enter",
+        "`CLICK` source and destination dropdown",
+        "`CLICK` 'Selection' under destination",
+        "`CLICK` text box",
+        "`TYPING` '$Sheet2.$A$7'",
+        "`CLICK` ok",
+        "`CLICK` Sheet2",
+        "`CLICK` Sheet1",
+        "`CLICK` column D grey cell",
+        "`CLICK` pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` 'Highest Educational Attainment' in available fields",
+        "`DRAG_TO` box in row fields",
+        "`MOVE_TO` 'Highest Educational Attainment' in available fields",
+        "`DRAG_TO` box in data fields",
+        "`DOUBLE_CLICK on Highest Educational Attainment box in data fields",
+        "`CLICK` Count",
+        "`CLICK` 'displayed value' dropdown",
+        "`CLICK` Normal dropdown next to 'Type'",
+        "`CLICK` '% of total'",
+        "`PRESS` enter",
+        "`CLICK` source and destination dropdown",
+        "`CLICK` 'Selection' under destination",
+        "`CLICK` text box",
+        "`TYPING` '$Sheet2.$A$13'",
+        "`CLICK` ok"
+      ]
+    },
+    {
+      "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+      "instruction": "Apply matrix transposition to the table in B2:F5 and paste the transposed table at B8 (i.e., the top-left cell of the transposed table should be at B8)",
+      "required_skill_ids": [
+        "eb03d19a-b88d-4de4-8a64-ca0ac66f426b.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`MOVE_TO` B2"
+        },
+        {
+          "action_id": 1,
+          "action": "`DRAG_TO` F5"
+        },
+        {
+          "action_id": 2,
+          "action": "`HOTKEY` 'Ctrl + C' to copy the table."
+        },
+        {
+          "action_id": 3,
+          "action": "`RIGHT_CLICK` cell B8."
+        },
+        {
+          "action_id": 4,
+          "action": "`MOVE_TO` Paste Special..."
+        },
+        {
+          "action_id": 5,
+          "action": "`CLICK` Transpose"
+        }
+      ],
+      "single_actions": [
+        "`MOVE_TO` B2",
+        "`DRAG_TO` F5",
+        "`HOTKEY` 'Ctrl + C' to copy the table.",
+        "`RIGHT_CLICK` cell B8.",
+        "`MOVE_TO` Paste Special...",
+        "`CLICK` Transpose"
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-calc-full-r01-014",
+    "task_detail_sha256": "0e205b1033f2735cb1349ff9b210318196393552107050c72f8ac952cac5b3aa",
+    "guide": {
+      "final_verification": [
+        "查看“Handoff Summary”：上方应有一个 4×4 的覆盖目标表，第一行依次为 Shift、Morning、Midday、Afternoon，第一列为 Kiosk North、Kiosk Central、Kiosk South；各目标数字应与“Coverage Setup”中对应的原始数据一致但方向已旋转。",
+        "在“Handoff Summary”下方确认存在 Pivot Table：行标签按 Kiosk North、Kiosk Central、Kiosk South 分组，并显示 Ticket Code 的计数结果（通常还会有总计行）。",
+        "确认 Pivot Table 的数据字段标题明确包含“Count”或“计数”，而不是“Sum”或“求和”；三个 kiosk 的计数合计应为 CheckIn Log 中的 30 条数据记录。",
+        "确认两个输出没有重叠，且“Coverage Setup”和“CheckIn Log”中的原始数据仍保留。"
+      ],
+      "language": "zh-CN",
+      "overview": "本操作将在“ Handoff Summary ”中制作两项交接信息：先将“Coverage Setup”的按班次排列的覆盖目标矩阵转置为按 kiosk 纵向排列的布局，再依据“CheckIn Log”建立按 Kiosk 分组、按 Ticket Code 计数的 Pivot Table。",
+      "reference_task_id": "reference-task-calc-full-r01-014",
+      "starting_state_checks": [
+        "确认工作簿已打开，当前活动工作表为“Handoff Summary”，并且该表尚未放入覆盖目标布局或 Pivot Table。",
+        "切换到“Coverage Setup”，确认 A1:D4 是完整的带标题矩阵：第一行为 Shift、Kiosk North、Kiosk Central、Kiosk South；其余三行包含 Morning、Midday、Afternoon 及对应数值。",
+        "切换到“CheckIn Log”，确认 A1:D31 是连续的数据区域，列标题包括 Check-in Time、Kiosk、Ticket Code、Repair Type，且 Ticket Code 列的数据行均非空。",
+        "返回“Handoff Summary”，确认将在上方放置转置表、在较下方的空白区域放置 Pivot Table，以避免两项结果互相覆盖。"
+      ],
+      "steps": [
+        {
+          "efficiency_tip": "一次选中完整的带标题区域并复制，可使转置后的表同时保留 kiosk、班次和数值标签，无需手工重排。",
+          "instructions": [
+            "单击底部工作表标签“Coverage Setup”。",
+            "拖动选择完整区域 A1:D4；选择范围必须包含标题行和左侧的 Shift 标签列。",
+            "按 Ctrl+C 复制该区域。"
+          ],
+          "skill_ids": [],
+          "step_number": 1,
+          "title": "复制覆盖目标源矩阵",
+          "visible_success_signal": "A1:D4 周围显示选中边框；复制后该区域通常会出现移动的虚线边框。"
+        },
+        {
+          "efficiency_tip": "在目标区域只指定左上角单元格即可；使用“选择性粘贴”的转置功能比逐个复制单元格更快，也能避免错位。",
+          "instructions": [
+            "切换回“Handoff Summary”。",
+            "单击 A1，作为转置覆盖表的左上角位置。",
+            "右键单击 A1，选择“选择性粘贴”，再选择“转置”。如果界面先打开“选择性粘贴”对话框，请勾选或选择“转置”后确认。",
+            "单击空白单元格以取消复制状态。"
+          ],
+          "skill_ids": [
+            "eb03d19a-b88d-4de4-8a64-ca0ac66f426b.skill-01"
+          ],
+          "step_number": 2,
+          "title": "将覆盖矩阵转置到交接汇总表",
+          "visible_success_signal": "A1:D4 显示旋转后的表格：第一行是 Shift、Morning、Midday、Afternoon，第一列依次是 Kiosk North、Kiosk Central、Kiosk South，所有覆盖目标数值均已保留在旋转后的对应位置。"
+        },
+        {
+          "efficiency_tip": "选择完整的连续数据区域而非单独一列，Pivot Table 才能同时使用 Kiosk 作为分组字段和 Ticket Code 作为计数字段。",
+          "instructions": [
+            "切换到“CheckIn Log”。",
+            "选择 A1:D31，包括四个字段标题及全部 30 条记录。",
+            "打开“数据”菜单，选择“数据透视表”，再选择“插入或编辑…”。",
+            "在数据源选择中保留当前选中的单元格区域，并继续进入 Pivot Table 布局窗口。"
+          ],
+          "skill_ids": [],
+          "step_number": 3,
+          "title": "以签到记录作为 Pivot Table 数据源",
+          "visible_success_signal": "显示 Pivot Table 的布局窗口，可看到 Check-in Time、Kiosk、Ticket Code 和 Repair Type 等可用字段。"
+        },
+        {
+          "efficiency_tip": "只使用完成任务所需的两个字段：将 Kiosk 放在行区域、将 Ticket Code 放在数据区域，可让结果保持简洁且易于交接查看。",
+          "instructions": [
+            "在布局窗口中，将字段“Kiosk”拖入“行字段”区域。",
+            "将字段“Ticket Code”拖入“数据字段”区域。",
+            "不要将 Check-in Time 或 Repair Type 放入行、列或数据区域，除非界面自动带入后需要将其移除。"
+          ],
+          "skill_ids": [],
+          "step_number": 4,
+          "title": "设置 kiosk 分组与票号数据字段",
+          "visible_success_signal": "布局窗口的“行字段”区域包含 Kiosk，“数据字段”区域包含 Ticket Code。"
+        },
+        {
+          "efficiency_tip": "在刚加入数据字段后立即打开其设置，可以直接确认聚合方式，避免先生成不符合要求的汇总表后再返工。",
+          "instructions": [
+            "在 Pivot Table 布局窗口的“数据字段”区域中，双击“Ticket Code”字段。",
+            "在数据字段选项中选择“Count”作为汇总方式；不要选择 Sum。",
+            "确认设置返回布局窗口，并检查 Ticket Code 数据字段的显示名称已反映 Count 或计数。",
+            "确认布局设置以继续选择输出位置。"
+          ],
+          "skill_ids": [
+            "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-08"
+          ],
+          "step_number": 5,
+          "title": "将 Ticket Code 数据字段设置为计数",
+          "visible_success_signal": "Ticket Code 数据字段的汇总方式显示为 Count/计数，表示它将统计每个 kiosk 中非空 Ticket Code 的出现次数。"
+        },
+        {
+          "efficiency_tip": "将 Pivot Table 放在转置表下方并预留空行，能让两个交接输出清晰分开，也便于以后刷新或扩展 Pivot Table。",
+          "instructions": [
+            "在 Pivot Table 的输出位置设置中，选择将结果放在现有工作表。",
+            "指定“Handoff Summary”上的 A7 作为输出区域左上角；该位置位于 A1:D4 转置表下方，并留有空白行。",
+            "确认创建 Pivot Table。必要时切换回“Handoff Summary”查看结果。"
+          ],
+          "skill_ids": [],
+          "step_number": 6,
+          "title": "将 kiosk 计数 Pivot Table 放到交接汇总表",
+          "visible_success_signal": "“Handoff Summary”从 A7 附近开始出现 Pivot Table，其中按 Kiosk 列出 Kiosk North、Kiosk Central、Kiosk South，并显示 Ticket Code 的 Count/计数列及总计。"
+        },
+        {
+          "efficiency_tip": "最后同时核对布局方向和计数汇总方式，可快速发现将数据字段误设为求和或将 Pivot Table 放错位置等问题。",
+          "instructions": [
+            "检查上方转置表的行列方向：kiosk 应在第一列纵向显示，Morning、Midday、Afternoon 应横向显示在第一行。",
+            "检查 Pivot Table 的行项目是 kiosk，数据字段是 Ticket Code 的 Count/计数。",
+            "确认 Pivot Table 的三个 kiosk 计数相加为 30，并确认其位置未覆盖转置覆盖表。"
+          ],
+          "skill_ids": [],
+          "step_number": 7,
+          "title": "核对交接汇总输出",
+          "visible_success_signal": "“Handoff Summary”清楚地同时展示转置后的覆盖目标布局和独立的 kiosk Ticket Code 计数 Pivot Table。"
+        }
+      ]
+    },
+    "generation": {
+      "request_id": "fdd77a33-6541-4ddd-a052-92d43c650ecd",
+      "prompt_sha256": "fafddb4e15928cbcbbcc9481739710cf89c512e1a6539391681598ccb81202d5",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 2827,
+      "output_tokens": 2122,
+      "estimated_cost_usd": 0.031118
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-014",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/initial_artifact.xlsx",
+      "artifact_sha256": "28b3a6cdd9f468a591b07b4c4c223c6a5aa04d0c3bed9851d6095faff92bb164",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.xlsx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-014",
+      "task_config_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-014.json",
+      "artifact_sha256": "28b3a6cdd9f468a591b07b4c4c223c6a5aa04d0c3bed9851d6095faff92bb164",
+      "blueprint_request_id": "bbe3ec97-01dc-4e3d-afc2-b347de739e8f"
+    },
+    "packet_path": "task_config.json"
+  }
+}

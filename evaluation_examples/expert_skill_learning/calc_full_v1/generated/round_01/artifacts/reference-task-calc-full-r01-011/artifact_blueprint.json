@@ -1,0 +1,349 @@
+{
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "@",
+        "$#,##0.00",
+        "$#,##0.00",
+        "0",
+        "$#,##0.00",
+        "$#,##0.00"
+      ],
+      "column_types": [
+        "text",
+        "currency",
+        "currency",
+        "integer",
+        "currency",
+        "currency"
+      ],
+      "formulas": [
+        {
+          "cell": "B2",
+          "formula": "=D2*E2"
+        },
+        {
+          "cell": "C2",
+          "formula": "=B2+F2"
+        }
+      ],
+      "freeze_header_row": true,
+      "headers": [
+        "Event Code",
+        "Gross Revenue",
+        "Community Share",
+        "Registrations",
+        "Fee per Registration",
+        "Sponsor Grant"
+      ],
+      "name": "Event Ledger",
+      "rows": [
+        {
+          "values": [
+            "EVT-101",
+            "",
+            "",
+            "24",
+            "35",
+            "120"
+          ]
+        },
+        {
+          "values": [
+            "EVT-102",
+            "",
+            "",
+            "18",
+            "40",
+            "80"
+          ]
+        },
+        {
+          "values": [
+            "EVT-103",
+            "",
+            "",
+            "31",
+            "28",
+            "150"
+          ]
+        },
+        {
+          "values": [
+            "EVT-104",
+            "",
+            "",
+            "16",
+            "45",
+            "60"
+          ]
+        },
+        {
+          "values": [
+            "EVT-105",
+            "",
+            "",
+            "27",
+            "32",
+            "110"
+          ]
+        },
+        {
+          "values": [
+            "EVT-106",
+            "",
+            "",
+            "22",
+            "38",
+            "90"
+          ]
+        },
+        {
+          "values": [
+            "EVT-107",
+            "",
+            "",
+            "35",
+            "25",
+            "175"
+          ]
+        },
+        {
+          "values": [
+            "EVT-108",
+            "",
+            "",
+            "19",
+            "42",
+            "70"
+          ]
+        },
+        {
+          "values": [
+            "EVT-109",
+            "",
+            "",
+            "29",
+            "30",
+            "130"
+          ]
+        },
+        {
+          "values": [
+            "EVT-110",
+            "",
+            "",
+            "14",
+            "50",
+            "55"
+          ]
+        },
+        {
+          "values": [
+            "EVT-111",
+            "",
+            "",
+            "33",
+            "27",
+            "160"
+          ]
+        },
+        {
+          "values": [
+            "EVT-112",
+            "",
+            "",
+            "21",
+            "36",
+            "85"
+          ]
+        },
+        {
+          "values": [
+            "EVT-113",
+            "",
+            "",
+            "26",
+            "34",
+            "100"
+          ]
+        },
+        {
+          "values": [
+            "EVT-114",
+            "",
+            "",
+            "17",
+            "48",
+            "65"
+          ]
+        },
+        {
+          "values": [
+            "EVT-115",
+            "",
+            "",
+            "30",
+            "29",
+            "140"
+          ]
+        },
+        {
+          "values": [
+            "EVT-116",
+            "",
+            "",
+            "23",
+            "37",
+            "95"
+          ]
+        },
+        {
+          "values": [
+            "EVT-117",
+            "",
+            "",
+            "28",
+            "31",
+            "125"
+          ]
+        },
+        {
+          "values": [
+            "EVT-118",
+            "",
+            "",
+            "20",
+            "44",
+            "75"
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "@"
+      ],
+      "column_types": [
+        "text"
+      ],
+      "formulas": [],
+      "freeze_header_row": true,
+      "headers": [
+        "Event Code"
+      ],
+      "name": "Upload",
+      "rows": [
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        }
+      ]
+    }
+  ],
+  "workbook_title": "Community Workshop Event Finance"
+}

@@ -1,0 +1,135 @@
+{
+  "schema_version": "1.0",
+  "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+  "app": "libreoffice_calc",
+  "single_action_count": 45,
+  "prompt_sha256": "7d54716cbeb54b734fabdc97846ad2ad18231f505c191cabdc1ebc8d398adace",
+  "request_id": "09494e6a-032d-48e8-abf5-8c0e4ee886d2",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1701,
+    "cached_input_tokens": 0,
+    "output_tokens": 1783,
+    "estimated_cost_usd": 0.024798
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          3,
+          4
+        ],
+        "efficiency_tip": "Enter the formula once in the first result cell, then use the fill handle separately to propagate it rather than retyping the formula for every column.",
+        "name": "Enter a range-total formula in a spreadsheet cell",
+        "procedure": [
+          "Select the first result cell in the totals row and type a SUM formula covering the source values for that column.",
+          "For example, enter `=SUM(B2:B11)` and press Enter to calculate the total for column B."
+        ]
+      },
+      {
+        "action_ids": [
+          5,
+          6,
+          7,
+          27,
+          28,
+          29
+        ],
+        "efficiency_tip": "Drag the fill handle across the full destination range in one motion; Calc adjusts relative references automatically.",
+        "name": "Propagate a formula horizontally with the fill handle",
+        "procedure": [
+          "Select the cell containing the formula to copy, then point to its bottom-right fill handle until the pointer indicates autofill.",
+          "Drag the handle across the target columns. For example, drag from B12 through G12 to copy a column-total formula, or from C13 through G13 to copy a relative growth formula.",
+          "Verify that relative references shift with each destination column; for example, a formula based on C12 and B12 becomes one based on D12 and C12 in the next column."
+        ]
+      },
+      {
+        "action_ids": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37
+        ],
+        "efficiency_tip": "Build the chart source selection before opening the chart command, using Ctrl to retain the first range and Shift to extend the second range, instead of creating a chart and editing its data afterward.",
+        "name": "Select separated header and data ranges for a chart",
+        "procedure": [
+          "Drag across the header cells that should provide category labels, such as A1:G1 or C1:G1.",
+          "Hold Ctrl and click the first cell of the separate data row to add it to the existing selection.",
+          "Hold Shift and click the final cell in that data row to extend the added selection across the row; for example, select A12:G12 or C13:G13 while retaining the header range."
+        ]
+      },
+      {
+        "action_ids": [
+          16,
+          17
+        ],
+        "efficiency_tip": "Select the intended source ranges first, then choose the chart type directly from the chart control so the chart is created with the correct data and type in one pass.",
+        "name": "Insert a bar chart from the selected spreadsheet range",
+        "procedure": [
+          "With the chart source ranges selected, click the chart icon in the spreadsheet interface.",
+          "Choose the Bar chart type to create a bar chart from the selected labels and values."
+        ]
+      },
+      {
+        "action_ids": [
+          18,
+          19,
+          20,
+          21,
+          41,
+          42,
+          43,
+          44
+        ],
+        "efficiency_tip": "Edit the title immediately after creating each chart while it is active, avoiding later selection and formatting steps.",
+        "name": "Set a chart title through the Chart elements control",
+        "procedure": [
+          "Activate the chart and open Chart elements.",
+          "Click the title text box, type the desired title, and press Enter to apply it.",
+          "For example, type `Total` for one chart or `Growth` for another; use the text appropriate to the chart in a new workbook."
+        ]
+      },
+      {
+        "action_ids": [
+          24,
+          25,
+          26
+        ],
+        "efficiency_tip": "Use relative cell references when the same calculation will be filled across adjacent columns; this lets Calc update the references automatically during autofill.",
+        "name": "Build a relative percentage-change formula",
+        "procedure": [
+          "Select the first cell where a period-over-period result should appear.",
+          "Enter a formula that subtracts the previous-period value from the current-period value and divides by the previous-period value. For example, enter `=(C12-B12)/B12` and press Enter.",
+          "Keep the references relative (without `$`) when the formula is intended to be copied horizontally, so the next column updates to the corresponding adjacent values."
+        ]
+      },
+      {
+        "action_ids": [
+          38,
+          39,
+          40
+        ],
+        "efficiency_tip": "Choose the specific line subtype during chart insertion instead of creating a default chart and changing its subtype afterward.",
+        "name": "Insert a lines-only chart from the selected spreadsheet range",
+        "procedure": [
+          "With the source ranges selected, click the chart icon and choose the Line chart category.",
+          "Choose the lines-only subtype, represented by the line-style icon, to create a chart without point markers."
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,772 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-020",
+  "package": {
+    "reference_task_id": "reference-task-calc-full-r01-020",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_calc",
+    "task_instruction": "Finish the Community Garden Supply Plan by giving the title cell A1 a #2F6B4F background and completing the Line Cost calculations for every listed supply item from the existing first calculation.",
+    "required_skill_ids": [
+      "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-03",
+      "d681960f-7bc3-4286-9913-a8812ba3261a.skill-02"
+    ],
+    "artifact_spec": {
+      "artifact_type": "xlsx",
+      "domain": "Community garden supply budget",
+      "generation_notes": [
+        "Use entirely synthetic, privacy-safe garden supply planning data.",
+        "Seed the first line-extension formula only in D4 as =B4*C4. Leave D5:D27 empty so the formula propagation is visibly incomplete.",
+        "Format columns C and D as currency with two decimal places. Use ordinary table-header styling in row 3, but do not apply a background fill to A1.",
+        "Set A1 text to \"Community Garden Supply Plan\" and make it bold with a larger font; leave it unfilled so its requested final color change is visible.",
+        "Keep columns A:C populated continuously from rows 4 through 27, ensuring that double-clicking the fill handle of D4 can extend the formula through the full data region."
+      ],
+      "initial_state": [
+        "The workbook opens on the single sheet named \"Supply Plan\".",
+        "A1 contains the plan title and has no custom background color.",
+        "Row 3 contains table headers.",
+        "D4 contains the only existing line-cost formula; D5:D27 are blank.",
+        "There are no totals, charts, Pivot Tables, conditional-format rules, or additional sheets."
+      ],
+      "must_not_be_completed": [
+        "Do not prefill D5:D27 with formulas or values.",
+        "Do not pre-apply the requested hexadecimal background color to A1.",
+        "Do not add a grand-total row, chart, Pivot Table, or new worksheet."
+      ],
+      "sheets": [
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "Supply Item"
+            },
+            {
+              "data_type": "integer",
+              "name": "Units"
+            },
+            {
+              "data_type": "currency",
+              "name": "Unit Cost"
+            },
+            {
+              "data_type": "currency",
+              "name": "Line Cost"
+            }
+          ],
+          "name": "Supply Plan",
+          "purpose": "Itemized supply budget whose line costs need to be completed and whose title needs final visual branding.",
+          "row_count": 27
+        }
+      ],
+      "workbook_title": "Community Garden Supply Budget"
+    },
+    "operator_guide": {
+      "allowed_variation": "The expert may use equivalent Calc menus, toolbar controls, keyboard navigation, or selection methods, provided the exact title color and the formula-filled line-cost range are visibly achieved.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Enter the exact hexadecimal value in the custom color control rather than choosing an approximate palette swatch.",
+          "operation_intent": "Apply the requested exact custom background color to the title cell A1.",
+          "skill_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-03",
+          "visible_success_signal": "A1, containing \"Community Garden Supply Plan,\" visibly displays the specified custom fill color #2F6B4F."
+        },
+        {
+          "efficiency_tip": "Use the formula cell's fill handle and double-click it so Calc follows the neighboring contiguous item data instead of manually dragging to the last row.",
+          "operation_intent": "Propagate the seeded Line Cost formula from D4 through every populated supply-item row.",
+          "skill_id": "d681960f-7bc3-4286-9913-a8812ba3261a.skill-02",
+          "visible_success_signal": "D4:D27 contain calculated currency amounts, with no blank Line Cost cells alongside populated rows 4:27."
+        }
+      ],
+      "recording_end_state": "The title cell A1 has fill #2F6B4F, and Line Cost is calculated in D4:D27 using the propagated relative-reference formula; no unrelated summaries or sheets have been added.",
+      "recording_start_state": "The Supply Plan sheet is open with unfilled title cell A1, populated input columns A:C for rows 4:27, formula only in D4, and blank D5:D27."
+    },
+    "expected_incidental_operations": [],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+          "skill_count": 1,
+          "skill_fraction": 0.5
+        },
+        {
+          "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+          "skill_count": 1,
+          "skill_fraction": 0.5
+        }
+      ],
+      "dominant_source_task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+      "dominant_source_skill_fraction": 0.5,
+      "complete_source_skill_sets_included": []
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+        "max_sequence_similarity": 0.388406,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "sequence_similarity": 0.247191
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "sequence_similarity": 0.011236
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "sequence_similarity": 0.040268
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "sequence_similarity": 0.066508
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "sequence_similarity": 0.363077
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "sequence_similarity": 0.282486
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "sequence_similarity": 0.009434
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "sequence_similarity": 0.371951
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "sequence_similarity": 0.211679
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "sequence_similarity": 0.257143
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "sequence_similarity": 0.205479
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "sequence_similarity": 0.009852
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "sequence_similarity": 0.223496
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "sequence_similarity": 0.303725
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "sequence_similarity": 0.234987
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "sequence_similarity": 0.012987
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "sequence_similarity": 0.257669
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "sequence_similarity": 0.3125
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "sequence_similarity": 0.035149
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.364103
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.021352
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "sequence_similarity": 0.179487
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "sequence_similarity": 0.340909
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "sequence_similarity": 0.013636
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "sequence_similarity": 0.278481
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "sequence_similarity": 0.138182
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "sequence_similarity": 0.245714
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "sequence_similarity": 0.018797
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "sequence_similarity": 0.2397
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "sequence_similarity": 0.02457
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "sequence_similarity": 0.024213
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "sequence_similarity": 0.244444
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "sequence_similarity": 0.277027
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "sequence_similarity": 0.221574
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "sequence_similarity": 0.226562
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "sequence_similarity": 0.188406
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "sequence_similarity": 0.014888
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "sequence_similarity": 0.25
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "sequence_similarity": 0.338462
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "sequence_similarity": 0.043902
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "sequence_similarity": 0.061002
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "sequence_similarity": 0.031603
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "sequence_similarity": 0.388406
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "sequence_similarity": 0.331081
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "sequence_similarity": 0.242075
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "sequence_similarity": 0.023041
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "sequence_similarity": 0.304688
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+        "max_cosine_similarity": 0.426272,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "cosine_similarity": 0.426272
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "cosine_similarity": 0.34423
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "cosine_similarity": 0.39707
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "cosine_similarity": 0.295151
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "cosine_similarity": 0.330865
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "cosine_similarity": 0.289159
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "cosine_similarity": 0.339221
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "cosine_similarity": 0.334451
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "cosine_similarity": 0.335666
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "cosine_similarity": 0.268008
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "cosine_similarity": 0.269746
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "cosine_similarity": 0.400343
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "cosine_similarity": 0.305517
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "cosine_similarity": 0.368508
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "cosine_similarity": 0.340519
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "cosine_similarity": 0.314229
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "cosine_similarity": 0.326978
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "cosine_similarity": 0.28451
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "cosine_similarity": 0.381069
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.330726
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.32503
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "cosine_similarity": 0.268585
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "cosine_similarity": 0.32951
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "cosine_similarity": 0.245534
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "cosine_similarity": 0.294087
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "cosine_similarity": 0.277425
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "cosine_similarity": 0.336085
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "cosine_similarity": 0.366579
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "cosine_similarity": 0.257431
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "cosine_similarity": 0.312515
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "cosine_similarity": 0.341288
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "cosine_similarity": 0.256117
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "cosine_similarity": 0.281941
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "cosine_similarity": 0.225609
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "cosine_similarity": 0.30157
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "cosine_similarity": 0.256851
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "cosine_similarity": 0.284301
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "cosine_similarity": 0.32156
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "cosine_similarity": 0.34092
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "cosine_similarity": 0.276699
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "cosine_similarity": 0.26369
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "cosine_similarity": 0.277185
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "cosine_similarity": 0.252981
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "cosine_similarity": 0.294192
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "cosine_similarity": 0.373595
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "cosine_similarity": 0.318541
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "cosine_similarity": 0.343136
+          }
+        ],
+        "embedding_request_id": "e9df3ea8-8c8e-4f8c-9056-df67ef6090d3"
+      }
+    },
+    "generation": {
+      "attempt": 20,
+      "kind": "new_combination",
+      "request_id": "85926b88-7a08-4388-ab7b-8322290917cc",
+      "prompt_sha256": "2be574d5b7c7a0a4b15e20ee5a3732566ad82115527f348438a30eb9030a16ef"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-03",
+      "app": "libreoffice_calc",
+      "name": "Apply a custom cell background color by hexadecimal value",
+      "procedure": [
+        "Select the target cell or merged range, for example A1:C1 via its merged anchor cell A1.",
+        "Open the background/fill color dropdown next to the paint-bucket control and choose Custom Color.",
+        "Select the hexadecimal input, replace its value with an exact color such as `0000ff`, and press Enter to apply the fill."
+      ],
+      "efficiency_tip": "Enter an exact hexadecimal color value in the custom-color dialog instead of approximating the shade from the palette.",
+      "source": {
+        "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+        "action_ids": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "skill_id": "d681960f-7bc3-4286-9913-a8812ba3261a.skill-02",
+      "app": "libreoffice_calc",
+      "name": "AutoFill a formula down by double-clicking the fill handle",
+      "procedure": [
+        "Select the cell that contains the formula to propagate.",
+        "Point to the small square at the selected cell's bottom-right corner (the fill handle).",
+        "Double-click the fill handle. Calc copies the formula downward through the rows indicated by the neighboring contiguous data, adjusting relative references for each destination row."
+      ],
+      "efficiency_tip": "Double-clicking the fill handle is faster and less error-prone than dragging across a long list, because Calc extends the formula through the adjacent contiguous data region.",
+      "source": {
+        "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+        "action_ids": [
+          3,
+          4
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+      "instruction": "Please create a new sheet. Keep its sheet name as \"Sheet2\". Merge cells A1:C1 in the new sheet and write \"Demographic Profile\" with blue (#0000ff) fill and bold white text. Then I want to create three pivot tables to show the percentage of Sex, Civil Status, and Highest Educational Attainment. They should be stacked one by one in Sheet2, each separated with a blank line.",
+      "required_skill_ids": [
+        "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-03"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 7,
+          "action": "`CLICK` cell A1"
+        },
+        {
+          "action_id": 8,
+          "action": "`CLICK` arrow next to paint button dropdown"
+        },
+        {
+          "action_id": 9,
+          "action": "`CLICK` Custom color"
+        },
+        {
+          "action_id": 10,
+          "action": "`DOUBLE_CLICK` on text inside Hex # box"
+        },
+        {
+          "action_id": 11,
+          "action": "`TYPING` 0000ff"
+        },
+        {
+          "action_id": 12,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on + to left of sheet1",
+        "`KEY_DOWN` shift",
+        "`CLICK` C1",
+        "`RIGHT_CLICK` selection",
+        "`CLICK` merge cells",
+        "`TYPING` Demographic Profile",
+        "`PRESS` enter",
+        "`CLICK` cell A1",
+        "`CLICK` arrow next to paint button dropdown",
+        "`CLICK` Custom color",
+        "`DOUBLE_CLICK` on text inside Hex # box",
+        "`TYPING` 0000ff",
+        "`PRESS` enter",
+        "`CLICK` font color arrow icon, which is to left of bucket",
+        "`CLICK` top right color in the color palette (white)",
+        "`CLICK` bold icon",
+        "`CLICK` Sheet1",
+        "`CLICK` column B grey cell",
+        "`CLICK` pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` 'Sex' in available fields",
+        "`DRAG_TO` box in row fields",
+        "`MOVE_TO` 'Sex' in available fields",
+        "`DRAG_TO` box in data fields",
+        "`DOUBLE_CLICK on sex box in data fields",
+        "`CLICK` Count",
+        "`CLICK` 'displayed value' dropdown",
+        "`CLICK` Normal dropdown next to 'Type'",
+        "`CLICK` '% of total'",
+        "`CLICK` ok",
+        "`CLICK` source and destination dropdown",
+        "`CLICK` 'Selection' under destination",
+        "`CLICK` text box",
+        "`TYPING` '$Sheet2.$A$2'",
+        "`CLICK` ok",
+        "`CLICK` Sheet2",
+        "`CLICK` Sheet1",
+        "`CLICK` column C grey cell",
+        "`CLICK` pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` 'Civil Status' in available fields",
+        "`DRAG_TO` box in row fields",
+        "`MOVE_TO` 'Civil Status' in available fields",
+        "`DRAG_TO` box in data fields",
+        "`DOUBLE_CLICK on civil status box in data fields",
+        "`CLICK` Count",
+        "`CLICK` 'displayed value' dropdown",
+        "`CLICK` Normal dropdown next to 'Type'",
+        "`CLICK` '% of total'",
+        "`PRESS` enter",
+        "`CLICK` source and destination dropdown",
+        "`CLICK` 'Selection' under destination",
+        "`CLICK` text box",
+        "`TYPING` '$Sheet2.$A$7'",
+        "`CLICK` ok",
+        "`CLICK` Sheet2",
+        "`CLICK` Sheet1",
+        "`CLICK` column D grey cell",
+        "`CLICK` pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` 'Highest Educational Attainment' in available fields",
+        "`DRAG_TO` box in row fields",
+        "`MOVE_TO` 'Highest Educational Attainment' in available fields",
+        "`DRAG_TO` box in data fields",
+        "`DOUBLE_CLICK on Highest Educational Attainment box in data fields",
+        "`CLICK` Count",
+        "`CLICK` 'displayed value' dropdown",
+        "`CLICK` Normal dropdown next to 'Type'",
+        "`CLICK` '% of total'",
+        "`PRESS` enter",
+        "`CLICK` source and destination dropdown",
+        "`CLICK` 'Selection' under destination",
+        "`CLICK` text box",
+        "`TYPING` '$Sheet2.$A$13'",
+        "`CLICK` ok"
+      ]
+    },
+    {
+      "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+      "instruction": "According to the scale table shown above, calculate and give each student a grade in the table below",
+      "required_skill_ids": [
+        "d681960f-7bc3-4286-9913-a8812ba3261a.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 3,
+          "action": "`CLICK` F10"
+        },
+        {
+          "action_id": 4,
+          "action": "`DOUBLE_CLICK` bottom right corner of the cell"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` F10",
+        "`TYPING` '=VLOOKUP(E10, $D$2:$E$7, 2, true)'",
+        "`PRESS` Enter",
+        "`CLICK` F10",
+        "`DOUBLE_CLICK` bottom right corner of the cell"
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-calc-full-r01-020",
+    "task_detail_sha256": "698766cd9dc2e4bb8b05455898a987bb71f7e618b60b45fabee28606cdb16822",
+    "guide": {
+      "final_verification": [
+        "确认工作簿仍只有“Supply Plan”一个工作表，未新增汇总行、图表、数据透视表或其他无关内容。",
+        "查看 A1：标题仍为“Community Garden Supply Plan”，且单元格背景为深绿色 #2F6B4F。",
+        "查看 D4:D27：每个有供应项目的行都有货币格式的 Line Cost 结果，D5:D27 不再有空白单元格。",
+        "抽查 D5 或 D27，在输入行中确认公式使用本行相对引用，例如 D5 为 =B5*C5、D27 为 =B27*C27。"
+      ],
+      "language": "zh-CN",
+      "overview": "在“Supply Plan”工作表中，为标题单元格 A1 设置精确的 #2F6B4F 背景色，并利用 D4 中已有的行成本公式快速填充全部供应项目行。",
+      "reference_task_id": "reference-task-calc-full-r01-020",
+      "starting_state_checks": [
+        "确认当前打开的工作表名称为“Supply Plan”。",
+        "确认 A1 显示“Community Garden Supply Plan”，字体较大且加粗，但尚未填充目标背景色。",
+        "确认第 3 行是表头，A4:C27 均为连续的供应项目、数量和 Unit Cost 数据。",
+        "确认 D4 已有公式 =B4*C4，且 D5:D27 为空；C 列和 D 列应显示为两位小数的货币格式。"
+      ],
+      "steps": [
+        {
+          "efficiency_tip": "在自定义颜色框中直接输入十六进制值，可避免从调色板中凭目测选择近似颜色。",
+          "instructions": [
+            "单击标题单元格 A1；如果标题跨多个合并单元格显示，只需选择合并区域的左上角锚点 A1。",
+            "在工具栏中找到油漆桶形状的“背景颜色/填充颜色”控件，打开其下拉菜单并选择“自定义颜色”。",
+            "在自定义颜色对话框的十六进制颜色输入框中，将现有值替换为 `2F6B4F`，然后按 Enter 应用颜色。"
+          ],
+          "skill_ids": [
+            "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-03"
+          ],
+          "step_number": 1,
+          "title": "为计划标题应用指定背景色",
+          "visible_success_signal": "A1 中的“Community Garden Supply Plan”保持可见，并显示精确的深绿色背景 #2F6B4F。"
+        },
+        {
+          "efficiency_tip": "双击填充柄会依据相邻 A:C 列连续的数据自动延伸到最后一个项目行，比手动拖动更快且不易漏行。",
+          "instructions": [
+            "单击 D4，确认该单元格是已有的 Line Cost 公式单元格，公式栏应显示 `=B4*C4`。",
+            "保持 D4 处于选中状态，将指针移到所选单元格右下角的小方块，即填充柄。",
+            "双击填充柄。Calc 会沿相邻连续数据区域向下复制公式，直到第 27 行，并自动调整每行的相对引用。",
+            "如有需要，单击 D5 和较靠后的一个单元格（例如 D27）进行抽查：它们应分别按本行数量与单价计算。"
+          ],
+          "skill_ids": [
+            "d681960f-7bc3-4286-9913-a8812ba3261a.skill-02"
+          ],
+          "step_number": 2,
+          "title": "向下自动填充 Line Cost 公式",
+          "visible_success_signal": "D4:D27 都显示货币金额；D5:D27 不再为空，并且每一行的 Line Cost 对应本行的 Units 与 Unit Cost。"
+        },
+        {
+          "efficiency_tip": "使用名称框或直接滚动查看首尾行，可快速确认完整范围而无需逐行检查。",
+          "instructions": [
+            "检查 A1 的背景色和标题文字，确认颜色修改仅应用于标题区域。",
+            "检查 D4:D27 的首行、中间行和末行，确认均有金额且仍为货币格式、保留两位小数。",
+            "确认没有添加总计行、新工作表、图表、数据透视表或其他额外内容。"
+          ],
+          "skill_ids": [],
+          "step_number": 3,
+          "title": "完成最终核对",
+          "visible_success_signal": "工作表只完成标题配色和全部 24 个供应项目行的 Line Cost 计算，版面中没有无关新增对象。"
+        }
+      ]
+    },
+    "generation": {
+      "request_id": "4913b89f-e136-458c-9a6c-2725eaf76001",
+      "prompt_sha256": "8b99b9636dd88758a10449973b90a6c4458bcb721f33c206f786b0b6dae8bc6c",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 2416,
+      "output_tokens": 1001,
+      "estimated_cost_usd": 0.016844
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-020",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-020/initial_artifact.xlsx",
+      "artifact_sha256": "faeb79de93d679439a5a0a2f69f8bb2faaca51be9f21420f43071f8755d79cb1",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-020/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-020/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.xlsx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-020",
+      "task_config_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-020.json",
+      "artifact_sha256": "faeb79de93d679439a5a0a2f69f8bb2faaca51be9f21420f43071f8755d79cb1",
+      "blueprint_request_id": "7d2cee4d-9450-4278-b941-9a92195f1d25"
+    },
+    "packet_path": "task_config.json"
+  }
+}

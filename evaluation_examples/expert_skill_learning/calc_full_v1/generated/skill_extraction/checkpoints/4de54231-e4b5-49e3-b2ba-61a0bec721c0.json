@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+  "app": "libreoffice_calc",
+  "single_action_count": 10,
+  "prompt_sha256": "c76e8134c20a42d37d886a8d8816d0741eb1d7a424a42f5dfa116423bb6a744e",
+  "request_id": "49efb572-c3f2-4bac-884b-20b91d8fb6b0",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1405,
+    "cached_input_tokens": 1073,
+    "output_tokens": 745,
+    "estimated_cost_usd": 0.0098186
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "efficiency_tip": "Double-clicking the fill handle is faster and less error-prone than dragging it through a long data range; verify that an adjacent column contains uninterrupted data so Calc can detect the intended last row.",
+        "name": "Autofill an existing formula down a column with the fill handle",
+        "procedure": [
+          "Select the cell that already contains the formula to propagate, such as B2.",
+          "Double-click the small square fill handle at the cell's bottom-right corner. Calc fills the formula downward to the end of the adjacent contiguous data region, adjusting relative references for each row.",
+          "Repeat the same operation for another formula column when needed, for example select D2 and double-click its fill handle."
+        ]
+      },
+      {
+        "action_ids": [
+          7
+        ],
+        "efficiency_tip": "Use one concatenation formula with header references rather than manually assembling text row by row. Keep header cells absolute so the labels remain fixed when the formula is filled down.",
+        "name": "Build a formatted text-concatenation formula with fixed decimal values",
+        "procedure": [
+          "In the first output-row cell, enter a concatenation formula that joins labels, separators, and formatted cell values. For example: =$A$1&\": \"&FIXED(A2,2)&\", \"&$B$1&\": \"&FIXED(B2,2)&\", \"&$C$1&\": \"&FIXED(C2,2)&\", \"&$D$1&\": \"&FIXED(D2,2)",
+          "Use & to join text fragments and cell results. FIXED(A2,2) converts the value in A2 to text with two decimal places; apply the same pattern to each value being joined.",
+          "In $A$1, the first $ fixes column A and the second $ fixes row 1, so the header reference remains A1 when copied. References such as A2 have no absolute markers, so their row changes when filled downward."
+        ]
+      },
+      {
+        "action_ids": [
+          8,
+          9
+        ],
+        "efficiency_tip": "After entering a row formula, reselect its first cell and double-click its fill handle instead of copying and pasting or dragging through every destination row.",
+        "name": "Propagate a text formula down an output column",
+        "procedure": [
+          "Select the first output cell containing the completed formula, such as E2.",
+          "Double-click the bottom-right fill handle of that cell.",
+          "Calc copies the formula down to the last row detected from neighboring continuous data, updating relative references such as A2 to A3, A4, and so on while preserving absolute references such as $A$1."
+        ]
+      }
+    ]
+  }
+}

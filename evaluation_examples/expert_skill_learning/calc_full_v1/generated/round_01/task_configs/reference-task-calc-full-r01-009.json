@@ -1,0 +1,96 @@
+{
+  "id": "reference-task-calc-full-r01-009",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Complete the workshop allocation review: add a standardized two-decimal narrative for every allocation record, make the dark report heading readable with white text, and use the Allocation Summary sheet to show each zone’s share of all completed units.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-009/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/workshop_allocation.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/workshop_allocation.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-calc-full-r01-009",
+    "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-009/initial_artifact.xlsx",
+    "artifact_sha256": "0d2a672156cfd091cbe41db52b5e7f113d5784f7c2b0ca8d5d2c48087525212a",
+    "guest_artifact_path": "/home/user/Desktop/workshop_allocation.xlsx",
+    "required_skill_ids": [
+      "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-04",
+      "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-02",
+      "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-09"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The expert may use LibreOffice Calc menus, toolbar controls, keyboard shortcuts, or equivalent dialogs. The Pivot Table may be positioned at A3 or another clearly non-overlapping location on Allocation Summary, provided the title remains visible and the resulting zone values are shown as percentages of the overall Completed Units total.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Use absolute references for the row-1 headers and relative references for the current data row, then fill the formula down in one operation.",
+          "operation_intent": "In Activity Log!E2, create a reusable concatenation formula that produces a labeled record narrative from Batch Code, Scheduled Units, Completed Units, and Rework Units. The three numeric values must be rendered with exactly two decimal places; copy the formula through E19.",
+          "skill_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-02",
+          "visible_success_signal": "Each Record Summary cell contains a readable label-and-value string, such as a batch code followed by the three unit measures, and every numeric measure visibly has two decimal places."
+        },
+        {
+          "efficiency_tip": "Apply the color while A1 is selected; the existing dark fill provides immediate contrast feedback.",
+          "operation_intent": "Change the font color of the existing dark-filled \"Workshop Allocation Share\" title in Allocation Summary!A1 to white.",
+          "skill_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-04",
+          "visible_success_signal": "The A1 title text is visibly white and legible against its dark navy background."
+        },
+        {
+          "efficiency_tip": "Use the data-field display option for percentage of the total instead of calculating shares in cells outside the Pivot Table.",
+          "operation_intent": "Create the native zone-level Pivot Table from Activity Log, summarize Completed Units by Zone, and set its displayed data values to percentage of the overall total.",
+          "skill_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-09",
+          "visible_success_signal": "Allocation Summary shows a native Pivot Table with one row per Zone and Completed Units represented as percentages; the category percentages collectively account for the grand total."
+        }
+      ],
+      "recording_end_state": "Activity Log has completed Record Summary narratives for all 18 records with fixed two-decimal numeric text. Allocation Summary retains its dark-filled white-font title and displays a native Pivot Table that shows each Zone's share of total Completed Units as percentages.",
+      "recording_start_state": "The workbook has the populated Activity Log source table, a blank Record Summary output column, and a blank Allocation Summary area with a dark-filled, non-white title."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Fill the first completed Record Summary formula down through the remaining source records.",
+        "reason": "A reusable row-relative formula must produce one standardized narrative for every allocation record."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Select the contiguous Activity Log source range and create a native Pivot Table in the reserved Allocation Summary destination area.",
+        "reason": "A native Pivot Table is required before its value field can be displayed as a share of the grand total."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Configure the Pivot Table with Zone as the row grouping and the sum of Completed Units as its data field.",
+        "reason": "This establishes the requested zone-level allocation measure to which the percentage-of-total display is applied."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc is open with the Activity Log and Allocation Summary sheets visible.",
+      "Activity Log contains a populated table in A1:E19 with 18 records, and Record Summary cells E2:E19 are blank.",
+      "Allocation Summary!A1 reads \"Workshop Allocation Share\" with a dark navy fill and bold dark/black text.",
+      "Allocation Summary is otherwise blank, including the area beginning at A3, and no Pivot Table is visible."
+    ],
+    "setup_notes": [
+      "Manual setup is required according to the artifact manifest.",
+      "Before recording, the Allocation Summary title and blank summary area must match the artifact metadata."
+    ],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

@@ -4,11 +4,15 @@
   "title": "Skill extraction LLM response",
   "type": "object",
   "additionalProperties": false,
-  "required": ["skills"],
+  "required": ["decision", "decision_reason", "skills"],
   "properties": {
+    "decision": {
+      "type": "string",
+      "enum": ["skills_extracted", "no_reusable_skill"]
+    },
+    "decision_reason": {"type": "string"},
     "skills": {
       "type": "array",
-      "minItems": 1,
       "items": {
         "type": "object",
         "additionalProperties": false,

@@ -1,0 +1,898 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-009",
+  "package": {
+    "reference_task_id": "reference-task-calc-full-r01-009",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_calc",
+    "task_instruction": "Complete the workshop allocation review: add a standardized two-decimal narrative for every allocation record, make the dark report heading readable with white text, and use the Allocation Summary sheet to show each zone’s share of all completed units.",
+    "required_skill_ids": [
+      "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-04",
+      "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-02",
+      "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-09"
+    ],
+    "artifact_spec": {
+      "artifact_type": "xlsx",
+      "domain": "community workshop supply allocation review",
+      "generation_notes": [
+        "Use entirely synthetic, privacy-safe workshop allocation records. Do not use real people, organizations, addresses, or identifiers.",
+        "Populate 18 data records in Activity Log rows 2-19. Use four zones repeatedly (North Hall, Garden Room, Studio Bay, River Annex) so a Pivot Table grouped by Zone has multiple source records per group.",
+        "Use positive decimal values for Scheduled Units, Completed Units, and Rework Units. Completed Units should vary by row and have a nonzero grand total.",
+        "Examples of synthetic batch codes may use the pattern WSA-201 through WSA-218. Do not use any literals from the source tasks.",
+        "Apply normal table header styling to Activity Log row 1. The Record Summary cells must be blank at generation time.",
+        "On Allocation Summary, style A1 with a dark navy fill such as #203864 and bold text, but leave its font color at the default dark/black color so changing it to white is still required. A1 contains the text \"Workshop Allocation Share\".",
+        "Leave enough blank space beginning at A3 on Allocation Summary for a native Pivot Table result. Do not create a native Pivot Table during generation."
+      ],
+      "initial_state": [
+        "The workbook opens with two sheets: Activity Log and Allocation Summary.",
+        "Activity Log contains a contiguous source table in A1:E19, with headers in row 1 and 18 populated records beneath.",
+        "Allocation Summary contains only the prefilled dark title in A1 and is otherwise blank.",
+        "No formulas are present in Activity Log column E.",
+        "No native Pivot Table exists anywhere in the workbook.",
+        "The Allocation Summary title's font is not white at the start."
+      ],
+      "must_not_be_completed": [
+        "Do not prefill or seed the Record Summary formula or any resulting text in Activity Log!E2:E19.",
+        "Do not preconfigure a Pivot Table, a Pivot Table percentage display calculation, or any substitute summary formulas/charts.",
+        "Do not change the Allocation Summary!A1 font color to white before the recorded task."
+      ],
+      "sheets": [
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "Batch Code"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Scheduled Units"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Completed Units"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Rework Units"
+            },
+            {
+              "data_type": "text",
+              "name": "Record Summary"
+            }
+          ],
+          "name": "Activity Log",
+          "purpose": "Source records for individual workshop supply allocations and the required per-record narrative output.",
+          "row_count": 18
+        },
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "Reserved blank summary area"
+            }
+          ],
+          "name": "Allocation Summary",
+          "purpose": "Blank destination for a zone-level native Pivot Table and its existing report title.",
+          "row_count": 10
+        }
+      ],
+      "workbook_title": "Workshop Allocation Review"
+    },
+    "operator_guide": {
+      "allowed_variation": "The expert may use LibreOffice Calc menus, toolbar controls, keyboard shortcuts, or equivalent dialogs. The Pivot Table may be positioned at A3 or another clearly non-overlapping location on Allocation Summary, provided the title remains visible and the resulting zone values are shown as percentages of the overall Completed Units total.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Use absolute references for the row-1 headers and relative references for the current data row, then fill the formula down in one operation.",
+          "operation_intent": "In Activity Log!E2, create a reusable concatenation formula that produces a labeled record narrative from Batch Code, Scheduled Units, Completed Units, and Rework Units. The three numeric values must be rendered with exactly two decimal places; copy the formula through E19.",
+          "skill_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-02",
+          "visible_success_signal": "Each Record Summary cell contains a readable label-and-value string, such as a batch code followed by the three unit measures, and every numeric measure visibly has two decimal places."
+        },
+        {
+          "efficiency_tip": "Apply the color while A1 is selected; the existing dark fill provides immediate contrast feedback.",
+          "operation_intent": "Change the font color of the existing dark-filled \"Workshop Allocation Share\" title in Allocation Summary!A1 to white.",
+          "skill_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-04",
+          "visible_success_signal": "The A1 title text is visibly white and legible against its dark navy background."
+        },
+        {
+          "efficiency_tip": "Use the data-field display option for percentage of the total instead of calculating shares in cells outside the Pivot Table.",
+          "operation_intent": "Create the native zone-level Pivot Table from Activity Log, summarize Completed Units by Zone, and set its displayed data values to percentage of the overall total.",
+          "skill_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-09",
+          "visible_success_signal": "Allocation Summary shows a native Pivot Table with one row per Zone and Completed Units represented as percentages; the category percentages collectively account for the grand total."
+        }
+      ],
+      "recording_end_state": "Activity Log has completed Record Summary narratives for all 18 records with fixed two-decimal numeric text. Allocation Summary retains its dark-filled white-font title and displays a native Pivot Table that shows each Zone's share of total Completed Units as percentages.",
+      "recording_start_state": "The workbook has the populated Activity Log source table, a blank Record Summary output column, and a blank Allocation Summary area with a dark-filled, non-white title."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Fill the first completed Record Summary formula down through the remaining source records.",
+        "reason": "A reusable row-relative formula must produce one standardized narrative for every allocation record."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Select the contiguous Activity Log source range and create a native Pivot Table in the reserved Allocation Summary destination area.",
+        "reason": "A native Pivot Table is required before its value field can be displayed as a share of the grand total."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Configure the Pivot Table with Zone as the row grouping and the sum of Completed Units as its data field.",
+        "reason": "This establishes the requested zone-level allocation measure to which the percentage-of-total display is applied."
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+          "skill_count": 2,
+          "skill_fraction": 0.666667
+        },
+        {
+          "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+          "skill_count": 1,
+          "skill_fraction": 0.333333
+        }
+      ],
+      "dominant_source_task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+      "dominant_source_skill_fraction": 0.666667,
+      "complete_source_skill_sets_included": []
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+        "max_sequence_similarity": 0.335802,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "sequence_similarity": 0.260062
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "sequence_similarity": 0.023729
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "sequence_similarity": 0.021472
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "sequence_similarity": 0.02935
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "sequence_similarity": 0.267717
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "sequence_similarity": 0.278049
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "sequence_similarity": 0.008333
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "sequence_similarity": 0.302083
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "sequence_similarity": 0.260606
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "sequence_similarity": 0.136905
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "sequence_similarity": 0.264368
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "sequence_similarity": 0.034632
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "sequence_similarity": 0.335802
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "sequence_similarity": 0.237037
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "sequence_similarity": 0.300683
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "sequence_similarity": 0.027027
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "sequence_similarity": 0.319372
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "sequence_similarity": 0.27907
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "sequence_similarity": 0.0224
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.286996
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.029126
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "sequence_similarity": 0.255435
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "sequence_similarity": 0.254902
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "sequence_similarity": 0.032258
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "sequence_similarity": 0.27957
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "sequence_similarity": 0.241692
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "sequence_similarity": 0.334975
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "sequence_similarity": 0.027211
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "sequence_similarity": 0.210526
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "sequence_similarity": 0.030238
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "sequence_similarity": 0.072495
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "sequence_similarity": 0.233129
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "sequence_similarity": 0.267045
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "sequence_similarity": 0.130326
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "sequence_similarity": 0.173077
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "sequence_similarity": 0.150602
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "sequence_similarity": 0.030501
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "sequence_similarity": 0.173077
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "sequence_similarity": 0.225722
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "sequence_similarity": 0.017167
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "sequence_similarity": 0.042718
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "sequence_similarity": 0.064128
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "sequence_similarity": 0.289277
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "sequence_similarity": 0.261364
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "sequence_similarity": 0.228288
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "sequence_similarity": 0.012245
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "sequence_similarity": 0.24359
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+        "max_cosine_similarity": 0.396176,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "cosine_similarity": 0.265888
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "cosine_similarity": 0.342523
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "cosine_similarity": 0.341884
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "cosine_similarity": 0.396176
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "cosine_similarity": 0.347573
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "cosine_similarity": 0.264731
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "cosine_similarity": 0.310541
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "cosine_similarity": 0.325054
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "cosine_similarity": 0.329154
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "cosine_similarity": 0.160265
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "cosine_similarity": 0.254486
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "cosine_similarity": 0.383663
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "cosine_similarity": 0.3245
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "cosine_similarity": 0.329937
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "cosine_similarity": 0.288986
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "cosine_similarity": 0.312215
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "cosine_similarity": 0.317401
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "cosine_similarity": 0.34891
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "cosine_similarity": 0.360239
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.296662
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.269888
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "cosine_similarity": 0.300153
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "cosine_similarity": 0.264757
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "cosine_similarity": 0.206762
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "cosine_similarity": 0.322333
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "cosine_similarity": 0.241297
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "cosine_similarity": 0.318854
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "cosine_similarity": 0.320433
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "cosine_similarity": 0.252288
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "cosine_similarity": 0.229723
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "cosine_similarity": 0.329653
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "cosine_similarity": 0.290392
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "cosine_similarity": 0.320159
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "cosine_similarity": 0.256722
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "cosine_similarity": 0.3274
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "cosine_similarity": 0.230789
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "cosine_similarity": 0.286262
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "cosine_similarity": 0.275074
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "cosine_similarity": 0.287566
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "cosine_similarity": 0.320383
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "cosine_similarity": 0.250113
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "cosine_similarity": 0.283675
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "cosine_similarity": 0.242112
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "cosine_similarity": 0.36379
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "cosine_similarity": 0.280556
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "cosine_similarity": 0.332386
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "cosine_similarity": 0.354052
+          }
+        ],
+        "embedding_request_id": "e9df3ea8-8c8e-4f8c-9056-df67ef6090d3"
+      }
+    },
+    "generation": {
+      "attempt": 9,
+      "kind": "new_combination",
+      "request_id": "f2d5df1c-58da-4479-8811-c9674d170757",
+      "prompt_sha256": "d830cad3b916aedfcf56071af645fed5938f3b7c8370b9b7754eed2b23a8746a"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-04",
+      "app": "libreoffice_calc",
+      "name": "Set a cell's font color from the color palette",
+      "procedure": [
+        "With the target cell or merged cell selected, open the font-color dropdown.",
+        "Choose the desired palette color; for example, choose white for text that needs contrast against a dark fill."
+      ],
+      "efficiency_tip": "Apply font color while the target cell remains selected after fill formatting, avoiding a separate reselection.",
+      "source": {
+        "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+        "action_ids": [
+          13,
+          14
+        ]
+      }
+    },
+    {
+      "skill_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Build a formatted text-concatenation formula with fixed decimal values",
+      "procedure": [
+        "In the first output-row cell, enter a concatenation formula that joins labels, separators, and formatted cell values. For example: =$A$1&\": \"&FIXED(A2,2)&\", \"&$B$1&\": \"&FIXED(B2,2)&\", \"&$C$1&\": \"&FIXED(C2,2)&\", \"&$D$1&\": \"&FIXED(D2,2)",
+        "Use & to join text fragments and cell results. FIXED(A2,2) converts the value in A2 to text with two decimal places; apply the same pattern to each value being joined.",
+        "In $A$1, the first $ fixes column A and the second $ fixes row 1, so the header reference remains A1 when copied. References such as A2 have no absolute markers, so their row changes when filled downward."
+      ],
+      "efficiency_tip": "Use one concatenation formula with header references rather than manually assembling text row by row. Keep header cells absolute so the labels remain fixed when the formula is filled down.",
+      "source": {
+        "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+        "action_ids": [
+          7
+        ]
+      }
+    },
+    {
+      "skill_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-09",
+      "app": "libreoffice_calc",
+      "name": "Display Pivot Table values as a percentage of the total",
+      "procedure": [
+        "In the data-field options dialog, open the displayed-value or Show Values As controls.",
+        "Open the Type dropdown, which may initially show Normal, and choose `% of total`.",
+        "Confirm the data-field options using OK or Enter. The value field will show each category's share of the overall total."
+      ],
+      "efficiency_tip": "Use the built-in percentage display calculation rather than adding helper formulas outside the Pivot Table.",
+      "source": {
+        "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+        "action_ids": [
+          26,
+          27,
+          28,
+          29,
+          46,
+          47,
+          48,
+          49,
+          66,
+          67,
+          68,
+          69
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+      "instruction": "Please create a new sheet. Keep its sheet name as \"Sheet2\". Merge cells A1:C1 in the new sheet and write \"Demographic Profile\" with blue (#0000ff) fill and bold white text. Then I want to create three pivot tables to show the percentage of Sex, Civil Status, and Highest Educational Attainment. They should be stacked one by one in Sheet2, each separated with a blank line.",
+      "required_skill_ids": [
+        "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-04",
+        "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-09"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 13,
+          "action": "`CLICK` font color arrow icon, which is to left of bucket"
+        },
+        {
+          "action_id": 14,
+          "action": "`CLICK` top right color in the color palette (white)"
+        },
+        {
+          "action_id": 26,
+          "action": "`CLICK` 'displayed value' dropdown"
+        },
+        {
+          "action_id": 27,
+          "action": "`CLICK` Normal dropdown next to 'Type'"
+        },
+        {
+          "action_id": 28,
+          "action": "`CLICK` '% of total'"
+        },
+        {
+          "action_id": 29,
+          "action": "`CLICK` ok"
+        },
+        {
+          "action_id": 46,
+          "action": "`CLICK` 'displayed value' dropdown"
+        },
+        {
+          "action_id": 47,
+          "action": "`CLICK` Normal dropdown next to 'Type'"
+        },
+        {
+          "action_id": 48,
+          "action": "`CLICK` '% of total'"
+        },
+        {
+          "action_id": 49,
+          "action": "`PRESS` enter"
+        },
+        {
+          "action_id": 66,
+          "action": "`CLICK` 'displayed value' dropdown"
+        },
+        {
+          "action_id": 67,
+          "action": "`CLICK` Normal dropdown next to 'Type'"
+        },
+        {
+          "action_id": 68,
+          "action": "`CLICK` '% of total'"
+        },
+        {
+          "action_id": 69,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on + to left of sheet1",
+        "`KEY_DOWN` shift",
+        "`CLICK` C1",
+        "`RIGHT_CLICK` selection",
+        "`CLICK` merge cells",
+        "`TYPING` Demographic Profile",
+        "`PRESS` enter",
+        "`CLICK` cell A1",
+        "`CLICK` arrow next to paint button dropdown",
+        "`CLICK` Custom color",
+        "`DOUBLE_CLICK` on text inside Hex # box",
+        "`TYPING` 0000ff",
+        "`PRESS` enter",
+        "`CLICK` font color arrow icon, which is to left of bucket",
+        "`CLICK` top right color in the color palette (white)",
+        "`CLICK` bold icon",
+        "`CLICK` Sheet1",
+        "`CLICK` column B grey cell",
+        "`CLICK` pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` 'Sex' in available fields",
+        "`DRAG_TO` box in row fields",
+        "`MOVE_TO` 'Sex' in available fields",
+        "`DRAG_TO` box in data fields",
+        "`DOUBLE_CLICK on sex box in data fields",
+        "`CLICK` Count",
+        "`CLICK` 'displayed value' dropdown",
+        "`CLICK` Normal dropdown next to 'Type'",
+        "`CLICK` '% of total'",
+        "`CLICK` ok",
+        "`CLICK` source and destination dropdown",
+        "`CLICK` 'Selection' under destination",
+        "`CLICK` text box",
+        "`TYPING` '$Sheet2.$A$2'",
+        "`CLICK` ok",
+        "`CLICK` Sheet2",
+        "`CLICK` Sheet1",
+        "`CLICK` column C grey cell",
+        "`CLICK` pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` 'Civil Status' in available fields",
+        "`DRAG_TO` box in row fields",
+        "`MOVE_TO` 'Civil Status' in available fields",
+        "`DRAG_TO` box in data fields",
+        "`DOUBLE_CLICK on civil status box in data fields",
+        "`CLICK` Count",
+        "`CLICK` 'displayed value' dropdown",
+        "`CLICK` Normal dropdown next to 'Type'",
+        "`CLICK` '% of total'",
+        "`PRESS` enter",
+        "`CLICK` source and destination dropdown",
+        "`CLICK` 'Selection' under destination",
+        "`CLICK` text box",
+        "`TYPING` '$Sheet2.$A$7'",
+        "`CLICK` ok",
+        "`CLICK` Sheet2",
+        "`CLICK` Sheet1",
+        "`CLICK` column D grey cell",
+        "`CLICK` pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` 'Highest Educational Attainment' in available fields",
+        "`DRAG_TO` box in row fields",
+        "`MOVE_TO` 'Highest Educational Attainment' in available fields",
+        "`DRAG_TO` box in data fields",
+        "`DOUBLE_CLICK on Highest Educational Attainment box in data fields",
+        "`CLICK` Count",
+        "`CLICK` 'displayed value' dropdown",
+        "`CLICK` Normal dropdown next to 'Type'",
+        "`CLICK` '% of total'",
+        "`PRESS` enter",
+        "`CLICK` source and destination dropdown",
+        "`CLICK` 'Selection' under destination",
+        "`CLICK` text box",
+        "`TYPING` '$Sheet2.$A$13'",
+        "`CLICK` ok"
+      ]
+    },
+    {
+      "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+      "instruction": "I have compute the acceleration in row 2 and I want you to fill out other rows for column B and D. Next concatenate the values from columns A to D, including their headers (the pattern is \"Header: cell value, ..., Header: cell value\"), into a new column named \"Combined Data\" for all rows. In the new column, only keep 2 decimal digits.",
+      "required_skill_ids": [
+        "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 7,
+          "action": "`TYPING` '=$A$1&\": \"&FIXED(A2,2)&\", \"&$B$1&\": \"&FIXED(B2,2)&\", \"&$C$1&\": \"&FIXED(C2,2)&\", \"&$D$1&\": \"&FIXED(D2,2)'"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell B2",
+        "`DOUBLE_CLICK` bottom right corner of the cell B2",
+        "`CLICK` on cell D2",
+        "`DOUBLE_CLICK` bottom right corner of the cell D2",
+        "`CLICK` on cell E1",
+        "`TYPING` 'Combined Data'",
+        "`PRESS` enter",
+        "`TYPING` '=$A$1&\": \"&FIXED(A2,2)&\", \"&$B$1&\": \"&FIXED(B2,2)&\", \"&$C$1&\": \"&FIXED(C2,2)&\", \"&$D$1&\": \"&FIXED(D2,2)'",
+        "`CLICK` on cell E2",
+        "`DOUBLE_CLICK` bottom right corner of the cell E2"
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-calc-full-r01-009",
+    "task_detail_sha256": "f9d603fc3a2e76fd58d1d729220c5a7fa2699e9baaea08cddd514f40705d2b3a",
+    "guide": {
+      "final_verification": [
+        "在“Activity Log”中检查 E2:E19：18 条记录均有“Record Summary”文字；每条均包含 Batch Code、Scheduled Units、Completed Units 和 Rework Units 的标签及数值，三个单位数值均显示为两位小数。",
+        "切换到“Allocation Summary”：A1 的“Workshop Allocation Share”仍使用深海军蓝底色，文字为醒目的白色。",
+        "确认“Allocation Summary”中存在原生数据透视表，按 Zone 分行，数据字段为 Completed Units；各 Zone 的值以百分比显示，并有总计，类别百分比合计为总计。",
+        "确认标题没有被透视表覆盖，且没有用工作表辅助公式替代透视表的百分比计算。"
+      ],
+      "language": "zh-CN",
+      "overview": "本指南完成三项工作：为每条活动记录生成统一的两位小数叙述文字、提高深色报告标题的可读性，以及在“Allocation Summary”中创建按 Zone 汇总 Completed Units 且显示总计占比的原生数据透视表。",
+      "reference_task_id": "reference-task-calc-full-r01-009",
+      "starting_state_checks": [
+        "确认工作簿中有“Activity Log”和“Allocation Summary”两个工作表。",
+        "在“Activity Log”中确认第 1 行为表头、数据记录位于第 2 至第 19 行，且“Record Summary”列当前为空；确认源表中可找到 Zone 和 Completed Units 字段。",
+        "在“Allocation Summary”中确认 A1 显示“Workshop Allocation Share”，底色为深色，且 A3 起的区域为空。",
+        "确认尚未存在数据透视表，以免编辑到旧结果。"
+      ],
+      "steps": [
+        {
+          "efficiency_tip": "先只在 E2 写好使用绝对表头引用、相对数据行引用的公式，后续可一次填满所有记录，避免逐行输入。",
+          "instructions": [
+            "打开“Activity Log”工作表并单击 E2，即“Record Summary”标题下的第一条记录。",
+            "输入以下公式后按 Enter：=$A$1&\": \"&A2&\", \"&$B$1&\": \"&FIXED(B2,2)&\", \"&$C$1&\": \"&FIXED(C2,2)&\", \"&$D$1&\": \"&FIXED(D2,2)",
+            "其中 $A$1、$B$1、$C$1 和 $D$1 固定引用第 1 行标题；A2:D2 仍是当前记录行。FIXED(B2,2)、FIXED(C2,2) 和 FIXED(D2,2) 会把单位数值转换为恰好两位小数的文本。"
+          ],
+          "skill_ids": [
+            "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-02"
+          ],
+          "step_number": 1,
+          "title": "在第一条记录中建立两位小数叙述公式",
+          "visible_success_signal": "E2 显示一段可读的标签和值组合文字，例如包含 Batch Code 以及三个单位字段；三个单位数值都带有两位小数。"
+        },
+        {
+          "efficiency_tip": "选中包含首个公式在内的整个目标区域后使用向下填充，可让相对行号自动从第 2 行变为第 3 至第 19 行。",
+          "instructions": [
+            "再次选中 E2，然后按住 Shift 并选中 E19，使 E2:E19 成为选区。",
+            "使用 Ctrl+D 向下填充。若更习惯菜单，可使用用于向下填充单元格的命令。",
+            "抽查 E3 和 E19：Batch Code 与单位值应分别对应各自所在行，而字段标签保持不变。"
+          ],
+          "skill_ids": [],
+          "step_number": 2,
+          "title": "将记录叙述填充到全部 18 条记录",
+          "visible_success_signal": "E2:E19 均不再为空；每一行都有自己的记录叙述，且 Scheduled Units、Completed Units、Rework Units 均以两位小数显示。"
+        },
+        {
+          "efficiency_tip": "A1 已有深色填充，保持该单元格处于选中状态即可立即看到白色文字与深色背景的对比。",
+          "instructions": [
+            "切换到“Allocation Summary”工作表并选中 A1，其中包含“Workshop Allocation Share”。",
+            "在工具栏打开字体颜色的下拉调色板。",
+            "从调色板选择白色。不要更改该单元格原有的深色填充或标题文字。"
+          ],
+          "skill_ids": [
+            "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-04"
+          ],
+          "step_number": 3,
+          "title": "将深色报告标题改为白色文字",
+          "visible_success_signal": "A1 中的“Workshop Allocation Share”文字为白色，并清晰显示在原有的深海军蓝背景上。"
+        },
+        {
+          "efficiency_tip": "从源表中选择整个连续数据区域而非只选两列，可确保数据透视表正确识别表头和全部记录；将结果放在 A3 可保留标题可见。",
+          "instructions": [
+            "返回“Activity Log”，在源表内单击任意单元格，然后选中包含所有表头和记录的完整连续源表区域。",
+            "选择“数据”菜单中的“数据透视表”创建命令，开始建立数据透视表；在源数据确认界面确认使用当前选中的数据区域。",
+            "在数据透视表布局界面，将 Zone 放入“行字段”区域，将 Completed Units 放入“数据字段”区域。确认 Completed Units 的汇总方式为“求和”。",
+            "在输出位置设置中选择现有工作表“Allocation Summary”，并指定不覆盖标题的空白起点，例如 A3。确认创建数据透视表。"
+          ],
+          "skill_ids": [],
+          "step_number": 4,
+          "title": "创建按 Zone 汇总 Completed Units 的原生数据透视表",
+          "visible_success_signal": "“Allocation Summary”从 A3 或其他未覆盖标题的位置开始显示数据透视表；每个 Zone 各有一行，并显示 Completed Units 的求和结果及总计。"
+        },
+        {
+          "efficiency_tip": "使用数据字段本身的“显示的值”选项计算占总计百分比，避免在透视表外另建公式，也能在源数据更新后保持汇总逻辑一致。",
+          "instructions": [
+            "在新建的数据透视表中，打开 Completed Units 数据字段的选项；通常可双击该数据字段，或通过字段的右键菜单打开数据字段设置。",
+            "在数据字段选项中打开“显示的值”相关控件，将“类型”从 Normal 改为“% of total”。",
+            "使用“确定”或 Enter 确认数据字段选项；如仍有数据透视表设置窗口，也确认该窗口以更新结果。",
+            "查看每个 Zone 的数据值，确认它们以百分比而非原始单位数显示。"
+          ],
+          "skill_ids": [
+            "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-09"
+          ],
+          "step_number": 5,
+          "title": "将 Completed Units 显示为总计百分比",
+          "visible_success_signal": "数据透视表的 Zone 行显示百分比形式的 Completed Units 份额；各类别百分比共同对应总计，Grand Total 为整体总量。"
+        }
+      ]
+    },
+    "generation": {
+      "request_id": "e9ed9694-7606-4ab8-bee6-2f57639412d8",
+      "prompt_sha256": "917425434be8e0d94720f7f0c5b3948722b5f115a2391938bda25e7a96e63a41",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 3684,
+      "output_tokens": 2268,
+      "estimated_cost_usd": 0.034584
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-009",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-009/initial_artifact.xlsx",
+      "artifact_sha256": "0d2a672156cfd091cbe41db52b5e7f113d5784f7c2b0ca8d5d2c48087525212a",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-009/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-009/artifact_qa.json",
+      "manual_setup_required": true,
+      "manual_setup_steps": [
+        "Before recording, replace Allocation Summary!A1 with the text \"Workshop Allocation Share\", apply a dark navy fill (#203864) and bold styling, and leave the font color at its default dark/black color. Clear any remaining cells in the summary area so the area beginning at A3 is blank for the native Pivot Table."
+      ]
+    },
+    "packet_path": "artifact/initial_artifact.xlsx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-009",
+      "task_config_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-009.json",
+      "artifact_sha256": "0d2a672156cfd091cbe41db52b5e7f113d5784f7c2b0ca8d5d2c48087525212a",
+      "blueprint_request_id": "9fe5d8b7-8e89-44a8-82d7-8db0adaef5ac"
+    },
+    "packet_path": "task_config.json"
+  }
+}

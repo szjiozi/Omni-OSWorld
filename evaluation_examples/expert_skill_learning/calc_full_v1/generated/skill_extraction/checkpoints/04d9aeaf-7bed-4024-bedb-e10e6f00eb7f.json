@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+  "app": "libreoffice_calc",
+  "single_action_count": 28,
+  "prompt_sha256": "5af4ca22e44d557fac9fb4e312f9a1836ec0d39630dd4bbad6a9564e733a3b9d",
+  "request_id": "d74ec94b-7bab-408d-a7a6-e91db411f889",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1518,
+    "cached_input_tokens": 1073,
+    "output_tokens": 1149,
+    "estimated_cost_usd": 0.0148926
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2,
+          12
+        ],
+        "efficiency_tip": "Copy an entire contiguous range at once instead of copying and pasting each cell individually.",
+        "name": "Copy and paste a cell range between worksheets",
+        "procedure": [
+          "Select the source range by clicking its first cell and dragging to its last cell; for example, select A3:A7.",
+          "Press Ctrl+C to copy the selected cells.",
+          "Activate the destination worksheet and select the destination starting cell, then press Ctrl+V. Calc pastes the copied range with its original shape starting at that cell."
+        ]
+      },
+      {
+        "action_ids": [
+          3
+        ],
+        "efficiency_tip": "Use the sheet-tab plus button when a blank worksheet is needed immediately; it avoids opening the Insert Sheet dialog.",
+        "name": "Insert a new worksheet with the sheet-tab plus button",
+        "procedure": [
+          "Click the + button beside the worksheet tabs.",
+          "Calc creates and activates a new blank worksheet, ready for entering data or formulas."
+        ]
+      },
+      {
+        "action_ids": [
+          13,
+          14,
+          15
+        ],
+        "efficiency_tip": "Build the formula once with the intended relative and absolute references before filling it, so propagated formulas adjust correctly without later edits.",
+        "name": "Create a percentage-change formula using a fixed source sheet",
+        "procedure": [
+          "Select the output cell and type a percentage-change formula that subtracts the prior value and divides by that prior value; for example, enter =($Sheet1.B3-$Sheet1.B2)/$Sheet1.B2 in B2, then press Enter.",
+          "In $Sheet1.B3 and $Sheet1.B2, the $ fixes the source sheet name only. Column B and the row numbers remain relative, so filling the formula downward changes B3/B2 to B4/B3, while the source remains Sheet1."
+        ]
+      },
+      {
+        "action_ids": [
+          18,
+          19,
+          20
+        ],
+        "efficiency_tip": "Use a horizontal fill drag after verifying the first formula, rather than retyping equivalent formulas for neighboring columns.",
+        "name": "Fill a formula horizontally with the fill handle",
+        "procedure": [
+          "Select the cell containing the formula, such as B2.",
+          "Point to the small square at the cell's bottom-right corner until the fill handle is available.",
+          "Drag the fill handle across the target columns, for example from B2 through D2. Calc copies the formula and adjusts relative column references for each destination column."
+        ]
+      },
+      {
+        "action_ids": [
+          16,
+          17,
+          21,
+          22,
+          23,
+          24
+        ],
+        "efficiency_tip": "Double-clicking the fill handle is faster and less error-prone than manually dragging to an estimated final row when an adjacent column defines the data extent.",
+        "name": "Autofill a formula downward by double-clicking the fill handle",
+        "procedure": [
+          "Select a formula cell, such as B2.",
+          "Double-click the fill handle at the cell's bottom-right corner. Calc fills the formula down through the contiguous data region determined by adjacent populated cells.",
+          "Repeat on another formula column when needed, such as C2 or D2; relative row references update in each filled row."
+        ]
+      },
+      {
+        "action_ids": [
+          25,
+          26,
+          27
+        ],
+        "efficiency_tip": "Select the entire result range before applying the format so all existing values use one consistent number format.",
+        "name": "Apply percentage number formatting to a cell range",
+        "procedure": [
+          "Select the cells containing ratio or change results; for example, drag from B2 to D6.",
+          "Click the Percent (%) button on the formatting toolbar. Calc displays the selected numeric values as percentages while retaining their underlying values."
+        ]
+      }
+    ]
+  }
+}

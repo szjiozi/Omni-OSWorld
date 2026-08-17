@@ -1,0 +1,13 @@
+{
+  "workbook_title": "Coastal Lab Dispatch Completion",
+  "output_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-012/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Dispatch Log",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-012/previews/Dispatch_Log.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Dispatch Log\",\"address\":\"A1:D12\",\"rows\":12,\"cols\":4,\"values\":[[\"Dispatch Date\",\"Completion Rate\",\"Planned Kits\",\"Verified Kits\"],[\"2026-04-01T00:00:00.000Z\",null,124,112],[\"2026-04-02T00:00:00.000Z\",null,151,139],[\"2026-04-03T00:00:00.000Z\",null,93,76],[\"2026-04-04T00:00:00.000Z\",null,137,128],[\"2026-04-05T00:00:00.000Z\",null,108,89],[\"2026-04-06T00:00:00.000Z\",null,160,152],[\"2026-04-07T00:00:00.000Z\",null,82,65],[\"2026-04-08T00:00:00.000Z\",null,119,111],[\"2026-04-09T00:00:00.000Z\",null,145,121],[\"2026-04-10T00:00:00.000Z\",null,97,91],[\"2026-04-11T00:00:00.000Z\",null,132,105]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

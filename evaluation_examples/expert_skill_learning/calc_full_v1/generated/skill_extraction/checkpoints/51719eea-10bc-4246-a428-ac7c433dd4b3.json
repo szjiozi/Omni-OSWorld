@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+  "app": "libreoffice_calc",
+  "single_action_count": 21,
+  "prompt_sha256": "70f1e3320e43a36fac8353d23e3d8cba8946e7cf2d85a38dc0b5883c7e10b40c",
+  "request_id": "2e1af770-8bc1-4ef8-b7e3-4bca46257777",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1436,
+    "cached_input_tokens": 1073,
+    "output_tokens": 1356,
+    "estimated_cost_usd": 0.0172126
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          5,
+          6
+        ],
+        "efficiency_tip": "Type the complete formula once in the first result cell, then propagate it rather than rebuilding the lookup and arithmetic separately for every row.",
+        "name": "Build a cross-sheet lookup formula with row arithmetic",
+        "procedure": [
+          "In the first result cell, enter a formula that looks up a value from another sheet and combines it with values from the current row.",
+          "For example, enter `=VLOOKUP(C2,$'Retail Price'.$A$2:$B$23,2,FALSE())*E2*(1-F2)` and press Enter. `VLOOKUP` finds the value matching `C2` in the first column of the source range and returns its second column; the remaining multiplication applies the current row's values.",
+          "In `$'Retail Price'.$A$2:$B$23`, the `$` before the quoted sheet name fixes the source sheet, while `$A$2:$B$23` fixes both columns and rows of the lookup range. The references `C2`, `E2`, and `F2` remain relative, so they adjust when copied to another row."
+        ]
+      },
+      {
+        "action_ids": [
+          7,
+          8,
+          9
+        ],
+        "efficiency_tip": "Double-clicking the fill handle is faster and less error-prone than manually dragging it through a long adjacent data region.",
+        "name": "Autofill a formula down an adjacent data region",
+        "procedure": [
+          "Select the cell containing the completed formula, such as `G2`.",
+          "Move to the small fill handle at the cell's bottom-right corner.",
+          "Double-click the fill handle. Calc copies the formula downward to match the contiguous neighboring rows, adjusting relative references for each destination row."
+        ]
+      },
+      {
+        "action_ids": [
+          10,
+          11,
+          12
+        ],
+        "efficiency_tip": "Select the full current data region before creating the Pivot Table so Calc detects the source range automatically and no manual range entry is needed.",
+        "name": "Create a Pivot Table from the selected data range",
+        "procedure": [
+          "Click within the dataset and use `Ctrl+A` to select the current contiguous data range, including its header row.",
+          "Click the Pivot Table toolbar icon to open the Pivot Table creation flow.",
+          "Accept the detected selected range, for example by pressing Enter in the initial creation dialog, to open the Pivot Table field-layout dialog."
+        ]
+      },
+      {
+        "action_ids": [
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "efficiency_tip": "Drag fields directly from the available-fields list to the target layout areas; this avoids extra field configuration dialogs when the default value aggregation is appropriate.",
+        "name": "Place category and value fields in a Pivot Table layout",
+        "procedure": [
+          "In the Pivot Table layout dialog, drag a categorical field from Available Fields to Row Fields; for example, drag `product` to Row Fields to create one row label per product.",
+          "Drag a numeric field from Available Fields to Data Fields; for example, drag `revenue` to Data Fields so Calc summarizes that field using its default aggregation.",
+          "Click OK to create the Pivot Table using the configured field placement."
+        ]
+      },
+      {
+        "action_ids": [
+          18,
+          19,
+          20
+        ],
+        "efficiency_tip": "Rename the sheet tab immediately after creation so later formulas, navigation, and references use a meaningful sheet name.",
+        "name": "Rename a worksheet from its sheet tab",
+        "procedure": [
+          "Double-click the worksheet tab to make its name editable.",
+          "Type the desired new name, for example `Sheet2`, and press Enter to commit the rename."
+        ]
+      }
+    ]
+  }
+}

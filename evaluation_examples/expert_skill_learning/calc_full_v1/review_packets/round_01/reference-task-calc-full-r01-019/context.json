@@ -1,0 +1,867 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-019",
+  "package": {
+    "reference_task_id": "reference-task-calc-full-r01-019",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_calc",
+    "task_instruction": "Complete the Garden Volunteer Activity tracker by calculating each volunteer’s completed years of service from their enrollment date, presenting attendance as percentages, and standardizing all soil readings to two displayed decimal places.",
+    "required_skill_ids": [
+      "4e6fcf72-daf3-439f-a232-c434ce416af6.skill-01",
+      "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5.skill-01",
+      "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-06",
+      "a9f325aa-8c05-4e4f-8341-9e4358565f4f.skill-02"
+    ],
+    "artifact_spec": {
+      "artifact_type": "xlsx",
+      "domain": "Community garden volunteer activity tracker",
+      "generation_notes": [
+        "All names, garden zones, dates, and metrics must be synthetic and privacy-safe.",
+        "Create one worksheet named \"Volunteer Activity\" with a simple bold header row and 24 contiguous data rows (rows 2-25).",
+        "Store Enrollment Date as real spreadsheet date values in ISO-style display format such as YYYY-MM-DD.",
+        "Store Attendance Ratio as numeric decimal fractions, not text (for example, 0.875). Leave its initial number format as General.",
+        "Store Soil Reading as numeric values, including a mixture of whole numbers and values with one decimal place. Leave its initial number format as General so it does not already display two decimal places.",
+        "Leave Completed Years blank for all data rows; do not seed formulas in that column.",
+        "Use enrollment dates safely in the past, between 2013 and 2023, so whole-year results are nonnegative and meaningful relative to TODAY()."
+      ],
+      "initial_state": [
+        "The workbook opens on the \"Volunteer Activity\" sheet.",
+        "The data block is contiguous with no blank records between rows 2 and 25.",
+        "The Enrollment Date column is immediately adjacent to the blank Completed Years column, enabling formula propagation based on the contiguous records.",
+        "No percentage formatting has been applied to Attendance Ratio.",
+        "No two-decimal display format has been applied to Soil Reading.",
+        "No formulas exist in Completed Years."
+      ],
+      "must_not_be_completed": [
+        "Completed Years must remain blank until the recorded task.",
+        "Attendance Ratio must not be preformatted as percentages.",
+        "Soil Reading must not be preformatted to two decimal places.",
+        "Do not include charts, pivot tables, conditional formatting, or additional worksheets."
+      ],
+      "sheets": [
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "Volunteer Code"
+            },
+            {
+              "data_type": "text",
+              "name": "Garden Zone"
+            },
+            {
+              "data_type": "date",
+              "name": "Enrollment Date"
+            },
+            {
+              "data_type": "integer",
+              "name": "Completed Years"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Attendance Ratio"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Soil Reading"
+            }
+          ],
+          "name": "Volunteer Activity",
+          "purpose": "Track synthetic volunteer participation and garden measurement records requiring tenure calculation and presentation formatting.",
+          "row_count": 24
+        }
+      ],
+      "workbook_title": "Garden Volunteer Activity Tracker"
+    },
+    "operator_guide": {
+      "allowed_variation": "The expert may use toolbar controls, menu commands, keyboard shortcuts, or another equivalent Calc method. Formula propagation may use a fill handle or an equivalent fill-down command, provided the relative formula is visibly extended through the contiguous records.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Enter the formula only once with a relative reference to the first enrollment date; avoid manually calculating each volunteer's tenure.",
+          "operation_intent": "In the first Completed Years cell, enter a DATEDIF-based formula that calculates completed whole years from that row's Enrollment Date through TODAY().",
+          "skill_id": "4e6fcf72-daf3-439f-a232-c434ce416af6.skill-01",
+          "visible_success_signal": "The first Completed Years result displays a nonnegative whole-number tenure, while the formula bar shows a date-difference formula using the whole-years unit."
+        },
+        {
+          "efficiency_tip": "Use the fill handle's double-click behavior or an equivalent fill-down command, because the neighboring records are contiguous.",
+          "operation_intent": "Propagate the completed-years formula from the first result cell through every populated volunteer record.",
+          "skill_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f.skill-02",
+          "visible_success_signal": "Every Completed Years cell from row 2 through row 25 contains a result, and row-relative date references are evident when different filled cells are selected."
+        },
+        {
+          "efficiency_tip": "Select all populated Attendance Ratio cells as one range before applying the number format.",
+          "operation_intent": "Display each attendance ratio as a percentage.",
+          "skill_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-06",
+          "visible_success_signal": "Values formerly shown as fractions such as 0.875 visibly display with percent signs, such as 88% or 87.5%, while retaining their values."
+        },
+        {
+          "efficiency_tip": "Format the entire Soil Reading column in one action sequence rather than modifying individual cells.",
+          "operation_intent": "Increase the displayed decimal precision for the Soil Reading column until values consistently show two decimal places.",
+          "skill_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5.skill-01",
+          "visible_success_signal": "All displayed Soil Reading values, including whole-number entries, show two digits after the decimal separator (for example, 8.00 and 7.50)."
+        }
+      ],
+      "recording_end_state": "The Volunteer Activity sheet shows calculated whole completed years for every record, percentage-formatted Attendance Ratio cells, and Soil Reading displayed uniformly with two decimal places.",
+      "recording_start_state": "The workbook is open with the 24-row Volunteer Activity table visible; Completed Years is empty, Attendance Ratio is shown as raw decimal fractions, and Soil Reading is in General format."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Select the first blank result cell under Completed Years before entering the formula.",
+        "reason": "A starting output cell is required to establish the relative-reference formula."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Select the contiguous Attendance Ratio data cells before applying percentage formatting.",
+        "reason": "The percentage format should apply consistently to the full populated result range."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Select the Soil Reading column before changing displayed decimal precision.",
+        "reason": "Column-wide selection ensures the requested numeric display convention applies to all existing values."
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        }
+      ],
+      "dominant_source_task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+      "dominant_source_skill_fraction": 0.25,
+      "complete_source_skill_sets_included": [
+        "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5"
+      ]
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+        "max_sequence_similarity": 0.295699,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "sequence_similarity": 0.231511
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "sequence_similarity": 0.027682
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "sequence_similarity": 0.034375
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "sequence_similarity": 0.034409
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "sequence_similarity": 0.276423
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "sequence_similarity": 0.271357
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "sequence_similarity": 0.029915
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "sequence_similarity": 0.295699
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "sequence_similarity": 0.27673
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "sequence_similarity": 0.17284
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "sequence_similarity": 0.220238
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "sequence_similarity": 0.035556
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "sequence_similarity": 0.223919
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "sequence_similarity": 0.284987
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "sequence_similarity": 0.257611
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "sequence_similarity": 0.01581
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "sequence_similarity": 0.172973
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "sequence_similarity": 0.240964
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "sequence_similarity": 0.055465
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.271889
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.056106
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "sequence_similarity": 0.219101
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "sequence_similarity": 0.262626
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "sequence_similarity": 0.016529
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "sequence_similarity": 0.216667
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "sequence_similarity": 0.263323
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "sequence_similarity": 0.274112
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "sequence_similarity": 0.045139
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "sequence_similarity": 0.237942
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "sequence_similarity": 0.026608
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "sequence_similarity": 0.04814
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "sequence_similarity": 0.191083
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "sequence_similarity": 0.229412
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "sequence_similarity": 0.149871
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "sequence_similarity": 0.22
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "sequence_similarity": 0.19375
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "sequence_similarity": 0.017897
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "sequence_similarity": 0.186667
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "sequence_similarity": 0.238482
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "sequence_similarity": 0.039648
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "sequence_similarity": 0.063618
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "sequence_similarity": 0.036961
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "sequence_similarity": 0.246787
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "sequence_similarity": 0.288235
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "sequence_similarity": 0.179028
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "sequence_similarity": 0.041841
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "sequence_similarity": 0.233333
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+        "max_cosine_similarity": 0.370169,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "cosine_similarity": 0.226525
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "cosine_similarity": 0.321803
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "cosine_similarity": 0.342398
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "cosine_similarity": 0.370169
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "cosine_similarity": 0.298552
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "cosine_similarity": 0.195687
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "cosine_similarity": 0.147478
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "cosine_similarity": 0.18325
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "cosine_similarity": 0.172191
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "cosine_similarity": 0.149342
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "cosine_similarity": 0.164552
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "cosine_similarity": 0.190216
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "cosine_similarity": 0.203445
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "cosine_similarity": 0.239311
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "cosine_similarity": 0.275998
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "cosine_similarity": 0.230715
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "cosine_similarity": 0.20882
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "cosine_similarity": 0.245326
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "cosine_similarity": 0.257176
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.281083
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.268211
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "cosine_similarity": 0.288804
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "cosine_similarity": 0.229763
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "cosine_similarity": 0.133259
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "cosine_similarity": 0.250043
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "cosine_similarity": 0.115745
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "cosine_similarity": 0.225715
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "cosine_similarity": 0.340506
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "cosine_similarity": 0.3558
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "cosine_similarity": 0.192212
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "cosine_similarity": 0.192023
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "cosine_similarity": 0.245015
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "cosine_similarity": 0.148348
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "cosine_similarity": 0.238989
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "cosine_similarity": 0.296566
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "cosine_similarity": 0.171906
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "cosine_similarity": 0.232723
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "cosine_similarity": 0.200695
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "cosine_similarity": 0.247807
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "cosine_similarity": 0.245067
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "cosine_similarity": 0.165873
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "cosine_similarity": 0.202742
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "cosine_similarity": 0.140924
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "cosine_similarity": 0.359038
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "cosine_similarity": 0.175135
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "cosine_similarity": 0.269629
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "cosine_similarity": 0.291113
+          }
+        ],
+        "embedding_request_id": "e9df3ea8-8c8e-4f8c-9056-df67ef6090d3"
+      }
+    },
+    "generation": {
+      "attempt": 19,
+      "kind": "new_combination",
+      "request_id": "c8dbfb8e-6046-468e-8776-31c33ac556cc",
+      "prompt_sha256": "ebc06db2aa35851ca5f28226dae9ee2825d861eb546e95098ccf563f61cdef10"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "4e6fcf72-daf3-439f-a232-c434ce416af6.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Enter a date-difference formula that returns whole years",
+      "procedure": [
+        "Select the first output cell beside the date column, for example D2.",
+        "Type a formula such as `=DATEDIF(C2,TODAY(),\"Y\")` and press Enter. `C2` is a relative reference, so it can adjust to each row when propagated later.",
+        "The `\"Y\"` unit returns completed whole years between the date in C2 and the current date."
+      ],
+      "efficiency_tip": "Enter the formula once in the first result cell, then use a propagation command such as the fill handle rather than retyping it for each row.",
+      "source": {
+        "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "skill_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Increase displayed decimal places for an entire column",
+      "procedure": [
+        "Click the column header for the numeric column to select the whole column; for example, click column C.",
+        "Use the toolbar’s Increase Decimal button to add displayed decimal places. Each activation increases the displayed precision by one decimal place; double-click it when two additional places are needed.",
+        "For example, a value displayed as 12 can be shown as 12.00 after increasing the decimal places twice. This changes display formatting, not the stored numeric value."
+      ],
+      "efficiency_tip": "Select the entire column first so one formatting command updates all existing values and cells entered later, instead of adjusting decimal places cell by cell.",
+      "source": {
+        "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+        "action_ids": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "skill_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-06",
+      "app": "libreoffice_calc",
+      "name": "Apply percentage number formatting to a cell range",
+      "procedure": [
+        "Select the cells containing ratio or change results; for example, drag from B2 to D6.",
+        "Click the Percent (%) button on the formatting toolbar. Calc displays the selected numeric values as percentages while retaining their underlying values."
+      ],
+      "efficiency_tip": "Select the entire result range before applying the format so all existing values use one consistent number format.",
+      "source": {
+        "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+        "action_ids": [
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "skill_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Autofill a formula down a contiguous adjacent data range",
+      "procedure": [
+        "Select the cell containing the completed formula, such as C2.",
+        "Move to the small square at the cell's bottom-right corner (the fill handle) and double-click it.",
+        "Calc fills the formula downward for the contiguous rows detected in the neighboring data column, adjusting relative references; for example, `B2` becomes `B3`, `B4`, and so on."
+      ],
+      "efficiency_tip": "Double-clicking the fill handle is faster than dragging it through a long contiguous data block; verify that the adjacent source column has no unintended blank rows, because blanks can limit propagation.",
+      "source": {
+        "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+        "action_ids": [
+          3,
+          4
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+      "instruction": "In a new sheet with 4 headers \"Year\", \"CA changes\", \"FA changes\", and \"OA changes\", calculate the percentage annual changes compared to last year in 2015 to 2019 for the Current Assets, Fixed Assets, and Other Assets columns. ",
+      "required_skill_ids": [
+        "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-06"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 25,
+          "action": "`CLICK` cell B2"
+        },
+        {
+          "action_id": 26,
+          "action": "`DRAG_TO` D6"
+        },
+        {
+          "action_id": 27,
+          "action": "`CLICK` percent symbol"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell A3",
+        "`DRAG_TO` cell A7",
+        "`HOTKEY` Ctrl-c",
+        "`CLICK` the + button to the left of Sheet1 to add a new sheet",
+        "`TYPING` 'Year'",
+        "`PRESS` tab",
+        "`TYPING` 'CA changes'",
+        "`PRESS` tab",
+        "`TYPING` 'FA changes'",
+        "`PRESS` tab",
+        "`TYPING` 'OA changes'",
+        "`PRESS` enter",
+        "`HOTKEY` ctrl-V",
+        "`CLICK` cell B2",
+        "`TYPING` '=($Sheet1.B3-$Sheet1.B2)/$Sheet1.B2'",
+        "`PRESS` enter",
+        "`CLICK` cell B2",
+        "`DOUBLE_CLICK` bottom right corner",
+        "`CLICK` cell B2",
+        "`MOVE_TO` bottom right corner of the cell B2",
+        "`DRAG_TO` cell D2",
+        "`CLICK` cell C2",
+        "`DOUBLE_CLICK` bottom right corner",
+        "`MOVE_TO` cell D2",
+        "`DOUBLE_CLICK` bottom right corner",
+        "`CLICK` cell B2",
+        "`DRAG_TO` D6",
+        "`CLICK` percent symbol"
+      ]
+    },
+    {
+      "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+      "instruction": "Please calculate the ages of the employees according to their birthday.",
+      "required_skill_ids": [
+        "4e6fcf72-daf3-439f-a232-c434ce416af6.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`CLICK` on the first table cell of the column 'Age', D2"
+        },
+        {
+          "action_id": 1,
+          "action": "`TYPING` the formula `=DATEDIF(C2,TODAY(),\"Y\")` where 'C2' is the column containing the first employee's birthdate"
+        },
+        {
+          "action_id": 2,
+          "action": "`PRESS` 'Enter"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on the first table cell of the column 'Age', D2",
+        "`TYPING` the formula `=DATEDIF(C2,TODAY(),\"Y\")` where 'C2' is the column containing the first employee's birthdate",
+        "`PRESS` 'Enter",
+        "`CLICK` cell D2",
+        "`DOUBLE_CLICK` bottom right corner of cell"
+      ]
+    },
+    {
+      "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+      "instruction": "Help me format column \"spent\" by keeping two decimal points. ",
+      "required_skill_ids": [
+        "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`CLICK` column C."
+        },
+        {
+          "action_id": 1,
+          "action": "`DOUBLE_CLICK` the 'Increase Decimal' button."
+        }
+      ],
+      "single_actions": [
+        "`CLICK` column C.",
+        "`DOUBLE_CLICK` the 'Increase Decimal' button."
+      ]
+    },
+    {
+      "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+      "instruction": "I want to copy the movie titles in 'Garbage Movie Titles' column to the 'Clean Movie Titles' column. But please remove the adundant whitespaces and canonicalize the letter cases by capitalizing the first letter of each words and leave other letters as lower case.",
+      "required_skill_ids": [
+        "a9f325aa-8c05-4e4f-8341-9e4358565f4f.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 3,
+          "action": "`CLICK C2"
+        },
+        {
+          "action_id": 4,
+          "action": "`DOUBLE_CLICK` bottom right corner of the cell"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` C2",
+        "`TYPING` '=PROPER(TRIM(B2))'",
+        "`PRESS` Enter",
+        "`CLICK C2",
+        "`DOUBLE_CLICK` bottom right corner of the cell"
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-calc-full-r01-019",
+    "task_detail_sha256": "b3235a9923bac02a60d13bb244855c219c4c08655a2fe3f589d37de144b349b9",
+    "guide": {
+      "final_verification": [
+        "确认工作表仍为“Volunteer Activity”，且没有新增工作表、图表或其他无关内容。",
+        "检查 D2:D25：每一行都有非负整数的 Completed Years 结果。任选如 D10 的单元格查看编辑栏，应能看到随行号变化的公式，例如 =DATEDIF(C10,TODAY(),\"Y\")。",
+        "检查 E2:E25：所有 Attendance Ratio 值均以带 % 符号的百分比形式显示，而不是原始小数。",
+        "检查 Soil Reading 列 F：数据行中的数值均显示两位小数；原先的整数应显示为类似 8.00，带一位小数的值应显示为类似 7.50。",
+        "保存工作簿，保留这些公式和数字显示格式。"
+      ],
+      "language": "zh-CN",
+      "overview": "本指南将在“Volunteer Activity”工作表中完成三项整理：根据 Enrollment Date 自动计算每位志愿者的完整服务年数，将 Attendance Ratio 显示为百分比，并让 Soil Reading 统一显示两位小数。",
+      "reference_task_id": "reference-task-calc-full-r01-019",
+      "starting_state_checks": [
+        "确认当前打开的工作表标签是“Volunteer Activity”。",
+        "确认第 1 行是标题行，数据连续位于第 2 行到第 25 行；中间不应有空白记录。",
+        "确认 C 列标题为 Enrollment Date，D 列标题为 Completed Years 且 D2:D25 尚为空白。",
+        "确认 E 列 Attendance Ratio 仍显示为类似 0.875 的小数而非百分比，F 列 Soil Reading 尚未统一显示两位小数。"
+      ],
+      "steps": [
+        {
+          "efficiency_tip": "只在第一行输入一次公式；公式中的 C2 是相对引用，后续填充时 Calc 会自动改为对应行的日期单元格。",
+          "instructions": [
+            "单击 D2，即 Completed Years 标题正下方的第一个空白单元格。",
+            "输入公式 `=DATEDIF(C2,TODAY(),\"Y\")`，然后按 Enter。",
+            "如需确认公式，重新选中 D2 并查看编辑栏；其中 `\"Y\"` 表示只返回已经完整经过的年数。"
+          ],
+          "skill_ids": [
+            "4e6fcf72-daf3-439f-a232-c434ce416af6.skill-01"
+          ],
+          "step_number": 1,
+          "title": "在首行计算完整服务年数",
+          "visible_success_signal": "D2 显示一个非负的整数年数，而不是日期或错误值；编辑栏显示使用 C2、TODAY() 和 \"Y\" 的 DATEDIF 公式。"
+        },
+        {
+          "efficiency_tip": "相邻的 Enrollment Date 数据连续至第 25 行时，双击填充柄会比逐行复制或拖动更快。",
+          "instructions": [
+            "选中含有公式的 D2。",
+            "将指针移到选中单元格右下角的小方块，即填充柄。",
+            "双击填充柄，让 Calc 自动向下填充相邻连续记录对应的行。",
+            "向下查看直到第 25 行，必要时单击任一已填充单元格（例如 D10），确认其公式引用的是同一行的 Enrollment Date，例如 C10。"
+          ],
+          "skill_ids": [
+            "a9f325aa-8c05-4e4f-8341-9e4358565f4f.skill-02"
+          ],
+          "step_number": 2,
+          "title": "将服务年数公式填充到所有志愿者记录",
+          "visible_success_signal": "D2:D25 均有完成年数结果；选择不同数据行时，公式中的 C 行号会相应变化。"
+        },
+        {
+          "efficiency_tip": "先一次选中完整的数据区域再设置格式，可避免遗漏行，并保持全部出勤率显示一致。",
+          "instructions": [
+            "选择 Attendance Ratio 的数据区域 E2:E25；可单击 E2 后拖动到 E25。",
+            "在格式工具栏上单击 Percent (%) 按钮。",
+            "不要重新输入或乘以 100；百分比格式只改变显示方式，原有小数数值仍会保留。"
+          ],
+          "skill_ids": [
+            "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-06"
+          ],
+          "step_number": 3,
+          "title": "将出勤率显示为百分比",
+          "visible_success_signal": "E2:E25 的数值显示 % 符号；例如原来显示为 0.875 的值会显示为约 88% 或 87.5%。"
+        },
+        {
+          "efficiency_tip": "选择整列后再调整小数位，能同时格式化当前土壤读数以及该列以后输入的数值，而无需逐个单元格处理。",
+          "instructions": [
+            "单击列标 F，选中整个 Soil Reading 列。",
+            "在格式工具栏上找到 Increase Decimal（增加小数位数）按钮。",
+            "连续单击该按钮两次，使该列的显示精度增加到两位小数。",
+            "查看 F 列中的整数和原先带一位小数的数值，确认它们都按两位小数显示。"
+          ],
+          "skill_ids": [
+            "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5.skill-01"
+          ],
+          "step_number": 4,
+          "title": "将土壤读数统一显示为两位小数",
+          "visible_success_signal": "F 列 Soil Reading 的数据均显示两位小数，包括整数显示为类似 8.00、原有一位小数显示为类似 7.50。"
+        }
+      ]
+    },
+    "generation": {
+      "request_id": "f18f7141-2aee-4747-9730-c80f05f337a6",
+      "prompt_sha256": "27f3f0093f6fdaa1b35edb8200edecfd0d518a6c3d313d230d22343771b2a3ec",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 3410,
+      "output_tokens": 1350,
+      "estimated_cost_usd": 0.02302
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-019",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-019/initial_artifact.xlsx",
+      "artifact_sha256": "04087d18eb27e22dc8221a555177963f826bf5729109ad8fa211a97c402d56df",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-019/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-019/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.xlsx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-019",
+      "task_config_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-019.json",
+      "artifact_sha256": "04087d18eb27e22dc8221a555177963f826bf5729109ad8fa211a97c402d56df",
+      "blueprint_request_id": "33a1fa33-6805-466b-9476-f371dbb153d0"
+    },
+    "packet_path": "task_config.json"
+  }
+}

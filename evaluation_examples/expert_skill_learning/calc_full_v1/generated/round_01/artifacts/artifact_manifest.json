@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.0",
+  "artifacts": [
+    {
+      "reference_task_id": "reference-task-calc-full-r01-001",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-001/initial_artifact.xlsx",
+      "artifact_sha256": "8e3b874c1d29bb9a0d13877869fcc7c596c8c212dbd7f94d089bd11baea5ea0a",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-001/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-001/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-002",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-002/initial_artifact.xlsx",
+      "artifact_sha256": "ea718dabd14e9cedb8b71b434de07a38d9f788d3be8d64e27008c57ac755a78f",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-002/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-002/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-003",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-003/initial_artifact.xlsx",
+      "artifact_sha256": "ba3d0a4671a148bf8b4279f423b74a3cf119fcdda697ce8dcec66ae84adea44b",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-003/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-003/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-004",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-004/initial_artifact.xlsx",
+      "artifact_sha256": "c0dcbc446ba6b89dd5ba451e04d8684c1f4887668f519993efe11c9a0bcb37f3",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-004/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-004/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-005",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/initial_artifact.xlsx",
+      "artifact_sha256": "1801c28ec72cbd18b122ee96a9cdae0fecc0fc29241e82568968100a52a05d93",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-006",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-006/initial_artifact.xlsx",
+      "artifact_sha256": "2121aaa1a1218c89eb0c2d62e9e0a77e688185c63e85c0c890694f40605dc4a5",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-006/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-006/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-007",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-007/initial_artifact.xlsx",
+      "artifact_sha256": "c25f81596bbe4e6fc53b3f1f1b770f31f8ee9cf52d5e66d1bad9195c9c23eb90",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-007/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-007/artifact_qa.json",
+      "manual_setup_required": true,
+      "manual_setup_steps": [
+        "Set Shift Log!C2:C13 to the time number format [HH]:MM before recording; the stored values are decimal time serials."
+      ]
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-008",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-008/initial_artifact.xlsx",
+      "artifact_sha256": "19bf2b5ab4d974bb7190f12192f38c9785f8808f41f9159de74ac9310fc14405",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-008/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-008/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-009",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-009/initial_artifact.xlsx",
+      "artifact_sha256": "0d2a672156cfd091cbe41db52b5e7f113d5784f7c2b0ca8d5d2c48087525212a",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-009/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-009/artifact_qa.json",
+      "manual_setup_required": true,
+      "manual_setup_steps": [
+        "Before recording, replace Allocation Summary!A1 with the text \"Workshop Allocation Share\", apply a dark navy fill (#203864) and bold styling, and leave the font color at its default dark/black color. Clear any remaining cells in the summary area so the area beginning at A3 is blank for the native Pivot Table."
+      ]
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-010",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-010/initial_artifact.xlsx",
+      "artifact_sha256": "b065b0d94a6bb425a65da564d56809d81e04302401171474a6d389be4ec95f4d",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-010/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-010/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-011",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-011/initial_artifact.xlsx",
+      "artifact_sha256": "8e5adb2f184d09c3daa509884df2b877a6b71d5c8339d29bfdd87dde77117262",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-011/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-011/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-012",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-012/initial_artifact.xlsx",
+      "artifact_sha256": "a0510b9895c791890adab71dfcb65084cd297c2303f565810fde6f62dbf07170",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-012/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-012/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-013",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-013/initial_artifact.xlsx",
+      "artifact_sha256": "1b44b6f976f1ab66d2b3554152fa305d7e4b75f596f6ffa435b7df2efdd4f1e9",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-013/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-013/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-014",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/initial_artifact.xlsx",
+      "artifact_sha256": "28b3a6cdd9f468a591b07b4c4c223c6a5aa04d0c3bed9851d6095faff92bb164",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-015",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-015/initial_artifact.xlsx",
+      "artifact_sha256": "2efa8c66a5836bbedac8ceddbe2548b1857137dbe9c1d375e9047d0497b127b0",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-015/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-015/artifact_qa.json",
+      "manual_setup_required": true,
+      "manual_setup_steps": [
+        "After building the workbook, place the text label \"Total estimated liters\" in Dispatch Log!D28 while leaving Dispatch Log!E28 blank. This preserves the required blank rows 26 and 27 and the designated total-result cell without adding extra source-table records."
+      ]
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-016",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-016/initial_artifact.xlsx",
+      "artifact_sha256": "b475a352ce834769ecd99412dbd42dcaec8885d55803bf03ea8c9d0aa3af876a",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-016/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-016/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-017",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-017/initial_artifact.xlsx",
+      "artifact_sha256": "b08e6b97ba50384de5e5999819e5682601657f2d41c12b149a2f6095ae7cd53d",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-017/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-017/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-018",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-018/initial_artifact.xlsx",
+      "artifact_sha256": "c537d9000466d100788c368d21aa1c16cf3cf7400c96722acee746ac97801d28",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-018/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-018/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-019",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-019/initial_artifact.xlsx",
+      "artifact_sha256": "04087d18eb27e22dc8221a555177963f826bf5729109ad8fa211a97c402d56df",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-019/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-019/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-020",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-020/initial_artifact.xlsx",
+      "artifact_sha256": "faeb79de93d679439a5a0a2f69f8bb2faaca51be9f21420f43071f8755d79cb1",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-020/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-020/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    }
+  ]
+}

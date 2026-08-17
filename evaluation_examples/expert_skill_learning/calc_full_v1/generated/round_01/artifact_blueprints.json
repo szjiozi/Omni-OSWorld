@@ -1,0 +1,6145 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xlsx",
+  "blueprints": [
+    {
+      "reference_task_id": "reference-task-calc-full-r01-001",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "@",
+              "$#,##0.00"
+            ],
+            "column_types": [
+              "text",
+              "text",
+              "currency"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Region",
+              "Grant Theme",
+              "Requested Funding"
+            ],
+            "name": "Funding Plan",
+            "rows": [
+              {
+                "values": [
+                  "North Coast",
+                  "Youth Learning Hubs",
+                  "3642500"
+                ]
+              },
+              {
+                "values": [
+                  "River Valley",
+                  "Neighborhood Food Access",
+                  "2875000"
+                ]
+              },
+              {
+                "values": [
+                  "Central Plains",
+                  "Community Health Outreach",
+                  "4198000"
+                ]
+              },
+              {
+                "values": [
+                  "Eastern Ridge",
+                  "Affordable Transit Links",
+                  "3312500"
+                ]
+              },
+              {
+                "values": [
+                  "South Basin",
+                  "Climate Resilience Gardens",
+                  "2568000"
+                ]
+              },
+              {
+                "values": [
+                  "West Grove",
+                  "Digital Skills Labs",
+                  "3987500"
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Regional Community Grant Requests"
+      },
+      "generation": {
+        "request_id": "369633f7-1023-4a75-b2b1-b36479bf8ac4",
+        "prompt_sha256": "d1c6d4daeb958da15fd5eba5d41939f482afe091fa9a6b7b61112d7651ed0e2e",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1811,
+        "output_tokens": 256,
+        "estimated_cost_usd": 0.0034396
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-002",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "$#,##0.00",
+              "General"
+            ],
+            "column_types": [
+              "text",
+              "currency",
+              "currency"
+            ],
+            "formulas": [],
+            "freeze_header_row": false,
+            "headers": [
+              "Initiative",
+              "Planned Allocation (USD)",
+              "Board View"
+            ],
+            "name": "Funding Plan",
+            "rows": [
+              {
+                "values": [
+                  "North Transit",
+                  "12450000000",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "River Resilience",
+                  "8750000000",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Community Clinics",
+                  "3620000000",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Grid Modernization",
+                  "15180000000",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Digital Access",
+                  "2190000000",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Coastal Protection",
+                  "10440000000",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "School Renewal",
+                  "5970000000",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Water Reliability",
+                  "7310000000",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Housing Retrofit",
+                  "2860000000",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Emergency Logistics",
+                  "12990000000",
+                  ""
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Regional Funding Board View"
+      },
+      "generation": {
+        "request_id": "7681e9de-b10d-4d79-9079-1c318b6692c7",
+        "prompt_sha256": "d082215aa219be3a192ce6369b7433985acf874025c0b36d554816097df3aa13",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1969,
+        "output_tokens": 221,
+        "estimated_cost_usd": 0.0030512
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-003",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "$#,##0.00"
+            ],
+            "column_types": [
+              "text",
+              "currency"
+            ],
+            "formulas": [],
+            "freeze_header_row": false,
+            "headers": [
+              "Service Code",
+              "Unit Rate"
+            ],
+            "name": "Rate Card",
+            "rows": [
+              {
+                "values": [
+                  "DIAG",
+                  "42.50"
+                ]
+              },
+              {
+                "values": [
+                  "CALIB",
+                  "68.00"
+                ]
+              },
+              {
+                "values": [
+                  "REPAIR",
+                  "115.75"
+                ]
+              },
+              {
+                "values": [
+                  "INSTALL",
+                  "89.25"
+                ]
+              },
+              {
+                "values": [
+                  "TRAIN",
+                  "54.00"
+                ]
+              },
+              {
+                "values": [
+                  "AUDIT",
+                  "76.50"
+                ]
+              }
+            ]
+          },
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "@",
+              "0",
+              "0.00",
+              "General"
+            ],
+            "column_types": [
+              "text",
+              "text",
+              "integer",
+              "decimal",
+              "text"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Request ID",
+              "Service Code",
+              "Units",
+              "Adjustment",
+              "Estimate Note"
+            ],
+            "name": "Service Requests",
+            "rows": [
+              {
+                "values": [
+                  "SR-4101",
+                  "DIAG",
+                  "2",
+                  "0.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "SR-4102",
+                  "CALIB",
+                  "1",
+                  "0.10",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "SR-4103",
+                  "REPAIR",
+                  "3",
+                  "0.05",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "SR-4104",
+                  "INSTALL",
+                  "2",
+                  "0.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "SR-4105",
+                  "TRAIN",
+                  "4",
+                  "0.15",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "SR-4106",
+                  "AUDIT",
+                  "1",
+                  "0.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "SR-4107",
+                  "DIAG",
+                  "5",
+                  "0.20",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "SR-4108",
+                  "REPAIR",
+                  "1",
+                  "0.10",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "SR-4109",
+                  "CALIB",
+                  "3",
+                  "0.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "SR-4110",
+                  "INSTALL",
+                  "4",
+                  "0.05",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "SR-4111",
+                  "TRAIN",
+                  "2",
+                  "0.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "SR-4112",
+                  "AUDIT",
+                  "3",
+                  "0.10",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "SR-4113",
+                  "DIAG",
+                  "1",
+                  "0.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "SR-4114",
+                  "REPAIR",
+                  "2",
+                  "0.15",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "SR-4115",
+                  "CALIB",
+                  "4",
+                  "0.05",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "SR-4116",
+                  "INSTALL",
+                  "1",
+                  "0.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "SR-4117",
+                  "TRAIN",
+                  "3",
+                  "0.10",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "SR-4118",
+                  "AUDIT",
+                  "2",
+                  "0.00",
+                  ""
+                ]
+              }
+            ]
+          },
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@"
+            ],
+            "column_types": [
+              "text"
+            ],
+            "formulas": [],
+            "freeze_header_row": false,
+            "headers": [
+              "Checklist labels source and destination area"
+            ],
+            "name": "Overview",
+            "rows": [
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Rate verified"
+                ]
+              },
+              {
+                "values": [
+                  "Adjustment reviewed"
+                ]
+              },
+              {
+                "values": [
+                  "Estimate prepared"
+                ]
+              },
+              {
+                "values": [
+                  "Ready to send"
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Service Estimate Review"
+      },
+      "generation": {
+        "request_id": "0e9e3fd9-4abc-40f1-97bf-d2ffd9e4e88d",
+        "prompt_sha256": "6b5d3426caa4b33cec9621169f8e091ec5f9504bfe06920339f7bd50705d5616",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3027,
+        "output_tokens": 1063,
+        "estimated_cost_usd": 0.0133668
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-004",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "0",
+              "0",
+              "0"
+            ],
+            "column_types": [
+              "text",
+              "integer",
+              "integer",
+              "integer"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Item",
+              "Prepared Packs",
+              "Issued Packs",
+              "Remaining Packs"
+            ],
+            "name": "Supply Rounds",
+            "rows": [
+              {
+                "values": [
+                  "Round A — Tuesday",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Seed Trays",
+                  "84",
+                  "29",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Compost Bags",
+                  "63",
+                  "18",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Bamboo Stakes",
+                  "120",
+                  "46",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Watering Cans",
+                  "28",
+                  "9",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Plant Labels",
+                  "150",
+                  "72",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Round B — Thursday",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Seed Trays",
+                  "76",
+                  "31",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Compost Bags",
+                  "58",
+                  "21",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Bamboo Stakes",
+                  "110",
+                  "39",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Watering Cans",
+                  "24",
+                  "8",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Plant Labels",
+                  "135",
+                  "54",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Round C — Saturday",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Seed Trays",
+                  "91",
+                  "34",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Compost Bags",
+                  "70",
+                  "25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Bamboo Stakes",
+                  "128",
+                  "52",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Watering Cans",
+                  "31",
+                  "12",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Plant Labels",
+                  "160",
+                  "67",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Garden Supply Round Reconciliation"
+      },
+      "generation": {
+        "request_id": "01338660-a3cd-409f-91a1-192c82380bb2",
+        "prompt_sha256": "993f89d81a1c98566552dc0a913efe6b7a367dd45da400980dff1f5a30d03a20",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2510,
+        "output_tokens": 1542,
+        "estimated_cost_usd": 0.023524
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-005",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "@"
+            ],
+            "column_types": [
+              "text",
+              "text"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "SKU",
+              "Supply Group"
+            ],
+            "name": "Catalog",
+            "rows": [
+              {
+                "values": [
+                  "SKU-104",
+                  "Fasteners"
+                ]
+              },
+              {
+                "values": [
+                  "SKU-118",
+                  "Safety"
+                ]
+              },
+              {
+                "values": [
+                  "SKU-203",
+                  "Packaging"
+                ]
+              },
+              {
+                "values": [
+                  "SKU-217",
+                  "Adhesives"
+                ]
+              },
+              {
+                "values": [
+                  "SKU-305",
+                  "Hand Tools"
+                ]
+              },
+              {
+                "values": [
+                  "SKU-322",
+                  "Electrical"
+                ]
+              },
+              {
+                "values": [
+                  "SKU-411",
+                  "Cleaning"
+                ]
+              },
+              {
+                "values": [
+                  "SKU-426",
+                  "Storage"
+                ]
+              }
+            ]
+          },
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "General",
+              "@",
+              "0",
+              "$#,##0.00",
+              "@",
+              "@"
+            ],
+            "column_types": [
+              "integer",
+              "text",
+              "integer",
+              "currency",
+              "text",
+              "text"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Ticket Number",
+              "SKU",
+              "Units Dispatched",
+              "Restock Cost",
+              "Supply Group",
+              "Ticket Code"
+            ],
+            "name": "Dispatch_Log",
+            "rows": [
+              {
+                "values": [
+                  "4821",
+                  "SKU-305",
+                  "14",
+                  "238.50",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "930",
+                  "SKU-104",
+                  "60",
+                  "84.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "17654",
+                  "SKU-426",
+                  "8",
+                  "416.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "7210",
+                  "SKU-217",
+                  "25",
+                  "187.50",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "365",
+                  "SKU-203",
+                  "90",
+                  "135.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "11902",
+                  "SKU-322",
+                  "12",
+                  "324.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2548",
+                  "SKU-118",
+                  "18",
+                  "270.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "8061",
+                  "SKU-411",
+                  "35",
+                  "157.50",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "402",
+                  "SKU-104",
+                  "40",
+                  "56.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "14870",
+                  "SKU-305",
+                  "9",
+                  "153.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "6103",
+                  "SKU-203",
+                  "120",
+                  "180.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "996",
+                  "SKU-426",
+                  "5",
+                  "260.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "21509",
+                  "SKU-217",
+                  "30",
+                  "225.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "7334",
+                  "SKU-322",
+                  "20",
+                  "540.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "1876",
+                  "SKU-118",
+                  "10",
+                  "150.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "320",
+                  "SKU-411",
+                  "22",
+                  "99.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "16801",
+                  "SKU-305",
+                  "16",
+                  "272.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "5097",
+                  "SKU-203",
+                  "75",
+                  "112.50",
+                  "",
+                  ""
+                ]
+              }
+            ]
+          },
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "@"
+            ],
+            "column_types": [
+              "text",
+              "text"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Metric",
+              "Value"
+            ],
+            "name": "Summary",
+            "rows": [
+              {
+                "values": [
+                  "Total Units Dispatched",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Review Note",
+                  "Highest restock cost is flagged in Dispatch_Log"
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  ""
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Replenishment Review"
+      },
+      "generation": {
+        "request_id": "1a316ddd-f024-485e-8f87-b70c598d9308",
+        "prompt_sha256": "0edff2db1ac92edf39f02a58a6e4afd0f76da40e761e11a525e591ce24df5996",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3160,
+        "output_tokens": 932,
+        "estimated_cost_usd": 0.0118214
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-006",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "yyyy-mm-dd",
+              "0",
+              "0",
+              "@"
+            ],
+            "column_types": [
+              "date",
+              "integer",
+              "integer",
+              "text"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Service Date",
+              "Output Volume",
+              "Crew Hours",
+              "Service Route"
+            ],
+            "name": "Daily Metrics",
+            "rows": [
+              {
+                "values": [
+                  "2026-07-01",
+                  "1840",
+                  "96",
+                  "North Loop"
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-02",
+                  "1915",
+                  "98",
+                  "Harbor Spur"
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-03",
+                  "1870",
+                  "94",
+                  "Cedar Link"
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-04",
+                  "2035",
+                  "102",
+                  "North Loop"
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-05",
+                  "1980",
+                  "100",
+                  "Ridge Run"
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-06",
+                  "2110",
+                  "105",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-07",
+                  "2075",
+                  "103",
+                  "Quarry Way"
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-08",
+                  "2160",
+                  "108",
+                  "Harbor Spur"
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-09",
+                  "2095",
+                  "104",
+                  "Canal Point"
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-10",
+                  "2215",
+                  "110",
+                  "Cedar Link"
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-11",
+                  "2180",
+                  "109",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-12",
+                  "2260",
+                  "112",
+                  "Ridge Run"
+                ]
+              }
+            ]
+          },
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "yyyy-mm-dd",
+              "General",
+              "0.00",
+              "@"
+            ],
+            "column_types": [
+              "date",
+              "integer",
+              "decimal",
+              "text"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Service Date",
+              "Working Output",
+              "Daily Change",
+              "Distinct Route Roster"
+            ],
+            "name": "Route Review",
+            "rows": [
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-01",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-02",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-03",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-04",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-05",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-06",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-07",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-08",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-09",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-10",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-11",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-07-12",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Route Operations Review"
+      },
+      "generation": {
+        "request_id": "f6bd0a2a-cbeb-43bd-b835-e02fa7c0ca6e",
+        "prompt_sha256": "48b95fcbe91df7310ff4db690d2e9290a0ed8f6927e8bea02466b201e791439b",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2800,
+        "output_tokens": 1589,
+        "estimated_cost_usd": 0.024668
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-007",
+      "blueprint": {
+        "manual_setup_steps": [
+          "Set Shift Log!C2:C13 to the time number format [HH]:MM before recording; the stored values are decimal time serials."
+        ],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "@",
+              "General",
+              "0.00",
+              "General"
+            ],
+            "column_types": [
+              "text",
+              "text",
+              "decimal",
+              "decimal",
+              "currency"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Technician",
+              "Work Order",
+              "Service Duration",
+              "Hourly Rate",
+              "Earned Amount"
+            ],
+            "name": "Shift Log",
+            "rows": [
+              {
+                "values": [
+                  "Avery Nolan",
+                  "WO-84017",
+                  "0.0520833333",
+                  "31.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Briar Chen",
+                  "WO-84028",
+                  "0.1041666667",
+                  "38.50",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Callum Reese",
+                  "WO-84039",
+                  "0.1562500000",
+                  "42.75",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Dana Ibarra",
+                  "WO-84044",
+                  "0.1979166667",
+                  "29.80",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Emery Voss",
+                  "WO-84056",
+                  "0.2395833333",
+                  "46.75",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Farah Linden",
+                  "WO-84063",
+                  "0.2708333333",
+                  "35.40",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Gavin Rowe",
+                  "WO-84071",
+                  "0.3229166667",
+                  "40.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Hana Mercer",
+                  "WO-84082",
+                  "0.0729166667",
+                  "33.60",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Ilan Porter",
+                  "WO-84095",
+                  "0.2187500000",
+                  "44.10",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Jessa Quinn",
+                  "WO-84103",
+                  "0.1250000000",
+                  "28.50",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Kellan Moss",
+                  "WO-84116",
+                  "0.2812500000",
+                  "39.95",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Liora Park",
+                  "WO-84129",
+                  "0.1770833333",
+                  "45.60",
+                  ""
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Field Service Payment Review"
+      },
+      "generation": {
+        "request_id": "c13ba56a-2833-40d4-9419-cfe2a790b722",
+        "prompt_sha256": "512220c135804558d82575c366b3621d2f85c914b0ec7bb0ec313551476e10fb",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2493,
+        "output_tokens": 943,
+        "estimated_cost_usd": 0.01182
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-008",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "@",
+              "0",
+              "$#,##0.00",
+              "$#,##0.00"
+            ],
+            "column_types": [
+              "text",
+              "text",
+              "integer",
+              "currency",
+              "currency"
+            ],
+            "formulas": [
+              {
+                "cell": "E2",
+                "formula": "=C2*D2"
+              }
+            ],
+            "freeze_header_row": false,
+            "headers": [
+              "Delivery Code",
+              "Garden Zone",
+              "Quantity",
+              "Unit Price",
+              "Line Total"
+            ],
+            "name": "Delivery Log",
+            "rows": [
+              {
+                "values": [
+                  "DLV-1001",
+                  "Willow Bed",
+                  "18",
+                  "4.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1002",
+                  "Maple Plot",
+                  "12",
+                  "8.75",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1003",
+                  "Sunflower Terrace",
+                  "30",
+                  "2.40",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1004",
+                  "Herb Corner",
+                  "8",
+                  "11.50",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1005",
+                  "Willow Bed",
+                  "15",
+                  "6.20",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1006",
+                  "Maple Plot",
+                  "24",
+                  "3.15",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1007",
+                  "Sunflower Terrace",
+                  "10",
+                  "14.80",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1008",
+                  "Herb Corner",
+                  "20",
+                  "1.95",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1009",
+                  "Willow Bed",
+                  "6",
+                  "18.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1010",
+                  "Maple Plot",
+                  "16",
+                  "5.60",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1011",
+                  "Sunflower Terrace",
+                  "25",
+                  "3.85",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1012",
+                  "Herb Corner",
+                  "9",
+                  "9.40",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1013",
+                  "Willow Bed",
+                  "22",
+                  "2.75",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1014",
+                  "Maple Plot",
+                  "7",
+                  "16.90",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1015",
+                  "Sunflower Terrace",
+                  "14",
+                  "7.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1016",
+                  "Herb Corner",
+                  "28",
+                  "2.10",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1017",
+                  "Willow Bed",
+                  "11",
+                  "12.60",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1018",
+                  "Maple Plot",
+                  "19",
+                  "4.45",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1019",
+                  "Sunflower Terrace",
+                  "5",
+                  "21.30",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1020",
+                  "Herb Corner",
+                  "17",
+                  "5.15",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1021",
+                  "Willow Bed",
+                  "26",
+                  "3.35",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1022",
+                  "Maple Plot",
+                  "13",
+                  "10.20",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1023",
+                  "Sunflower Terrace",
+                  "21",
+                  "4.70",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "DLV-1024",
+                  "Herb Corner",
+                  "16",
+                  "6.85",
+                  ""
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Garden Supply Delivery Register"
+      },
+      "generation": {
+        "request_id": "650bcf9f-5d2a-48ef-90df-d526113e681a",
+        "prompt_sha256": "10cbaef49488c7acc737366df21a4481c510302e20e08a4a382a684cd8b48c45",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2179,
+        "output_tokens": 704,
+        "estimated_cost_usd": 0.0088892
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-009",
+      "blueprint": {
+        "manual_setup_steps": [
+          "Before recording, replace Allocation Summary!A1 with the text \"Workshop Allocation Share\", apply a dark navy fill (#203864) and bold styling, and leave the font color at its default dark/black color. Clear any remaining cells in the summary area so the area beginning at A3 is blank for the native Pivot Table."
+        ],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "0.00",
+              "0.00",
+              "0.00",
+              "General"
+            ],
+            "column_types": [
+              "text",
+              "decimal",
+              "decimal",
+              "decimal",
+              "text"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Batch Code",
+              "Scheduled Units",
+              "Completed Units",
+              "Rework Units",
+              "Record Summary"
+            ],
+            "name": "Activity Log",
+            "rows": [
+              {
+                "values": [
+                  "WSA-201",
+                  "84.50",
+                  "79.25",
+                  "2.10",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WSA-202",
+                  "116.00",
+                  "108.75",
+                  "4.50",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WSA-203",
+                  "72.25",
+                  "68.00",
+                  "1.75",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WSA-204",
+                  "95.00",
+                  "91.50",
+                  "3.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WSA-205",
+                  "128.75",
+                  "121.00",
+                  "5.50",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WSA-206",
+                  "63.50",
+                  "59.25",
+                  "2.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WSA-207",
+                  "102.00",
+                  "97.80",
+                  "3.60",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WSA-208",
+                  "88.25",
+                  "83.50",
+                  "2.75",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WSA-209",
+                  "145.00",
+                  "136.25",
+                  "6.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WSA-210",
+                  "77.50",
+                  "72.00",
+                  "2.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WSA-211",
+                  "110.25",
+                  "104.50",
+                  "4.10",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WSA-212",
+                  "69.00",
+                  "65.75",
+                  "1.50",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WSA-213",
+                  "134.50",
+                  "126.00",
+                  "5.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WSA-214",
+                  "91.75",
+                  "87.25",
+                  "2.80",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WSA-215",
+                  "120.00",
+                  "113.40",
+                  "4.75",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WSA-216",
+                  "58.25",
+                  "54.80",
+                  "1.20",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WSA-217",
+                  "106.50",
+                  "100.00",
+                  "3.90",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "WSA-218",
+                  "82.00",
+                  "77.60",
+                  "2.40",
+                  ""
+                ]
+              }
+            ]
+          },
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@"
+            ],
+            "column_types": [
+              "text"
+            ],
+            "formulas": [],
+            "freeze_header_row": false,
+            "headers": [
+              "Reserved blank summary area"
+            ],
+            "name": "Allocation Summary",
+            "rows": [
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Workshop Allocation Review"
+      },
+      "generation": {
+        "request_id": "722fabdd-83e8-4ff9-9f5a-0cd1484117c7",
+        "prompt_sha256": "8bc3dc7332e3e7eee578747286969d202622eff4386b62478487d5cce8d659d9",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2441,
+        "output_tokens": 1571,
+        "estimated_cost_usd": 0.023734
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-010",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "@",
+              "@",
+              "@",
+              "0.00"
+            ],
+            "column_types": [
+              "text",
+              "text",
+              "text",
+              "text",
+              "decimal"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Program",
+              "Quarter",
+              "Garden Site",
+              "Activity Type",
+              "Service Hours"
+            ],
+            "name": "Activity Log",
+            "rows": [
+              {
+                "values": [
+                  "Youth Garden",
+                  "Q1",
+                  "Maple Street Garden",
+                  "Seed Starting",
+                  "6.5"
+                ]
+              },
+              {
+                "values": [
+                  "Composting Initiative",
+                  "Q1",
+                  "Riverside Garden",
+                  "Compost Turning",
+                  "4.0"
+                ]
+              },
+              {
+                "values": [
+                  "Harvest Share",
+                  "Q1",
+                  "Oakview Garden",
+                  "Bed Preparation",
+                  "5.5"
+                ]
+              },
+              {
+                "values": [
+                  "Youth Garden",
+                  "Q1",
+                  "Maple Street Garden",
+                  "Tool Cleaning",
+                  "3.0"
+                ]
+              },
+              {
+                "values": [
+                  "Composting Initiative",
+                  "Q1",
+                  "Hillside Garden",
+                  "Compost Sorting",
+                  "4.5"
+                ]
+              },
+              {
+                "values": [
+                  "Harvest Share",
+                  "Q1",
+                  "Riverside Garden",
+                  "Seedling Care",
+                  "6.0"
+                ]
+              },
+              {
+                "values": [
+                  "Youth Garden",
+                  "Q1",
+                  "Oakview Garden",
+                  "Mulching",
+                  "5.0"
+                ]
+              },
+              {
+                "values": [
+                  "Composting Initiative",
+                  "Q1",
+                  "Maple Street Garden",
+                  "Worm Bin Care",
+                  "3.5"
+                ]
+              },
+              {
+                "values": [
+                  "Harvest Share",
+                  "Q1",
+                  "Hillside Garden",
+                  "Garden Planning",
+                  "4.0"
+                ]
+              },
+              {
+                "values": [
+                  "Youth Garden",
+                  "Q2",
+                  "Maple Street Garden",
+                  "Planting",
+                  "7.0"
+                ]
+              },
+              {
+                "values": [
+                  "Composting Initiative",
+                  "Q2",
+                  "Riverside Garden",
+                  "Compost Turning",
+                  "5.5"
+                ]
+              },
+              {
+                "values": [
+                  "Harvest Share",
+                  "Q2",
+                  "Oakview Garden",
+                  "Harvest Setup",
+                  "6.5"
+                ]
+              },
+              {
+                "values": [
+                  "Youth Garden",
+                  "Q2",
+                  "Hillside Garden",
+                  "Weeding",
+                  "4.5"
+                ]
+              },
+              {
+                "values": [
+                  "Composting Initiative",
+                  "Q2",
+                  "Maple Street Garden",
+                  "Compost Sorting",
+                  "4.0"
+                ]
+              },
+              {
+                "values": [
+                  "Harvest Share",
+                  "Q2",
+                  "Riverside Garden",
+                  "Produce Packing",
+                  "5.0"
+                ]
+              },
+              {
+                "values": [
+                  "Youth Garden",
+                  "Q2",
+                  "Oakview Garden",
+                  "Watering",
+                  "3.5"
+                ]
+              },
+              {
+                "values": [
+                  "Composting Initiative",
+                  "Q2",
+                  "Hillside Garden",
+                  "Worm Bin Care",
+                  "4.5"
+                ]
+              },
+              {
+                "values": [
+                  "Harvest Share",
+                  "Q2",
+                  "Maple Street Garden",
+                  "Harvest Setup",
+                  "6.0"
+                ]
+              },
+              {
+                "values": [
+                  "Youth Garden",
+                  "Q3",
+                  "Riverside Garden",
+                  "Weeding",
+                  "5.0"
+                ]
+              },
+              {
+                "values": [
+                  "Composting Initiative",
+                  "Q3",
+                  "Oakview Garden",
+                  "Compost Turning",
+                  "6.0"
+                ]
+              },
+              {
+                "values": [
+                  "Harvest Share",
+                  "Q3",
+                  "Hillside Garden",
+                  "Produce Packing",
+                  "7.5"
+                ]
+              },
+              {
+                "values": [
+                  "Youth Garden",
+                  "Q3",
+                  "Maple Street Garden",
+                  "Youth Workshop",
+                  "4.0"
+                ]
+              },
+              {
+                "values": [
+                  "Composting Initiative",
+                  "Q3",
+                  "Riverside Garden",
+                  "Compost Delivery",
+                  "5.0"
+                ]
+              },
+              {
+                "values": [
+                  "Harvest Share",
+                  "Q3",
+                  "Oakview Garden",
+                  "Harvesting",
+                  "6.5"
+                ]
+              },
+              {
+                "values": [
+                  "Youth Garden",
+                  "Q3",
+                  "Hillside Garden",
+                  "Watering",
+                  "3.0"
+                ]
+              },
+              {
+                "values": [
+                  "Composting Initiative",
+                  "Q3",
+                  "Maple Street Garden",
+                  "Compost Sorting",
+                  "4.5"
+                ]
+              },
+              {
+                "values": [
+                  "Harvest Share",
+                  "Q3",
+                  "Riverside Garden",
+                  "Farm Stand Prep",
+                  "5.5"
+                ]
+              },
+              {
+                "values": [
+                  "Youth Garden",
+                  "Q4",
+                  "Oakview Garden",
+                  "Bed Cleanup",
+                  "5.0"
+                ]
+              },
+              {
+                "values": [
+                  "Composting Initiative",
+                  "Q4",
+                  "Hillside Garden",
+                  "Leaf Collection",
+                  "6.5"
+                ]
+              },
+              {
+                "values": [
+                  "Harvest Share",
+                  "Q4",
+                  "Maple Street Garden",
+                  "Produce Packing",
+                  "4.5"
+                ]
+              },
+              {
+                "values": [
+                  "Youth Garden",
+                  "Q4",
+                  "Riverside Garden",
+                  "Tool Cleaning",
+                  "3.5"
+                ]
+              },
+              {
+                "values": [
+                  "Composting Initiative",
+                  "Q4",
+                  "Oakview Garden",
+                  "Compost Turning",
+                  "5.0"
+                ]
+              },
+              {
+                "values": [
+                  "Harvest Share",
+                  "Q4",
+                  "Hillside Garden",
+                  "Season Closeout",
+                  "6.0"
+                ]
+              },
+              {
+                "values": [
+                  "Youth Garden",
+                  "Q4",
+                  "Maple Street Garden",
+                  "Mulching",
+                  "4.0"
+                ]
+              },
+              {
+                "values": [
+                  "Composting Initiative",
+                  "Q4",
+                  "Riverside Garden",
+                  "Worm Bin Care",
+                  "3.5"
+                ]
+              },
+              {
+                "values": [
+                  "Harvest Share",
+                  "Q4",
+                  "Oakview Garden",
+                  "Garden Planning",
+                  "5.0"
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Garden Volunteer Activity"
+      },
+      "generation": {
+        "request_id": "38c2c3db-e3bc-4cd4-a488-6b164e085587",
+        "prompt_sha256": "5dade98d983ff53e222ffd7f827d0bc8dec5d2bed0ef455b2fb4cb7dae146e3c",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1886,
+        "output_tokens": 1029,
+        "estimated_cost_usd": 0.0127306
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-011",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "$#,##0.00",
+              "$#,##0.00",
+              "0",
+              "$#,##0.00",
+              "$#,##0.00"
+            ],
+            "column_types": [
+              "text",
+              "currency",
+              "currency",
+              "integer",
+              "currency",
+              "currency"
+            ],
+            "formulas": [
+              {
+                "cell": "B2",
+                "formula": "=D2*E2"
+              },
+              {
+                "cell": "C2",
+                "formula": "=B2+F2"
+              }
+            ],
+            "freeze_header_row": true,
+            "headers": [
+              "Event Code",
+              "Gross Revenue",
+              "Community Share",
+              "Registrations",
+              "Fee per Registration",
+              "Sponsor Grant"
+            ],
+            "name": "Event Ledger",
+            "rows": [
+              {
+                "values": [
+                  "EVT-101",
+                  "",
+                  "",
+                  "24",
+                  "35",
+                  "120"
+                ]
+              },
+              {
+                "values": [
+                  "EVT-102",
+                  "",
+                  "",
+                  "18",
+                  "40",
+                  "80"
+                ]
+              },
+              {
+                "values": [
+                  "EVT-103",
+                  "",
+                  "",
+                  "31",
+                  "28",
+                  "150"
+                ]
+              },
+              {
+                "values": [
+                  "EVT-104",
+                  "",
+                  "",
+                  "16",
+                  "45",
+                  "60"
+                ]
+              },
+              {
+                "values": [
+                  "EVT-105",
+                  "",
+                  "",
+                  "27",
+                  "32",
+                  "110"
+                ]
+              },
+              {
+                "values": [
+                  "EVT-106",
+                  "",
+                  "",
+                  "22",
+                  "38",
+                  "90"
+                ]
+              },
+              {
+                "values": [
+                  "EVT-107",
+                  "",
+                  "",
+                  "35",
+                  "25",
+                  "175"
+                ]
+              },
+              {
+                "values": [
+                  "EVT-108",
+                  "",
+                  "",
+                  "19",
+                  "42",
+                  "70"
+                ]
+              },
+              {
+                "values": [
+                  "EVT-109",
+                  "",
+                  "",
+                  "29",
+                  "30",
+                  "130"
+                ]
+              },
+              {
+                "values": [
+                  "EVT-110",
+                  "",
+                  "",
+                  "14",
+                  "50",
+                  "55"
+                ]
+              },
+              {
+                "values": [
+                  "EVT-111",
+                  "",
+                  "",
+                  "33",
+                  "27",
+                  "160"
+                ]
+              },
+              {
+                "values": [
+                  "EVT-112",
+                  "",
+                  "",
+                  "21",
+                  "36",
+                  "85"
+                ]
+              },
+              {
+                "values": [
+                  "EVT-113",
+                  "",
+                  "",
+                  "26",
+                  "34",
+                  "100"
+                ]
+              },
+              {
+                "values": [
+                  "EVT-114",
+                  "",
+                  "",
+                  "17",
+                  "48",
+                  "65"
+                ]
+              },
+              {
+                "values": [
+                  "EVT-115",
+                  "",
+                  "",
+                  "30",
+                  "29",
+                  "140"
+                ]
+              },
+              {
+                "values": [
+                  "EVT-116",
+                  "",
+                  "",
+                  "23",
+                  "37",
+                  "95"
+                ]
+              },
+              {
+                "values": [
+                  "EVT-117",
+                  "",
+                  "",
+                  "28",
+                  "31",
+                  "125"
+                ]
+              },
+              {
+                "values": [
+                  "EVT-118",
+                  "",
+                  "",
+                  "20",
+                  "44",
+                  "75"
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              }
+            ]
+          },
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@"
+            ],
+            "column_types": [
+              "text"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Event Code"
+            ],
+            "name": "Upload",
+            "rows": [
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Community Workshop Event Finance"
+      },
+      "generation": {
+        "request_id": "768b4606-1d21-457f-a39e-9b37ee68ef58",
+        "prompt_sha256": "b9294e417ea90abb62e2987e23a6273f9fccbfaaf71314f0a9709bcd2c086aa6",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2755,
+        "output_tokens": 980,
+        "estimated_cost_usd": 0.01727
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-012",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "yyyy-mm-dd",
+              "0.00",
+              "0",
+              "0"
+            ],
+            "column_types": [
+              "date",
+              "decimal",
+              "integer",
+              "integer"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Dispatch Date",
+              "Completion Rate",
+              "Planned Kits",
+              "Verified Kits"
+            ],
+            "name": "Dispatch Log",
+            "rows": [
+              {
+                "values": [
+                  "2026-04-01",
+                  "",
+                  "124",
+                  "112"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-02",
+                  "",
+                  "151",
+                  "139"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-03",
+                  "",
+                  "93",
+                  "76"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-04",
+                  "",
+                  "137",
+                  "128"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-05",
+                  "",
+                  "108",
+                  "89"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-06",
+                  "",
+                  "160",
+                  "152"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-07",
+                  "",
+                  "82",
+                  "65"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-08",
+                  "",
+                  "119",
+                  "111"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-09",
+                  "",
+                  "145",
+                  "121"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-10",
+                  "",
+                  "97",
+                  "91"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-11",
+                  "",
+                  "132",
+                  "105"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-12",
+                  "",
+                  "88",
+                  "80"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-13",
+                  "",
+                  "156",
+                  "149"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-14",
+                  "",
+                  "114",
+                  "96"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-15",
+                  "",
+                  "126",
+                  "119"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-16",
+                  "",
+                  "101",
+                  "84"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-17",
+                  "",
+                  "148",
+                  "143"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-18",
+                  "",
+                  "86",
+                  "70"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-19",
+                  "",
+                  "139",
+                  "124"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-20",
+                  "",
+                  "110",
+                  "107"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-21",
+                  "",
+                  "158",
+                  "135"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-22",
+                  "",
+                  "95",
+                  "86"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-23",
+                  "",
+                  "129",
+                  "116"
+                ]
+              },
+              {
+                "values": [
+                  "2026-04-24",
+                  "",
+                  "84",
+                  "73"
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Coastal Lab Dispatch Completion"
+      },
+      "generation": {
+        "request_id": "921fe525-44da-44b2-9e7f-7785645d6695",
+        "prompt_sha256": "c0d28171ceb258bf97422b9e38987fa1683f923aa83b2d39d457b17f37cc75b6",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2033,
+        "output_tokens": 807,
+        "estimated_cost_usd": 0.010096
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-013",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "yyyy-mm-dd",
+              "@",
+              "@",
+              "@",
+              "0",
+              "$#,##0.00"
+            ],
+            "column_types": [
+              "text",
+              "date",
+              "text",
+              "text",
+              "text",
+              "integer",
+              "currency"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Delivery ID",
+              "Delivery Date",
+              "Garden Zone",
+              "Supply Category",
+              "Item",
+              "Units Delivered",
+              "Delivery Cost"
+            ],
+            "name": "Deliveries",
+            "rows": [
+              {
+                "values": [
+                  "DLV-2601",
+                  "2026-04-02",
+                  "North Beds",
+                  "Soil",
+                  "Compost Blend",
+                  "18",
+                  "126.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2602",
+                  "2026-04-02",
+                  "North Beds",
+                  "Seeds",
+                  "Bean Seeds",
+                  "22",
+                  "44.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2603",
+                  "2026-04-03",
+                  "North Beds",
+                  "Irrigation",
+                  "Drip Line Kit",
+                  "16",
+                  "192.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2604",
+                  "2026-04-04",
+                  "North Beds",
+                  "Tools",
+                  "Hand Trowel",
+                  "24",
+                  "168.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2605",
+                  "2026-04-05",
+                  "North Beds",
+                  "Mulch",
+                  "Straw Bale",
+                  "20",
+                  "110.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2606",
+                  "2026-04-06",
+                  "North Beds",
+                  "Seeds",
+                  "Lettuce Starts",
+                  "28",
+                  "84.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2607",
+                  "2026-04-07",
+                  "East Terrace",
+                  "Soil",
+                  "Compost Blend",
+                  "25",
+                  "175.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2608",
+                  "2026-04-07",
+                  "East Terrace",
+                  "Seeds",
+                  "Tomato Starts",
+                  "19",
+                  "76.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2609",
+                  "2026-04-08",
+                  "East Terrace",
+                  "Irrigation",
+                  "Emitter Pack",
+                  "23",
+                  "138.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2610",
+                  "2026-04-09",
+                  "East Terrace",
+                  "Tools",
+                  "Garden Fork",
+                  "27",
+                  "243.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2611",
+                  "2026-04-10",
+                  "East Terrace",
+                  "Mulch",
+                  "Wood Chips Bag",
+                  "21",
+                  "147.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2612",
+                  "2026-04-11",
+                  "East Terrace",
+                  "Seeds",
+                  "Pepper Starts",
+                  "27",
+                  "108.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2613",
+                  "2026-04-12",
+                  "South Plot",
+                  "Soil",
+                  "Raised Bed Mix",
+                  "14",
+                  "126.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2614",
+                  "2026-04-12",
+                  "South Plot",
+                  "Seeds",
+                  "Carrot Seeds",
+                  "18",
+                  "36.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2615",
+                  "2026-04-13",
+                  "South Plot",
+                  "Irrigation",
+                  "Drip Line Kit",
+                  "20",
+                  "240.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2616",
+                  "2026-04-14",
+                  "South Plot",
+                  "Tools",
+                  "Hand Pruner",
+                  "17",
+                  "119.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2617",
+                  "2026-04-15",
+                  "South Plot",
+                  "Mulch",
+                  "Straw Bale",
+                  "25",
+                  "137.50"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2618",
+                  "2026-04-16",
+                  "South Plot",
+                  "Seeds",
+                  "Kale Starts",
+                  "22",
+                  "66.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2619",
+                  "2026-04-17",
+                  "West Beds",
+                  "Soil",
+                  "Compost Blend",
+                  "26",
+                  "182.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2620",
+                  "2026-04-17",
+                  "West Beds",
+                  "Seeds",
+                  "Squash Seeds",
+                  "20",
+                  "40.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2621",
+                  "2026-04-18",
+                  "West Beds",
+                  "Irrigation",
+                  "Emitter Pack",
+                  "18",
+                  "108.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2622",
+                  "2026-04-19",
+                  "West Beds",
+                  "Tools",
+                  "Garden Hoe",
+                  "24",
+                  "192.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2623",
+                  "2026-04-20",
+                  "West Beds",
+                  "Mulch",
+                  "Wood Chips Bag",
+                  "22",
+                  "154.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2624",
+                  "2026-04-21",
+                  "West Beds",
+                  "Seeds",
+                  "Cucumber Starts",
+                  "24",
+                  "96.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2625",
+                  "2026-04-22",
+                  "Orchard Row",
+                  "Soil",
+                  "Compost Blend",
+                  "15",
+                  "105.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2626",
+                  "2026-04-22",
+                  "Orchard Row",
+                  "Seeds",
+                  "Marigold Seeds",
+                  "21",
+                  "42.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2627",
+                  "2026-04-23",
+                  "Orchard Row",
+                  "Irrigation",
+                  "Drip Line Kit",
+                  "19",
+                  "228.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2628",
+                  "2026-04-24",
+                  "Orchard Row",
+                  "Tools",
+                  "Hand Pruner",
+                  "26",
+                  "182.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2629",
+                  "2026-04-25",
+                  "Orchard Row",
+                  "Mulch",
+                  "Straw Bale",
+                  "18",
+                  "99.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2630",
+                  "2026-04-26",
+                  "Orchard Row",
+                  "Seeds",
+                  "Herb Starts",
+                  "22",
+                  "88.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2631",
+                  "2026-04-27",
+                  "Greenhouse",
+                  "Soil",
+                  "Potting Mix Bag",
+                  "30",
+                  "210.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2632",
+                  "2026-04-27",
+                  "Greenhouse",
+                  "Seeds",
+                  "Basil Seeds",
+                  "24",
+                  "48.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2633",
+                  "2026-04-28",
+                  "Greenhouse",
+                  "Irrigation",
+                  "Emitter Pack",
+                  "28",
+                  "168.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2634",
+                  "2026-04-29",
+                  "Greenhouse",
+                  "Tools",
+                  "Seedling Tray",
+                  "20",
+                  "140.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2635",
+                  "2026-04-30",
+                  "Greenhouse",
+                  "Mulch",
+                  "Coco Coir Brick",
+                  "23",
+                  "115.00"
+                ]
+              },
+              {
+                "values": [
+                  "DLV-2636",
+                  "2026-05-01",
+                  "Greenhouse",
+                  "Seeds",
+                  "Pepper Starts",
+                  "24",
+                  "96.00"
+                ]
+              }
+            ]
+          },
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "0"
+            ],
+            "column_types": [
+              "text",
+              "integer"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Garden Zone",
+              "Delivered Units"
+            ],
+            "name": "Route Snapshot",
+            "rows": [
+              {
+                "values": [
+                  "North Beds",
+                  "128"
+                ]
+              },
+              {
+                "values": [
+                  "East Terrace",
+                  "142"
+                ]
+              },
+              {
+                "values": [
+                  "South Plot",
+                  "116"
+                ]
+              },
+              {
+                "values": [
+                  "West Beds",
+                  "134"
+                ]
+              },
+              {
+                "values": [
+                  "Orchard Row",
+                  "121"
+                ]
+              },
+              {
+                "values": [
+                  "Greenhouse",
+                  "149"
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Garden Supply Delivery Review"
+      },
+      "generation": {
+        "request_id": "ed6c2c22-05b8-439d-8155-8ac07ccb4fcd",
+        "prompt_sha256": "567924b901720851256fb21dd8b80eac1e56b38c573158f201f18b3eedb5bd76",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2137,
+        "output_tokens": 1620,
+        "estimated_cost_usd": 0.0198728
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-014",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "0",
+              "0",
+              "0"
+            ],
+            "column_types": [
+              "text",
+              "integer",
+              "integer",
+              "integer"
+            ],
+            "formulas": [],
+            "freeze_header_row": false,
+            "headers": [
+              "Shift",
+              "Kiosk North",
+              "Kiosk Central",
+              "Kiosk South"
+            ],
+            "name": "Coverage Setup",
+            "rows": [
+              {
+                "values": [
+                  "Morning",
+                  "3",
+                  "4",
+                  "3"
+                ]
+              },
+              {
+                "values": [
+                  "Midday",
+                  "4",
+                  "5",
+                  "4"
+                ]
+              },
+              {
+                "values": [
+                  "Afternoon",
+                  "3",
+                  "4",
+                  "3"
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              }
+            ]
+          },
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "yyyy-mm-dd",
+              "@",
+              "@",
+              "@"
+            ],
+            "column_types": [
+              "date",
+              "text",
+              "text",
+              "text"
+            ],
+            "formulas": [],
+            "freeze_header_row": false,
+            "headers": [
+              "Check-in Time",
+              "Kiosk",
+              "Ticket Code",
+              "Repair Type"
+            ],
+            "name": "CheckIn Log",
+            "rows": [
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk North",
+                  "RF-1001",
+                  "Toaster Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk Central",
+                  "RF-1002",
+                  "Lamp Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk South",
+                  "RF-1003",
+                  "Bicycle Tune-up"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk North",
+                  "RF-1004",
+                  "Radio Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk Central",
+                  "RF-1005",
+                  "Vacuum Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk South",
+                  "RF-1006",
+                  "Clothing Mend"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk North",
+                  "RF-1007",
+                  "Laptop Diagnosis"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk Central",
+                  "RF-1008",
+                  "Clock Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk South",
+                  "RF-1009",
+                  "Small Appliance"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk North",
+                  "RF-1010",
+                  "Chair Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk Central",
+                  "RF-1001",
+                  "Toaster Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk South",
+                  "RF-1002",
+                  "Lamp Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk North",
+                  "RF-1003",
+                  "Bicycle Tune-up"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk Central",
+                  "RF-1004",
+                  "Radio Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk South",
+                  "RF-1005",
+                  "Vacuum Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk North",
+                  "RF-1006",
+                  "Clothing Mend"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk Central",
+                  "RF-1007",
+                  "Laptop Diagnosis"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk South",
+                  "RF-1008",
+                  "Clock Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk North",
+                  "RF-1009",
+                  "Small Appliance"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk Central",
+                  "RF-1010",
+                  "Chair Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk South",
+                  "RF-1011",
+                  "Fan Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk North",
+                  "RF-1012",
+                  "Bag Zipper Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk Central",
+                  "RF-1013",
+                  "Tablet Diagnosis"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk South",
+                  "RF-1014",
+                  "Kettle Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk North",
+                  "RF-1015",
+                  "Sewing Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk Central",
+                  "RF-1011",
+                  "Fan Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk South",
+                  "RF-1012",
+                  "Bag Zipper Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk North",
+                  "RF-1013",
+                  "Tablet Diagnosis"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk Central",
+                  "RF-1014",
+                  "Kettle Repair"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-12",
+                  "Kiosk South",
+                  "RF-1015",
+                  "Sewing Repair"
+                ]
+              }
+            ]
+          },
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@"
+            ],
+            "column_types": [
+              "text"
+            ],
+            "formulas": [],
+            "freeze_header_row": false,
+            "headers": [
+              "(blank initial sheet)"
+            ],
+            "name": "Handoff Summary",
+            "rows": [
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Repair Fair Handoff"
+      },
+      "generation": {
+        "request_id": "06aa3c5e-c9ed-45b6-abc3-1118d40d0e60",
+        "prompt_sha256": "ec2c809f4b5d7e5ff265084231478d06ec1f5ef0eea93ba6399f2d858390ff30",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2228,
+        "output_tokens": 1623,
+        "estimated_cost_usd": 0.023932
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-015",
+      "blueprint": {
+        "manual_setup_steps": [
+          "After building the workbook, place the text label \"Total estimated liters\" in Dispatch Log!D28 while leaving Dispatch Log!E28 blank. This preserves the required blank rows 26 and 27 and the designated total-result cell without adding extra source-table records."
+        ],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "@",
+              "0.00",
+              "0.00",
+              "0.00"
+            ],
+            "column_types": [
+              "text",
+              "text",
+              "decimal",
+              "decimal",
+              "decimal"
+            ],
+            "formulas": [
+              {
+                "cell": "E2",
+                "formula": "=C2*D2"
+              }
+            ],
+            "freeze_header_row": true,
+            "headers": [
+              "Route Code",
+              "Zone",
+              "Distance (km)",
+              "Liters per km",
+              "Estimated Liters"
+            ],
+            "name": "Dispatch Log",
+            "rows": [
+              {
+                "values": [
+                  "RT-HB-101",
+                  "Harbor",
+                  "18.40",
+                  "0.27",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-NS-102",
+                  "Northside",
+                  "24.75",
+                  "0.31",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-RG-103",
+                  "Ridge",
+                  "31.20",
+                  "0.29",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-HB-104",
+                  "Harbor",
+                  "12.65",
+                  "0.26",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-NS-105",
+                  "Northside",
+                  "28.90",
+                  "0.30",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-RG-106",
+                  "Ridge",
+                  "22.35",
+                  "0.28",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-HB-107",
+                  "Harbor",
+                  "35.80",
+                  "0.32",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-NS-108",
+                  "Northside",
+                  "16.50",
+                  "0.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-RG-109",
+                  "Ridge",
+                  "27.45",
+                  "0.30",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-HB-110",
+                  "Harbor",
+                  "20.10",
+                  "0.28",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-NS-111",
+                  "Northside",
+                  "33.60",
+                  "0.33",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-RG-112",
+                  "Ridge",
+                  "14.80",
+                  "0.24",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-HB-113",
+                  "Harbor",
+                  "29.25",
+                  "0.31",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-NS-114",
+                  "Northside",
+                  "21.70",
+                  "0.29",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-RG-115",
+                  "Ridge",
+                  "38.40",
+                  "0.34",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-HB-116",
+                  "Harbor",
+                  "15.90",
+                  "0.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-NS-117",
+                  "Northside",
+                  "26.30",
+                  "0.30",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-RG-118",
+                  "Ridge",
+                  "19.65",
+                  "0.27",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-HB-119",
+                  "Harbor",
+                  "32.15",
+                  "0.33",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-NS-120",
+                  "Northside",
+                  "13.40",
+                  "0.24",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-RG-121",
+                  "Ridge",
+                  "25.85",
+                  "0.29",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-HB-122",
+                  "Harbor",
+                  "23.50",
+                  "0.28",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-NS-123",
+                  "Northside",
+                  "30.75",
+                  "0.32",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "RT-RG-124",
+                  "Ridge",
+                  "17.25",
+                  "0.26",
+                  ""
+                ]
+              }
+            ]
+          },
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@"
+            ],
+            "column_types": [
+              "text"
+            ],
+            "formulas": [],
+            "freeze_header_row": false,
+            "headers": [
+              "(blank output sheet)"
+            ],
+            "name": "Analysis",
+            "rows": [
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  ""
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Fleet Fuel Planning"
+      },
+      "generation": {
+        "request_id": "bc12444f-cfbf-4624-80bc-c8d3dd8898bf",
+        "prompt_sha256": "25d22f2088ac367ff76c2b1430e5871b98234e421989b0b52c232865558b76df",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2616,
+        "output_tokens": 1217,
+        "estimated_cost_usd": 0.019836
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-016",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "@",
+              "@",
+              "$#,##0.00",
+              "$#,##0.00",
+              "$#,##0.00",
+              "$#,##0.00"
+            ],
+            "column_types": [
+              "text",
+              "text",
+              "text",
+              "currency",
+              "currency",
+              "currency",
+              "currency"
+            ],
+            "formulas": [
+              {
+                "cell": "G2",
+                "formula": "=D2+E2-F2"
+              },
+              {
+                "cell": "F27",
+                "formula": "=\"Total Reimbursement\""
+              }
+            ],
+            "freeze_header_row": true,
+            "headers": [
+              "Request ID",
+              "Workshop",
+              "Supply Category",
+              "Materials Cost",
+              "Shipping Cost",
+              "Sponsor Credit",
+              "Net Reimbursement"
+            ],
+            "name": "Reimbursements",
+            "rows": [
+              {
+                "values": [
+                  "CWS-2401",
+                  "Clay Studio Basics",
+                  "Ceramic Tools",
+                  "184.50",
+                  "16.25",
+                  "25.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2402",
+                  "Neighborhood Print Lab",
+                  "Ink and Paper",
+                  "236.80",
+                  "22.40",
+                  "30.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2403",
+                  "Youth Woodworking",
+                  "Safety Equipment",
+                  "312.60",
+                  "28.75",
+                  "45.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2404",
+                  "Community Garden Build",
+                  "Fasteners",
+                  "148.35",
+                  "14.90",
+                  "20.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2405",
+                  "Internal Materials Test",
+                  "Sample Supplies",
+                  "96.40",
+                  "11.60",
+                  "15.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2406",
+                  "Textile Repair Circle",
+                  "Fabric and Thread",
+                  "275.25",
+                  "19.95",
+                  "35.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2407",
+                  "Open Electronics Bench",
+                  "Soldering Supplies",
+                  "421.70",
+                  "31.20",
+                  "60.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2408",
+                  "Mural Design Session",
+                  "Paint and Brushes",
+                  "358.90",
+                  "26.50",
+                  "50.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2409",
+                  "Kitchen Skills Lab",
+                  "Utensils",
+                  "167.45",
+                  "18.30",
+                  "22.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2410",
+                  "Bike Maintenance Clinic",
+                  "Replacement Parts",
+                  "489.35",
+                  "34.65",
+                  "75.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2411",
+                  "Bookbinding Workshop",
+                  "Paper Stock",
+                  "214.20",
+                  "17.80",
+                  "28.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2412",
+                  "Internal Checkout Test",
+                  "Label Supplies",
+                  "83.75",
+                  "9.25",
+                  "12.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2413",
+                  "Screen Printing Studio",
+                  "Mesh and Emulsion",
+                  "396.60",
+                  "29.40",
+                  "55.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2414",
+                  "Intro to Metalwork",
+                  "Grinding Discs",
+                  "257.85",
+                  "21.15",
+                  "40.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2415",
+                  "Community Sewing Day",
+                  "Needles and Notions",
+                  "193.30",
+                  "15.70",
+                  "25.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2416",
+                  "Photography Walk",
+                  "Mounting Materials",
+                  "228.95",
+                  "20.05",
+                  "30.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2417",
+                  "Furniture Repair Lab",
+                  "Wood Adhesive",
+                  "341.40",
+                  "24.60",
+                  "48.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2418",
+                  "Robotics Open House",
+                  "Connector Kits",
+                  "465.80",
+                  "33.20",
+                  "70.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2419",
+                  "Internal Vendor Test",
+                  "Packaging Samples",
+                  "74.50",
+                  "8.50",
+                  "10.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2420",
+                  "Paper Craft Afternoon",
+                  "Cutting Mats",
+                  "156.65",
+                  "13.35",
+                  "18.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2421",
+                  "Community Audio Lab",
+                  "Cable Supplies",
+                  "304.75",
+                  "25.25",
+                  "42.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2422",
+                  "Glass Mosaic Class",
+                  "Tile Adhesive",
+                  "287.90",
+                  "23.10",
+                  "38.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2423",
+                  "Tool Sharpening Demo",
+                  "Sharpening Stones",
+                  "132.40",
+                  "12.60",
+                  "16.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "CWS-2424",
+                  "Natural Dye Workshop",
+                  "Dye Materials",
+                  "369.55",
+                  "27.45",
+                  "52.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Workshop Supply Reimbursements"
+      },
+      "generation": {
+        "request_id": "42052299-c29e-4b01-85d2-7874669228da",
+        "prompt_sha256": "f40f966a650aaab5603f8f8b89ee7951c17a89f2d531864387fc5b81682b3197",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2323,
+        "output_tokens": 1749,
+        "estimated_cost_usd": 0.025634
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-017",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "yyyy-mm-dd",
+              "0.00",
+              "0.00",
+              "0.00",
+              "0.00",
+              "0.00"
+            ],
+            "column_types": [
+              "date",
+              "decimal",
+              "decimal",
+              "decimal",
+              "decimal",
+              "decimal"
+            ],
+            "formulas": [
+              {
+                "cell": "E2",
+                "formula": "=B2-C2"
+              },
+              {
+                "cell": "F2",
+                "formula": "=E2-D2"
+              }
+            ],
+            "freeze_header_row": true,
+            "headers": [
+              "Reading Date",
+              "Generated kWh",
+              "Exported kWh",
+              "Target kWh",
+              "Net Delivered kWh",
+              "Variance to Target kWh"
+            ],
+            "name": "Daily Readings",
+            "rows": [
+              {
+                "values": [
+                  "2026-06-01",
+                  "512.40",
+                  "318.75",
+                  "455.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-02",
+                  "548.90",
+                  "342.60",
+                  "470.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-03",
+                  "601.25",
+                  "389.40",
+                  "495.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-04",
+                  "634.70",
+                  "421.85",
+                  "520.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-05",
+                  "589.35",
+                  "365.20",
+                  "485.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-06",
+                  "472.80",
+                  "281.45",
+                  "430.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-07",
+                  "416.60",
+                  "254.30",
+                  "410.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-08",
+                  "438.95",
+                  "267.80",
+                  "425.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-09",
+                  "523.15",
+                  "335.60",
+                  "460.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-10",
+                  "657.40",
+                  "448.25",
+                  "545.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-11",
+                  "704.85",
+                  "506.70",
+                  "580.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-12",
+                  "742.30",
+                  "571.45",
+                  "615.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-13",
+                  "728.65",
+                  "548.90",
+                  "600.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-14",
+                  "683.20",
+                  "474.35",
+                  "565.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-15",
+                  "619.75",
+                  "402.10",
+                  "530.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-16",
+                  "556.40",
+                  "349.85",
+                  "475.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-17",
+                  "491.30",
+                  "296.60",
+                  "440.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-18",
+                  "465.85",
+                  "273.25",
+                  "420.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-19",
+                  "537.60",
+                  "351.40",
+                  "465.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-20",
+                  "612.95",
+                  "414.80",
+                  "510.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-21",
+                  "676.50",
+                  "489.65",
+                  "555.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-22",
+                  "755.80",
+                  "603.20",
+                  "640.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-23",
+                  "731.45",
+                  "562.75",
+                  "610.00",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "2026-06-24",
+                  "648.25",
+                  "437.90",
+                  "540.00",
+                  "",
+                  ""
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Solar Microgrid Review"
+      },
+      "generation": {
+        "request_id": "61fdef1a-d9a7-49dc-9494-fec933a772e4",
+        "prompt_sha256": "4392ac524f12feba128cada891af20eb0371008830af3ebd75cb32cdc64eeb96",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2281,
+        "output_tokens": 765,
+        "estimated_cost_usd": 0.0096416
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-018",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "yyyy-mm-dd",
+              "@",
+              "@",
+              "@",
+              "@"
+            ],
+            "column_types": [
+              "date",
+              "text",
+              "text",
+              "text",
+              "text"
+            ],
+            "formulas": [],
+            "freeze_header_row": true,
+            "headers": [
+              "Session Date",
+              "Participant Alias",
+              "Workshop Track",
+              "Check-in Tag",
+              "Registration Type"
+            ],
+            "name": "Attendance Log",
+            "rows": [
+              {
+                "values": [
+                  "2026-09-03",
+                  "Avery Moss",
+                  "Digital Storytelling",
+                  "",
+                  "Standard"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-03",
+                  "Jordan Vale",
+                  "Garden Design",
+                  "",
+                  "Community"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-03",
+                  "Casey Rowan",
+                  "Digital Storytelling",
+                  "",
+                  "Student"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-03",
+                  "Morgan Pike",
+                  "Repair Basics",
+                  "",
+                  "Standard"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-03",
+                  "Riley North",
+                  "Garden Design",
+                  "",
+                  "Community"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-03",
+                  "Taylor Reed",
+                  "Ceramics Studio",
+                  "",
+                  "Standard"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-03",
+                  "Quinn Harper",
+                  "Digital Storytelling",
+                  "",
+                  "Student"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-03",
+                  "Skyler Lane",
+                  "Repair Basics",
+                  "",
+                  "Standard"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-10",
+                  "Emerson Frost",
+                  "Garden Design",
+                  "",
+                  "Standard"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-10",
+                  "Parker Wren",
+                  "Ceramics Studio",
+                  "",
+                  "Community"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-10",
+                  "Cameron Birch",
+                  "Digital Storytelling",
+                  "",
+                  "Standard"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-10",
+                  "Drew Solis",
+                  "Repair Basics",
+                  "",
+                  "Student"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-10",
+                  "Reese Calder",
+                  "Garden Design",
+                  "",
+                  "Standard"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-10",
+                  "Logan Finch",
+                  "Ceramics Studio",
+                  "",
+                  "Community"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-10",
+                  "Blair Sutton",
+                  "Digital Storytelling",
+                  "",
+                  "Standard"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-10",
+                  "Hayden Mercer",
+                  "Repair Basics",
+                  "",
+                  "Standard"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-17",
+                  "Sage Linden",
+                  "Garden Design",
+                  "",
+                  "Student"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-17",
+                  "Alex Monroe",
+                  "Ceramics Studio",
+                  "",
+                  "Standard"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-17",
+                  "Robin Ellis",
+                  "Digital Storytelling",
+                  "",
+                  "Community"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-17",
+                  "Jamie Brooks",
+                  "Repair Basics",
+                  "",
+                  "Standard"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-17",
+                  "Kendall Rivers",
+                  "Garden Design",
+                  "",
+                  "Standard"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-17",
+                  "Marley Stone",
+                  "Ceramics Studio",
+                  "",
+                  "Student"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-17",
+                  "Devon Hayes",
+                  "Digital Storytelling",
+                  "",
+                  "Standard"
+                ]
+              },
+              {
+                "values": [
+                  "2026-09-17",
+                  "Finley Hart",
+                  "Repair Basics",
+                  "",
+                  "Community"
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Workshop Attendance Register"
+      },
+      "generation": {
+        "request_id": "5e95dc49-48c8-43bc-b405-1b36f3bf3bdc",
+        "prompt_sha256": "0d2ac57a669d578ce74aa997f43bf33e9c011c67604318815418e4fb5f9de247",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1890,
+        "output_tokens": 649,
+        "estimated_cost_usd": 0.0081714
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-019",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "@",
+              "yyyy-mm-dd",
+              "General",
+              "General",
+              "General"
+            ],
+            "column_types": [
+              "text",
+              "text",
+              "date",
+              "integer",
+              "decimal",
+              "decimal"
+            ],
+            "formulas": [],
+            "freeze_header_row": false,
+            "headers": [
+              "Volunteer Code",
+              "Garden Zone",
+              "Enrollment Date",
+              "Completed Years",
+              "Attendance Ratio",
+              "Soil Reading"
+            ],
+            "name": "Volunteer Activity",
+            "rows": [
+              {
+                "values": [
+                  "GV-1001",
+                  "North Beds",
+                  "2013-03-18",
+                  "",
+                  "0.875",
+                  "8"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1002",
+                  "Herb Terrace",
+                  "2014-07-09",
+                  "",
+                  "0.92",
+                  "7.5"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1003",
+                  "Orchard Row",
+                  "2015-11-22",
+                  "",
+                  "0.785",
+                  "6"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1004",
+                  "East Plot",
+                  "2016-02-14",
+                  "",
+                  "0.95",
+                  "7.2"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1005",
+                  "Pollinator Patch",
+                  "2017-06-30",
+                  "",
+                  "0.845",
+                  "8.5"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1006",
+                  "West Raised Beds",
+                  "2018-09-05",
+                  "",
+                  "0.7",
+                  "6.8"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1007",
+                  "Compost Corner",
+                  "2019-01-27",
+                  "",
+                  "0.88",
+                  "7"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1008",
+                  "South Beds",
+                  "2020-04-16",
+                  "",
+                  "0.935",
+                  "8.1"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1009",
+                  "Herb Terrace",
+                  "2021-08-11",
+                  "",
+                  "0.76",
+                  "6.5"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1010",
+                  "Orchard Row",
+                  "2022-12-03",
+                  "",
+                  "0.89",
+                  "7.8"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1011",
+                  "North Beds",
+                  "2023-02-20",
+                  "",
+                  "0.815",
+                  "8"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1012",
+                  "East Plot",
+                  "2013-10-08",
+                  "",
+                  "0.965",
+                  "7.1"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1013",
+                  "Pollinator Patch",
+                  "2014-05-19",
+                  "",
+                  "0.73",
+                  "6"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1014",
+                  "West Raised Beds",
+                  "2015-09-25",
+                  "",
+                  "0.905",
+                  "8.4"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1015",
+                  "Compost Corner",
+                  "2016-01-12",
+                  "",
+                  "0.86",
+                  "7.5"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1016",
+                  "South Beds",
+                  "2017-07-07",
+                  "",
+                  "0.79",
+                  "6.9"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1017",
+                  "North Beds",
+                  "2018-11-28",
+                  "",
+                  "0.94",
+                  "8"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1018",
+                  "Herb Terrace",
+                  "2019-03-03",
+                  "",
+                  "0.675",
+                  "6.4"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1019",
+                  "Orchard Row",
+                  "2020-06-21",
+                  "",
+                  "0.825",
+                  "7.7"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1020",
+                  "East Plot",
+                  "2021-10-15",
+                  "",
+                  "0.98",
+                  "8.2"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1021",
+                  "Pollinator Patch",
+                  "2022-01-31",
+                  "",
+                  "0.75",
+                  "6"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1022",
+                  "West Raised Beds",
+                  "2023-05-24",
+                  "",
+                  "0.91",
+                  "7.3"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1023",
+                  "Compost Corner",
+                  "2014-08-17",
+                  "",
+                  "0.855",
+                  "8.5"
+                ]
+              },
+              {
+                "values": [
+                  "GV-1024",
+                  "South Beds",
+                  "2016-12-10",
+                  "",
+                  "0.8",
+                  "6.7"
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Garden Volunteer Activity Tracker"
+      },
+      "generation": {
+        "request_id": "5baa395c-7965-4469-8b98-f007496f442e",
+        "prompt_sha256": "23d2746c0b81b4f0afcafb9664254ce6c2ba82f143801250fccd3ea9eaa09668",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2322,
+        "output_tokens": 816,
+        "estimated_cost_usd": 0.0102618
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-020",
+      "blueprint": {
+        "manual_setup_steps": [],
+        "sheets": [
+          {
+            "autofilter_range": null,
+            "column_number_formats": [
+              "@",
+              "0",
+              "$#,##0.00",
+              "$#,##0.00"
+            ],
+            "column_types": [
+              "text",
+              "integer",
+              "currency",
+              "currency"
+            ],
+            "formulas": [
+              {
+                "cell": "D4",
+                "formula": "=B4*C4"
+              }
+            ],
+            "freeze_header_row": false,
+            "headers": [
+              "Supply Item",
+              "Units",
+              "Unit Cost",
+              "Line Cost"
+            ],
+            "name": "Supply Plan",
+            "rows": [
+              {
+                "values": [
+                  "Raised bed lumber 2x8x8",
+                  "24",
+                  "18.75",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Cedar corner stakes",
+                  "32",
+                  "4.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Compost blend bag",
+                  "40",
+                  "8.50",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Topsoil bag",
+                  "30",
+                  "5.75",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Seed starting mix bag",
+                  "12",
+                  "11.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Tomato seedling tray",
+                  "6",
+                  "16.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Pepper seedling tray",
+                  "4",
+                  "15.50",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Lettuce seed packet",
+                  "18",
+                  "2.40",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Carrot seed packet",
+                  "12",
+                  "2.15",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Bean seed packet",
+                  "10",
+                  "3.10",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Sunflower seed packet",
+                  "8",
+                  "3.75",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Garden hose 50 ft",
+                  "2",
+                  "29.95",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Hose nozzle",
+                  "3",
+                  "12.50",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Watering can 2 gal",
+                  "4",
+                  "18.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Drip irrigation kit",
+                  "3",
+                  "42.00",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Mulch straw bale",
+                  "15",
+                  "7.80",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Plant labels pack",
+                  "10",
+                  "4.60",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Garden gloves pair",
+                  "12",
+                  "6.95",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Hand trowel",
+                  "8",
+                  "9.75",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Pruning shears",
+                  "5",
+                  "14.50",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Tomato cage",
+                  "24",
+                  "5.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Trellis netting roll",
+                  "6",
+                  "11.80",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Organic fertilizer bag",
+                  "10",
+                  "19.95",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Slug barrier pellets",
+                  "8",
+                  "9.40",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Harvest basket",
+                  "6",
+                  "13.25",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Rain gauge",
+                  "3",
+                  "10.75",
+                  ""
+                ]
+              },
+              {
+                "values": [
+                  "Tool storage bin",
+                  "4",
+                  "22.50",
+                  ""
+                ]
+              }
+            ]
+          }
+        ],
+        "workbook_title": "Community Garden Supply Budget"
+      },
+      "generation": {
+        "request_id": "09ec58a6-c801-4c65-a569-b9ed4353a40f",
+        "prompt_sha256": "cd97167fd18926f40c54cc228c970ec4c07711cd91f4ff4d3046ac79df91859e",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1781,
+        "output_tokens": 2245,
+        "estimated_cost_usd": 0.030502
+      }
+    }
+  ],
+  "totals": {
+    "calls": 20,
+    "input_tokens": 46642,
+    "output_tokens": 22321,
+    "estimated_cost_usd": 0.3122624,
+    "pricing_complete": true
+  }
+}

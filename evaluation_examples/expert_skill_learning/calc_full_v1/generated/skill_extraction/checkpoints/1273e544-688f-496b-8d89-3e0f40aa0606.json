@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+  "app": "libreoffice_calc",
+  "single_action_count": 4,
+  "prompt_sha256": "c31ab11d3fd2779b66be7044a972a7420442a175863bc819a9826d1f227f19f4",
+  "request_id": "cd8f05e0-c07c-4216-9019-4504c80a5307",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1226,
+    "cached_input_tokens": 1073,
+    "output_tokens": 297,
+    "estimated_cost_usd": 0.0040846
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1
+        ],
+        "efficiency_tip": "Click the column letter once rather than dragging through all populated cells; this selects the complete column, including its header, in one action.",
+        "name": "Copy an entire spreadsheet column",
+        "procedure": [
+          "Click the column header letter for the column you want to copy, such as column A. Calc highlights the entire column, including any header cell.",
+          "Press Ctrl+C to copy the selected column to the clipboard."
+        ]
+      },
+      {
+        "action_ids": [
+          2
+        ],
+        "efficiency_tip": "Use the plus button to create a worksheet only when the required destination sheet is absent; otherwise, switch directly to the existing sheet.",
+        "name": "Create or switch to a destination worksheet",
+        "procedure": [
+          "If the destination worksheet already exists, click its sheet tab to make it active.",
+          "If it does not exist, click the plus button next to the sheet tabs to insert a new worksheet. The new sheet becomes active; typing immediately afterward would enter content in the active cell, not rename the sheet."
+        ]
+      },
+      {
+        "action_ids": [
+          3
+        ],
+        "efficiency_tip": "After switching to the target sheet, paste once at the intended starting cell rather than pasting cells individually.",
+        "name": "Paste copied spreadsheet content",
+        "procedure": [
+          "On the destination worksheet, select the cell where the copied range should begin, for example A1.",
+          "Press Ctrl+V to paste the clipboard contents starting at that cell."
+        ]
+      }
+    ]
+  }
+}

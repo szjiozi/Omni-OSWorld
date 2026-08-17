@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+  "app": "libreoffice_calc",
+  "single_action_count": 6,
+  "prompt_sha256": "ceaa9498d69ecac5d7d68420bd647c273c9a3172f5924f3f71a89b6f063d6e74",
+  "request_id": "80df1eda-675d-4583-a6f7-b2fa8ae3ee38",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1268,
+    "cached_input_tokens": 1073,
+    "output_tokens": 179,
+    "estimated_cost_usd": 0.0027526
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "efficiency_tip": "Use Ctrl+Shift+S rather than navigating through the File menu, then change only the file type so existing save-location and naming settings remain intact.",
+        "name": "Save a spreadsheet using a CSV file type",
+        "procedure": [
+          "Press Ctrl+Shift+S to open the Save As dialog.",
+          "Open the “Save as type” drop-down, scroll if necessary, and choose “CSV (Comma delimited) (*.csv)”.",
+          "Leave the remaining Save As options unchanged and click Save.",
+          "If the application displays a confirmation dialog about the selected CSV format, confirm it with OK. For example, saving an existing workbook as CSV preserves the chosen base filename while changing its extension to .csv."
+        ]
+      }
+    ]
+  }
+}

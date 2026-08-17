@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+  "app": "libreoffice_calc",
+  "single_action_count": 7,
+  "prompt_sha256": "1b53e9fa934dce8d32fc31724334358dc12cf3ce6dc8a4ca8d6c9edcbbf291a4",
+  "request_id": "687cad71-852c-4ac5-aaf5-c688e92519bd",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1252,
+    "cached_input_tokens": 1073,
+    "output_tokens": 282,
+    "estimated_cost_usd": 0.0039566
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          3,
+          4
+        ],
+        "efficiency_tip": "Enter the formula once in the first data row, then use a fill operation rather than retyping it for every row.",
+        "name": "Create a relative-reference addition formula",
+        "procedure": [
+          "Select the destination cell in the first data row and type a formula beginning with `=` that adds two cells from that row.",
+          "For example, enter `=A2+B2` in C2 and press Enter. Because neither reference contains `$`, both references are relative: when copied to another row, they adjust to that row (for example, `=A3+B3`)."
+        ]
+      },
+      {
+        "action_ids": [
+          5,
+          6
+        ],
+        "efficiency_tip": "Double-clicking the fill handle is faster than dragging it through a long contiguous table and avoids manually estimating the last row.",
+        "name": "Autofill a formula down a contiguous column",
+        "procedure": [
+          "Select the cell containing the formula at the top of the output column.",
+          "Double-click the small fill handle at the cell’s bottom-right corner. Calc extends the formula downward alongside the adjacent contiguous data range, adjusting relative references for each row.",
+          "For example, double-clicking the fill handle of C2 containing `=A2+B2` fills subsequent rows with row-adjusted formulas such as `=A3+B3`."
+        ]
+      }
+    ]
+  }
+}

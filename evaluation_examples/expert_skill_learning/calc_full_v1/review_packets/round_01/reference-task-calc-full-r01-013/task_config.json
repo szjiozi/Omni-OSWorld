@@ -1,0 +1,99 @@
+{
+  "id": "reference-task-calc-full-r01-013",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Prepare the garden supply delivery review by creating a bar chart that compares delivered units across the garden zones in the Route Snapshot sheet, then open the Pivot Table layout for the Deliveries records so the delivery data is ready for a garden-zone analysis. Leave the Pivot Table layout open rather than creating its output.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-013/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/garden_delivery_review.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/garden_delivery_review.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-calc-full-r01-013",
+    "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-013/initial_artifact.xlsx",
+    "artifact_sha256": "1b44b6f976f1ab66d2b3554152fa305d7e4b75f596f6ffa435b7df2efdd4f1e9",
+    "guest_artifact_path": "/home/user/Desktop/garden_delivery_review.xlsx",
+    "required_skill_ids": [
+      "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-06",
+      "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-04"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The demonstrator may create the chart before or after opening the Pivot Table layout, may select source ranges by dragging or through the name box, and may use menus, toolbar controls, or equivalent keyboard commands. The final recording should show the completed bar chart and the Pivot Table layout dialog open for the delivery source.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Use the contiguous data block on Deliveries so Calc can infer the full source immediately; confirm the inferred range rather than manually rebuilding it.",
+          "operation_intent": "Open the Pivot Table layout using the selected delivery-record source range, ready for a garden-zone delivery analysis.",
+          "skill_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-06",
+          "visible_success_signal": "The Calc Pivot Table Layout dialog is open and its source corresponds to the Deliveries data range."
+        },
+        {
+          "efficiency_tip": "Select both columns of the compact Route Snapshot range, including headers, before launching chart creation so zone labels and delivered-unit values are detected together.",
+          "operation_intent": "Create a bar chart that compares delivered units across garden zones from the Route Snapshot summary.",
+          "skill_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-04",
+          "visible_success_signal": "A bar chart is visibly inserted on Route Snapshot, with garden-zone categories and bars representing Delivered Units."
+        }
+      ],
+      "recording_end_state": "A bar chart based on Route Snapshot is visible in the workbook, and the Pivot Table Layout dialog for Deliveries is open without a Pivot Table output having been created.",
+      "recording_start_state": "The workbook is open on Deliveries with only the two ordinary data sheets and no charts or Pivot Tables."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Navigate between the Deliveries and Route Snapshot worksheets as needed.",
+        "reason": "The Pivot Table source and chart source are intentionally on separate sheets."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Select the complete contiguous source range on Deliveries before invoking Pivot Table.",
+        "reason": "Calc needs a source selection in order to infer the Pivot Table input range."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Accept the inferred Pivot Table source selection.",
+        "reason": "This opens the Pivot Table layout dialog for the selected delivery records."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Select the Garden Zone and Delivered Units chart-source range on Route Snapshot.",
+        "reason": "The bar chart must use the supplied category labels and summary values."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Confirm the chart creation dialog after choosing the Bar chart type and leave the resulting chart visible on Route Snapshot.",
+        "reason": "Calc requires confirmation to insert the requested chart object."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc is open with the workbook on the Deliveries sheet and cell A1 active.",
+      "The Deliveries sheet contains a contiguous data range from A1:G37 with headers in row 1.",
+      "The Route Snapshot sheet contains a contiguous range from A1:B7 with garden-zone and delivered-units headers.",
+      "The workbook has only the Deliveries and Route Snapshot sheets, with no charts or Pivot Tables."
+    ],
+    "setup_notes": [
+      "The workbook contains synthetic, privacy-safe garden supply delivery data.",
+      "No chart or native Pivot Table is preconfigured in the initial workbook.】【：】【“】【,"
+    ],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

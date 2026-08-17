@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+  "app": "libreoffice_calc",
+  "single_action_count": 11,
+  "prompt_sha256": "9aae8b1e4fae5c9971f42219b6ef54e268293e68299428babd78b8c325e7791c",
+  "request_id": "e28636f3-6dba-4d7e-8b0e-1238bb7b56bf",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1320,
+    "cached_input_tokens": 1073,
+    "output_tokens": 773,
+    "estimated_cost_usd": 0.0099846
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2
+        ],
+        "efficiency_tip": "Use Ctrl+A when the active sheet contains one contiguous table; it quickly selects the complete source range before opening the Pivot Table command.",
+        "name": "Create a Pivot Table from the current sheet selection",
+        "procedure": [
+          "Click inside the source table and press Ctrl+A to select its current data range.",
+          "Click the toolbar command represented by the Pivot Table insert/edit icon.",
+          "In the initial Pivot Table dialog, verify that the selected range is the intended source and confirm it. For example, selecting a five-column table with Ctrl+A makes that table the Pivot Table source."
+        ]
+      },
+      {
+        "action_ids": [
+          3,
+          4
+        ],
+        "efficiency_tip": "Drag fields directly from Available Fields to the desired layout box instead of adding them first and repositioning them afterward.",
+        "name": "Place a field in the Pivot Table column area",
+        "procedure": [
+          "In the Pivot Table layout dialog, locate the desired categorical field in Available Fields.",
+          "Drag that field into the Column fields box. For example, dragging a field such as “Promotion” to Column fields creates a separate column heading for each distinct value."
+        ]
+      },
+      {
+        "action_ids": [
+          5,
+          6,
+          7
+        ],
+        "efficiency_tip": "Place numeric fields in Data fields only once the row/column layout is set, so it is easier to verify which measure will be summarized.",
+        "name": "Add a numeric field as a Pivot Table data measure",
+        "procedure": [
+          "Locate the numeric field to summarize in the Available Fields list.",
+          "Drag it to the Data fields box. For example, dragging “Revenue” to Data fields configures the Pivot Table to aggregate that numeric field.",
+          "Confirm the Pivot Table layout dialog to create or update the Pivot Table with the configured data measure."
+        ]
+      },
+      {
+        "action_ids": [
+          8,
+          9,
+          10
+        ],
+        "efficiency_tip": "Double-click the sheet tab to rename it in place, avoiding navigation through sheet-management menus.",
+        "name": "Rename a worksheet from its sheet tab",
+        "procedure": [
+          "Double-click the worksheet tab name at the bottom of the spreadsheet.",
+          "Type the replacement name, such as “Sheet2,” in the editable tab label.",
+          "Press Enter to apply the new worksheet name."
+        ]
+      }
+    ]
+  }
+}

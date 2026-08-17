@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+  "app": "libreoffice_calc",
+  "single_action_count": 20,
+  "prompt_sha256": "00c455930715e698d2c39d051ec5b3a9145f4205ca2854b4c7735ca613e609d7",
+  "request_id": "4764a8da-3c37-46ef-99ec-28c56a816c3e",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1394,
+    "cached_input_tokens": 0,
+    "output_tokens": 549,
+    "estimated_cost_usd": 0.009376
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          2,
+          3,
+          4
+        ],
+        "efficiency_tip": "Enter the formula once in the first result cell; use autofill afterward rather than manually rewriting the formula for each adjacent column.",
+        "name": "Create a range-total formula in a spreadsheet cell",
+        "procedure": [
+          "Select the result cell next to the label, type a SUM formula for the cells to total, and confirm it. For example, enter `=SUM(B2:B11)` in B12 to total that column's values from rows 2 through 11.",
+          "Use relative references when the formula will be copied across columns: `B2:B11` shifts to `C2:C11`, `D2:D11`, and so on when filled right."
+        ]
+      },
+      {
+        "action_ids": [
+          5,
+          6,
+          7
+        ],
+        "efficiency_tip": "Drag across the exact destination range in one motion; this is faster and less error-prone than copying and pasting each result cell separately.",
+        "name": "Autofill a formula horizontally with the fill handle",
+        "procedure": [
+          "Select the cell containing the formula, such as B12.",
+          "Point to the small fill handle at the cell’s bottom-right corner until the fill cursor appears, then drag it horizontally to the final destination cell, such as G12.",
+          "Calc copies the formula into each crossed cell and adjusts relative references for each column."
+        ]
+      },
+      {
+        "action_ids": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "efficiency_tip": "For non-adjacent ranges, select the first range by dragging, then hold Ctrl while adding the next range; this avoids rearranging the worksheet solely to make chart data contiguous.",
+        "name": "Select separate spreadsheet ranges for a chart",
+        "procedure": [
+          "Drag across the main data range, for example A1:G1.",
+          "Hold Ctrl and click the starting cell of an additional range, such as A12; then hold Shift and click its ending cell, such as G12, to add that contiguous row to the selection.",
+          "The resulting multi-range selection can be supplied to chart creation while preserving the original worksheet layout."
+        ]
+      },
+      {
+        "action_ids": [
+          16,
+          17,
+          18,
+          19
+        ],
+        "efficiency_tip": "Choose the chart family and variant before finishing, so the chart is created correctly without needing to reopen its type settings afterward.",
+        "name": "Insert a lines-only line chart from selected spreadsheet data",
+        "procedure": [
+          "With the intended data range selected, click the chart insertion icon to open chart creation.",
+          "Choose the Line chart type, then select the lines-only variant (the option without point markers, shown as the third icon from the right in this interface).",
+          "Click Finish to insert the chart using the current selection."
+        ]
+      }
+    ]
+  }
+}

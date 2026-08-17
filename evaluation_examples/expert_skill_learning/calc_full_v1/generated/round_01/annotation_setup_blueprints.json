@@ -1,0 +1,519 @@
+{
+  "schema_version": "1.0",
+  "blueprints": [
+    {
+      "reference_task_id": "reference-task-calc-full-r01-001",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "regional_funding_snapshot.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with a workbook containing one worksheet named Funding Plan.",
+          "The Funding Plan sheet shows a contiguous table in A1:C7 with Region, Grant Theme, and Requested Funding headers.",
+          "Column C contains six numeric requested-funding values in a normal currency or general numeric display, without an M suffix or millions scaling.",
+          "The area beginning around E2 is blank, and no chart or chart title is visible."
+        ],
+        "setup_notes": [],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "b39e3a52-1975-4ed2-9867-502baac36ae2",
+        "prompt_sha256": "bc535f5ec61be5a6683a6571c0aee909c9d888131a6dfd0b2efb574fba6c6462",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1311,
+        "output_tokens": 131,
+        "estimated_cost_usd": 0.004194
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-002",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "regional_funding_plan.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with the \"Funding Plan\" sheet active.",
+          "Rows 2 through 11 show the ten synthetic initiatives and their planned allocations in column B.",
+          "Column C is headed \"Board View\" and cells C2:C11 are blank.",
+          "Column B displays USD currency amounts with thousands separators and no decimal places."
+        ],
+        "setup_notes": [],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "cb2b3103-8181-4c50-a909-ec84baeac5e2",
+        "prompt_sha256": "a4b959dfea65142882ded6f925f8e615627f997a80b7100d94090d7e7e623ae7",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1475,
+        "output_tokens": 190,
+        "estimated_cost_usd": 0.00523
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-003",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "service_estimate_review.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "Calc opens the Service Requests sheet with a neutral active cell near the top.",
+          "Service Requests shows headers in A1:E1, populated request data in A2:D19, and blank Estimate Note cells E2:E19.",
+          "Rate Card contains the Service Code and Unit Rate lookup table with six entries.",
+          "Overview has checklist labels vertically in A3:A6, while B2:E2 is blank.",
+          "Worksheet zoom is at the normal default level and has not been reduced."
+        ],
+        "setup_notes": [],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "fbea3bc2-befa-4bd1-8de6-a5532ab05ddc",
+        "prompt_sha256": "e995dad09c856d0e984a0c093d78ffd7d73c6037fc77d731096d74b102e3e8f2",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2413,
+        "output_tokens": 140,
+        "estimated_cost_usd": 0.006506
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-004",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "garden_supply_rounds.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc opens the workbook on the single worksheet named \"Supply Rounds\".",
+          "Three delivery-round blocks are visible in columns A:D for Round A, Round B, and Round C.",
+          "The Remaining Packs cells in each block are blank.",
+          "No worksheet named \"Archive\" is present."
+        ],
+        "setup_notes": [],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "77272b00-03d0-4268-8d83-e114730879e3",
+        "prompt_sha256": "83ff8057f63ea95a1d40c85660ea0ced4c0ced857d1a8c1cbcfa7d623a83c539",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1824,
+        "output_tokens": 140,
+        "estimated_cost_usd": 0.005328
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-005",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "replenishment_review.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with the Replenishment Review workbook.",
+          "The workbook contains Catalog, Dispatch_Log, and Summary sheets.",
+          "Catalog has eight SKU and Supply Group data rows.",
+          "Dispatch_Log has 18 unsorted records; Supply Group and Ticket Code cells are blank beneath their headers.",
+          "Summary B2 for Total Units Dispatched is blank."
+        ],
+        "setup_notes": [
+          "Dispatch_Log Restock Cost values are formatted as currency with two decimal places.",
+          "Ticket Number is numeric General format, and no formulas, conditional formatting, filters, tables, pivot tables, charts, or sort state are pre-applied. The unique highest Restock Cost is 540.00."
+        ],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "f85d3323-bca4-4e4c-9aad-1a16661796b2",
+        "prompt_sha256": "97e12a609c5d06be71241f2e2821bb39b2f8265e09901348350569e9f79d7bf7",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2460,
+        "output_tokens": 173,
+        "estimated_cost_usd": 0.006996
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-006",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "route_review.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc opens with the Route Review sheet active.",
+          "Daily Metrics contains the intact source table in A1:D13.",
+          "Route Review dates are populated in A5:A16.",
+          "Route Review target areas B5:B16, C5:C16, and E5:E20 are blank.",
+          "The Daily Change column is formatted as percentages with one decimal place.",
+          "No chart or PDF export exists initially."
+        ],
+        "setup_notes": [],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "95c7eafd-9289-4c45-a30b-1eb167439b5c",
+        "prompt_sha256": "a9257a6559551d2a564f41629e96bf3078c639961c5a6aa854a6d80d363a0165",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2119,
+        "output_tokens": 124,
+        "estimated_cost_usd": 0.005726
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-007",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "field_service_payments.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with a single active worksheet named Shift Log.",
+          "Shift Log shows a styled header row in A1:E1 and 12 populated data rows from 2 through 13.",
+          "Service Duration cells C2:C13 display using the [HH]:MM time format.",
+          "Hourly Rate values are numeric with two decimal places, and Earned Amount cells E2:E13 are blank.",
+          "No additional worksheets, chart objects, or conditional formatting are present."
+        ],
+        "setup_notes": [
+          "The Service Duration values in C2:C13 are stored as Calc time serials and must display with the [HH]:MM number format before recording."
+        ],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "77b03e91-83ca-43db-bb6b-32257cfe9a13",
+        "prompt_sha256": "a9ecf9e41bcbee4cb1790cfbc4bdd6467c80d536262afdaec0216d4e57267199",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1837,
+        "output_tokens": 169,
+        "estimated_cost_usd": 0.005702
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-008",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "garden_delivery_register.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with a workbook containing exactly one worksheet named Delivery Log.",
+          "Delivery Log shows one contiguous table in A1:E25 with the headers Delivery Code, Garden Zone, Quantity, Unit Price, and Line Total.",
+          "The Line Total column has a seeded formula in E2, while E3:E25 are empty.",
+          "No worksheet named Sheet2 and no pivot table or summary table are present."
+        ],
+        "setup_notes": [],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "2b9a939a-9060-462e-8c16-574371d4dbdd",
+        "prompt_sha256": "ea1c89263e8a1ca09fcebc83485b11495a889f8f59f0deab91d07ce2927ea94f",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1579,
+        "output_tokens": 127,
+        "estimated_cost_usd": 0.004682
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-009",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "workshop_allocation.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with the Activity Log and Allocation Summary sheets visible.",
+          "Activity Log contains a populated table in A1:E19 with 18 records, and Record Summary cells E2:E19 are blank.",
+          "Allocation Summary!A1 reads \"Workshop Allocation Share\" with a dark navy fill and bold dark/black text.",
+          "Allocation Summary is otherwise blank, including the area beginning at A3, and no Pivot Table is visible."
+        ],
+        "setup_notes": [
+          "Manual setup is required according to the artifact manifest.",
+          "Before recording, the Allocation Summary title and blank summary area must match the artifact metadata."
+        ],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "9fe5d8b7-8e89-44a8-82d7-8db0adaef5ac",
+        "prompt_sha256": "5cdc6027de037df35a2cd8b1146bd1cf44ddcca0c5e79f3e702cd55700bb6dcc",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1885,
+        "output_tokens": 351,
+        "estimated_cost_usd": 0.007982
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-010",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "garden_volunteer_activity.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with the Activity Log sheet active.",
+          "The Activity Log sheet contains a contiguous source table from A1:E37 with a styled header row.",
+          "The table headers are Program, Quarter, Garden Site, Activity Type, and Service Hours.",
+          "No summary sheet or Pivot Table is present."
+        ],
+        "setup_notes": [
+          "The workbook contains synthetic, privacy-safe community garden volunteer activity data.",
+          "Service Hours values are formatted as numbers with one decimal place."
+        ],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "f7f5a04b-bdfd-4a5a-9ea6-5cd150d7db23",
+        "prompt_sha256": "92ba485e6ff35f5698cb43ac02afb5124e9e2ffab4b3dffc1732cb442e950cfa",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1286,
+        "output_tokens": 132,
+        "estimated_cost_usd": 0.004156
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-011",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "community_event_ledger.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with the Event Ledger sheet active.",
+          "Event Ledger shows a contiguous A1:F19 table with event records in rows 2 through 19.",
+          "Only B2 and C2 contain seed formulas; B3:C19 are blank.",
+          "The Upload sheet exists with Event Code in A1 and blank cells A2:A19.",
+          "No chart is present on Event Ledger."
+        ],
+        "setup_notes": [],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "d3f5f99a-ec46-42ec-8690-14ac532ce171",
+        "prompt_sha256": "ea817cd72ae478effd94281d125460bd9d031ef82d433fe3fd102913f81fb5b5",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2005,
+        "output_tokens": 124,
+        "estimated_cost_usd": 0.005498
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-012",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "coastal_dispatch_log.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with the \"Dispatch Log\" sheet active.",
+          "Row 1 shows the headers Dispatch Date, Completion Rate, Planned Kits, and Verified Kits; rows 2 through 25 contain 24 daily April 2026 records.",
+          "Completion Rate cells B2:B25 are blank and display a one-decimal percentage format.",
+          "Planned Kits and Verified Kits contain complete numeric data in columns C and D for all records.",
+          "No chart object is present in the workbook."
+        ],
+        "setup_notes": [],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "4994ea69-75b8-4697-bb4b-202bd995083e",
+        "prompt_sha256": "6d89ae805fcd9251a2d9f1c703b3b8a28ad4e4f673fd9c78fdf655589712eede",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1509,
+        "output_tokens": 143,
+        "estimated_cost_usd": 0.004734
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-013",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "garden_delivery_review.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with the workbook on the Deliveries sheet and cell A1 active.",
+          "The Deliveries sheet contains a contiguous data range from A1:G37 with headers in row 1.",
+          "The Route Snapshot sheet contains a contiguous range from A1:B7 with garden-zone and delivered-units headers.",
+          "The workbook has only the Deliveries and Route Snapshot sheets, with no charts or Pivot Tables."
+        ],
+        "setup_notes": [
+          "The workbook contains synthetic, privacy-safe garden supply delivery data.",
+          "No chart or native Pivot Table is preconfigured in the initial workbook.】【：】【“】【,"
+        ],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "18bbe22e-2996-4dd4-9b56-cf844bff5154",
+        "prompt_sha256": "dee30e06c9ef174983310fb51b4b46f024826da6852e7e39f10c0cc8bbb75fba",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1497,
+        "output_tokens": 156,
+        "estimated_cost_usd": 0.004866
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-014",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "repair_fair_handoff.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with the Handoff Summary sheet active and blank.",
+          "Coverage Setup contains the labeled Shift-by-Kiosk matrix in A1:D4.",
+          "CheckIn Log contains the contiguous four-column check-in table with populated Ticket Code values through row 31."
+        ],
+        "setup_notes": [],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "bbe3ec97-01dc-4e3d-afc2-b347de739e8f",
+        "prompt_sha256": "cc431b5ce62e7a2532756567ee54fa41e3c69ca816113d6bed2f18035956ac10",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1643,
+        "output_tokens": 101,
+        "estimated_cost_usd": 0.004498
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-015",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "fleet_fuel_planning.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with the \"Dispatch Log\" sheet active.",
+          "Dispatch Log contains a contiguous A1:E25 source range with headers; E2 has a calculated value while E3:E25 are blank.",
+          "Rows 26 and 27 are blank, D28 reads \"Total estimated liters\", and E28 is blank.",
+          "A blank worksheet tab named \"Analysis\" is present with no Pivot Table or report content."
+        ],
+        "setup_notes": [
+          "Ensure the required D28 label is present while E28 remains blank, preserving blank rows 26 and 27."
+        ],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "9ff0cf06-ebc2-42d7-84ba-2731b3f60eba",
+        "prompt_sha256": "67f9304708d4c36cf975d810bbcf381606d443952a3dbb044da9210175b292d8",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1922,
+        "output_tokens": 155,
+        "estimated_cost_usd": 0.005704
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-016",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "workshop_reimbursements.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with a single sheet named Reimbursements.",
+          "Rows 2 through 25 contain reimbursement records, with ordinary header styling and currency-formatted monetary columns.",
+          "G2 contains a Net Reimbursement seed formula, while G3:G25 are blank.",
+          "Rows 6, 13, and 20 are visible.",
+          "Row 26 is blank, F27 shows Total Reimbursement, and G27 is blank."
+        ],
+        "setup_notes": [],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "4fef2219-3252-4a98-a19c-4d7ec4353852",
+        "prompt_sha256": "8732c543db16d5cd812eee5d455b83711c5591f245d971ac7ce1dd98fe28e4d6",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1582,
+        "output_tokens": 134,
+        "estimated_cost_usd": 0.004772
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-017",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "solar_microgrid.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with the 'Daily Readings' sheet active.",
+          "The worksheet shows a contiguous daily readings table in A1:F25, with input data populated in columns A:D.",
+          "E2 and F2 contain the only seeded calculation formulas; E3:E25 and F3:F25 are blank.",
+          "The area beginning around column H is empty, and no chart object is present."
+        ],
+        "setup_notes": [
+          "The initial workbook intentionally contains no chart and must retain blank calculation cells below the seed formulas before recording."
+        ],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "ac76c57b-69a6-43c4-af99-f8258ce761ba",
+        "prompt_sha256": "7b8d34d2936b6cabde20937944e73282f69ee834badbe748c0af4551a5757c1b",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1714,
+        "output_tokens": 145,
+        "estimated_cost_usd": 0.005168
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-018",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "workshop_attendance.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open with the workbook on the Attendance Log sheet.",
+          "The Attendance Log sheet has headers and 24 attendance records in rows 2 through 25.",
+          "The Check-in Tag column is blank for all attendance records.",
+          "No Pivot Table or summary sheet is visible in the workbook."
+        ],
+        "setup_notes": [],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "37291296-7359-4d69-a56a-59f666dda7a3",
+        "prompt_sha256": "a43bc5a18eb0099b37586bd1d77ac111821dbfb9753d91d865d65137484274ae",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1339,
+        "output_tokens": 105,
+        "estimated_cost_usd": 0.003938
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-019",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "garden_volunteer_tracker.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "LibreOffice Calc is open on the \"Volunteer Activity\" worksheet.",
+          "A contiguous table with headers and 24 data rows is visible.",
+          "Completed Years is blank for all data rows.",
+          "Attendance Ratio displays raw decimal fractions rather than percentages.",
+          "Soil Reading is not displayed uniformly with two decimal places."
+        ],
+        "setup_notes": [],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "33a1fa33-6805-466b-9476-f371dbb153d0",
+        "prompt_sha256": "54c39ea0e3ad05788c0022fa4797d8066334b513dcddfe1e98625b153d311d1d",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1731,
+        "output_tokens": 105,
+        "estimated_cost_usd": 0.004722
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-020",
+      "blueprint": {
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "garden_supply_plan.xlsx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "Calc is open on the single sheet named \"Supply Plan\".",
+          "Cell A1 shows \"Community Garden Supply Plan\" in bold, larger text with no custom background fill.",
+          "Row 3 contains the table headers, and rows 4 through 27 have continuous data in columns A:C.",
+          "D4 contains a Line Cost formula, while D5:D27 are blank.",
+          "No totals, charts, Pivot Tables, conditional formatting, or additional sheets are present."
+        ],
+        "setup_notes": [],
+        "snapshot": "libreoffice_calc"
+      },
+      "generation": {
+        "request_id": "7d2cee4d-9450-4278-b941-9a92195f1d25",
+        "prompt_sha256": "2e2741f6f8fe458cd40538955c2596804f708808900bf80e61301ce25133a37c",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1372,
+        "output_tokens": 199,
+        "estimated_cost_usd": 0.005132
+      }
+    }
+  ],
+  "totals": {
+    "calls": 20,
+    "input_tokens": 34503,
+    "output_tokens": 3044,
+    "estimated_cost_usd": 0.105534,
+    "pricing_complete": true
+  }
+}

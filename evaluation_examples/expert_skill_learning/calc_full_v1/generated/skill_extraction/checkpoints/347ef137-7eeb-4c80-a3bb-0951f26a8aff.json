@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+  "app": "libreoffice_calc",
+  "single_action_count": 28,
+  "prompt_sha256": "b52742b5815d06bf7d8e49a0bf9e81f661220b1ebf0edd3573b4036c9709a987",
+  "request_id": "33fcd574-49cf-44c6-b58c-4a359c2680ee",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1451,
+    "cached_input_tokens": 1073,
+    "output_tokens": 651,
+    "estimated_cost_usd": 0.0087826
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27
+        ],
+        "efficiency_tip": "Select the category and value columns as discontiguous ranges before inserting the chart; this avoids creating a chart from irrelevant intermediate columns and eliminates later data-range edits.",
+        "name": "Create a column chart from non-adjacent category and value ranges",
+        "procedure": [
+          "Select the first source range by clicking its first cell, holding Shift, and clicking its last cell. For example, click A3, hold Shift, and click A14 to select A3:A14.",
+          "Hold Ctrl to add a separate range to the existing selection. Click the first value cell, then hold Shift and click the final value cell; for example, Ctrl-select I3:I14 while retaining A3:A14.",
+          "Click the Insert Chart toolbar icon. In the chart wizard, accept the default chart configuration with Enter when it is the desired column chart type.",
+          "Repeat the same interaction for another data block when needed, such as selecting A20:A31 plus I20:I31 before inserting its chart."
+        ]
+      },
+      {
+        "action_ids": [
+          13,
+          14,
+          15
+        ],
+        "efficiency_tip": "Reposition a chart by dragging it directly rather than reopening chart settings; scroll only as needed to expose the intended destination.",
+        "name": "Reposition a chart object by dragging",
+        "procedure": [
+          "Click or point at the chart object's edge to target the chart rather than an individual data series.",
+          "Drag the chart from its top edge toward the desired location, such as moving it to the right side of the worksheet page.",
+          "Scroll horizontally if necessary to reach or verify the new placement while keeping the chart layout organized."
+        ]
+      }
+    ]
+  }
+}

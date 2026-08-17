@@ -1,0 +1,89 @@
+{
+  "id": "reference-task-calc-full-r01-012",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Complete the Coastal Lab Dispatch Log by calculating the daily completion rate as verified kits divided by planned kits for every dispatch date, then add a lines-only line chart that shows how the completion rate changes across the dates.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-012/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/coastal_dispatch_log.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/coastal_dispatch_log.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-calc-full-r01-012",
+    "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-012/initial_artifact.xlsx",
+    "artifact_sha256": "a0510b9895c791890adab71dfcb65084cd297c2303f565810fde6f62dbf07170",
+    "guest_artifact_path": "/home/user/Desktop/coastal_dispatch_log.xlsx",
+    "required_skill_ids": [
+      "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-04",
+      "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-02",
+      "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-01"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The operator may use keyboard entry, the formula bar, a fill-handle double-click, or an equivalent Calc autofill method. The chart may be positioned anywhere on the Dispatch Log sheet, provided it visibly uses Dispatch Date as the category axis and Completion Rate as the sole plotted series.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Enter the calculation once using row-relative references; it will then adapt correctly for all later dates when filled.",
+          "operation_intent": "In the first blank Completion Rate cell, calculate each day's verified-kit share of its planned-kit count with a relative-reference division formula.",
+          "skill_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-01",
+          "visible_success_signal": "B2 displays a percentage consistent with Verified Kits divided by Planned Kits for row 2."
+        },
+        {
+          "efficiency_tip": "Use the fill handle on the completed first formula to populate the contiguous records rather than retyping formulas.",
+          "operation_intent": "Extend the first Completion Rate formula through every remaining dispatch record.",
+          "skill_id": "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-02",
+          "visible_success_signal": "B2:B25 are populated, and formulas in later rows reference the corresponding Planned Kits and Verified Kits cells."
+        },
+        {
+          "efficiency_tip": "Choose the Line chart family and its no-marker, lines-only variant before finishing chart creation.",
+          "operation_intent": "Create a line-only chart of the completed daily completion-rate trend from the selected Dispatch Date and Completion Rate data.",
+          "skill_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-04",
+          "visible_success_signal": "A chart is visible with dates as categories and one connected Completion Rate line that has no point markers."
+        }
+      ],
+      "recording_end_state": "The Dispatch Log sheet retains all 24 records, B2:B25 show calculated percentage completion rates, and a readable lines-only line chart displays the daily rate trend.",
+      "recording_start_state": "The Dispatch Log sheet is active with the source table present, the Completion Rate cells blank, and no chart in the workbook."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Select the date and completed rate columns, including their headers, as the chart source range.",
+        "reason": "The chart needs the daily dates as category labels and the calculated completion rates as its plotted series."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Place or resize the inserted chart so it is visibly readable without obscuring the dispatch table.",
+        "reason": "This makes the completed trend visualization clearly inspectable in the final workbook."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc is open with the \"Dispatch Log\" sheet active.",
+      "Row 1 shows the headers Dispatch Date, Completion Rate, Planned Kits, and Verified Kits; rows 2 through 25 contain 24 daily April 2026 records.",
+      "Completion Rate cells B2:B25 are blank and display a one-decimal percentage format.",
+      "Planned Kits and Verified Kits contain complete numeric data in columns C and D for all records.",
+      "No chart object is present in the workbook."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

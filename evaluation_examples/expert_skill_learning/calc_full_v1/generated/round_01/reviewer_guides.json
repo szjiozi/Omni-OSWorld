@@ -1,0 +1,2006 @@
+{
+  "schema_version": "1.0",
+  "guides": [
+    {
+      "reference_task_id": "reference-task-calc-full-r01-001",
+      "task_detail_sha256": "86d7951c101527ae5c0d5101034a9ec11ad469fbc00fcbb2c7e931995613f08d",
+      "guide": {
+        "final_verification": [
+          "“Funding Plan”工作表的 C2:C7 均以类似“3.6 M”的形式显示：保留一位小数，数字与 M 之间有空格；选中任一单元格时，编辑栏中的基础值仍是完整的数值而不是文本。",
+          "工作表中存在一个按 Region 比较 Requested Funding 的柱形图，且使用六个地区作为分类标签。",
+          "图表上方可见标题“Regional Funding Requests”。"
+        ],
+        "language": "zh-CN",
+        "overview": "本指南将“Funding Plan”中的六项 Requested Funding 统一显示为以百万为单位、保留一位小数且带空格 M 后缀的数值，并在右侧空白区域创建按地区比较请求资金的柱形图，最后为图表设置标题。",
+        "reference_task_id": "reference-task-calc-full-r01-001",
+        "starting_state_checks": [
+          "确认已打开工作簿，且只有名为“Funding Plan”的工作表需要处理。",
+          "确认 A1:C7 是连续数据表：第 1 行为表头，A 列为 Region，B 列为 Grant Theme，C 列为 Requested Funding。",
+          "确认 C2:C7 当前仍显示普通货币或常规完整数值，没有 M 后缀；并确认从 E2 开始有可用于放置图表的空白区域。",
+          "确认工作表中尚不存在图表，也没有显示“Regional Funding Requests”的图表标题。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "先一次选中完整的 C2:C7 范围，随后只需设置一次格式，避免逐个单元格重复操作。",
+            "instructions": [
+              "在“Funding Plan”工作表中，选择 Requested Funding 的六个数据单元格 C2:C7，不要包含 C1 表头。",
+              "右键单击所选区域，选择“Format Cells...”。",
+              "在单元格格式对话框中进入可输入数字格式代码的位置；如有类别列表，可选择“User-defined”或自定义格式。",
+              "在格式代码框中输入 `0.0,, \\M`，然后按 Enter 确认并应用。该代码中的两个逗号会将显示值按百万缩放，`0.0` 保留一位小数，空格和 `\\M` 会显示分隔开的 M 后缀。"
+            ],
+            "skill_ids": [
+              "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-02"
+            ],
+            "step_number": 1,
+            "title": "将请求资金显示为一位小数的百万金额",
+            "visible_success_signal": "C2:C7 的每个金额都显示为类似“3.6 M”的形式，而不是完整的美元数值；数值与 M 之间清楚可见一个空格。"
+          },
+          {
+            "efficiency_tip": "由于 A 列和 C 列不相邻，可先选中 A1:A7，再按住 Ctrl 选中 C1:C7；这样可直接将地区作为分类标签、资金作为唯一数值系列。",
+            "instructions": [
+              "选择图表源数据：先选择 A1:A7（包括 Region 表头和六个地区），然后按住 Ctrl 再选择 C1:C7（包括 Requested Funding 表头和六个金额）。",
+              "使用“Insert”菜单中的“Chart...”命令开始插入图表。",
+              "在图表向导中选择柱形图或其他清晰比较各地区资金的列式图表；保留地区名称作为分类标签，并将 Requested Funding 作为数据系列。",
+              "完成图表创建，将图表放在从 E2 开始的空白区域，避免遮挡 A1:C7 的源数据。"
+            ],
+            "skill_ids": [],
+            "step_number": 2,
+            "title": "创建按地区比较请求资金的柱形图",
+            "visible_success_signal": "工作表中出现一个柱形图，横轴或分类轴显示六个 Region 名称，每个地区对应一根表示 Requested Funding 的柱。"
+          },
+          {
+            "efficiency_tip": "图表刚创建后通常仍处于活动状态，此时立即设置标题，无需之后再重新选择图表。",
+            "instructions": [
+              "保持新图表处于选中或编辑状态，打开图表的“Chart elements”控件。",
+              "在图表元素中选择标题文本框。",
+              "输入标题 `Regional Funding Requests`，然后按 Enter 应用。"
+            ],
+            "skill_ids": [
+              "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-05"
+            ],
+            "step_number": 3,
+            "title": "通过图表元素设置图表标题",
+            "visible_success_signal": "图表上方清楚显示标题“Regional Funding Requests”。"
+          },
+          {
+            "efficiency_tip": "用一次快速目视检查同时确认格式、图表分类和标题，可在结束前及时发现选择范围或标题遗漏。",
+            "instructions": [
+              "检查 C2:C7：所有六个单元格均应为一位小数的百万显示，并带有与数字分开的 M。",
+              "检查图表：它应比较六个地区的 Requested Funding，且没有将 Grant Theme 误作为数值系列。",
+              "检查标题拼写和大小写是否恰为 `Regional Funding Requests`。"
+            ],
+            "skill_ids": [],
+            "step_number": 4,
+            "title": "完成最终核对",
+            "visible_success_signal": "格式化金额和标题均可见，图表按地区显示资金比较，且源数据表没有被图表遮挡。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "85587293-c999-4ae2-848f-2c824b338aba",
+        "prompt_sha256": "24208f7632b3c845b59c77a3a794dd3e7170b53984e7a274935cb509af5ad6e2",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2597,
+        "output_tokens": 1183,
+        "estimated_cost_usd": 0.01939
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-002",
+      "task_detail_sha256": "0a6356d138605183b8124da3c1f8dd74b7a35e58e590fa28ca0a40a5cbcfa8fd",
+      "guide": {
+        "final_verification": [
+          "在“Funding Plan”工作表中，C2:C11 均已填入数值，且每行对应的原始金额与同一行 B 列的 Planned Allocation (USD) 一致。",
+          "C2:C11 的显示均为一位小数、数字与 B 之间带空格的十亿单位形式，例如 C2 显示为“12.5 B”、C3 显示为“8.8 B”、C4 显示为“3.6 B”。",
+          "单击任意 Board View 单元格（例如 C2）后，编辑栏/输入行中仍可看到完整的原始数值 12450000000，而不是已缩放的 12.5。",
+          "A 列 Initiative 和 B 列 Planned Allocation (USD) 的内容没有被改动。"
+        ],
+        "language": "zh-CN",
+        "overview": "本指南将“Funding Plan”中的 Planned Allocation (USD) 数值复制到空白的 Board View 列，再仅通过自定义数字格式把副本显示为保留一位小数、带空格 B 后缀的十亿金额。该格式只改变显示方式，不会改变原始数值。",
+        "reference_task_id": "reference-task-calc-full-r01-002",
+        "starting_state_checks": [
+          "确认当前打开的工作表名称为“Funding Plan”。",
+          "确认第 1 行是标题行，A1、B1、C1 分别对应 Initiative、Planned Allocation (USD) 和 Board View。",
+          "确认 B2:B11 已有数值金额，C2:C11 仍为空白。",
+          "确认将要复制的是 B2:B11，而不是标题单元格 B1。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "先检查连续区域的首尾单元格，可避免把标题行或范围外的内容一起复制。",
+            "instructions": [
+              "在“Funding Plan”工作表中，单击 B2。",
+              "按住鼠标左键拖动到 B11，选中 B2:B11 中的全部 Planned Allocation (USD) 金额。",
+              "按 Ctrl+C 复制该范围。"
+            ],
+            "skill_ids": [],
+            "step_number": 1,
+            "title": "复制计划拨款金额",
+            "visible_success_signal": "B2:B11 周围出现移动的复制边框，表示这 10 个数值已在剪贴板中；C2:C11 仍为空白。"
+          },
+          {
+            "efficiency_tip": "只需选中目标区域左上角 C2 后立即粘贴，Calc 会自动按原范围大小填充到 C11，无需逐行粘贴。",
+            "instructions": [
+              "在复制边框仍显示时，单击空白目标列的第一个单元格 C2。",
+              "按 Ctrl+V，将复制的数值粘贴到 Board View 列。"
+            ],
+            "skill_ids": [
+              "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-03"
+            ],
+            "step_number": 2,
+            "title": "将复制的金额粘贴到 Board View",
+            "visible_success_signal": "C2:C11 已连续填入 10 个金额，并且每一行的数值与同一行 B 列相同；A 列和 B 列内容保持不变。"
+          },
+          {
+            "efficiency_tip": "一次选择整个 C2:C11 范围并统一设置格式，比逐个单元格设置更快，也能确保显示规则一致。",
+            "instructions": [
+              "选中 C2:C11。可以单击 C2 后拖动到 C11。",
+              "在选中区域内右键单击，选择“设置单元格格式…”（Format Cells）。",
+              "在“设置单元格格式”对话框中，切换到用于设置数字格式的页面，并定位到格式代码输入框。",
+              "在格式代码框中输入 `0.0,,, \\B`，然后按 Enter 确认；如对话框仍打开，再确认应用该设置。",
+              "返回工作表后，保持 C2:C11 的格式应用范围不变。"
+            ],
+            "skill_ids": [
+              "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-04"
+            ],
+            "step_number": 3,
+            "title": "把 Board View 显示为十亿并添加 B 后缀",
+            "visible_success_signal": "C2:C11 不再显示完整金额，而显示为类似“12.5 B”、“8.8 B”和“3.6 B”的文本外观：有一位小数，数字和 B 之间有一个空格。"
+          },
+          {
+            "efficiency_tip": "抽查首行、中间行和末行能迅速发现是否有漏粘贴、格式未覆盖或行错位的问题。",
+            "instructions": [
+              "单击 C2，确认工作表中显示“12.5 B”，并查看编辑栏/输入行是否仍为完整数值 12450000000。",
+              "检查 C3 是否显示“8.8 B”、C4 是否显示“3.6 B”，再检查 C11 是否带一位小数和空格 B 后缀。",
+              "对照 B 列确认 C2:C11 的每个 Board View 项目均对应同一行的计划拨款金额。"
+            ],
+            "skill_ids": [],
+            "step_number": 4,
+            "title": "核对显示格式和原始数值",
+            "visible_success_signal": "Board View 的全部 10 行均以一位小数的“数字 B”形式显示，同时选中单元格时编辑栏仍保留未缩放的完整金额。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "c7ba191c-8394-4220-8da9-dae93e7891e4",
+        "prompt_sha256": "9d1b1a73d02853f30a11690a60ae1e076ca1d87e4d906802d1fe2c6c20feb219",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2615,
+        "output_tokens": 1447,
+        "estimated_cost_usd": 0.022594
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-003",
+      "task_detail_sha256": "73ac6905251319108cb3972d4a698618057f348c61de295d0211b62c5b5d56d6",
+      "guide": {
+        "final_verification": [
+          "在“Service Requests”中检查 E2:E19：18 个单元格都不为空，均显示可读的文字说明和货币金额；选中其中不同的行时，公式栏中的 B/C/D 行号会随行变化，而 $'Rate Card'.$A$2:$B$7 保持固定。",
+          "在“Overview”中检查 B2:E2：从左到右依次为 `Rate verified`、`Adjustment reviewed`、`Estimate prepared`、`Ready to send`；A3:A6 已不再保留这些标签。",
+          "查看“Service Requests”窗口右下角状态栏：缩放比例低于开始时的默认比例，并且屏幕中可见的表格行数或列数增加。",
+          "确认“Rate Card”的 A1:B7 查找表以及“Service Requests”的 A2:D19 请求输入没有被改动。"
+        ],
+        "language": "zh-CN",
+        "overview": "本指南完成三个服务估算审阅动作：将 Overview 的纵向检查标签移动并转置为横向标题；利用 Rate Card 中的固定单价为每个服务请求生成文字型估算说明；最后适度缩小工作表显示比例，方便一次审阅更多记录。",
+        "reference_task_id": "reference-task-calc-full-r01-003",
+        "starting_state_checks": [
+          "确认工作簿已在 LibreOffice Calc 中打开，并且存在 `Service Requests`、`Rate Card`、`Overview` 三个工作表。",
+          "在 `Service Requests` 中确认标题位于 A1:E1，数据连续位于 A2:D19，且 `Estimate Note` 列的 E2:E19 仍为空白。",
+          "在 `Rate Card` 中确认 A1:B7 包含 `Service Code` 与 `Unit Rate` 的固定查找表。",
+          "在 `Overview` 中确认四个标签仍纵向位于 A3:A6，而 B2:E2 为空。",
+          "确认当前工作表尚未缩小显示比例。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "先完成转置移动可立即清空旧位置，不需要之后再手动删除 A3:A6 的内容。",
+            "instructions": [
+              "单击底部工作表标签 `Overview`。",
+              "拖动选择范围 A3:A6，其中应依次包含 `Rate verified`、`Adjustment reviewed`、`Estimate prepared`、`Ready to send`。",
+              "按 Ctrl+X 剪切该范围。",
+              "单击目标区域左上角单元格 B2，然后右键单击 B2。",
+              "在右键菜单中打开“选择性粘贴”，选择“转置”。如出现选择性粘贴对话框，启用“转置”选项并确认。"
+            ],
+            "skill_ids": [
+              "26a8440e-c166-4c50-aef4-bfb77314b46b.skill-05"
+            ],
+            "step_number": 1,
+            "title": "将 Overview 检查标签移动并转置为横向标题",
+            "visible_success_signal": "B2:E2 从左至右显示四个原有标签，顺序与原先 A3:A6 从上至下的顺序一致；A3:A6 已被清空。"
+          },
+          {
+            "efficiency_tip": "只在第一行写一次完整公式；查找区域使用绝对引用，随后向下填充时不会移动。",
+            "instructions": [
+              "切换到 `Service Requests` 工作表，单击 E2。",
+              "输入以下文字型公式，然后按 Enter：`=\"Estimate: \"&TEXT(VLOOKUP(B2,$'Rate Card'.$A$2:$B$7,2,FALSE())*C2*(1-D2),\"$#,##0.00\")`。",
+              "如果本机 Calc 使用分号作为函数参数分隔符，可将公式中的参数逗号改为分号后再确认。",
+              "确认公式将 B2 的服务代码到 `Rate Card` 查找单价，乘以当前行 C2 的 Units，并乘以 `(1-D2)` 应用当前行 Adjustment；`TEXT` 会把金额作为文字的一部分显示。"
+            ],
+            "skill_ids": [
+              "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-01"
+            ],
+            "step_number": 2,
+            "title": "在第一条请求中建立文字估算公式",
+            "visible_success_signal": "E2 显示以 `Estimate:` 开头并包含货币金额的可读文字。选中 E2 时，公式栏可见相对引用 B2、C2、D2，以及固定的 `$'Rate Card'.$A$2:$B$7` 查找范围。"
+          },
+          {
+            "efficiency_tip": "双击填充柄会依据相邻连续数据自动确定终点，比逐行复制或拖动到第 19 行更快。",
+            "instructions": [
+              "保持在 `Service Requests` 工作表，重新单击 E2，确保它是当前选中单元格。",
+              "将鼠标移到 E2 选中边框右下角的小方块（填充柄）。",
+              "当指针可用于填充时，双击该填充柄。",
+              "查看填充结果；相邻的 A:D 列连续有数据，Calc 应将公式自动延伸至 E19。"
+            ],
+            "skill_ids": [
+              "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-03"
+            ],
+            "step_number": 3,
+            "title": "将估算说明公式填充到所有请求行",
+            "visible_success_signal": "E2:E19 每一行均显示文字估算说明，没有空白输出。选择例如 E3 或 E19 时，可见公式中的 B、C、D 行号已相应变为该行行号。"
+          },
+          {
+            "efficiency_tip": "可直接在滑块上点击更靠近目标比例的位置，一次完成适度缩小，避免多次点击减小端。",
+            "instructions": [
+              "仍停留在 `Service Requests` 工作表。",
+              "在窗口右下角状态栏找到缩放滑块。",
+              "单击滑块的左侧（减小）方向，或在当前滑块位置左方选择一个稍小的比例，使工作表适度缩小。",
+              "如首次缩小后仍不便于审阅，可再作一次小幅调整；不需要缩小到文字难以辨认。"
+            ],
+            "skill_ids": [
+              "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17.skill-01"
+            ],
+            "step_number": 4,
+            "title": "缩小工作表显示比例以便审阅",
+            "visible_success_signal": "状态栏显示的缩放百分比低于开始时，且同一屏幕中能舒适地看到更多服务请求行或更多列。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "9d380f47-2c82-46d0-a667-c64663e50b6b",
+        "prompt_sha256": "97bcd29f028780cdcc85f753be80cd96cb37679533fa78d8ea8b230149a7335c",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 4187,
+        "output_tokens": 1692,
+        "estimated_cost_usd": 0.028678
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-004",
+      "task_detail_sha256": "81b532cda5419ce23b3a01212fca47eee8a6074fe70f5a7cd7c5fa8852c7c66e",
+      "guide": {
+        "final_verification": [
+          "工作簿底部有且仅需确认存在两个相关工作表：\"Supply Rounds\" 和 \"Archive\"。",
+          "在 \"Supply Rounds\" 中检查 D3:D7、D11:D15、D19:D23 均不再为空，且每个单元格显示整数的剩余包数。",
+          "抽查公式：选中 D3 时公式栏为 `=B3-C3`；选中 D11 时应为 `=B11-C11`；选中 D19 时应为 `=B19-C19`，说明引用已随粘贴位置自动调整。",
+          "核对结果示例：D3 为 55，D7 为 78，D11 为 45，D15 为 81，D19 为 57，D23 为 93。",
+          "打开 \"Archive\"，确认 A1:C7 显示 \"Round A — Tuesday\"、第 2 行的 Item/Prepared Packs/Issued Packs 标题，以及五条 Round A 物品和数量记录。"
+        ],
+        "language": "zh-CN",
+        "overview": "本指南将在 \"Supply Rounds\" 的三个配送批次中计算 Remaining Packs（Prepared Packs 减 Issued Packs），并新建名为 \"Archive\" 的工作表，保存 Round A 的 A1:C7 输入快照。公式先在 Round A 建立并填满，再整体复制到后两个结构相同的批次。",
+        "reference_task_id": "reference-task-calc-full-r01-004",
+        "starting_state_checks": [
+          "确认当前打开的工作簿只有一个名为 \"Supply Rounds\" 的工作表。",
+          "确认 \"Supply Rounds\" 中有三个区块：Round A 位于 A1:D7、Round B 位于 A9:D15、Round C 位于 A17:D23。",
+          "确认 D3:D7、D11:D15 和 D19:D23 目前为空；不要覆盖 A:C 中已有的物品和数量。",
+          "确认尚未存在名为 \"Archive\" 的工作表。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "先创建空白目标表，可在复制时直接粘贴，避免在工作表之间临时来回切换。",
+            "instructions": [
+              "在窗口底部的工作表标签区域，点击工作表标签旁的 `+` 按钮。",
+              "Calc 会立即创建并切换到一个新的空白工作表。",
+              "将新工作表改名为 `Archive`：可双击新工作表标签，输入 `Archive` 后按 Enter。"
+            ],
+            "skill_ids": [
+              "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-02"
+            ],
+            "step_number": 1,
+            "title": "新建并命名 Archive 工作表",
+            "visible_success_signal": "底部能看到独立的 \"Archive\" 工作表标签，且当前表格为空白。"
+          },
+          {
+            "efficiency_tip": "一次选中 A1:C7 可保留标题、三列标题和全部五条记录，不必逐项重新输入。",
+            "instructions": [
+              "切换回 \"Supply Rounds\" 工作表。",
+              "选中连续区域 A1:C7：点击 A1，然后拖动到 C7，使整个三列七行区域被选中。",
+              "按 Ctrl+C 复制。",
+              "切换到 \"Archive\" 工作表，点击 A1 作为粘贴区域的左上角。",
+              "按 Ctrl+V 粘贴。"
+            ],
+            "skill_ids": [
+              "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-01"
+            ],
+            "step_number": 2,
+            "title": "复制 Round A 输入快照到 Archive",
+            "visible_success_signal": "\"Archive\" 的 A1:C7 已显示 \"Round A — Tuesday\"、第 2 行的三个标题及五行 Round A 的物品和数量。"
+          },
+          {
+            "efficiency_tip": "使用相对引用的首行公式，后续向下填充时行号会自动变化，无需逐行重新键入。",
+            "instructions": [
+              "返回 \"Supply Rounds\" 工作表。",
+              "点击 D3；这是 Round A 的第一条记录 Seed Trays 对应的 Remaining Packs 单元格。",
+              "输入公式 `=B3-C3`，然后按 Enter。",
+              "如需要确认计算关系，再次选中 D3，查看公式栏是否显示 `=B3-C3`。"
+            ],
+            "skill_ids": [
+              "1e8df695-bd1b-45b3-b557-e7d599cf7597.skill-01"
+            ],
+            "step_number": 3,
+            "title": "在 Round A 创建首个剩余包数公式",
+            "visible_success_signal": "D3 显示 55，表示 84 个 Prepared Packs 减去 29 个 Issued Packs。"
+          },
+          {
+            "efficiency_tip": "用填充命令将一个已验证的公式扩展到相邻行，比手动输入五个公式更快且更不易出错。",
+            "instructions": [
+              "选中 D3:D7。可先点击 D3，再拖动到 D7。",
+              "使用菜单 `工作表` > `填充单元格` > `向下填充`，将 D3 的公式填充到 D4:D7。",
+              "检查 D3:D7 是否均显示计算结果。"
+            ],
+            "skill_ids": [],
+            "step_number": 4,
+            "title": "填充 Round A 的其余公式",
+            "visible_success_signal": "D3:D7 全部有整数结果；从上到下应显示 55、45、74、19、78。"
+          },
+          {
+            "efficiency_tip": "复制完整的五单元格公式区域一次，再粘贴到两个同结构区域，Calc 会自动保留相对引用并按新行计算。",
+            "instructions": [
+              "选中已完成的公式范围 D3:D7。",
+              "按 Ctrl+C 复制该五单元格公式范围。",
+              "点击 D11，即 Round B 的第一条数据行的 Remaining Packs 单元格，然后按 Ctrl+V。",
+              "点击 D19，即 Round C 的第一条数据行的 Remaining Packs 单元格，然后再次按 Ctrl+V。",
+              "分别查看 D11:D15 和 D19:D23，确认没有空白的 Remaining Packs 单元格。"
+            ],
+            "skill_ids": [
+              "f9584479-3d0d-4c79-affa-9ad7afdd8850.skill-03"
+            ],
+            "step_number": 5,
+            "title": "将完整公式范围复制到 Round B 和 Round C",
+            "visible_success_signal": "Round B 的 D11:D15 显示 45、37、71、16、81；Round C 的 D19:D23 显示 57、45、76、19、93。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "a22a3e02-6390-46b5-ac0b-5d153a18fdaf",
+        "prompt_sha256": "10a7039e8e7784964bb67458037d4f2310d6958077b2572b5a098b0929995c97",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3573,
+        "output_tokens": 1517,
+        "estimated_cost_usd": 0.02535
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-005",
+      "task_detail_sha256": "3eaa2859692b47c56eb1632c946af197933ff6318412046cdeec63f1b2b7a470",
+      "guide": {
+        "final_verification": [
+          "在 Dispatch_Log 中检查数据行已按 SKU 升序排列：先是 SKU-104，随后依次为 SKU-118、SKU-203、SKU-217、SKU-305、SKU-322、SKU-411，最后为 SKU-426；同一行的票号、数量、成本、分类和代码仍相互对应。",
+          "确认 Dispatch_Log!E2:E19 均不再为空，且 SKU 相同的记录得到相同的 Supply Group 分类。",
+          "确认 Dispatch_Log!F2:F19 都显示七位 Ticket Code；例如票号 4821 显示为 0004821，票号 930 显示为 0000930。",
+          "确认 Restock Cost 中只有数值 540.00 的单元格具有所选的条件格式突出显示。",
+          "切换到 Summary，确认 B2 显示 649；选中 B2 后，编辑栏显示跨工作表的 SUM 公式，而不是手工输入的常数。"
+        ],
+        "language": "zh-CN",
+        "overview": "本指南完成 Replenishment Review 工作簿的管理复核：从 Catalog 查找每条调度记录的 Supply Group，生成七位 Ticket Code，突出显示唯一最高的 Restock Cost，将完整 Dispatch_Log 按 SKU 升序排列，并在 Summary 汇总已调度单位数。",
+        "reference_task_id": "reference-task-calc-full-r01-005",
+        "starting_state_checks": [
+          "打开 Replenishment Review 工作簿，确认底部有 Catalog、Dispatch_Log 和 Summary 三个工作表。",
+          "在 Catalog 中确认 A1:B9 是 SKU 与 Supply Group 的参考表，且第 2 至第 9 行有八个 SKU 记录。",
+          "在 Dispatch_Log 中确认标题位于第 1 行，A:D 列已有 18 条记录，E2:E19（Supply Group）和 F2:F19（Ticket Code）仍为空；当前记录尚未按 SKU 排序。",
+          "在 Summary 中确认 A2 为 Total Units Dispatched，且 B2 为空、没有预先存在的公式。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "先在首个数据行建立公式，再把该公式填充到整段区域；这样可避免逐行输入并减少引用错误。",
+            "instructions": [
+              "切换到 Dispatch_Log 工作表，单击 E2。",
+              "输入精确匹配查找公式：`=VLOOKUP(B2;$Catalog.$A$2:$B$9;2;FALSE)`，然后按 Enter。此公式用本行 B 列的 SKU 到 Catalog 的固定 A2:B9 表中查找，并返回第 2 列 Supply Group。",
+              "再次选中 E2，将选择范围扩展至 E2:E19，然后使用“工作表 > 填充单元格 > 向下填充”，或按 Ctrl+D，把公式填充到所有调度记录。若 Calc 的公式参数分隔符显示为逗号，可使用该环境接受的逗号分隔符，引用结构和 `FALSE` 保持不变。"
+            ],
+            "skill_ids": [
+              "7e429b8d-a3f0-4ed0-9b58-08957d00b127.skill-01"
+            ],
+            "step_number": 1,
+            "title": "按 SKU 查找 Supply Group",
+            "visible_success_signal": "Dispatch_Log 的 E2:E19 都有分类文本；例如 SKU-305 对应 Hand Tools，重复出现的同一 SKU 显示相同分类。"
+          },
+          {
+            "efficiency_tip": "用 TEXT 公式保留原始票号的数值来源，同时得到适合标识符显示的固定七位文本，不必手工添加前导零。",
+            "instructions": [
+              "在 Dispatch_Log 中单击 F2。",
+              "输入公式 `=TEXT(A2;\"0000000\")`，然后按 Enter。A2 是本行的 Ticket Number；七个 0 要求显示结果固定为七位。",
+              "选中 F2，并将范围扩展为 F2:F19；使用“工作表 > 填充单元格 > 向下填充”或 Ctrl+D 填满该列。"
+            ],
+            "skill_ids": [
+              "0bf05a7d-b28b-44d2-955a-50b41e24012a.skill-01"
+            ],
+            "step_number": 2,
+            "title": "生成七位 Ticket Code",
+            "visible_success_signal": "F2:F19 均显示七位代码；例如 F2 显示 0004821，而票号为 930 的记录显示 0000930。"
+          },
+          {
+            "efficiency_tip": "让一个条件格式规则覆盖整个成本数据区域；公式中锁定列和最大值范围、保留行号相对变化，便可逐行判断。",
+            "instructions": [
+              "选中 Dispatch_Log 中的 Restock Cost 数据区域 D2:D19，不要包含标题 D1。",
+              "打开“格式 > 条件 > 条件”。在条件类型下拉列表中选择 `Formula is`。",
+              "输入公式 `$D2=MAX($D$2:$D$19)`。其中 `$D2` 会随规则检查的行而变化，`$D$2:$D$19` 始终是完整成本范围。",
+              "为条件选择或新建一个清晰可见的样式。例如新建样式后，在字体颜色中设置绿色 `#00FF00`，也可同时选择易辨认的填充色；确认样式和条件格式对话框以保存规则。"
+            ],
+            "skill_ids": [
+              "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-04"
+            ],
+            "step_number": 3,
+            "title": "突出显示最高 Restock Cost",
+            "visible_success_signal": "D2:D19 中仅金额 540.00 的一个单元格显示所选的突出样式，其他成本单元格保持普通样式。"
+          },
+          {
+            "efficiency_tip": "使用跨工作表 SUM 公式可在原始记录变化时自动更新汇总，无需手工相加。",
+            "instructions": [
+              "切换到 Summary 工作表并单击 B2。",
+              "输入公式 `=SUM($Dispatch_Log.C2:C19)`，然后按 Enter。该公式汇总 Dispatch_Log 工作表 C2:C19 中的 Units Dispatched。",
+              "保持 B2 为公式单元格，不要将结果值覆盖为手工输入的数字。"
+            ],
+            "skill_ids": [
+              "26a8440e-c166-4c50-aef4-bfb77314b46b.skill-03"
+            ],
+            "step_number": 4,
+            "title": "在 Summary 汇总已调度单位数",
+            "visible_success_signal": "Summary!B2 显示 649；选中 B2 时，编辑栏中可见以 `=SUM(` 开头且引用 Dispatch_Log 的公式。"
+          },
+          {
+            "efficiency_tip": "排序时让 Calc 扩展选择范围，确保每条记录的所有字段一起移动，而不会只重排 SKU 列。",
+            "instructions": [
+              "回到 Dispatch_Log。单击 SKU 列中任意一个数据单元格，例如 B2；也可以单击列标题 B 选择该列。",
+              "单击工具栏上的升序排序按钮（A–Z 和向下箭头）。",
+              "如果出现排序范围提示，选择“扩展选择”，使 A:F 的完整记录同行移动。若打开了排序设置对话框，选择按 SKU 列升序排序，并确认数据包含标题行。"
+            ],
+            "skill_ids": [
+              "3a7c8185-25c1-4941-bd7b-96e823c9f21f.skill-01"
+            ],
+            "step_number": 5,
+            "title": "按 SKU 对完整 Dispatch_Log 升序排序",
+            "visible_success_signal": "Dispatch_Log 的数据从 SKU-104 开始并以 SKU-426 结束；每条记录的 Supply Group、Ticket Code、Units Dispatched 和 Restock Cost 仍与本行票号对应。"
+          },
+          {
+            "efficiency_tip": "最后在两个工作表各抽查一个公式结果和一个异常标记，可快速发现填充范围、排序范围或引用范围遗漏。",
+            "instructions": [
+              "在 Dispatch_Log 检查 E、F 两列均覆盖至第 19 行，并确认高亮仍跟随金额 540.00 所在记录。",
+              "检查 Dispatch_Log 的 SKU 顺序为从小到大的字母数字顺序，且没有拆散任一行的记录内容。",
+              "在 Summary 选中 B2，确认显示结果为 649，并在编辑栏确认它仍是 `=SUM($Dispatch_Log.C2:C19)` 公式。"
+            ],
+            "skill_ids": [],
+            "step_number": 6,
+            "title": "完成最终检查",
+            "visible_success_signal": "三个目标均可见：完整分类和七位代码、唯一最高成本突出显示、SKU 升序日志，以及 Summary 中公式得出的 649。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "395fa575-82b1-4d6f-8fe7-5993cb8402f1",
+        "prompt_sha256": "e2c2f502576e35206080d1503a7fae5aed9e1ffbec3d8ec685bb7b158bd24c5e",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 4761,
+        "output_tokens": 2259,
+        "estimated_cost_usd": 0.03663
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-006",
+      "task_detail_sha256": "262e3f15caa3ce9673d65c103b2c76cc95b41729a634575b7f177d4f5e477abc",
+      "guide": {
+        "final_verification": [
+          "切换到 Route Review，确认 A5:A16 仍为 12 个日期，B5:B16 已填入 12 个 Working Output 值，且与 Daily Metrics!B2:B13 一致。",
+          "单击 C6:C16 中的任意单元格并查看输入行，确认公式引用的是 $'Daily Metrics'.B...；C5 保持为空，C6:C16 显示为一位小数的百分比。",
+          "确认 E5 起的路线名单按首次出现顺序仅包含 North Loop、Harbor Spur、Cedar Link、Ridge Run、Quarry Way、Canal Point，且没有空白项目或重复项目。",
+          "确认 Route Review 上有一个以日期为横轴、以 Daily Change 为唯一数据系列的折线图，折线没有数据点标记。",
+          "确认已通过导出对话框将 PDF 输出为 /home/oai/share/route_operations_review.pdf。"
+        ],
+        "language": "zh-CN",
+        "overview": "本指南将在 Route Review 完成工作输出量副本、基于 Daily Metrics 固定工作表引用的日变化百分比、非空且去重的路线名册，以及无标记折线图，最后导出完成的审查表为 PDF。Daily Metrics 是源数据，操作期间不要修改其中的内容。",
+        "reference_task_id": "reference-task-calc-full-r01-006",
+        "starting_state_checks": [
+          "确认当前打开的是 initial_artifact.xlsx，且 Route Review 是活动工作表。",
+          "确认 Daily Metrics!A1:D13 包含带标题的完整源表；不要在该工作表中改写、删除或排序数据。",
+          "确认 Route Review!A5:A16 已有日期，而 B5:B16、C5:C16 与 E5:E20 仍为空；C 列已显示为一位小数的百分比格式。",
+          "确认 Route Review 上尚未有图表对象。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "先一次选中完整的 12 行连续数据再复制，可避免逐格复制并保留源表不变。",
+            "instructions": [
+              "单击工作表标签 Daily Metrics，选中 B2，然后拖动到 B13，选中 Output Volume 的 12 个数据单元格，不要包含标题 B1。",
+              "按 Ctrl+C 复制所选范围。",
+              "切换回 Route Review，单击 B5，然后按 Ctrl+V。"
+            ],
+            "skill_ids": [
+              "37608790-6147-45d0-9f20-1137bb35703d.skill-01"
+            ],
+            "step_number": 1,
+            "title": "复制 Output Volume 到 Working Output",
+            "visible_success_signal": "Route Review!B5:B16 显示 12 个整数值，并逐行对应 Daily Metrics!B2:B13；Daily Metrics 中的原始 Output Volume 仍然存在。"
+          },
+          {
+            "efficiency_tip": "先把首个公式写成带固定工作表名、相对行号的形式，再向下填充，所有后续行会自动推进源数据行号。",
+            "instructions": [
+              "在 Route Review 中单击 C6。C5 是第一天，没有前一天可比较，应保持空白。",
+              "输入公式 =($'Daily Metrics'.B3-$'Daily Metrics'.B2)/$'Daily Metrics'.B2，然后按 Enter。",
+              "再次选中 C6 并复制。选中 C7:C16 后粘贴，使该公式填充到所有剩余日期。",
+              "单击 C7 或更下面任意一个结果单元格，检查输入行中的源工作表仍为 $'Daily Metrics'，而 B 列和行号已随行推进。"
+            ],
+            "skill_ids": [
+              "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-03"
+            ],
+            "step_number": 2,
+            "title": "计算固定源表的 Daily Change",
+            "visible_success_signal": "C5 为空，C6:C16 显示一位小数的百分比结果；例如 C6 的公式比较 Daily Metrics 的 B3 与 B2，后续行比较相邻的下一对源值。"
+          },
+          {
+            "efficiency_tip": "在打开筛选对话框前选中整列源字段（含标题），并在对话框内直接指定输出锚点，可一次得到保留首次出现顺序的非空去重名单。",
+            "instructions": [
+              "切换到 Daily Metrics，选中 D1:D13，其中包括 Service Route 标题和全部路线记录。",
+              "选择 Data > More Filters > Standard Filter。",
+              "在筛选条件中，将字段设为 Service Route，并把条件/值设为 Not empty，以排除空白路线。",
+              "展开 Options，启用 No duplications。再启用 Copy results to，并在目标位置输入 $'Route Review'.$E$4。该位置让复制的字段标题位于第 4 行，而路线结果从 E5 开始。",
+              "确认设置并单击 OK。必要时切换回 Route Review；如果复制的字段标题覆盖了 E4，可将 E4 改回 Distinct Route Roster，勿改动 E5 起的筛选结果。"
+            ],
+            "skill_ids": [
+              "abed40dc-063f-4598-8ba5-9fe749c0615d.skill-01"
+            ],
+            "step_number": 3,
+            "title": "生成非空且去重的路线名册",
+            "visible_success_signal": "Route Review 的 E5 起依首次出现顺序显示 North Loop、Harbor Spur、Cedar Link、Ridge Run、Quarry Way、Canal Point，每个仅出现一次，且没有空白路线项。"
+          },
+          {
+            "efficiency_tip": "通过 Ctrl 选择两个不相邻的完整列范围（连同标题）后直接插入图表，可使 Calc 自动使用日期作为分类标签、Daily Change 作为系列名。",
+            "instructions": [
+              "在 Route Review 中选中 A4:A16，其中 A4 是 Service Date 标题，A5:A16 是日期。",
+              "按住 Ctrl，再选中 C4:C16，其中 C4 是 Daily Change 标题；C5 的空白会保留为第一天无变化值。",
+              "使用工具栏的图表按钮，或选择 Insert > Chart，打开图表向导。",
+              "在图表类型中选择 Line，并选择仅线条、没有数据点标记的子类型。",
+              "确认数据范围包含所选的日期列和 Daily Change 列；在图表中使用第一列作为分类标签，并将第一行用作数据系列名称。完成图表插入后，将图表放在 Route Review 的空白区域，避免遮住表格结果。"
+            ],
+            "skill_ids": [
+              "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-07"
+            ],
+            "step_number": 4,
+            "title": "建立 Daily Change 无标记折线图",
+            "visible_success_signal": "Route Review 上出现图表，横轴为 Service Date 日期，只有一条 Daily Change 连续折线，线上没有圆点或其他数据点标记。"
+          },
+          {
+            "efficiency_tip": "在导出窗口的文件名框直接输入完整路径和文件名，不必逐层浏览文件夹，且可确保输出到指定位置。",
+            "instructions": [
+              "确认 Route Review 处于可见状态，并且复制的数据、百分比、路线名册和图表都已完成。",
+              "选择 File > Export as PDF。",
+              "在文件名字段输入 /home/oai/share/route_operations_review.pdf。",
+              "单击 Export；如出现 PDF 选项窗口，保留适合当前工作表的常规设置后确认导出。"
+            ],
+            "skill_ids": [
+              "aa3a8974-2e85-438b-b29e-a64df44deb4b.skill-02"
+            ],
+            "step_number": 5,
+            "title": "导出完成的 Route Review 为 PDF",
+            "visible_success_signal": "导出过程完成，目标位置为 /home/oai/share/route_operations_review.pdf。"
+          },
+          {
+            "efficiency_tip": "最终检查时随机对照首行、中间行和末行，能快速发现遗漏的粘贴行或未填充的公式。",
+            "instructions": [
+              "返回 Route Review，随机比较 B5、B10、B16 与 Daily Metrics 中对应的 B2、B7、B13。",
+              "检查 C5 为空，并检查 C6 与 C16 均为百分比结果；单击其中一个单元格确认其公式仍引用 $'Daily Metrics'。",
+              "查看 E5 起的路线列表和图表，确认没有重复或空白路线，且图表仍为无标记的单线图。"
+            ],
+            "skill_ids": [],
+            "step_number": 6,
+            "title": "完成最终可见性核对",
+            "visible_success_signal": "工作表上同时可见完整 Working Output、Daily Change、Distinct Route Roster 和 Daily Change 趋势图，且 PDF 已按指定路径导出。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "ec4a72e4-d2c2-4118-a773-3948a3489476",
+        "prompt_sha256": "62c3e39ae90e1fc86c8a381133a7861ac99245dddc59745732f6f9c52b370ddc",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 4454,
+        "output_tokens": 2636,
+        "estimated_cost_usd": 0.04054
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-007",
+      "task_detail_sha256": "a9f400b1784e3b27e19030e356063406c4deb832e524e73316915a8694215a8d",
+      "guide": {
+        "final_verification": [
+          "返回 Shift Log，确认 E2:E13 均包含计算结果而非空白；选中任一单元格时，编辑栏中可见以小时费率和服务时长计算的公式。",
+          "确认 D2:E13 的数值显示使用逗号作为小数分隔符，且服务时长 C2:C13 仍以 [HH]:MM 形式显示。",
+          "确认 E2:E13 中大于 200 的 Earned Amount 为亮绿色字体（#00FF00），而不大于 200 的金额没有此绿色字体。",
+          "确认底部存在名为 Payment Overview 的工作表标签。",
+          "打开 Payment Overview，确认可见比较 Technician 与 Earned Amount 的图表；返回 Shift Log 时不应再看到该图表对象。"
+        ],
+        "language": "zh-CN",
+        "overview": "本指南将在 Shift Log 中计算 12 位现场技术员的 Earned Amount，将 Hourly Rate 和 Earned Amount 以德国式小数显示，为超过 200 的收入添加亮绿色条件格式，并建立技术员收入比较图表，将图表移至新建并命名为 Payment Overview 的工作表。",
+        "reference_task_id": "reference-task-calc-full-r01-007",
+        "starting_state_checks": [
+          "确认当前打开的是目标工作簿，且当前工作表标签为 Shift Log。",
+          "确认第 1 行包含 Technician、Work Order、Service Duration、Hourly Rate 和 Earned Amount 标题，数据位于第 2 至第 13 行。",
+          "确认 E2:E13 仍为空白，C 列服务时长显示为类似 [HH]:MM 的时长，且工作簿中尚没有 Payment Overview 工作表或图表。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "先只在 E2 建立正确公式，再使用填充柄或复制粘贴扩展到其余数据行，可避免逐行重复输入。",
+            "instructions": [
+              "在 Shift Log 工作表中单击 E2。",
+              "输入公式 `=D2*(HOUR(C2)+MINUTE(C2)/60)`，然后按 Enter。",
+              "该公式将 C2 的时长拆分为完整小时和分钟换算的小时小数，再乘以 D2 中的 Hourly Rate。",
+              "再次选中 E2，将单元格右下角的小方块（填充柄）向下拖动到 E13；也可以复制 E2，再选中 E3:E13 并粘贴。"
+            ],
+            "skill_ids": [
+              "357ef137-7eeb-4c80-a3bb-0951f26a8aff.skill-01"
+            ],
+            "step_number": 1,
+            "title": "计算全部 Earned Amount",
+            "visible_success_signal": "E2:E13 都显示数值结果；单击任一结果单元格时，公式栏中的行号会相应变化，例如 E13 使用 C13 和 D13。"
+          },
+          {
+            "efficiency_tip": "一次选中 D2:E13 后统一设置语言区域，可确保两列付款数字的显示规则一致，且不会改变实际计算值。",
+            "instructions": [
+              "拖动选中 D2:E13，其中包括 Hourly Rate 和 Earned Amount 两列的所有数据行。",
+              "在选区上右键单击，选择“设置单元格格式”。",
+              "在“设置单元格格式”对话框中，找到“语言”下拉列表，输入或选择 `German (aus)`，然后按 Enter 确认该语言选择。",
+              "单击“确定”关闭对话框。"
+            ],
+            "skill_ids": [
+              "a01fbce3-2793-461f-ab86-43680ccbae25.skill-01"
+            ],
+            "step_number": 2,
+            "title": "将付款数字设为德国式小数显示",
+            "visible_success_signal": "D2:E13 中带小数的付款数值使用逗号作为小数分隔符，例如显示为类似 35,50；这些单元格仍可参与计算。"
+          },
+          {
+            "efficiency_tip": "通过条件格式的样式选择器新建样式，绿色字体会随规则自动应用，不需要手工逐个修改高收入单元格。",
+            "instructions": [
+              "选中 Earned Amount 数据区域 E2:E13。",
+              "从“格式”菜单打开“条件格式”，选择用于添加条件的命令，例如“条件…”。",
+              "建立一个规则：当单元格值“大于” `200` 时应用格式。",
+              "在规则的样式或强调样式下拉列表中选择“新建样式”。",
+              "在新样式对话框中打开“字体效果”选项卡，展开字体颜色选择器并选择“自定义颜色”。",
+              "在十六进制颜色输入框中输入 `00ff00`，确认颜色选择；然后确认样式对话框和条件格式规则对话框。",
+              "如规则列表中尚未显示该规则，确认规则作用范围为 E2:E13 后再保存。"
+            ],
+            "skill_ids": [
+              "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-05"
+            ],
+            "step_number": 3,
+            "title": "突出显示超过 200 的收入",
+            "visible_success_signal": "E2:E13 中至少一个大于 200 的金额立即显示为亮绿色字体（#00FF00）；数值不大于 200 的金额保持非绿色字体。"
+          },
+          {
+            "efficiency_tip": "只将 Technician 标签和 Earned Amount 数据作为图表数据源，可避免 Work Order、服务时长或小时费率被误加入比较图。",
+            "instructions": [
+              "先选中 A1:A13 以包含 Technician 标题和全部技术员姓名；按住 Ctrl 后，再选中 E1:E13 以同时包含 Earned Amount 标题和全部计算结果。",
+              "使用“插入”菜单中的“图表”命令启动图表向导。",
+              "选择一种清晰比较各技术员收入的图表类型，例如柱形图；确认数据系列为 Earned Amount，分类标签为 Technician。",
+              "完成图表向导。可为图表设置能说明内容的标题，例如 `Technician Earnings`。",
+              "确认图表对象仍位于 Shift Log 后，单击图表外框使整个图表对象处于选中状态，而不是只选中图表内部元素。"
+            ],
+            "skill_ids": [],
+            "step_number": 4,
+            "title": "创建技术员收入比较图表",
+            "visible_success_signal": "Shift Log 上出现图表，图中每位 Technician 对应一项 Earned Amount 比较数据，且整个图表外框可被选中。"
+          },
+          {
+            "efficiency_tip": "剪切再粘贴已有图表可保留其数据链接、图表类型和标题，无需在新工作表中重新制作。",
+            "instructions": [
+              "保持整个图表对象被选中，按 Ctrl+X 剪切图表。",
+              "单击工作表标签旁的加号，新插入的工作表会成为当前工作表。",
+              "在新工作表中按 Ctrl+V 粘贴图表。"
+            ],
+            "skill_ids": [
+              "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-03"
+            ],
+            "step_number": 5,
+            "title": "将图表移至新工作表",
+            "visible_success_signal": "新工作表中可见完整图表，切换回 Shift Log 后图表不再显示在源数据表上。"
+          },
+          {
+            "efficiency_tip": "在新增工作表仍处于活动状态时立刻改名，之后更容易识别图表所在位置。",
+            "instructions": [
+              "在当前新工作表底部的工作表标签上双击，使标签名称进入编辑状态。",
+              "输入 `Payment Overview`，然后按 Enter 提交名称。"
+            ],
+            "skill_ids": [
+              "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-05"
+            ],
+            "step_number": 6,
+            "title": "命名图表工作表",
+            "visible_success_signal": "底部工作表标签清楚显示 `Payment Overview`，并且该工作表内保留技术员收入图表。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "1b893ef1-1500-42b6-85e6-b6c528fb7ac7",
+        "prompt_sha256": "9240df360e0b876ef1dc630ff2afc8ef264c1087f65e26a7e046ca8894a817a5",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 4088,
+        "output_tokens": 2115,
+        "estimated_cost_usd": 0.033556
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-008",
+      "task_detail_sha256": "bf42d172507bd3413aea517e1d77dab4683f92ff91df30c576b28f62903c3ac3",
+      "guide": {
+        "final_verification": [
+          "在 Delivery Log 中检查 E2:E25：每个数据行都有 Line Total 计算结果，金额以货币和两位小数显示；任选如 E3、E25 的单元格，编辑栏中的公式应随行号变化，例如 E3 为 =C3*D3。",
+          "检查底部工作表标签：除 Delivery Log 外，还存在默认名称为 Sheet2 的工作表。",
+          "打开 Sheet2：透视表按 Garden Zone 列出各园区，并在数值列显示 Line Total 的求和金额；表中还应有总计（Grand Total）行。",
+          "确认透视表的每个 Garden Zone 只出现一次，且金额列是汇总值而不是原始的 24 条明细记录。"
+        ],
+        "language": "zh-CN",
+        "overview": "本任务先将 Delivery Log 中已在 E2 输入的 Line Total 公式快速填充到全部 24 条配送记录，再新增默认命名的 Sheet2，并在该工作表建立按 Garden Zone 汇总 Line Total 的透视表。",
+        "reference_task_id": "reference-task-calc-full-r01-008",
+        "starting_state_checks": [
+          "确认工作簿开始时只有一个名为 Delivery Log 的工作表，尚未出现 Sheet2。",
+          "在 Delivery Log 中确认数据表是连续区域 A1:E25，第一行包含 Delivery Code、Garden Zone、Quantity、Unit Price、Line Total 等标题。",
+          "单击 E2 并查看输入行，确认该单元格已有公式 =C2*D2；确认 E3:E25 仍未填入计算结果。",
+          "确认当前工作簿中尚未创建透视表。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "当公式旁边的明细数据没有空行时，双击填充柄会自动识别相邻连续数据的末行，比向下拖动到第 25 行更快。",
+            "instructions": [
+              "在 Delivery Log 工作表中单击 E2。该单元格是 Line Total 列第一个数据行，公式应为 =C2*D2。",
+              "保持 E2 选中，将鼠标移到选中单元格右下角的小方块（填充柄）。",
+              "在填充柄上双击。Calc 会将公式沿 Line Total 列自动填充到与相邻配送数据对应的最后一行。",
+              "单击 E3 或 E25，查看输入行以确认公式引用已按行号调整，例如 E3 显示 =C3*D3。"
+            ],
+            "skill_ids": [
+              "0bf05a7d-b28b-44d2-955a-50b41e24012a.skill-02"
+            ],
+            "step_number": 1,
+            "title": "将 Line Total 公式填充到所有配送记录",
+            "visible_success_signal": "E2:E25 全部显示计算出的货币金额，不再有空白的 Line Total 数据单元格；后续行的公式引用对应各自所在行。"
+          },
+          {
+            "efficiency_tip": "既然需要默认工作表名，直接使用工作表标签旁的加号即可，无需打开重命名操作。",
+            "instructions": [
+              "在窗口底部的工作表标签区域，单击新增工作表的加号（+）。",
+              "不要更改新建工作表的名称。Calc 会按照默认命名规则创建下一张工作表。"
+            ],
+            "skill_ids": [
+              "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-01"
+            ],
+            "step_number": 2,
+            "title": "新增默认名称的工作表",
+            "visible_success_signal": "底部出现一个名为 Sheet2 的新标签，并且该工作表目前为空白。"
+          },
+          {
+            "efficiency_tip": "当活动工作表只有一个连续的数据表时，先在表内单击再按 Ctrl+A，可一次选中完整数据源，不必手工输入范围。",
+            "instructions": [
+              "单击底部的 Delivery Log 标签，返回源数据工作表。",
+              "在 A1:E25 表格内任意单击一个单元格，然后按 Ctrl+A，选中整个连续数据表和标题行。",
+              "从菜单选择“数据”>“数据透视表”>“插入或编辑…”。如果工具栏上有数据透视表插入/编辑按钮，也可以使用该按钮。",
+              "在首先出现的数据源对话框中，检查检测到的源区域是 Delivery Log 中的完整表格 A1:E25（或等价的该工作表完整数据区域），然后确认继续。"
+            ],
+            "skill_ids": [
+              "1de60575-bb6e-4c3d-9e6a-2fa699f9f197.skill-01"
+            ],
+            "step_number": 3,
+            "title": "选择完整配送表并启动数据透视表",
+            "visible_success_signal": "数据透视表布局设置窗口打开，且可用字段中包含 Garden Zone 和 Line Total。"
+          },
+          {
+            "efficiency_tip": "直接将字段从“可用字段”拖到相应区域即可。Line Total 是数值字段，放入“数据字段”后通常会自动使用“求和”。",
+            "instructions": [
+              "在数据透视表布局窗口的“可用字段”列表中，找到 Garden Zone。将 Garden Zone 拖到“行字段”区域。",
+              "在“可用字段”列表中找到 Line Total。将 Line Total 拖到“数据字段”区域。",
+              "检查数据字段的标签显示为 Line Total 的求和（例如“Sum - Line Total”或等价文字）。若未显示求和，打开该数据字段的选项并将汇总函数设为“求和”。",
+              "在布局窗口中将结果输出位置设为现有工作表 Sheet2 的空白区域，例如 Sheet2 的 A1。若需要输入引用，可使用 $Sheet2.$A$1 这样的单元格引用。",
+              "确认布局并单击“确定”创建数据透视表。"
+            ],
+            "skill_ids": [
+              "535364ea-05bd-46ea-9937-9f55c68507e8.skill-01"
+            ],
+            "step_number": 4,
+            "title": "按 Garden Zone 创建 Line Total 求和透视表",
+            "visible_success_signal": "Sheet2 中出现数据透视表：Garden Zone 位于行标签区域，每个园区对应一个 Line Total 求和金额，并显示总计行。"
+          },
+          {
+            "efficiency_tip": "完成后优先检查结构和总计，不必逐条重算所有源记录；透视表的园区行数应明显少于原始配送记录数。",
+            "instructions": [
+              "切换到 Sheet2，确认透视表没有与其他内容重叠。",
+              "检查行标签中的每个 Garden Zone 都来自 Delivery Log，且没有空白园区标签。",
+              "检查金额字段是 Line Total 的求和结果，且底部存在总计。",
+              "如有需要，保存工作簿以保留公式和透视表。"
+            ],
+            "skill_ids": [],
+            "step_number": 5,
+            "title": "核对汇总结果并保存",
+            "visible_success_signal": "工作簿同时保留完整的 Delivery Log 明细计算和 Sheet2 上按 Garden Zone 汇总的透视表。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "40ea8468-bee7-4a8e-a085-1879cf947edb",
+        "prompt_sha256": "b707afd10c963b85093712176e363b51251eba85b211a8af4b605096d2988272",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3511,
+        "output_tokens": 1905,
+        "estimated_cost_usd": 0.029882
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-009",
+      "task_detail_sha256": "f9d603fc3a2e76fd58d1d729220c5a7fa2699e9baaea08cddd514f40705d2b3a",
+      "guide": {
+        "final_verification": [
+          "在“Activity Log”中检查 E2:E19：18 条记录均有“Record Summary”文字；每条均包含 Batch Code、Scheduled Units、Completed Units 和 Rework Units 的标签及数值，三个单位数值均显示为两位小数。",
+          "切换到“Allocation Summary”：A1 的“Workshop Allocation Share”仍使用深海军蓝底色，文字为醒目的白色。",
+          "确认“Allocation Summary”中存在原生数据透视表，按 Zone 分行，数据字段为 Completed Units；各 Zone 的值以百分比显示，并有总计，类别百分比合计为总计。",
+          "确认标题没有被透视表覆盖，且没有用工作表辅助公式替代透视表的百分比计算。"
+        ],
+        "language": "zh-CN",
+        "overview": "本指南完成三项工作：为每条活动记录生成统一的两位小数叙述文字、提高深色报告标题的可读性，以及在“Allocation Summary”中创建按 Zone 汇总 Completed Units 且显示总计占比的原生数据透视表。",
+        "reference_task_id": "reference-task-calc-full-r01-009",
+        "starting_state_checks": [
+          "确认工作簿中有“Activity Log”和“Allocation Summary”两个工作表。",
+          "在“Activity Log”中确认第 1 行为表头、数据记录位于第 2 至第 19 行，且“Record Summary”列当前为空；确认源表中可找到 Zone 和 Completed Units 字段。",
+          "在“Allocation Summary”中确认 A1 显示“Workshop Allocation Share”，底色为深色，且 A3 起的区域为空。",
+          "确认尚未存在数据透视表，以免编辑到旧结果。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "先只在 E2 写好使用绝对表头引用、相对数据行引用的公式，后续可一次填满所有记录，避免逐行输入。",
+            "instructions": [
+              "打开“Activity Log”工作表并单击 E2，即“Record Summary”标题下的第一条记录。",
+              "输入以下公式后按 Enter：=$A$1&\": \"&A2&\", \"&$B$1&\": \"&FIXED(B2,2)&\", \"&$C$1&\": \"&FIXED(C2,2)&\", \"&$D$1&\": \"&FIXED(D2,2)",
+              "其中 $A$1、$B$1、$C$1 和 $D$1 固定引用第 1 行标题；A2:D2 仍是当前记录行。FIXED(B2,2)、FIXED(C2,2) 和 FIXED(D2,2) 会把单位数值转换为恰好两位小数的文本。"
+            ],
+            "skill_ids": [
+              "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-02"
+            ],
+            "step_number": 1,
+            "title": "在第一条记录中建立两位小数叙述公式",
+            "visible_success_signal": "E2 显示一段可读的标签和值组合文字，例如包含 Batch Code 以及三个单位字段；三个单位数值都带有两位小数。"
+          },
+          {
+            "efficiency_tip": "选中包含首个公式在内的整个目标区域后使用向下填充，可让相对行号自动从第 2 行变为第 3 至第 19 行。",
+            "instructions": [
+              "再次选中 E2，然后按住 Shift 并选中 E19，使 E2:E19 成为选区。",
+              "使用 Ctrl+D 向下填充。若更习惯菜单，可使用用于向下填充单元格的命令。",
+              "抽查 E3 和 E19：Batch Code 与单位值应分别对应各自所在行，而字段标签保持不变。"
+            ],
+            "skill_ids": [],
+            "step_number": 2,
+            "title": "将记录叙述填充到全部 18 条记录",
+            "visible_success_signal": "E2:E19 均不再为空；每一行都有自己的记录叙述，且 Scheduled Units、Completed Units、Rework Units 均以两位小数显示。"
+          },
+          {
+            "efficiency_tip": "A1 已有深色填充，保持该单元格处于选中状态即可立即看到白色文字与深色背景的对比。",
+            "instructions": [
+              "切换到“Allocation Summary”工作表并选中 A1，其中包含“Workshop Allocation Share”。",
+              "在工具栏打开字体颜色的下拉调色板。",
+              "从调色板选择白色。不要更改该单元格原有的深色填充或标题文字。"
+            ],
+            "skill_ids": [
+              "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-04"
+            ],
+            "step_number": 3,
+            "title": "将深色报告标题改为白色文字",
+            "visible_success_signal": "A1 中的“Workshop Allocation Share”文字为白色，并清晰显示在原有的深海军蓝背景上。"
+          },
+          {
+            "efficiency_tip": "从源表中选择整个连续数据区域而非只选两列，可确保数据透视表正确识别表头和全部记录；将结果放在 A3 可保留标题可见。",
+            "instructions": [
+              "返回“Activity Log”，在源表内单击任意单元格，然后选中包含所有表头和记录的完整连续源表区域。",
+              "选择“数据”菜单中的“数据透视表”创建命令，开始建立数据透视表；在源数据确认界面确认使用当前选中的数据区域。",
+              "在数据透视表布局界面，将 Zone 放入“行字段”区域，将 Completed Units 放入“数据字段”区域。确认 Completed Units 的汇总方式为“求和”。",
+              "在输出位置设置中选择现有工作表“Allocation Summary”，并指定不覆盖标题的空白起点，例如 A3。确认创建数据透视表。"
+            ],
+            "skill_ids": [],
+            "step_number": 4,
+            "title": "创建按 Zone 汇总 Completed Units 的原生数据透视表",
+            "visible_success_signal": "“Allocation Summary”从 A3 或其他未覆盖标题的位置开始显示数据透视表；每个 Zone 各有一行，并显示 Completed Units 的求和结果及总计。"
+          },
+          {
+            "efficiency_tip": "使用数据字段本身的“显示的值”选项计算占总计百分比，避免在透视表外另建公式，也能在源数据更新后保持汇总逻辑一致。",
+            "instructions": [
+              "在新建的数据透视表中，打开 Completed Units 数据字段的选项；通常可双击该数据字段，或通过字段的右键菜单打开数据字段设置。",
+              "在数据字段选项中打开“显示的值”相关控件，将“类型”从 Normal 改为“% of total”。",
+              "使用“确定”或 Enter 确认数据字段选项；如仍有数据透视表设置窗口，也确认该窗口以更新结果。",
+              "查看每个 Zone 的数据值，确认它们以百分比而非原始单位数显示。"
+            ],
+            "skill_ids": [
+              "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-09"
+            ],
+            "step_number": 5,
+            "title": "将 Completed Units 显示为总计百分比",
+            "visible_success_signal": "数据透视表的 Zone 行显示百分比形式的 Completed Units 份额；各类别百分比共同对应总计，Grand Total 为整体总量。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "e9ed9694-7606-4ab8-bee6-2f57639412d8",
+        "prompt_sha256": "917425434be8e0d94720f7f0c5b3948722b5f115a2391938bda25e7a96e63a41",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3684,
+        "output_tokens": 2268,
+        "estimated_cost_usd": 0.034584
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-010",
+      "task_detail_sha256": "5bc707b9163522d69c9569cef9251c31a13e569f310679cacec720f4e044a012",
+      "guide": {
+        "final_verification": [
+          "工作簿中有一个新的汇总工作表或明确为空的输出区域，且其中显示原生数据透视表。",
+          "数据透视表的行标签为 Program；顶部列标题显示 Quarter 的不同季度值。",
+          "数据区域显示的是 Service Hours 的汇总数值（通常为求和），而不是36条原始活动记录；每个 Program 行在各季度列下都有对应总工时。",
+          "确认源工作表“Activity Log”仍保留完整的 A1:E37 原始数据表。"
+        ],
+        "language": "zh-CN",
+        "overview": "在“Activity Log”的连续源数据上创建数据透视表，并将结果放到新的汇总工作表。透视表以 Program 为行、Quarter 为列，并汇总 Service Hours，从而按项目和季度查看志愿服务总小时数。",
+        "reference_task_id": "reference-task-calc-full-r01-010",
+        "starting_state_checks": [
+          "确认当前打开的是“Activity Log”工作表，且第1行包含 Program、Quarter、Garden Site、Activity Type、Service Hours 标题。",
+          "确认数据表是连续区域 A1:E37，中间没有空白行或空白列。",
+          "确认当前尚未存在数据透视表，也没有预先创建的汇总输出工作表。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "先确认源表没有中断；连续区域可让 Calc 自动正确识别整个数据范围，避免漏掉记录或字段。",
+            "instructions": [
+              "在“Activity Log”中单击源数据区域内任意单元格，例如标题行或任一记录行。",
+              "检查第1行字段名是否包括 Program、Quarter、Garden Site、Activity Type、Service Hours，并确认记录延续到第37行。",
+              "如需明确选择数据源，可拖选 A1:E37；不要只选中某一列。"
+            ],
+            "skill_ids": [],
+            "step_number": 1,
+            "title": "检查并选择志愿活动源数据",
+            "visible_success_signal": "“Activity Log”中的 A1:E37 是一块完整的五列数据区域，包含36条活动记录和一行标题。"
+          },
+          {
+            "efficiency_tip": "从已选中的源区域启动数据透视表，可减少在设置过程中手动输入范围的需要。",
+            "instructions": [
+              "保持光标位于源数据区域内，打开菜单“数据”中的“数据透视表”命令，并选择用于插入或创建数据透视表的选项。",
+              "在数据源确认界面中，确认使用当前选定区域或当前数据选区作为源；范围应覆盖“Activity Log”中的 A1:E37。",
+              "继续进入数据透视表布局对话框。"
+            ],
+            "skill_ids": [],
+            "step_number": 2,
+            "title": "打开数据透视表布局",
+            "visible_success_signal": "出现数据透视表布局对话框，Available Fields（可用字段）中可见 Program、Quarter、Garden Site、Activity Type 和 Service Hours。"
+          },
+          {
+            "efficiency_tip": "直接把字段从 Available Fields 拖入目标区域，避免先添加后再移动字段。先完成分类布局，随后再添加数值字段，结构更容易核对。",
+            "instructions": [
+              "在 Available Fields 中找到 Program，将它拖到 Row fields（行字段）区域。",
+              "在 Available Fields 中找到 Quarter，将它直接拖到 Column fields（列字段）区域。",
+              "检查布局区域：Program 应显示在行字段框中，Quarter 应显示在列字段框中。"
+            ],
+            "skill_ids": [
+              "1de60575-bb6e-4c3d-9e6a-2fa699f9f197.skill-02"
+            ],
+            "step_number": 3,
+            "title": "设置 Program 行和 Quarter 列",
+            "visible_success_signal": "布局对话框的 Row fields 中有 Program，Column fields 中有 Quarter，表示输出将按项目分行、按季度分列。"
+          },
+          {
+            "efficiency_tip": "仅将需要汇总的数值字段放入 Data fields；在行列结构已经确定后添加它，可以立即判断汇总指标是否正确。",
+            "instructions": [
+              "在 Available Fields 中找到数值字段 Service Hours。",
+              "将 Service Hours 拖到 Data fields（数据字段）区域。",
+              "确认数据字段显示 Service Hours，汇总函数应为求和；如果 Calc 显示为“Sum - Service Hours”或等效的求和名称，即表示设置正确。",
+              "确认布局对话框以应用字段配置。"
+            ],
+            "skill_ids": [
+              "1de60575-bb6e-4c3d-9e6a-2fa699f9f197.skill-03"
+            ],
+            "step_number": 4,
+            "title": "将 Service Hours 作为汇总值",
+            "visible_success_signal": "Data fields 区域中显示 Service Hours 的求和汇总，布局已同时包含 Program、Quarter 和该数值指标。"
+          },
+          {
+            "efficiency_tip": "将透视表放在新工作表可避免覆盖源记录，也便于单独查看和复核汇总结果。",
+            "instructions": [
+              "在输出位置或结果位置设置界面中，选择创建到新的工作表（或选择一个确认为空的工作表位置）。",
+              "确认创建数据透视表；如创建了默认名称的新工作表，可按需要将其重命名为清晰的名称，例如“Program Summary”。",
+              "不要在“Activity Log”的原始表 A1:E37 内放置输出结果。"
+            ],
+            "skill_ids": [],
+            "step_number": 5,
+            "title": "将汇总结果放到新工作表",
+            "visible_success_signal": "Calc 切换到新的输出工作表或显示指定的空白输出区域，数据透视表已生成且未覆盖“Activity Log”源数据。"
+          },
+          {
+            "efficiency_tip": "用行、列和数值区域同时检查结果，比只检查透视表是否出现更快发现字段放错区域的问题。",
+            "instructions": [
+              "查看透视表左侧的行标签，确认显示多个 Program 项目。",
+              "查看透视表顶部，确认 Quarter 的不同季度值作为独立列标题显示。",
+              "查看 Program 与 Quarter 的交叉单元格，确认其中是 Service Hours 的汇总数值而非原始明细；如有总计行或总计列，也应与汇总结构一致。",
+              "保存工作簿以保留新的数据透视表和汇总工作表。"
+            ],
+            "skill_ids": [],
+            "step_number": 6,
+            "title": "核对并保存数据透视表",
+            "visible_success_signal": "可见的透视表按 Program 分行、按 Quarter 分列，并在交叉位置显示汇总的 Service Hours 数值。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "34d2a71c-48a7-4c24-8fc7-e8f70f3901d9",
+        "prompt_sha256": "ff2933870af44c2beb93cc6133f46bcbdba8f00f550b6d9aae38cb96980b01f3",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2403,
+        "output_tokens": 1404,
+        "estimated_cost_usd": 0.021654
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-011",
+      "task_detail_sha256": "27ba8a66dc60f95b0622cd1d85d38893309839bcf3d80bdd98003a53d9576f98",
+      "guide": {
+        "final_verification": [
+          "在“Event Ledger”中检查 B2:B19：每一行都有“Gross Revenue”计算结果，且显示为带两位小数的货币。例如 B2 的公式应为 =D2*E2，最后一条记录 B19 也不应为空。",
+          "检查 C2:C19：每一行都有“Community Share”计算结果，且显示为带两位小数的货币。例如 C2 的公式应为 =B2+F2，最后一条记录 C19 也不应为空。",
+          "切换到“Upload”工作表，确认 A1 为“Event Code”，A2:A19 已依次显示 EVT-101 至 EVT-118。",
+          "返回“Event Ledger”，确认工作表中存在嵌入式簇状柱形图；图表类别为 Event Code，且包含 Gross Revenue 和 Community Share 两个独立数据系列。"
+        ],
+        "language": "zh-CN",
+        "overview": "本指南完成社区工作坊活动财务台账：将两列已有的首行公式快速填充到全部活动记录，把完整的 Event Code 列交给 Upload 工作表，并在 Event Ledger 中创建比较 Gross Revenue 与 Community Share 的簇状柱形图。",
+        "reference_task_id": "reference-task-calc-full-r01-011",
+        "starting_state_checks": [
+          "确认当前活动工作表是“Event Ledger”。",
+          "确认 Event Ledger 的数据位于 A1:F19，A 列为 Event Code，B 列为 Gross Revenue，C 列为 Community Share，D:F 为已填好的输入数据。",
+          "确认 B2 已有公式 =D2*E2，C2 已有公式 =B2+F2，而 B3:C19 在开始时仍为空白。",
+          "确认“Upload”工作表存在，且仅在 A1 显示标题“Event Code”；尚未填入活动代码。",
+          "确认 Event Ledger 中尚未插入图表。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "先确认种子公式正确，再用填充柄双击；这样 Calc 会利用相邻的连续数据行自动判断应填充到第几行，不必手动拖到最后一条记录。",
+            "instructions": [
+              "在“Event Ledger”中单击 B2，查看输入行或公式栏，确认公式为 =D2*E2。",
+              "如 B2 没有该公式，请在 B2 输入 =D2*E2 并按 Enter。",
+              "保持 B2 为选中状态。将鼠标移到该单元格右下角的小方块（填充柄）。鼠标指针变为可填充状态后，双击填充柄。",
+              "检查 B3:B19 是否已自动填入按各行 Registrations 与 Fee per Registration 计算的 Gross Revenue。"
+            ],
+            "skill_ids": [
+              "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-05"
+            ],
+            "step_number": 1,
+            "title": "向下填充 Gross Revenue 公式",
+            "visible_success_signal": "B2:B19 均显示货币金额；选中任一填充后的单元格（如 B19）时，可看到其公式使用对应行的相对引用，例如 =D19*E19。"
+          },
+          {
+            "efficiency_tip": "C 列依靠已连续存在的相邻记录和 B 列结果确定填充范围。双击填充柄可避免逐行复制公式。",
+            "instructions": [
+              "单击 C2，确认公式为 =B2+F2。",
+              "如 C2 没有该公式，请在 C2 输入 =B2+F2 并按 Enter。",
+              "选中 C2，找到单元格右下角的填充柄并双击它。",
+              "检查 C3:C19，确认每一行均已根据同一行的 Gross Revenue 和 Sponsor Grant 自动计算 Community Share。"
+            ],
+            "skill_ids": [
+              "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-02"
+            ],
+            "step_number": 2,
+            "title": "向下填充 Community Share 公式",
+            "visible_success_signal": "C2:C19 都已填有带两位小数的货币结果，C19 不为空；公式随行号变化，例如 C19 为 =B19+F19。"
+          },
+          {
+            "efficiency_tip": "单击列标“A”会一次选中整列，包含标题和所有活动代码；这比手工框选 A1:A19 更快，也不会漏掉标题。",
+            "instructions": [
+              "仍在“Event Ledger”工作表时，单击列标“A”，使整列 A 被选中。",
+              "按 Ctrl+C 复制整列。",
+              "切换到“Upload”工作表。",
+              "单击 A1，然后按 Ctrl+V 粘贴。若出现粘贴相关提示，使用普通粘贴即可。",
+              "检查 Upload 的 A 列：标题和活动代码应一同出现。"
+            ],
+            "skill_ids": [
+              "1273e544-688f-496b-8d89-3e0f40aa0606.skill-01"
+            ],
+            "step_number": 3,
+            "title": "复制 Event Code 列到 Upload",
+            "visible_success_signal": "Upload!A1 显示“Event Code”，Upload!A2:A19 显示完整活动代码列表，从 EVT-101 到 EVT-118。"
+          },
+          {
+            "efficiency_tip": "在插入图表前一次选中 A1:C19，可让 Calc 自动识别第一列为 Event Code 类别标签，并将后两列识别为两个比较数据系列。",
+            "instructions": [
+              "切换回“Event Ledger”工作表。",
+              "拖动选择连续区域 A1:C19，必须包含标题行、Event Code 列、Gross Revenue 列和 Community Share 列。",
+              "选择“插入”菜单中的“图表…”，或使用工具栏上的插入图表按钮。",
+              "在图表向导中选择“柱形图”，并选择“簇状柱形图”变体。",
+              "确认数据范围为 A1:C19，数据系列为 Gross Revenue 与 Community Share，并让第一行作为系列名称、第一列作为类别标签（Event Code）。",
+              "完成向导以将图表嵌入当前工作表；如图表放置位置遮住数据，可在不改变其数据范围的情况下拖动图表到表格旁的空白区域。"
+            ],
+            "skill_ids": [
+              "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-01"
+            ],
+            "step_number": 4,
+            "title": "创建活动收入比较簇状柱形图",
+            "visible_success_signal": "Event Ledger 上出现嵌入式簇状柱形图，横轴类别为各 Event Code，并对每个代码并列显示 Gross Revenue 和 Community Share 两个系列。"
+          },
+          {
+            "efficiency_tip": "最终从数据、交接表和图表三个位置核对，可同时发现遗漏的公式行、漏复制的活动代码或错误的图表数据范围。",
+            "instructions": [
+              "检查 Event Ledger 的 B2:C19，确认两列均没有空白的活动记录行。",
+              "检查“Upload”中的 A1:A19，确认标题及 18 个 Event Code 都已粘贴。",
+              "单击图表并查看其图例和横轴，确认图例包含 Gross Revenue、Community Share，横轴为 Event Code。"
+            ],
+            "skill_ids": [],
+            "step_number": 5,
+            "title": "完成最终核对",
+            "visible_success_signal": "计算列、Upload 活动代码清单和嵌入式比较图表均完整可见。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "3d12efdf-37c8-4c9c-9ae8-9d8378452cda",
+        "prompt_sha256": "d4ef668ee9fd9b0b69c3a1563d6cad97d283f07fb8fa86186893a7230aed9a2e",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3589,
+        "output_tokens": 1720,
+        "estimated_cost_usd": 0.027818
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-012",
+      "task_detail_sha256": "32f7af048be74566fa082dada1fbef5ff79a3135b31991ae3098ebad837fcf67",
+      "guide": {
+        "final_verification": [
+          "“Dispatch Log”工作表仍保留第1行标题和第2至25行的24条每日调度记录，没有新增无关工作表、汇总行或分析列。",
+          "检查 B2:B25：每个单元格都有结果且以一位小数的百分比显示；例如选中任一结果单元格时，公式栏中的公式应使用该行的 D 列除以 C 列。",
+          "工作表中存在一个清晰可读的折线图：横轴类别来自 Dispatch Date，只有一个 Completion Rate 数据系列，折线连续且不显示数据点标记。",
+          "确认图表未遮住需要查看的源数据；必要时可将图表拖到表格右侧或下方的空白区域。"
+        ],
+        "language": "zh-CN",
+        "overview": "在“Dispatch Log”中，先以 Verified Kits ÷ Planned Kits 计算每天的 Completion Rate，再把公式快速填充至全部24条记录，最后用 Dispatch Date 和 Completion Rate 创建无数据点标记的折线图，展示每日完成率变化。",
+        "reference_task_id": "reference-task-calc-full-r01-012",
+        "starting_state_checks": [
+          "确认 LibreOffice Calc 已打开工作簿，当前活动工作表名称为“Dispatch Log”。",
+          "确认第1行显示标题 Dispatch Date、Completion Rate、Planned Kits、Verified Kits，且数据位于第2行至第25行。",
+          "确认 B2:B25 目前为空白，但该列已经显示为一位小数的百分比格式；C 列和 D 列每一条记录都有数值。",
+          "确认工作表中尚未存在图表对象。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "先核对列含义再输入公式，可避免把计划数量和已核验数量的除数、被除数写反。",
+            "instructions": [
+              "单击单元格 B2，这是第一条记录的 Completion Rate 结果位置。",
+              "输入公式 `=D2/C2`，其中 D2 是 Verified Kits，C2 是 Planned Kits。",
+              "按 Enter 确认公式。由于 B 列已预设为百分比且保留一位小数，结果会自动按百分比显示。"
+            ],
+            "skill_ids": [
+              "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-01"
+            ],
+            "step_number": 1,
+            "title": "计算第一天的完成率",
+            "visible_success_signal": "B2 显示一个一位小数的百分比，而不是空白；其数值与同一行 Verified Kits 除以 Planned Kits 的结果一致。"
+          },
+          {
+            "efficiency_tip": "使用填充柄双击会自动依据相邻 C、D 列的连续数据向下填充，比逐行输入或长距离拖动更快，也更不容易漏行。",
+            "instructions": [
+              "重新选中含有公式的 B2。",
+              "将鼠标移到 B2 单元格右下角的小方块（填充柄）。鼠标指针变为适合填充的形状时，双击该填充柄。",
+              "确认 Calc 将公式向下复制到与相邻数据区域对应的最后一行，即 B25。",
+              "可单击例如 B3 或 B25，在公式栏中检查引用已随行号变化，例如 B3 使用 `=D3/C3`。"
+            ],
+            "skill_ids": [
+              "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-02"
+            ],
+            "step_number": 2,
+            "title": "向下自动填充全部完成率公式",
+            "visible_success_signal": "B2:B25 全部显示百分比结果，且不同日期的结果有变化；后续行公式引用各自所在行的 C 列和 D 列。"
+          },
+          {
+            "efficiency_tip": "一次选中包含标题的两列数据，可让 Calc 自动将 Dispatch Date 识别为类别标签，并将 Completion Rate 识别为唯一的数据系列。",
+            "instructions": [
+              "选择图表源数据区域 A1:B25，包含 Dispatch Date、Completion Rate 及全部24条数据。",
+              "在工具栏中点击插入图表的图标以打开图表创建向导；也可使用菜单“插入”中的图表命令。",
+              "在图表类型中选择“折线图”。",
+              "在折线图的变体中选择仅显示线条、不带数据点标记的“线条”变体（此界面中为从右侧数第三个图标）。",
+              "确认数据范围仍为 A1:B25，且首行作为标签使用；然后点击“完成”插入图表。"
+            ],
+            "skill_ids": [
+              "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-04"
+            ],
+            "step_number": 3,
+            "title": "创建每日完成率的无标记折线图",
+            "visible_success_signal": "“Dispatch Log”上出现折线图，横轴按日期显示，图中仅有一条 Completion Rate 折线，并且线条上没有圆点或其他数据点标记。"
+          },
+          {
+            "efficiency_tip": "若图表与表格重叠，优先拖动图表边框整体移动到右侧或下方空白处；这样无需改变数据源即可提高可读性。",
+            "instructions": [
+              "查看图表是否完整显示日期趋势和完成率线条。",
+              "如图表遮挡了表格，单击图表边框并将其移动或调整为可读的大小，避免覆盖 B2:B25 或源数据标题。",
+              "确认图表仍只绘制 Completion Rate，日期仍作为横轴类别。"
+            ],
+            "skill_ids": [],
+            "step_number": 4,
+            "title": "整理图表并检查结果",
+            "visible_success_signal": "源表数据和图表可以同时查看；图表清晰显示随 April 2026 各日期变化的非平坦完成率趋势。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "7f2737f9-8ac2-482c-a622-9849689ad40b",
+        "prompt_sha256": "36a62aa14c675e2f39425b687d487e3779ccfd96d2e02b6a3cbb1a7d3de27504",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2838,
+        "output_tokens": 1366,
+        "estimated_cost_usd": 0.022068
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-013",
+      "task_detail_sha256": "f5d6895a74fd5db80de7ab11d2b8727aad8da8950781b989db5f9ee8afbe15af",
+      "guide": {
+        "final_verification": [
+          "在“Route Snapshot”工作表中可以看到已插入的条形图，分类为各 Garden Zone，数据系列表示 Delivered Units。",
+          "“Pivot Table Layout”对话框仍保持打开状态，且其数据源对应 Deliveries 工作表的 A1:G37 连续记录区域。",
+          "未确认或生成任何数据透视表输出；工作簿中不应出现新的透视表结果工作表或透视表结果区域。"
+        ],
+        "language": "zh-CN",
+        "overview": "本操作先使用“Route Snapshot”中的预汇总区域创建按花园分区比较 Delivered Units 的条形图，再返回“Deliveries”并打开其数据源的 Pivot Table 布局对话框。最终保留图表和布局对话框，但不创建 Pivot Table 输出。",
+        "reference_task_id": "reference-task-calc-full-r01-013",
+        "starting_state_checks": [
+          "确认工作簿当前只有“Deliveries”和“Route Snapshot”两个普通数据工作表，且尚未插入图表或 Pivot Table。",
+          "确认“Deliveries”中 A1:G37 是包含字段标题的连续交付记录区域；“Route Snapshot”中 A1:B7 是包含标题的连续汇总区域。",
+          "如果当前活动单元格为 Deliveries!A1，这是预期的初始状态；不要先创建新工作表或修改现有数据。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "一次选中 A1:B7（包括标题）可让 Calc 同时识别分类标签和数值系列，避免分别指定标签范围与数值范围。",
+            "instructions": [
+              "单击底部工作表标签“Route Snapshot”切换到路线汇总表。",
+              "选中完整图表源区域 A1:B7。可从 A1 拖动到 B7，或先单击名称框、输入 A1:B7 后按 Enter。选区必须包括“Garden Zone”和“Delivered Units”标题行。",
+              "确认选区中第一列是 Garden Zone 标签，第二列是 Delivered Units 数值。"
+            ],
+            "skill_ids": [],
+            "step_number": 1,
+            "title": "选择路线汇总图表数据",
+            "visible_success_signal": "“Route Snapshot”中 A1:B7 被高亮选中，且可见两列标题 Garden Zone 与 Delivered Units。"
+          },
+          {
+            "efficiency_tip": "在已选好数据时直接选择 Bar 类型，通常能保留正确的数据区域；不要取消图表向导后重新选择数据。",
+            "instructions": [
+              "在保持 A1:B7 选中的状态下，使用工具栏的图表按钮，或选择“插入”>“图表”。",
+              "在图表向导的图表类型中选择“Bar”。如有方向选项，保持条形图的默认方向即可。",
+              "检查预览：应按 Garden Zone 显示类别，并以 Delivered Units 的数值显示条形。",
+              "完成图表向导以插入图表。不要更改源数据单元格。"
+            ],
+            "skill_ids": [
+              "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-04"
+            ],
+            "step_number": 2,
+            "title": "插入 Delivered Units 条形图",
+            "visible_success_signal": "“Route Snapshot”工作表上出现一个可见的条形图，含花园分区类别及对应 Delivered Units 条形。"
+          },
+          {
+            "efficiency_tip": "从连续数据块内任意单元格开始选择时，Calc 通常可以自动识别整个 A1:G37 数据区域；保留标题行有助于正确识别字段。",
+            "instructions": [
+              "单击工作表标签“Deliveries”返回交付记录表。",
+              "选中完整数据源 A1:G37，包括第 1 行字段标题和所有 36 条记录。可单击 A1 后拖动至 G37，或在名称框中输入 A1:G37 并按 Enter。",
+              "核对选区包含 Delivery ID、Delivery Date、Garden Zone、Supply Category、Item、Units Delivered 和 Delivery Cost 七个字段。"
+            ],
+            "skill_ids": [],
+            "step_number": 3,
+            "title": "选择交付记录数据源",
+            "visible_success_signal": "Deliveries!A1:G37 被选中，选区内没有遗漏标题行、数据列或记录行。"
+          },
+          {
+            "efficiency_tip": "选中完整连续区域后立即打开 Pivot Table，可直接接受 Calc 推断的数据源，无需手动重建范围。",
+            "instructions": [
+              "保持 Deliveries!A1:G37 处于选中状态，单击 Pivot Table 工具栏图标；也可使用“数据”菜单中用于插入或创建 Pivot Table 的命令。",
+              "如果 Calc 先显示用于确认源数据范围的提示或对话框，确认显示的是 Deliveries 的 A1:G37 数据范围，然后接受该推断范围（例如按 Enter 或确认）。",
+              "等待 Pivot Table Layout 对话框打开。此时不要将 Garden Zone、Units Delivered 或其他字段拖入布局区域，也不要确认创建结果。",
+              "保留 Pivot Table Layout 对话框打开，以便数据已准备好进行 garden-zone 分析但尚未输出 Pivot Table。"
+            ],
+            "skill_ids": [
+              "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-06"
+            ],
+            "step_number": 4,
+            "title": "打开 Deliveries 的 Pivot Table 布局",
+            "visible_success_signal": "Pivot Table Layout 对话框处于打开状态，字段来自 Deliveries 数据源；工作簿中尚未生成 Pivot Table 输出。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "fcf9c84e-432c-4592-b910-e17480155af6",
+        "prompt_sha256": "23470d3aab6ffa61a29f9dbb117aa9d207438efd681072182c7ba658300c2107",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2730,
+        "output_tokens": 1185,
+        "estimated_cost_usd": 0.01968
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-014",
+      "task_detail_sha256": "0e205b1033f2735cb1349ff9b210318196393552107050c72f8ac952cac5b3aa",
+      "guide": {
+        "final_verification": [
+          "查看“Handoff Summary”：上方应有一个 4×4 的覆盖目标表，第一行依次为 Shift、Morning、Midday、Afternoon，第一列为 Kiosk North、Kiosk Central、Kiosk South；各目标数字应与“Coverage Setup”中对应的原始数据一致但方向已旋转。",
+          "在“Handoff Summary”下方确认存在 Pivot Table：行标签按 Kiosk North、Kiosk Central、Kiosk South 分组，并显示 Ticket Code 的计数结果（通常还会有总计行）。",
+          "确认 Pivot Table 的数据字段标题明确包含“Count”或“计数”，而不是“Sum”或“求和”；三个 kiosk 的计数合计应为 CheckIn Log 中的 30 条数据记录。",
+          "确认两个输出没有重叠，且“Coverage Setup”和“CheckIn Log”中的原始数据仍保留。"
+        ],
+        "language": "zh-CN",
+        "overview": "本操作将在“ Handoff Summary ”中制作两项交接信息：先将“Coverage Setup”的按班次排列的覆盖目标矩阵转置为按 kiosk 纵向排列的布局，再依据“CheckIn Log”建立按 Kiosk 分组、按 Ticket Code 计数的 Pivot Table。",
+        "reference_task_id": "reference-task-calc-full-r01-014",
+        "starting_state_checks": [
+          "确认工作簿已打开，当前活动工作表为“Handoff Summary”，并且该表尚未放入覆盖目标布局或 Pivot Table。",
+          "切换到“Coverage Setup”，确认 A1:D4 是完整的带标题矩阵：第一行为 Shift、Kiosk North、Kiosk Central、Kiosk South；其余三行包含 Morning、Midday、Afternoon 及对应数值。",
+          "切换到“CheckIn Log”，确认 A1:D31 是连续的数据区域，列标题包括 Check-in Time、Kiosk、Ticket Code、Repair Type，且 Ticket Code 列的数据行均非空。",
+          "返回“Handoff Summary”，确认将在上方放置转置表、在较下方的空白区域放置 Pivot Table，以避免两项结果互相覆盖。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "一次选中完整的带标题区域并复制，可使转置后的表同时保留 kiosk、班次和数值标签，无需手工重排。",
+            "instructions": [
+              "单击底部工作表标签“Coverage Setup”。",
+              "拖动选择完整区域 A1:D4；选择范围必须包含标题行和左侧的 Shift 标签列。",
+              "按 Ctrl+C 复制该区域。"
+            ],
+            "skill_ids": [],
+            "step_number": 1,
+            "title": "复制覆盖目标源矩阵",
+            "visible_success_signal": "A1:D4 周围显示选中边框；复制后该区域通常会出现移动的虚线边框。"
+          },
+          {
+            "efficiency_tip": "在目标区域只指定左上角单元格即可；使用“选择性粘贴”的转置功能比逐个复制单元格更快，也能避免错位。",
+            "instructions": [
+              "切换回“Handoff Summary”。",
+              "单击 A1，作为转置覆盖表的左上角位置。",
+              "右键单击 A1，选择“选择性粘贴”，再选择“转置”。如果界面先打开“选择性粘贴”对话框，请勾选或选择“转置”后确认。",
+              "单击空白单元格以取消复制状态。"
+            ],
+            "skill_ids": [
+              "eb03d19a-b88d-4de4-8a64-ca0ac66f426b.skill-01"
+            ],
+            "step_number": 2,
+            "title": "将覆盖矩阵转置到交接汇总表",
+            "visible_success_signal": "A1:D4 显示旋转后的表格：第一行是 Shift、Morning、Midday、Afternoon，第一列依次是 Kiosk North、Kiosk Central、Kiosk South，所有覆盖目标数值均已保留在旋转后的对应位置。"
+          },
+          {
+            "efficiency_tip": "选择完整的连续数据区域而非单独一列，Pivot Table 才能同时使用 Kiosk 作为分组字段和 Ticket Code 作为计数字段。",
+            "instructions": [
+              "切换到“CheckIn Log”。",
+              "选择 A1:D31，包括四个字段标题及全部 30 条记录。",
+              "打开“数据”菜单，选择“数据透视表”，再选择“插入或编辑…”。",
+              "在数据源选择中保留当前选中的单元格区域，并继续进入 Pivot Table 布局窗口。"
+            ],
+            "skill_ids": [],
+            "step_number": 3,
+            "title": "以签到记录作为 Pivot Table 数据源",
+            "visible_success_signal": "显示 Pivot Table 的布局窗口，可看到 Check-in Time、Kiosk、Ticket Code 和 Repair Type 等可用字段。"
+          },
+          {
+            "efficiency_tip": "只使用完成任务所需的两个字段：将 Kiosk 放在行区域、将 Ticket Code 放在数据区域，可让结果保持简洁且易于交接查看。",
+            "instructions": [
+              "在布局窗口中，将字段“Kiosk”拖入“行字段”区域。",
+              "将字段“Ticket Code”拖入“数据字段”区域。",
+              "不要将 Check-in Time 或 Repair Type 放入行、列或数据区域，除非界面自动带入后需要将其移除。"
+            ],
+            "skill_ids": [],
+            "step_number": 4,
+            "title": "设置 kiosk 分组与票号数据字段",
+            "visible_success_signal": "布局窗口的“行字段”区域包含 Kiosk，“数据字段”区域包含 Ticket Code。"
+          },
+          {
+            "efficiency_tip": "在刚加入数据字段后立即打开其设置，可以直接确认聚合方式，避免先生成不符合要求的汇总表后再返工。",
+            "instructions": [
+              "在 Pivot Table 布局窗口的“数据字段”区域中，双击“Ticket Code”字段。",
+              "在数据字段选项中选择“Count”作为汇总方式；不要选择 Sum。",
+              "确认设置返回布局窗口，并检查 Ticket Code 数据字段的显示名称已反映 Count 或计数。",
+              "确认布局设置以继续选择输出位置。"
+            ],
+            "skill_ids": [
+              "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-08"
+            ],
+            "step_number": 5,
+            "title": "将 Ticket Code 数据字段设置为计数",
+            "visible_success_signal": "Ticket Code 数据字段的汇总方式显示为 Count/计数，表示它将统计每个 kiosk 中非空 Ticket Code 的出现次数。"
+          },
+          {
+            "efficiency_tip": "将 Pivot Table 放在转置表下方并预留空行，能让两个交接输出清晰分开，也便于以后刷新或扩展 Pivot Table。",
+            "instructions": [
+              "在 Pivot Table 的输出位置设置中，选择将结果放在现有工作表。",
+              "指定“Handoff Summary”上的 A7 作为输出区域左上角；该位置位于 A1:D4 转置表下方，并留有空白行。",
+              "确认创建 Pivot Table。必要时切换回“Handoff Summary”查看结果。"
+            ],
+            "skill_ids": [],
+            "step_number": 6,
+            "title": "将 kiosk 计数 Pivot Table 放到交接汇总表",
+            "visible_success_signal": "“Handoff Summary”从 A7 附近开始出现 Pivot Table，其中按 Kiosk 列出 Kiosk North、Kiosk Central、Kiosk South，并显示 Ticket Code 的 Count/计数列及总计。"
+          },
+          {
+            "efficiency_tip": "最后同时核对布局方向和计数汇总方式，可快速发现将数据字段误设为求和或将 Pivot Table 放错位置等问题。",
+            "instructions": [
+              "检查上方转置表的行列方向：kiosk 应在第一列纵向显示，Morning、Midday、Afternoon 应横向显示在第一行。",
+              "检查 Pivot Table 的行项目是 kiosk，数据字段是 Ticket Code 的 Count/计数。",
+              "确认 Pivot Table 的三个 kiosk 计数相加为 30，并确认其位置未覆盖转置覆盖表。"
+            ],
+            "skill_ids": [],
+            "step_number": 7,
+            "title": "核对交接汇总输出",
+            "visible_success_signal": "“Handoff Summary”清楚地同时展示转置后的覆盖目标布局和独立的 kiosk Ticket Code 计数 Pivot Table。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "fdd77a33-6541-4ddd-a052-92d43c650ecd",
+        "prompt_sha256": "fafddb4e15928cbcbbcc9481739710cf89c512e1a6539391681598ccb81202d5",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2827,
+        "output_tokens": 2122,
+        "estimated_cost_usd": 0.031118
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-015",
+      "task_detail_sha256": "dc613c01b652b8449bd68ecfd090039520352e0d761b1e658b3600727fd2f050",
+      "guide": {
+        "final_verification": [
+          "在“Dispatch Log”中检查 E2:E25：每条路线都有两位小数的 Estimated Liters 计算结果；选中任一如 E3 的单元格时，编辑栏中的公式应按行引用（例如 `=C3*D3`）。",
+          "检查 D28 仍为“Total estimated liters”，且 E28 显示数值；选中 E28 时，编辑栏应显示 `=SUM(E2:E25)`。",
+          "确认工作表标签中不再有“Analysis”，而是有“Zone Fuel Summary”。",
+          "打开“Zone Fuel Summary”，确认其中是 Pivot Table 输出：Zone 为行分类，Estimated Liters 为求和数值字段，并且每个 Zone 有一条汇总结果。",
+          "可将各 Zone 的 Pivot Table 汇总值与“Dispatch Log”中对应 Zone 的 Estimated Liters 相加结果作抽查比对；各分区合计之和应与 E28 的总计一致。"
+        ],
+        "language": "zh-CN",
+        "overview": "本指南完成车队路线的预计燃油计算、全表燃油总计，并在重命名后的汇总工作表中建立按 Zone 分组、汇总 Estimated Liters 的 Pivot Table。开始时不要改动原始路线数据列 A:D；只需要利用 E2 中已有的计算公式。",
+        "reference_task_id": "reference-task-calc-full-r01-015",
+        "starting_state_checks": [
+          "确认当前打开的是“Dispatch Log”工作表。",
+          "确认源数据的表头位于 A1:E1，路线记录位于第 2 至第 25 行；A:D 各行均有连续数据。",
+          "确认 E1 的标题为“Estimated Liters”，E2 已含公式 `=C2*D2`，但 E3:E25 仍为空白。",
+          "确认第 26、27 行为空，D28 为“Total estimated liters”，E28 为空白。",
+          "确认存在一个空白工作表标签“Analysis”，且尚未建立任何 Pivot Table。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "先确认 E2 是正确的种子公式，再用填充柄一次性向下填充，避免逐行输入公式或复制粘贴。",
+            "instructions": [
+              "在“Dispatch Log”中单击单元格 E2。查看输入栏，确认其公式为 `=C2*D2`。",
+              "将指针移到 E2 选中框右下角的小方块（填充柄）上；当指针可用于填充时，双击该小方块。",
+              "Calc 会根据相邻的连续路线数据自动向下填充。滚动或单击 E25，确认该列已填充至第 25 行。"
+            ],
+            "skill_ids": [
+              "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-01"
+            ],
+            "step_number": 1,
+            "title": "向下填充每条路线的预计燃油公式",
+            "visible_success_signal": "E2:E25 都显示数值结果；例如选中 E3 时，公式会变为相对引用形式 `=C3*D3`，而不是所有行都引用第 2 行。"
+          },
+          {
+            "efficiency_tip": "使用一个 `SUM` 公式汇总连续区域，比逐个单元格相加更快，也会在路线数变化时更容易检查。",
+            "instructions": [
+              "单击指定总计结果单元格 E28。",
+              "输入公式 `=SUM(E2:E25)`。",
+              "按 Enter 确认公式。保留 D28 中原有标签“Total estimated liters”。"
+            ],
+            "skill_ids": [
+              "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-01"
+            ],
+            "step_number": 2,
+            "title": "计算全车队预计燃油总计",
+            "visible_success_signal": "E28 显示一个数值总计；选中 E28 时，输入栏显示 `=SUM(E2:E25)`。"
+          },
+          {
+            "efficiency_tip": "在建立报表前立即重命名空白输出表，可避免在 Pivot Table 的结果位置设置中选错工作表。",
+            "instructions": [
+              "在窗口底部找到名为“Analysis”的工作表标签。",
+              "双击“Analysis”标签，使工作表名称进入编辑状态。",
+              "输入 `Zone Fuel Summary`，然后按 Enter。"
+            ],
+            "skill_ids": [
+              "535364ea-05bd-46ea-9937-9f55c68507e8.skill-02"
+            ],
+            "step_number": 3,
+            "title": "重命名分析工作表",
+            "visible_success_signal": "原先显示“Analysis”的工作表标签现在清晰显示为“Zone Fuel Summary”，且该工作表仍为空白。"
+          },
+          {
+            "efficiency_tip": "先只选中连续的源表 A1:E25，不要把空行或第 28 行总计包含进去；这样 Pivot Table 会正确识别字段和记录。",
+            "instructions": [
+              "返回“Dispatch Log”工作表，在 A1:E25 中任意单击一个单元格，例如 A1。",
+              "按 Ctrl+A 选择当前连续数据区域。确认选区包含表头 A1:E1 和第 2 至第 25 行记录，范围止于 E25。",
+              "从菜单选择“数据 > 数据透视表 > 插入或编辑…”。如果出现要求确认数据源范围的对话框，保留当前检测到的选定范围并确认，以打开数据透视表布局对话框。"
+            ],
+            "skill_ids": [
+              "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-03"
+            ],
+            "step_number": 4,
+            "title": "选择路线数据并打开 Pivot Table 布局",
+            "visible_success_signal": "数据透视表布局窗口打开，字段列表中可见 Zone 和 Estimated Liters 等源表字段。"
+          },
+          {
+            "efficiency_tip": "将分组字段放入行区域、数值字段放入数据区域；只放入这两个必需字段可得到简洁且易核对的分区燃油报告。",
+            "instructions": [
+              "在 Pivot Table 布局对话框中，将字段 `Zone` 拖到“行字段”区域。",
+              "将字段 `Estimated Liters` 拖到“数据字段”区域。",
+              "检查数据字段的汇总方式为“Sum（求和）”。如果默认不是求和，可双击该数据字段，在字段设置中选择 Sum，然后确认。",
+              "在布局对话框中选择结果位置设置（通常通过“结果”按钮或结果位置选项），选择将结果放在现有工作表，并指定“Zone Fuel Summary”工作表的起始单元格 A1。",
+              "确认布局和结果位置，完成创建 Pivot Table。"
+            ],
+            "skill_ids": [],
+            "step_number": 5,
+            "title": "按 Zone 配置求和 Pivot Table 并放置到汇总表",
+            "visible_success_signal": "“Zone Fuel Summary”中从 A1 附近出现原生 Pivot Table 输出：Zone 显示为行标签，各 Zone 的 Estimated Liters 显示为求和结果，并通常带有总计行。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "ed8daa46-6ca2-4bf2-b189-f6d37aac12e7",
+        "prompt_sha256": "f5a5213d5d3aa2d160b71e436a7ad8b274fcbc01771d43e5ea29993f14a9b281",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3535,
+        "output_tokens": 1734,
+        "estimated_cost_usd": 0.027878
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-016",
+      "task_detail_sha256": "2f8c8481d5dee150098793598aa44a63f79375f3c1ebc8ac9f0be63fad0b4e72",
+      "guide": {
+        "final_verification": [
+          "在 Reimbursements 工作表中，G2:G25 的每条请求均显示 Net Reimbursement 计算结果；抽查任一行的公式栏，应符合“材料费 + 运费 - Sponsor Credit”的同一行引用逻辑。",
+          "左侧行号应出现跳号：5 后直接到 7、12 后直接到 14、19 后直接到 21，表示第 6、13、20 行已隐藏而非删除。",
+          "F27 仍显示标签 Total Reimbursement，G27 显示货币格式的总额；选中 G27 时，公式栏应为 =SUM(G2:G25)。",
+          "确认记录区域仍包含原有请求：隐藏行前后的可见记录没有被移动、筛选或清除。"
+        ],
+        "language": "zh-CN",
+        "overview": "本指南将在 Reimbursements 工作表中完成每条 workshop supply request 的 Net Reimbursement，隐藏指定的内部测试记录，并在 Total Reimbursement 标签右侧计算全部请求记录的总额。",
+        "reference_task_id": "reference-task-calc-full-r01-016",
+        "starting_state_checks": [
+          "确认已打开的工作簿包含名为 Reimbursements 的工作表，并切换到该工作表。",
+          "确认第 1 行是标题行，记录从第 2 行延续到第 25 行；第 26 行应为空白间隔行，F27 应为 Total Reimbursement，G27 应为空白。",
+          "确认 G2 已有公式 =D2+E2-F2，而 G3:G25 尚未填入计算结果。",
+          "确认第 6、13、20 行在开始时均可见；这些行是要隐藏的记录，不应删除或清空。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "先利用已有的 G2 公式再自动填充，避免逐行输入相同结构的计算公式。",
+            "instructions": [
+              "在 Reimbursements 工作表中单击单元格 G2。",
+              "查看输入行或公式栏，确认该单元格的公式为 =D2+E2-F2；如不是该公式，应先停止并重新检查起始工作簿。"
+            ],
+            "skill_ids": [],
+            "step_number": 1,
+            "title": "确认 Net Reimbursement 的公式种子",
+            "visible_success_signal": "G2 被选中，并且公式栏显示 =D2+E2-F2；G3:G25 仍为空。"
+          },
+          {
+            "efficiency_tip": "双击填充柄比拖到第 25 行更快；由于相邻的记录列在第 2 至 25 行连续有数据，Calc 可据此确定填充终点。",
+            "instructions": [
+              "保持 G2 处于选中状态。",
+              "将指针移到 G2 选框右下角的小方块（填充柄）。",
+              "双击填充柄，让 Calc 将公式自动向下填充整个连续记录区。",
+              "检查 G3 到 G25 已出现计算结果。"
+            ],
+            "skill_ids": [
+              "7e429b8d-a3f0-4ed0-9b58-08957d00b127.skill-02"
+            ],
+            "step_number": 2,
+            "title": "向下自动填充 Net Reimbursement 公式",
+            "visible_success_signal": "G3:G25 显示货币计算结果；选中例如 G3 时，公式应按行号自动调整为 =D3+E3-F3，而 G2 保留原公式。"
+          },
+          {
+            "efficiency_tip": "按住 Ctrl 一次选中所有不相邻行，再执行一次隐藏命令，可避免逐行隐藏造成遗漏。",
+            "instructions": [
+              "单击左侧的行号 6，选中整行。",
+              "按住 Ctrl 键不放，依次单击行号 13 和行号 20，使这三个不相邻行同时处于选中状态。",
+              "释放 Ctrl 键。",
+              "在任一已选中的行号上右键单击，然后选择 Hide Rows（隐藏行）。"
+            ],
+            "skill_ids": [
+              "6054afcb-5bab-4702-90a0-b259b5d3217c.skill-01"
+            ],
+            "step_number": 3,
+            "title": "隐藏内部测试请求行",
+            "visible_success_signal": "左侧行号显示 5 后接 7、12 后接 14、19 后接 21；数据没有被删除，只是第 6、13、20 行暂时不可见。"
+          },
+          {
+            "efficiency_tip": "使用明确的完整数据范围 G2:G25；第 26 行为空白，因此不会把 G27 的总计单元格误包含到汇总范围中。",
+            "instructions": [
+              "单击 Total Reimbursement 标签右侧的单元格 G27。",
+              "输入公式 =SUM(G2:G25)。",
+              "按 Enter 确认公式。"
+            ],
+            "skill_ids": [
+              "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-01"
+            ],
+            "step_number": 4,
+            "title": "计算总体 reimbursement 总额",
+            "visible_success_signal": "G27 显示一个货币总额；选中 G27 时，公式栏显示 =SUM(G2:G25)。"
+          },
+          {
+            "efficiency_tip": "通过抽查公式栏和行号跳号即可快速确认计算、隐藏和汇总三项结果，无需逐项修改记录。",
+            "instructions": [
+              "抽查一个仍可见的 Net Reimbursement 单元格，例如 G10 或 G18，确认它包含本行 D、E、F 列的相对引用公式。",
+              "确认 G27 的 SUM 范围是 G2:G25，即使其中部分记录行已隐藏，仍会汇总完整记录范围。",
+              "确认 F27 的标签仍为 Total Reimbursement，且第 6、13、20 行没有被删除。"
+            ],
+            "skill_ids": [],
+            "step_number": 5,
+            "title": "核对最终工作表状态",
+            "visible_success_signal": "所有记录均已计算、指定三行保持隐藏、G27 已显示完整记录范围的总 reimbursement 金额。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "69bfb008-97d4-4d63-a4ef-4967c118c303",
+        "prompt_sha256": "d8469a1d3a3b00474be611b34d6dbff2c25c8b7c7a1b685c5cdbce9de7f4effb",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3232,
+        "output_tokens": 1343,
+        "estimated_cost_usd": 0.02258
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-017",
+      "task_detail_sha256": "8d1b91f1d86409a83901f8e59fe2bc62ae3814296193fcb8b6c5539fd82eae5b",
+      "guide": {
+        "final_verification": [
+          "在“Daily Readings”工作表中，E2:E25 均有计算结果，且任意数据行的公式遵循“Generated kWh - Exported kWh”的逻辑；例如 E2 为 `=B2-C2`。",
+          "F2:F25 均有计算结果，且任意数据行的公式遵循“Net Delivered kWh - Target kWh”的逻辑；例如 F2 为 `=E2-D2`。",
+          "“Net Delivered kWh”和“Variance to Target kWh”两列的数值以两位小数显示。",
+          "工作表上有且有一个折线图；横轴使用 Reading Date，绘制的数据系列为 Net Delivered kWh。",
+          "图表可见的标题精确为 `Daily Net Delivery Trend`，并且图表位于数据表右侧的空白区域，没有遮挡 A:F 列的表头或读数。"
+        ],
+        "language": "zh-CN",
+        "overview": "本指南完成每日净交付量与目标差异的计算，并在“Daily Readings”工作表右侧创建和整理一张按日期显示净交付量的折线图。先利用现有的种子公式快速填满两列，再以 Reading Date 和 Net Delivered kWh 创建图表、设置标题并移动到右侧空白区域。",
+        "reference_task_id": "reference-task-calc-full-r01-017",
+        "starting_state_checks": [
+          "确认当前打开的工作簿标题为“Solar Microgrid Review”，且活动工作表标签为“Daily Readings”。",
+          "确认第 1 行有 Reading Date、Generated kWh、Exported kWh、Target kWh、Net Delivered kWh、Variance to Target kWh 等表头，A:D 列从第 2 行至第 25 行连续有数据。",
+          "确认 E2 已有公式 `=B2-C2` 而 E3:E25 为空；F2 已有公式 `=E2-D2` 而 F3:F25 为空。",
+          "确认 H 列附近及其右侧有空白工作表区域，并且当前尚未插入图表。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "填充柄双击会依据相邻的连续数据自动判断终止行，比拖动到第 25 行更快，也不容易少填或多填。",
+            "instructions": [
+              "单击单元格 E2，使其成为当前选中单元格；可在输入栏确认其中是公式 `=B2-C2`。",
+              "将鼠标移到 E2 选区右下角的小方块（填充柄）。当指针显示为可填充状态时，双击该小方块。",
+              "如需确认公式引用已随行号变化，可单击例如 E3，并在输入栏查看类似 `=B3-C3` 的公式。"
+            ],
+            "skill_ids": [
+              "4172ea6e-6b77-4edb-a9cc-c0014bd1603b.skill-02"
+            ],
+            "step_number": 1,
+            "title": "向下填充 Net Delivered kWh 公式",
+            "visible_success_signal": "E2 到 E25 都显示数值，没有空白单元格；每行的净交付量均以本行的 Generated kWh 减去 Exported kWh 得出。"
+          },
+          {
+            "efficiency_tip": "同样使用双击填充柄，让 Calc 沿着连续的读取记录自动填充，不必手动复制 24 行。",
+            "instructions": [
+              "单击 F2，并确认该单元格包含种子公式 `=E2-D2`。",
+              "将鼠标移到 F2 右下角的填充柄，然后双击它。",
+              "任选 F3 或更靠后的一个已填充单元格查看输入栏，确认公式已变为相应行号的引用，例如 `=E3-D3`。"
+            ],
+            "skill_ids": [
+              "7efeb4b1-3d19-4762-b163-63328d66303b.skill-02"
+            ],
+            "step_number": 2,
+            "title": "向下填充 Variance to Target kWh 公式",
+            "visible_success_signal": "F2 到 F25 都显示差异数值且没有空白；每一行使用该行的 Net Delivered kWh 与 Target kWh 计算。"
+          },
+          {
+            "efficiency_tip": "先选择不相邻的两列，可避免把 Generated、Exported 和 Target 等不需要的列误加入图表。",
+            "instructions": [
+              "选中日期区域 A1:A25。",
+              "按住 Ctrl 键不放，再选中 E1:E25；现在应同时选中 Reading Date 和 Net Delivered kWh 两个区域，其中第 1 行的单元格会作为标签。",
+              "选择“插入”>“图表”。在图表向导中选择“折线图”类型。",
+              "在数据范围或预览中确认只有一个数据系列，系列名称为 `Net Delivered kWh`，类别轴使用 `Reading Date`。如向导提供标签选项，勾选“第一行作为标签”和“第一列作为标签”。",
+              "完成图表向导，将图表插入当前“Daily Readings”工作表。"
+            ],
+            "skill_ids": [],
+            "step_number": 3,
+            "title": "创建按日期显示净交付量的折线图",
+            "visible_success_signal": "工作表中出现一张折线图，图中只有 Net Delivered kWh 的折线，横轴标签来自 Reading Date。"
+          },
+          {
+            "efficiency_tip": "通过图表的标题元素直接修改文字，比重新打开完整图表向导更快，并能保留已设置的数据范围和折线类型。",
+            "instructions": [
+              "双击新建的图表，进入图表编辑状态。",
+              "如果右侧边栏未显示，使用“视图”>“侧边栏”将其显示出来，然后打开图表的“图表元素”控制。",
+              "启用或选择图表标题元素，单击出现的标题文本框。",
+              "输入 `Daily Net Delivery Trend`，然后按 Enter 应用。",
+              "单击图表外的工作表空白处，退出标题文字编辑。"
+            ],
+            "skill_ids": [
+              "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-02"
+            ],
+            "step_number": 4,
+            "title": "设置图表标题",
+            "visible_success_signal": "折线图上方或标题位置清晰显示完全一致的文字 `Daily Net Delivery Trend`。"
+          },
+          {
+            "efficiency_tip": "拖动图表对象的外框或顶部边缘即可改变位置，无需重新创建图表；只在需要检查右侧位置时再使用水平滚动条。",
+            "instructions": [
+              "单击图表一次以选中整个图表对象；如果仍处于图表内部编辑状态，先单击图表外部空白处，再单击图表的外框。",
+              "将指针放到图表对象的顶部边缘或外部边框上，避免点到折线、坐标轴或标题文字。",
+              "按住鼠标左键，将整张图表拖到数据表右侧、约从 H 列开始的空白区域，然后释放鼠标。",
+              "如右侧区域暂时看不全，可用底部水平滚动条检查图表位置；确认图表没有覆盖 A:F 列的数据或表头。"
+            ],
+            "skill_ids": [
+              "347ef137-7eeb-4c80-a3bb-0951f26a8aff.skill-02"
+            ],
+            "step_number": 5,
+            "title": "将完成的图表移动到数据表右侧",
+            "visible_success_signal": "带有标题的图表位于日读数表右边的开放区域，源数据表仍完整可见。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "9b408ace-0a1f-4ff0-b9e2-1f7a91e78baf",
+        "prompt_sha256": "3d286379237d5b90ec8693ad1d82cf024a91b3a4948615a7e356d9e2217cf29c",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3308,
+        "output_tokens": 1999,
+        "estimated_cost_usd": 0.030604
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-018",
+      "task_detail_sha256": "b3a20770041b0fac4eb5eb47907f239f620127b6a6dfaffbf4f9acff6f40e6ab",
+      "guide": {
+        "final_verification": [
+          "返回 Attendance Log，确认 Check-in Tag 的 D2:D25 均为公式生成的文本标签，首项显示 No. 1，末项显示 No. 24，且中间编号连续无缺失。",
+          "查看数据透视表所在工作表或报告区域，确认每个不同的 Workshop Track 各占一行，旁边的数值列显示对应的记录计数。",
+          "确认数据透视表的源数据包含标题行及全部 24 条记录；报告中没有把空白或标题误当作 Workshop Track 类别。"
+        ],
+        "language": "zh-CN",
+        "overview": "本指南将在 Attendance Log 中为 24 条社区工作坊签到记录生成连续的文本 Check-in Tag，并创建一个按 Workshop Track 汇总报名人数的数据透视表。先完成标签公式并向下填充，再用包含标题的完整数据区域建立报告。",
+        "reference_task_id": "reference-task-calc-full-r01-018",
+        "starting_state_checks": [
+          "确认工作簿已打开，当前可见工作表为 Attendance Log。",
+          "确认第 1 行是标题行，第 2 至 25 行为 24 条记录；可见字段包括 Session Date、Participant Alias、Workshop Track、Check-in Tag 和 Registration Type。",
+          "确认 Check-in Tag 列（D 列）的 D2:D25 仍为空白，未预先填入文本或公式。",
+          "确认工作簿中尚未存在按 Workshop Track 汇总的数据透视表。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "先在第一条记录所在行写一次公式，再批量向下填充；不要为每一行手工输入编号。",
+            "instructions": [
+              "在 Attendance Log 工作表中，单击 Check-in Tag 标题下的第一个单元格 D2。",
+              "输入公式 `=\"No. \" & ROW(D2)-1`，然后按 Enter。该公式将行号 2 减去 1，并在结果前加上文本 No. 。",
+              "确认 D2 显示为文本结果，而不是公式文本。"
+            ],
+            "skill_ids": [
+              "7efeb4b1-3d19-4762-b163-63328d66303b.skill-01"
+            ],
+            "step_number": 1,
+            "title": "在首条记录中建立签到标签公式",
+            "visible_success_signal": "D2 显示 `No. 1`。选中 D2 时，输入行可见公式 `=\"No. \" & ROW(D2)-1`。"
+          },
+          {
+            "efficiency_tip": "使用填充柄或“工作表/填充/向下”一次覆盖连续区域，可避免重复输入并保持公式的相对引用自动调整。",
+            "instructions": [
+              "再次选中 D2，并将选择范围扩展到 D2:D25。可先选中 D2，再按住 Shift 单击 D25；也可在名称框中输入 `D2:D25` 后确认。",
+              "使用菜单“工作表 > 填充单元格 > 向下填充”（菜单文字可能简写为“填充 > 向下”），将 D2 的公式填充到选定区域其余单元格。",
+              "检查填充后的结果：每一行应依据自身行号计算序号。"
+            ],
+            "skill_ids": [],
+            "step_number": 2,
+            "title": "将签到标签公式填充至全部记录",
+            "visible_success_signal": "D2:D25 都显示连续的文本标签，从 `No. 1` 依次到 `No. 24`，其中 D25 显示 `No. 24`。"
+          },
+          {
+            "efficiency_tip": "建立数据透视表前一次选中含标题的整个连续数据块，让 Calc 自动识别所有字段名称和所有记录。",
+            "instructions": [
+              "在 Attendance Log 中选中完整源数据区域 `A1:E25`，必须包含第 1 行标题以及第 2 至 25 行记录。",
+              "选择菜单“数据 > 数据透视表 > 插入或编辑…”。",
+              "在出现的源区域确认界面中，确认所用区域为 `Attendance Log.A1:E25`（显示形式可能略有不同），然后继续进入数据透视表布局对话框。"
+            ],
+            "skill_ids": [],
+            "step_number": 3,
+            "title": "选择完整签到数据并打开数据透视表布局",
+            "visible_success_signal": "数据透视表布局对话框打开，Available Fields（可用字段）中可见 Workshop Track 等源数据字段。"
+          },
+          {
+            "efficiency_tip": "从 Available Fields 中将同一个 Workshop Track 直接分别拖到行区域和数据区域，不必通过额外菜单再次查找该字段。",
+            "instructions": [
+              "在布局对话框的 Available Fields 中找到 `Workshop Track`。",
+              "将 `Workshop Track` 拖到 Row Fields 区域，使每种工作坊轨道成为报告中的一行。",
+              "再次从 Available Fields 将 `Workshop Track` 拖到 Data Fields 区域，以生成该字段的汇总值。",
+              "若数据区域显示的汇总方式不是计数，双击或选中该数据字段并打开其选项，将函数设置为 Count（计数），再确认。"
+            ],
+            "skill_ids": [
+              "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-07"
+            ],
+            "step_number": 4,
+            "title": "将 Workshop Track 同时放入行和数据区域",
+            "visible_success_signal": "布局中 Row Fields 和 Data Fields 都包含 `Workshop Track`；数据字段的计算方式为计数，或预览/字段说明表明将对记录数进行汇总。"
+          },
+          {
+            "efficiency_tip": "将报告放在新工作表可使 Attendance Log 保持为原始明细表，并让汇总结果易于核对。",
+            "instructions": [
+              "在布局对话框中继续到结果位置设置，选择创建到新工作表；如果该版本提供“新建工作表”选项，选中它。",
+              "确认创建设置以生成数据透视表。",
+              "切换到新建的报告工作表，查看生成的结果。若使用的是现有空白区域，则确认报告没有覆盖 Attendance Log 的数据。"
+            ],
+            "skill_ids": [],
+            "step_number": 5,
+            "title": "生成 Workshop Track 计数报告",
+            "visible_success_signal": "出现一个可见的数据透视表：左侧列列出不同的 Workshop Track，紧邻的值列显示每个轨道的计数，通常还会显示总计行。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "e698d401-4183-4405-8d97-621e3ffb964a",
+        "prompt_sha256": "55fecb817b71d593c72356af4dcb03c92cdbfb9171fd45098dfb84715d677e7c",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2719,
+        "output_tokens": 1522,
+        "estimated_cost_usd": 0.023702
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-019",
+      "task_detail_sha256": "b3235a9923bac02a60d13bb244855c219c4c08655a2fe3f589d37de144b349b9",
+      "guide": {
+        "final_verification": [
+          "确认工作表仍为“Volunteer Activity”，且没有新增工作表、图表或其他无关内容。",
+          "检查 D2:D25：每一行都有非负整数的 Completed Years 结果。任选如 D10 的单元格查看编辑栏，应能看到随行号变化的公式，例如 =DATEDIF(C10,TODAY(),\"Y\")。",
+          "检查 E2:E25：所有 Attendance Ratio 值均以带 % 符号的百分比形式显示，而不是原始小数。",
+          "检查 Soil Reading 列 F：数据行中的数值均显示两位小数；原先的整数应显示为类似 8.00，带一位小数的值应显示为类似 7.50。",
+          "保存工作簿，保留这些公式和数字显示格式。"
+        ],
+        "language": "zh-CN",
+        "overview": "本指南将在“Volunteer Activity”工作表中完成三项整理：根据 Enrollment Date 自动计算每位志愿者的完整服务年数，将 Attendance Ratio 显示为百分比，并让 Soil Reading 统一显示两位小数。",
+        "reference_task_id": "reference-task-calc-full-r01-019",
+        "starting_state_checks": [
+          "确认当前打开的工作表标签是“Volunteer Activity”。",
+          "确认第 1 行是标题行，数据连续位于第 2 行到第 25 行；中间不应有空白记录。",
+          "确认 C 列标题为 Enrollment Date，D 列标题为 Completed Years 且 D2:D25 尚为空白。",
+          "确认 E 列 Attendance Ratio 仍显示为类似 0.875 的小数而非百分比，F 列 Soil Reading 尚未统一显示两位小数。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "只在第一行输入一次公式；公式中的 C2 是相对引用，后续填充时 Calc 会自动改为对应行的日期单元格。",
+            "instructions": [
+              "单击 D2，即 Completed Years 标题正下方的第一个空白单元格。",
+              "输入公式 `=DATEDIF(C2,TODAY(),\"Y\")`，然后按 Enter。",
+              "如需确认公式，重新选中 D2 并查看编辑栏；其中 `\"Y\"` 表示只返回已经完整经过的年数。"
+            ],
+            "skill_ids": [
+              "4e6fcf72-daf3-439f-a232-c434ce416af6.skill-01"
+            ],
+            "step_number": 1,
+            "title": "在首行计算完整服务年数",
+            "visible_success_signal": "D2 显示一个非负的整数年数，而不是日期或错误值；编辑栏显示使用 C2、TODAY() 和 \"Y\" 的 DATEDIF 公式。"
+          },
+          {
+            "efficiency_tip": "相邻的 Enrollment Date 数据连续至第 25 行时，双击填充柄会比逐行复制或拖动更快。",
+            "instructions": [
+              "选中含有公式的 D2。",
+              "将指针移到选中单元格右下角的小方块，即填充柄。",
+              "双击填充柄，让 Calc 自动向下填充相邻连续记录对应的行。",
+              "向下查看直到第 25 行，必要时单击任一已填充单元格（例如 D10），确认其公式引用的是同一行的 Enrollment Date，例如 C10。"
+            ],
+            "skill_ids": [
+              "a9f325aa-8c05-4e4f-8341-9e4358565f4f.skill-02"
+            ],
+            "step_number": 2,
+            "title": "将服务年数公式填充到所有志愿者记录",
+            "visible_success_signal": "D2:D25 均有完成年数结果；选择不同数据行时，公式中的 C 行号会相应变化。"
+          },
+          {
+            "efficiency_tip": "先一次选中完整的数据区域再设置格式，可避免遗漏行，并保持全部出勤率显示一致。",
+            "instructions": [
+              "选择 Attendance Ratio 的数据区域 E2:E25；可单击 E2 后拖动到 E25。",
+              "在格式工具栏上单击 Percent (%) 按钮。",
+              "不要重新输入或乘以 100；百分比格式只改变显示方式，原有小数数值仍会保留。"
+            ],
+            "skill_ids": [
+              "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-06"
+            ],
+            "step_number": 3,
+            "title": "将出勤率显示为百分比",
+            "visible_success_signal": "E2:E25 的数值显示 % 符号；例如原来显示为 0.875 的值会显示为约 88% 或 87.5%。"
+          },
+          {
+            "efficiency_tip": "选择整列后再调整小数位，能同时格式化当前土壤读数以及该列以后输入的数值，而无需逐个单元格处理。",
+            "instructions": [
+              "单击列标 F，选中整个 Soil Reading 列。",
+              "在格式工具栏上找到 Increase Decimal（增加小数位数）按钮。",
+              "连续单击该按钮两次，使该列的显示精度增加到两位小数。",
+              "查看 F 列中的整数和原先带一位小数的数值，确认它们都按两位小数显示。"
+            ],
+            "skill_ids": [
+              "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5.skill-01"
+            ],
+            "step_number": 4,
+            "title": "将土壤读数统一显示为两位小数",
+            "visible_success_signal": "F 列 Soil Reading 的数据均显示两位小数，包括整数显示为类似 8.00、原有一位小数显示为类似 7.50。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "f18f7141-2aee-4747-9730-c80f05f337a6",
+        "prompt_sha256": "27f3f0093f6fdaa1b35edb8200edecfd0d518a6c3d313d230d22343771b2a3ec",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3410,
+        "output_tokens": 1350,
+        "estimated_cost_usd": 0.02302
+      }
+    },
+    {
+      "reference_task_id": "reference-task-calc-full-r01-020",
+      "task_detail_sha256": "698766cd9dc2e4bb8b05455898a987bb71f7e618b60b45fabee28606cdb16822",
+      "guide": {
+        "final_verification": [
+          "确认工作簿仍只有“Supply Plan”一个工作表，未新增汇总行、图表、数据透视表或其他无关内容。",
+          "查看 A1：标题仍为“Community Garden Supply Plan”，且单元格背景为深绿色 #2F6B4F。",
+          "查看 D4:D27：每个有供应项目的行都有货币格式的 Line Cost 结果，D5:D27 不再有空白单元格。",
+          "抽查 D5 或 D27，在输入行中确认公式使用本行相对引用，例如 D5 为 =B5*C5、D27 为 =B27*C27。"
+        ],
+        "language": "zh-CN",
+        "overview": "在“Supply Plan”工作表中，为标题单元格 A1 设置精确的 #2F6B4F 背景色，并利用 D4 中已有的行成本公式快速填充全部供应项目行。",
+        "reference_task_id": "reference-task-calc-full-r01-020",
+        "starting_state_checks": [
+          "确认当前打开的工作表名称为“Supply Plan”。",
+          "确认 A1 显示“Community Garden Supply Plan”，字体较大且加粗，但尚未填充目标背景色。",
+          "确认第 3 行是表头，A4:C27 均为连续的供应项目、数量和 Unit Cost 数据。",
+          "确认 D4 已有公式 =B4*C4，且 D5:D27 为空；C 列和 D 列应显示为两位小数的货币格式。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "在自定义颜色框中直接输入十六进制值，可避免从调色板中凭目测选择近似颜色。",
+            "instructions": [
+              "单击标题单元格 A1；如果标题跨多个合并单元格显示，只需选择合并区域的左上角锚点 A1。",
+              "在工具栏中找到油漆桶形状的“背景颜色/填充颜色”控件，打开其下拉菜单并选择“自定义颜色”。",
+              "在自定义颜色对话框的十六进制颜色输入框中，将现有值替换为 `2F6B4F`，然后按 Enter 应用颜色。"
+            ],
+            "skill_ids": [
+              "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-03"
+            ],
+            "step_number": 1,
+            "title": "为计划标题应用指定背景色",
+            "visible_success_signal": "A1 中的“Community Garden Supply Plan”保持可见，并显示精确的深绿色背景 #2F6B4F。"
+          },
+          {
+            "efficiency_tip": "双击填充柄会依据相邻 A:C 列连续的数据自动延伸到最后一个项目行，比手动拖动更快且不易漏行。",
+            "instructions": [
+              "单击 D4，确认该单元格是已有的 Line Cost 公式单元格，公式栏应显示 `=B4*C4`。",
+              "保持 D4 处于选中状态，将指针移到所选单元格右下角的小方块，即填充柄。",
+              "双击填充柄。Calc 会沿相邻连续数据区域向下复制公式，直到第 27 行，并自动调整每行的相对引用。",
+              "如有需要，单击 D5 和较靠后的一个单元格（例如 D27）进行抽查：它们应分别按本行数量与单价计算。"
+            ],
+            "skill_ids": [
+              "d681960f-7bc3-4286-9913-a8812ba3261a.skill-02"
+            ],
+            "step_number": 2,
+            "title": "向下自动填充 Line Cost 公式",
+            "visible_success_signal": "D4:D27 都显示货币金额；D5:D27 不再为空，并且每一行的 Line Cost 对应本行的 Units 与 Unit Cost。"
+          },
+          {
+            "efficiency_tip": "使用名称框或直接滚动查看首尾行，可快速确认完整范围而无需逐行检查。",
+            "instructions": [
+              "检查 A1 的背景色和标题文字，确认颜色修改仅应用于标题区域。",
+              "检查 D4:D27 的首行、中间行和末行，确认均有金额且仍为货币格式、保留两位小数。",
+              "确认没有添加总计行、新工作表、图表、数据透视表或其他额外内容。"
+            ],
+            "skill_ids": [],
+            "step_number": 3,
+            "title": "完成最终核对",
+            "visible_success_signal": "工作表只完成标题配色和全部 24 个供应项目行的 Line Cost 计算，版面中没有无关新增对象。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "4913b89f-e136-458c-9a6c-2725eaf76001",
+        "prompt_sha256": "8b99b9636dd88758a10449973b90a6c4458bcb721f33c206f786b0b6dae8bc6c",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2416,
+        "output_tokens": 1001,
+        "estimated_cost_usd": 0.016844
+      }
+    }
+  ],
+  "totals": {
+    "calls": 20,
+    "input_tokens": 66477,
+    "output_tokens": 33768,
+    "estimated_cost_usd": 0.53817,
+    "pricing_complete": true
+  }
+}

@@ -1,0 +1,685 @@
+{
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "@",
+        "0",
+        "0",
+        "0"
+      ],
+      "column_types": [
+        "text",
+        "integer",
+        "integer",
+        "integer"
+      ],
+      "formulas": [],
+      "freeze_header_row": false,
+      "headers": [
+        "Shift",
+        "Kiosk North",
+        "Kiosk Central",
+        "Kiosk South"
+      ],
+      "name": "Coverage Setup",
+      "rows": [
+        {
+          "values": [
+            "Morning",
+            "3",
+            "4",
+            "3"
+          ]
+        },
+        {
+          "values": [
+            "Midday",
+            "4",
+            "5",
+            "4"
+          ]
+        },
+        {
+          "values": [
+            "Afternoon",
+            "3",
+            "4",
+            "3"
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "values": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "yyyy-mm-dd",
+        "@",
+        "@",
+        "@"
+      ],
+      "column_types": [
+        "date",
+        "text",
+        "text",
+        "text"
+      ],
+      "formulas": [],
+      "freeze_header_row": false,
+      "headers": [
+        "Check-in Time",
+        "Kiosk",
+        "Ticket Code",
+        "Repair Type"
+      ],
+      "name": "CheckIn Log",
+      "rows": [
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk North",
+            "RF-1001",
+            "Toaster Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk Central",
+            "RF-1002",
+            "Lamp Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk South",
+            "RF-1003",
+            "Bicycle Tune-up"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk North",
+            "RF-1004",
+            "Radio Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk Central",
+            "RF-1005",
+            "Vacuum Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk South",
+            "RF-1006",
+            "Clothing Mend"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk North",
+            "RF-1007",
+            "Laptop Diagnosis"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk Central",
+            "RF-1008",
+            "Clock Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk South",
+            "RF-1009",
+            "Small Appliance"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk North",
+            "RF-1010",
+            "Chair Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk Central",
+            "RF-1001",
+            "Toaster Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk South",
+            "RF-1002",
+            "Lamp Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk North",
+            "RF-1003",
+            "Bicycle Tune-up"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk Central",
+            "RF-1004",
+            "Radio Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk South",
+            "RF-1005",
+            "Vacuum Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk North",
+            "RF-1006",
+            "Clothing Mend"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk Central",
+            "RF-1007",
+            "Laptop Diagnosis"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk South",
+            "RF-1008",
+            "Clock Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk North",
+            "RF-1009",
+            "Small Appliance"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk Central",
+            "RF-1010",
+            "Chair Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk South",
+            "RF-1011",
+            "Fan Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk North",
+            "RF-1012",
+            "Bag Zipper Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk Central",
+            "RF-1013",
+            "Tablet Diagnosis"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk South",
+            "RF-1014",
+            "Kettle Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk North",
+            "RF-1015",
+            "Sewing Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk Central",
+            "RF-1011",
+            "Fan Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk South",
+            "RF-1012",
+            "Bag Zipper Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk North",
+            "RF-1013",
+            "Tablet Diagnosis"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk Central",
+            "RF-1014",
+            "Kettle Repair"
+          ]
+        },
+        {
+          "values": [
+            "2026-09-12",
+            "Kiosk South",
+            "RF-1015",
+            "Sewing Repair"
+          ]
+        }
+      ]
+    },
+    {
+      "autofilter_range": null,
+      "column_number_formats": [
+        "@"
+      ],
+      "column_types": [
+        "text"
+      ],
+      "formulas": [],
+      "freeze_header_row": false,
+      "headers": [
+        "(blank initial sheet)"
+      ],
+      "name": "Handoff Summary",
+      "rows": [
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        },
+        {
+          "values": [
+            ""
+          ]
+        }
+      ]
+    }
+  ],
+  "workbook_title": "Repair Fair Handoff"
+}

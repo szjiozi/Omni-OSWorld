@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+  "app": "libreoffice_calc",
+  "single_action_count": 5,
+  "prompt_sha256": "cb981fef09c18be30784af0f76152142cab87a22b2abdac65d0717a3bf13756f",
+  "request_id": "855bb5ab-cab8-43de-8918-6009b32c5a66",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1263,
+    "cached_input_tokens": 1073,
+    "output_tokens": 369,
+    "estimated_cost_usd": 0.0050226
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2
+        ],
+        "efficiency_tip": "Use absolute references such as `$A$2:$B$7` for a fixed lookup table so the table range does not shift when the formula is copied to other rows.",
+        "name": "Enter an exact-match VLOOKUP formula",
+        "procedure": [
+          "Select the destination cell where the lookup result should appear.",
+          "Type a VLOOKUP formula that uses a lookup key, a table range, the return-column number, and `FALSE` for an exact match. For example, enter `=VLOOKUP(E2,$A$2:$B$7,2,FALSE)` to find the value from E2 in the first column of the fixed A2:B7 table and return the matching value from its second column.",
+          "Press Enter to commit the formula. In `$A$2:$B$7`, the `$` before each column and row fixes both columns and rows when the formula is filled."
+        ]
+      },
+      {
+        "action_ids": [
+          3,
+          4
+        ],
+        "efficiency_tip": "Double-clicking the fill handle is faster than dragging it for long adjacent datasets, but verify that the neighboring column has continuous rows because Calc uses that region to determine the fill length.",
+        "name": "Auto-fill a formula down a contiguous data region",
+        "procedure": [
+          "Select the cell that already contains the formula to propagate.",
+          "Double-click the small fill handle at the cell's bottom-right corner.",
+          "Calc fills the formula downward through the contiguous neighboring data rows, adjusting relative references. For example, a formula beginning with `E2` in the selected row becomes `E3`, `E4`, and so on in subsequent rows, while an absolute range such as `$A$2:$B$7` remains fixed."
+        ]
+      }
+    ]
+  }
+}

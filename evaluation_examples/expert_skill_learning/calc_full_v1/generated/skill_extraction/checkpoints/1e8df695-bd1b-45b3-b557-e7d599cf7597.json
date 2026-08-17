@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+  "app": "libreoffice_calc",
+  "single_action_count": 7,
+  "prompt_sha256": "42585f971b6b85edd928f45c92fff98d5cadf32cb44879885fe4bcb180152604",
+  "request_id": "657b59f1-9a6e-44af-b64a-43d552cd160b",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1261,
+    "cached_input_tokens": 1073,
+    "output_tokens": 348,
+    "estimated_cost_usd": 0.0047666
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          3,
+          4
+        ],
+        "efficiency_tip": "Enter the formula once in the first data row before propagating it; this avoids manually writing separate formulas for every row.",
+        "name": "Create a row formula using subtraction",
+        "procedure": [
+          "Select the first result cell in the new column, then type a subtraction formula that references the two cells in the same row.",
+          "For example, enter `=B2-C2` and press Enter to calculate the difference between the values in columns B and C for row 2.",
+          "Use relative references when the formula will be copied to other rows, so the row numbers adjust automatically."
+        ]
+      },
+      {
+        "action_ids": [
+          5,
+          6
+        ],
+        "efficiency_tip": "Double-click the fill handle when an adjacent column contains a continuous data region; Calc fills down to the detected last row without dragging.",
+        "name": "AutoFill a formula down a contiguous column",
+        "procedure": [
+          "Select the cell containing the formula to copy, such as D2.",
+          "Point to the small square fill handle at the cell's bottom-right corner and double-click it.",
+          "Calc copies the formula down through the contiguous neighboring data rows, adjusting relative references for each row. For example, `=B2-C2` becomes `=B3-C3` in the next row."
+        ]
+      }
+    ]
+  }
+}

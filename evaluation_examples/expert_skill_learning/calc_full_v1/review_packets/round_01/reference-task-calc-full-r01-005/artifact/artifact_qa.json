@@ -1,0 +1,23 @@
+{
+  "workbook_title": "Replenishment Review",
+  "output_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Catalog",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/previews/Catalog.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Catalog\",\"address\":\"A1:B9\",\"rows\":9,\"cols\":2,\"values\":[[\"SKU\",\"Supply Group\"],[\"SKU-104\",\"Fasteners\"],[\"SKU-118\",\"Safety\"],[\"SKU-203\",\"Packaging\"],[\"SKU-217\",\"Adhesives\"],[\"SKU-305\",\"Hand Tools\"],[\"SKU-322\",\"Electrical\"],[\"SKU-411\",\"Cleaning\"],[\"SKU-426\",\"Storage\"]]}"
+    },
+    {
+      "name": "Dispatch_Log",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/previews/Dispatch_Log.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Dispatch_Log\",\"address\":\"A1:F12\",\"rows\":12,\"cols\":6,\"values\":[[\"Ticket Number\",\"SKU\",\"Units Dispatched\",\"Restock Cost\",\"Supply Group\",\"Ticket Code\"],[4821,\"SKU-305\",14,238.5,null,null],[930,\"SKU-104\",60,84,null,null],[17654,\"SKU-426\",8,416,null,null],[7210,\"SKU-217\",25,187.5,null,null],[365,\"SKU-203\",90,135,null,null],[11902,\"SKU-322\",12,324,null,null],[2548,\"SKU-118\",18,270,null,null],[8061,\"SKU-411\",35,157.5,null,null],[402,\"SKU-104\",40,56,null,null],[14870,\"SKU-305\",9,153,null,null],[6103,\"SKU-203\",120,180,null,null]]}"
+    },
+    {
+      "name": "Summary",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/previews/Summary.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Summary\",\"address\":\"A1:B12\",\"rows\":12,\"cols\":2,\"values\":[[\"Metric\",\"Value\"],[\"Total Units Dispatched\",null],[\"Review Note\",\"Highest restock cost is flagged in Dispatch_Log\"],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

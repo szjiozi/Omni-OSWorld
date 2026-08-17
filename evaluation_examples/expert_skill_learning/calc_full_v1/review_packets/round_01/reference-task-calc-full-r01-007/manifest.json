@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "scripts/python/manage_reference_review_packets.py export",
+  "reference_task_id": "reference-task-calc-full-r01-007",
+  "context_fingerprint": "a2a6d298d1fea6702238a22f1e46523f8cae40e078ff99649f42d0f0bffcee4e",
+  "inputs": [
+    {
+      "role": "artifact",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-007/initial_artifact.xlsx",
+      "sha256": "c25f81596bbe4e6fc53b3f1f1b770f31f8ee9cf52d5e66d1bad9195c9c23eb90"
+    },
+    {
+      "role": "artifact_blueprint",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-007/artifact_blueprint.json",
+      "sha256": "b9813d0c09fe2f55ed1bfe6e17e9dd207594836e4b6cc2ed1c904d4b327acf62"
+    },
+    {
+      "role": "artifact_qa",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-007/artifact_qa.json",
+      "sha256": "c5ddf1eeee5299992b5b86b50e26b23dfb723278137241cbce61f4376da4eab9"
+    },
+    {
+      "role": "task_config",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-007.json",
+      "sha256": "5e8b231c9fdc26bd9b3198fceb43103c56f62747d0c893b1b093dc59d550d1ae"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-007/previews/Shift_Log.png",
+      "sha256": "bcb9e443e6380bed1ad408947d4873233685761e464636871589fa80365dc9b8"
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "TASK.md",
+      "sha256": "d5a83d2f7e6baeb44dd362173a8f751bf3c6c394aceae0609812bc858b6507ce"
+    },
+    {
+      "path": "TASK_DETAIL.md",
+      "sha256": "a9f400b1784e3b27e19030e356063406c4deb832e524e73316915a8694215a8d"
+    },
+    {
+      "path": "context.json",
+      "sha256": "96c02e6c20422db740a222eca9d7a34b2fafefaac727dd6fe8b198dd812611aa"
+    },
+    {
+      "path": "task_config.json",
+      "sha256": "5e8b231c9fdc26bd9b3198fceb43103c56f62747d0c893b1b093dc59d550d1ae"
+    },
+    {
+      "path": "artifact/initial_artifact.xlsx",
+      "sha256": "c25f81596bbe4e6fc53b3f1f1b770f31f8ee9cf52d5e66d1bad9195c9c23eb90"
+    },
+    {
+      "path": "artifact/artifact_blueprint.json",
+      "sha256": "b9813d0c09fe2f55ed1bfe6e17e9dd207594836e4b6cc2ed1c904d4b327acf62"
+    },
+    {
+      "path": "artifact/artifact_qa.json",
+      "sha256": "c5ddf1eeee5299992b5b86b50e26b23dfb723278137241cbce61f4376da4eab9"
+    },
+    {
+      "path": "artifact/previews/Shift_Log.png",
+      "sha256": "bcb9e443e6380bed1ad408947d4873233685761e464636871589fa80365dc9b8"
+    }
+  ],
+  "editable_review": {
+    "path": "review.json",
+    "excluded_from_generated_file_hashes": true
+  }
+}

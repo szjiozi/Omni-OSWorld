@@ -1,0 +1,20 @@
+{
+  "workbook_title": "Fleet Fuel Planning",
+  "output_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-015/initial_artifact.xlsx",
+  "manual_setup_steps": [
+    "After building the workbook, place the text label \"Total estimated liters\" in Dispatch Log!D28 while leaving Dispatch Log!E28 blank. This preserves the required blank rows 26 and 27 and the designated total-result cell without adding extra source-table records."
+  ],
+  "sheets": [
+    {
+      "name": "Dispatch Log",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-015/previews/Dispatch_Log.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Dispatch Log\",\"address\":\"A1:E12\",\"rows\":12,\"cols\":5,\"values\":[[\"Route Code\",\"Zone\",\"Distance (km)\",\"Liters per km\",\"Estimated Liters\"],[\"RT-HB-101\",\"Harbor\",18.4,0.27,4.968],[\"RT-NS-102\",\"Northside\",24.75,0.31,null],[\"RT-RG-103\",\"Ridge\",31.2,0.29,null],[\"RT-HB-104\",\"Harbor\",12.65,0.26,null],[\"RT-NS-105\",\"Northside\",28.9,0.3,null],[\"RT-RG-106\",\"Ridge\",22.35,0.28,null],[\"RT-HB-107\",\"Harbor\",35.8,0.32,null],[\"RT-NS-108\",\"Northside\",16.5,0.25,null],[\"RT-RG-109\",\"Ridge\",27.45,0.3,null],[\"RT-HB-110\",\"Harbor\",20.1,0.28,null],[\"RT-NS-111\",\"Northside\",33.6,0.33,null]]}"
+    },
+    {
+      "name": "Analysis",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-015/previews/Analysis.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Analysis\",\"address\":\"A1:A11\",\"rows\":11,\"cols\":1,\"values\":[[\"(blank output sheet)\"],[null],[null],[null],[null],[null],[null],[null],[null],[null],[null]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

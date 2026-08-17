@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+  "app": "libreoffice_calc",
+  "single_action_count": 22,
+  "prompt_sha256": "6e25f08460346a1b5fab615eaa933e6fd29e9962dad1554e29b86c6989a97564",
+  "request_id": "31c2bb14-5320-44d9-a537-9d5e9923c854",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1384,
+    "cached_input_tokens": 1073,
+    "output_tokens": 822,
+    "estimated_cost_usd": 0.0107006
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2,
+          11,
+          12,
+          13
+        ],
+        "efficiency_tip": "Use a single SUM over a contiguous range instead of adding cells individually; it is faster and automatically includes all cells in the selected span.",
+        "name": "Enter a SUM formula for a contiguous row or column range",
+        "procedure": [
+          "Click the destination cell and type a SUM formula referencing the contiguous cells to total.",
+          "For example, enter `=SUM(B2:B5)` to total a vertical range, or `=SUM(B3:E3)` to total a horizontal range.",
+          "Press Enter to commit the formula."
+        ]
+      },
+      {
+        "action_ids": [
+          3,
+          4,
+          5,
+          14,
+          15,
+          16
+        ],
+        "efficiency_tip": "Use the fill handle when neighboring formulas follow the same relative-reference pattern, rather than retyping a formula in every destination cell.",
+        "name": "Propagate a formula with the fill handle",
+        "procedure": [
+          "Select the cell containing the formula.",
+          "Move to the small fill handle at the cell’s bottom-right corner until the drag cursor appears.",
+          "Drag across or down the target cells. For example, drag from `B6` through `E6` to create corresponding totals for each column, or drag from `F3` to `F6` to create totals for each row.",
+          "Calc adjusts relative cell references for each filled destination cell."
+        ]
+      },
+      {
+        "action_ids": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "efficiency_tip": "Copy the complete prepared range once and paste it at each destination, rather than recreating formulas or formatting separately for every repeated block.",
+        "name": "Copy a selected formula range to multiple locations",
+        "procedure": [
+          "With the prepared formula range still selected, press Ctrl+C to copy it.",
+          "Click the top-left destination cell and press Ctrl+V. For example, copy the selected range beginning at `B6` and paste starting at `B13`, then paste again starting at `B20`.",
+          "The pasted formulas retain their relative-reference behavior and adjust based on each new location.",
+          "The same pattern can be used for a vertically oriented range, such as copying a range beginning at `F3` and pasting it beginning at `F10` and `F17`."
+        ]
+      }
+    ]
+  }
+}

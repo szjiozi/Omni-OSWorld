@@ -1,0 +1,921 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-011",
+  "package": {
+    "reference_task_id": "reference-task-calc-full-r01-011",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_calc",
+    "task_instruction": "Complete the Event Ledger for the community workshop program: calculate Gross Revenue as Registrations multiplied by Fee per Registration and Community Share as Gross Revenue plus Sponsor Grant for every event. Populate the Upload handoff sheet with the complete Event Code column, then add a clustered column chart on Event Ledger comparing Gross Revenue and Community Share for each Event Code.",
+    "required_skill_ids": [
+      "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-05",
+      "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-02",
+      "1273e544-688f-496b-8d89-3e0f40aa0606.skill-01",
+      "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-01"
+    ],
+    "artifact_spec": {
+      "artifact_type": "xlsx",
+      "domain": "Community workshop event finance",
+      "generation_notes": [
+        "Use wholly synthetic, privacy-safe event records with no real people, organizations, addresses, or account identifiers.",
+        "Create sheet \"Event Ledger\" with headers in row 1 and 18 contiguous event records in rows 2-19. Populate input columns A and D:F as follows: EVT-101,24,35,120; EVT-102,18,40,80; EVT-103,31,28,150; EVT-104,16,45,60; EVT-105,27,32,110; EVT-106,22,38,90; EVT-107,35,25,175; EVT-108,19,42,70; EVT-109,29,30,130; EVT-110,14,50,55; EVT-111,33,27,160; EVT-112,21,36,85; EVT-113,26,34,100; EVT-114,17,48,65; EVT-115,30,29,140; EVT-116,23,37,95; EVT-117,28,31,125; EVT-118,20,44,75. The values after each event code correspond respectively to Registrations, Fee per Registration, and Sponsor Grant.",
+        "On \"Event Ledger\", set seed formula B2 to =D2*E2 and seed formula C2 to =B2+F2. Leave B3:C19 truly blank, with no formulas or values.",
+        "Format B:C and E:F as currency with two decimal places. Format D as an integer.",
+        "Create a second sheet named \"Upload\". Set A1 to \"Event Code\" and leave A2:A19 blank. It is a handoff template for the event-code list.",
+        "Use ordinary header styling only, such as bold text and a light fill. Do not add a native chart, Pivot Table, filter, conditional formatting rule, or data validation."
+      ],
+      "initial_state": [
+        "The active sheet is \"Event Ledger\".",
+        "The Event Ledger data region is contiguous from A1:F19, and columns D:F are populated for every record, enabling adjacent-region formula filling.",
+        "Only the first data-row formulas in B2 and C2 are present; their corresponding formula columns have not been completed.",
+        "The Upload template exists but contains only its A1 header."
+      ],
+      "must_not_be_completed": [
+        "Do not prefill formulas or calculated results in B3:C19.",
+        "Do not copy Event Ledger column A into the Upload sheet.",
+        "Do not create any chart before the recorded task."
+      ],
+      "sheets": [
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "Event Code"
+            },
+            {
+              "data_type": "currency",
+              "name": "Gross Revenue"
+            },
+            {
+              "data_type": "currency",
+              "name": "Community Share"
+            },
+            {
+              "data_type": "integer",
+              "name": "Registrations"
+            },
+            {
+              "data_type": "currency",
+              "name": "Fee per Registration"
+            },
+            {
+              "data_type": "currency",
+              "name": "Sponsor Grant"
+            }
+          ],
+          "name": "Event Ledger",
+          "purpose": "Source records and calculated event-finance comparison data.",
+          "row_count": 19
+        },
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "Event Code"
+            }
+          ],
+          "name": "Upload",
+          "purpose": "Blank handoff column for copied event codes.",
+          "row_count": 19
+        }
+      ],
+      "workbook_title": "Community Workshop Event Finance"
+    },
+    "operator_guide": {
+      "allowed_variation": "The expert may complete the two calculated columns in either order, use keyboard shortcuts where appropriate, and use any efficient equivalent chart-insertion path, provided the intended full-column copy, formula fills, and clustered comparison chart are visibly demonstrated.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Use the existing populated records in the adjacent input columns as the boundary, avoiding a manual drag through the event list.",
+          "operation_intent": "Extend the Gross Revenue seed calculation from B2 through every listed event by double-clicking its fill handle.",
+          "skill_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-05",
+          "visible_success_signal": "Gross Revenue cells B2:B19 display calculated currency amounts, with the formula filled through the last event row."
+        },
+        {
+          "efficiency_tip": "After Gross Revenue is available, double-click the Community Share seed cell's fill handle so row-relative references are extended consistently.",
+          "operation_intent": "Extend the Community Share seed calculation from C2 through every listed event by double-clicking its fill handle.",
+          "skill_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-02",
+          "visible_success_signal": "Community Share cells C2:C19 are filled with calculated currency values, including the final event row."
+        },
+        {
+          "efficiency_tip": "Select the A column header directly rather than selecting only the visible event-code cells, so the header and complete column are copied together.",
+          "operation_intent": "Copy the entire Event Code column from Event Ledger for the Upload handoff sheet.",
+          "skill_id": "1273e544-688f-496b-8d89-3e0f40aa0606.skill-01",
+          "visible_success_signal": "The full Event Code column is visibly selected and copied; after the ordinary paste step, Upload shows the Event Code header and all event codes in column A."
+        },
+        {
+          "efficiency_tip": "Select the already contiguous A1:C19 comparison table before chart insertion so Event Code labels and both calculated series are detected without later source-range edits.",
+          "operation_intent": "Insert a clustered column chart comparing Gross Revenue and Community Share by Event Code.",
+          "skill_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-01",
+          "visible_success_signal": "An embedded clustered column chart is present on Event Ledger with Event Code categories and separate Gross Revenue and Community Share series."
+        }
+      ],
+      "recording_end_state": "Event Ledger has completed B2:C19 calculations and an embedded clustered column comparison chart sourced from A1:C19; Upload A1:A19 contains the copied Event Code header and event-code list.",
+      "recording_start_state": "Event Ledger is active with only B2 and C2 seeded as formulas, all lower calculated cells blank, no chart, and Upload containing only its header."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Enter or confirm the seeded Gross Revenue formula in B2 and the seeded Community Share formula in C2 before extending each formula column.",
+        "reason": "The two formula-fill demonstrations require a completed starting formula in the first data row of each calculated column."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Move the copied Event Code column to the Upload sheet and paste it beginning at A1.",
+        "reason": "Copying the full source column produces the requested populated handoff template."
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        }
+      ],
+      "dominant_source_task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+      "dominant_source_skill_fraction": 0.25,
+      "complete_source_skill_sets_included": []
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+        "max_sequence_similarity": 0.336957,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "sequence_similarity": 0.188437
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "sequence_similarity": 0.019074
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "sequence_similarity": 0.017588
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "sequence_similarity": 0.05153
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "sequence_similarity": 0.23619
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "sequence_similarity": 0.252708
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "sequence_similarity": 0.009615
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "sequence_similarity": 0.246212
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "sequence_similarity": 0.227848
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "sequence_similarity": 0.166667
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "sequence_similarity": 0.199187
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "sequence_similarity": 0.026403
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "sequence_similarity": 0.145719
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "sequence_similarity": 0.211293
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "sequence_similarity": 0.264151
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "sequence_similarity": 0.024169
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "sequence_similarity": 0.209125
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "sequence_similarity": 0.184426
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "sequence_similarity": 0.023407
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.284746
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.026247
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "sequence_similarity": 0.253906
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "sequence_similarity": 0.336957
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "sequence_similarity": 0.015625
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "sequence_similarity": 0.255814
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "sequence_similarity": 0.138947
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "sequence_similarity": 0.24
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "sequence_similarity": 0.046448
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "sequence_similarity": 0.184154
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "sequence_similarity": 0.019769
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "sequence_similarity": 0.055465
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "sequence_similarity": 0.140426
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "sequence_similarity": 0.157258
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "sequence_similarity": 0.099448
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "sequence_similarity": 0.171053
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "sequence_similarity": 0.130252
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "sequence_similarity": 0.036484
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "sequence_similarity": 0.122807
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "sequence_similarity": 0.152381
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "sequence_similarity": 0.016393
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "sequence_similarity": 0.027314
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "sequence_similarity": 0.027994
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "sequence_similarity": 0.176147
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "sequence_similarity": 0.197581
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "sequence_similarity": 0.190128
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "sequence_similarity": 0.025237
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "sequence_similarity": 0.144737
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+        "max_cosine_similarity": 0.487496,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "cosine_similarity": 0.202327
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "cosine_similarity": 0.417822
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "cosine_similarity": 0.487496
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "cosine_similarity": 0.391754
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "cosine_similarity": 0.40621
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "cosine_similarity": 0.199319
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "cosine_similarity": 0.260972
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "cosine_similarity": 0.441761
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "cosine_similarity": 0.402178
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "cosine_similarity": 0.099343
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "cosine_similarity": 0.275985
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "cosine_similarity": 0.342225
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "cosine_similarity": 0.411282
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "cosine_similarity": 0.438018
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "cosine_similarity": 0.30851
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "cosine_similarity": 0.269191
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "cosine_similarity": 0.323877
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "cosine_similarity": 0.41545
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "cosine_similarity": 0.327993
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.373233
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.338211
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "cosine_similarity": 0.275453
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "cosine_similarity": 0.282786
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "cosine_similarity": 0.21594
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "cosine_similarity": 0.293707
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "cosine_similarity": 0.167591
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "cosine_similarity": 0.451172
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "cosine_similarity": 0.335878
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "cosine_similarity": 0.28655
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "cosine_similarity": 0.132894
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "cosine_similarity": 0.430657
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "cosine_similarity": 0.330813
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "cosine_similarity": 0.358884
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "cosine_similarity": 0.201359
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "cosine_similarity": 0.311557
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "cosine_similarity": 0.266277
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "cosine_similarity": 0.25475
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "cosine_similarity": 0.203426
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "cosine_similarity": 0.260948
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "cosine_similarity": 0.26252
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "cosine_similarity": 0.195212
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "cosine_similarity": 0.242084
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "cosine_similarity": 0.210353
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "cosine_similarity": 0.322871
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "cosine_similarity": 0.227743
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "cosine_similarity": 0.276918
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "cosine_similarity": 0.345657
+          }
+        ],
+        "embedding_request_id": "e9df3ea8-8c8e-4f8c-9056-df67ef6090d3"
+      }
+    },
+    "generation": {
+      "attempt": 11,
+      "kind": "new_combination",
+      "request_id": "3e97606e-d2a4-46fa-9dfe-c1a73a71f8d9",
+      "prompt_sha256": "44df8133ad56b1e98f2bdc6d2c64742ddd3b552a0b2deae1dcd1d7d89bdf21ae"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-05",
+      "app": "libreoffice_calc",
+      "name": "Autofill a formula downward by double-clicking the fill handle",
+      "procedure": [
+        "Select a formula cell, such as B2.",
+        "Double-click the fill handle at the cell's bottom-right corner. Calc fills the formula down through the contiguous data region determined by adjacent populated cells.",
+        "Repeat on another formula column when needed, such as C2 or D2; relative row references update in each filled row."
+      ],
+      "efficiency_tip": "Double-clicking the fill handle is faster and less error-prone than manually dragging to an estimated final row when an adjacent column defines the data extent.",
+      "source": {
+        "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+        "action_ids": [
+          16,
+          17,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "skill_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Autofill a formula downward by double-clicking the fill handle",
+      "procedure": [
+        "Select the cell that contains the completed formula.",
+        "Double-click the small fill handle at the cell’s bottom-right corner. Calc extends the formula down through the contiguous neighboring data rows; for example, a formula in C2 is filled down alongside populated rows in adjacent columns."
+      ],
+      "efficiency_tip": "Double-clicking the fill handle is faster and less error-prone than dragging it through a long adjacent data region.",
+      "source": {
+        "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "skill_id": "1273e544-688f-496b-8d89-3e0f40aa0606.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Copy an entire spreadsheet column",
+      "procedure": [
+        "Click the column header letter for the column you want to copy, such as column A. Calc highlights the entire column, including any header cell.",
+        "Press Ctrl+C to copy the selected column to the clipboard."
+      ],
+      "efficiency_tip": "Click the column letter once rather than dragging through all populated cells; this selects the complete column, including its header, in one action.",
+      "source": {
+        "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+        "action_ids": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "skill_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Insert a chart from a selected data range",
+      "procedure": [
+        "Select the contiguous cell range containing the category labels and numeric series, for example a table with week labels in the first column and two value columns.",
+        "Use the Insert Chart toolbar icon to create a chart based on the current selection.",
+        "In the chart wizard, choose a Column chart with the Clustered Column variant if it is not already selected, then finish inserting the chart."
+      ],
+      "efficiency_tip": "Select the complete source range before inserting the chart so Calc can create the chart with the correct data series and category labels without later manual range edits.",
+      "source": {
+        "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+        "action_ids": [
+          0,
+          1
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+      "instruction": "In a new sheet with 4 headers \"Year\", \"CA changes\", \"FA changes\", and \"OA changes\", calculate the percentage annual changes compared to last year in 2015 to 2019 for the Current Assets, Fixed Assets, and Other Assets columns. ",
+      "required_skill_ids": [
+        "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-05"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 16,
+          "action": "`CLICK` cell B2"
+        },
+        {
+          "action_id": 17,
+          "action": "`DOUBLE_CLICK` bottom right corner"
+        },
+        {
+          "action_id": 21,
+          "action": "`CLICK` cell C2"
+        },
+        {
+          "action_id": 22,
+          "action": "`DOUBLE_CLICK` bottom right corner"
+        },
+        {
+          "action_id": 23,
+          "action": "`MOVE_TO` cell D2"
+        },
+        {
+          "action_id": 24,
+          "action": "`DOUBLE_CLICK` bottom right corner"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell A3",
+        "`DRAG_TO` cell A7",
+        "`HOTKEY` Ctrl-c",
+        "`CLICK` the + button to the left of Sheet1 to add a new sheet",
+        "`TYPING` 'Year'",
+        "`PRESS` tab",
+        "`TYPING` 'CA changes'",
+        "`PRESS` tab",
+        "`TYPING` 'FA changes'",
+        "`PRESS` tab",
+        "`TYPING` 'OA changes'",
+        "`PRESS` enter",
+        "`HOTKEY` ctrl-V",
+        "`CLICK` cell B2",
+        "`TYPING` '=($Sheet1.B3-$Sheet1.B2)/$Sheet1.B2'",
+        "`PRESS` enter",
+        "`CLICK` cell B2",
+        "`DOUBLE_CLICK` bottom right corner",
+        "`CLICK` cell B2",
+        "`MOVE_TO` bottom right corner of the cell B2",
+        "`DRAG_TO` cell D2",
+        "`CLICK` cell C2",
+        "`DOUBLE_CLICK` bottom right corner",
+        "`MOVE_TO` cell D2",
+        "`DOUBLE_CLICK` bottom right corner",
+        "`CLICK` cell B2",
+        "`DRAG_TO` D6",
+        "`CLICK` percent symbol"
+      ]
+    },
+    {
+      "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+      "instruction": "Create a clustered column chart showing the Sales and COGS data for each week in a new sheet. Set the chart title as \"Sales & COGS\".",
+      "required_skill_ids": [
+        "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`HOTKEY` ctrl-A"
+        },
+        {
+          "action_id": 1,
+          "action": "`CLICK` insert chart icon"
+        }
+      ],
+      "single_actions": [
+        "`HOTKEY` ctrl-A",
+        "`CLICK` insert chart icon",
+        "`CLICK` chart elements on right sidebar",
+        "`CLICK` title text box",
+        "`TYPING` 'Sales & COGS'",
+        "`PRESS` enter",
+        "`CLICK` on cell A1 to cancel out of current menu",
+        "`CLICK` on chart to select it",
+        "`HOTKEY` ctrl-X",
+        "`CLICK` on + to left of sheet1",
+        "`HOTKEY` ctrl+v"
+      ]
+    },
+    {
+      "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+      "instruction": "Copy the \"Revenue\" column along with the header to a new sheet named \"Sheet2\".",
+      "required_skill_ids": [
+        "1273e544-688f-496b-8d89-3e0f40aa0606.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`CLICK` on grey box with A for selecting entire column"
+        },
+        {
+          "action_id": 1,
+          "action": "`HOTKEY` ctrl+c"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on grey box with A for selecting entire column",
+        "`HOTKEY` ctrl+c",
+        "`CLICK` on + to left of sheet1 if sheet2 does not exist, else click on sheet2",
+        "`HOTKEY` ctrl+v"
+      ]
+    },
+    {
+      "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+      "instruction": "Please calculate the period rate for my data in a new column with header \"Period Rate (%)\", convert the results as number type, and highlight the highest result with green (#00ff00) font.",
+      "required_skill_ids": [
+        "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 5,
+          "action": "`CLICK` cell C2"
+        },
+        {
+          "action_id": 6,
+          "action": "`DOUBLE_CLICK` bottom right corner of the cell C2"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell C1",
+        "`TYPING` 'Period Rate (%)'",
+        "`PRESS` enter",
+        "`TYPING` '=A2/B2'",
+        "`PRESS` enter",
+        "`CLICK` cell C2",
+        "`DOUBLE_CLICK` bottom right corner of the cell C2",
+        "`CLICK` on the 0.0 icon that converts the cell to number type",
+        "`CLICK` format",
+        "`MOVE_TO` 'conditional...'",
+        "`CLICK` 'condition'",
+        "`CLICK` 'cell value' dropdown",
+        "`CLICK` 'Formula is' option",
+        "`CLICK` text field",
+        "`TYPING` $C2=MAX($C$2:$C$25)",
+        "`CLICK` accent dropdown",
+        "`CLICK` new style",
+        "`CLICK` font effects",
+        "`CLICK` font color dropdown",
+        "`CLICK` custom color...",
+        "`DOUBLE_CLICK` Hex text box",
+        "`TYPING` '00ff00'",
+        "`PRESS` enter",
+        "`CLICK` OK",
+        "`CLICK` OK"
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-calc-full-r01-011",
+    "task_detail_sha256": "27ba8a66dc60f95b0622cd1d85d38893309839bcf3d80bdd98003a53d9576f98",
+    "guide": {
+      "final_verification": [
+        "在“Event Ledger”中检查 B2:B19：每一行都有“Gross Revenue”计算结果，且显示为带两位小数的货币。例如 B2 的公式应为 =D2*E2，最后一条记录 B19 也不应为空。",
+        "检查 C2:C19：每一行都有“Community Share”计算结果，且显示为带两位小数的货币。例如 C2 的公式应为 =B2+F2，最后一条记录 C19 也不应为空。",
+        "切换到“Upload”工作表，确认 A1 为“Event Code”，A2:A19 已依次显示 EVT-101 至 EVT-118。",
+        "返回“Event Ledger”，确认工作表中存在嵌入式簇状柱形图；图表类别为 Event Code，且包含 Gross Revenue 和 Community Share 两个独立数据系列。"
+      ],
+      "language": "zh-CN",
+      "overview": "本指南完成社区工作坊活动财务台账：将两列已有的首行公式快速填充到全部活动记录，把完整的 Event Code 列交给 Upload 工作表，并在 Event Ledger 中创建比较 Gross Revenue 与 Community Share 的簇状柱形图。",
+      "reference_task_id": "reference-task-calc-full-r01-011",
+      "starting_state_checks": [
+        "确认当前活动工作表是“Event Ledger”。",
+        "确认 Event Ledger 的数据位于 A1:F19，A 列为 Event Code，B 列为 Gross Revenue，C 列为 Community Share，D:F 为已填好的输入数据。",
+        "确认 B2 已有公式 =D2*E2，C2 已有公式 =B2+F2，而 B3:C19 在开始时仍为空白。",
+        "确认“Upload”工作表存在，且仅在 A1 显示标题“Event Code”；尚未填入活动代码。",
+        "确认 Event Ledger 中尚未插入图表。"
+      ],
+      "steps": [
+        {
+          "efficiency_tip": "先确认种子公式正确，再用填充柄双击；这样 Calc 会利用相邻的连续数据行自动判断应填充到第几行，不必手动拖到最后一条记录。",
+          "instructions": [
+            "在“Event Ledger”中单击 B2，查看输入行或公式栏，确认公式为 =D2*E2。",
+            "如 B2 没有该公式，请在 B2 输入 =D2*E2 并按 Enter。",
+            "保持 B2 为选中状态。将鼠标移到该单元格右下角的小方块（填充柄）。鼠标指针变为可填充状态后，双击填充柄。",
+            "检查 B3:B19 是否已自动填入按各行 Registrations 与 Fee per Registration 计算的 Gross Revenue。"
+          ],
+          "skill_ids": [
+            "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-05"
+          ],
+          "step_number": 1,
+          "title": "向下填充 Gross Revenue 公式",
+          "visible_success_signal": "B2:B19 均显示货币金额；选中任一填充后的单元格（如 B19）时，可看到其公式使用对应行的相对引用，例如 =D19*E19。"
+        },
+        {
+          "efficiency_tip": "C 列依靠已连续存在的相邻记录和 B 列结果确定填充范围。双击填充柄可避免逐行复制公式。",
+          "instructions": [
+            "单击 C2，确认公式为 =B2+F2。",
+            "如 C2 没有该公式，请在 C2 输入 =B2+F2 并按 Enter。",
+            "选中 C2，找到单元格右下角的填充柄并双击它。",
+            "检查 C3:C19，确认每一行均已根据同一行的 Gross Revenue 和 Sponsor Grant 自动计算 Community Share。"
+          ],
+          "skill_ids": [
+            "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-02"
+          ],
+          "step_number": 2,
+          "title": "向下填充 Community Share 公式",
+          "visible_success_signal": "C2:C19 都已填有带两位小数的货币结果，C19 不为空；公式随行号变化，例如 C19 为 =B19+F19。"
+        },
+        {
+          "efficiency_tip": "单击列标“A”会一次选中整列，包含标题和所有活动代码；这比手工框选 A1:A19 更快，也不会漏掉标题。",
+          "instructions": [
+            "仍在“Event Ledger”工作表时，单击列标“A”，使整列 A 被选中。",
+            "按 Ctrl+C 复制整列。",
+            "切换到“Upload”工作表。",
+            "单击 A1，然后按 Ctrl+V 粘贴。若出现粘贴相关提示，使用普通粘贴即可。",
+            "检查 Upload 的 A 列：标题和活动代码应一同出现。"
+          ],
+          "skill_ids": [
+            "1273e544-688f-496b-8d89-3e0f40aa0606.skill-01"
+          ],
+          "step_number": 3,
+          "title": "复制 Event Code 列到 Upload",
+          "visible_success_signal": "Upload!A1 显示“Event Code”，Upload!A2:A19 显示完整活动代码列表，从 EVT-101 到 EVT-118。"
+        },
+        {
+          "efficiency_tip": "在插入图表前一次选中 A1:C19，可让 Calc 自动识别第一列为 Event Code 类别标签，并将后两列识别为两个比较数据系列。",
+          "instructions": [
+            "切换回“Event Ledger”工作表。",
+            "拖动选择连续区域 A1:C19，必须包含标题行、Event Code 列、Gross Revenue 列和 Community Share 列。",
+            "选择“插入”菜单中的“图表…”，或使用工具栏上的插入图表按钮。",
+            "在图表向导中选择“柱形图”，并选择“簇状柱形图”变体。",
+            "确认数据范围为 A1:C19，数据系列为 Gross Revenue 与 Community Share，并让第一行作为系列名称、第一列作为类别标签（Event Code）。",
+            "完成向导以将图表嵌入当前工作表；如图表放置位置遮住数据，可在不改变其数据范围的情况下拖动图表到表格旁的空白区域。"
+          ],
+          "skill_ids": [
+            "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-01"
+          ],
+          "step_number": 4,
+          "title": "创建活动收入比较簇状柱形图",
+          "visible_success_signal": "Event Ledger 上出现嵌入式簇状柱形图，横轴类别为各 Event Code，并对每个代码并列显示 Gross Revenue 和 Community Share 两个系列。"
+        },
+        {
+          "efficiency_tip": "最终从数据、交接表和图表三个位置核对，可同时发现遗漏的公式行、漏复制的活动代码或错误的图表数据范围。",
+          "instructions": [
+            "检查 Event Ledger 的 B2:C19，确认两列均没有空白的活动记录行。",
+            "检查“Upload”中的 A1:A19，确认标题及 18 个 Event Code 都已粘贴。",
+            "单击图表并查看其图例和横轴，确认图例包含 Gross Revenue、Community Share，横轴为 Event Code。"
+          ],
+          "skill_ids": [],
+          "step_number": 5,
+          "title": "完成最终核对",
+          "visible_success_signal": "计算列、Upload 活动代码清单和嵌入式比较图表均完整可见。"
+        }
+      ]
+    },
+    "generation": {
+      "request_id": "3d12efdf-37c8-4c9c-9ae8-9d8378452cda",
+      "prompt_sha256": "d4ef668ee9fd9b0b69c3a1563d6cad97d283f07fb8fa86186893a7230aed9a2e",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 3589,
+      "output_tokens": 1720,
+      "estimated_cost_usd": 0.027818
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-011",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-011/initial_artifact.xlsx",
+      "artifact_sha256": "8e5adb2f184d09c3daa509884df2b877a6b71d5c8339d29bfdd87dde77117262",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-011/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-011/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.xlsx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-011",
+      "task_config_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-011.json",
+      "artifact_sha256": "8e5adb2f184d09c3daa509884df2b877a6b71d5c8339d29bfdd87dde77117262",
+      "blueprint_request_id": "d3f5f99a-ec46-42ec-8690-14ac532ce171"
+    },
+    "packet_path": "task_config.json"
+  }
+}

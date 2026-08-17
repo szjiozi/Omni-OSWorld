@@ -1,0 +1,229 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-004",
+  "base_prompt_sha256": "cd1de30848d689003c5451a1ff83d7136b62f5e25c7b96961be685dee903efc7",
+  "blueprint": {
+    "manual_setup_steps": [],
+    "sheets": [
+      {
+        "autofilter_range": null,
+        "column_number_formats": [
+          "@",
+          "0",
+          "0",
+          "0"
+        ],
+        "column_types": [
+          "text",
+          "integer",
+          "integer",
+          "integer"
+        ],
+        "formulas": [],
+        "freeze_header_row": true,
+        "headers": [
+          "Item",
+          "Prepared Packs",
+          "Issued Packs",
+          "Remaining Packs"
+        ],
+        "name": "Supply Rounds",
+        "rows": [
+          {
+            "values": [
+              "Round A — Tuesday",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Seed Trays",
+              "84",
+              "29",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Compost Bags",
+              "63",
+              "18",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Bamboo Stakes",
+              "120",
+              "46",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Watering Cans",
+              "28",
+              "9",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Plant Labels",
+              "150",
+              "72",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Round B — Thursday",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Seed Trays",
+              "76",
+              "31",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Compost Bags",
+              "58",
+              "21",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Bamboo Stakes",
+              "110",
+              "39",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Watering Cans",
+              "24",
+              "8",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Plant Labels",
+              "135",
+              "54",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Round C — Saturday",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Seed Trays",
+              "91",
+              "34",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Compost Bags",
+              "70",
+              "25",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Bamboo Stakes",
+              "128",
+              "52",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Watering Cans",
+              "31",
+              "12",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "Plant Labels",
+              "160",
+              "67",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "values": [
+              "",
+              "",
+              "",
+              ""
+            ]
+          }
+        ]
+      }
+    ],
+    "workbook_title": "Garden Supply Round Reconciliation"
+  },
+  "generation": {
+    "request_id": "01338660-a3cd-409f-91a1-192c82380bb2",
+    "prompt_sha256": "993f89d81a1c98566552dc0a913efe6b7a367dd45da400980dff1f5a30d03a20",
+    "model": "gpt-5.6-terra",
+    "input_tokens": 2510,
+    "output_tokens": 1542,
+    "estimated_cost_usd": 0.023524
+  }
+}

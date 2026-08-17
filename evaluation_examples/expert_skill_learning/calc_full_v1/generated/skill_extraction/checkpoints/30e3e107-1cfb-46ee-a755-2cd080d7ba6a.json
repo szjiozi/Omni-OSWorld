@@ -1,0 +1,200 @@
+{
+  "schema_version": "1.0",
+  "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+  "app": "libreoffice_calc",
+  "single_action_count": 75,
+  "prompt_sha256": "7bf6aaaeb6b6f90ac25ec5d303202892a48f88432e5b41a047c4495233fb1d79",
+  "request_id": "14dcdbe9-e4da-424a-aaf5-c9cea1e1f45a",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 2080,
+    "cached_input_tokens": 1073,
+    "output_tokens": 2667,
+    "estimated_cost_usd": 0.0342326
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0
+        ],
+        "efficiency_tip": "Use the plus button when the default generated sheet name is acceptable; this avoids opening a rename workflow.",
+        "name": "Insert a new worksheet with the default name",
+        "procedure": [
+          "Click the plus button beside the worksheet tabs to add a new worksheet.",
+          "Calc creates the sheet with its next default name, for example, Sheet2; no sheet-tab rename action is needed when that default is desired."
+        ]
+      },
+      {
+        "action_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "efficiency_tip": "Select the entire target span before merging so the command is applied once, rather than merging cells individually.",
+        "name": "Merge a horizontal cell range and enter a label",
+        "procedure": [
+          "Start with the first cell active, hold Shift, and click the last cell in the intended horizontal range; for example, select A1:C1 by holding Shift while clicking C1 from A1.",
+          "Right-click the selected range and choose Merge Cells.",
+          "Type a label such as \"Demographic Profile\" and press Enter. The text is stored in the merged cell."
+        ]
+      },
+      {
+        "action_ids": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "efficiency_tip": "Enter an exact hexadecimal color value in the custom-color dialog instead of approximating the shade from the palette.",
+        "name": "Apply a custom cell background color by hexadecimal value",
+        "procedure": [
+          "Select the target cell or merged range, for example A1:C1 via its merged anchor cell A1.",
+          "Open the background/fill color dropdown next to the paint-bucket control and choose Custom Color.",
+          "Select the hexadecimal input, replace its value with an exact color such as `0000ff`, and press Enter to apply the fill."
+        ]
+      },
+      {
+        "action_ids": [
+          13,
+          14
+        ],
+        "efficiency_tip": "Apply font color while the target cell remains selected after fill formatting, avoiding a separate reselection.",
+        "name": "Set a cell's font color from the color palette",
+        "procedure": [
+          "With the target cell or merged cell selected, open the font-color dropdown.",
+          "Choose the desired palette color; for example, choose white for text that needs contrast against a dark fill."
+        ]
+      },
+      {
+        "action_ids": [
+          15
+        ],
+        "efficiency_tip": "Use the Bold toolbar button as a toggle on the current selection instead of reopening a text-format dialog.",
+        "name": "Toggle bold formatting for selected cell text",
+        "procedure": [
+          "Select the cell or merged cell whose text should be emphasized.",
+          "Click the Bold toolbar button to apply bold formatting to its text."
+        ]
+      },
+      {
+        "action_ids": [
+          16,
+          17,
+          18,
+          19,
+          36,
+          37,
+          38,
+          39,
+          56,
+          57,
+          58,
+          59
+        ],
+        "efficiency_tip": "Select the intended source column before invoking Pivot Table so Calc can infer the source selection immediately.",
+        "name": "Open the Pivot Table layout from a selected data range",
+        "procedure": [
+          "Switch to the worksheet containing the source data and select the relevant source range or column; for example, click a column header to select that column.",
+          "Click the Pivot Table toolbar icon.",
+          "Accept the inferred source selection, for example by pressing Enter, to open the Pivot Table layout dialog."
+        ]
+      },
+      {
+        "action_ids": [
+          20,
+          21,
+          22,
+          23,
+          40,
+          41,
+          42,
+          43,
+          60,
+          61,
+          62,
+          63
+        ],
+        "efficiency_tip": "Drag the same field directly from Available Fields into each required area instead of searching for it again through menus.",
+        "name": "Place a field in Pivot Table row and data areas",
+        "procedure": [
+          "In the Pivot Table layout dialog, locate a categorical field in Available Fields.",
+          "Drag the field to Row Fields to list each distinct category as a row.",
+          "Drag the same field to Data Fields to create a value calculation for those categories. For example, a field can be placed in both areas to show categories and their counts."
+        ]
+      },
+      {
+        "action_ids": [
+          24,
+          25,
+          44,
+          45,
+          64,
+          65
+        ],
+        "efficiency_tip": "Configure the aggregation immediately after adding the data field, while its settings dialog is easy to access from the Data Fields area.",
+        "name": "Count occurrences in a Pivot Table data field",
+        "procedure": [
+          "Double-click the field entry in the Pivot Table Data Fields area to open its data-field options.",
+          "Choose Count as the aggregation. This counts non-empty occurrences of the selected field rather than summing numeric values."
+        ]
+      },
+      {
+        "action_ids": [
+          26,
+          27,
+          28,
+          29,
+          46,
+          47,
+          48,
+          49,
+          66,
+          67,
+          68,
+          69
+        ],
+        "efficiency_tip": "Use the built-in percentage display calculation rather than adding helper formulas outside the Pivot Table.",
+        "name": "Display Pivot Table values as a percentage of the total",
+        "procedure": [
+          "In the data-field options dialog, open the displayed-value or Show Values As controls.",
+          "Open the Type dropdown, which may initially show Normal, and choose `% of total`.",
+          "Confirm the data-field options using OK or Enter. The value field will show each category's share of the overall total."
+        ]
+      },
+      {
+        "action_ids": [
+          30,
+          31,
+          32,
+          33,
+          34,
+          50,
+          51,
+          52,
+          53,
+          54,
+          70,
+          71,
+          72,
+          73,
+          74
+        ],
+        "efficiency_tip": "Specify the output anchor directly in the destination box to place multiple Pivot Tables precisely without manually moving them afterward.",
+        "name": "Set a Pivot Table output destination to a specific cell",
+        "procedure": [
+          "Open the Pivot Table Source and Destination settings and choose Selection under Destination.",
+          "Click the destination input and enter an absolute sheet-qualified address, for example `$Sheet2.$A$2`, then confirm.",
+          "In `$Sheet2.$A$2`, the `$` before Sheet2 fixes the sheet, the `$` before A fixes the column, and the `$` before 2 fixes the row. Use a different anchor, such as `$Sheet2.$A$7`, to place another Pivot Table below the first."
+        ]
+      }
+    ]
+  }
+}

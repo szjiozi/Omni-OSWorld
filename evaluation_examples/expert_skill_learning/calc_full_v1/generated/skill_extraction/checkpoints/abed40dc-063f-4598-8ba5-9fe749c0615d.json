@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+  "app": "libreoffice_calc",
+  "single_action_count": 13,
+  "prompt_sha256": "8941310a986df294059f0acbb67dcbac7dc8cd0e28ea1aa4006fd685b61891f5",
+  "request_id": "4cebf10a-75fb-4dd3-9730-ea699dddcc55",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1308,
+    "cached_input_tokens": 1073,
+    "output_tokens": 238,
+    "estimated_cost_usd": 0.0035406
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "efficiency_tip": "Select the complete source range before opening the filter dialog so Calc can use it directly; enter the destination as a cell reference rather than copying results manually.",
+        "name": "Filter a range to copy only unique nonempty records",
+        "procedure": [
+          "Select the source range, including its header when present; for example, drag from B2 through B17.",
+          "Open Data > More Filters > Standard Filter.",
+          "In the filter criteria, set the relevant field/value condition to Not empty so blank records are excluded.",
+          "Open Options and enable No duplications to retain only the first occurrence of each repeated value in source order.",
+          "Enable Copy results to, click its destination box, and enter the top-left output cell reference, for example `$Sheet1.D2`. Here `$Sheet1` fixes the destination sheet, while column D and row 2 remain relative.",
+          "Confirm with OK to place the filtered unique records beginning at the specified destination cell."
+        ]
+      }
+    ]
+  }
+}

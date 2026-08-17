@@ -1,0 +1,13 @@
+{
+  "workbook_title": "Garden Volunteer Activity Tracker",
+  "output_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-019/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Volunteer Activity",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-019/previews/Volunteer_Activity.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Volunteer Activity\",\"address\":\"A1:F12\",\"rows\":12,\"cols\":6,\"values\":[[\"Volunteer Code\",\"Garden Zone\",\"Enrollment Date\",\"Completed Years\",\"Attendance Ratio\",\"Soil Reading\"],[\"GV-1001\",\"North Beds\",\"2013-03-18T00:00:00.000Z\",null,0.875,8],[\"GV-1002\",\"Herb Terrace\",\"2014-07-09T00:00:00.000Z\",null,0.92,7.5],[\"GV-1003\",\"Orchard Row\",\"2015-11-22T00:00:00.000Z\",null,0.785,6],[\"GV-1004\",\"East Plot\",\"2016-02-14T00:00:00.000Z\",null,0.95,7.2],[\"GV-1005\",\"Pollinator Patch\",\"2017-06-30T00:00:00.000Z\",null,0.845,8.5],[\"GV-1006\",\"West Raised Beds\",\"2018-09-05T00:00:00.000Z\",null,0.7,6.8],[\"GV-1007\",\"Compost Corner\",\"2019-01-27T00:00:00.000Z\",null,0.88,7],[\"GV-1008\",\"South Beds\",\"2020-04-16T00:00:00.000Z\",null,0.935,8.1],[\"GV-1009\",\"Herb Terrace\",\"2021-08-11T00:00:00.000Z\",null,0.76,6.5],[\"GV-1010\",\"Orchard Row\",\"2022-12-03T00:00:00.000Z\",null,0.89,7.8],[\"GV-1011\",\"North Beds\",\"2023-02-20T00:00:00.000Z\",null,0.815,8]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

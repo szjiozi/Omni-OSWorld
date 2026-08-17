@@ -1,0 +1,13 @@
+{
+  "workbook_title": "Workshop Attendance Register",
+  "output_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-018/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Attendance Log",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-018/previews/Attendance_Log.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Attendance Log\",\"address\":\"A1:E12\",\"rows\":12,\"cols\":5,\"values\":[[\"Session Date\",\"Participant Alias\",\"Workshop Track\",\"Check-in Tag\",\"Registration Type\"],[\"2026-09-03T00:00:00.000Z\",\"Avery Moss\",\"Digital Storytelling\",null,\"Standard\"],[\"2026-09-03T00:00:00.000Z\",\"Jordan Vale\",\"Garden Design\",null,\"Community\"],[\"2026-09-03T00:00:00.000Z\",\"Casey Rowan\",\"Digital Storytelling\",null,\"Student\"],[\"2026-09-03T00:00:00.000Z\",\"Morgan Pike\",\"Repair Basics\",null,\"Standard\"],[\"2026-09-03T00:00:00.000Z\",\"Riley North\",\"Garden Design\",null,\"Community\"],[\"2026-09-03T00:00:00.000Z\",\"Taylor Reed\",\"Ceramics Studio\",null,\"Standard\"],[\"2026-09-03T00:00:00.000Z\",\"Quinn Harper\",\"Digital Storytelling\",null,\"Student\"],[\"2026-09-03T00:00:00.000Z\",\"Skyler Lane\",\"Repair Basics\",null,\"Standard\"],[\"2026-09-10T00:00:00.000Z\",\"Emerson Frost\",\"Garden Design\",null,\"Standard\"],[\"2026-09-10T00:00:00.000Z\",\"Parker Wren\",\"Ceramics Studio\",null,\"Community\"],[\"2026-09-10T00:00:00.000Z\",\"Cameron Birch\",\"Digital Storytelling\",null,\"Standard\"]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

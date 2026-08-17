@@ -1,0 +1,1112 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-006",
+  "package": {
+    "reference_task_id": "reference-task-calc-full-r01-006",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_calc",
+    "task_instruction": "Prepare the Route Review for the municipal route-output report. Copy the 12 daily Output Volume values from Daily Metrics into the Working Output column, then calculate the day-over-day percentage change for every day after the first using formulas that keep Daily Metrics as the fixed source sheet. Build a distinct roster of nonblank Service Route names from the source table, preserving the first-seen order, with the result beginning at E5 on Route Review. Add a lines-only chart of Daily Change by Service Date, and export the completed review as /home/oai/share/route_operations_review.pdf.",
+    "required_skill_ids": [
+      "abed40dc-063f-4598-8ba5-9fe749c0615d.skill-01",
+      "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-07",
+      "37608790-6147-45d0-9f20-1137bb35703d.skill-01",
+      "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-03",
+      "aa3a8974-2e85-438b-b29e-a64df44deb4b.skill-02"
+    ],
+    "artifact_spec": {
+      "artifact_type": "xlsx",
+      "domain": "municipal route output monitoring",
+      "generation_notes": [
+        "All content is synthetic and contains no personal, customer, or sensitive operational data.",
+        "Use ordinary header styling with bold text and a light fill. Format Date columns as YYYY-MM-DD, Output Volume as integer, and Daily Change as percentage with one decimal place.",
+        "Do not create a chart, a native filter configuration, an exported PDF, or any formulas in the target areas during workbook generation."
+      ],
+      "initial_state": [
+        "The workbook opens with the Route Review sheet active.",
+        "Daily Metrics!A1:D13 is a complete source table. Its data must remain unchanged throughout the task.",
+        "Route Review!A5:A16 is prepopulated with the same 12 dates as Daily Metrics!A2:A13 so it can serve as the chart category axis.",
+        "Route Review!B5:B16, Route Review!C5:C16, and Route Review!E5:E20 are blank target areas.",
+        "The Daily Change column is already formatted as a percentage with one decimal place, but contains no formulas.",
+        "No charts, filters, copied output-volume values, unique-route results, or PDF export exist initially."
+      ],
+      "must_not_be_completed": [
+        "Do not prepopulate the Working Output values on Route Review.",
+        "Do not enter or seed the Daily Change formulas.",
+        "Do not create the unique nonblank route roster in the Route Review sheet.",
+        "Do not create any chart object.",
+        "Do not export a PDF file."
+      ],
+      "sheets": [
+        {
+          "columns": [
+            {
+              "data_type": "date",
+              "name": "Service Date"
+            },
+            {
+              "data_type": "integer",
+              "name": "Output Volume"
+            },
+            {
+              "data_type": "integer",
+              "name": "Crew Hours"
+            },
+            {
+              "data_type": "text",
+              "name": "Service Route"
+            }
+          ],
+          "name": "Daily Metrics",
+          "purpose": "Source data for daily route output and route names.",
+          "row_count": 12
+        },
+        {
+          "columns": [
+            {
+              "data_type": "date",
+              "name": "Service Date"
+            },
+            {
+              "data_type": "integer",
+              "name": "Working Output"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Daily Change"
+            },
+            {
+              "data_type": "text",
+              "name": "Distinct Route Roster"
+            }
+          ],
+          "name": "Route Review",
+          "purpose": "Incomplete review sheet for a copied output series, fixed-sheet daily-change calculations, a distinct route list, and a trend chart.",
+          "row_count": 16
+        }
+      ],
+      "workbook_title": "Route Operations Review"
+    },
+    "operator_guide": {
+      "allowed_variation": "The expert may use menus, keyboard shortcuts, or equivalent Calc dialogs, and may perform the independent review-sheet operations in any efficient order. Equivalent selection methods are acceptable, provided the resulting values, formulas, filtered roster, lines-only chart, and PDF are visibly correct.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Select the full Service Route source field with its header before opening the filter options, then provide the review-sheet output anchor directly rather than manually copying visible cells.",
+          "operation_intent": "Produce a distinct-route roster from Daily Metrics!D1:D13 that excludes blank route cells, keeps first-occurrence order, and places the copied filter output beginning at Route Review!E5.",
+          "skill_id": "abed40dc-063f-4598-8ba5-9fe749c0615d.skill-01",
+          "visible_success_signal": "The roster beginning at E5 contains only North Loop, Harbor Spur, Cedar Link, Ridge Run, Quarry Way, and Canal Point once each (with any copied source header positioned above those results), and no blank roster item appears."
+        },
+        {
+          "efficiency_tip": "Select the Service Date categories together with the completed Daily Change series, then choose the lines-only subtype during chart insertion instead of modifying a default chart later.",
+          "operation_intent": "Create a trend chart on Route Review that plots Daily Change by Service Date and uses a line without point markers.",
+          "skill_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-07",
+          "visible_success_signal": "A chart object is visible on Route Review with dates as its category labels and a single continuous Daily Change line that has no data-point markers."
+        },
+        {
+          "efficiency_tip": "Copy the entire 12-cell Output Volume source series in one operation and paste it at the first Working Output cell.",
+          "operation_intent": "Copy Daily Metrics!B2:B13 into Route Review!B5:B16 while preserving the original source values.",
+          "skill_id": "37608790-6147-45d0-9f20-1137bb35703d.skill-01",
+          "visible_success_signal": "Route Review!B5:B16 matches the 12 Output Volume values from Daily Metrics!B2:B13, while the source column remains present and unchanged."
+        },
+        {
+          "efficiency_tip": "Create the first formula using Daily Metrics as a sheet-fixed reference while leaving the row references relative, then propagate it down the remaining change rows.",
+          "operation_intent": "Calculate day-over-day percentage change in Route Review!C6:C16 from consecutive Output Volume values on the fixed Daily Metrics sheet; C5 remains blank because there is no prior day.",
+          "skill_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-03",
+          "visible_success_signal": "C6:C16 displays percentage results, and inspecting formulas shows each uses a fixed Daily Metrics sheet reference while advancing from one source row pair to the next."
+        },
+        {
+          "efficiency_tip": "Enter the complete requested PDF destination and filename in the export dialog to avoid ambiguity about the output location.",
+          "operation_intent": "Export the completed workbook review as a PDF named route_operations_review.pdf at /home/oai/share/route_operations_review.pdf.",
+          "skill_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b.skill-02",
+          "visible_success_signal": "A PDF export is completed at the requested path after the review sheet shows the copied series, calculation column, roster, and trend chart."
+        }
+      ],
+      "recording_end_state": "Route Review visibly contains the copied 12-row Working Output series, percentage Daily Change formulas from C6 through C16, the nonblank distinct route roster beginning at E5, and a lines-only Daily Change trend chart; the PDF has been exported to /home/oai/share/route_operations_review.pdf.",
+      "recording_start_state": "Route Review is active with its date axis prefilled but Working Output, Daily Change, and Distinct Route Roster target areas blank; Daily Metrics contains the intact source table and no chart or PDF exists."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Select the relevant source and destination ranges, including selecting the date and calculated-change ranges needed as chart data.",
+        "reason": "Range selection is required to copy the output series, produce the filtered roster, and define the chart categories and series."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Fill the initial fixed-sheet percentage-change formula down through the remaining populated review dates.",
+        "reason": "A complete daily-change series is needed for the requested trend chart rather than a calculation in only one row."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Use a chart title or other ordinary default chart labeling if needed to make the trend understandable.",
+        "reason": "This is a minor presentation choice and must not replace the required lines-only chart subtype."
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+          "skill_count": 1,
+          "skill_fraction": 0.2
+        },
+        {
+          "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+          "skill_count": 1,
+          "skill_fraction": 0.2
+        },
+        {
+          "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+          "skill_count": 1,
+          "skill_fraction": 0.2
+        },
+        {
+          "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+          "skill_count": 1,
+          "skill_fraction": 0.2
+        },
+        {
+          "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+          "skill_count": 1,
+          "skill_fraction": 0.2
+        }
+      ],
+      "dominant_source_task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+      "dominant_source_skill_fraction": 0.2,
+      "complete_source_skill_sets_included": [
+        "abed40dc-063f-4598-8ba5-9fe749c0615d"
+      ]
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+        "max_sequence_similarity": 0.232911,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "sequence_similarity": 0.14093
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "sequence_similarity": 0.008565
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "sequence_similarity": 0.034137
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "sequence_similarity": 0.019488
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "sequence_similarity": 0.206897
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "sequence_similarity": 0.217507
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "sequence_similarity": 0.004854
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "sequence_similarity": 0.200549
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "sequence_similarity": 0.172107
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "sequence_similarity": 0.126471
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "sequence_similarity": 0.109827
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "sequence_similarity": 0.014888
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "sequence_similarity": 0.202937
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "sequence_similarity": 0.226969
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "sequence_similarity": 0.232439
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "sequence_similarity": 0.023202
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "sequence_similarity": 0.162534
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "sequence_similarity": 0.162791
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "sequence_similarity": 0.018576
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.232911
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.010395
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "sequence_similarity": 0.168539
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "sequence_similarity": 0.212766
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "sequence_similarity": 0.021429
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "sequence_similarity": 0.178771
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "sequence_similarity": 0.133333
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "sequence_similarity": 0.192
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "sequence_similarity": 0.030043
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "sequence_similarity": 0.167916
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "sequence_similarity": 0.007435
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "sequence_similarity": 0.02952
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "sequence_similarity": 0.074627
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "sequence_similarity": 0.172414
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "sequence_similarity": 0.123822
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "sequence_similarity": 0.131098
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "sequence_similarity": 0.153846
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "sequence_similarity": 0.032379
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "sequence_similarity": 0.07622
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "sequence_similarity": 0.190345
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "sequence_similarity": 0.009877
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "sequence_similarity": 0.020955
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "sequence_similarity": 0.011862
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "sequence_similarity": 0.155705
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "sequence_similarity": 0.16092
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "sequence_similarity": 0.192771
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "sequence_similarity": 0.023981
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "sequence_similarity": 0.103659
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+        "max_cosine_similarity": 0.435233,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "cosine_similarity": 0.25679
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "cosine_similarity": 0.409441
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "cosine_similarity": 0.345093
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "cosine_similarity": 0.435233
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "cosine_similarity": 0.416345
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "cosine_similarity": 0.224131
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "cosine_similarity": 0.3373
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "cosine_similarity": 0.329754
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "cosine_similarity": 0.382833
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "cosine_similarity": 0.132253
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "cosine_similarity": 0.275335
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "cosine_similarity": 0.336774
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "cosine_similarity": 0.345258
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "cosine_similarity": 0.337604
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "cosine_similarity": 0.347365
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "cosine_similarity": 0.262707
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "cosine_similarity": 0.344172
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "cosine_similarity": 0.375211
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "cosine_similarity": 0.343083
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.356985
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.313075
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "cosine_similarity": 0.258294
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "cosine_similarity": 0.344597
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "cosine_similarity": 0.288458
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "cosine_similarity": 0.277067
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "cosine_similarity": 0.210941
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "cosine_similarity": 0.354355
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "cosine_similarity": 0.329319
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "cosine_similarity": 0.262724
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "cosine_similarity": 0.156759
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "cosine_similarity": 0.389089
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "cosine_similarity": 0.263008
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "cosine_similarity": 0.36524
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "cosine_similarity": 0.246233
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "cosine_similarity": 0.259275
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "cosine_similarity": 0.284478
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "cosine_similarity": 0.280188
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "cosine_similarity": 0.26629
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "cosine_similarity": 0.225183
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "cosine_similarity": 0.262999
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "cosine_similarity": 0.223791
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "cosine_similarity": 0.310642
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "cosine_similarity": 0.273038
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "cosine_similarity": 0.279511
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "cosine_similarity": 0.26928
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "cosine_similarity": 0.271021
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "cosine_similarity": 0.301405
+          }
+        ],
+        "embedding_request_id": "e9df3ea8-8c8e-4f8c-9056-df67ef6090d3"
+      }
+    },
+    "generation": {
+      "attempt": 6,
+      "kind": "new_combination",
+      "request_id": "d898f193-c183-4bc0-b446-f8f87f46e37e",
+      "prompt_sha256": "83dcce3a405db91a72182e554e457b765cf0832dac34bcfaab48ddd9e642de17"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "abed40dc-063f-4598-8ba5-9fe749c0615d.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Filter a range to copy only unique nonempty records",
+      "procedure": [
+        "Select the source range, including its header when present; for example, drag from B2 through B17.",
+        "Open Data > More Filters > Standard Filter.",
+        "In the filter criteria, set the relevant field/value condition to Not empty so blank records are excluded.",
+        "Open Options and enable No duplications to retain only the first occurrence of each repeated value in source order.",
+        "Enable Copy results to, click its destination box, and enter the top-left output cell reference, for example `$Sheet1.D2`. Here `$Sheet1` fixes the destination sheet, while column D and row 2 remain relative.",
+        "Confirm with OK to place the filtered unique records beginning at the specified destination cell."
+      ],
+      "efficiency_tip": "Select the complete source range before opening the filter dialog so Calc can use it directly; enter the destination as a cell reference rather than copying results manually.",
+      "source": {
+        "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "skill_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-07",
+      "app": "libreoffice_calc",
+      "name": "Insert a lines-only chart from the selected spreadsheet range",
+      "procedure": [
+        "With the source ranges selected, click the chart icon and choose the Line chart category.",
+        "Choose the lines-only subtype, represented by the line-style icon, to create a chart without point markers."
+      ],
+      "efficiency_tip": "Choose the specific line subtype during chart insertion instead of creating a default chart and changing its subtype afterward.",
+      "source": {
+        "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+        "action_ids": [
+          38,
+          39,
+          40
+        ]
+      }
+    },
+    {
+      "skill_id": "37608790-6147-45d0-9f20-1137bb35703d.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Copy a contiguous cell range to another column",
+      "procedure": [
+        "Select the first cell of the source range, then drag to the last cell to select all contiguous cells. For example, select A2 through A22.",
+        "Press Ctrl+C, click the destination's top cell (for example, B2), and press Ctrl+V.",
+        "Calc pastes the copied values into the destination range starting at the selected cell."
+      ],
+      "efficiency_tip": "Copy the entire contiguous source range in one drag-and-paste operation rather than copying cells individually; this preserves the original data while creating a working copy.",
+      "source": {
+        "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-03",
+      "app": "libreoffice_calc",
+      "name": "Create a percentage-change formula using a fixed source sheet",
+      "procedure": [
+        "Select the output cell and type a percentage-change formula that subtracts the prior value and divides by that prior value; for example, enter =($Sheet1.B3-$Sheet1.B2)/$Sheet1.B2 in B2, then press Enter.",
+        "In $Sheet1.B3 and $Sheet1.B2, the $ fixes the source sheet name only. Column B and the row numbers remain relative, so filling the formula downward changes B3/B2 to B4/B3, while the source remains Sheet1."
+      ],
+      "efficiency_tip": "Build the formula once with the intended relative and absolute references before filling it, so propagated formulas adjust correctly without later edits.",
+      "source": {
+        "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+        "action_ids": [
+          13,
+          14,
+          15
+        ]
+      }
+    },
+    {
+      "skill_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Export a spreadsheet as a PDF to a specified path",
+      "procedure": [
+        "Open File > Export as PDF.",
+        "In the file-name field, enter the full output path and PDF filename, such as /home/user/Resize_Cells_Fit_Page.pdf.",
+        "Click Export to create the PDF at that location."
+      ],
+      "efficiency_tip": "Type the complete destination path and filename directly in the export dialog to avoid navigating folders and to ensure the PDF is saved exactly where required.",
+      "source": {
+        "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+        "action_ids": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+      "instruction": "Calculate the total sales in an underneath row called \"Total\" and display the total of each month as bars. Then calculate the month-on-month growth percentage for Feb to Jun in another row called \"Growth\" and show them in a line chart (Jan should be omitted in the chart as well). Set the chart titles as the two row headers respectively.",
+      "required_skill_ids": [
+        "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-07"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 38,
+          "action": "`CLICK` chart icon"
+        },
+        {
+          "action_id": 39,
+          "action": "`CLICK` Line"
+        },
+        {
+          "action_id": 40,
+          "action": "`CLICK` icon representing lines only (3rd from the right)"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell A12",
+        "`TYPING` 'Total'",
+        "`PRESS` tab",
+        "`TYPING` '=SUM(B2:B11)'",
+        "`PRESS` enter",
+        "`CLICK` cell B12",
+        "`MOVE_TO bottom right corner of the cell B12`",
+        "`DRAG_TO` bottom right corner of the cell G12",
+        "`MOVE_TO` middle of cell A1",
+        "`DRAG_TO` middle of cell G1",
+        "`KEY_DOWN` ctrl",
+        "`CLICK` cell A12",
+        "`KEY_UP` ctrl",
+        "`KEY_DOWN` shift",
+        "`CLICK` cell G12",
+        "`KEY_UP` shift",
+        "`CLICK` chart icon",
+        "`CLICK` Bar",
+        "`CLICK` Chart elements",
+        "`CLICK` title text box",
+        "`TYPING` 'Total'",
+        "`PRESS` enter",
+        "`CLICK` cell A13",
+        "`TYPING` 'Growth'",
+        "`CLICK` cell C13",
+        "`TYPING` '=(C12-B12)/B12'",
+        "`PRESS` enter",
+        "`CLICK` cell C13",
+        "`MOVE_TO bottom right corner of the cell C13`",
+        "`DRAG_TO` bottom right corner of the cell G13",
+        "`MOVE_TO` middle of cell C1",
+        "`DRAG_TO` middle of cell G1",
+        "`KEY_DOWN` ctrl",
+        "`CLICK` cell C13",
+        "`KEY_UP` ctrl",
+        "`KEY_DOWN` shift",
+        "`CLICK` cell G13",
+        "`KEY_UP` shift",
+        "`CLICK` chart icon",
+        "`CLICK` Line",
+        "`CLICK` icon representing lines only (3rd from the right)",
+        "`CLICK` Chart elements",
+        "`CLICK` title text box",
+        "`TYPING` 'Growth'",
+        "`PRESS` enter"
+      ]
+    },
+    {
+      "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+      "instruction": "In a new sheet with 4 headers \"Year\", \"CA changes\", \"FA changes\", and \"OA changes\", calculate the percentage annual changes compared to last year in 2015 to 2019 for the Current Assets, Fixed Assets, and Other Assets columns. ",
+      "required_skill_ids": [
+        "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-03"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 13,
+          "action": "`CLICK` cell B2"
+        },
+        {
+          "action_id": 14,
+          "action": "`TYPING` '=($Sheet1.B3-$Sheet1.B2)/$Sheet1.B2'"
+        },
+        {
+          "action_id": 15,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell A3",
+        "`DRAG_TO` cell A7",
+        "`HOTKEY` Ctrl-c",
+        "`CLICK` the + button to the left of Sheet1 to add a new sheet",
+        "`TYPING` 'Year'",
+        "`PRESS` tab",
+        "`TYPING` 'CA changes'",
+        "`PRESS` tab",
+        "`TYPING` 'FA changes'",
+        "`PRESS` tab",
+        "`TYPING` 'OA changes'",
+        "`PRESS` enter",
+        "`HOTKEY` ctrl-V",
+        "`CLICK` cell B2",
+        "`TYPING` '=($Sheet1.B3-$Sheet1.B2)/$Sheet1.B2'",
+        "`PRESS` enter",
+        "`CLICK` cell B2",
+        "`DOUBLE_CLICK` bottom right corner",
+        "`CLICK` cell B2",
+        "`MOVE_TO` bottom right corner of the cell B2",
+        "`DRAG_TO` cell D2",
+        "`CLICK` cell C2",
+        "`DOUBLE_CLICK` bottom right corner",
+        "`MOVE_TO` cell D2",
+        "`DOUBLE_CLICK` bottom right corner",
+        "`CLICK` cell B2",
+        "`DRAG_TO` D6",
+        "`CLICK` percent symbol"
+      ]
+    },
+    {
+      "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+      "instruction": "The information are mixed in one field. Help me split them and fill in the columns of First Name, Last Name and Rank",
+      "required_skill_ids": [
+        "37608790-6147-45d0-9f20-1137bb35703d.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`MOVE_TO` A2"
+        },
+        {
+          "action_id": 1,
+          "action": "`DRAG_TO` A22"
+        },
+        {
+          "action_id": 2,
+          "action": "`HOTKEY` CTRL-C"
+        },
+        {
+          "action_id": 3,
+          "action": "`CLICK` on B2"
+        },
+        {
+          "action_id": 4,
+          "action": "`HOTKEY` CTRL-V"
+        }
+      ],
+      "single_actions": [
+        "`MOVE_TO` A2",
+        "`DRAG_TO` A22",
+        "`HOTKEY` CTRL-C",
+        "`CLICK` on B2",
+        "`HOTKEY` CTRL-V",
+        "`CLICK` Data",
+        "`CLICK` Text to Columns",
+        "`CLICK` tab checkbox to uncheck it",
+        "`CLICK` Space checkbox to check it",
+        "`CLICK` OK"
+      ]
+    },
+    {
+      "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+      "instruction": "I'm working on a project and need to resize cells in a spreadsheet to fit onto one page and export to PDF for efficient presentation. Could you help me on this? Keep the name of PDF the same as the spreadsheet and place it under my home directory.",
+      "required_skill_ids": [
+        "aa3a8974-2e85-438b-b29e-a64df44deb4b.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 6,
+          "action": "`CLICK` File in the menu bar."
+        },
+        {
+          "action_id": 7,
+          "action": "`CLICK` Export as PDF..."
+        },
+        {
+          "action_id": 8,
+          "action": "`CLICK` file name field"
+        },
+        {
+          "action_id": 9,
+          "action": "`TYPING` '/home/user/Resize_Cells_Fit_Page.pdf'"
+        },
+        {
+          "action_id": 10,
+          "action": "`CLICK` Export."
+        }
+      ],
+      "single_actions": [
+        "`CLICK` Format in the menu bar.",
+        "`CLICK` Page...",
+        "`CLICK` the Sheet tab.",
+        "`CLICK` scale dropdown",
+        "`CLICK` 'Fit to number of pages'",
+        "`CLICK` OK.",
+        "`CLICK` File in the menu bar.",
+        "`CLICK` Export as PDF...",
+        "`CLICK` file name field",
+        "`TYPING` '/home/user/Resize_Cells_Fit_Page.pdf'",
+        "`CLICK` Export."
+      ]
+    },
+    {
+      "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+      "instruction": "Check the names in column \"Names with duplicates\" and put the unique ones in column \"Unique Names\". Keep the original order of the first occurrences.",
+      "required_skill_ids": [
+        "abed40dc-063f-4598-8ba5-9fe749c0615d.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`MOVE_TO` B2"
+        },
+        {
+          "action_id": 1,
+          "action": "`DRAG_TO` B17"
+        },
+        {
+          "action_id": 2,
+          "action": "`CLICK` 'Data' menu"
+        },
+        {
+          "action_id": 3,
+          "action": "`MOVE_TO` 'More Filters'"
+        },
+        {
+          "action_id": 4,
+          "action": "`CLICK` 'Standard Filter'"
+        },
+        {
+          "action_id": 5,
+          "action": "`CLICK` 'Value dropdown"
+        },
+        {
+          "action_id": 6,
+          "action": "`CLICK` Not empty"
+        },
+        {
+          "action_id": 7,
+          "action": "`CLICK` 'Options'"
+        },
+        {
+          "action_id": 8,
+          "action": "`CLICK` 'No duplications'"
+        },
+        {
+          "action_id": 9,
+          "action": "`CLICK` copy to"
+        },
+        {
+          "action_id": 10,
+          "action": "`CLICK` text box below"
+        },
+        {
+          "action_id": 11,
+          "action": "`TYPING` '$Sheet1.D2"
+        },
+        {
+          "action_id": 12,
+          "action": "`CLICK` 'OK'"
+        }
+      ],
+      "single_actions": [
+        "`MOVE_TO` B2",
+        "`DRAG_TO` B17",
+        "`CLICK` 'Data' menu",
+        "`MOVE_TO` 'More Filters'",
+        "`CLICK` 'Standard Filter'",
+        "`CLICK` 'Value dropdown",
+        "`CLICK` Not empty",
+        "`CLICK` 'Options'",
+        "`CLICK` 'No duplications'",
+        "`CLICK` copy to",
+        "`CLICK` text box below",
+        "`TYPING` '$Sheet1.D2",
+        "`CLICK` 'OK'"
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-calc-full-r01-006",
+    "task_detail_sha256": "262e3f15caa3ce9673d65c103b2c76cc95b41729a634575b7f177d4f5e477abc",
+    "guide": {
+      "final_verification": [
+        "切换到 Route Review，确认 A5:A16 仍为 12 个日期，B5:B16 已填入 12 个 Working Output 值，且与 Daily Metrics!B2:B13 一致。",
+        "单击 C6:C16 中的任意单元格并查看输入行，确认公式引用的是 $'Daily Metrics'.B...；C5 保持为空，C6:C16 显示为一位小数的百分比。",
+        "确认 E5 起的路线名单按首次出现顺序仅包含 North Loop、Harbor Spur、Cedar Link、Ridge Run、Quarry Way、Canal Point，且没有空白项目或重复项目。",
+        "确认 Route Review 上有一个以日期为横轴、以 Daily Change 为唯一数据系列的折线图，折线没有数据点标记。",
+        "确认已通过导出对话框将 PDF 输出为 /home/oai/share/route_operations_review.pdf。"
+      ],
+      "language": "zh-CN",
+      "overview": "本指南将在 Route Review 完成工作输出量副本、基于 Daily Metrics 固定工作表引用的日变化百分比、非空且去重的路线名册，以及无标记折线图，最后导出完成的审查表为 PDF。Daily Metrics 是源数据，操作期间不要修改其中的内容。",
+      "reference_task_id": "reference-task-calc-full-r01-006",
+      "starting_state_checks": [
+        "确认当前打开的是 initial_artifact.xlsx，且 Route Review 是活动工作表。",
+        "确认 Daily Metrics!A1:D13 包含带标题的完整源表；不要在该工作表中改写、删除或排序数据。",
+        "确认 Route Review!A5:A16 已有日期，而 B5:B16、C5:C16 与 E5:E20 仍为空；C 列已显示为一位小数的百分比格式。",
+        "确认 Route Review 上尚未有图表对象。"
+      ],
+      "steps": [
+        {
+          "efficiency_tip": "先一次选中完整的 12 行连续数据再复制，可避免逐格复制并保留源表不变。",
+          "instructions": [
+            "单击工作表标签 Daily Metrics，选中 B2，然后拖动到 B13，选中 Output Volume 的 12 个数据单元格，不要包含标题 B1。",
+            "按 Ctrl+C 复制所选范围。",
+            "切换回 Route Review，单击 B5，然后按 Ctrl+V。"
+          ],
+          "skill_ids": [
+            "37608790-6147-45d0-9f20-1137bb35703d.skill-01"
+          ],
+          "step_number": 1,
+          "title": "复制 Output Volume 到 Working Output",
+          "visible_success_signal": "Route Review!B5:B16 显示 12 个整数值，并逐行对应 Daily Metrics!B2:B13；Daily Metrics 中的原始 Output Volume 仍然存在。"
+        },
+        {
+          "efficiency_tip": "先把首个公式写成带固定工作表名、相对行号的形式，再向下填充，所有后续行会自动推进源数据行号。",
+          "instructions": [
+            "在 Route Review 中单击 C6。C5 是第一天，没有前一天可比较，应保持空白。",
+            "输入公式 =($'Daily Metrics'.B3-$'Daily Metrics'.B2)/$'Daily Metrics'.B2，然后按 Enter。",
+            "再次选中 C6 并复制。选中 C7:C16 后粘贴，使该公式填充到所有剩余日期。",
+            "单击 C7 或更下面任意一个结果单元格，检查输入行中的源工作表仍为 $'Daily Metrics'，而 B 列和行号已随行推进。"
+          ],
+          "skill_ids": [
+            "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-03"
+          ],
+          "step_number": 2,
+          "title": "计算固定源表的 Daily Change",
+          "visible_success_signal": "C5 为空，C6:C16 显示一位小数的百分比结果；例如 C6 的公式比较 Daily Metrics 的 B3 与 B2，后续行比较相邻的下一对源值。"
+        },
+        {
+          "efficiency_tip": "在打开筛选对话框前选中整列源字段（含标题），并在对话框内直接指定输出锚点，可一次得到保留首次出现顺序的非空去重名单。",
+          "instructions": [
+            "切换到 Daily Metrics，选中 D1:D13，其中包括 Service Route 标题和全部路线记录。",
+            "选择 Data > More Filters > Standard Filter。",
+            "在筛选条件中，将字段设为 Service Route，并把条件/值设为 Not empty，以排除空白路线。",
+            "展开 Options，启用 No duplications。再启用 Copy results to，并在目标位置输入 $'Route Review'.$E$4。该位置让复制的字段标题位于第 4 行，而路线结果从 E5 开始。",
+            "确认设置并单击 OK。必要时切换回 Route Review；如果复制的字段标题覆盖了 E4，可将 E4 改回 Distinct Route Roster，勿改动 E5 起的筛选结果。"
+          ],
+          "skill_ids": [
+            "abed40dc-063f-4598-8ba5-9fe749c0615d.skill-01"
+          ],
+          "step_number": 3,
+          "title": "生成非空且去重的路线名册",
+          "visible_success_signal": "Route Review 的 E5 起依首次出现顺序显示 North Loop、Harbor Spur、Cedar Link、Ridge Run、Quarry Way、Canal Point，每个仅出现一次，且没有空白路线项。"
+        },
+        {
+          "efficiency_tip": "通过 Ctrl 选择两个不相邻的完整列范围（连同标题）后直接插入图表，可使 Calc 自动使用日期作为分类标签、Daily Change 作为系列名。",
+          "instructions": [
+            "在 Route Review 中选中 A4:A16，其中 A4 是 Service Date 标题，A5:A16 是日期。",
+            "按住 Ctrl，再选中 C4:C16，其中 C4 是 Daily Change 标题；C5 的空白会保留为第一天无变化值。",
+            "使用工具栏的图表按钮，或选择 Insert > Chart，打开图表向导。",
+            "在图表类型中选择 Line，并选择仅线条、没有数据点标记的子类型。",
+            "确认数据范围包含所选的日期列和 Daily Change 列；在图表中使用第一列作为分类标签，并将第一行用作数据系列名称。完成图表插入后，将图表放在 Route Review 的空白区域，避免遮住表格结果。"
+          ],
+          "skill_ids": [
+            "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-07"
+          ],
+          "step_number": 4,
+          "title": "建立 Daily Change 无标记折线图",
+          "visible_success_signal": "Route Review 上出现图表，横轴为 Service Date 日期，只有一条 Daily Change 连续折线，线上没有圆点或其他数据点标记。"
+        },
+        {
+          "efficiency_tip": "在导出窗口的文件名框直接输入完整路径和文件名，不必逐层浏览文件夹，且可确保输出到指定位置。",
+          "instructions": [
+            "确认 Route Review 处于可见状态，并且复制的数据、百分比、路线名册和图表都已完成。",
+            "选择 File > Export as PDF。",
+            "在文件名字段输入 /home/oai/share/route_operations_review.pdf。",
+            "单击 Export；如出现 PDF 选项窗口，保留适合当前工作表的常规设置后确认导出。"
+          ],
+          "skill_ids": [
+            "aa3a8974-2e85-438b-b29e-a64df44deb4b.skill-02"
+          ],
+          "step_number": 5,
+          "title": "导出完成的 Route Review 为 PDF",
+          "visible_success_signal": "导出过程完成，目标位置为 /home/oai/share/route_operations_review.pdf。"
+        },
+        {
+          "efficiency_tip": "最终检查时随机对照首行、中间行和末行，能快速发现遗漏的粘贴行或未填充的公式。",
+          "instructions": [
+            "返回 Route Review，随机比较 B5、B10、B16 与 Daily Metrics 中对应的 B2、B7、B13。",
+            "检查 C5 为空，并检查 C6 与 C16 均为百分比结果；单击其中一个单元格确认其公式仍引用 $'Daily Metrics'。",
+            "查看 E5 起的路线列表和图表，确认没有重复或空白路线，且图表仍为无标记的单线图。"
+          ],
+          "skill_ids": [],
+          "step_number": 6,
+          "title": "完成最终可见性核对",
+          "visible_success_signal": "工作表上同时可见完整 Working Output、Daily Change、Distinct Route Roster 和 Daily Change 趋势图，且 PDF 已按指定路径导出。"
+        }
+      ]
+    },
+    "generation": {
+      "request_id": "ec4a72e4-d2c2-4118-a773-3948a3489476",
+      "prompt_sha256": "62c3e39ae90e1fc86c8a381133a7861ac99245dddc59745732f6f9c52b370ddc",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 4454,
+      "output_tokens": 2636,
+      "estimated_cost_usd": 0.04054
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-006",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-006/initial_artifact.xlsx",
+      "artifact_sha256": "2121aaa1a1218c89eb0c2d62e9e0a77e688185c63e85c0c890694f40605dc4a5",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-006/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-006/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.xlsx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-006",
+      "task_config_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-006.json",
+      "artifact_sha256": "2121aaa1a1218c89eb0c2d62e9e0a77e688185c63e85c0c890694f40605dc4a5",
+      "blueprint_request_id": "95c7eafd-9289-4c45-a30b-1eb167439b5c"
+    },
+    "packet_path": "task_config.json"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "id": "reference-task-calc-full-r01-016",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Complete the Net Reimbursement calculation for every workshop supply request, keep the internal test requests on rows 6, 13, and 20 out of view without removing them, and show the overall reimbursement total beside the Total Reimbursement label.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-016/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/workshop_reimbursements.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/workshop_reimbursements.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-calc-full-r01-016",
+    "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-016/initial_artifact.xlsx",
+    "artifact_sha256": "b475a352ce834769ecd99412dbd42dcaec8885d55803bf03ea8c9d0aa3af876a",
+    "guest_artifact_path": "/home/user/Desktop/workshop_reimbursements.xlsx",
+    "required_skill_ids": [
+      "7e429b8d-a3f0-4ed0-9b58-08957d00b127.skill-02",
+      "6054afcb-5bab-4702-90a0-b259b5d3217c.skill-01",
+      "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-01"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The expert may calculate and verify the total before or after hiding the specified records, provided all per-record net formulas are filled, the required records are hidden rather than removed, and the total formula covers the complete record range.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Use the seeded formula in G2 and the fill handle’s double-click behavior; the neighboring data columns are continuous through row 25.",
+          "operation_intent": "Propagate the Net Reimbursement formula from the seeded first record through all remaining contiguous reimbursement records.",
+          "skill_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127.skill-02",
+          "visible_success_signal": "G3:G25 display calculated currency results with row-relative formulas, while G2 remains the original seed."
+        },
+        {
+          "efficiency_tip": "Use a single multi-selection of row headers and issue the hide command once rather than hiding records individually.",
+          "operation_intent": "Hide the three internal test reimbursement records on rows 6, 13, and 20 without deleting their data.",
+          "skill_id": "6054afcb-5bab-4702-90a0-b259b5d3217c.skill-01",
+          "visible_success_signal": "The row-number sequence visibly skips 6, 13, and 20, and the surrounding records remain in place."
+        },
+        {
+          "efficiency_tip": "Enter one SUM formula referencing the complete Net Reimbursement data range; the blank spacer row prevents accidental inclusion of the total cell.",
+          "operation_intent": "Calculate the overall reimbursement amount in G27 next to the Total Reimbursement label.",
+          "skill_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-01",
+          "visible_success_signal": "G27 shows a currency total produced by a range-total formula covering G2:G25."
+        }
+      ],
+      "recording_end_state": "All reimbursement records have calculated net values, rows 6, 13, and 20 are hidden, and G27 contains the range total for G2:G25.",
+      "recording_start_state": "The Reimbursements sheet is visible with populated source records, only G2 containing the seeded formula, and all rows visible."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Navigate to the Reimbursements sheet and select the seeded formula cell and later the total-result cell.",
+        "reason": "Cell selection is needed to propagate the existing calculation and place the requested total."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Enter a SUM range formula in G27 that totals the Net Reimbursement results from the record rows.",
+        "reason": "This is the natural calculation needed to produce the requested overall reimbursement total."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Select the specified non-adjacent row headers using a multi-selection modifier before applying the row-hide command.",
+        "reason": "The requested records must be concealed together while preserving their contents."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc is open with a single sheet named Reimbursements.",
+      "Rows 2 through 25 contain reimbursement records, with ordinary header styling and currency-formatted monetary columns.",
+      "G2 contains a Net Reimbursement seed formula, while G3:G25 are blank.",
+      "Rows 6, 13, and 20 are visible.",
+      "Row 26 is blank, F27 shows Total Reimbursement, and G27 is blank."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

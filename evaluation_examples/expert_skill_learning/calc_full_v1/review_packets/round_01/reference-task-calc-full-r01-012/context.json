@@ -1,0 +1,829 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-012",
+  "package": {
+    "reference_task_id": "reference-task-calc-full-r01-012",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_calc",
+    "task_instruction": "Complete the Coastal Lab Dispatch Log by calculating the daily completion rate as verified kits divided by planned kits for every dispatch date, then add a lines-only line chart that shows how the completion rate changes across the dates.",
+    "required_skill_ids": [
+      "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-04",
+      "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-02",
+      "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-01"
+    ],
+    "artifact_spec": {
+      "artifact_type": "xlsx",
+      "domain": "Coastal laboratory sample-dispatch tracking",
+      "generation_notes": [
+        "All records and names must be synthetic and privacy-safe.",
+        "Create one worksheet named \"Dispatch Log\" with 24 daily records, using consecutive dates in April 2026.",
+        "Populate Planned Kits with varied whole-number values from 80 to 160 and Verified Kits with varied whole-number values that are positive and no greater than the corresponding Planned Kits value.",
+        "Use realistic variation in the verified-to-planned ratio so the resulting trend is visibly non-flat.",
+        "Apply a percentage number format with one decimal place to the blank Completion Rate column.",
+        "Use a clear bold header row and ordinary table styling; do not create a chart, Pivot Table, conditional-format rule, or formula in the Completion Rate data cells."
+      ],
+      "initial_state": [
+        "The workbook opens with the \"Dispatch Log\" sheet active.",
+        "Row 1 contains headers and rows 2 through 25 contain the 24 source records.",
+        "Column B, Completion Rate, is entirely blank from B2:B25 but is already percentage-formatted to one decimal place.",
+        "Columns C and D contain contiguous complete numeric data for every record, enabling an entered formula in B2 to be filled down automatically.",
+        "No chart object exists anywhere in the workbook."
+      ],
+      "must_not_be_completed": [
+        "Do not prepopulate B2:B25 with formulas or values.",
+        "Do not pre-create any chart or substitute another chart type for the requested lines-only line chart.",
+        "Do not add totals, extra worksheets, or unrelated analysis."
+      ],
+      "sheets": [
+        {
+          "columns": [
+            {
+              "data_type": "date",
+              "name": "Dispatch Date"
+            },
+            {
+              "data_type": "decimal",
+              "name": "Completion Rate"
+            },
+            {
+              "data_type": "integer",
+              "name": "Planned Kits"
+            },
+            {
+              "data_type": "integer",
+              "name": "Verified Kits"
+            }
+          ],
+          "name": "Dispatch Log",
+          "purpose": "Daily planned and verified kit counts, with a blank calculated completion-rate field for analysis.",
+          "row_count": 24
+        }
+      ],
+      "workbook_title": "Coastal Lab Dispatch Completion"
+    },
+    "operator_guide": {
+      "allowed_variation": "The operator may use keyboard entry, the formula bar, a fill-handle double-click, or an equivalent Calc autofill method. The chart may be positioned anywhere on the Dispatch Log sheet, provided it visibly uses Dispatch Date as the category axis and Completion Rate as the sole plotted series.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Enter the calculation once using row-relative references; it will then adapt correctly for all later dates when filled.",
+          "operation_intent": "In the first blank Completion Rate cell, calculate each day's verified-kit share of its planned-kit count with a relative-reference division formula.",
+          "skill_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-01",
+          "visible_success_signal": "B2 displays a percentage consistent with Verified Kits divided by Planned Kits for row 2."
+        },
+        {
+          "efficiency_tip": "Use the fill handle on the completed first formula to populate the contiguous records rather than retyping formulas.",
+          "operation_intent": "Extend the first Completion Rate formula through every remaining dispatch record.",
+          "skill_id": "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-02",
+          "visible_success_signal": "B2:B25 are populated, and formulas in later rows reference the corresponding Planned Kits and Verified Kits cells."
+        },
+        {
+          "efficiency_tip": "Choose the Line chart family and its no-marker, lines-only variant before finishing chart creation.",
+          "operation_intent": "Create a line-only chart of the completed daily completion-rate trend from the selected Dispatch Date and Completion Rate data.",
+          "skill_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-04",
+          "visible_success_signal": "A chart is visible with dates as categories and one connected Completion Rate line that has no point markers."
+        }
+      ],
+      "recording_end_state": "The Dispatch Log sheet retains all 24 records, B2:B25 show calculated percentage completion rates, and a readable lines-only line chart displays the daily rate trend.",
+      "recording_start_state": "The Dispatch Log sheet is active with the source table present, the Completion Rate cells blank, and no chart in the workbook."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Select the date and completed rate columns, including their headers, as the chart source range.",
+        "reason": "The chart needs the daily dates as category labels and the calculated completion rates as its plotted series."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Place or resize the inserted chart so it is visibly readable without obscuring the dispatch table.",
+        "reason": "This makes the completed trend visualization clearly inspectable in the final workbook."
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+          "skill_count": 1,
+          "skill_fraction": 0.333333
+        },
+        {
+          "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+          "skill_count": 1,
+          "skill_fraction": 0.333333
+        },
+        {
+          "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+          "skill_count": 1,
+          "skill_fraction": 0.333333
+        }
+      ],
+      "dominant_source_task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+      "dominant_source_skill_fraction": 0.333333,
+      "complete_source_skill_sets_included": []
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+        "max_sequence_similarity": 0.376022,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "sequence_similarity": 0.135922
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "sequence_similarity": 0.03125
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "sequence_similarity": 0.043887
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "sequence_similarity": 0.034557
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "sequence_similarity": 0.376022
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "sequence_similarity": 0.257576
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "sequence_similarity": 0.025751
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "sequence_similarity": 0.367568
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "sequence_similarity": 0.234177
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "sequence_similarity": 0.167702
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "sequence_similarity": 0.263473
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "sequence_similarity": 0.022321
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "sequence_similarity": 0.189258
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "sequence_similarity": 0.322251
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "sequence_similarity": 0.338824
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "sequence_similarity": 0.015873
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "sequence_similarity": 0.217391
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "sequence_similarity": 0.187879
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "sequence_similarity": 0.02946
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.300926
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.023179
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "sequence_similarity": 0.129944
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "sequence_similarity": 0.375635
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "sequence_similarity": 0.016598
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "sequence_similarity": 0.24581
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "sequence_similarity": 0.195584
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "sequence_similarity": 0.316327
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "sequence_similarity": 0.034843
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "sequence_similarity": 0.20712
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "sequence_similarity": 0.026726
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "sequence_similarity": 0.03956
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "sequence_similarity": 0.217949
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "sequence_similarity": 0.313609
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "sequence_similarity": 0.14026
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "sequence_similarity": 0.194631
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "sequence_similarity": 0.188679
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "sequence_similarity": 0.040449
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "sequence_similarity": 0.161074
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "sequence_similarity": 0.217984
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "sequence_similarity": 0.026549
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "sequence_similarity": 0.07984
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "sequence_similarity": 0.03299
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "sequence_similarity": 0.30491
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "sequence_similarity": 0.242604
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "sequence_similarity": 0.231362
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "sequence_similarity": 0.02521
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "sequence_similarity": 0.187919
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+        "max_cosine_similarity": 0.355283,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "cosine_similarity": 0.181836
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "cosine_similarity": 0.349829
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "cosine_similarity": 0.268411
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "cosine_similarity": 0.324382
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "cosine_similarity": 0.347976
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "cosine_similarity": 0.137203
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "cosine_similarity": 0.227542
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "cosine_similarity": 0.283494
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "cosine_similarity": 0.205385
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "cosine_similarity": 0.106405
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "cosine_similarity": 0.127668
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "cosine_similarity": 0.213218
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "cosine_similarity": 0.167784
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "cosine_similarity": 0.280511
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "cosine_similarity": 0.284157
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "cosine_similarity": 0.173619
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "cosine_similarity": 0.198596
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "cosine_similarity": 0.344957
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "cosine_similarity": 0.227384
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.284903
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.271984
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "cosine_similarity": 0.224651
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "cosine_similarity": 0.355283
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "cosine_similarity": 0.126441
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "cosine_similarity": 0.239743
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "cosine_similarity": 0.090416
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "cosine_similarity": 0.219541
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "cosine_similarity": 0.295229
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "cosine_similarity": 0.235608
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "cosine_similarity": 0.130583
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "cosine_similarity": 0.233025
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "cosine_similarity": 0.219289
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "cosine_similarity": 0.176121
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "cosine_similarity": 0.230335
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "cosine_similarity": 0.203856
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "cosine_similarity": 0.222224
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "cosine_similarity": 0.234883
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "cosine_similarity": 0.18763
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "cosine_similarity": 0.206783
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "cosine_similarity": 0.193081
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "cosine_similarity": 0.131799
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "cosine_similarity": 0.166372
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "cosine_similarity": 0.171014
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "cosine_similarity": 0.292364
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "cosine_similarity": 0.149339
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "cosine_similarity": 0.245114
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "cosine_similarity": 0.255213
+          }
+        ],
+        "embedding_request_id": "e9df3ea8-8c8e-4f8c-9056-df67ef6090d3"
+      }
+    },
+    "generation": {
+      "attempt": 12,
+      "kind": "new_combination",
+      "request_id": "0b9ce4ba-2d88-44c1-8f2d-272bbd4a65e3",
+      "prompt_sha256": "d4c93f6054a95bfd911cd538b9e2b80ec93fcb92791b889a657c32d85e9a1196"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-04",
+      "app": "libreoffice_calc",
+      "name": "Insert a lines-only line chart from selected spreadsheet data",
+      "procedure": [
+        "With the intended data range selected, click the chart insertion icon to open chart creation.",
+        "Choose the Line chart type, then select the lines-only variant (the option without point markers, shown as the third icon from the right in this interface).",
+        "Click Finish to insert the chart using the current selection."
+      ],
+      "efficiency_tip": "Choose the chart family and variant before finishing, so the chart is created correctly without needing to reopen its type settings afterward.",
+      "source": {
+        "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+        "action_ids": [
+          16,
+          17,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "skill_id": "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Autofill a formula down an adjacent data region",
+      "procedure": [
+        "Select the cell containing the completed formula, such as `G2`.",
+        "Move to the small fill handle at the cell's bottom-right corner.",
+        "Double-click the fill handle. Calc copies the formula downward to match the contiguous neighboring rows, adjusting relative references for each destination row."
+      ],
+      "efficiency_tip": "Double-clicking the fill handle is faster and less error-prone than manually dragging it through a long adjacent data region.",
+      "source": {
+        "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+        "action_ids": [
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "skill_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Create a row-wise division formula with relative references",
+      "procedure": [
+        "Select the first result cell in the output column and type a division formula using relative references.",
+        "For example, enter `=A2/B2` in the first result row and press Enter. When copied to later rows, Calc changes it to `=A3/B3`, `=A4/B4`, and so on."
+      ],
+      "efficiency_tip": "Enter the formula once with relative references, then use an autofill technique instead of manually rewriting it for each row.",
+      "source": {
+        "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+        "action_ids": [
+          3,
+          4
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+      "instruction": "Work out the monthly total sales in a new row called \"Total\" and then create a line chart to show the results (x-axis be Months).",
+      "required_skill_ids": [
+        "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-04"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 16,
+          "action": "`CLICK` chart icon"
+        },
+        {
+          "action_id": 17,
+          "action": "`CLICK` Line"
+        },
+        {
+          "action_id": 18,
+          "action": "`CLICK` icon representing lines only (3rd from the right)"
+        },
+        {
+          "action_id": 19,
+          "action": "`CLICK` Finish"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell A12",
+        "`TYPING` 'Total'",
+        "`PRESS` tab",
+        "`TYPING` '=SUM(B2:B11)'",
+        "`PRESS` enter",
+        "`CLICK` cell B12",
+        "`MOVE_TO bottom right corner of the cell B12`",
+        "`DRAG_TO` bottom right corner of the cell G12",
+        "`MOVE_TO` middle of cell A1",
+        "`DRAG_TO` middle of cell G1",
+        "`KEY_DOWN` ctrl",
+        "`CLICK` cell A12",
+        "`KEY_UP` ctrl",
+        "`KEY_DOWN` shift",
+        "`CLICK` cell G12",
+        "`KEY_UP` shift",
+        "`CLICK` chart icon",
+        "`CLICK` Line",
+        "`CLICK` icon representing lines only (3rd from the right)",
+        "`CLICK` Finish"
+      ]
+    },
+    {
+      "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+      "instruction": "Please calculate the period rate for my data in a new column with header \"Period Rate (%)\", convert the results as number type, and highlight the highest result with green (#00ff00) font.",
+      "required_skill_ids": [
+        "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 3,
+          "action": "`TYPING` '=A2/B2'"
+        },
+        {
+          "action_id": 4,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell C1",
+        "`TYPING` 'Period Rate (%)'",
+        "`PRESS` enter",
+        "`TYPING` '=A2/B2'",
+        "`PRESS` enter",
+        "`CLICK` cell C2",
+        "`DOUBLE_CLICK` bottom right corner of the cell C2",
+        "`CLICK` on the 0.0 icon that converts the cell to number type",
+        "`CLICK` format",
+        "`MOVE_TO` 'conditional...'",
+        "`CLICK` 'condition'",
+        "`CLICK` 'cell value' dropdown",
+        "`CLICK` 'Formula is' option",
+        "`CLICK` text field",
+        "`TYPING` $C2=MAX($C$2:$C$25)",
+        "`CLICK` accent dropdown",
+        "`CLICK` new style",
+        "`CLICK` font effects",
+        "`CLICK` font color dropdown",
+        "`CLICK` custom color...",
+        "`DOUBLE_CLICK` Hex text box",
+        "`TYPING` '00ff00'",
+        "`PRESS` enter",
+        "`CLICK` OK",
+        "`CLICK` OK"
+      ]
+    },
+    {
+      "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+      "instruction": "Calculate revenue in a new column according to the Retail Price sheet (consider product price and quantity and discount), and generate a Pivot Table in a new sheet (Sheet2) that summarizes the revenue of each product.",
+      "required_skill_ids": [
+        "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 7,
+          "action": "`CLICK` cell G2"
+        },
+        {
+          "action_id": 8,
+          "action": "`MOVE_TO` bottom right corner of the cell G2`"
+        },
+        {
+          "action_id": 9,
+          "action": "`DOUBLE_CLICK`"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` cell G1",
+        "`TYPING` 'Revenue'",
+        "`PRESS` enter",
+        "`CLICK` sheet 'Retail Price'",
+        "`CLICK` sheet 'Sheet1'",
+        "`TYPING` '=VLOOKUP(C2,$'Retail Price'.$A$2:$B$23,2,FALSE())*E2*(1-F2)'",
+        "`PRESS` enter",
+        "`CLICK` cell G2",
+        "`MOVE_TO` bottom right corner of the cell G2`",
+        "`DOUBLE_CLICK`",
+        "`HOTKEY` ctrl-A",
+        "`CLICK` pivot table icon",
+        "`PRESS` enter",
+        "`MOVE_TO` product in available fields box",
+        "`DRAG_TO` row fields box",
+        "`MOVE_TO` revenue in available fields box",
+        "`DRAG_TO` data fields box",
+        "`CLICK` ok",
+        "`DOUBLE_CLICK` Pivot Table Sheet1_1",
+        "`TYPING` Sheet2",
+        "`PRESS` enter"
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-calc-full-r01-012",
+    "task_detail_sha256": "32f7af048be74566fa082dada1fbef5ff79a3135b31991ae3098ebad837fcf67",
+    "guide": {
+      "final_verification": [
+        "“Dispatch Log”工作表仍保留第1行标题和第2至25行的24条每日调度记录，没有新增无关工作表、汇总行或分析列。",
+        "检查 B2:B25：每个单元格都有结果且以一位小数的百分比显示；例如选中任一结果单元格时，公式栏中的公式应使用该行的 D 列除以 C 列。",
+        "工作表中存在一个清晰可读的折线图：横轴类别来自 Dispatch Date，只有一个 Completion Rate 数据系列，折线连续且不显示数据点标记。",
+        "确认图表未遮住需要查看的源数据；必要时可将图表拖到表格右侧或下方的空白区域。"
+      ],
+      "language": "zh-CN",
+      "overview": "在“Dispatch Log”中，先以 Verified Kits ÷ Planned Kits 计算每天的 Completion Rate，再把公式快速填充至全部24条记录，最后用 Dispatch Date 和 Completion Rate 创建无数据点标记的折线图，展示每日完成率变化。",
+      "reference_task_id": "reference-task-calc-full-r01-012",
+      "starting_state_checks": [
+        "确认 LibreOffice Calc 已打开工作簿，当前活动工作表名称为“Dispatch Log”。",
+        "确认第1行显示标题 Dispatch Date、Completion Rate、Planned Kits、Verified Kits，且数据位于第2行至第25行。",
+        "确认 B2:B25 目前为空白，但该列已经显示为一位小数的百分比格式；C 列和 D 列每一条记录都有数值。",
+        "确认工作表中尚未存在图表对象。"
+      ],
+      "steps": [
+        {
+          "efficiency_tip": "先核对列含义再输入公式，可避免把计划数量和已核验数量的除数、被除数写反。",
+          "instructions": [
+            "单击单元格 B2，这是第一条记录的 Completion Rate 结果位置。",
+            "输入公式 `=D2/C2`，其中 D2 是 Verified Kits，C2 是 Planned Kits。",
+            "按 Enter 确认公式。由于 B 列已预设为百分比且保留一位小数，结果会自动按百分比显示。"
+          ],
+          "skill_ids": [
+            "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-01"
+          ],
+          "step_number": 1,
+          "title": "计算第一天的完成率",
+          "visible_success_signal": "B2 显示一个一位小数的百分比，而不是空白；其数值与同一行 Verified Kits 除以 Planned Kits 的结果一致。"
+        },
+        {
+          "efficiency_tip": "使用填充柄双击会自动依据相邻 C、D 列的连续数据向下填充，比逐行输入或长距离拖动更快，也更不容易漏行。",
+          "instructions": [
+            "重新选中含有公式的 B2。",
+            "将鼠标移到 B2 单元格右下角的小方块（填充柄）。鼠标指针变为适合填充的形状时，双击该填充柄。",
+            "确认 Calc 将公式向下复制到与相邻数据区域对应的最后一行，即 B25。",
+            "可单击例如 B3 或 B25，在公式栏中检查引用已随行号变化，例如 B3 使用 `=D3/C3`。"
+          ],
+          "skill_ids": [
+            "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-02"
+          ],
+          "step_number": 2,
+          "title": "向下自动填充全部完成率公式",
+          "visible_success_signal": "B2:B25 全部显示百分比结果，且不同日期的结果有变化；后续行公式引用各自所在行的 C 列和 D 列。"
+        },
+        {
+          "efficiency_tip": "一次选中包含标题的两列数据，可让 Calc 自动将 Dispatch Date 识别为类别标签，并将 Completion Rate 识别为唯一的数据系列。",
+          "instructions": [
+            "选择图表源数据区域 A1:B25，包含 Dispatch Date、Completion Rate 及全部24条数据。",
+            "在工具栏中点击插入图表的图标以打开图表创建向导；也可使用菜单“插入”中的图表命令。",
+            "在图表类型中选择“折线图”。",
+            "在折线图的变体中选择仅显示线条、不带数据点标记的“线条”变体（此界面中为从右侧数第三个图标）。",
+            "确认数据范围仍为 A1:B25，且首行作为标签使用；然后点击“完成”插入图表。"
+          ],
+          "skill_ids": [
+            "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-04"
+          ],
+          "step_number": 3,
+          "title": "创建每日完成率的无标记折线图",
+          "visible_success_signal": "“Dispatch Log”上出现折线图，横轴按日期显示，图中仅有一条 Completion Rate 折线，并且线条上没有圆点或其他数据点标记。"
+        },
+        {
+          "efficiency_tip": "若图表与表格重叠，优先拖动图表边框整体移动到右侧或下方空白处；这样无需改变数据源即可提高可读性。",
+          "instructions": [
+            "查看图表是否完整显示日期趋势和完成率线条。",
+            "如图表遮挡了表格，单击图表边框并将其移动或调整为可读的大小，避免覆盖 B2:B25 或源数据标题。",
+            "确认图表仍只绘制 Completion Rate，日期仍作为横轴类别。"
+          ],
+          "skill_ids": [],
+          "step_number": 4,
+          "title": "整理图表并检查结果",
+          "visible_success_signal": "源表数据和图表可以同时查看；图表清晰显示随 April 2026 各日期变化的非平坦完成率趋势。"
+        }
+      ]
+    },
+    "generation": {
+      "request_id": "7f2737f9-8ac2-482c-a622-9849689ad40b",
+      "prompt_sha256": "36a62aa14c675e2f39425b687d487e3779ccfd96d2e02b6a3cbb1a7d3de27504",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 2838,
+      "output_tokens": 1366,
+      "estimated_cost_usd": 0.022068
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-012",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-012/initial_artifact.xlsx",
+      "artifact_sha256": "a0510b9895c791890adab71dfcb65084cd297c2303f565810fde6f62dbf07170",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-012/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-012/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.xlsx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-012",
+      "task_config_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-012.json",
+      "artifact_sha256": "a0510b9895c791890adab71dfcb65084cd297c2303f565810fde6f62dbf07170",
+      "blueprint_request_id": "4994ea69-75b8-4697-bb4b-202bd995083e"
+    },
+    "packet_path": "task_config.json"
+  }
+}

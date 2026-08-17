@@ -1,0 +1,939 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-004",
+  "package": {
+    "reference_task_id": "reference-task-calc-full-r01-004",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_calc",
+    "task_instruction": "Finish the garden supply reconciliation: calculate Remaining Packs for every item in all three delivery rounds, then add an Archive worksheet containing a copied snapshot of Round A with its title, headers, items, and quantities.",
+    "required_skill_ids": [
+      "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-01",
+      "1e8df695-bd1b-45b3-b557-e7d599cf7597.skill-01",
+      "f9584479-3d0d-4c79-affa-9ad7afdd8850.skill-03",
+      "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-02"
+    ],
+    "artifact_spec": {
+      "artifact_type": "xlsx",
+      "domain": "community garden supply rounds",
+      "generation_notes": [
+        "All names, items, and quantities are synthetic and privacy-safe.",
+        "Use ordinary spreadsheet styling: make each round title bold with a light fill, make column headers bold, and format pack quantities as integers.",
+        "Do not create any additional sheets, formulas in Remaining Packs, Pivot Tables, or conditional formatting rules."
+      ],
+      "initial_state": [
+        "The workbook opens with exactly one worksheet named \"Supply Rounds\".",
+        "The \"Supply Rounds\" sheet contains three identically structured delivery-round blocks in columns A:D.",
+        "Round A occupies A1:D7. A1 contains \"Round A — Tuesday\"; row 2 headers are Item, Prepared Packs, Issued Packs, Remaining Packs; rows 3:7 contain five populated supply records in A:C and blank cells in D.",
+        "Round B occupies A9:D15. A9 contains \"Round B — Thursday\"; row 10 has the same headers; rows 11:15 contain five populated supply records in A:C and blank cells in D.",
+        "Round C occupies A17:D23. A17 contains \"Round C — Saturday\"; row 18 has the same headers; rows 19:23 contain five populated supply records in A:C and blank cells in D.",
+        "Use these Round A records: Seed Trays / 84 / 29; Compost Bags / 63 / 18; Bamboo Stakes / 120 / 46; Watering Cans / 28 / 9; Plant Labels / 150 / 72.",
+        "Use these Round B records: Seed Trays / 76 / 31; Compost Bags / 58 / 21; Bamboo Stakes / 110 / 39; Watering Cans / 24 / 8; Plant Labels / 135 / 54.",
+        "Use these Round C records: Seed Trays / 91 / 34; Compost Bags / 70 / 25; Bamboo Stakes / 128 / 52; Watering Cans / 31 / 12; Plant Labels / 160 / 67."
+      ],
+      "must_not_be_completed": [
+        "No second worksheet exists initially.",
+        "All Remaining Packs cells D3:D7, D11:D15, and D19:D23 are blank initially.",
+        "No Archive sheet or copied Round A snapshot exists initially."
+      ],
+      "sheets": [
+        {
+          "columns": [
+            {
+              "data_type": "text",
+              "name": "Item"
+            },
+            {
+              "data_type": "integer",
+              "name": "Prepared Packs"
+            },
+            {
+              "data_type": "integer",
+              "name": "Issued Packs"
+            },
+            {
+              "data_type": "integer",
+              "name": "Remaining Packs"
+            }
+          ],
+          "name": "Supply Rounds",
+          "purpose": "Three delivery-round input blocks awaiting remaining-pack calculations and an archived Round A snapshot.",
+          "row_count": 23
+        }
+      ],
+      "workbook_title": "Garden Supply Round Reconciliation"
+    },
+    "operator_guide": {
+      "allowed_variation": "The expert may complete the archive copy before or after the calculations, and may use any equivalent Calc method to fill the first formula down, provided the displayed formulas and copied values have the required final relationships.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Copy the full Round A snapshot as one contiguous selection, including its title and headers, so the archive keeps its context.",
+          "operation_intent": "Copy the contiguous Round A range A1:C7 from Supply Rounds and paste it at A1 on the Archive worksheet.",
+          "skill_id": "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-01",
+          "visible_success_signal": "Archive visibly shows the Round A title, the three input headers, and all five Round A item and quantity records."
+        },
+        {
+          "efficiency_tip": "Use relative references in the first result row so a single formula can be efficiently propagated through the first block.",
+          "operation_intent": "In D3, create a subtraction formula that calculates remaining packs as Prepared Packs minus Issued Packs for that row.",
+          "skill_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597.skill-01",
+          "visible_success_signal": "D3 displays 55, and its formula subtracts the row's Issued Packs value from its Prepared Packs value."
+        },
+        {
+          "efficiency_tip": "After the Round A formulas are prepared, copy the entire five-cell formula range once and paste it at the top of each matching later-round result area.",
+          "operation_intent": "Copy the completed Round A formula range D3:D7 to both D11:D15 and D19:D23 so the later rounds calculate their own remaining packs.",
+          "skill_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850.skill-03",
+          "visible_success_signal": "Every Remaining Packs cell in Rounds B and C contains a result, with formulas referencing Prepared Packs and Issued Packs on the corresponding local row."
+        },
+        {
+          "efficiency_tip": "Use the sheet-tab plus control to immediately create the blank destination before renaming it for the archive.",
+          "operation_intent": "Insert a new blank worksheet using the sheet-tab plus button, then identify it as Archive for the copied snapshot.",
+          "skill_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-02",
+          "visible_success_signal": "A separate worksheet named Archive is present alongside Supply Rounds."
+        }
+      ],
+      "recording_end_state": "The workbook has Supply Rounds and Archive sheets. Supply Rounds has calculated Remaining Packs formulas in all three blocks, and Archive contains the copied Round A A1:C7 snapshot.",
+      "recording_start_state": "The workbook opens on the single Supply Rounds worksheet with the three populated input blocks, blank Remaining Packs cells, and no Archive worksheet."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Propagate the initial subtraction formula from the first Round A result cell through the other Round A result rows to create a complete formula range.",
+        "reason": "A populated Round A formula range is needed before that range can be copied to both later round blocks."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Rename the newly inserted blank worksheet to \"Archive\".",
+        "reason": "The requested copied snapshot needs a clearly identified destination worksheet."
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        }
+      ],
+      "dominant_source_task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+      "dominant_source_skill_fraction": 0.25,
+      "complete_source_skill_sets_included": []
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+        "max_sequence_similarity": 0.338109,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "sequence_similarity": 0.24
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "sequence_similarity": 0.028219
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "sequence_similarity": 0.019078
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "sequence_similarity": 0.030837
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "sequence_similarity": 0.296089
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "sequence_similarity": 0.248062
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "sequence_similarity": 0.035011
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "sequence_similarity": 0.288089
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "sequence_similarity": 0.273616
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "sequence_similarity": 0.191693
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "sequence_similarity": 0.276923
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "sequence_similarity": 0.009112
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "sequence_similarity": 0.256545
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "sequence_similarity": 0.26178
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "sequence_similarity": 0.317308
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "sequence_similarity": 0.012121
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "sequence_similarity": 0.21727
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "sequence_similarity": 0.23676
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "sequence_similarity": 0.046512
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.264775
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "sequence_similarity": 0.020168
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "sequence_similarity": 0.17971
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "sequence_similarity": 0.228571
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "sequence_similarity": 0.004228
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "sequence_similarity": 0.338109
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "sequence_similarity": 0.266234
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "sequence_similarity": 0.229765
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "sequence_similarity": 0.021239
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "sequence_similarity": 0.22
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "sequence_similarity": 0.027273
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "sequence_similarity": 0.008969
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "sequence_similarity": 0.20462
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "sequence_similarity": 0.224924
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "sequence_similarity": 0.191489
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "sequence_similarity": 0.17301
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "sequence_similarity": 0.097087
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "sequence_similarity": 0.03211
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "sequence_similarity": 0.207612
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "sequence_similarity": 0.318436
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "sequence_similarity": 0.027088
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "sequence_similarity": 0.01626
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "sequence_similarity": 0.042017
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "sequence_similarity": 0.243386
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "sequence_similarity": 0.261398
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "sequence_similarity": 0.252632
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "sequence_similarity": 0.038544
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "sequence_similarity": 0.15917
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+        "max_cosine_similarity": 0.420299,
+        "by_source_task": [
+          {
+            "task_id": "01b269ae-2111-4a07-81fd-3fcd711993b0",
+            "cosine_similarity": 0.303195
+          },
+          {
+            "task_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7",
+            "cosine_similarity": 0.340596
+          },
+          {
+            "task_id": "035f41ba-6653-43ab-aa63-c86d449d62e5",
+            "cosine_similarity": 0.404852
+          },
+          {
+            "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+            "cosine_similarity": 0.344953
+          },
+          {
+            "task_id": "0a2e43bf-b26c-4631-a966-af9dfa12c9e5",
+            "cosine_similarity": 0.345414
+          },
+          {
+            "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+            "cosine_similarity": 0.243767
+          },
+          {
+            "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+            "cosine_similarity": 0.349041
+          },
+          {
+            "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+            "cosine_similarity": 0.294539
+          },
+          {
+            "task_id": "1273e544-688f-496b-8d89-3e0f40aa0606",
+            "cosine_similarity": 0.333519
+          },
+          {
+            "task_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17",
+            "cosine_similarity": 0.122823
+          },
+          {
+            "task_id": "1954cced-e748-45c4-9c26-9855b97fbc5e",
+            "cosine_similarity": 0.307135
+          },
+          {
+            "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+            "cosine_similarity": 0.336891
+          },
+          {
+            "task_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197",
+            "cosine_similarity": 0.353009
+          },
+          {
+            "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+            "cosine_similarity": 0.323888
+          },
+          {
+            "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+            "cosine_similarity": 0.225465
+          },
+          {
+            "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+            "cosine_similarity": 0.24896
+          },
+          {
+            "task_id": "26a8440e-c166-4c50-aef4-bfb77314b46b",
+            "cosine_similarity": 0.332087
+          },
+          {
+            "task_id": "2bd59342-0664-4ccb-ba87-79379096cc08",
+            "cosine_similarity": 0.332539
+          },
+          {
+            "task_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a",
+            "cosine_similarity": 0.316472
+          },
+          {
+            "task_id": "347ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.30438
+          },
+          {
+            "task_id": "357ef137-7eeb-4c80-a3bb-0951f26a8aff",
+            "cosine_similarity": 0.264882
+          },
+          {
+            "task_id": "37608790-6147-45d0-9f20-1137bb35703d",
+            "cosine_similarity": 0.295918
+          },
+          {
+            "task_id": "3a7c8185-25c1-4941-bd7b-96e823c9f21f",
+            "cosine_similarity": 0.320137
+          },
+          {
+            "task_id": "3aaa4e37-dc91-482e-99af-132a612d40f3",
+            "cosine_similarity": 0.251231
+          },
+          {
+            "task_id": "4172ea6e-6b77-4edb-a9cc-c0014bd1603b",
+            "cosine_similarity": 0.285029
+          },
+          {
+            "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+            "cosine_similarity": 0.251915
+          },
+          {
+            "task_id": "42e0a640-4f19-4b28-973d-729602b5a4a7",
+            "cosine_similarity": 0.354491
+          },
+          {
+            "task_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0",
+            "cosine_similarity": 0.349232
+          },
+          {
+            "task_id": "4e6fcf72-daf3-439f-a232-c434ce416af6",
+            "cosine_similarity": 0.255525
+          },
+          {
+            "task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+            "cosine_similarity": 0.144458
+          },
+          {
+            "task_id": "51719eea-10bc-4246-a428-ac7c433dd4b3",
+            "cosine_similarity": 0.420299
+          },
+          {
+            "task_id": "51b11269-2ca8-4b2a-9163-f21758420e78",
+            "cosine_similarity": 0.314717
+          },
+          {
+            "task_id": "535364ea-05bd-46ea-9937-9f55c68507e8",
+            "cosine_similarity": 0.360625
+          },
+          {
+            "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+            "cosine_similarity": 0.276264
+          },
+          {
+            "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+            "cosine_similarity": 0.289633
+          },
+          {
+            "task_id": "7a4e4bc8-922c-4c84-865c-25ba34136be1",
+            "cosine_similarity": 0.292166
+          },
+          {
+            "task_id": "7e429b8d-a3f0-4ed0-9b58-08957d00b127",
+            "cosine_similarity": 0.233543
+          },
+          {
+            "task_id": "7efeb4b1-3d19-4762-b163-63328d66303b",
+            "cosine_similarity": 0.259143
+          },
+          {
+            "task_id": "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14",
+            "cosine_similarity": 0.236551
+          },
+          {
+            "task_id": "a01fbce3-2793-461f-ab86-43680ccbae25",
+            "cosine_similarity": 0.245304
+          },
+          {
+            "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+            "cosine_similarity": 0.1955
+          },
+          {
+            "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+            "cosine_similarity": 0.271478
+          },
+          {
+            "task_id": "abed40dc-063f-4598-8ba5-9fe749c0615d",
+            "cosine_similarity": 0.279199
+          },
+          {
+            "task_id": "d681960f-7bc3-4286-9913-a8812ba3261a",
+            "cosine_similarity": 0.260328
+          },
+          {
+            "task_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b",
+            "cosine_similarity": 0.275804
+          },
+          {
+            "task_id": "ecb0df7a-4e8d-4a03-b162-053391d3afaf",
+            "cosine_similarity": 0.232847
+          },
+          {
+            "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+            "cosine_similarity": 0.378531
+          }
+        ],
+        "embedding_request_id": "e9df3ea8-8c8e-4f8c-9056-df67ef6090d3"
+      }
+    },
+    "generation": {
+      "attempt": 4,
+      "kind": "new_combination",
+      "request_id": "a4d73a4d-7140-4951-9ccb-62265e9ea9aa",
+      "prompt_sha256": "76d5f703b3c14b9aaf645c49f435c9093eb9eeef05e43acdb4ee5e782f0c7c6b"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Copy a contiguous cell range to another location",
+      "procedure": [
+        "Select the source range by clicking its first cell and dragging through its last cell; for example, select A2:A8.",
+        "Press Ctrl+C to copy the selected cells.",
+        "Click the top-left destination cell, such as B2, and press Ctrl+V to paste the range."
+      ],
+      "efficiency_tip": "Copying an existing populated range preserves its values and formulas, avoiding re-entry; paste starting at the top-left destination cell.",
+      "source": {
+        "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597.skill-01",
+      "app": "libreoffice_calc",
+      "name": "Create a row formula using subtraction",
+      "procedure": [
+        "Select the first result cell in the new column, then type a subtraction formula that references the two cells in the same row.",
+        "For example, enter `=B2-C2` and press Enter to calculate the difference between the values in columns B and C for row 2.",
+        "Use relative references when the formula will be copied to other rows, so the row numbers adjust automatically."
+      ],
+      "efficiency_tip": "Enter the formula once in the first data row before propagating it; this avoids manually writing separate formulas for every row.",
+      "source": {
+        "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+        "action_ids": [
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850.skill-03",
+      "app": "libreoffice_calc",
+      "name": "Copy a selected formula range to multiple locations",
+      "procedure": [
+        "With the prepared formula range still selected, press Ctrl+C to copy it.",
+        "Click the top-left destination cell and press Ctrl+V. For example, copy the selected range beginning at `B6` and paste starting at `B13`, then paste again starting at `B20`.",
+        "The pasted formulas retain their relative-reference behavior and adjust based on each new location.",
+        "The same pattern can be used for a vertically oriented range, such as copying a range beginning at `F3` and pasting it beginning at `F10` and `F17`."
+      ],
+      "efficiency_tip": "Copy the complete prepared range once and paste it at each destination, rather than recreating formulas or formatting separately for every repeated block.",
+      "source": {
+        "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+        "action_ids": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          17,
+          18,
+          19,
+          20,
+          21
+        ]
+      }
+    },
+    {
+      "skill_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-02",
+      "app": "libreoffice_calc",
+      "name": "Insert a new worksheet with the sheet-tab plus button",
+      "procedure": [
+        "Click the + button beside the worksheet tabs.",
+        "Calc creates and activates a new blank worksheet, ready for entering data or formulas."
+      ],
+      "efficiency_tip": "Use the sheet-tab plus button when a blank worksheet is needed immediately; it avoids opening the Insert Sheet dialog.",
+      "source": {
+        "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+        "action_ids": [
+          3
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f",
+      "instruction": "In a new sheet with 4 headers \"Year\", \"CA changes\", \"FA changes\", and \"OA changes\", calculate the percentage annual changes compared to last year in 2015 to 2019 for the Current Assets, Fixed Assets, and Other Assets columns. ",
+      "required_skill_ids": [
+        "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 3,
+          "action": "`CLICK` the + button to the left of Sheet1 to add a new sheet"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell A3",
+        "`DRAG_TO` cell A7",
+        "`HOTKEY` Ctrl-c",
+        "`CLICK` the + button to the left of Sheet1 to add a new sheet",
+        "`TYPING` 'Year'",
+        "`PRESS` tab",
+        "`TYPING` 'CA changes'",
+        "`PRESS` tab",
+        "`TYPING` 'FA changes'",
+        "`PRESS` tab",
+        "`TYPING` 'OA changes'",
+        "`PRESS` enter",
+        "`HOTKEY` ctrl-V",
+        "`CLICK` cell B2",
+        "`TYPING` '=($Sheet1.B3-$Sheet1.B2)/$Sheet1.B2'",
+        "`PRESS` enter",
+        "`CLICK` cell B2",
+        "`DOUBLE_CLICK` bottom right corner",
+        "`CLICK` cell B2",
+        "`MOVE_TO` bottom right corner of the cell B2",
+        "`DRAG_TO` cell D2",
+        "`CLICK` cell C2",
+        "`DOUBLE_CLICK` bottom right corner",
+        "`MOVE_TO` cell D2",
+        "`DOUBLE_CLICK` bottom right corner",
+        "`CLICK` cell B2",
+        "`DRAG_TO` D6",
+        "`CLICK` percent symbol"
+      ]
+    },
+    {
+      "task_id": "1e8df695-bd1b-45b3-b557-e7d599cf7597",
+      "instruction": "Add a new column named \"Profit\" right next to the 'CGOS' column and calculate the profit for each week by subtracting \"COGS\" from \"Sales\" in that column.",
+      "required_skill_ids": [
+        "1e8df695-bd1b-45b3-b557-e7d599cf7597.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 3,
+          "action": "`TYPING` '=B2-C2'"
+        },
+        {
+          "action_id": 4,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` on cell D1",
+        "`TYPING` 'Profit'",
+        "`PRESS` enter",
+        "`TYPING` '=B2-C2'",
+        "`PRESS` enter",
+        "`CLICK` cell D2",
+        "`DOUBLE_CLICK` bottom right corner of the cell D2"
+      ]
+    },
+    {
+      "task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+      "instruction": "Change the representation of column \"Parameter\" to show in Millions (M) in Column B and Billions (B) in Column C. The numbers should be rounded to one decimal place, and half should be rounded up. Then remember to place a white space between the digits and the unit.",
+      "required_skill_ids": [
+        "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`CLICK A2"
+        },
+        {
+          "action_id": 1,
+          "action": "`DRAG_TO A8"
+        },
+        {
+          "action_id": 2,
+          "action": "`HOTKEY` CTRL-C"
+        },
+        {
+          "action_id": 3,
+          "action": "`CLICK` B2"
+        },
+        {
+          "action_id": 4,
+          "action": "`HOTKEY` CTRL-V"
+        }
+      ],
+      "single_actions": [
+        "`CLICK A2",
+        "`DRAG_TO A8",
+        "`HOTKEY` CTRL-C",
+        "`CLICK` B2",
+        "`HOTKEY` CTRL-V",
+        "`RIGHT_CLICK`",
+        "`CLICK` 'Format Cells...'",
+        "`DOUBLE_CLICK` format code box",
+        "`TYPING` '0.0,, \\M'",
+        "`PRESS` enter",
+        "`CLICK` C2",
+        "`HOTKEY` CTRL-V",
+        "`RIGHT_CLICK`",
+        "`CLICK` 'Format Cells...'",
+        "`DOUBLE_CLICK` format code box",
+        "`TYPING` '0.0,,, \\B'",
+        "`PRESS` enter"
+      ]
+    },
+    {
+      "task_id": "f9584479-3d0d-4c79-affa-9ad7afdd8850",
+      "instruction": "Fill the missing rows and columns which show the total value",
+      "required_skill_ids": [
+        "f9584479-3d0d-4c79-affa-9ad7afdd8850.skill-03"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 6,
+          "action": "`HOTKEY` CTRL-C"
+        },
+        {
+          "action_id": 7,
+          "action": "`CLICK` B13"
+        },
+        {
+          "action_id": 8,
+          "action": "`HOTKEY` CTRL-V"
+        },
+        {
+          "action_id": 9,
+          "action": "`CLICK` B20"
+        },
+        {
+          "action_id": 10,
+          "action": "`HOTKEY` CTRL-V"
+        },
+        {
+          "action_id": 17,
+          "action": "`HOTKEY` CTRL-C"
+        },
+        {
+          "action_id": 18,
+          "action": "`CLICK` F10"
+        },
+        {
+          "action_id": 19,
+          "action": "`HOTKEY` CTRL-V"
+        },
+        {
+          "action_id": 20,
+          "action": "`CLICK` F17"
+        },
+        {
+          "action_id": 21,
+          "action": "`HOTKEY` CTRL-V"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` B6",
+        "`TYPING` '=SUM(B2:B5)'",
+        "`PRESS` Enter",
+        "`CLICK` B6",
+        "`MOVE_TO` bottom right corner of the cell",
+        "`DRAG_TO` E6",
+        "`HOTKEY` CTRL-C",
+        "`CLICK` B13",
+        "`HOTKEY` CTRL-V",
+        "`CLICK` B20",
+        "`HOTKEY` CTRL-V",
+        "`CLICK` F3",
+        "`TYPING` '=SUM(B3:E3)'",
+        "`PRESS` Enter",
+        "`CLICK` F3",
+        "`MOVE_TO` bottom right corner of the cell",
+        "`DRAG_TO` F6",
+        "`HOTKEY` CTRL-C",
+        "`CLICK` F10",
+        "`HOTKEY` CTRL-V",
+        "`CLICK` F17",
+        "`HOTKEY` CTRL-V"
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-calc-full-r01-004",
+    "task_detail_sha256": "81b532cda5419ce23b3a01212fca47eee8a6074fe70f5a7cd7c5fa8852c7c66e",
+    "guide": {
+      "final_verification": [
+        "工作簿底部有且仅需确认存在两个相关工作表：\"Supply Rounds\" 和 \"Archive\"。",
+        "在 \"Supply Rounds\" 中检查 D3:D7、D11:D15、D19:D23 均不再为空，且每个单元格显示整数的剩余包数。",
+        "抽查公式：选中 D3 时公式栏为 `=B3-C3`；选中 D11 时应为 `=B11-C11`；选中 D19 时应为 `=B19-C19`，说明引用已随粘贴位置自动调整。",
+        "核对结果示例：D3 为 55，D7 为 78，D11 为 45，D15 为 81，D19 为 57，D23 为 93。",
+        "打开 \"Archive\"，确认 A1:C7 显示 \"Round A — Tuesday\"、第 2 行的 Item/Prepared Packs/Issued Packs 标题，以及五条 Round A 物品和数量记录。"
+      ],
+      "language": "zh-CN",
+      "overview": "本指南将在 \"Supply Rounds\" 的三个配送批次中计算 Remaining Packs（Prepared Packs 减 Issued Packs），并新建名为 \"Archive\" 的工作表，保存 Round A 的 A1:C7 输入快照。公式先在 Round A 建立并填满，再整体复制到后两个结构相同的批次。",
+      "reference_task_id": "reference-task-calc-full-r01-004",
+      "starting_state_checks": [
+        "确认当前打开的工作簿只有一个名为 \"Supply Rounds\" 的工作表。",
+        "确认 \"Supply Rounds\" 中有三个区块：Round A 位于 A1:D7、Round B 位于 A9:D15、Round C 位于 A17:D23。",
+        "确认 D3:D7、D11:D15 和 D19:D23 目前为空；不要覆盖 A:C 中已有的物品和数量。",
+        "确认尚未存在名为 \"Archive\" 的工作表。"
+      ],
+      "steps": [
+        {
+          "efficiency_tip": "先创建空白目标表，可在复制时直接粘贴，避免在工作表之间临时来回切换。",
+          "instructions": [
+            "在窗口底部的工作表标签区域，点击工作表标签旁的 `+` 按钮。",
+            "Calc 会立即创建并切换到一个新的空白工作表。",
+            "将新工作表改名为 `Archive`：可双击新工作表标签，输入 `Archive` 后按 Enter。"
+          ],
+          "skill_ids": [
+            "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-02"
+          ],
+          "step_number": 1,
+          "title": "新建并命名 Archive 工作表",
+          "visible_success_signal": "底部能看到独立的 \"Archive\" 工作表标签，且当前表格为空白。"
+        },
+        {
+          "efficiency_tip": "一次选中 A1:C7 可保留标题、三列标题和全部五条记录，不必逐项重新输入。",
+          "instructions": [
+            "切换回 \"Supply Rounds\" 工作表。",
+            "选中连续区域 A1:C7：点击 A1，然后拖动到 C7，使整个三列七行区域被选中。",
+            "按 Ctrl+C 复制。",
+            "切换到 \"Archive\" 工作表，点击 A1 作为粘贴区域的左上角。",
+            "按 Ctrl+V 粘贴。"
+          ],
+          "skill_ids": [
+            "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-01"
+          ],
+          "step_number": 2,
+          "title": "复制 Round A 输入快照到 Archive",
+          "visible_success_signal": "\"Archive\" 的 A1:C7 已显示 \"Round A — Tuesday\"、第 2 行的三个标题及五行 Round A 的物品和数量。"
+        },
+        {
+          "efficiency_tip": "使用相对引用的首行公式，后续向下填充时行号会自动变化，无需逐行重新键入。",
+          "instructions": [
+            "返回 \"Supply Rounds\" 工作表。",
+            "点击 D3；这是 Round A 的第一条记录 Seed Trays 对应的 Remaining Packs 单元格。",
+            "输入公式 `=B3-C3`，然后按 Enter。",
+            "如需要确认计算关系，再次选中 D3，查看公式栏是否显示 `=B3-C3`。"
+          ],
+          "skill_ids": [
+            "1e8df695-bd1b-45b3-b557-e7d599cf7597.skill-01"
+          ],
+          "step_number": 3,
+          "title": "在 Round A 创建首个剩余包数公式",
+          "visible_success_signal": "D3 显示 55，表示 84 个 Prepared Packs 减去 29 个 Issued Packs。"
+        },
+        {
+          "efficiency_tip": "用填充命令将一个已验证的公式扩展到相邻行，比手动输入五个公式更快且更不易出错。",
+          "instructions": [
+            "选中 D3:D7。可先点击 D3，再拖动到 D7。",
+            "使用菜单 `工作表` > `填充单元格` > `向下填充`，将 D3 的公式填充到 D4:D7。",
+            "检查 D3:D7 是否均显示计算结果。"
+          ],
+          "skill_ids": [],
+          "step_number": 4,
+          "title": "填充 Round A 的其余公式",
+          "visible_success_signal": "D3:D7 全部有整数结果；从上到下应显示 55、45、74、19、78。"
+        },
+        {
+          "efficiency_tip": "复制完整的五单元格公式区域一次，再粘贴到两个同结构区域，Calc 会自动保留相对引用并按新行计算。",
+          "instructions": [
+            "选中已完成的公式范围 D3:D7。",
+            "按 Ctrl+C 复制该五单元格公式范围。",
+            "点击 D11，即 Round B 的第一条数据行的 Remaining Packs 单元格，然后按 Ctrl+V。",
+            "点击 D19，即 Round C 的第一条数据行的 Remaining Packs 单元格，然后再次按 Ctrl+V。",
+            "分别查看 D11:D15 和 D19:D23，确认没有空白的 Remaining Packs 单元格。"
+          ],
+          "skill_ids": [
+            "f9584479-3d0d-4c79-affa-9ad7afdd8850.skill-03"
+          ],
+          "step_number": 5,
+          "title": "将完整公式范围复制到 Round B 和 Round C",
+          "visible_success_signal": "Round B 的 D11:D15 显示 45、37、71、16、81；Round C 的 D19:D23 显示 57、45、76、19、93。"
+        }
+      ]
+    },
+    "generation": {
+      "request_id": "a22a3e02-6390-46b5-ac0b-5d153a18fdaf",
+      "prompt_sha256": "10a7039e8e7784964bb67458037d4f2310d6958077b2572b5a098b0929995c97",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 3573,
+      "output_tokens": 1517,
+      "estimated_cost_usd": 0.02535
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-004",
+      "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-004/initial_artifact.xlsx",
+      "artifact_sha256": "c0dcbc446ba6b89dd5ba451e04d8684c1f4887668f519993efe11c9a0bcb37f3",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-004/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-004/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.xlsx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-calc-full-r01-004",
+      "task_config_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-004.json",
+      "artifact_sha256": "c0dcbc446ba6b89dd5ba451e04d8684c1f4887668f519993efe11c9a0bcb37f3",
+      "blueprint_request_id": "77272b00-03d0-4268-8d83-e114730879e3"
+    },
+    "packet_path": "task_config.json"
+  }
+}

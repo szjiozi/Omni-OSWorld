@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "task_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b",
+  "app": "libreoffice_calc",
+  "single_action_count": 11,
+  "prompt_sha256": "19067ba1bc259829524d593701581f9f2cebb04cfcfd1b5e73acff1c02927ab7",
+  "request_id": "ffc07727-27e6-48c1-92c6-2ea3d3edeb00",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1315,
+    "cached_input_tokens": 1073,
+    "output_tokens": 238,
+    "estimated_cost_usd": 0.0035546
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "efficiency_tip": "Set scaling before exporting so the PDF inherits the intended one-page layout; use the page-fit option instead of manually resizing rows or columns.",
+        "name": "Scale a worksheet to fit a specified number of pages",
+        "procedure": [
+          "Open Format > Page and select the Sheet tab.",
+          "Open the scaling drop-down and choose Fit to number of pages.",
+          "Confirm the dialog with OK. For example, set the worksheet to fit on one page before printing or exporting."
+        ]
+      },
+      {
+        "action_ids": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "efficiency_tip": "Type the complete destination path and filename directly in the export dialog to avoid navigating folders and to ensure the PDF is saved exactly where required.",
+        "name": "Export a spreadsheet as a PDF to a specified path",
+        "procedure": [
+          "Open File > Export as PDF.",
+          "In the file-name field, enter the full output path and PDF filename, such as /home/user/Resize_Cells_Fit_Page.pdf.",
+          "Click Export to create the PDF at that location."
+        ]
+      }
+    ]
+  }
+}

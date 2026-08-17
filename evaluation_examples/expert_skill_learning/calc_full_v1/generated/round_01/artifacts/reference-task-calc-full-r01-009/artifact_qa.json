@@ -1,0 +1,20 @@
+{
+  "workbook_title": "Workshop Allocation Review",
+  "output_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-009/initial_artifact.xlsx",
+  "manual_setup_steps": [
+    "Before recording, replace Allocation Summary!A1 with the text \"Workshop Allocation Share\", apply a dark navy fill (#203864) and bold styling, and leave the font color at its default dark/black color. Clear any remaining cells in the summary area so the area beginning at A3 is blank for the native Pivot Table."
+  ],
+  "sheets": [
+    {
+      "name": "Activity Log",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-009/previews/Activity_Log.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Activity Log\",\"address\":\"A1:E12\",\"rows\":12,\"cols\":5,\"values\":[[\"Batch Code\",\"Scheduled Units\",\"Completed Units\",\"Rework Units\",\"Record Summary\"],[\"WSA-201\",84.5,79.25,2.1,null],[\"WSA-202\",116,108.75,4.5,null],[\"WSA-203\",72.25,68,1.75,null],[\"WSA-204\",95,91.5,3.25,null],[\"WSA-205\",128.75,121,5.5,null],[\"WSA-206\",63.5,59.25,2,null],[\"WSA-207\",102,97.8,3.6,null],[\"WSA-208\",88.25,83.5,2.75,null],[\"WSA-209\",145,136.25,6,null],[\"WSA-210\",77.5,72,2.25,null],[\"WSA-211\",110.25,104.5,4.1,null]]}"
+    },
+    {
+      "name": "Allocation Summary",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-009/previews/Allocation_Summary.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Allocation Summary\",\"address\":\"A1:A11\",\"rows\":11,\"cols\":1,\"values\":[[\"Reserved blank summary area\"],[null],[null],[null],[null],[null],[null],[null],[null],[null],[null]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

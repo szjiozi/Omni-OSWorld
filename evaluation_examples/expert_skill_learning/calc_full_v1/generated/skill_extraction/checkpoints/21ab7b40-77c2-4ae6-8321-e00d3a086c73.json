@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "task_id": "21ab7b40-77c2-4ae6-8321-e00d3a086c73",
+  "app": "libreoffice_calc",
+  "single_action_count": 25,
+  "prompt_sha256": "f338024c1271444638d1f829d68b604da8af5b9057087524f591b3721e1ac8ed",
+  "request_id": "9021d4fb-283f-405d-bcd9-e40dd1b64106",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1462,
+    "cached_input_tokens": 1073,
+    "output_tokens": 1220,
+    "estimated_cost_usd": 0.0156326
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          3,
+          4
+        ],
+        "efficiency_tip": "Enter the formula once with relative references, then use an autofill technique instead of manually rewriting it for each row.",
+        "name": "Create a row-wise division formula with relative references",
+        "procedure": [
+          "Select the first result cell in the output column and type a division formula using relative references.",
+          "For example, enter `=A2/B2` in the first result row and press Enter. When copied to later rows, Calc changes it to `=A3/B3`, `=A4/B4`, and so on."
+        ]
+      },
+      {
+        "action_ids": [
+          5,
+          6
+        ],
+        "efficiency_tip": "Double-clicking the fill handle is faster and less error-prone than dragging it through a long adjacent data region.",
+        "name": "Autofill a formula downward by double-clicking the fill handle",
+        "procedure": [
+          "Select the cell that contains the completed formula.",
+          "Double-click the small fill handle at the cell’s bottom-right corner. Calc extends the formula down through the contiguous neighboring data rows; for example, a formula in C2 is filled down alongside populated rows in adjacent columns."
+        ]
+      },
+      {
+        "action_ids": [
+          7
+        ],
+        "efficiency_tip": "Format the entire generated result range at once before applying other presentation rules, rather than formatting cells individually.",
+        "name": "Apply the Number cell format with the toolbar",
+        "procedure": [
+          "Select the cells whose values should display as ordinary numbers.",
+          "Click the toolbar button labeled `0.0` to apply the Number number format. For example, select a formula-result column and use this button to display its numeric results with the standard number format."
+        ]
+      },
+      {
+        "action_ids": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          24
+        ],
+        "efficiency_tip": "Use a relative row reference in the condition formula so one rule can evaluate every row in the selected range, rather than creating a separate rule per cell.",
+        "name": "Configure a formula-based conditional formatting rule",
+        "procedure": [
+          "With the intended result range active, open Format > Conditional > Condition.",
+          "Change the condition type from a cell-value comparison to `Formula is`.",
+          "Enter a Boolean formula that tests the current row. For example, use `$C2=MAX($C$2:$C$25)` to test whether each cell in column C equals the maximum of C2:C25.",
+          "In this example, `$C2` fixes column C but leaves row 2 relative, so the row changes as the rule is evaluated down the range. `$C$2:$C$25` fixes both the column and rows for the maximum range.",
+          "After choosing or creating the desired style, confirm the conditional-formatting dialog to save the rule."
+        ]
+      },
+      {
+        "action_ids": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "efficiency_tip": "Create a reusable custom style from the conditional-formatting style selector instead of manually changing font color on each matching cell.",
+        "name": "Create a conditional-format style with a custom font color",
+        "procedure": [
+          "From the conditional-formatting style or accent dropdown, choose `New Style` to create a style for cells that meet the rule.",
+          "Open the style’s Font Effects settings, open the font-color picker, and choose `Custom Color`.",
+          "Enter a hexadecimal color such as `00ff00`, then confirm the color and the style dialogs. The resulting style applies green font color whenever it is assigned to a conditional-formatting rule."
+        ]
+      }
+    ]
+  }
+}

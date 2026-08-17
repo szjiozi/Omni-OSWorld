@@ -1,0 +1,13 @@
+{
+  "workbook_title": "Garden Supply Delivery Register",
+  "output_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-008/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Delivery Log",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-008/previews/Delivery_Log.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Delivery Log\",\"address\":\"A1:E12\",\"rows\":12,\"cols\":5,\"values\":[[\"Delivery Code\",\"Garden Zone\",\"Quantity\",\"Unit Price\",\"Line Total\"],[\"DLV-1001\",\"Willow Bed\",18,4.25,76.5],[\"DLV-1002\",\"Maple Plot\",12,8.75,null],[\"DLV-1003\",\"Sunflower Terrace\",30,2.4,null],[\"DLV-1004\",\"Herb Corner\",8,11.5,null],[\"DLV-1005\",\"Willow Bed\",15,6.2,null],[\"DLV-1006\",\"Maple Plot\",24,3.15,null],[\"DLV-1007\",\"Sunflower Terrace\",10,14.8,null],[\"DLV-1008\",\"Herb Corner\",20,1.95,null],[\"DLV-1009\",\"Willow Bed\",6,18.25,null],[\"DLV-1010\",\"Maple Plot\",16,5.6,null],[\"DLV-1011\",\"Sunflower Terrace\",25,3.85,null]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

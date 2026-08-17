@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "task_id": "0cecd4f3-74de-457b-ba94-29ad6b5dafb6",
+  "app": "libreoffice_calc",
+  "single_action_count": 13,
+  "prompt_sha256": "593197d4920ae96e52a74a58862ed0334e29ce8f5827d9935c0da06918a2313e",
+  "request_id": "fd19acd9-04a1-4e3e-9b88-9ebb78190de7",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1362,
+    "cached_input_tokens": 1073,
+    "output_tokens": 324,
+    "estimated_cost_usd": 0.0046806
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2,
+          10,
+          11,
+          12
+        ],
+        "efficiency_tip": "Double-click the sheet tab and type the replacement name directly; this avoids opening a context menu or a separate rename dialog. Press Enter once to commit before editing another tab.",
+        "name": "Rename a worksheet from its sheet tab",
+        "procedure": [
+          "Double-click the worksheet tab whose name you want to change. The tab name becomes editable.",
+          "Type the complete replacement name, then press Enter to commit it.",
+          "For example, replace `Sheet 1` with `LARS Resources`, or replace `Sheet 2` with `LARS Resources (Offline)`."
+        ]
+      },
+      {
+        "action_ids": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "efficiency_tip": "Use the Move/Copy Sheet dialog to set the copy location and its name in one operation, rather than copying first and then moving and renaming the new sheet separately.",
+        "name": "Copy a worksheet and insert the copy before a selected sheet",
+        "procedure": [
+          "Right-click the source worksheet tab and choose `Move/Copy Sheet...`.",
+          "In the dialog, select the `Copy` option to create a duplicate rather than move the original.",
+          "Select the destination sheet in the `Insert before` list. For example, select `Sheet2` to place the duplicate immediately before that tab.",
+          "Select the proposed name in the new-name text box, type the desired name such as `LARS Resources (Backup)`, and press Enter to create the positioned copy."
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "workbook_title": "Garden Volunteer Activity",
+  "output_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-010/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Activity Log",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-010/previews/Activity_Log.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Activity Log\",\"address\":\"A1:E12\",\"rows\":12,\"cols\":5,\"values\":[[\"Program\",\"Quarter\",\"Garden Site\",\"Activity Type\",\"Service Hours\"],[\"Youth Garden\",\"Q1\",\"Maple Street Garden\",\"Seed Starting\",6.5],[\"Composting Initiative\",\"Q1\",\"Riverside Garden\",\"Compost Turning\",4],[\"Harvest Share\",\"Q1\",\"Oakview Garden\",\"Bed Preparation\",5.5],[\"Youth Garden\",\"Q1\",\"Maple Street Garden\",\"Tool Cleaning\",3],[\"Composting Initiative\",\"Q1\",\"Hillside Garden\",\"Compost Sorting\",4.5],[\"Harvest Share\",\"Q1\",\"Riverside Garden\",\"Seedling Care\",6],[\"Youth Garden\",\"Q1\",\"Oakview Garden\",\"Mulching\",5],[\"Composting Initiative\",\"Q1\",\"Maple Street Garden\",\"Worm Bin Care\",3.5],[\"Harvest Share\",\"Q1\",\"Hillside Garden\",\"Garden Planning\",4],[\"Youth Garden\",\"Q2\",\"Maple Street Garden\",\"Planting\",7],[\"Composting Initiative\",\"Q2\",\"Riverside Garden\",\"Compost Turning\",5.5]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

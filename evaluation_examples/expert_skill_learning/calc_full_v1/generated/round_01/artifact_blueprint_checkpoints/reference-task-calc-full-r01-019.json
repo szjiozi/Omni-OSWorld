@@ -1,0 +1,291 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-019",
+  "base_prompt_sha256": "23d2746c0b81b4f0afcafb9664254ce6c2ba82f143801250fccd3ea9eaa09668",
+  "blueprint": {
+    "manual_setup_steps": [],
+    "sheets": [
+      {
+        "autofilter_range": null,
+        "column_number_formats": [
+          "@",
+          "@",
+          "yyyy-mm-dd",
+          "General",
+          "General",
+          "General"
+        ],
+        "column_types": [
+          "text",
+          "text",
+          "date",
+          "integer",
+          "decimal",
+          "decimal"
+        ],
+        "formulas": [],
+        "freeze_header_row": false,
+        "headers": [
+          "Volunteer Code",
+          "Garden Zone",
+          "Enrollment Date",
+          "Completed Years",
+          "Attendance Ratio",
+          "Soil Reading"
+        ],
+        "name": "Volunteer Activity",
+        "rows": [
+          {
+            "values": [
+              "GV-1001",
+              "North Beds",
+              "2013-03-18",
+              "",
+              "0.875",
+              "8"
+            ]
+          },
+          {
+            "values": [
+              "GV-1002",
+              "Herb Terrace",
+              "2014-07-09",
+              "",
+              "0.92",
+              "7.5"
+            ]
+          },
+          {
+            "values": [
+              "GV-1003",
+              "Orchard Row",
+              "2015-11-22",
+              "",
+              "0.785",
+              "6"
+            ]
+          },
+          {
+            "values": [
+              "GV-1004",
+              "East Plot",
+              "2016-02-14",
+              "",
+              "0.95",
+              "7.2"
+            ]
+          },
+          {
+            "values": [
+              "GV-1005",
+              "Pollinator Patch",
+              "2017-06-30",
+              "",
+              "0.845",
+              "8.5"
+            ]
+          },
+          {
+            "values": [
+              "GV-1006",
+              "West Raised Beds",
+              "2018-09-05",
+              "",
+              "0.7",
+              "6.8"
+            ]
+          },
+          {
+            "values": [
+              "GV-1007",
+              "Compost Corner",
+              "2019-01-27",
+              "",
+              "0.88",
+              "7"
+            ]
+          },
+          {
+            "values": [
+              "GV-1008",
+              "South Beds",
+              "2020-04-16",
+              "",
+              "0.935",
+              "8.1"
+            ]
+          },
+          {
+            "values": [
+              "GV-1009",
+              "Herb Terrace",
+              "2021-08-11",
+              "",
+              "0.76",
+              "6.5"
+            ]
+          },
+          {
+            "values": [
+              "GV-1010",
+              "Orchard Row",
+              "2022-12-03",
+              "",
+              "0.89",
+              "7.8"
+            ]
+          },
+          {
+            "values": [
+              "GV-1011",
+              "North Beds",
+              "2023-02-20",
+              "",
+              "0.815",
+              "8"
+            ]
+          },
+          {
+            "values": [
+              "GV-1012",
+              "East Plot",
+              "2013-10-08",
+              "",
+              "0.965",
+              "7.1"
+            ]
+          },
+          {
+            "values": [
+              "GV-1013",
+              "Pollinator Patch",
+              "2014-05-19",
+              "",
+              "0.73",
+              "6"
+            ]
+          },
+          {
+            "values": [
+              "GV-1014",
+              "West Raised Beds",
+              "2015-09-25",
+              "",
+              "0.905",
+              "8.4"
+            ]
+          },
+          {
+            "values": [
+              "GV-1015",
+              "Compost Corner",
+              "2016-01-12",
+              "",
+              "0.86",
+              "7.5"
+            ]
+          },
+          {
+            "values": [
+              "GV-1016",
+              "South Beds",
+              "2017-07-07",
+              "",
+              "0.79",
+              "6.9"
+            ]
+          },
+          {
+            "values": [
+              "GV-1017",
+              "North Beds",
+              "2018-11-28",
+              "",
+              "0.94",
+              "8"
+            ]
+          },
+          {
+            "values": [
+              "GV-1018",
+              "Herb Terrace",
+              "2019-03-03",
+              "",
+              "0.675",
+              "6.4"
+            ]
+          },
+          {
+            "values": [
+              "GV-1019",
+              "Orchard Row",
+              "2020-06-21",
+              "",
+              "0.825",
+              "7.7"
+            ]
+          },
+          {
+            "values": [
+              "GV-1020",
+              "East Plot",
+              "2021-10-15",
+              "",
+              "0.98",
+              "8.2"
+            ]
+          },
+          {
+            "values": [
+              "GV-1021",
+              "Pollinator Patch",
+              "2022-01-31",
+              "",
+              "0.75",
+              "6"
+            ]
+          },
+          {
+            "values": [
+              "GV-1022",
+              "West Raised Beds",
+              "2023-05-24",
+              "",
+              "0.91",
+              "7.3"
+            ]
+          },
+          {
+            "values": [
+              "GV-1023",
+              "Compost Corner",
+              "2014-08-17",
+              "",
+              "0.855",
+              "8.5"
+            ]
+          },
+          {
+            "values": [
+              "GV-1024",
+              "South Beds",
+              "2016-12-10",
+              "",
+              "0.8",
+              "6.7"
+            ]
+          }
+        ]
+      }
+    ],
+    "workbook_title": "Garden Volunteer Activity Tracker"
+  },
+  "generation": {
+    "request_id": "5baa395c-7965-4469-8b98-f007496f442e",
+    "prompt_sha256": "23d2746c0b81b4f0afcafb9664254ce6c2ba82f143801250fccd3ea9eaa09668",
+    "model": "gpt-5.6-terra",
+    "input_tokens": 2322,
+    "output_tokens": 816,
+    "estimated_cost_usd": 0.0102618
+  }
+}

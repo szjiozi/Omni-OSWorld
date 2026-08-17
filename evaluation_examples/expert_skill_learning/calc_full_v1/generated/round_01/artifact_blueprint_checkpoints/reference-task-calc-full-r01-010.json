@@ -1,0 +1,372 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-010",
+  "base_prompt_sha256": "5dade98d983ff53e222ffd7f827d0bc8dec5d2bed0ef455b2fb4cb7dae146e3c",
+  "blueprint": {
+    "manual_setup_steps": [],
+    "sheets": [
+      {
+        "autofilter_range": null,
+        "column_number_formats": [
+          "@",
+          "@",
+          "@",
+          "@",
+          "0.00"
+        ],
+        "column_types": [
+          "text",
+          "text",
+          "text",
+          "text",
+          "decimal"
+        ],
+        "formulas": [],
+        "freeze_header_row": true,
+        "headers": [
+          "Program",
+          "Quarter",
+          "Garden Site",
+          "Activity Type",
+          "Service Hours"
+        ],
+        "name": "Activity Log",
+        "rows": [
+          {
+            "values": [
+              "Youth Garden",
+              "Q1",
+              "Maple Street Garden",
+              "Seed Starting",
+              "6.5"
+            ]
+          },
+          {
+            "values": [
+              "Composting Initiative",
+              "Q1",
+              "Riverside Garden",
+              "Compost Turning",
+              "4.0"
+            ]
+          },
+          {
+            "values": [
+              "Harvest Share",
+              "Q1",
+              "Oakview Garden",
+              "Bed Preparation",
+              "5.5"
+            ]
+          },
+          {
+            "values": [
+              "Youth Garden",
+              "Q1",
+              "Maple Street Garden",
+              "Tool Cleaning",
+              "3.0"
+            ]
+          },
+          {
+            "values": [
+              "Composting Initiative",
+              "Q1",
+              "Hillside Garden",
+              "Compost Sorting",
+              "4.5"
+            ]
+          },
+          {
+            "values": [
+              "Harvest Share",
+              "Q1",
+              "Riverside Garden",
+              "Seedling Care",
+              "6.0"
+            ]
+          },
+          {
+            "values": [
+              "Youth Garden",
+              "Q1",
+              "Oakview Garden",
+              "Mulching",
+              "5.0"
+            ]
+          },
+          {
+            "values": [
+              "Composting Initiative",
+              "Q1",
+              "Maple Street Garden",
+              "Worm Bin Care",
+              "3.5"
+            ]
+          },
+          {
+            "values": [
+              "Harvest Share",
+              "Q1",
+              "Hillside Garden",
+              "Garden Planning",
+              "4.0"
+            ]
+          },
+          {
+            "values": [
+              "Youth Garden",
+              "Q2",
+              "Maple Street Garden",
+              "Planting",
+              "7.0"
+            ]
+          },
+          {
+            "values": [
+              "Composting Initiative",
+              "Q2",
+              "Riverside Garden",
+              "Compost Turning",
+              "5.5"
+            ]
+          },
+          {
+            "values": [
+              "Harvest Share",
+              "Q2",
+              "Oakview Garden",
+              "Harvest Setup",
+              "6.5"
+            ]
+          },
+          {
+            "values": [
+              "Youth Garden",
+              "Q2",
+              "Hillside Garden",
+              "Weeding",
+              "4.5"
+            ]
+          },
+          {
+            "values": [
+              "Composting Initiative",
+              "Q2",
+              "Maple Street Garden",
+              "Compost Sorting",
+              "4.0"
+            ]
+          },
+          {
+            "values": [
+              "Harvest Share",
+              "Q2",
+              "Riverside Garden",
+              "Produce Packing",
+              "5.0"
+            ]
+          },
+          {
+            "values": [
+              "Youth Garden",
+              "Q2",
+              "Oakview Garden",
+              "Watering",
+              "3.5"
+            ]
+          },
+          {
+            "values": [
+              "Composting Initiative",
+              "Q2",
+              "Hillside Garden",
+              "Worm Bin Care",
+              "4.5"
+            ]
+          },
+          {
+            "values": [
+              "Harvest Share",
+              "Q2",
+              "Maple Street Garden",
+              "Harvest Setup",
+              "6.0"
+            ]
+          },
+          {
+            "values": [
+              "Youth Garden",
+              "Q3",
+              "Riverside Garden",
+              "Weeding",
+              "5.0"
+            ]
+          },
+          {
+            "values": [
+              "Composting Initiative",
+              "Q3",
+              "Oakview Garden",
+              "Compost Turning",
+              "6.0"
+            ]
+          },
+          {
+            "values": [
+              "Harvest Share",
+              "Q3",
+              "Hillside Garden",
+              "Produce Packing",
+              "7.5"
+            ]
+          },
+          {
+            "values": [
+              "Youth Garden",
+              "Q3",
+              "Maple Street Garden",
+              "Youth Workshop",
+              "4.0"
+            ]
+          },
+          {
+            "values": [
+              "Composting Initiative",
+              "Q3",
+              "Riverside Garden",
+              "Compost Delivery",
+              "5.0"
+            ]
+          },
+          {
+            "values": [
+              "Harvest Share",
+              "Q3",
+              "Oakview Garden",
+              "Harvesting",
+              "6.5"
+            ]
+          },
+          {
+            "values": [
+              "Youth Garden",
+              "Q3",
+              "Hillside Garden",
+              "Watering",
+              "3.0"
+            ]
+          },
+          {
+            "values": [
+              "Composting Initiative",
+              "Q3",
+              "Maple Street Garden",
+              "Compost Sorting",
+              "4.5"
+            ]
+          },
+          {
+            "values": [
+              "Harvest Share",
+              "Q3",
+              "Riverside Garden",
+              "Farm Stand Prep",
+              "5.5"
+            ]
+          },
+          {
+            "values": [
+              "Youth Garden",
+              "Q4",
+              "Oakview Garden",
+              "Bed Cleanup",
+              "5.0"
+            ]
+          },
+          {
+            "values": [
+              "Composting Initiative",
+              "Q4",
+              "Hillside Garden",
+              "Leaf Collection",
+              "6.5"
+            ]
+          },
+          {
+            "values": [
+              "Harvest Share",
+              "Q4",
+              "Maple Street Garden",
+              "Produce Packing",
+              "4.5"
+            ]
+          },
+          {
+            "values": [
+              "Youth Garden",
+              "Q4",
+              "Riverside Garden",
+              "Tool Cleaning",
+              "3.5"
+            ]
+          },
+          {
+            "values": [
+              "Composting Initiative",
+              "Q4",
+              "Oakview Garden",
+              "Compost Turning",
+              "5.0"
+            ]
+          },
+          {
+            "values": [
+              "Harvest Share",
+              "Q4",
+              "Hillside Garden",
+              "Season Closeout",
+              "6.0"
+            ]
+          },
+          {
+            "values": [
+              "Youth Garden",
+              "Q4",
+              "Maple Street Garden",
+              "Mulching",
+              "4.0"
+            ]
+          },
+          {
+            "values": [
+              "Composting Initiative",
+              "Q4",
+              "Riverside Garden",
+              "Worm Bin Care",
+              "3.5"
+            ]
+          },
+          {
+            "values": [
+              "Harvest Share",
+              "Q4",
+              "Oakview Garden",
+              "Garden Planning",
+              "5.0"
+            ]
+          }
+        ]
+      }
+    ],
+    "workbook_title": "Garden Volunteer Activity"
+  },
+  "generation": {
+    "request_id": "38c2c3db-e3bc-4cd4-a488-6b164e085587",
+    "prompt_sha256": "5dade98d983ff53e222ffd7f827d0bc8dec5d2bed0ef455b2fb4cb7dae146e3c",
+    "model": "gpt-5.6-terra",
+    "input_tokens": 1886,
+    "output_tokens": 1029,
+    "estimated_cost_usd": 0.0127306
+  }
+}

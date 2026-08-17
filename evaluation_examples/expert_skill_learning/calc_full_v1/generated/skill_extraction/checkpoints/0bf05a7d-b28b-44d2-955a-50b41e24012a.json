@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "task_id": "0bf05a7d-b28b-44d2-955a-50b41e24012a",
+  "app": "libreoffice_calc",
+  "single_action_count": 4,
+  "prompt_sha256": "d06f84f67e1b86101ef808799e1f545b872e3e97b6c86f3092d4fcb338f26929",
+  "request_id": "72e191bf-14d0-4a8c-a294-148f4c84d908",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1246,
+    "cached_input_tokens": 1073,
+    "output_tokens": 292,
+    "estimated_cost_usd": 0.0040646
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1
+        ],
+        "efficiency_tip": "Enter the formula once in the first destination cell, then propagate it rather than manually editing each value.",
+        "name": "Format a numeric cell value as fixed-width text with leading zeros",
+        "procedure": [
+          "Select the destination cell and enter a TEXT formula that references the source cell with a zero-only number format.",
+          "For example, enter `=TEXT(C2,\"0000000\")` in D2 to display the value from C2 as seven digits, adding leading zeros when necessary.",
+          "The result is text, so use this method when a fixed-width identifier-like display is needed rather than a numeric value for later arithmetic."
+        ]
+      },
+      {
+        "action_ids": [
+          2,
+          3
+        ],
+        "efficiency_tip": "Double-click the fill handle when the adjacent source-data column is contiguous; this is faster and less error-prone than dragging through a long range.",
+        "name": "AutoFill a formula down a contiguous data range using the fill handle",
+        "procedure": [
+          "Select the cell that contains the formula to propagate.",
+          "Double-click the small fill handle at the cell’s bottom-right corner.",
+          "Calc fills the formula down alongside the neighboring contiguous data range, adjusting relative references for each row. For example, `=TEXT(C2,\"0000000\")` in D2 becomes `=TEXT(C3,\"0000000\")` in D3."
+        ]
+      }
+    ]
+  }
+}

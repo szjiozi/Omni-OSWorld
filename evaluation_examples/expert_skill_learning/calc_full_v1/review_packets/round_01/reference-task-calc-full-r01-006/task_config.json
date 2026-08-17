@@ -1,0 +1,109 @@
+{
+  "id": "reference-task-calc-full-r01-006",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Prepare the Route Review for the municipal route-output report. Copy the 12 daily Output Volume values from Daily Metrics into the Working Output column, then calculate the day-over-day percentage change for every day after the first using formulas that keep Daily Metrics as the fixed source sheet. Build a distinct roster of nonblank Service Route names from the source table, preserving the first-seen order, with the result beginning at E5 on Route Review. Add a lines-only chart of Daily Change by Service Date, and export the completed review as /home/oai/share/route_operations_review.pdf.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-006/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/route_review.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/route_review.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-calc-full-r01-006",
+    "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-006/initial_artifact.xlsx",
+    "artifact_sha256": "2121aaa1a1218c89eb0c2d62e9e0a77e688185c63e85c0c890694f40605dc4a5",
+    "guest_artifact_path": "/home/user/Desktop/route_review.xlsx",
+    "required_skill_ids": [
+      "abed40dc-063f-4598-8ba5-9fe749c0615d.skill-01",
+      "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-07",
+      "37608790-6147-45d0-9f20-1137bb35703d.skill-01",
+      "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-03",
+      "aa3a8974-2e85-438b-b29e-a64df44deb4b.skill-02"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The expert may use menus, keyboard shortcuts, or equivalent Calc dialogs, and may perform the independent review-sheet operations in any efficient order. Equivalent selection methods are acceptable, provided the resulting values, formulas, filtered roster, lines-only chart, and PDF are visibly correct.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Select the full Service Route source field with its header before opening the filter options, then provide the review-sheet output anchor directly rather than manually copying visible cells.",
+          "operation_intent": "Produce a distinct-route roster from Daily Metrics!D1:D13 that excludes blank route cells, keeps first-occurrence order, and places the copied filter output beginning at Route Review!E5.",
+          "skill_id": "abed40dc-063f-4598-8ba5-9fe749c0615d.skill-01",
+          "visible_success_signal": "The roster beginning at E5 contains only North Loop, Harbor Spur, Cedar Link, Ridge Run, Quarry Way, and Canal Point once each (with any copied source header positioned above those results), and no blank roster item appears."
+        },
+        {
+          "efficiency_tip": "Select the Service Date categories together with the completed Daily Change series, then choose the lines-only subtype during chart insertion instead of modifying a default chart later.",
+          "operation_intent": "Create a trend chart on Route Review that plots Daily Change by Service Date and uses a line without point markers.",
+          "skill_id": "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-07",
+          "visible_success_signal": "A chart object is visible on Route Review with dates as its category labels and a single continuous Daily Change line that has no data-point markers."
+        },
+        {
+          "efficiency_tip": "Copy the entire 12-cell Output Volume source series in one operation and paste it at the first Working Output cell.",
+          "operation_intent": "Copy Daily Metrics!B2:B13 into Route Review!B5:B16 while preserving the original source values.",
+          "skill_id": "37608790-6147-45d0-9f20-1137bb35703d.skill-01",
+          "visible_success_signal": "Route Review!B5:B16 matches the 12 Output Volume values from Daily Metrics!B2:B13, while the source column remains present and unchanged."
+        },
+        {
+          "efficiency_tip": "Create the first formula using Daily Metrics as a sheet-fixed reference while leaving the row references relative, then propagate it down the remaining change rows.",
+          "operation_intent": "Calculate day-over-day percentage change in Route Review!C6:C16 from consecutive Output Volume values on the fixed Daily Metrics sheet; C5 remains blank because there is no prior day.",
+          "skill_id": "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-03",
+          "visible_success_signal": "C6:C16 displays percentage results, and inspecting formulas shows each uses a fixed Daily Metrics sheet reference while advancing from one source row pair to the next."
+        },
+        {
+          "efficiency_tip": "Enter the complete requested PDF destination and filename in the export dialog to avoid ambiguity about the output location.",
+          "operation_intent": "Export the completed workbook review as a PDF named route_operations_review.pdf at /home/oai/share/route_operations_review.pdf.",
+          "skill_id": "aa3a8974-2e85-438b-b29e-a64df44deb4b.skill-02",
+          "visible_success_signal": "A PDF export is completed at the requested path after the review sheet shows the copied series, calculation column, roster, and trend chart."
+        }
+      ],
+      "recording_end_state": "Route Review visibly contains the copied 12-row Working Output series, percentage Daily Change formulas from C6 through C16, the nonblank distinct route roster beginning at E5, and a lines-only Daily Change trend chart; the PDF has been exported to /home/oai/share/route_operations_review.pdf.",
+      "recording_start_state": "Route Review is active with its date axis prefilled but Working Output, Daily Change, and Distinct Route Roster target areas blank; Daily Metrics contains the intact source table and no chart or PDF exists."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Select the relevant source and destination ranges, including selecting the date and calculated-change ranges needed as chart data.",
+        "reason": "Range selection is required to copy the output series, produce the filtered roster, and define the chart categories and series."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Fill the initial fixed-sheet percentage-change formula down through the remaining populated review dates.",
+        "reason": "A complete daily-change series is needed for the requested trend chart rather than a calculation in only one row."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Use a chart title or other ordinary default chart labeling if needed to make the trend understandable.",
+        "reason": "This is a minor presentation choice and must not replace the required lines-only chart subtype."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc opens with the Route Review sheet active.",
+      "Daily Metrics contains the intact source table in A1:D13.",
+      "Route Review dates are populated in A5:A16.",
+      "Route Review target areas B5:B16, C5:C16, and E5:E20 are blank.",
+      "The Daily Change column is formatted as percentages with one decimal place.",
+      "No chart or PDF export exists initially."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

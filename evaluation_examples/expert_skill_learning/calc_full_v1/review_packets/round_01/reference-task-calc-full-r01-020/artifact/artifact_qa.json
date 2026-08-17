@@ -1,0 +1,13 @@
+{
+  "workbook_title": "Community Garden Supply Budget",
+  "output_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-020/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Supply Plan",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-020/previews/Supply_Plan.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Supply Plan\",\"address\":\"A1:D12\",\"rows\":12,\"cols\":4,\"values\":[[\"Supply Item\",\"Units\",\"Unit Cost\",\"Line Cost\"],[\"Raised bed lumber 2x8x8\",24,18.75,null],[\"Cedar corner stakes\",32,4.25,null],[\"Compost blend bag\",40,8.5,340],[\"Topsoil bag\",30,5.75,null],[\"Seed starting mix bag\",12,11.25,null],[\"Tomato seedling tray\",6,16,null],[\"Pepper seedling tray\",4,15.5,null],[\"Lettuce seed packet\",18,2.4,null],[\"Carrot seed packet\",12,2.15,null],[\"Bean seed packet\",10,3.1,null],[\"Sunflower seed packet\",8,3.75,null]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

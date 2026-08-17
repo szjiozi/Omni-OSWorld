@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+  "app": "libreoffice_calc",
+  "single_action_count": 11,
+  "prompt_sha256": "d001f23c02531def7bbcf31583436f7899c2f5080b63d47c8c77afab7522f98f",
+  "request_id": "170ab6de-5959-4f9d-88f0-1b009b3b2a8e",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1306,
+    "cached_input_tokens": 1073,
+    "output_tokens": 472,
+    "estimated_cost_usd": 0.0063446
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1
+        ],
+        "efficiency_tip": "Select the complete source range before inserting the chart so Calc can create the chart with the correct data series and category labels without later manual range edits.",
+        "name": "Insert a chart from a selected data range",
+        "procedure": [
+          "Select the contiguous cell range containing the category labels and numeric series, for example a table with week labels in the first column and two value columns.",
+          "Use the Insert Chart toolbar icon to create a chart based on the current selection.",
+          "In the chart wizard, choose a Column chart with the Clustered Column variant if it is not already selected, then finish inserting the chart."
+        ]
+      },
+      {
+        "action_ids": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "efficiency_tip": "Edit the title directly through the chart-elements title control instead of reopening the full chart wizard.",
+        "name": "Set a chart title using chart elements",
+        "procedure": [
+          "Click the chart, then open its Chart Elements controls in the right sidebar.",
+          "Enable or select the chart title element and click the title text box.",
+          "Type the desired title, for example `Sales & COGS`, and press Enter to apply the text."
+        ]
+      },
+      {
+        "action_ids": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "efficiency_tip": "Use cut and paste rather than recreating the chart on the destination sheet; this preserves its data links, formatting, and title.",
+        "name": "Move a chart to a newly inserted worksheet",
+        "procedure": [
+          "Select the chart object and cut it with Ctrl+X.",
+          "Click the plus button beside the sheet tabs to insert a new worksheet; the new sheet becomes active.",
+          "Paste with Ctrl+V to place the cut chart on the new worksheet."
+        ]
+      }
+    ]
+  }
+}

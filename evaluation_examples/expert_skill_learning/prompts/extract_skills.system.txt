@@ -18,6 +18,8 @@ Write every field in English. The procedure must be sufficiently concrete for a 
 
 Use only the supplied instruction and indexed single steps. Return only JSON matching the provided schema. action_ids are zero-based indices shown in square brackets. Do not invent task IDs, app names, artifacts, evaluator state, or actions that are not grounded in the supplied steps.
 
+Set decision to `skills_extracted`, decision_reason to an empty string, and return one or more skills when the actions contain independently reusable application techniques. If the task contains only scaffolding, task-specific literal entry, confirmation clicks, or another sequence with no independently reusable application technique, set decision to `no_reusable_skill`, explain why in decision_reason, and return an empty skills array. Never invent a weak skill merely to avoid `no_reusable_skill`.
+
 When explaining LibreOffice Calc references, describe every absolute marker precisely. For example, `$Sheet1.A2` fixes the source sheet but leaves column A and row 2 relative; filling it downward changes the row. `$Sheet1.$A2` additionally fixes column A, and `$Sheet1.$A$2` fixes the sheet, column, and row. Never attribute anchoring behavior to a `$` marker that is not present.
 
 Infer the target of typing from the instruction and the explicit UI state, not from the text alone. In Calc, typing immediately after clicking the plus button to insert a worksheet normally enters content in the active cell; it does not rename the worksheet. Treat text as a sheet name only when the actions explicitly edit or rename a sheet tab, such as double-clicking the tab or opening a rename dialog.

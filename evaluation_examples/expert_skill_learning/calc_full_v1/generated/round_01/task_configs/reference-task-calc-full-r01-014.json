@@ -1,0 +1,85 @@
+{
+  "id": "reference-task-calc-full-r01-014",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Prepare the Repair Fair Handoff sheet for the event coordinator: present the coverage targets in a kiosk-by-shift layout, and add a Pivot Table that shows how many check-in ticket records were logged at each kiosk.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/repair_fair_handoff.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/repair_fair_handoff.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-calc-full-r01-014",
+    "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/initial_artifact.xlsx",
+    "artifact_sha256": "28b3a6cdd9f468a591b07b4c4c223c6a5aa04d0c3bed9851d6095faff92bb164",
+    "guest_artifact_path": "/home/user/Desktop/repair_fair_handoff.xlsx",
+    "required_skill_ids": [
+      "eb03d19a-b88d-4de4-8a64-ca0ac66f426b.skill-01",
+      "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-08"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The expert may choose any non-overlapping placement on Handoff Summary, provided the transposed matrix is clearly identifiable and the Pivot Table visibly reports Ticket Code occurrence counts by Kiosk. Equivalent Calc Pivot Table creation workflows are acceptable.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Copy the entire labeled source block once and use Paste Special with the transpose option at the chosen destination rather than retyping or rearranging values.",
+          "operation_intent": "Transpose the complete shift-by-kiosk coverage matrix from Coverage Setup into the upper area of Handoff Summary.",
+          "skill_id": "eb03d19a-b88d-4de4-8a64-ca0ac66f426b.skill-01",
+          "visible_success_signal": "The pasted layout has kiosks listed vertically and shifts across the top, with all coverage target values preserved in their rotated positions."
+        },
+        {
+          "efficiency_tip": "After adding Ticket Code to the Pivot Table data fields, open its data-field settings immediately and select Count rather than accepting a numeric aggregation default.",
+          "operation_intent": "Create a kiosk-level Pivot Table from CheckIn Log and set the Ticket Code data field to count non-empty check-in occurrences.",
+          "skill_id": "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-08",
+          "visible_success_signal": "The Pivot Table lists each kiosk and a count-based Ticket Code result; its data-field label indicates Count rather than Sum."
+        }
+      ],
+      "recording_end_state": "Handoff Summary visibly contains a transposed coverage-target layout and a separate Pivot Table counting Ticket Code check-ins for each kiosk.",
+      "recording_start_state": "The workbook is open on the blank Handoff Summary sheet; Coverage Setup and CheckIn Log contain the prepared source data only."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Navigate between the source sheets and the blank Handoff Summary sheet.",
+        "reason": "The two requested deliverables use separate source ranges and share a designated presentation sheet."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Create a Pivot Table from the CheckIn Log range and place it in an unused area of Handoff Summary.",
+        "reason": "A Pivot Table object is required before its row field and count data field can be configured."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Assign Kiosk as the Pivot Table row field and Ticket Code as its data field.",
+        "reason": "These field placements are necessary so the requested occurrence count is displayed by kiosk."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc is open with the Handoff Summary sheet active and blank.",
+      "Coverage Setup contains the labeled Shift-by-Kiosk matrix in A1:D4.",
+      "CheckIn Log contains the contiguous four-column check-in table with populated Ticket Code values through row 31."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

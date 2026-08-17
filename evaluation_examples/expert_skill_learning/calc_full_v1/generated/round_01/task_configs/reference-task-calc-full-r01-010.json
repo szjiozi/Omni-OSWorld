@@ -1,0 +1,94 @@
+{
+  "id": "reference-task-calc-full-r01-010",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Create a Pivot Table on a new summary sheet that shows total volunteer service hours for each garden program, with the quarters displayed as column headings.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-010/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/garden_volunteer_activity.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/garden_volunteer_activity.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-calc-full-r01-010",
+    "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-010/initial_artifact.xlsx",
+    "artifact_sha256": "b065b0d94a6bb425a65da564d56809d81e04302401171474a6d389be4ec95f4d",
+    "guest_artifact_path": "/home/user/Desktop/garden_volunteer_activity.xlsx",
+    "required_skill_ids": [
+      "1de60575-bb6e-4c3d-9e6a-2fa699f9f197.skill-03",
+      "1de60575-bb6e-4c3d-9e6a-2fa699f9f197.skill-02"
+    ],
+    "operator_guide": {
+      "allowed_variation": "The expert may use any equivalent LibreOffice Calc Pivot Table workflow, choose any clear empty output location, and may rename the output sheet. The resulting summary should preserve Program as row labels, Quarter as column headings, and aggregated Service Hours as the displayed values.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Set the row and column layout before adding the numeric measure so the intended cross-tab structure is easy to inspect.",
+          "operation_intent": "In the Pivot Table layout, add the Service Hours numeric field to the Data fields area so the report aggregates volunteer time.",
+          "skill_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197.skill-03",
+          "visible_success_signal": "The completed Pivot Table displays aggregated Service Hours values rather than individual activity records."
+        },
+        {
+          "efficiency_tip": "Drag Quarter directly from the available fields into the Column fields area rather than adding and repositioning it.",
+          "operation_intent": "In the Pivot Table layout, place Quarter in the column area to split the summary into quarter headings.",
+          "skill_id": "1de60575-bb6e-4c3d-9e6a-2fa699f9f197.skill-02",
+          "visible_success_signal": "The completed Pivot Table has distinct Quarter headings across the top, with totals aligned under each heading."
+        }
+      ],
+      "recording_end_state": "A visible Pivot Table summarizes total Service Hours by Program in rows and Quarter in columns on an empty destination sheet or area.",
+      "recording_start_state": "The workbook is open on the populated Activity Log source sheet, with no Pivot Table or summary output present."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Select the complete Activity Log source table as the Pivot Table source range.",
+        "reason": "A Pivot Table requires the record table to be identified before its layout can be configured."
+      },
+      {
+        "category": "substantive_prerequisite",
+        "operation": "Create the Pivot Table on a new output sheet or other empty worksheet location.",
+        "reason": "The requested summary needs a dedicated visible destination for the Pivot Table."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Place Program in the Pivot Table row area.",
+        "reason": "Program labels are necessary to show the requested per-program totals beneath the Quarter headings."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Optionally rename the Pivot Table output sheet to a meaningful summary name.",
+        "reason": "This improves clarity but is not required for the Pivot Table field-placement skills."
+      }
+    ],
+    "ready_state_checks": [
+      "LibreOffice Calc is open with the Activity Log sheet active.",
+      "The Activity Log sheet contains a contiguous source table from A1:E37 with a styled header row.",
+      "The table headers are Program, Quarter, Garden Site, Activity Type, and Service Hours.",
+      "No summary sheet or Pivot Table is present."
+    ],
+    "setup_notes": [
+      "The workbook contains synthetic, privacy-safe community garden volunteer activity data.",
+      "Service Hours values are formatted as numbers with one decimal place."
+    ],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

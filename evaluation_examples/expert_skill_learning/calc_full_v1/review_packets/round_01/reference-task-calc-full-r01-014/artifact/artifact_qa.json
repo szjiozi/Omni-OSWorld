@@ -1,0 +1,23 @@
+{
+  "workbook_title": "Repair Fair Handoff",
+  "output_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/initial_artifact.xlsx",
+  "manual_setup_steps": [],
+  "sheets": [
+    {
+      "name": "Coverage Setup",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/previews/Coverage_Setup.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Coverage Setup\",\"address\":\"A1:D12\",\"rows\":12,\"cols\":4,\"values\":[[\"Shift\",\"Kiosk North\",\"Kiosk Central\",\"Kiosk South\"],[\"Morning\",3,4,3],[\"Midday\",4,5,4],[\"Afternoon\",3,4,3],[null,null,null,null],[null,null,null,null],[null,null,null,null],[null,null,null,null],[null,null,null,null],[null,null,null,null],[null,null,null,null],[null,null,null,null]]}"
+    },
+    {
+      "name": "CheckIn Log",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/previews/CheckIn_Log.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"CheckIn Log\",\"address\":\"A1:D12\",\"rows\":12,\"cols\":4,\"values\":[[\"Check-in Time\",\"Kiosk\",\"Ticket Code\",\"Repair Type\"],[\"2026-09-12T00:00:00.000Z\",\"Kiosk North\",\"RF-1001\",\"Toaster Repair\"],[\"2026-09-12T00:00:00.000Z\",\"Kiosk Central\",\"RF-1002\",\"Lamp Repair\"],[\"2026-09-12T00:00:00.000Z\",\"Kiosk South\",\"RF-1003\",\"Bicycle Tune-up\"],[\"2026-09-12T00:00:00.000Z\",\"Kiosk North\",\"RF-1004\",\"Radio Repair\"],[\"2026-09-12T00:00:00.000Z\",\"Kiosk Central\",\"RF-1005\",\"Vacuum Repair\"],[\"2026-09-12T00:00:00.000Z\",\"Kiosk South\",\"RF-1006\",\"Clothing Mend\"],[\"2026-09-12T00:00:00.000Z\",\"Kiosk North\",\"RF-1007\",\"Laptop Diagnosis\"],[\"2026-09-12T00:00:00.000Z\",\"Kiosk Central\",\"RF-1008\",\"Clock Repair\"],[\"2026-09-12T00:00:00.000Z\",\"Kiosk South\",\"RF-1009\",\"Small Appliance\"],[\"2026-09-12T00:00:00.000Z\",\"Kiosk North\",\"RF-1010\",\"Chair Repair\"],[\"2026-09-12T00:00:00.000Z\",\"Kiosk Central\",\"RF-1001\",\"Toaster Repair\"]]}"
+    },
+    {
+      "name": "Handoff Summary",
+      "preview_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/previews/Handoff_Summary.png",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Handoff Summary\",\"address\":\"A1:A11\",\"rows\":11,\"cols\":1,\"values\":[[\"(blank initial sheet)\"],[null],[null],[null],[null],[null],[null],[null],[null],[null],[null]]}"
+    }
+  ],
+  "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}

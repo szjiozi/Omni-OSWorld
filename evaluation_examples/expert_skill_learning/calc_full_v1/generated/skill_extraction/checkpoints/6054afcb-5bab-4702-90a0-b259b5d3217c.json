@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "task_id": "6054afcb-5bab-4702-90a0-b259b5d3217c",
+  "app": "libreoffice_calc",
+  "single_action_count": 17,
+  "prompt_sha256": "38414cde5eff6a03313cce13de24691be927fff21f5f69a332196efa92d0aba2",
+  "request_id": "6e4e8905-8df5-418a-8896-c7b6b33ad7b1",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1343,
+    "cached_input_tokens": 1073,
+    "output_tokens": 199,
+    "estimated_cost_usd": 0.0031426
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "efficiency_tip": "Hold Ctrl while selecting all non-adjacent row headers, then use Hide rows once; this is faster and less error-prone than hiding each row individually.",
+        "name": "Hide multiple non-adjacent rows",
+        "procedure": [
+          "Click the header of the first row to hide.",
+          "Hold Ctrl and click each additional row header that should be hidden; for example, select rows 3, 6, 8, and 9 while retaining the earlier selections.",
+          "Release Ctrl after all target row headers are selected.",
+          "Right-click any selected row header and choose Hide rows.",
+          "The selected rows are hidden without deleting their contents; they can later be restored with the corresponding unhide command."
+        ]
+      }
+    ]
+  }
+}

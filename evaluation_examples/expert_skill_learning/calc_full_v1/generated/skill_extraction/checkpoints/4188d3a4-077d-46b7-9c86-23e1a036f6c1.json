@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "task_id": "4188d3a4-077d-46b7-9c86-23e1a036f6c1",
+  "app": "libreoffice_calc",
+  "single_action_count": 5,
+  "prompt_sha256": "6e9286cf9925874e1cb0e544643091c4ba6affebdb937ed2edc416af3898bd30",
+  "request_id": "b8f49106-c104-42c4-bc96-23296c7ca29c",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1212,
+    "cached_input_tokens": 1073,
+    "output_tokens": 470,
+    "estimated_cost_usd": 0.0061326
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1
+        ],
+        "efficiency_tip": "Select the first column that should remain scrollable, so every column to its left is frozen in one command.",
+        "name": "Freeze columns to the left of the selected column",
+        "procedure": [
+          "Select or right-click the column header immediately to the right of the columns you want to keep visible; for example, right-click column C to retain columns A and B.",
+          "Choose “Freeze rows and columns” from the column context menu. Calc freezes the columns to the left of the selected column while allowing the remaining columns to scroll."
+        ]
+      },
+      {
+        "action_ids": [
+          2,
+          3,
+          4
+        ],
+        "efficiency_tip": "Use View > Freeze Cells > Freeze First Row when only the top header row needs to stay visible; this avoids manually positioning the active cell.",
+        "name": "Freeze the first worksheet row",
+        "procedure": [
+          "Open the View menu.",
+          "Point to “Freeze Cells” to open its submenu.",
+          "Choose “Freeze First Row.” The top row remains visible while scrolling down through the sheet."
+        ]
+      }
+    ]
+  }
+}

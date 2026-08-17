@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "scripts/python/manage_reference_review_packets.py export",
+  "reference_task_id": "reference-task-calc-full-r01-012",
+  "context_fingerprint": "2e2770a84fb50142573154a3d8596ca8532f1cc6f73bbeb2a058327df52e1393",
+  "inputs": [
+    {
+      "role": "artifact",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-012/initial_artifact.xlsx",
+      "sha256": "a0510b9895c791890adab71dfcb65084cd297c2303f565810fde6f62dbf07170"
+    },
+    {
+      "role": "artifact_blueprint",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-012/artifact_blueprint.json",
+      "sha256": "74b3fe8922636a4b1a9fa729dd42f2321272da879203fa17801dea6b361789c6"
+    },
+    {
+      "role": "artifact_qa",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-012/artifact_qa.json",
+      "sha256": "23cedd40da496831cdb8e5d4c15f89f338c65327ffe34344bec430f3c5de03da"
+    },
+    {
+      "role": "task_config",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-012.json",
+      "sha256": "040f1365d60e2a14280b1785ff7e246ba48dde19958380518d7ca4fc993b5cd4"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-012/previews/Dispatch_Log.png",
+      "sha256": "022c7c80709d50a9b0957795c3e2141f7297e7fd9de13af0f4600642fbcc1c70"
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "TASK.md",
+      "sha256": "bf587049d9c4d18708444b15a4ce6a75d55ecd08365d692f7ee8de97e193bf16"
+    },
+    {
+      "path": "TASK_DETAIL.md",
+      "sha256": "32f7af048be74566fa082dada1fbef5ff79a3135b31991ae3098ebad837fcf67"
+    },
+    {
+      "path": "context.json",
+      "sha256": "04e71d82355641e82623430731c2bb19c828d9e73410bd1913d15a03102ce00f"
+    },
+    {
+      "path": "task_config.json",
+      "sha256": "040f1365d60e2a14280b1785ff7e246ba48dde19958380518d7ca4fc993b5cd4"
+    },
+    {
+      "path": "artifact/initial_artifact.xlsx",
+      "sha256": "a0510b9895c791890adab71dfcb65084cd297c2303f565810fde6f62dbf07170"
+    },
+    {
+      "path": "artifact/artifact_blueprint.json",
+      "sha256": "74b3fe8922636a4b1a9fa729dd42f2321272da879203fa17801dea6b361789c6"
+    },
+    {
+      "path": "artifact/artifact_qa.json",
+      "sha256": "23cedd40da496831cdb8e5d4c15f89f338c65327ffe34344bec430f3c5de03da"
+    },
+    {
+      "path": "artifact/previews/Dispatch_Log.png",
+      "sha256": "022c7c80709d50a9b0957795c3e2141f7297e7fd9de13af0f4600642fbcc1c70"
+    }
+  ],
+  "editable_review": {
+    "path": "review.json",
+    "excluded_from_generated_file_hashes": true
+  }
+}

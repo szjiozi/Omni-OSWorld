@@ -1,0 +1,506 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-calc-full-r01-013",
+  "base_prompt_sha256": "567924b901720851256fb21dd8b80eac1e56b38c573158f201f18b3eedb5bd76",
+  "blueprint": {
+    "manual_setup_steps": [],
+    "sheets": [
+      {
+        "autofilter_range": null,
+        "column_number_formats": [
+          "@",
+          "yyyy-mm-dd",
+          "@",
+          "@",
+          "@",
+          "0",
+          "$#,##0.00"
+        ],
+        "column_types": [
+          "text",
+          "date",
+          "text",
+          "text",
+          "text",
+          "integer",
+          "currency"
+        ],
+        "formulas": [],
+        "freeze_header_row": true,
+        "headers": [
+          "Delivery ID",
+          "Delivery Date",
+          "Garden Zone",
+          "Supply Category",
+          "Item",
+          "Units Delivered",
+          "Delivery Cost"
+        ],
+        "name": "Deliveries",
+        "rows": [
+          {
+            "values": [
+              "DLV-2601",
+              "2026-04-02",
+              "North Beds",
+              "Soil",
+              "Compost Blend",
+              "18",
+              "126.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2602",
+              "2026-04-02",
+              "North Beds",
+              "Seeds",
+              "Bean Seeds",
+              "22",
+              "44.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2603",
+              "2026-04-03",
+              "North Beds",
+              "Irrigation",
+              "Drip Line Kit",
+              "16",
+              "192.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2604",
+              "2026-04-04",
+              "North Beds",
+              "Tools",
+              "Hand Trowel",
+              "24",
+              "168.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2605",
+              "2026-04-05",
+              "North Beds",
+              "Mulch",
+              "Straw Bale",
+              "20",
+              "110.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2606",
+              "2026-04-06",
+              "North Beds",
+              "Seeds",
+              "Lettuce Starts",
+              "28",
+              "84.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2607",
+              "2026-04-07",
+              "East Terrace",
+              "Soil",
+              "Compost Blend",
+              "25",
+              "175.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2608",
+              "2026-04-07",
+              "East Terrace",
+              "Seeds",
+              "Tomato Starts",
+              "19",
+              "76.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2609",
+              "2026-04-08",
+              "East Terrace",
+              "Irrigation",
+              "Emitter Pack",
+              "23",
+              "138.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2610",
+              "2026-04-09",
+              "East Terrace",
+              "Tools",
+              "Garden Fork",
+              "27",
+              "243.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2611",
+              "2026-04-10",
+              "East Terrace",
+              "Mulch",
+              "Wood Chips Bag",
+              "21",
+              "147.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2612",
+              "2026-04-11",
+              "East Terrace",
+              "Seeds",
+              "Pepper Starts",
+              "27",
+              "108.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2613",
+              "2026-04-12",
+              "South Plot",
+              "Soil",
+              "Raised Bed Mix",
+              "14",
+              "126.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2614",
+              "2026-04-12",
+              "South Plot",
+              "Seeds",
+              "Carrot Seeds",
+              "18",
+              "36.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2615",
+              "2026-04-13",
+              "South Plot",
+              "Irrigation",
+              "Drip Line Kit",
+              "20",
+              "240.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2616",
+              "2026-04-14",
+              "South Plot",
+              "Tools",
+              "Hand Pruner",
+              "17",
+              "119.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2617",
+              "2026-04-15",
+              "South Plot",
+              "Mulch",
+              "Straw Bale",
+              "25",
+              "137.50"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2618",
+              "2026-04-16",
+              "South Plot",
+              "Seeds",
+              "Kale Starts",
+              "22",
+              "66.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2619",
+              "2026-04-17",
+              "West Beds",
+              "Soil",
+              "Compost Blend",
+              "26",
+              "182.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2620",
+              "2026-04-17",
+              "West Beds",
+              "Seeds",
+              "Squash Seeds",
+              "20",
+              "40.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2621",
+              "2026-04-18",
+              "West Beds",
+              "Irrigation",
+              "Emitter Pack",
+              "18",
+              "108.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2622",
+              "2026-04-19",
+              "West Beds",
+              "Tools",
+              "Garden Hoe",
+              "24",
+              "192.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2623",
+              "2026-04-20",
+              "West Beds",
+              "Mulch",
+              "Wood Chips Bag",
+              "22",
+              "154.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2624",
+              "2026-04-21",
+              "West Beds",
+              "Seeds",
+              "Cucumber Starts",
+              "24",
+              "96.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2625",
+              "2026-04-22",
+              "Orchard Row",
+              "Soil",
+              "Compost Blend",
+              "15",
+              "105.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2626",
+              "2026-04-22",
+              "Orchard Row",
+              "Seeds",
+              "Marigold Seeds",
+              "21",
+              "42.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2627",
+              "2026-04-23",
+              "Orchard Row",
+              "Irrigation",
+              "Drip Line Kit",
+              "19",
+              "228.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2628",
+              "2026-04-24",
+              "Orchard Row",
+              "Tools",
+              "Hand Pruner",
+              "26",
+              "182.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2629",
+              "2026-04-25",
+              "Orchard Row",
+              "Mulch",
+              "Straw Bale",
+              "18",
+              "99.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2630",
+              "2026-04-26",
+              "Orchard Row",
+              "Seeds",
+              "Herb Starts",
+              "22",
+              "88.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2631",
+              "2026-04-27",
+              "Greenhouse",
+              "Soil",
+              "Potting Mix Bag",
+              "30",
+              "210.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2632",
+              "2026-04-27",
+              "Greenhouse",
+              "Seeds",
+              "Basil Seeds",
+              "24",
+              "48.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2633",
+              "2026-04-28",
+              "Greenhouse",
+              "Irrigation",
+              "Emitter Pack",
+              "28",
+              "168.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2634",
+              "2026-04-29",
+              "Greenhouse",
+              "Tools",
+              "Seedling Tray",
+              "20",
+              "140.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2635",
+              "2026-04-30",
+              "Greenhouse",
+              "Mulch",
+              "Coco Coir Brick",
+              "23",
+              "115.00"
+            ]
+          },
+          {
+            "values": [
+              "DLV-2636",
+              "2026-05-01",
+              "Greenhouse",
+              "Seeds",
+              "Pepper Starts",
+              "24",
+              "96.00"
+            ]
+          }
+        ]
+      },
+      {
+        "autofilter_range": null,
+        "column_number_formats": [
+          "@",
+          "0"
+        ],
+        "column_types": [
+          "text",
+          "integer"
+        ],
+        "formulas": [],
+        "freeze_header_row": true,
+        "headers": [
+          "Garden Zone",
+          "Delivered Units"
+        ],
+        "name": "Route Snapshot",
+        "rows": [
+          {
+            "values": [
+              "North Beds",
+              "128"
+            ]
+          },
+          {
+            "values": [
+              "East Terrace",
+              "142"
+            ]
+          },
+          {
+            "values": [
+              "South Plot",
+              "116"
+            ]
+          },
+          {
+            "values": [
+              "West Beds",
+              "134"
+            ]
+          },
+          {
+            "values": [
+              "Orchard Row",
+              "121"
+            ]
+          },
+          {
+            "values": [
+              "Greenhouse",
+              "149"
+            ]
+          }
+        ]
+      }
+    ],
+    "workbook_title": "Garden Supply Delivery Review"
+  },
+  "generation": {
+    "request_id": "ed6c2c22-05b8-439d-8155-8ac07ccb4fcd",
+    "prompt_sha256": "567924b901720851256fb21dd8b80eac1e56b38c573158f201f18b3eedb5bd76",
+    "model": "gpt-5.6-terra",
+    "input_tokens": 2137,
+    "output_tokens": 1620,
+    "estimated_cost_usd": 0.0198728
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "task_id": "6e99a1ad-07d2-4b66-a1ce-ece6d99c20a5",
+  "app": "libreoffice_calc",
+  "single_action_count": 2,
+  "prompt_sha256": "feec9956ceeda1e33c68bb54c51293e198af37d246e15e715784642012f833ce",
+  "request_id": "8e822e5e-efe5-4b15-9d2c-8169e1b4d8f5",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1181,
+    "cached_input_tokens": 1073,
+    "output_tokens": 166,
+    "estimated_cost_usd": 0.0024226
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1
+        ],
+        "efficiency_tip": "Select the entire column first so one formatting command updates all existing values and cells entered later, instead of adjusting decimal places cell by cell.",
+        "name": "Increase displayed decimal places for an entire column",
+        "procedure": [
+          "Click the column header for the numeric column to select the whole column; for example, click column C.",
+          "Use the toolbar’s Increase Decimal button to add displayed decimal places. Each activation increases the displayed precision by one decimal place; double-click it when two additional places are needed.",
+          "For example, a value displayed as 12 can be shown as 12.00 after increasing the decimal places twice. This changes display formatting, not the stored numeric value."
+        ]
+      }
+    ]
+  }
+}

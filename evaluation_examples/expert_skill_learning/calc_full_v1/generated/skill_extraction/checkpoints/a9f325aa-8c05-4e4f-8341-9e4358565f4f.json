@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "task_id": "a9f325aa-8c05-4e4f-8341-9e4358565f4f",
+  "app": "libreoffice_calc",
+  "single_action_count": 5,
+  "prompt_sha256": "477b7b4c82958785f3cc0101a9bcc573b4f29144ba8e8e3c56f0674b390643c6",
+  "request_id": "230945ab-ead8-409a-8f0b-7c8e2ff2efc1",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1255,
+    "cached_input_tokens": 1073,
+    "output_tokens": 309,
+    "estimated_cost_usd": 0.0042866
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "action_ids": [
+          0,
+          1,
+          2
+        ],
+        "efficiency_tip": "Enter the formula once in the first output row, then use an autofill method to propagate it instead of rebuilding the formula for every row.",
+        "name": "Build a text-cleaning formula with TRIM and PROPER",
+        "procedure": [
+          "Select the first destination cell beside the source text, such as C2 when the uncleaned text is in B2.",
+          "Type a formula that nests TRIM inside PROPER, for example `=PROPER(TRIM(B2))`, then press Enter.",
+          "TRIM removes leading and trailing spaces and reduces repeated internal spaces to single spaces. PROPER capitalizes the first letter of each word and converts the remaining letters to lowercase."
+        ]
+      },
+      {
+        "action_ids": [
+          3,
+          4
+        ],
+        "efficiency_tip": "Double-clicking the fill handle is faster than dragging it through a long contiguous data block; verify that the adjacent source column has no unintended blank rows, because blanks can limit propagation.",
+        "name": "Autofill a formula down a contiguous adjacent data range",
+        "procedure": [
+          "Select the cell containing the completed formula, such as C2.",
+          "Move to the small square at the cell's bottom-right corner (the fill handle) and double-click it.",
+          "Calc fills the formula downward for the contiguous rows detected in the neighboring data column, adjusting relative references; for example, `B2` becomes `B3`, `B4`, and so on."
+        ]
+      }
+    ]
+  }
+}

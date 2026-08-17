@@ -1,0 +1,101 @@
+{
+  "id": "reference-task-calc-full-r01-003",
+  "snapshot": "libreoffice_calc",
+  "instruction": "Prepare the service-estimate review workbook: add readable estimate notes for every service request using the rate card, lay out the Overview checklist as a horizontal heading row instead of its current vertical list, and zoom out the worksheet slightly for easier review.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-003/initial_artifact.xlsx",
+            "path": "/home/user/Desktop/service_estimate_review.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/service_estimate_review.xlsx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_calc"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-calc-full-r01-003",
+    "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-003/initial_artifact.xlsx",
+    "artifact_sha256": "ba3d0a4671a148bf8b4279f423b74a3cf119fcdda697ce8dcec66ae84adea44b",
+    "guest_artifact_path": "/home/user/Desktop/service_estimate_review.xlsx",
+    "required_skill_ids": [
+      "26a8440e-c166-4c50-aef4-bfb77314b46b.skill-05",
+      "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-03",
+      "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17.skill-01",
+      "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-01"
+    ],
+    "operator_guide": {
+      "allowed_variation": "Equivalent Calc commands, formula syntax accepted by the installed locale, and a different modest zoom-out level are acceptable. The estimate text may use a comparable clear label and currency formatting, provided it remains a text result that uses the Rate Card lookup and the same-row Units and Adjustment arithmetic.",
+      "recommended_demonstration": [
+        {
+          "efficiency_tip": "Use Cut rather than Copy so the old vertical checklist is cleared automatically after the horizontal placement.",
+          "operation_intent": "On Overview, move the four checklist labels from A3:A6 into the blank B2:E2 heading area while changing their vertical orientation to horizontal.",
+          "skill_id": "26a8440e-c166-4c50-aef4-bfb77314b46b.skill-05",
+          "visible_success_signal": "B2:E2 displays the four labels left-to-right in their original top-to-bottom order, and A3:A6 no longer contains those source labels."
+        },
+        {
+          "efficiency_tip": "Build the full relative-row calculation once, using absolute references for the Rate Card lookup range, rather than constructing separate formulas per request.",
+          "operation_intent": "In the first Estimate Note cell on Service Requests, create a text-producing formula that looks up the unit rate for that row's service code and calculates rate × units × (1 − adjustment), presenting the resulting amount in a readable estimate note.",
+          "skill_id": "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-01",
+          "visible_success_signal": "E2 shows readable text including a calculated currency estimate, and changing-row references are visible in the formula while the Rate Card table reference remains fixed."
+        },
+        {
+          "efficiency_tip": "After confirming E2, use the fill handle's double-click behavior to extend through the contiguous request records instead of manually copying each result.",
+          "operation_intent": "Propagate the completed Estimate Note formula from E2 down through all 18 request rows.",
+          "skill_id": "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-03",
+          "visible_success_signal": "Every cell from E2 through E19 contains a text estimate note with row-appropriate calculated values; there are no blank output cells in that range."
+        },
+        {
+          "efficiency_tip": "Use the status-bar slider to make one intentional reduction, selecting a comfortable smaller scale instead of many small adjustments.",
+          "operation_intent": "Reduce the worksheet display zoom so more of the service-request table is comfortably visible.",
+          "skill_id": "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17.skill-01",
+          "visible_success_signal": "The status bar indicates a lower zoom than the initial default and visibly more rows or columns fit in the worksheet view."
+        }
+      ],
+      "recording_end_state": "Service Requests has populated text estimate notes in E2:E19 based on the Rate Card and each request row; Overview has the checklist labels only across B2:E2; and worksheet zoom is visibly lower than at the start.",
+      "recording_start_state": "Open the supplied Service Estimate Review workbook in Calc with its three sheets in the described incomplete state."
+    },
+    "expected_incidental_operations": [
+      {
+        "category": "scaffolding",
+        "operation": "Switch between the Service Requests, Rate Card, and Overview sheets as needed.",
+        "reason": "The estimate formula refers to the lookup table on another sheet, while the checklist change is on Overview."
+      },
+      {
+        "category": "scaffolding",
+        "operation": "Select the relevant source range, output cell, or destination anchor before carrying out each requested worksheet action.",
+        "reason": "Range and cell selection is inherent setup for entering the calculation and placing the moved checklist labels."
+      },
+      {
+        "category": "task_specific",
+        "operation": "Enter one complete text-producing estimate formula in the first Estimate Note cell before propagating it.",
+        "reason": "A first-row formula is required as the source for the requested filled output column."
+      }
+    ],
+    "ready_state_checks": [
+      "Calc opens the Service Requests sheet with a neutral active cell near the top.",
+      "Service Requests shows headers in A1:E1, populated request data in A2:D19, and blank Estimate Note cells E2:E19.",
+      "Rate Card contains the Service Code and Unit Rate lookup table with six entries.",
+      "Overview has checklist labels vertically in A3:A6, while B2:E2 is blank.",
+      "Worksheet zoom is at the normal default level and has not been reduced."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "scripts/python/manage_reference_review_packets.py export",
+  "reference_task_id": "reference-task-calc-full-r01-014",
+  "context_fingerprint": "58b19c1e61d230419a8879dbc3286c34509267a4a99330437282b26bfceb17aa",
+  "inputs": [
+    {
+      "role": "artifact",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/initial_artifact.xlsx",
+      "sha256": "28b3a6cdd9f468a591b07b4c4c223c6a5aa04d0c3bed9851d6095faff92bb164"
+    },
+    {
+      "role": "artifact_blueprint",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/artifact_blueprint.json",
+      "sha256": "7ddbb659d93d2061eb3845f216edf18bbb94fa7cc948656923d817e70c013ac9"
+    },
+    {
+      "role": "artifact_qa",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/artifact_qa.json",
+      "sha256": "5468dd7d51e1d6fff8069d8800eba251166e68a4ddfe9c90d129f489c2fec1be"
+    },
+    {
+      "role": "task_config",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-014.json",
+      "sha256": "9c85beb853f01ffc119816c12f31fb64802a8be85b69b4ad5ac3f035fbf770e5"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/previews/CheckIn_Log.png",
+      "sha256": "b4264663c60445b64fa9e95b904b2eebd726d86e47fe73ee2ad0089f88ecac40"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/previews/Coverage_Setup.png",
+      "sha256": "92cb7036a9332924f1d808e99e9ac01f2d506661c4446b0657f33c4dea2a49ab"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-014/previews/Handoff_Summary.png",
+      "sha256": "a9e46dd91ab0a8e71a38df480ebfe40c89f7c54800959b725afe2e5b46741773"
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "TASK.md",
+      "sha256": "eaec1475dc02a2f200cc9cd861c8fbd0e43eeb47be5be8f031aa560c42b1b572"
+    },
+    {
+      "path": "TASK_DETAIL.md",
+      "sha256": "0e205b1033f2735cb1349ff9b210318196393552107050c72f8ac952cac5b3aa"
+    },
+    {
+      "path": "context.json",
+      "sha256": "0bdba9cc0b218747d7d32d017a6bf95e03274204bb3d9a0fe8ee0e1b93f95e71"
+    },
+    {
+      "path": "task_config.json",
+      "sha256": "9c85beb853f01ffc119816c12f31fb64802a8be85b69b4ad5ac3f035fbf770e5"
+    },
+    {
+      "path": "artifact/initial_artifact.xlsx",
+      "sha256": "28b3a6cdd9f468a591b07b4c4c223c6a5aa04d0c3bed9851d6095faff92bb164"
+    },
+    {
+      "path": "artifact/artifact_blueprint.json",
+      "sha256": "7ddbb659d93d2061eb3845f216edf18bbb94fa7cc948656923d817e70c013ac9"
+    },
+    {
+      "path": "artifact/artifact_qa.json",
+      "sha256": "5468dd7d51e1d6fff8069d8800eba251166e68a4ddfe9c90d129f489c2fec1be"
+    },
+    {
+      "path": "artifact/previews/CheckIn_Log.png",
+      "sha256": "b4264663c60445b64fa9e95b904b2eebd726d86e47fe73ee2ad0089f88ecac40"
+    },
+    {
+      "path": "artifact/previews/Coverage_Setup.png",
+      "sha256": "92cb7036a9332924f1d808e99e9ac01f2d506661c4446b0657f33c4dea2a49ab"
+    },
+    {
+      "path": "artifact/previews/Handoff_Summary.png",
+      "sha256": "a9e46dd91ab0a8e71a38df480ebfe40c89f7c54800959b725afe2e5b46741773"
+    }
+  ],
+  "editable_review": {
+    "path": "review.json",
+    "excluded_from_generated_file_hashes": true
+  }
+}

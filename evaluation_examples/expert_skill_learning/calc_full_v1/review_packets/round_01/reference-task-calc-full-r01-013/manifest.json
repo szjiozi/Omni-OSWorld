@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "scripts/python/manage_reference_review_packets.py export",
+  "reference_task_id": "reference-task-calc-full-r01-013",
+  "context_fingerprint": "ed6136fd02e28ff1fab12558376263b4ecdd4c5fc8124274415d0b0e76b46a23",
+  "inputs": [
+    {
+      "role": "artifact",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-013/initial_artifact.xlsx",
+      "sha256": "1b44b6f976f1ab66d2b3554152fa305d7e4b75f596f6ffa435b7df2efdd4f1e9"
+    },
+    {
+      "role": "artifact_blueprint",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-013/artifact_blueprint.json",
+      "sha256": "0042727d211dc061377ff8b43d6fbfde319d136f9fca6d7e8d1a09e027a15936"
+    },
+    {
+      "role": "artifact_qa",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-013/artifact_qa.json",
+      "sha256": "c02b24164a017140ec23496260cb603863421b3fced555afe15609f4f686dcad"
+    },
+    {
+      "role": "task_config",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-013.json",
+      "sha256": "6e89fa105c41fb63202c4623d958df540a9eac072fc03c9ff6d988871bad3cdc"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-013/previews/Deliveries.png",
+      "sha256": "441f2c8d6d97bb0a1cf69d95b82639841934654bc41a4b9259184afb02dbe0bc"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-013/previews/Route_Snapshot.png",
+      "sha256": "4daebbd81cb1182df99cef7d73bb872d1c7e87d0127bf25aaceee847e24fe402"
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "TASK.md",
+      "sha256": "d28e50472188564741d349ee8e71519dc9bbabd6ce51a35ccda79b49d3e38ded"
+    },
+    {
+      "path": "TASK_DETAIL.md",
+      "sha256": "f5d6895a74fd5db80de7ab11d2b8727aad8da8950781b989db5f9ee8afbe15af"
+    },
+    {
+      "path": "context.json",
+      "sha256": "a829c1358c94fc2eee1883b56bd7884650e8ee85c538425b8ea701a480aa5650"
+    },
+    {
+      "path": "task_config.json",
+      "sha256": "6e89fa105c41fb63202c4623d958df540a9eac072fc03c9ff6d988871bad3cdc"
+    },
+    {
+      "path": "artifact/initial_artifact.xlsx",
+      "sha256": "1b44b6f976f1ab66d2b3554152fa305d7e4b75f596f6ffa435b7df2efdd4f1e9"
+    },
+    {
+      "path": "artifact/artifact_blueprint.json",
+      "sha256": "0042727d211dc061377ff8b43d6fbfde319d136f9fca6d7e8d1a09e027a15936"
+    },
+    {
+      "path": "artifact/artifact_qa.json",
+      "sha256": "c02b24164a017140ec23496260cb603863421b3fced555afe15609f4f686dcad"
+    },
+    {
+      "path": "artifact/previews/Deliveries.png",
+      "sha256": "441f2c8d6d97bb0a1cf69d95b82639841934654bc41a4b9259184afb02dbe0bc"
+    },
+    {
+      "path": "artifact/previews/Route_Snapshot.png",
+      "sha256": "4daebbd81cb1182df99cef7d73bb872d1c7e87d0127bf25aaceee847e24fe402"
+    }
+  ],
+  "editable_review": {
+    "path": "review.json",
+    "excluded_from_generated_file_hashes": true
+  }
+}
