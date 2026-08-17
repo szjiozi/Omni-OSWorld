@@ -9,6 +9,7 @@ from benchmark_construction.reference_recording import (
     GUEST_RECORDING,
     GUEST_RECORDING_STDERR,
     _START_SOURCE,
+    calibrate_recording_timeline,
     collect_guest_reference_recording,
     mp4_duration_seconds,
     start_guest_reference_recording,
@@ -75,6 +76,13 @@ def test_reference_recorder_cannot_block_on_an_unread_stderr_pipe():
     assert "stderr=subprocess.PIPE" not in _START_SOURCE
 
 
+def test_reference_recorder_waits_for_ffmpeg_first_frame_before_ready():
+    assert '"-progress"' in _START_SOURCE
+    assert '"first_frame_monotonic_ns"' in _START_SOURCE
+    assert '"ffmpeg_progress_first_frame"' in _START_SOURCE
+    assert "did not produce its first frame within 30 seconds" in _START_SOURCE
+
+
 def test_mp4_duration_parser_and_integrity_check(tmp_path):
     video_path = tmp_path / "recording_raw.mp4"
     video_path.write_bytes(_mp4_with_duration(12.0))
@@ -100,4 +108,26 @@ def test_recording_integrity_check_rejects_truncation(tmp_path):
             video_path,
             start_monotonic_ns=0,
             stop_monotonic_ns=355_000_000_000,
+        )
+
+
+def test_recording_timeline_calibrates_variable_ffmpeg_startup_gap():
+    timeline = calibrate_recording_timeline(
+        provisional_start_monotonic_ns=972_130_000_000,
+        stop_monotonic_ns=1_085_055_201_996,
+        actual_duration_seconds=111.0,
+    )
+
+    assert timeline.calibrated_video_start_monotonic_ns == 974_055_201_996
+    assert timeline.alignment_correction_ms == pytest.approx(1925.201996)
+    assert timeline.to_dict()["alignment_method"] == "stop_minus_mp4_duration"
+
+
+@pytest.mark.parametrize("duration", [0.0, -1.0, float("inf"), float("nan")])
+def test_recording_timeline_rejects_invalid_duration(duration):
+    with pytest.raises(ValueError, match="positive and finite"):
+        calibrate_recording_timeline(
+            provisional_start_monotonic_ns=1_000_000_000,
+            stop_monotonic_ns=2_000_000_000,
+            actual_duration_seconds=duration,
         )

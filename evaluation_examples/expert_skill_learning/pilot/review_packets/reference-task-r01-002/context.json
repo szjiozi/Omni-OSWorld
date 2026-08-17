@@ -289,6 +289,99 @@
       ]
     }
   ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-r01-002",
+    "task_detail_sha256": "5d49a1192094ebbd382e30e508af3e82751ccfe56b87a378f7dc5f5be634bf57",
+    "guide": {
+      "final_verification": [
+        "返回“Funding Log”工作表，确认 I2:I17 均不再为空，且这些单元格显示为货币金额；单击其中若干单元格时，编辑栏中的公式引用应随所在行变化。",
+        "确认源数据仍保留在 Funding Log 的 A1:I17，标题行和 16 条记录没有被删除或覆盖。",
+        "确认存在一个单独的新工作表，其中的原生数据透视表按 Service Area 列出 Northside、Harbor、Meadow，并为每个区域显示 Net Allocation 的求和结果。"
+      ],
+      "language": "zh-CN",
+      "overview": "本任务先在“Funding Log”中计算每个 workshop 的 Net Allocation：从 Award Received 扣除 Credit Reversal、Asset Recovery 以及 Venue Cost 到 Facilitator Cost 的三项连续成本。随后以完整数据表建立原生数据透视表，在新工作表中按 Service Area 汇总 Net Allocation 的总和。",
+      "reference_task_id": "reference-task-r01-002",
+      "starting_state_checks": [
+        "确认工作簿标题为“Workshop Grant Reconciliation”。",
+        "确认开始时只有“Funding Log”工作表。",
+        "确认 Funding Log 中的数据区域为 A1:I17：第 1 行是标题，数据在第 2 至第 17 行，I 列标题为“Net Allocation”，且 I2:I17 为空。",
+        "确认 A 至 H 列包含 Workshop ID、Award Received、Credit Reversal、Asset Recovery、Service Area、Venue Cost、Materials Cost 和 Facilitator Cost，避免在错误列中输入公式。"
+      ],
+      "steps": [
+        {
+          "efficiency_tip": "先只在第一条记录建立公式；将 F2:H2 作为连续区域交给 SUM 一次计算，比逐个减去三项成本更简洁，也更不容易漏列。",
+          "instructions": [
+            "打开“Funding Log”工作表，单击输出列的第一个数据单元格 I2。",
+            "输入公式 `=B2-C2-D2-SUM(F2:H2)`，然后按 Enter 确认。该公式以 Award Received 为起点，依次扣除 Credit Reversal、Asset Recovery，以及 F 至 H 列的三项成本总额。",
+            "检查 I2 显示一个货币结果；再次选中 I2 时，可在输入行看到刚输入的公式。"
+          ],
+          "skill_ids": [
+            "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01"
+          ],
+          "step_number": 1,
+          "title": "在首条记录计算 Net Allocation",
+          "visible_success_signal": "I2 显示货币金额，且其公式为 `=B2-C2-D2-SUM(F2:H2)` 或含义相同的行内公式。"
+        },
+        {
+          "efficiency_tip": "使用填充柄或复制到连续目标区域，可以让 Calc 自动调整行号，无需为 16 条记录逐条重输公式。",
+          "instructions": [
+            "选中 I2。",
+            "将 I2 的公式向下填充到 I17。可拖动选中单元格右下角的填充柄至 I17；也可复制 I2，选中 I3:I17 后粘贴。",
+            "选中例如 I3、I10 或 I17 进行抽查，确认公式中的行号已变为对应行号，例如 I3 使用第 3 行引用。"
+          ],
+          "skill_ids": [],
+          "step_number": 2,
+          "title": "将公式填充到全部 workshop 记录",
+          "visible_success_signal": "I2:I17 全部显示货币结果，没有空白输出；各行公式的引用随行号自动调整。"
+        },
+        {
+          "efficiency_tip": "从包含标题和计算结果的完整连续区域启动数据透视表，Calc 更容易正确识别字段及全部 16 条记录。",
+          "instructions": [
+            "在“Funding Log”中选择完整源数据区域 A1:I17，务必包含标题行、Service Area 列和已完成的 Net Allocation 列。",
+            "选择菜单“数据”>“数据透视表”>“插入或编辑…”。在数据源选择界面确认当前选区为 A1:I17，然后继续进入数据透视表布局设置。"
+          ],
+          "skill_ids": [
+            "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01"
+          ],
+          "step_number": 3,
+          "title": "以完整资金记录作为数据透视表来源",
+          "visible_success_signal": "数据透视表布局窗口显示可用字段，其中包括“Service Area”和“Net Allocation”，并且来源是 Funding Log 的完整表格。"
+        },
+        {
+          "efficiency_tip": "只放置一个行字段和一个数据字段，能得到清晰、便于核对的按区域汇总表。",
+          "instructions": [
+            "在布局设置中，将“Service Area”放入“行字段”区域。",
+            "将“Net Allocation”放入“数据字段”区域。若该字段的汇总方式不是求和，双击或打开该数据字段的选项，将函数设为“求和”。",
+            "继续到输出位置设置，选择在新工作表中创建数据透视表，然后确认完成。"
+          ],
+          "skill_ids": [],
+          "step_number": 4,
+          "title": "按 Service Area 配置 Net Allocation 求和汇总",
+          "visible_success_signal": "Calc 创建一个新的工作表，其中的数据透视表以 Service Area 为行标签，并显示 Net Allocation 的总和列。"
+        },
+        {
+          "efficiency_tip": "完成后先用三项区域名称和一列总计快速核对结构；这样可立即发现字段放错区域或被计数而非求和的问题。",
+          "instructions": [
+            "查看新工作表中的数据透视表，确认行标签包含 Northside、Harbor 和 Meadow。",
+            "确认每个 Service Area 对应的是 Net Allocation 的汇总金额，而不是记录计数；如标题显示计数或结果明显为小整数，应返回布局将 Net Allocation 的汇总函数改为“求和”。",
+            "保留 Funding Log 源表及新建的数据透视表工作表，不要用手工汇总值替换数据透视表结果。"
+          ],
+          "skill_ids": [],
+          "step_number": 5,
+          "title": "核对数据透视表结果和工作簿结构",
+          "visible_success_signal": "新工作表可见 Northside、Harbor、Meadow 三个区域及各自的 Net Allocation 求和金额，同时 Funding Log 的 16 条原始记录和计算列仍完整存在。"
+        }
+      ]
+    },
+    "generation": {
+      "request_id": "36d5f515-a2a7-4517-bc7f-e81a5325bb61",
+      "prompt_sha256": "85944eb1105c8dff122bf74711253f888135b75b7d6f3981af158c64246981b1",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 2893,
+      "output_tokens": 1382,
+      "estimated_cost_usd": 0.02237
+    }
+  },
   "artifact": {
     "manifest_entry": {
       "reference_task_id": "reference-task-r01-002",

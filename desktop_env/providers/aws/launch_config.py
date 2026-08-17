@@ -52,6 +52,7 @@ class AwsLaunchConfig:
     volume_encrypted: bool
     resource_project: str
     instance_profile_name: str | None
+    resource_role: str | None = None
 
     def block_device_mapping(self, device_name: str = "/dev/sda1") -> dict:
         return {
@@ -71,6 +72,8 @@ class AwsLaunchConfig:
             {"Key": "Project", "Value": self.resource_project},
             {"Key": "ManagedBy", "Value": "OSWorld"},
         ]
+        if self.resource_role:
+            tags.append({"Key": "Role", "Value": self.resource_role})
         return [
             {"ResourceType": "instance", "Tags": tags},
             {"ResourceType": "volume", "Tags": tags},
@@ -143,6 +146,9 @@ def load_launch_config(
         instance_profile_name,
     ):
         raise ValueError("AWS_EC2_INSTANCE_PROFILE_NAME has an unexpected format")
+    resource_role = env.get("AWS_RESOURCE_ROLE", "").strip()
+    if resource_role and not re.fullmatch(r"[A-Za-z0-9 _.:/=+@-]{1,256}", resource_role):
+        raise ValueError("AWS_RESOURCE_ROLE has an unexpected format")
 
     return AwsLaunchConfig(
         instance_type=instance_type,
@@ -174,4 +180,5 @@ def load_launch_config(
         ),
         resource_project=resource_project,
         instance_profile_name=instance_profile_name or None,
+        resource_role=resource_role or None,
     )

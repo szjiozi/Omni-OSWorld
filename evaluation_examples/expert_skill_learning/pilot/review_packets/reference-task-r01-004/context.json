@@ -274,6 +274,126 @@
       ]
     }
   ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-r01-004",
+    "task_detail_sha256": "6119d3134d8d33454976fce36419c1d50f6dbdd8c4ef4dcb46203909b6cc5c43",
+    "guide": {
+      "final_verification": [
+        "回到“Service Log”，确认 F2:F25 的 24 个 Billed Charge 单元格都含有计算结果，且显示为带货币符号和两位小数的金额。",
+        "确认“Service Log”中的 Billed Charge 结果与同一行的 Units × Hourly Rate 相符；例如可选中任意一行检查公式栏是否为相应的乘法公式。",
+        "确认工作簿中新建了一个包含数据透视表的工作表；表中应有 Avery Cole、Imani Park、Jules Rowan、Morgan Lee 和 Tessa Vale 等协调员行标签，并且每人旁边有 Billed Charge 的汇总金额。",
+        "确认数据透视表的金额字段是求和结果，而不是计数；表中通常会有总计行，且总计应对应所有 24 条服务记录的 Billed Charge 总和。"
+      ],
+      "language": "zh-CN",
+      "overview": "本指南将在“Service Log”工作表中计算 24 条社区工作坊服务记录的 Billed Charge（Units × Hourly Rate），将结果显示为货币金额，然后在新工作表创建按 Coordinator 汇总 Billed Charge 总额的数据透视表。",
+      "reference_task_id": "reference-task-r01-004",
+      "starting_state_checks": [
+        "确认工作簿已打开且当前可见“Service Log”工作表。",
+        "确认第 1 行是标题行，A1:F1 依次包含 Work Order、Coordinator、Service Tier、Units、Hourly Rate、Billed Charge；数据应延续至第 25 行。",
+        "确认 Billed Charge 列 F2:F25 仍为空白，且当前没有数据透视表汇总工作表。",
+        "确认 Units 位于 D 列、Hourly Rate 位于 E 列、Billed Charge 位于 F 列，以便使用正确的乘法公式。"
+      ],
+      "steps": [
+        {
+          "efficiency_tip": "先只在第一个结果单元格中建立正确公式，确认无误后再填充，可避免对每一行重复输入公式。",
+          "instructions": [
+            "在“Service Log”中单击单元格 F2，即第一条服务记录的 Billed Charge 单元格。",
+            "输入公式 `=D2*E2`，然后按 Enter。该公式会用本行 Units 乘以本行 Hourly Rate。",
+            "确认 F2 显示一个非零数值；选中 F2 时，公式输入栏应显示 `=D2*E2`。"
+          ],
+          "skill_ids": [],
+          "step_number": 1,
+          "title": "计算第一条服务记录的 Billed Charge",
+          "visible_success_signal": "F2 不再为空白，而是显示 Units 与 Hourly Rate 相乘得到的数值。"
+        },
+        {
+          "efficiency_tip": "在填充公式前先给 F2 设置货币格式；向下填充时，Calc 通常会同时保留该格式。",
+          "instructions": [
+            "保持 F2 处于选中状态。",
+            "在 Calc 工具栏上单击“格式化为货币”按钮（货币图标）。",
+            "查看 F2 的显示方式：它应改为带货币符号且保留两位小数的金额。"
+          ],
+          "skill_ids": [
+            "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02"
+          ],
+          "step_number": 2,
+          "title": "将首个计算结果设置为货币格式",
+          "visible_success_signal": "F2 以货币金额显示，而不是普通的小数或常规数字。"
+        },
+        {
+          "efficiency_tip": "使用填充柄或“向下填充”可一次把公式和货币格式复制到剩余 23 行，比逐行输入更快。",
+          "instructions": [
+            "再次选中 F2，然后将选区扩展为 F2:F25。可在名称框中输入 `F2:F25` 并按 Enter，或先选中 F2 后按住 Shift 单击 F25。",
+            "选择“工作表”菜单中的“填充单元格”→“向下填充”，使 F2 的公式复制到 F3:F25。",
+            "检查 F3 和 F25：每行公式应随行号调整，例如 F3 对应 `=D3*E3`，F25 对应 `=D25*E25`。",
+            "如果填充后某些单元格未显示货币格式，选中整个 F2:F25，并再次单击工具栏的“格式化为货币”按钮。"
+          ],
+          "skill_ids": [],
+          "step_number": 3,
+          "title": "向下填充全部 24 条 Billed Charge 公式",
+          "visible_success_signal": "F2:F25 全部包含非零计算结果，并以带货币符号和两位小数的格式显示。"
+        },
+        {
+          "efficiency_tip": "选中包含标题的完整连续数据区域，可让 Calc 自动把第一行识别为数据透视表字段名。",
+          "instructions": [
+            "在“Service Log”中选中完整源数据范围 A1:F25，包括标题行和全部 24 条记录。可单击 A1 后按住 Shift 单击 F25。",
+            "打开“数据”菜单，选择“数据透视表”中的“插入或编辑”（不同版本可能显示为“插入或创建”），启动数据透视表创建流程。",
+            "在数据源确认对话框中，确认使用当前选定区域作为数据源，然后继续进入数据透视表布局对话框。"
+          ],
+          "skill_ids": [],
+          "step_number": 4,
+          "title": "以完整服务日志作为数据透视表源",
+          "visible_success_signal": "屏幕显示数据透视表布局界面，并在“可用字段”列表中可看到 Coordinator 和 Billed Charge 等字段。"
+        },
+        {
+          "efficiency_tip": "将字段从“可用字段”直接拖到目标区域，避免先放错位置后再调整。",
+          "instructions": [
+            "在数据透视表布局对话框的“可用字段”列表中找到 `Coordinator`。",
+            "将 `Coordinator` 直接拖入“行字段”区域。",
+            "确认 `Coordinator` 已显示在“行字段”区域中，而不是“列字段”或“数据字段”区域。"
+          ],
+          "skill_ids": [
+            "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02"
+          ],
+          "step_number": 5,
+          "title": "将 Coordinator 放入数据透视表的行字段",
+          "visible_success_signal": "布局中的“行字段”区域包含 Coordinator，预示结果会按每位协调员分行显示。"
+        },
+        {
+          "efficiency_tip": "数值金额字段放入“数据字段”后应使用“求和”；若 Calc 自动选择了计数，应在创建前改正。",
+          "instructions": [
+            "从“可用字段”列表将 `Billed Charge` 拖入“数据字段”区域。",
+            "检查该数据字段的汇总方式是否为“求和”或显示类似“Sum - Billed Charge”。如果显示“计数”，双击或打开该数据字段的选项，将汇总函数改为“求和”。",
+            "确认布局只需 Coordinator 作为行字段，Billed Charge 作为数据字段；不需要将其他字段加入列字段。"
+          ],
+          "skill_ids": [],
+          "step_number": 6,
+          "title": "将 Billed Charge 配置为求和数据字段",
+          "visible_success_signal": "“数据字段”区域显示 Billed Charge 的求和汇总，而“行字段”区域仍显示 Coordinator。"
+        },
+        {
+          "efficiency_tip": "选择在新工作表输出可避免覆盖原始服务日志，也便于单独查看汇总结果。",
+          "instructions": [
+            "在布局对话框中确认字段设置后，点击“确定”或继续到输出位置设置。",
+            "选择将数据透视表输出到“新工作表”，然后确认创建。",
+            "切换到新建的数据透视表工作表，必要时可将工作表重命名为易辨识的名称，例如“Coordinator Summary”。"
+          ],
+          "skill_ids": [],
+          "step_number": 7,
+          "title": "在新工作表生成协调员收费汇总",
+          "visible_success_signal": "出现一个新的工作表，其中数据透视表按 Coordinator 显示行标签，并在相邻列显示 Billed Charge 的汇总金额和总计。"
+        }
+      ]
+    },
+    "generation": {
+      "request_id": "b2f08c1a-41d1-4db8-9d45-159da50ec4ae",
+      "prompt_sha256": "ab9b9a5f55b41fa99cfcd71f1c316650880ea9e41f13b44713cf3d635107aeed",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 2481,
+      "output_tokens": 1882,
+      "estimated_cost_usd": 0.027546
+    }
+  },
   "artifact": {
     "manifest_entry": {
       "reference_task_id": "reference-task-r01-004",

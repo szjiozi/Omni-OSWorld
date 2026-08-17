@@ -4,10 +4,17 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
+import urllib.request
 from pathlib import Path
-from typing import Iterable
+from typing import Callable, Iterable
 
 from .models import SourceTask
+
+
+OSWORLD_HUMAN_RAW_URL = (
+    "https://raw.githubusercontent.com/WukLab/osworld-human/{commit}/{source_file}"
+)
 
 
 def _manifest_task(entry: dict, app: str, *, path: Path) -> SourceTask:
@@ -100,3 +107,167 @@ def resolve_task_paths(source_root: Path, task_ids: Iterable[str]) -> list[Path]
             raise ValueError(f"Multiple OSWorld-Human files found for {task_id}: {matches}")
         paths.append(matches[0])
     return paths
+
+
+def _sha256_bytes(payload: bytes) -> str:
+    return hashlib.sha256(payload).hexdigest()
+
+
+def _write_bytes_atomic(path: Path, payload: bytes) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(f".{path.name}.tmp")
+    temporary.write_bytes(payload)
+    os.replace(temporary, path)
+
+
+def _write_json_atomic(path: Path, payload: dict) -> None:
+    data = json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True)
+    _write_bytes_atomic(path, (data + "\n").encode("utf-8"))
+
+
+def _default_fetch(url: str) -> bytes:
+    with urllib.request.urlopen(url, timeout=60) as response:
+        return response.read()
+
+
+def _validate_raw_human_task(
+    payload: bytes,
+    entry: dict,
+    *,
+    expected_app: str,
+) -> dict:
+    expected_digest = entry.get("source_sha256")
+    actual_digest = _sha256_bytes(payload)
+    if actual_digest != expected_digest:
+        raise ValueError(
+            f"SHA256 mismatch for OSWorld-Human task {entry.get('task_id')}: "
+            f"expected {expected_digest}, got {actual_digest}"
+        )
+    document = json.loads(payload)
+    if document.get("id") != entry.get("task_id"):
+        raise ValueError("OSWorld-Human task ID does not match the source manifest")
+    if document.get("snapshot") != expected_app:
+        raise ValueError("OSWorld-Human task snapshot does not match the pilot app")
+    if document.get("instruction") != entry.get("instruction"):
+        raise ValueError("OSWorld-Human instruction differs from the frozen source manifest")
+    ground_truth = document.get("human-ground-truth")
+    if not isinstance(ground_truth, dict):
+        raise ValueError("OSWorld-Human task has no human-ground-truth object")
+    single = ground_truth.get("single-action")
+    grouped = ground_truth.get("grouped-action")
+    if single != entry.get("single_actions"):
+        raise ValueError("OSWorld-Human single actions differ from the frozen manifest")
+    if not isinstance(grouped, list) or not grouped:
+        raise ValueError("OSWorld-Human task has no grouped-action annotations")
+    if not all(isinstance(group, list) and group for group in grouped):
+        raise ValueError("OSWorld-Human grouped actions must be non-empty lists")
+    return document
+
+
+def prepare_pilot_suite(
+    source_manifest_path: Path,
+    output_root: Path,
+    *,
+    local_osworld_task_root: Path | None = None,
+    fetch: Callable[[str], bytes] | None = None,
+) -> dict:
+    """Materialize the pinned OSWorld-Human Pilot tasks without mutating OSWorld.
+
+    Existing valid cached task files are reused. The returned manifest records any
+    top-level differences from the local OSWorld task copies so instruction drift
+    cannot be hidden.
+    """
+
+    source_manifest = json.loads(source_manifest_path.read_text(encoding="utf-8"))
+    app = source_manifest.get("app")
+    commit = source_manifest.get("source_commit")
+    repository = source_manifest.get("source_repository")
+    entries = source_manifest.get("tasks")
+    if not app or not commit or not repository or not isinstance(entries, list):
+        raise ValueError("Source manifest lacks app, repository, commit, or tasks")
+
+    fetch_bytes = fetch or _default_fetch
+    task_records: list[dict] = []
+    suite_ids: list[str] = []
+    for entry in entries:
+        task_id = entry.get("task_id")
+        source_file = entry.get("source_file")
+        if not task_id or not source_file:
+            raise ValueError("Source manifest task lacks task_id or source_file")
+        destination = output_root / "examples" / source_file
+        if destination.exists():
+            payload = destination.read_bytes()
+            try:
+                document = _validate_raw_human_task(
+                    payload, entry, expected_app=app
+                )
+            except ValueError:
+                payload = fetch_bytes(
+                    OSWORLD_HUMAN_RAW_URL.format(
+                        commit=commit,
+                        source_file=source_file,
+                    )
+                )
+                document = _validate_raw_human_task(
+                    payload, entry, expected_app=app
+                )
+                _write_bytes_atomic(destination, payload)
+        else:
+            payload = fetch_bytes(
+                OSWORLD_HUMAN_RAW_URL.format(
+                    commit=commit,
+                    source_file=source_file,
+                )
+            )
+            document = _validate_raw_human_task(payload, entry, expected_app=app)
+            _write_bytes_atomic(destination, payload)
+
+        differing_fields: list[str] = []
+        local_sha256 = None
+        if local_osworld_task_root is not None:
+            local_path = local_osworld_task_root / source_file
+            if not local_path.exists():
+                raise FileNotFoundError(f"Local OSWorld task is missing: {local_path}")
+            local_payload = local_path.read_bytes()
+            local_sha256 = _sha256_bytes(local_payload)
+            local_document = json.loads(local_payload)
+            comparable_keys = set(document) | set(local_document)
+            comparable_keys.discard("human-ground-truth")
+            differing_fields = sorted(
+                key
+                for key in comparable_keys
+                if document.get(key) != local_document.get(key)
+            )
+
+        ground_truth = document["human-ground-truth"]
+        task_records.append(
+            {
+                "task_id": task_id,
+                "app": app,
+                "source_file": source_file,
+                "source_sha256": entry["source_sha256"],
+                "materialized_path": str(destination),
+                "single_action_count": len(ground_truth["single-action"]),
+                "grouped_action_count": len(ground_truth["grouped-action"]),
+                "local_osworld_sha256": local_sha256,
+                "local_osworld_differing_fields": differing_fields,
+            }
+        )
+        suite_ids.append(task_id)
+
+    suite = {app: suite_ids}
+    suite_path = output_root / "test_osworld_human_pilot.json"
+    _write_json_atomic(suite_path, suite)
+    manifest = {
+        "schema_version": "1.0",
+        "pilot_id": source_manifest.get("pilot_id"),
+        "status": "engineering_pilot",
+        "source_repository": repository,
+        "source_commit": commit,
+        "source_manifest": str(source_manifest_path),
+        "suite_path": str(suite_path),
+        "test_config_base_dir": str(output_root),
+        "tasks": task_records,
+    }
+    _write_json_atomic(output_root / "osworld_human_pilot_manifest.json", manifest)
+    return manifest

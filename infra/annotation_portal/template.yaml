@@ -1,0 +1,561 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Private OSWorld reference annotation portal control plane.
+
+Parameters:
+  DeployGateway:
+    Type: String
+    AllowedValues: ["true", "false"]
+    Default: "false"
+    Description: Create the gateway and CloudFront distribution after the source bundle is uploaded.
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+  GatewaySubnetId:
+    Type: AWS::EC2::Subnet::Id
+    Description: Public subnet used only by the small NAT instance.
+  GatewayAvailabilityZone:
+    Type: AWS::EC2::AvailabilityZone::Name
+  GatewayPrivateSubnetCidr:
+    Type: String
+    Description: Unused IPv4 /24 inside the selected VPC for the private gateway.
+  WorkerSubnetId:
+    Type: AWS::EC2::Subnet::Id
+  GatewayAmiId:
+    Type: AWS::EC2::Image::Id
+    Description: Canonical Ubuntu 24.04 base AMI used by the self-bootstrapping gateway.
+  NatAmiId:
+    Type: AWS::EC2::Image::Id
+    Description: Canonical Ubuntu 24.04 arm64 AMI for the low-cost NAT instance.
+  GatewaySourceKey:
+    Type: String
+    Default: bootstrap/not-uploaded.tar.gz
+    Description: S3 object key for the source bundle uploaded between deployment phases.
+  GatewaySourceSha256:
+    Type: String
+    Default: not-uploaded
+    Description: Expected SHA256 of the source bundle.
+  WorkerAmiId:
+    Type: AWS::EC2::Image::Id
+  CloudFrontOriginPrefixListId:
+    Type: String
+    Description: ID of com.amazonaws.global.cloudfront.origin-facing in this region.
+  CloudFrontCachePolicyId:
+    Type: String
+    Description: ID of the AWS managed Managed-CachingDisabled policy.
+  PortalAdminUsernames:
+    Type: String
+    Default: portal-admin
+  PortalInstallDir:
+    Type: String
+    Default: /opt/osworld
+  AssignmentPath:
+    Type: String
+    Default: evaluation_examples/expert_skill_learning/annotation_portal/assignments.example.json
+  AllowPending:
+    Type: String
+    AllowedValues: ["true", "false"]
+    Default: "false"
+  GatewayInstanceType:
+    Type: String
+    Default: t3.micro
+  NatInstanceType:
+    Type: String
+    Default: t4g.nano
+  WorkerInstanceType:
+    Type: String
+    Default: t3.xlarge
+
+Conditions:
+  GatewayEnabled: !Equals [!Ref DeployGateway, "true"]
+  PendingTasksEnabled: !Equals [!Ref AllowPending, "true"]
+
+Resources:
+  GatewayPrivateSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VpcId
+      AvailabilityZone: !Ref GatewayAvailabilityZone
+      CidrBlock: !Ref GatewayPrivateSubnetCidr
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: osworld-annotation-gateway-private
+        - Key: Project
+          Value: OSWorld-Expert-Skill-Learning
+
+  GatewayPrivateRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VpcId
+      Tags:
+        - Key: Project
+          Value: OSWorld-Expert-Skill-Learning
+
+  GatewayPrivateRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref GatewayPrivateRouteTable
+      SubnetId: !Ref GatewayPrivateSubnet
+
+  NatSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Outbound NAT for the private annotation gateway
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+        - IpProtocol: "-1"
+          CidrIp: !Ref GatewayPrivateSubnetCidr
+      SecurityGroupEgress:
+        - IpProtocol: "-1"
+          CidrIp: 0.0.0.0/0
+
+  NatInstance:
+    Type: AWS::EC2::Instance
+    Condition: GatewayEnabled
+    Properties:
+      ImageId: !Ref NatAmiId
+      InstanceType: !Ref NatInstanceType
+      SourceDestCheck: false
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: true
+          DeleteOnTermination: true
+          DeviceIndex: "0"
+          GroupSet: [!Ref NatSecurityGroup]
+          SubnetId: !Ref GatewaySubnetId
+      BlockDeviceMappings:
+        - DeviceName: /dev/sda1
+          Ebs:
+            VolumeSize: 8
+            VolumeType: gp3
+            Encrypted: true
+            DeleteOnTermination: true
+      Tags:
+        - Key: Project
+          Value: OSWorld-Expert-Skill-Learning
+        - Key: Role
+          Value: AnnotationNat
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash
+          set -euo pipefail
+          cat >/etc/sysctl.d/99-osworld-nat.conf <<'EOF'
+          net.ipv4.ip_forward=1
+          EOF
+          sysctl --system
+          cat >/etc/systemd/system/osworld-nat.service <<'EOF'
+          [Unit]
+          Description=OSWorld annotation gateway NAT
+          After=network-online.target
+          Wants=network-online.target
+
+          [Service]
+          Type=oneshot
+          RemainAfterExit=yes
+          ExecStart=/bin/bash -c 'interface=$(ip route show default | awk "{print \$5; exit}"); iptables -t nat -C POSTROUTING -o "$interface" -j MASQUERADE 2>/dev/null || iptables -t nat -A POSTROUTING -o "$interface" -j MASQUERADE'
+
+          [Install]
+          WantedBy=multi-user.target
+          EOF
+          systemctl daemon-reload
+          systemctl enable --now osworld-nat.service
+
+  GatewayPrivateDefaultRoute:
+    Type: AWS::EC2::Route
+    Condition: GatewayEnabled
+    DependsOn: NatInstance
+    Properties:
+      RouteTableId: !Ref GatewayPrivateRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      InstanceId: !Ref NatInstance
+
+  AnnotationBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      VersioningConfiguration:
+        Status: Enabled
+      LifecycleConfiguration:
+        Rules:
+          - Id: AbortIncompleteMultipartUploads
+            Status: Enabled
+            AbortIncompleteMultipartUpload:
+              DaysAfterInitiation: 7
+
+  PortalStateTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+      SSESpecification:
+        SSEEnabled: true
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+
+  PortalUserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: osworld-reference-annotation
+      AdminCreateUserConfig:
+        AllowAdminCreateUserOnly: true
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 12
+          RequireLowercase: true
+          RequireUppercase: true
+          RequireNumbers: true
+          RequireSymbols: true
+          TemporaryPasswordValidityDays: 7
+      UsernameConfiguration:
+        CaseSensitive: false
+
+  PortalUserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      UserPoolId: !Ref PortalUserPool
+      GenerateSecret: false
+      PreventUserExistenceErrors: ENABLED
+      EnableTokenRevocation: true
+      ExplicitAuthFlows:
+        - ALLOW_USER_PASSWORD_AUTH
+        - ALLOW_REFRESH_TOKEN_AUTH
+      AccessTokenValidity: 1
+      IdTokenValidity: 1
+      RefreshTokenValidity: 1
+      TokenValidityUnits:
+        AccessToken: hours
+        IdToken: hours
+        RefreshToken: days
+
+  GatewaySecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: CloudFront VPC Origin to annotation gateway
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 8080
+          ToPort: 8080
+          SourcePrefixListId: !Ref CloudFrontOriginPrefixListId
+      SecurityGroupEgress:
+        - IpProtocol: "-1"
+          CidrIp: 0.0.0.0/0
+
+  WorkerSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: OSWorld workers reachable only from annotation gateway
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 5000
+          ToPort: 5000
+          SourceSecurityGroupId: !Ref GatewaySecurityGroup
+        - IpProtocol: tcp
+          FromPort: 5910
+          ToPort: 5910
+          SourceSecurityGroupId: !Ref GatewaySecurityGroup
+      SecurityGroupEgress:
+        - IpProtocol: "-1"
+          CidrIp: 0.0.0.0/0
+
+  GatewayRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: osworld-annotation-portal-gateway
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: AnnotationPortalControlPlane
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - ec2:RunInstances
+                  - ec2:TerminateInstances
+                  - ec2:StartInstances
+                  - ec2:DescribeInstances
+                  - ec2:DescribeImages
+                  - ec2:DescribeSubnets
+                  - ec2:DescribeSecurityGroups
+                  - ec2:CreateTags
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - dynamodb:GetItem
+                  - dynamodb:PutItem
+                  - dynamodb:DeleteItem
+                  - dynamodb:UpdateItem
+                  - dynamodb:Query
+                  - dynamodb:Scan
+                  - dynamodb:ConditionCheckItem
+                  - dynamodb:TransactWriteItems
+                Resource: !GetAtt PortalStateTable.Arn
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:PutObject
+                  - s3:PutObjectTagging
+                  - s3:GetObjectTagging
+                  - s3:DeleteObject
+                  - s3:DeleteObjectVersion
+                  - s3:AbortMultipartUpload
+                  - s3:ListBucket
+                  - s3:ListBucketVersions
+                Resource:
+                  - !GetAtt AnnotationBucket.Arn
+                  - !Sub ${AnnotationBucket.Arn}/*
+              - Effect: Allow
+                Action:
+                  - scheduler:CreateSchedule
+                  - scheduler:DeleteSchedule
+                  - scheduler:GetSchedule
+                  - scheduler:UpdateSchedule
+                Resource: !Sub arn:${AWS::Partition}:scheduler:${AWS::Region}:${AWS::AccountId}:schedule/default/osworld-ttl-*
+              - Effect: Allow
+                Action: scheduler:ListSchedules
+                Resource: "*"
+              - Effect: Allow
+                Action: iam:PassRole
+                Resource: !GetAtt SchedulerExecutionRole.Arn
+              - Effect: Allow
+                Action:
+                  - ssm:UpdateInstanceInformation
+                  - ec2messages:AcknowledgeMessage
+                  - ec2messages:DeleteMessage
+                  - ec2messages:FailMessage
+                  - ec2messages:GetEndpoint
+                  - ec2messages:GetMessages
+                  - ec2messages:SendReply
+                  - ssmmessages:CreateControlChannel
+                  - ssmmessages:CreateDataChannel
+                  - ssmmessages:OpenControlChannel
+                  - ssmmessages:OpenDataChannel
+                Resource: "*"
+
+  SchedulerExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: osworld-annotation-portal-scheduler
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: scheduler.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: TerminateExpiredWorkers
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: ec2:TerminateInstances
+                Resource: !Sub arn:${AWS::Partition}:ec2:${AWS::Region}:${AWS::AccountId}:instance/*
+
+  GatewayInstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      InstanceProfileName: osworld-annotation-portal-gateway
+      Roles: [!Ref GatewayRole]
+
+  GatewayInstance:
+    Type: AWS::EC2::Instance
+    Condition: GatewayEnabled
+    DependsOn: GatewayPrivateDefaultRoute
+    Properties:
+      ImageId: !Ref GatewayAmiId
+      InstanceType: !Ref GatewayInstanceType
+      SubnetId: !Ref GatewayPrivateSubnet
+      SecurityGroupIds: [!Ref GatewaySecurityGroup]
+      IamInstanceProfile: !Ref GatewayInstanceProfile
+      BlockDeviceMappings:
+        - DeviceName: /dev/sda1
+          Ebs:
+            VolumeSize: 40
+            VolumeType: gp3
+            Encrypted: true
+            DeleteOnTermination: true
+      Tags:
+        - Key: Project
+          Value: OSWorld-Expert-Skill-Learning
+        - Key: Role
+          Value: AnnotationGateway
+      UserData:
+        Fn::Base64: !Sub
+          - |
+            #!/bin/bash
+            set -euo pipefail
+            export DEBIAN_FRONTEND=noninteractive
+            if [ ! -f /swapfile ]; then
+              fallocate -l 2G /swapfile
+              chmod 0600 /swapfile
+              mkswap /swapfile
+              swapon /swapfile
+              echo '/swapfile none swap sw 0 0' >>/etc/fstab
+            fi
+            for attempt in $(seq 1 30); do
+              apt-get update && break
+              if [ "$attempt" -eq 30 ]; then exit 1; fi
+              sleep 10
+            done
+            apt-get install -y --no-install-recommends ca-certificates python3-boto3 python3-pip python3-venv
+            id -u osworld >/dev/null 2>&1 || useradd --create-home --shell /bin/bash osworld
+            /usr/bin/python3 -c "import boto3; boto3.client('s3', region_name='${AWS::Region}').download_file('${AnnotationBucket}', '${GatewaySourceKey}', '/tmp/osworld-annotation.tar.gz')"
+            printf '%s  %s\n' '${GatewaySourceSha256}' /tmp/osworld-annotation.tar.gz | sha256sum --check --strict
+            install -d -o osworld -g osworld -m 0755 ${PortalInstallDir}
+            tar --extract --gzip --file /tmp/osworld-annotation.tar.gz --directory ${PortalInstallDir}
+            ln -sfnT ${PortalInstallDir}/evaluation_examples/expert_skill_learning/pilot ${PortalInstallDir}/live-pilot
+            python3 -m venv ${PortalInstallDir}/.venv
+            ${PortalInstallDir}/.venv/bin/pip install --disable-pip-version-check --no-cache-dir --requirement ${PortalInstallDir}/infra/annotation_portal/gateway-requirements.txt
+            chown -R osworld:osworld ${PortalInstallDir}
+            install -d -m 0750 /etc/osworld-annotation
+            cat >/etc/osworld-annotation/portal.env <<'EOF'
+            AWS_REGION=${AWS::Region}
+            AWS_DEFAULT_REGION=${AWS::Region}
+            AWS_SUBNET_ID=${WorkerSubnetId}
+            AWS_SECURITY_GROUP_ID=${WorkerSecurityGroup}
+            AWS_AMI_ID=${WorkerAmiId}
+            AWS_INSTANCE_TYPE=${WorkerInstanceType}
+            AWS_EBS_IOPS=3000
+            AWS_EBS_THROUGHPUT_MIBPS=125
+            AWS_CONNECTION_MODE=private
+            AWS_RESOURCE_PROJECT=OSWorld-Expert-Skill-Learning
+            PORTAL_DYNAMODB_TABLE=${PortalStateTable}
+            PORTAL_S3_BUCKET=${AnnotationBucket}
+            PORTAL_COGNITO_CLIENT_ID=${PortalUserPoolClient}
+            PORTAL_ADMIN_USERNAMES=${PortalAdminUsernames}
+            ENABLE_TTL=true
+            DEFAULT_TTL_MINUTES=180
+            AWS_SCHEDULER_ROLE_ARN=${SchedulerExecutionRole.Arn}
+            EOF
+            chmod 0640 /etc/osworld-annotation/portal.env
+            cat >/etc/systemd/system/osworld-annotation-portal.service <<'EOF'
+            [Unit]
+            Description=OSWorld Reference Annotation Hub
+            After=network-online.target
+            Wants=network-online.target
+
+            [Service]
+            Type=simple
+            WorkingDirectory=${PortalInstallDir}
+            EnvironmentFile=/etc/osworld-annotation/portal.env
+            ExecStart=${PortalInstallDir}/.venv/bin/python scripts/python/run_annotation_portal.py --mode aws --host 0.0.0.0 --port 8080 --pilot-root ${PortalInstallDir}/live-pilot --assignments ${PortalInstallDir}/${AssignmentPath} ${PendingFlag}
+            Restart=on-failure
+            RestartSec=5
+            User=osworld
+            Group=osworld
+
+            [Install]
+            WantedBy=multi-user.target
+            EOF
+            systemctl daemon-reload
+            systemctl enable --now osworld-annotation-portal.service
+          - PendingFlag: !If [PendingTasksEnabled, "--allow-pending", ""]
+
+  PortalVpcOrigin:
+    Type: AWS::CloudFront::VpcOrigin
+    Condition: GatewayEnabled
+    DependsOn: GatewayInstance
+    Properties:
+      VpcOriginEndpointConfig:
+        Name: osworld-annotation-gateway
+        Arn: !Sub arn:${AWS::Partition}:ec2:${AWS::Region}:${AWS::AccountId}:instance/${GatewayInstance}
+        HTTPPort: 8080
+        OriginProtocolPolicy: http-only
+      Tags:
+        - Key: Project
+          Value: OSWorld-Expert-Skill-Learning
+
+  PortalOriginRequestPolicy:
+    Type: AWS::CloudFront::OriginRequestPolicy
+    Condition: GatewayEnabled
+    Properties:
+      OriginRequestPolicyConfig:
+        Name: !Sub osworld-annotation-${AWS::AccountId}
+        Comment: Forward login cookies, API bodies, queries, and WebSocket headers.
+        CookiesConfig:
+          CookieBehavior: all
+        HeadersConfig:
+          HeaderBehavior: allExcept
+          Headers: [Host]
+        QueryStringsConfig:
+          QueryStringBehavior: all
+
+  PortalDistribution:
+    Type: AWS::CloudFront::Distribution
+    Condition: GatewayEnabled
+    Properties:
+      DistributionConfig:
+        Comment: OSWorld reference annotation portal
+        Enabled: true
+        HttpVersion: http2
+        IPV6Enabled: true
+        PriceClass: PriceClass_200
+        Origins:
+          - Id: AnnotationGateway
+            DomainName: !GetAtt GatewayInstance.PrivateDnsName
+            VpcOriginConfig:
+              VpcOriginId: !GetAtt PortalVpcOrigin.Id
+              OriginKeepaliveTimeout: 60
+              OriginReadTimeout: 120
+        DefaultCacheBehavior:
+          TargetOriginId: AnnotationGateway
+          ViewerProtocolPolicy: redirect-to-https
+          AllowedMethods: [DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT]
+          CachedMethods: [GET, HEAD]
+          Compress: true
+          CachePolicyId: !Ref CloudFrontCachePolicyId
+          OriginRequestPolicyId: !Ref PortalOriginRequestPolicy
+        ViewerCertificate:
+          CloudFrontDefaultCertificate: true
+          MinimumProtocolVersion: TLSv1.2_2021
+      Tags:
+        - Key: Project
+          Value: OSWorld-Expert-Skill-Learning
+
+Outputs:
+  PortalUrl:
+    Condition: GatewayEnabled
+    Value: !Sub https://${PortalDistribution.DomainName}/
+  UserPoolId:
+    Value: !Ref PortalUserPool
+  UserPoolClientId:
+    Value: !Ref PortalUserPoolClient
+  StateTableName:
+    Value: !Ref PortalStateTable
+  AnnotationBucketName:
+    Value: !Ref AnnotationBucket
+  GatewayInstanceId:
+    Condition: GatewayEnabled
+    Value: !Ref GatewayInstance
+  WorkerSecurityGroupId:
+    Value: !Ref WorkerSecurityGroup
+  GatewaySecurityGroupId:
+    Value: !Ref GatewaySecurityGroup

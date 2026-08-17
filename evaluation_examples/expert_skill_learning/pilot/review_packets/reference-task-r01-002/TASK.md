@@ -53,39 +53,7 @@ Directly referenced source actions:
 - Action 1: <code>`CLICK` on pivot table icon</code>
 - Action 2: <code>`PRESS` enter</code>
 
-## Initial artifact
-
-- Domain: community workshop grant reconciliation
-- Workbook: [initial_artifact.xlsx](artifact/initial_artifact.xlsx)
-- Blueprint: [artifact_blueprint.json](artifact/artifact_blueprint.json)
-- QA report: [artifact_qa.json](artifact/artifact_qa.json)
-
-Initial state:
-
-- The workbook title is "Workshop Grant Reconciliation".
-- Only the "Funding Log" sheet exists initially.
-- The data range is contiguous from A1:I17. Row 1 contains headers and rows 2-17 contain the provided source values.
-- Column I is headed "Net Allocation" but cells I2:I17 are blank.
-- Columns A through H contain: Workshop ID, Award Received, Credit Reversal, Asset Recovery, Service Area, Venue Cost, Materials Cost, and Facilitator Cost, respectively.
-
-Artifact construction requirements:
-
-- All records are synthetic and privacy-safe. Create a single worksheet named "Funding Log" with a bold, lightly shaded header row, autofilter enabled on A1:I17, and 16 data records in rows 2-17.
-- Populate rows 2-17 with the following tab-separated values, in the stated column order: W-101	18400	350	125	Northside	2100	980	640; W-102	22150	0	300	Northside	1860	1425	720; W-103	16750	225	0	Harbor	1940	760	515; W-104	19600	410	185	Harbor	1725	1190	680; W-105	23800	0	450	Meadow	2450	1380	940; W-106	15450	190	75	Meadow	1280	845	390; W-107	20700	600	220	Northside	2185	1110	765; W-108	18100	0	160	Harbor	1560	920	575; W-109	24900	525	0	Meadow	2690	1540	880; W-110	17200	140	210	Northside	1495	875	460; W-111	21450	0	330	Harbor	2050	1260	710; W-112	15900	285	95	Meadow	1375	690	425; W-113	22800	365	140	Northside	2320	1450	830; W-114	18850	0	250	Harbor	1680	1040	605; W-115	20350	455	110	Meadow	1905	1175	695; W-116	17600	210	0	Northside	1430	815	480.
-- Format columns B:D and F:I as currency with zero decimal places. Keep column E as text. Set reasonable widths so every header and ordinary value is readable.
-- Do not seed any formulas in column I and do not create a pivot table, pivot output sheet, conditional formatting, charts, or summary values.
-
-| Sheet | Rows | Purpose | Columns |
-| --- | ---: | --- | --- |
-| Funding Log | 16 | Source reconciliation records whose calculated net allocations will be summarized by service area. | Workshop ID (text), Award Received (currency), Credit Reversal (currency), Asset Recovery (currency), Service Area (text), Venue Cost (currency), Materials Cost (currency), Facilitator Cost (currency), Net Allocation (currency) |
-
-Must remain incomplete before recording:
-
-- Do not prefill a Net Allocation formula or values in any row.
-- Do not pre-create any native Pivot Table or a separate summary sheet.
-- Do not add unrelated calculations, charts, or extra datasets.
-
-Artifact previews:
+## Initial state preview
 
 ### Funding Log
 
@@ -93,14 +61,16 @@ Artifact previews:
 
 ## Operator guide
 
-### Demonstration 1
+### Existing operation-intent guide
+
+#### Demonstration 1
 
 - Skill: `035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01`
 - Intent: Calculate Net Allocation as the award less the credit reversal, asset recovery, and combined venue-to-facilitator costs for each workshop record.
 - Efficiency: Enter the expression once in the first data row using one SUM range for the three adjacent cost columns, then fill it down the populated table.
 - Visible success: I2 contains a row-relative formula equivalent to =B2-C2-D2-SUM(F2:H2), and I2:I17 display currency results with references adjusted by row.
 
-### Demonstration 2
+#### Demonstration 2
 
 - Skill: `1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01`
 - Intent: Create a native Pivot Table on a new worksheet that summarizes the sum of Net Allocation for each Service Area.
@@ -113,40 +83,152 @@ Recording end: Funding Log retains all 16 records with completed Net Allocation 
 
 Allowed variation: The expert may use formula fill, copy/paste, or another efficient equivalent to populate the calculated column, and may use any suitable native LibreOffice Calc Pivot Table workflow and layout so long as the completed workbook visibly provides the requested summed service-area summary.
 
-## Expected incidental operations
+### 中文详细参考方案
 
-- **scaffolding:** Extend the completed Net Allocation formula from the first record through the remaining populated records. Reason: Every record needs a calculated value for the requested service-area summary.
-- **substantive_prerequisite:** Use the complete contiguous Funding Log data range, including the calculated Net Allocation column, as the Pivot Table source. Reason: The pivot summary must include both the grouping field and calculated measure.
-- **task_specific:** Configure the new Pivot Table to group by Service Area and aggregate Net Allocation as a sum on a new worksheet. Reason: This produces the requested reconciliation summary rather than an unconfigured pivot object.
+> 以下是一个可以参考的操作 guide。标注者可以根据实际 LibreOffice 界面采用等价操作。
 
-## Source-similarity audit
+本任务先在“Funding Log”中计算每个 workshop 的 Net Allocation：从 Award Received 扣除 Credit Reversal、Asset Recovery 以及 Venue Cost 到 Facilitator Cost 的三项连续成本。随后以完整数据表建立原生数据透视表，在新工作表中按 Service Area 汇总 Net Allocation 的总和。
+
+#### 启动后的初始状态检查
+
+- 确认工作簿标题为“Workshop Grant Reconciliation”。
+- 确认开始时只有“Funding Log”工作表。
+- 确认 Funding Log 中的数据区域为 A1:I17：第 1 行是标题，数据在第 2 至第 17 行，I 列标题为“Net Allocation”，且 I2:I17 为空。
+- 确认 A 至 H 列包含 Workshop ID、Award Received、Credit Reversal、Asset Recovery、Service Area、Venue Cost、Materials Cost 和 Facilitator Cost，避免在错误列中输入公式。
+
+#### 第 1 步：在首条记录计算 Net Allocation
+
+1. 打开“Funding Log”工作表，单击输出列的第一个数据单元格 I2。
+2. 输入公式 `=B2-C2-D2-SUM(F2:H2)`，然后按 Enter 确认。该公式以 Award Received 为起点，依次扣除 Credit Reversal、Asset Recovery，以及 F 至 H 列的三项成本总额。
+3. 检查 I2 显示一个货币结果；再次选中 I2 时，可在输入行看到刚输入的公式。
+
+- 对应 skills：`035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01`
+- 高效操作：先只在第一条记录建立公式；将 F2:H2 作为连续区域交给 SUM 一次计算，比逐个减去三项成本更简洁，也更不容易漏列。
+- 完成标志：I2 显示货币金额，且其公式为 `=B2-C2-D2-SUM(F2:H2)` 或含义相同的行内公式。
+
+#### 第 2 步：将公式填充到全部 workshop 记录
+
+1. 选中 I2。
+2. 将 I2 的公式向下填充到 I17。可拖动选中单元格右下角的填充柄至 I17；也可复制 I2，选中 I3:I17 后粘贴。
+3. 选中例如 I3、I10 或 I17 进行抽查，确认公式中的行号已变为对应行号，例如 I3 使用第 3 行引用。
+
+- 对应 skills：无；这是准备或检查步骤。
+- 高效操作：使用填充柄或复制到连续目标区域，可以让 Calc 自动调整行号，无需为 16 条记录逐条重输公式。
+- 完成标志：I2:I17 全部显示货币结果，没有空白输出；各行公式的引用随行号自动调整。
+
+#### 第 3 步：以完整资金记录作为数据透视表来源
+
+1. 在“Funding Log”中选择完整源数据区域 A1:I17，务必包含标题行、Service Area 列和已完成的 Net Allocation 列。
+2. 选择菜单“数据”>“数据透视表”>“插入或编辑…”。在数据源选择界面确认当前选区为 A1:I17，然后继续进入数据透视表布局设置。
+
+- 对应 skills：`1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01`
+- 高效操作：从包含标题和计算结果的完整连续区域启动数据透视表，Calc 更容易正确识别字段及全部 16 条记录。
+- 完成标志：数据透视表布局窗口显示可用字段，其中包括“Service Area”和“Net Allocation”，并且来源是 Funding Log 的完整表格。
+
+#### 第 4 步：按 Service Area 配置 Net Allocation 求和汇总
+
+1. 在布局设置中，将“Service Area”放入“行字段”区域。
+2. 将“Net Allocation”放入“数据字段”区域。若该字段的汇总方式不是求和，双击或打开该数据字段的选项，将函数设为“求和”。
+3. 继续到输出位置设置，选择在新工作表中创建数据透视表，然后确认完成。
+
+- 对应 skills：无；这是准备或检查步骤。
+- 高效操作：只放置一个行字段和一个数据字段，能得到清晰、便于核对的按区域汇总表。
+- 完成标志：Calc 创建一个新的工作表，其中的数据透视表以 Service Area 为行标签，并显示 Net Allocation 的总和列。
+
+#### 第 5 步：核对数据透视表结果和工作簿结构
+
+1. 查看新工作表中的数据透视表，确认行标签包含 Northside、Harbor 和 Meadow。
+2. 确认每个 Service Area 对应的是 Net Allocation 的汇总金额，而不是记录计数；如标题显示计数或结果明显为小整数，应返回布局将 Net Allocation 的汇总函数改为“求和”。
+3. 保留 Funding Log 源表及新建的数据透视表工作表，不要用手工汇总值替换数据透视表结果。
+
+- 对应 skills：无；这是准备或检查步骤。
+- 高效操作：完成后先用三项区域名称和一列总计快速核对结构；这样可立即发现字段放错区域或被计数而非求和的问题。
+- 完成标志：新工作表可见 Northside、Harbor、Meadow 三个区域及各自的 Net Allocation 求和金额，同时 Funding Log 的 16 条原始记录和计算列仍完整存在。
+
+#### 最终结果检查
+
+- 返回“Funding Log”工作表，确认 I2:I17 均不再为空，且这些单元格显示为货币金额；单击其中若干单元格时，编辑栏中的公式引用应随所在行变化。
+- 确认源数据仍保留在 Funding Log 的 A1:I17，标题行和 16 条记录没有被删除或覆盖。
+- 确认存在一个单独的新工作表，其中的原生数据透视表按 Service Area 列出 Northside、Harbor、Meadow，并为每个区域显示 Net Allocation 的求和结果。
+
+## Source-task similarity review
 
 | Measure | Maximum | Most similar source task |
 | --- | ---: | --- |
 | Lexical sequence similarity | 0.319018 | 1954cced-e748-45c4-9c26-9855b97fbc5e |
 | Semantic cosine similarity | 0.437947 | 035f41ba-6653-43ab-aa63-c86d449d62e5 |
 
-Scores are reviewer aids, not automatic acceptance thresholds. Compare the task with the source instructions and actions above for solution leakage.
+Similarity scores are reviewer aids, not automatic acceptance thresholds. Inspect the contributing source tasks and their complete ordered actions below.
+
+### Source task `035f41ba-6653-43ab-aa63-c86d449d62e5`
+
+Original instruction:
+
+> Help me fill in the Gross profit column by subtracting all the available expenses including discounts, allowances, material and labor charges, and overhead from the actual sale, i.e., the sales after deducting the returns. Then under column A named "Year_Profit" in a new sheet, display the Year Column in Sheet 1 as text appended by a "_" with the corresponding integer digits of Gross Profit value.
+
+Required skills derived from this source task:
+
+- **Build a row formula that subtracts a range total** — `035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01`
+
+Complete ordered single-action sequence:
+
+| Action | Related required skill | Original single action |
+| ---: | --- | --- |
+| 0 | <strong>★ Build a row formula that subtracts a range total</strong><br><code>035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01</code> | <strong><code>`CLICK` on cell J2</code></strong> |
+| 1 | <strong>★ Build a row formula that subtracts a range total</strong><br><code>035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01</code> | <strong><code>`TYPING` &#x27;=B2-C2-D2-SUM(F2:H2)&#x27;</code></strong> |
+| 2 |  | <code>`CLICK` format as currency icon</code> |
+| 3 |  | <code>`MOVE_TO` bottom right corner of the cell J2`</code> |
+| 4 |  | <code>`DRAG_TO` bottom right corner of the cell J10</code> |
+| 5 |  | <code>`CLICK` on + to left of sheet1</code> |
+| 6 |  | <code>`TYPING` &#x27;Year_Profit&#x27;</code> |
+| 7 |  | <code>`PRESS` enter</code> |
+| 8 |  | <code>`TYPING` &#x27;=$Sheet1.A2&amp;&quot;_&quot;&amp;$Sheet1.J2&#x27;</code> |
+| 9 |  | <code>`MOVE_TO` bottom right corner of the cell A2`</code> |
+| 10 |  | <code>`DRAG_TO` bottom right corner of the cell A10</code> |
+
+### Source task `1954cced-e748-45c4-9c26-9855b97fbc5e`
+
+Original instruction:
+
+> Create a Pivot Table in a new sheet (Sheet2) to count how many times each "Invoice No." appears.
+
+Required skills derived from this source task:
+
+- **Create a Pivot Table from selected worksheet data** — `1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01`
+
+Complete ordered single-action sequence:
+
+| Action | Related required skill | Original single action |
+| ---: | --- | --- |
+| 0 | <strong>★ Create a Pivot Table from selected worksheet data</strong><br><code>1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01</code> | <strong><code>`CLICK` on grey cell box A for selecting entire column</code></strong> |
+| 1 | <strong>★ Create a Pivot Table from selected worksheet data</strong><br><code>1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01</code> | <strong><code>`CLICK` on pivot table icon</code></strong> |
+| 2 | <strong>★ Create a Pivot Table from selected worksheet data</strong><br><code>1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01</code> | <strong><code>`PRESS` enter</code></strong> |
+| 3 |  | <code>`MOVE_TO` invoice no. in available fields box</code> |
+| 4 |  | <code>`DRAG_TO` row fields box</code> |
+| 5 |  | <code>`MOVE_TO` invoice no. in available fields box</code> |
+| 6 |  | <code>`DRAG_TO` data fields box</code> |
+| 7 |  | <code>`DOUBLE_CLICK on invoice no. box in data fields</code> |
+| 8 |  | <code>`CLICK` Count</code> |
+| 9 |  | <code>`PRESS` enter</code> |
+| 10 |  | <code>`CLICK` ok</code> |
+| 11 |  | <code>`DOUBLE_CLICK` Pivot Table Sheet1_1</code> |
+| 12 |  | <code>`TYPING` Sheet2</code> |
+| 13 |  | <code>`PRESS` enter</code> |
 
 ## Review this package
 
-Check that every required skill is necessary and observable, the task is natural and not a source-solution reproduction, incidental operations are limited, the artifact matches its specification, and the guide remains helpful without prescribing one click-by-click trajectory.
+Before choosing a decision, complete all three checks:
 
-1. Inspect the task, required skills, source evidence, artifact, and guide.
-2. Fill [review.json](review.json) using `approved`, `revision_requested`, or `rejected`.
-3. From the repository root, collect all completed forms:
+- [ ] **Task naturalness and skill necessity:** Is the reference task a natural Calc task, and is every listed required skill genuinely necessary and observable when solving it?
+- [ ] **Initial artifact correctness:** Launch the environment and confirm that the workbook opens correctly, contains the data needed by the instruction, and has not already completed the requested results.
+- [ ] **Source-task similarity:** Compare the reference task with the source instructions and complete single-action sequences above. Confirm that it is not merely an entity, field, or value substitution and does not reproduce a source task's complete ordered solution.
+
+Use `approved` when all checks pass. Use `revision_requested` when the package is fixable and provide concrete revision instructions. Use `rejected` when the combination is fundamentally unnatural, infeasible, or too similar to a source task.
+
+Fill [review.json](review.json), then collect completed forms from the repository root:
 
 ```bash
 python scripts/python/manage_reference_review_packets.py collect
 ```
 
 Detailed field guidance is in [`reviewer.md`](../../../reviewer.md).
-
-## Start annotation after approval
-
-```bash
-python scripts/python/record_reference_task.py \
-  --reference-task-id reference-task-r01-002
-```
-
-The ordinary launcher reads the collected central review file and refuses pending, revision-requested, or rejected tasks.

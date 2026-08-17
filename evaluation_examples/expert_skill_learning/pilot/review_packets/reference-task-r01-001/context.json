@@ -386,6 +386,132 @@
       ]
     }
   ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-r01-001",
+    "task_detail_sha256": "40a978f7df9f9886a0db85190c96e923b884ee5b89470f1b9d610ca90742f81d",
+    "guide": {
+      "final_verification": [
+        "工作簿中有一个名为 Program Registration Counts 的工作表，其中的数据透视表按 Program 列出 Community Garden、Digital Basics、First Aid、Resume Lab；Participant Code 的计数分别为 8、7、6、7，合计为 28。",
+        "Enrollment Log 的 G2:G29 中，恰好 8 个值为 Review 的单元格显示淡琥珀色背景 #FCE4D6；值为 Ready 或 Confirmed 的单元格没有该背景。",
+        "选择任一 Review 单元格并检查条件格式时，可看到它来自公式规则和新建的单元格样式，而不是手动填充颜色。"
+      ],
+      "language": "zh-CN",
+      "overview": "本指南将在 Enrollment Log 的 28 条报名记录上建立按 Program 汇总的注册人数数据透视表，并对 Queue Flag 列中的 Review 状态应用基于公式的淡琥珀色条件格式。",
+      "reference_task_id": "reference-task-r01-001",
+      "starting_state_checks": [
+        "确认工作簿已打开，当前工作表为 Enrollment Log。",
+        "确认原始数据表连续位于 A1:G29，第一行是标题行；其中 Program 位于 B 列、Participant Code 位于 D 列、Queue Flag 位于 G 列。",
+        "确认尚不存在名为 Program Registration Counts 的工作表，且 Queue Flag 列当前没有针对 Review 的淡琥珀色条件格式。"
+      ],
+      "steps": [
+        {
+          "efficiency_tip": "先确认列位置和数据末行，后续可一次性准确选择 A1:G29 与 G2:G29，避免把标题行或空白区域包含进规则。",
+          "instructions": [
+            "在 Enrollment Log 中查看第 1 行标题，确认 B1 为 Program、D1 为 Participant Code、G1 为 Queue Flag。",
+            "确认数据从第 2 行延续到第 29 行，且 Queue Flag 的数据范围是 G2:G29。",
+            "可在 Queue Flag 列中查看 Review、Ready 和 Confirmed 值；此时不要直接给单元格填充颜色。"
+          ],
+          "skill_ids": [],
+          "step_number": 1,
+          "title": "确认原始报名表和目标范围",
+          "visible_success_signal": "可以看到 Enrollment Log 的完整 A1:G29 数据表，并能确定 Program、Participant Code 与 Queue Flag 三个字段。"
+        },
+        {
+          "efficiency_tip": "从包含标题的完整连续数据区域启动数据透视表，Calc 才能正确识别所有字段名称。",
+          "instructions": [
+            "在 Enrollment Log 中选中 A1:G29。可先单击 A1，再按住 Shift 单击 G29，确保标题行也被选中。",
+            "打开“数据”菜单，选择“数据透视表”中的“插入或编辑”（不同版本的文字可能略有差异）。",
+            "在出现的数据源确认界面中，确认当前选择的数据范围为 Enrollment Log 的 A1:G29，然后继续进入数据透视表布局窗口。"
+          ],
+          "skill_ids": [],
+          "step_number": 2,
+          "title": "从报名记录创建数据透视表",
+          "visible_success_signal": "屏幕显示数据透视表布局窗口，字段列表中包含 Program 和 Participant Code。"
+        },
+        {
+          "efficiency_tip": "将 Participant Code 放入数据字段后立刻打开其设置并改为 Count，可避免默认汇总方式不符合“报名记录数”的要求。",
+          "instructions": [
+            "在数据透视表布局中，将 Program 字段拖放到“行字段”区域，使每个 Program 成为一行汇总项目。",
+            "将 Participant Code 字段拖放到“数据字段”区域。",
+            "双击“数据字段”区域中的 Participant Code，打开该数据字段的设置。",
+            "在汇总方式中选择 Count，而不是 Sum 或其他数值汇总方式；确认设置。",
+            "确认布局中 Program 位于行字段、Participant Code 位于数据字段且汇总方式为 Count，然后确认数据透视表布局。"
+          ],
+          "skill_ids": [
+            "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04"
+          ],
+          "step_number": 3,
+          "title": "按 Program 统计非空 Participant Code",
+          "visible_success_signal": "数据字段设置显示 Participant Code 使用 Count（计数）汇总，布局可按 Program 输出计数。"
+        },
+        {
+          "efficiency_tip": "让透视表输出到新工作表可使原始 Enrollment Log 保持不变，也便于单独检查汇总结果。",
+          "instructions": [
+            "在选择结果位置的界面中，选择将数据透视表放到新工作表，然后确认创建。",
+            "在新建工作表的标签上右键或双击标签，选择重命名，将工作表名称改为 Program Registration Counts。",
+            "检查透视表的 Program 行项目和 Participant Code 计数。若字段标题显示为类似“Count - Participant Code”，这是正常的计数数据字段标题。"
+          ],
+          "skill_ids": [],
+          "step_number": 4,
+          "title": "创建并命名 Program Registration Counts 汇总表",
+          "visible_success_signal": "存在名为 Program Registration Counts 的新工作表；表中四个 Program 的计数为 Community Garden 8、Digital Basics 7、First Aid 6、Resume Lab 7，合计为 28。"
+        },
+        {
+          "efficiency_tip": "先只选择 G2:G29，再建立一条公式规则；这样公式会逐行相对计算，并且不会影响 Queue Flag 标题或其他列。",
+          "instructions": [
+            "切换回 Enrollment Log 工作表。",
+            "选中 Queue Flag 数据单元格 G2:G29，不要包含标题单元格 G1。",
+            "打开“格式”菜单，选择“条件”，再选择“条件…”。",
+            "在条件类型下拉列表中选择 Formula is（公式为）。",
+            "在公式输入框中输入 =G2=\"Review\"。这里的 G2 是所选范围左上角的相对引用，Calc 会对 G3、G4 等后续单元格分别判断对应行的值。"
+          ],
+          "skill_ids": [
+            "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01"
+          ],
+          "step_number": 5,
+          "title": "为 Review 建立公式条件",
+          "visible_success_signal": "条件格式对话框中已显示 Formula is，且公式框包含 =G2=\"Review\"。"
+        },
+        {
+          "efficiency_tip": "从条件格式对话框中新建样式，样式会被规则引用；不要使用工具栏的直接填充色，以免所有状态都被永久着色。",
+          "instructions": [
+            "仍在条件格式对话框中，打开 Apply Style（应用样式）下拉列表并选择 New Style（新建样式）。",
+            "为新样式输入一个易识别的名称，例如 Review Pale Amber。",
+            "在样式设置窗口中打开“背景”设置，再打开颜色选择器。",
+            "选择或输入背景颜色 #FCE4D6，并确认颜色选择。",
+            "确认样式设置窗口，使新建样式返回到条件格式规则的 Apply Style 列表中并被选中。"
+          ],
+          "skill_ids": [
+            "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02"
+          ],
+          "step_number": 6,
+          "title": "新建淡琥珀色 Review 条件样式",
+          "visible_success_signal": "条件格式规则已分配一个新建样式，该样式的背景色为 #FCE4D6。"
+        },
+        {
+          "efficiency_tip": "保存后同时检查“匹配的单元格”和“不匹配的单元格”，能快速发现公式引用是否错误或是否把标题行包含在范围内。",
+          "instructions": [
+            "确认条件格式对话框以保存规则。",
+            "查看 G2:G29：所有内容为 Review 的 Queue Flag 单元格应显示淡琥珀色背景 #FCE4D6。",
+            "逐项确认 Ready 和 Confirmed 单元格保持原有外观，没有淡琥珀色背景。",
+            "如有必要，重新打开“格式 > 条件 > 条件…”检查应用范围仍是 G2:G29，公式仍是 =G2=\"Review\"，并确认使用的是刚创建的样式。"
+          ],
+          "skill_ids": [],
+          "step_number": 7,
+          "title": "保存规则并完成核验",
+          "visible_success_signal": "Enrollment Log 中仅 8 个 Review 单元格被淡琥珀色突出显示，Ready 和 Confirmed 单元格未被突出显示。"
+        }
+      ]
+    },
+    "generation": {
+      "request_id": "005ded9a-904a-470d-9a86-a2053084ddcf",
+      "prompt_sha256": "54e7db2ceb7ec2a10163598bb6ad5bd21c0d13d3f7b8acef2160b808caf92b6c",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 3279,
+      "output_tokens": 2170,
+      "estimated_cost_usd": 0.032598
+    }
+  },
   "artifact": {
     "manifest_entry": {
       "reference_task_id": "reference-task-r01-001",

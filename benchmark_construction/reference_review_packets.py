@@ -21,6 +21,11 @@ from .reference_review import (
     validate_reference_review_form,
     write_coverage_state,
 )
+from .reviewer_guide_generation import (
+    load_reviewer_guides,
+    sha256_text,
+    validate_reviewer_guide,
+)
 
 
 PACKET_SCHEMA_VERSION = "1.0"
@@ -201,7 +206,7 @@ def _render_similarity(package: dict[str, Any]) -> list[str]:
     return lines
 
 
-def _render_task_markdown(
+def _render_task_detail_markdown(
     package: dict[str, Any],
     required_skills: Sequence[dict[str, Any]],
     source_evidence: Sequence[dict[str, Any]],
@@ -388,6 +393,264 @@ def _render_task_markdown(
     return "\n".join(lines) + "\n"
 
 
+def _render_reviewer_guide(guide: dict[str, Any]) -> list[str]:
+    lines = [
+        "### 中文详细参考方案",
+        "",
+        "> 以下是一个可以参考的操作 guide。标注者可以根据实际 LibreOffice "
+        "界面采用等价操作。",
+        "",
+        guide["overview"],
+        "",
+        "#### 启动后的初始状态检查",
+        "",
+    ]
+    lines.extend(f"- {item}" for item in guide["starting_state_checks"])
+    for step in guide["steps"]:
+        lines.extend(
+            [
+                "",
+                f"#### 第 {step['step_number']} 步：{step['title']}",
+                "",
+            ]
+        )
+        lines.extend(
+            f"{index}. {instruction}"
+            for index, instruction in enumerate(step["instructions"], start=1)
+        )
+        skill_ids = step["skill_ids"]
+        lines.extend(
+            [
+                "",
+                "- 对应 skills："
+                + (
+                    ", ".join(f"`{skill_id}`" for skill_id in skill_ids)
+                    if skill_ids
+                    else "无；这是准备或检查步骤。"
+                ),
+                f"- 高效操作：{step['efficiency_tip']}",
+                f"- 完成标志：{step['visible_success_signal']}",
+            ]
+        )
+    lines.extend(["", "#### 最终结果检查", ""])
+    lines.extend(f"- {item}" for item in guide["final_verification"])
+    return lines
+
+
+def _render_source_similarity_review(
+    package: dict[str, Any],
+    required_skills: Sequence[dict[str, Any]],
+    source_evidence: Sequence[dict[str, Any]],
+) -> list[str]:
+    lines = ["## Source-task similarity review", ""]
+    lines.extend(_render_similarity(package))
+    lines.extend(
+        [
+            "",
+            "Similarity scores are reviewer aids, not automatic acceptance thresholds. "
+            "Inspect the contributing source tasks and their complete ordered actions below.",
+        ]
+    )
+    skill_by_id = {item["skill_id"]: item for item in required_skills}
+    for evidence in source_evidence:
+        source_id = evidence["task_id"]
+        source_skills = [
+            skill_by_id[skill_id] for skill_id in evidence["required_skill_ids"]
+        ]
+        action_to_skills: dict[int, list[dict[str, Any]]] = {}
+        for skill in source_skills:
+            for action_id in skill["source"]["action_ids"]:
+                action_to_skills.setdefault(action_id, []).append(skill)
+        lines.extend(
+            [
+                "",
+                f"### Source task `{source_id}`",
+                "",
+                "Original instruction:",
+                "",
+                f"> {evidence['instruction']}",
+                "",
+                "Required skills derived from this source task:",
+                "",
+            ]
+        )
+        lines.extend(
+            f"- **{skill['name']}** — `{skill['skill_id']}`"
+            for skill in source_skills
+        )
+        lines.extend(
+            [
+                "",
+                "Complete ordered single-action sequence:",
+                "",
+                "| Action | Related required skill | Original single action |",
+                "| ---: | --- | --- |",
+            ]
+        )
+        for action_id, action in enumerate(evidence["single_actions"]):
+            related_skills = action_to_skills.get(action_id, [])
+            escaped_action = html.escape(action).replace("|", "&#124;")
+            if related_skills:
+                related = "<br>".join(
+                    "<strong>★ "
+                    + html.escape(skill["name"])
+                    + "</strong><br><code>"
+                    + html.escape(skill["skill_id"])
+                    + "</code>"
+                    for skill in related_skills
+                )
+                action_cell = f"<strong><code>{escaped_action}</code></strong>"
+            else:
+                related = ""
+                action_cell = f"<code>{escaped_action}</code>"
+            lines.append(f"| {action_id} | {related} | {action_cell} |")
+    return lines
+
+
+def _render_task_markdown(
+    package: dict[str, Any],
+    required_skills: Sequence[dict[str, Any]],
+    source_evidence: Sequence[dict[str, Any]],
+    preview_names: Sequence[str],
+    review: dict[str, Any],
+    reviewer_guide: dict[str, Any],
+) -> str:
+    task_id = package["reference_task_id"]
+    artifact_spec = package.get("artifact_spec", {})
+    operator_guide = package.get("operator_guide", {})
+    title = artifact_spec.get("workbook_title") or task_id
+    lines = [
+        f"# {title}",
+        "",
+        f"- Reference task: `{task_id}`",
+        f"- Application: `{package.get('app', '')}`",
+        f"- Review decision: `{review['decision'] or 'pending'}`",
+        "",
+        "## Task instruction",
+        "",
+        package.get("task_instruction", ""),
+        "",
+        "## Required skills",
+        "",
+    ]
+    evidence_by_id = {item["task_id"]: item for item in source_evidence}
+    for index, skill in enumerate(required_skills, start=1):
+        source = skill["source"]
+        evidence = evidence_by_id[source["task_id"]]
+        referenced = {
+            item["action_id"]: item["action"] for item in evidence["referenced_actions"]
+        }
+        lines.extend(
+            [
+                f"### {index}. {skill['name']}",
+                "",
+                f"Skill ID: `{skill['skill_id']}`",
+                "",
+                "Procedure:",
+                "",
+            ]
+        )
+        lines.extend(
+            f"{step_index}. {step}"
+            for step_index, step in enumerate(skill["procedure"], start=1)
+        )
+        lines.extend(
+            [
+                "",
+                f"Efficiency tip: {skill['efficiency_tip']}",
+                "",
+                f"Source task: `{source['task_id']}`",
+                "",
+                f"Source instruction: {evidence['instruction']}",
+                "",
+                "Directly referenced source actions:",
+                "",
+            ]
+        )
+        lines.extend(
+            f"- Action {action_id}: <code>{html.escape(referenced[action_id])}</code>"
+            for action_id in source["action_ids"]
+        )
+        lines.append("")
+
+    if preview_names:
+        lines.extend(["## Initial state preview", ""])
+        for preview_name in preview_names:
+            lines.extend(
+                [
+                    f"### {Path(preview_name).stem.replace('_', ' ')}",
+                    "",
+                    f"![{preview_name}](artifact/previews/{preview_name})",
+                    "",
+                ]
+            )
+
+    lines.extend(["## Operator guide", "", "### Existing operation-intent guide", ""])
+    for index, item in enumerate(
+        operator_guide.get("recommended_demonstration", []), start=1
+    ):
+        lines.extend(
+            [
+                f"#### Demonstration {index}",
+                "",
+                f"- Skill: `{item.get('skill_id', '')}`",
+                f"- Intent: {item.get('operation_intent', '')}",
+                f"- Efficiency: {item.get('efficiency_tip', '')}",
+                f"- Visible success: {item.get('visible_success_signal', '')}",
+                "",
+            ]
+        )
+    lines.extend(
+        [
+            f"Recording start: {operator_guide.get('recording_start_state', '')}",
+            "",
+            f"Recording end: {operator_guide.get('recording_end_state', '')}",
+            "",
+            f"Allowed variation: {operator_guide.get('allowed_variation', '')}",
+            "",
+        ]
+    )
+    lines.extend(_render_reviewer_guide(reviewer_guide))
+    lines.extend([""])
+    lines.extend(
+        _render_source_similarity_review(package, required_skills, source_evidence)
+    )
+    lines.extend(
+        [
+            "",
+            "## Review this package",
+            "",
+            "Before choosing a decision, complete all three checks:",
+            "",
+            "- [ ] **Task naturalness and skill necessity:** Is the reference task a "
+            "natural Calc task, and is every listed required skill genuinely necessary "
+            "and observable when solving it?",
+            "- [ ] **Initial artifact correctness:** Launch the environment and confirm "
+            "that the workbook opens correctly, contains the data needed by the "
+            "instruction, and has not already completed the requested results.",
+            "- [ ] **Source-task similarity:** Compare the reference task with the source "
+            "instructions and complete single-action sequences above. Confirm that it is "
+            "not merely an entity, field, or value substitution and does not reproduce a "
+            "source task's complete ordered solution.",
+            "",
+            "Use `approved` when all checks pass. Use `revision_requested` when the "
+            "package is fixable and provide concrete revision instructions. Use "
+            "`rejected` when the combination is fundamentally unnatural, infeasible, or "
+            "too similar to a source task.",
+            "",
+            "Fill [review.json](review.json), then collect completed forms from the "
+            "repository root:",
+            "",
+            "```bash",
+            "python scripts/python/manage_reference_review_packets.py collect",
+            "```",
+            "",
+            "Detailed field guidance is in [`reviewer.md`](../../../reviewer.md).",
+        ]
+    )
+    return "\n".join(lines) + "\n"
+
+
 def _input_descriptor(repo_root: Path, role: str, path: Path) -> dict[str, str]:
     return {
         "role": role,
@@ -475,6 +738,101 @@ def _prepare_packet_data(
     }
 
 
+def export_task_details(
+    *,
+    repo_root: Path,
+    skill_pool_path: Path,
+    packages_path: Path,
+    source_tasks_path: Path,
+    reviews_path: Path,
+    artifact_manifest_path: Path,
+    task_config_manifest_path: Path,
+    output_root: Path,
+    task_id: str | None = None,
+) -> list[str]:
+    """Render the former full TASK.md as immutable LLM input documents."""
+
+    repo_root = repo_root.resolve()
+    skills = load_skill_pool(skill_pool_path)
+    skill_by_id = {skill.skill_id: skill.to_dict() for skill in skills}
+    source_by_id = {
+        task.task_id: task for task in load_source_manifest(source_tasks_path)
+    }
+    all_packages = load_reference_packages([packages_path])
+    packages = _select_packages(all_packages, task_id)
+    reviews = {
+        item["reference_task_id"]: item
+        for item in load_reference_review_forms(reviews_path)
+    }
+    artifact_by_id = _entries_by_id(
+        artifact_manifest_path, "artifacts", "artifact manifest entry"
+    )
+    config_by_id = _entries_by_id(
+        task_config_manifest_path, "task_configs", "task config manifest entry"
+    )
+    output_root.mkdir(parents=True, exist_ok=True)
+    exported: list[str] = []
+    for package in packages:
+        current_id = package["reference_task_id"]
+        if current_id not in reviews:
+            raise ValueError(f"No central review form exists for {current_id}")
+        item = _prepare_packet_data(
+            repo_root=repo_root,
+            package=package,
+            skill_by_id=skill_by_id,
+            source_by_id=source_by_id,
+            artifact_by_id=artifact_by_id,
+            config_by_id=config_by_id,
+        )
+        detail = _render_task_detail_markdown(
+            package,
+            item["skills"],
+            item["evidence"],
+            [path.name for path in item["preview_paths"]],
+            reviews[current_id],
+        )
+        _atomic_write(output_root / current_id / "TASK_DETAIL.md", detail)
+        exported.append(current_id)
+    return exported
+
+
+def _add_reviewer_guide(
+    *,
+    packet_data: dict[str, Any],
+    task_detail_path: Path,
+    guide_entry: dict[str, Any],
+) -> None:
+    package = packet_data["package"]
+    task_id = package["reference_task_id"]
+    detail = task_detail_path.read_text(encoding="utf-8")
+    actual_detail_hash = sha256_text(detail)
+    if guide_entry["task_detail_sha256"] != actual_detail_hash:
+        raise ValueError(
+            f"Reviewer guide for {task_id} is stale because TASK_DETAIL.md changed"
+        )
+    validate_reviewer_guide(
+        task_id, package["required_skill_ids"], guide_entry["guide"]
+    )
+    input_files = list(packet_data["input_files"])
+    context_seed = {
+        "package": package,
+        "required_skills": packet_data["skills"],
+        "source_evidence": packet_data["evidence"],
+        "artifact_entry": packet_data["artifact_entry"],
+        "task_config_entry": packet_data["config_entry"],
+        "reviewer_guide": guide_entry,
+        "input_files": input_files,
+    }
+    packet_data.update(
+        {
+            "task_detail_path": task_detail_path,
+            "reviewer_guide_entry": guide_entry,
+            "input_files": input_files,
+            "fingerprint": _json_fingerprint(context_seed),
+        }
+    )
+
+
 def export_review_packets(
     *,
     repo_root: Path,
@@ -484,6 +842,8 @@ def export_review_packets(
     reviews_path: Path,
     artifact_manifest_path: Path,
     task_config_manifest_path: Path,
+    task_detail_root: Path,
+    reviewer_guides_path: Path,
     output_root: Path,
     task_id: str | None = None,
     force: bool = False,
@@ -507,6 +867,7 @@ def export_review_packets(
     config_by_id = _entries_by_id(
         task_config_manifest_path, "task_configs", "task config manifest entry"
     )
+    reviewer_guides = load_reviewer_guides(reviewer_guides_path)
     output_root.mkdir(parents=True, exist_ok=True)
 
     prepared: list[dict[str, Any]] = []
@@ -516,6 +877,8 @@ def export_review_packets(
             raise ValueError(f"Unsafe reference task ID: {current_id!r}")
         if current_id not in central_reviews:
             raise ValueError(f"No central review form exists for {current_id}")
+        if current_id not in reviewer_guides:
+            raise ValueError(f"No reviewer guide exists for {current_id}")
         packet_data = _prepare_packet_data(
             repo_root=repo_root,
             package=package,
@@ -523,6 +886,16 @@ def export_review_packets(
             source_by_id=source_by_id,
             artifact_by_id=artifact_by_id,
             config_by_id=config_by_id,
+        )
+        task_detail_path = (
+            task_detail_root / current_id / "TASK_DETAIL.md"
+        ).resolve()
+        if not task_detail_path.is_file():
+            raise FileNotFoundError(task_detail_path)
+        _add_reviewer_guide(
+            packet_data=packet_data,
+            task_detail_path=task_detail_path,
+            guide_entry=reviewer_guides[current_id],
         )
         fingerprint = packet_data["fingerprint"]
         packet_dir = output_root / current_id
@@ -562,6 +935,7 @@ def export_review_packets(
         for preview_path in item["preview_paths"]:
             _atomic_copy(preview_path, artifact_dir / "previews" / preview_path.name)
         _atomic_copy(item["task_config_path"], packet_dir / "task_config.json")
+        _atomic_copy(item["task_detail_path"], packet_dir / "TASK_DETAIL.md")
 
         context = {
             "schema_version": PACKET_SCHEMA_VERSION,
@@ -569,6 +943,7 @@ def export_review_packets(
             "package": package,
             "required_skills": item["skills"],
             "source_evidence": item["evidence"],
+            "reviewer_guide": item["reviewer_guide_entry"],
             "artifact": {
                 "manifest_entry": item["artifact_entry"],
                 "packet_path": "artifact/initial_artifact.xlsx",
@@ -588,11 +963,13 @@ def export_review_packets(
                 item["evidence"],
                 [path.name for path in item["preview_paths"]],
                 item["review"],
+                item["reviewer_guide_entry"]["guide"],
             ),
         )
 
         generated_files = [
             packet_dir / "TASK.md",
+            packet_dir / "TASK_DETAIL.md",
             packet_dir / "context.json",
             packet_dir / "task_config.json",
             artifact_dir / "initial_artifact.xlsx",
@@ -678,6 +1055,8 @@ def collect_packet_reviews(
     reviews_path: Path,
     artifact_manifest_path: Path,
     task_config_manifest_path: Path,
+    task_detail_root: Path,
+    reviewer_guides_path: Path,
     coverage_path: Path,
     packet_root: Path,
     task_id: str | None = None,
@@ -696,6 +1075,7 @@ def collect_packet_reviews(
     config_by_id = _entries_by_id(
         task_config_manifest_path, "task_configs", "task config manifest entry"
     )
+    reviewer_guides = load_reviewer_guides(reviewer_guides_path)
     selected = _select_packages(packages, task_id)
     package_ids = [item["reference_task_id"] for item in packages]
     central_by_id = {
@@ -712,6 +1092,8 @@ def collect_packet_reviews(
     collected: list[str] = []
     for package in selected:
         current_id = package["reference_task_id"]
+        if current_id not in reviewer_guides:
+            raise ValueError(f"No reviewer guide exists for {current_id}")
         packet_dir = packet_root / current_id
         review = _packet_review(packet_dir)
         if review is None:
@@ -731,6 +1113,16 @@ def collect_packet_reviews(
             source_by_id=source_by_id,
             artifact_by_id=artifact_by_id,
             config_by_id=config_by_id,
+        )
+        task_detail_path = (
+            task_detail_root / current_id / "TASK_DETAIL.md"
+        ).resolve()
+        if not task_detail_path.is_file():
+            raise FileNotFoundError(task_detail_path)
+        _add_reviewer_guide(
+            packet_data=expected,
+            task_detail_path=task_detail_path,
+            guide_entry=reviewer_guides[current_id],
         )
         _verify_packet_manifest(
             repo_root,

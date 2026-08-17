@@ -1,6 +1,7 @@
 import base64
 import re
 import unittest
+from concurrent.futures import ThreadPoolExecutor
 
 from desktop_env.providers.aws.launch_config import (
     AwsLaunchConfig,
@@ -8,7 +9,7 @@ from desktop_env.providers.aws.launch_config import (
     OSWORLD_SERVICE_USER_DATA,
     load_launch_config,
 )
-from desktop_env.providers.aws.manager import resolve_ami_id
+from desktop_env.providers.aws.manager import can_manage_process_signals, resolve_ami_id
 from desktop_env.providers.aws.provider import select_connection_address
 
 
@@ -26,6 +27,7 @@ class AwsLaunchConfigTests(unittest.TestCase):
                 volume_encrypted=True,
                 resource_project="OSWorld",
                 instance_profile_name=None,
+                resource_role=None,
             ),
         )
         self.assertEqual(
@@ -92,6 +94,7 @@ class AwsLaunchConfigTests(unittest.TestCase):
                 "AWS_EBS_ENCRYPTED": "false",
                 "AWS_RESOURCE_PROJECT": "OSWorld-PPT-Web",
                 "AWS_EC2_INSTANCE_PROFILE_NAME": "osworld-ec2-ssm-diagnostics",
+                "AWS_RESOURCE_ROLE": "AnnotationWorker",
             }
         )
 
@@ -109,6 +112,11 @@ class AwsLaunchConfigTests(unittest.TestCase):
                 }
             },
         )
+        self.assertEqual(config.resource_role, "AnnotationWorker")
+        self.assertIn(
+            {"Key": "Role", "Value": "AnnotationWorker"},
+            config.tag_specifications()[0]["Tags"],
+        )
 
     def test_existing_instance_type_is_the_reset_fallback(self):
         config = load_launch_config({}, default_instance_type="m6i.large")
@@ -124,6 +132,7 @@ class AwsLaunchConfigTests(unittest.TestCase):
             {"AWS_EBS_ENCRYPTED": "sometimes"},
             {"AWS_RESOURCE_PROJECT": "  "},
             {"AWS_EC2_INSTANCE_PROFILE_NAME": "not valid"},
+            {"AWS_RESOURCE_ROLE": "bad!role"},
         )
 
         for environ in invalid_environments:
@@ -167,6 +176,11 @@ class AwsLaunchConfigTests(unittest.TestCase):
                 (1920, 1080),
                 {"AWS_AMI_ID": "private-ami"},
             )
+
+    def test_background_allocators_do_not_manage_process_signals(self):
+        self.assertTrue(can_manage_process_signals())
+        with ThreadPoolExecutor(max_workers=1) as executor:
+            self.assertFalse(executor.submit(can_manage_process_signals).result())
 
 
 if __name__ == "__main__":

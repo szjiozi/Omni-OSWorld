@@ -3,6 +3,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 from benchmark_construction.key_overlay import (
+    _GUEST_RECORDING_START_SOURCE,
     KeyOverlayEvent,
     PointerOverlayEvent,
     burn_key_overlay_in_guest,
@@ -25,6 +26,11 @@ keycode  50 = Shift_L NoSymbol Shift_L
 keycode  55 = v V v V
 keycode  56 = b B b B
 """
+
+
+def test_recording_origin_uses_first_frame_marker_not_process_start():
+    assert "first_frame_monotonic_ns" in _GUEST_RECORDING_START_SOURCE
+    assert 'Path("/proc")' not in _GUEST_RECORDING_START_SOURCE
 
 
 def _line(monotonic_ns: int, line: str) -> str:

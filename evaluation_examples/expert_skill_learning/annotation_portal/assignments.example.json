@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "assignments": [
+    {
+      "username": "annotator-hk-1",
+      "task_ids": ["reference-task-r01-001"]
+    },
+    {
+      "username": "annotator-hk-2",
+      "task_ids": ["reference-task-r01-002"]
+    },
+    {
+      "username": "annotator-hk-3",
+      "task_ids": ["reference-task-r01-003"]
+    },
+    {
+      "username": "annotator-us-1",
+      "task_ids": ["reference-task-r01-004"]
+    }
+  ]
+}

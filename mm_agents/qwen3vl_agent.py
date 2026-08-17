@@ -4,7 +4,7 @@ import logging
 import time
 import os
 from io import BytesIO
-from typing import Dict, List, Tuple
+from typing import Any, Dict, List, Mapping, Tuple
 
 from http import HTTPStatus
 import dashscope
@@ -25,6 +25,82 @@ from mm_agents.utils.qwen_vl_utils import smart_resize
 logger = None
 
 MAX_RETRY_TIMES = 5
+
+
+def _recent_action_lines(actions: List[str], history_n: int) -> List[str]:
+    """Format only the most recent action descriptions for the next prompt."""
+
+    if history_n <= 0:
+        return []
+    start = max(0, len(actions) - history_n)
+    return [f"Step {index + 1}: {actions[index]}" for index in range(start, len(actions))]
+
+
+def _build_skill_context(skill_artifact: Mapping[str, Any] | None) -> str:
+    """Return a compact prompt block without provenance or reference evidence."""
+
+    if skill_artifact is None:
+        return ""
+    if skill_artifact.get("status") != "engineering_pilot":
+        raise ValueError("Skill artifact must have status=engineering_pilot")
+    if skill_artifact.get("app") != "libreoffice_calc":
+        raise ValueError("Skill artifact app must be libreoffice_calc")
+    skills = skill_artifact.get("skills")
+    if not isinstance(skills, list) or not skills:
+        raise ValueError("Skill artifact must contain at least one skill")
+
+    allowed_fields = (
+        "skill_id",
+        "name",
+        "when_to_use",
+        "procedure",
+        "efficiency_tip",
+        "verification",
+    )
+    compact_skills = []
+    for skill in skills:
+        if not isinstance(skill, Mapping):
+            raise ValueError("Each learned skill must be an object")
+        compact = {key: skill[key] for key in allowed_fields if key in skill}
+        if not compact.get("name") or not compact.get("procedure"):
+            raise ValueError("Each learned skill needs a name and procedure")
+        compact_skills.append(compact)
+    return json.dumps(compact_skills, ensure_ascii=False, separators=(",", ":"))
+
+
+def _response_field(value: Any, name: str, default: Any = None) -> Any:
+    if isinstance(value, Mapping):
+        return value.get(name, default)
+    return getattr(value, name, default)
+
+
+def _response_usage(response: Any) -> Dict[str, int]:
+    usage = _response_field(response, "usage", {}) or {}
+    return {
+        "input_tokens": int(
+            _response_field(usage, "input_tokens", _response_field(usage, "prompt_tokens", 0))
+            or 0
+        ),
+        "output_tokens": int(
+            _response_field(
+                usage,
+                "output_tokens",
+                _response_field(usage, "completion_tokens", 0),
+            )
+            or 0
+        ),
+    }
+
+
+def _estimate_qwen37_cost_cny(input_tokens: int, output_tokens: int) -> float:
+    if input_tokens <= 256_000:
+        input_rate, output_rate = 2.0, 8.0
+    else:
+        input_rate, output_rate = 6.0, 24.0
+    return round(
+        (input_tokens * input_rate + output_tokens * output_rate) / 1_000_000,
+        8,
+    )
 
 
 def encode_image(image_content):
@@ -72,6 +148,8 @@ class Qwen3VLAgent:
         api_backend: str = "dashscope",  # "openai" or "dashscope"
         enable_thinking: bool = False,  # Enable thinking mode for DashScope
         thinking_budget: int = 32768,  # Token budget for reasoning
+        seed: int = 20260812,
+        skill_artifact: Mapping[str, Any] | None = None,
     ):
         self.platform = platform
         self.model = model
@@ -86,6 +164,8 @@ class Qwen3VLAgent:
         self.api_backend = api_backend
         self.enable_thinking = enable_thinking
         self.thinking_budget = thinking_budget
+        self.seed = seed
+        self.skill_context = _build_skill_context(skill_artifact)
 
         assert action_space in ["pyautogui"], "Invalid action space"
         assert observation_type in ["screenshot"], "Invalid observation type"
@@ -96,6 +176,13 @@ class Qwen3VLAgent:
         self.observations = []
         self.responses = []
         self.screenshots = []
+        self.last_call_metadata: Dict[str, Any] = {}
+        self.model_usage = {
+            "calls": 0,
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "estimated_cost_cny": 0.0,
+        }
 
     def predict(self, instruction: str, obs: Dict) -> List:
         """
@@ -121,12 +208,7 @@ class Qwen3VLAgent:
         self.screenshots.append(processed_image)
 
         current_step = len(self.actions)
-        history_start_idx = max(0, current_step - self.history_n)
-
-        previous_actions = []
-        for i in range(history_start_idx):
-            if i < len(self.actions):
-                previous_actions.append(f"Step {i+1}: {self.actions[i]}")
+        previous_actions = _recent_action_lines(self.actions, self.history_n)
         previous_actions_str = (
             "\n".join(previous_actions) if previous_actions else "None"
         )
@@ -221,10 +303,20 @@ Rules:
 - Do not output anything else outside those parts.
 - If finishing, use action=terminate in the tool call."""
 
+        skill_prompt = ""
+        if self.skill_context:
+            skill_prompt = f"""
+
+Reusable LibreOffice Calc skills learned before this target episode:
+{self.skill_context}
+
+Use these techniques only when relevant to the current screenshot and instruction.
+Do not assume workbook-specific values, cell addresses, or hidden state from them."""
+
         instruction_prompt = f"""
 Please generate the next move according to the UI screenshot, instruction and previous actions.
 
-Instruction: {instruction}
+Instruction: {instruction}{skill_prompt}
 
 Previous actions:
 {previous_actions_str}"""
@@ -644,9 +736,11 @@ Previous actions:
                     model=model,
                     messages=messages,
                     max_tokens=self.max_tokens,
-                    # temperature=self.temperature,
-                    # top_p=self.top_p,
+                    temperature=self.temperature,
+                    top_p=self.top_p,
+                    seed=self.seed,
                 )
+                self._record_call_metadata(response, model, "openai")
                 return response.choices[0].message.content
             except Exception as e:
                 logger.error(f"[OpenAI] Error calling model: {e}")
@@ -675,8 +769,10 @@ Previous actions:
                     "model": model,
                     "messages": ds_messages,
                     "max_tokens": self.max_tokens,
-                    # "temperature": self.temperature,
-                    # "top_p": self.top_p,
+                    "temperature": self.temperature,
+                    "top_p": self.top_p,
+                    "seed": self.seed,
+                    "enable_thinking": self.enable_thinking,
                     "vl_high_resolution_images": True,
                 }
                 
@@ -699,6 +795,7 @@ Previous actions:
                 text = self._extract_text_from_dashscope_response(resp)
                 if not text:
                     raise ValueError("DashScope response has no text content")
+                self._record_call_metadata(resp, model, "dashscope")
                 return text
 
             except Exception as e:
@@ -713,7 +810,29 @@ Previous actions:
             raise last_err
         return ""
 
-    def reset(self, _logger=None):
+    def _record_call_metadata(self, response: Any, model: str, backend: str) -> None:
+        usage = _response_usage(response)
+        estimated_cost = _estimate_qwen37_cost_cny(
+            usage["input_tokens"], usage["output_tokens"]
+        )
+        self.last_call_metadata = {
+            "backend": backend,
+            "model": model,
+            "request_id": _response_field(
+                response, "request_id", _response_field(response, "id")
+            ),
+            "usage": usage,
+            "estimated_cost_cny": estimated_cost,
+        }
+        self.model_usage["calls"] += 1
+        self.model_usage["input_tokens"] += usage["input_tokens"]
+        self.model_usage["output_tokens"] += usage["output_tokens"]
+        self.model_usage["estimated_cost_cny"] = round(
+            self.model_usage["estimated_cost_cny"] + estimated_cost,
+            8,
+        )
+
+    def reset(self, _logger=None, **_kwargs):
         global logger
         logger = (
             _logger if _logger is not None
@@ -728,5 +847,11 @@ Previous actions:
         self.observations = []
         self.responses = []
         self.screenshots = []
-
+        self.last_call_metadata = {}
+        self.model_usage = {
+            "calls": 0,
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "estimated_cost_cny": 0.0,
+        }
 

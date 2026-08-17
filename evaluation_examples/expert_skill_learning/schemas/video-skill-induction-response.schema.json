@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://osworld.local/schemas/video-skill-induction-response.schema.json",
+  "title": "Video skill induction response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["skills"],
+  "properties": {
+    "skills": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "procedure",
+          "when_to_use",
+          "efficiency_tip",
+          "verification",
+          "evidence"
+        ],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "procedure": {
+            "type": "array",
+            "minItems": 2,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "when_to_use": {"type": "string", "minLength": 1},
+          "efficiency_tip": {"type": "string", "minLength": 1},
+          "verification": {"type": "string", "minLength": 1},
+          "evidence": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "video_id",
+                "start_seconds",
+                "end_seconds",
+                "observation"
+              ],
+              "properties": {
+                "video_id": {"type": "string", "minLength": 1},
+                "start_seconds": {"type": "number", "minimum": 0},
+                "end_seconds": {"type": "number", "minimum": 0},
+                "observation": {"type": "string", "minLength": 1}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

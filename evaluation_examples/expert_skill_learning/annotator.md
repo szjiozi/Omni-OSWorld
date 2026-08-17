@@ -3,6 +3,54 @@
 本文档指导 human expert 在 AWS OSWorld Ubuntu 环境中启动一个 approved reference task，
 手动决定何时开始和停止录制，并在本地得到完整的 annotation bundle。
 
+## 0. 协作者默认流程：Annotation Portal
+
+四人协作标注时，不要求 annotator 安装仓库、Conda、AWS CLI 或 SSO。管理员会分别提供：
+
+- 一个 CloudFront HTTPS 链接；
+- 一个固定 username；
+- 一个一次性 temporary password；
+- 已分配到该账户的 task。
+
+打开网站后：
+
+1. 用临时密码登录并由本人设置新密码；项目不开放自助注册；
+2. 在 `Your tasks` 中展开 `Task instructions (TASK.md)`；它是网页上唯一的任务说明来源，内容
+   直接来自当前发布批次对应 review packet 的 `TASK.md`，不再同时拼接旧 instruction、quick
+   guide 或 skill list；
+3. 点击 `Launch workspace`。状态为 `provisioning` 时等待，不重复点击；变为 `ready` 后 noVNC
+   会嵌入同一网页；
+4. 在 noVNC 中确认初始 workbook 正确，此时尚未录制；
+   - 可点击 `Fullscreen desktop` 让当前 noVNC 进入全屏；使用右上角 `Exit fullscreen` 或浏览器
+     `Esc` 返回网页，均不会重建连接或要求重新输入 VNC 密码；该退出按钮属于 Portal UI，不会
+     被录进 guest desktop 视频；
+   - 如果只是在探索环境、不准备保留视频，可在 `ready` 状态点击
+     `Close without submitting`，系统会终止 EC2 并立即释放该账户和 task；录制开始后该按钮会
+     消失，避免误删正在录制的工作；
+5. 点击 `Start recording`，确认状态为 `recording` 后再开始需要展示的操作；
+6. 完成 skill demonstration 后点击 `Stop & submit`。页面会显示真实阶段：停止 capture、回收
+   raw video、渲染按键/鼠标 overlay、保存 artifact、验证 manifest、上传并核验 private S3、
+   终止 worker；这是阶段指示器而不是虚假的百分比，可能需要数分钟；
+7. `submitted` 表示最终 XLSX、raw/overlay MP4、输入日志和 manifest 已上传到 private S3，
+   且 `COMPLETE.json` 已写入；在 `My submissions` 中可以通过 Portal 自身的认证流式接口预览
+   `recording.mp4`。浏览器只连接当前 CloudFront 域名，不需要直接访问香港 S3；
+8. 如果本次录制不需要，选择 `Discard this run`。它会立即从有效结果中隐藏，但 7 天内可由
+   annotator 自己 `Restore`；7 天后后台才永久清除整次 run。不要把“discard”当成重新录制按钮，
+   需要重录时再从对应 task 启动新 workspace。
+
+一个 annotator 可以分配多个 task，页面会全部显示，并为每项标记 `not started`、`submitted`、
+`discarded` 或 `deleted`；同一账户同时只允许一个 workspace，同一 task 也只能被一人同时占用，
+系统全局最多 4 个。`ready` 后 45 分钟不开始
+会自动释放；从创建起 180 分钟是硬上限。若页面意外刷新，重新登录后 `Active workspace` 会
+恢复当前状态。遇到 `failed` 时先记录页面错误，再点击 `Retry workspace`；重试会创建一个新的
+干净 workspace，不会复用失败实例。若连续失败，再把 task ID、时间和错误交给管理员。
+
+noVNC 密码仍为 `osworld-public-evaluation`。协作者只访问 CloudFront 链接，不直接打开 worker
+IP、5000 或 5910；也不需要修改本机 proxy。湾区 annotator 第一轮同样使用香港 worker，管理员
+根据实测延迟再决定是否增加美国 worker pool。
+
+以下 terminal/AWS 流程保留为管理员诊断与单人 fallback，普通协作者无需执行。
+
 ## 1. 标注前准备
 
 在仓库根目录运行：
@@ -117,7 +165,8 @@ Runner 会按顺序完成：
 5. 在本地终端显示 task instruction、ready-state checks、operator guide 和 noVNC URL；
 6. 等待 expert 检查初始状态；此时尚未录制；
 7. 第一次 Enter 后先启动带 monotonic timestamp 的 guest XInput，再启动 MP4；reference
-   annotation 默认不抓周期截图，避免与 noVNC 争用跨境隧道；
+   annotation 默认不抓周期截图，避免与 noVNC 争用跨境隧道；Portal 会等 FFmpeg 第一帧确认后
+   才显示 recording，且保留当前 noVNC 连接，不应再次要求输入 VNC 密码；
 8. 第二次 Enter 先立即停止录屏，再停止并回收输入日志；保留 raw MP4，把键盘和鼠标提示
    burn-in 到默认视频，
    再自动发送 `Ctrl+S`、下载最终 XLSX 并写结果包；
@@ -191,7 +240,8 @@ results/reference_annotations/<reference-task-id>/<UTC-run-id>/
 `recording.mp4` 是默认的带键盘和鼠标提示 reference video；`recording_raw.mp4` 是完全不带
 提示的原片，用于质量排查和后续 ablation。`key_events.jsonl` 与
 `pointer_events.jsonl` 是与视频 PTS 对齐的隐私过滤事件，`input_timing.json` 保存 guest
-monotonic clock 对齐点；原始 XInput 文件继续保留作 provenance。第二位 annotator 可以直接
+monotonic clock 的 provisional 和 calibrated 对齐点。最终时间轴使用录制停止时间减去 MP4
+实际时长定位第一帧，避免 FFmpeg 启动耗时使提示落后；原始 XInput 文件继续保留作 provenance。第二位 annotator 可以直接
 在本地观看视频并检查 `final_artifact.xlsx`，不需要在 AWS 实例里播放视频。
 
 正式标注默认要求按键捕获和 burn-in 成功。仅工程调试时可以使用：

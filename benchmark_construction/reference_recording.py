@@ -4,8 +4,10 @@ from __future__ import annotations
 
 import base64
 import json
+import math
 import os
 import struct
+from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
@@ -13,9 +15,24 @@ from typing import Any
 GUEST_RECORDING = "/tmp/recording.mp4"
 GUEST_RECORDING_PID = "/tmp/osworld-reference-recording.pid"
 GUEST_RECORDING_STDERR = "/tmp/osworld-reference-recording.ffmpeg.log"
+GUEST_RECORDING_PROGRESS = "/tmp/osworld-reference-recording.progress"
+GUEST_RECORDING_START = "/tmp/osworld-reference-recording-start.json"
+
+
+@dataclass(frozen=True)
+class RecordingTimeline:
+    provisional_video_start_monotonic_ns: int
+    calibrated_video_start_monotonic_ns: int
+    video_stop_monotonic_ns: int
+    alignment_correction_ms: float
+    alignment_method: str = "stop_minus_mp4_duration"
+
+    def to_dict(self) -> dict[str, int | float | str]:
+        return asdict(self)
 
 
 _START_SOURCE = r"""
+import json
 import os
 import pathlib
 import re
@@ -25,7 +42,9 @@ import time
 recording = pathlib.Path("/tmp/recording.mp4")
 pid_path = pathlib.Path("/tmp/osworld-reference-recording.pid")
 stderr_path = pathlib.Path("/tmp/osworld-reference-recording.ffmpeg.log")
-for path in (recording, pid_path, stderr_path):
+progress_path = pathlib.Path("/tmp/osworld-reference-recording.progress")
+start_path = pathlib.Path("/tmp/osworld-reference-recording-start.json")
+for path in (recording, pid_path, stderr_path, progress_path, start_path):
     path.unlink(missing_ok=True)
 
 env = dict(os.environ, DISPLAY=":0")
@@ -43,6 +62,8 @@ proc = subprocess.Popen(
         "-y",
         "-loglevel",
         "warning",
+        "-stats_period",
+        "0.1",
         "-f",
         "x11grab",
         "-draw_mouse",
@@ -63,6 +84,8 @@ proc = subprocess.Popen(
         "yuv420p",
         "-r",
         "30",
+        "-progress",
+        str(progress_path),
         str(recording),
     ],
     stdout=subprocess.DEVNULL,
@@ -71,11 +94,43 @@ proc = subprocess.Popen(
     env=env,
 )
 pid_path.write_text(str(proc.pid), encoding="utf-8")
-time.sleep(2)
-if proc.poll() is not None:
+deadline = time.monotonic() + 30
+first_frame_monotonic_ns = None
+while time.monotonic() < deadline:
+    if proc.poll() is not None:
+        stderr.close()
+        message = stderr_path.read_text(encoding="utf-8", errors="replace")[-2000:]
+        raise RuntimeError(f"Reference ffmpeg exited during startup: {message}")
+    progress = (
+        progress_path.read_text(encoding="utf-8", errors="replace")
+        if progress_path.is_file()
+        else ""
+    )
+    frames = re.findall(r"(?m)^frame=(\d+)\s*$", progress)
+    if frames and int(frames[-1]) > 0:
+        out_times = re.findall(r"(?m)^out_time_us=(\d+)\s*$", progress)
+        encoded_elapsed_ns = int(out_times[-1]) * 1000 if out_times else 0
+        first_frame_monotonic_ns = time.monotonic_ns() - encoded_elapsed_ns
+        break
+    time.sleep(0.05)
+if first_frame_monotonic_ns is None:
+    proc.terminate()
     stderr.close()
     message = stderr_path.read_text(encoding="utf-8", errors="replace")[-2000:]
-    raise RuntimeError(f"Reference ffmpeg exited during startup: {message}")
+    raise RuntimeError(
+        "Reference ffmpeg did not produce its first frame within 30 seconds: "
+        + message
+    )
+start_path.write_text(
+    json.dumps(
+        {
+            "pid": proc.pid,
+            "first_frame_monotonic_ns": first_frame_monotonic_ns,
+            "method": "ffmpeg_progress_first_frame",
+        }
+    ),
+    encoding="utf-8",
+)
 print(proc.pid)
 """.strip()
 
@@ -209,3 +264,32 @@ def validate_recording_duration(
         "actual_seconds": actual,
         "missing_seconds": missing,
     }
+
+
+def calibrate_recording_timeline(
+    *,
+    provisional_start_monotonic_ns: int,
+    stop_monotonic_ns: int,
+    actual_duration_seconds: float,
+) -> RecordingTimeline:
+    """Align input events to the first encoded frame instead of process start."""
+
+    if provisional_start_monotonic_ns < 0:
+        raise ValueError("Provisional recording start time must be non-negative")
+    if stop_monotonic_ns <= provisional_start_monotonic_ns:
+        raise ValueError("Recording stop time must be after its provisional start")
+    if not math.isfinite(actual_duration_seconds) or actual_duration_seconds <= 0:
+        raise ValueError("Actual recording duration must be positive and finite")
+    duration_ns = round(actual_duration_seconds * 1_000_000_000)
+    calibrated_start = stop_monotonic_ns - duration_ns
+    if calibrated_start < 0:
+        raise ValueError("Actual recording duration precedes the monotonic clock origin")
+    return RecordingTimeline(
+        provisional_video_start_monotonic_ns=provisional_start_monotonic_ns,
+        calibrated_video_start_monotonic_ns=calibrated_start,
+        video_stop_monotonic_ns=stop_monotonic_ns,
+        alignment_correction_ms=(
+            calibrated_start - provisional_start_monotonic_ns
+        )
+        / 1_000_000,
+    )

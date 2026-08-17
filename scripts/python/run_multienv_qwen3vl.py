@@ -1,6 +1,7 @@
 from __future__ import annotations
 import argparse
 import datetime
+import hashlib
 import json
 import logging
 import os
@@ -49,7 +50,7 @@ def config() -> argparse.Namespace:
         help="Observation type",
     )
     parser.add_argument("--sleep_after_execution", type=float, default=0.0)
-    parser.add_argument("--max_steps", type=int, default=15)
+    parser.add_argument("--max_steps", type=int, default=50)
 
     # agent config
     parser.add_argument("--max_trajectory_length", type=int, default=3)
@@ -58,8 +59,10 @@ def config() -> argparse.Namespace:
     )
 
     # lm config
-    parser.add_argument("--model", type=str, default="qwen3-vl")
-    parser.add_argument("--temperature", type=float, default=0)
+    parser.add_argument(
+        "--model", type=str, default="qwen3.7-plus-2026-05-26"
+    )
+    parser.add_argument("--temperature", type=float, default=0.01)
     parser.add_argument("--top_p", type=float, default=0.9)
     parser.add_argument("--max_tokens", type=int, default=32768)
     parser.add_argument("--stop_token", type=str, default=None)
@@ -74,6 +77,22 @@ def config() -> argparse.Namespace:
         "--add_thought_prefix",
         action="store_true",
         help="Add thought prefix to the response",
+    )
+    parser.add_argument("--history_n", type=int, default=4)
+    parser.add_argument("--seed", type=int, default=20260812)
+    parser.add_argument("--enable_thinking", action="store_true")
+    parser.add_argument("--thinking_budget", type=int, default=32768)
+    parser.add_argument(
+        "--condition",
+        choices=["baseline", "learned_skills"],
+        default="baseline",
+        help="Pilot condition; results are isolated under this name.",
+    )
+    parser.add_argument(
+        "--skill_artifact",
+        type=str,
+        default=None,
+        help="learned_skills.json; required only for learned_skills condition.",
     )
 
     # example config
@@ -119,44 +138,66 @@ def config() -> argparse.Namespace:
     return args
 
 
-args = config()  # Get command line arguments first
-
-logger = logging.getLogger()
-log_level = getattr(logging, args.log_level.upper())
-logger.setLevel(log_level)
-
-datetime_str: str = datetime.datetime.now().strftime("%Y%m%d@%H%M%S")
-
-file_handler = logging.FileHandler(
-    os.path.join("logs", "normal-{:}.log".format(datetime_str)), encoding="utf-8"
-)
-debug_handler = logging.FileHandler(
-    os.path.join("logs", "debug-{:}.log".format(datetime_str)), encoding="utf-8"
-)
-stdout_handler = logging.StreamHandler(sys.stdout)
-
-file_handler.setLevel(logging.INFO)
-debug_handler.setLevel(logging.DEBUG)
-stdout_handler.setLevel(log_level)
-
-formatter = logging.Formatter(
-    fmt=(
-        "\x1b[1;33m[%(asctime)s \x1b[31m%(levelname)s "
-        "\x1b[32m%(module)s/%(lineno)d-%(processName)s\x1b[1;33m] "
-        "\x1b[0m%(message)s"
-    )
-)
-file_handler.setFormatter(formatter)
-debug_handler.setFormatter(formatter)
-stdout_handler.setFormatter(formatter)
-
-stdout_handler.addFilter(logging.Filter("desktopenv"))
-
-logger.addHandler(file_handler)
-logger.addHandler(debug_handler)
-logger.addHandler(stdout_handler)
-
 logger = logging.getLogger("desktopenv.experiment")
+
+
+def configure_logging(log_level_name: str) -> None:
+    os.makedirs("logs", exist_ok=True)
+    root_logger = logging.getLogger()
+    log_level = getattr(logging, log_level_name.upper())
+    root_logger.setLevel(log_level)
+    datetime_str = datetime.datetime.now().strftime("%Y%m%d@%H%M%S")
+    file_handler = logging.FileHandler(
+        os.path.join("logs", f"normal-{datetime_str}.log"), encoding="utf-8"
+    )
+    debug_handler = logging.FileHandler(
+        os.path.join("logs", f"debug-{datetime_str}.log"), encoding="utf-8"
+    )
+    stdout_handler = logging.StreamHandler(sys.stdout)
+    file_handler.setLevel(logging.INFO)
+    debug_handler.setLevel(logging.DEBUG)
+    stdout_handler.setLevel(log_level)
+    formatter = logging.Formatter(
+        fmt=(
+            "\x1b[1;33m[%(asctime)s \x1b[31m%(levelname)s "
+            "\x1b[32m%(module)s/%(lineno)d-%(processName)s\x1b[1;33m] "
+            "\x1b[0m%(message)s"
+        )
+    )
+    for handler in (file_handler, debug_handler, stdout_handler):
+        handler.setFormatter(formatter)
+        root_logger.addHandler(handler)
+
+
+def _sha256_file(path: str) -> str:
+    digest = hashlib.sha256()
+    with open(path, "rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def load_skill_artifact(path: str) -> dict:
+    with open(path, "r", encoding="utf-8") as stream:
+        artifact = json.load(stream)
+    if artifact.get("status") != "engineering_pilot":
+        raise ValueError("Skill artifact must have status=engineering_pilot")
+    if artifact.get("app") != "libreoffice_calc":
+        raise ValueError("Skill artifact app must be libreoffice_calc")
+    if not isinstance(artifact.get("skills"), list) or not artifact["skills"]:
+        raise ValueError("Skill artifact must contain at least one skill")
+    return artifact
+
+
+def validate_condition(args: argparse.Namespace) -> None:
+    if args.condition == "baseline" and args.skill_artifact:
+        raise ValueError("baseline condition must not receive --skill_artifact")
+    if args.condition == "learned_skills" and not args.skill_artifact:
+        raise ValueError("learned_skills condition requires --skill_artifact")
+    if args.history_n < 0:
+        raise ValueError("history_n must be non-negative")
+    if args.max_steps < 1:
+        raise ValueError("max_steps must be positive")
 
 
 def distribute_tasks(test_all_meta: dict) -> List[tuple]:
@@ -196,6 +237,11 @@ def run_env_tasks(task_queue, args: argparse.Namespace, shared_scores: list):
             client_password=args.client_password,
         )
         active_environments.append(env)
+        skill_artifact = (
+            load_skill_artifact(args.skill_artifact)
+            if args.skill_artifact
+            else None
+        )
         agent = Qwen3VLAgent(
             model=args.model,
             max_tokens=args.max_tokens,
@@ -204,6 +250,11 @@ def run_env_tasks(task_queue, args: argparse.Namespace, shared_scores: list):
             action_space=args.action_space,
             coordinate_type=args.coord,
             add_thought_prefix=args.add_thought_prefix,
+            history_n=args.history_n,
+            enable_thinking=args.enable_thinking,
+            thinking_budget=args.thinking_budget,
+            seed=args.seed,
+            skill_artifact=skill_artifact,
         )
         logger.info(f"Process {current_process().name} started.")
         while True:
@@ -328,28 +379,29 @@ def test(args: argparse.Namespace, test_all_meta: dict) -> None:
             processes.append(p)
             logger.info(f"Started process {p.name} with PID {p.pid}")
         try:
+            reported_dead_processes = set()
             while True:
-                alive_count = 0
-                for idx, p in enumerate(processes):
-                    if not p.is_alive():
-                        logger.warning(f"Process {p.name} died, restarting...")
-                        new_p = Process(
-                            target=run_env_tasks,
-                            args=(task_queue, args, shared_scores),
-                            name=f"EnvProcess-Restart-{idx+1}"
+                alive_count = sum(process.is_alive() for process in processes)
+                for process in processes:
+                    if (
+                        not process.is_alive()
+                        and process.name not in reported_dead_processes
+                    ):
+                        logger.error(
+                            "Process %s exited with code %s; it will not be "
+                            "automatically restarted.",
+                            process.name,
+                            process.exitcode,
                         )
-                        new_p.daemon = True
-                        new_p.start()
-                        processes[idx] = new_p
-                        logger.info(f"Restarted process {new_p.name} with PID {new_p.pid}")
-                    else:
-                        alive_count += 1
+                        reported_dead_processes.add(process.name)
                 if task_queue.empty():
                     logger.info("All tasks finished.")
                     break
                 if alive_count == 0:
-                    logger.error("All processes died, exiting.")
-                    break
+                    raise RuntimeError(
+                        "All environment processes exited before the task queue "
+                        "was completed"
+                    )
                 time.sleep(5)
             for p in processes:
                 p.join()
@@ -443,6 +495,14 @@ if __name__ == "__main__":
     signal.signal(signal.SIGTERM, signal_handler)
     try:
         args = config()
+        configure_logging(args.log_level)
+        validate_condition(args)
+        args.experiment_status = "engineering_pilot"
+        args.skill_artifact_sha256 = (
+            _sha256_file(args.skill_artifact) if args.skill_artifact else None
+        )
+        args.base_result_dir = args.result_dir
+        args.result_dir = os.path.join(args.result_dir, args.condition)
         path_to_args = os.path.join(
             args.result_dir,
             args.action_space,
@@ -484,7 +544,7 @@ if __name__ == "__main__":
         logger.info("Main process received KeyboardInterrupt.")
     except Exception as e:
         logger.error(f"Unexpected error in main process: {e}", exc_info=True)
-        signal_handler(signal.SIGTERM, None)
+        raise
     finally:
         logger.info("Main process final cleanup...")
         for env in active_environments:
@@ -511,5 +571,3 @@ if __name__ == "__main__":
                     logger.info(f"Process {p.name} force killed")
                 except Exception as e:
                     logger.error(f"Error force killing process: {e}")
-
-

@@ -170,12 +170,17 @@ class SetupController:
         retry = 0
         while retry < MAX_RETRIES:
             try:
-                _ = requests.get(self.http_server + "/terminal")
+                requests.get(self.http_server + "/terminal", timeout=10)
                 break
-            except:
+            except requests.RequestException as exc:
                 time.sleep(5)
                 retry += 1
-                logger.info(f"retry: {retry}/{MAX_RETRIES}")
+                logger.info(
+                    "Controller connection retry %d/%d after %s",
+                    retry,
+                    MAX_RETRIES,
+                    exc,
+                )
             
             if retry == MAX_RETRIES:
                 return False

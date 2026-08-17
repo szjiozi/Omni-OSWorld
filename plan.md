@@ -1,6 +1,6 @@
 # OSWorld 专家轨迹技能学习 Benchmark 开发计划
 
-更新日期：2026-08-05
+更新日期：2026-08-17
 
 ## 2026-08-04 当前实施主线：Reference Task Construction Pilot
 
@@ -117,6 +117,9 @@ reference-video-to-skill-to-agent 协议继续作为后续 benchmark 目标保�
 - [x] C3 review/coverage 软件闭环：approved/revision/rejected schema、全局 approved
   coverage、blocked combinations、revision feedback 和 resume；当前尚未进行人工 review，
   所以状态为 0/12 approved；
+- [x] Reviewer packet UX v2：保留原完整页面为 4 份 frozen `TASK_DETAIL.md`，由
+  `gpt-5.6-terra` 生成带输入 SHA256/provenance 的中文新手 guide，再确定性渲染精简
+  `TASK.md`；最终 run 为 4 calls、12374/7606 tokens、`$0.116020`；
 - [x] C4a LLM artifact generation：4 个 strict blueprints、4 个真实 XLSX、逐 sheet render、
   formula error scan、SHA256、精确 number formats/AutoFilter 和 build-only 重放；最终 frozen
   blueprint run 为 4 calls、9167/3447 tokens、`$0.059698`，4 个 artifacts 均无需 manual setup；
@@ -127,8 +130,49 @@ reference-video-to-skill-to-agent 协议继续作为后续 benchmark 目标保�
   Ubuntu AMI、当前公网 IP `/32`、第一次 Enter 开始、第二次 Enter 停止、最终 XLSX/结果包
   回收和 `finally` terminate；
 - [x] C5 单实例 AWS 实机 smoke 与终态资源审计；
+- [x] C5b 多标注者 Portal 本地实现：固定账户登录/首次改密协议、四人 assignments、任务与
+  skill guide 汇总、按钮式 launch/start/stop、认证后的 noVNC HTTP+WebSocket 私网代理、
+  用户/任务锁和全局 4 workspace 上限、45 分钟 ready-idle 与 180 分钟 hard TTL；
+- [x] C5b 结果可靠提交：本地 bundle 永不因上传失败删除，私有 S3 逐文件 SHA256 metadata
+  核验，所有文件成功后才写 `COMPLETE.json`；
+- [x] C5b AWS IaC 与一键部署：Cognito 禁止自助注册、DynamoDB、private S3、CloudFront VPC
+  Origin/default HTTPS domain、专用 private `/24`、`t3.micro` gateway、`t4g.nano` NAT instance；
+  gateway 从私有 S3 的 content-addressed source bundle 自举，不再维护第二套预烘焙 AMI；
+- [x] CloudFormation 只读验证、香港网络/AMI/价格盘点和 portal/infra/provider 测试；
+- [x] 获得约 USD 24/月常驻成本的明确部署授权，创建 stack、4 个 Cognito annotator 账户并
+  将一次性临时密码保存到 git-ignored `0600` 本地文件；
+- [x] 真实 AWS 验证 CloudFront HTTPS `/healthz`、首页、未认证 401、四账户状态、private gateway
+  SSM 诊断和零 worker 基线；
+- [x] 使用真实账户完成 1-user noVNC/record/private-S3-upload/terminate smoke：20 个对象及
+  `COMPLETE.json` 已提交，worker、TTL schedule、EBS 和 ENI 均无残留；
+- [x] C5b portal UX/operations v2 本地实现：完整 `TASK.md`、真实 finalization stepper、每 task
+  历史状态、owner-only 视频预览、7 天 discard/restore、verified downloader；
+- [x] C5b 动态 task batch 本地实现：immutable pilot snapshot、S3/SSM hash 校验、`live-pilot`
+  原子切换、catalog hot reload、增量 assignment upsert，active workspace 冻结版本；
+- [x] full source deploy 增加 active=0 Dynamo maintenance lock；新 worker 增加
+  `Role=AnnotationWorker` 标签；
+- [x] 将 portal UX/operations v2 的代码与 IAM 更新部署到当前香港 stack；CloudFront health、
+  新 frontend、4 个 live task packets、maintenance lock release 和零 worker 均已复核；
+- [ ] 完成 4-user 并发 admission/cleanup smoke；
 - [ ] C6 本地 cross-validation；
 - [ ] C7 Pilot 验收。
+
+### C5b 四人协作标注门户的验收顺序
+
+真实 AWS 部署不会与代码实现混在同一步执行。按以下 gate 逐级推进：
+
+1. 本地 fake workspace API/UI 和状态机测试通过，不产生云费用；
+2. CloudFormation 只读校验通过，deterministic gateway bundle 不含 credentials/results；
+3. 部署 control plane 后仅创建 4 个 admin-created Cognito 用户，关闭 self-registration；
+4. 单用户启动一个 pending task smoke，验证 CloudFront HTTPS、WebSocket/noVNC、录制、overlay、
+   private S3 `COMPLETE.json` 和实例终止；
+5. 四用户并发只验证 lock/capacity/readiness，除非明确需要，不同时录制四个长视频；
+6. 四个 reference packages 人工变为 approved 后，移除 `--allow-pending` 并进入正式标注。
+
+门户默认所有 worker 都在香港 `ap-east-1`。湾区 annotator 先测 CloudFront 到香港 gateway 的
+实际交互；只有体验仍不可接受时才增加 `us-west-2` worker pool，不能在没有数据前复制整套
+control plane。门户基础设施不替代原 `record_reference_task.py`，单人 CLI 继续作为诊断和
+fallback。
 
 ### Deferred infrastructure next step: Alibaba Cloud Shenzhen
 

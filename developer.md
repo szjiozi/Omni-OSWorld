@@ -124,6 +124,28 @@ python scripts/python/review_reference_packages.py \
 才允许 resume；`revision_requested` 会保留原 sampled skill set 并把 reviewer instructions
 发给 LLM，`rejected` 的 exact combination 被 blocked，其他 uncovered skills 重新采样。
 
+Reviewer 页面分三步生成，不能在 packet export 中临时调用 LLM：
+
+```bash
+python scripts/python/manage_reference_review_packets.py details
+python scripts/python/generate_reference_reviewer_guides.py
+python scripts/python/manage_reference_review_packets.py export
+```
+
+第一步把原完整 `TASK.md` 确定性保留为
+`pilot/task_details/<reference-task-id>/TASK_DETAIL.md`；第二步只基于该 Markdown 生成结构化中文
+新手参考 guide，并记录输入 SHA256、prompt/model/token/cost；第三步确定性生成精简的 user-facing
+`TASK.md`，同时把 `TASK_DETAIL.md` 复制进 packet。最终页面不展示 artifact 规格、incidental
+operations 或 annotation command，但保留 initial preview、完整 required skill provenance、原
+operator guide、中文 guide、完整 source single actions 与明确 review checklist。guide 与 detail
+SHA256 不一致时 export/collect 必须 fail closed。
+
+当前 4 份 frozen reviewer guides 已使用 `gpt-5.6-terra` 生成，合计 12374 input、7606 output
+tokens，估算 `$0.116020`。输出在 `pilot/reviewer_guides.json`，逐 attempt 日志在
+`results/expert_skill_learning/reviewer_guide_llm_calls.jsonl`。第一次真实 API 尝试因 strict
+Structured Outputs 的 `language.const` 缺少显式 string type 在推理前返回 400；schema 修正后
+四次 generation 全部成功。
+
 C4a artifact generation 入口：
 
 ```bash
@@ -203,8 +225,68 @@ OSWorld server 或正式实验录制设定。
 默认 input overlay 从同一份 timestamped XI2 日志生成：快捷键和特殊键写入
 `key_events.jsonl`；左键、双击、右键和滚轮写入 `pointer_events.jsonl`。鼠标提示显示在实际
 坐标附近；按下/释放位移超过 10 px 视为拖拽，不显示额外提示。`input_timing.json` 保存 guest
-ffmpeg start monotonic ns，用于把输入事件对齐到视频 PTS。`key_overlay.ass` 由 guest ffmpeg
-burn-in 为正式 `recording.mp4`，无提示的 `recording_raw.mp4` 永久保留。
+monotonic 时间轴。FFmpeg process start 只能作为 provisional 起点；停止后必须以
+`video_stop_monotonic_ns - actual_mp4_duration` 计算第一帧的 calibrated 起点，再将输入事件
+对齐到视频 PTS。`key_overlay.ass` 由 guest ffmpeg burn-in 为正式 `recording.mp4`，无提示的
+`recording_raw.mp4` 永久保留。
+
+2026-08-18 对 Portal run `1ce7dffe47cb4df79d7bbe6c3e89af24` 的诊断发现：guest 窗口为
+112.925 秒，但 MP4 为 111.000 秒；旧实现因此把全部 overlay 延后 1925.202 ms。旧 direct-noVNC
+样本也有同类 303–324 ms 偏移，只是不明显。共享 recorder 现统一执行 stop-minus-duration
+校准；`input_timing.json` 和 manifest 的 `recording_timeline` 必须保留 provisional/calibrated
+起点、stop time、correction ms 和 method，不能再直接用 `/proc` process start 生成 overlay。
+修复后 75 项 annotation/recording 回归测试通过，真实样本中的 `Ctrl+A` 从 109.275 秒校准为
+107.350 秒；gateway source bundle `375eedb4965b...` 已部署，CloudFront `/healthz` 返回 200。
+
+该 bundle 部署后的首次 relaunch 返回 500：workspace admission 的 transaction 包含
+`ConditionCheck` maintenance gate，但 gateway role 只有 `TransactWriteItems`，缺少独立的
+`dynamodb:ConditionCheckItem` 权限。DynamoDB 明确返回 `AccessDeniedException`，因此没有创建
+workspace、lock 或 worker。Gateway IAM policy 必须同时保留这两个 action；权限缺失时 store
+应返回可读的 portal administration error，不能再把原始 ClientError 暴露为无说明的 500。
+修复后 76 项相关测试通过，source bundle `b3ad0003a18d...` 部署成功。Portal launch 返回 200，
+workspace `5e39b69c4b644f2c867e42803c55cae9` 创建 worker `i-05bc936b519f2c274` 并进入 `ready`。
+
+同一 workspace 首次 stop 时又暴露了两个独立问题。Portal 的 `renderWorkspace()` 在
+ready → recording 时重写整个 `innerHTML`，销毁已认证的 noVNC iframe，迫使 annotator 再次连接
+并输入 VNC 密码；状态轮询还会再重写一次。现在同一 session 且仍为 ready/recording 时只原地
+更新 status/message/buttons，必须保留原 iframe browsing context。
+
+该 run 的 provisional process start 为 433.600 秒，MP4 为 78.334 秒，而 stop window 为
+85.799 秒；第一帧启动空档 7.465 秒被旧完整性 gate 误判为截断。首个实际 click 在 446.984 秒，
+晚于估算第一帧约 5.9 秒，因此这次没有丢 substantive 操作，但 failed bundle 不可作为正式结果。
+Guest recorder 现在通过 FFmpeg `-progress` 等待 `frame > 0`，写入
+`first_frame_monotonic_ns` 后 Start API 才返回；`guest_recording_start_monotonic_ns()` 读取该 marker，
+不再扫描 `/proc/<pid>/stat`。duration integrity 和 post-hoc stop-minus-duration residual 校准继续
+保留，用真实第一帧起点即可区分 encoder startup 与录制中途截断。
+修复后 79 项回归测试与 Node syntax check 通过，source bundle `b6b3010a0a68...` 已部署；
+CloudFront `app.js` 已确认包含 iframe-preserving 分支。新 workspace
+`11a0857bdae646279f26230db8897348` 创建 worker `i-0d28821dc73739e37` 并进入 `ready`。
+
+Portal workspace 控制补充三个明确入口：ready/recording 的 noVNC iframe 可用浏览器 Fullscreen
+API 原地全屏；仅 `ready` 可以执行 `Close without submitting`，同步终止 worker 后转为
+`terminated` 并释放 user/task/global locks；`failed`、`expired`、`terminated` 页面可以按原 task
+发起全新 workspace。不要把 retry 实现成复用旧 DesktopEnv。Pilot 暂不允许取消
+`provisioning`，因为尚未取得 concrete instance/runtime 时直接释放 lock 可能留下 orphan EC2；如需
+支持必须先在 controller 增加可持久化、幂等的 cancellation/reconciliation。
+上述 workspace controls 加入后，Portal/infra/recording 共 83 项回归测试及 Node syntax check
+通过。2026-08-18 部署前检查发现 active count 为 1、worker `i-093f715ded4956dc1` 仍在运行，
+因此最初未重启 gateway。用户确认该环境只用于探索后，管理员安全终止 session
+`111fe17aff4745fa850344d0e234b1b7`：worker 转为 `terminated`、对应 TTL schedule 删除，Portal
+事务释放 locks 并把 active count 归零。随后 source bundle `562c8192e271...` 已部署；CloudFront
+`/healthz` 返回 ok，线上 `app.js` 已确认包含 Fullscreen、Close without submitting 和 Retry
+workspace，部署后 active count 仍为 0。
+
+Portal task card 的任务说明必须只渲染当前 immutable pilot snapshot 中的 review packet
+`TASK.md`；不要再在前端额外拼接 `reference_packages.json` 的 instruction、operator guide 或
+skill list，避免 human-edited TASK 与生成期字段出现两个版本。Fullscreen 必须请求包住 iframe
+的 `.desktop-shell`，并在该容器内显示 `Exit fullscreen`；直接让 iframe fullscreen 会使父页面
+按钮不可见，用户只能依赖不明显的浏览器 Escape 行为。
+该调整通过 43 项 Portal/publisher/review-packet 回归测试，source bundle
+`b2738c5a6f08...` 已部署。随后使用 batch publisher 原子切换到 catalog
+`00320cb6e158733d48dbf9c91d09fad1b3c893f7b82b3bacf10ad90a5339364f`，包含 4 个任务和
+4 条 assignment，gateway 未重启。SSM 核验 `live-pilot` 已指向该 snapshot，四份远端
+`TASK.md` SHA256 与本地逐一一致；CloudFront source 已包含 `Task instructions (TASK.md)`、
+`Exit fullscreen` 与 `document.exitFullscreen`，且不再包含旧 quick-guide label。
 
 AWS runner 固定 `osworld-dev`，默认 annotation region 由
 `AWS_ANNOTATION_REGION` 决定，当前主路径为香港 `ap-east-1`。香港官方公共 AMI ID 已失效，
@@ -253,6 +335,167 @@ A/B smoke，再决定是否迁移 annotation pipeline。
 
 GitHub 暂作 Pilot remote。提交前必须检查 MP4/artifact 是否包含个人信息或凭据，并做文件
 大小预检；普通 Git 失败后再决定 Git LFS/S3，不在当前代码中自动上传外部服务。
+
+### Multi-annotator Annotation Portal（2026-08-17）
+
+四位协作者的主入口改为 Annotation Portal；单人 terminal runner 保留。门户代码位于
+`benchmark_construction/annotation_portal/`，启动入口为
+`scripts/python/run_annotation_portal.py`。本地模式必须显式指定 `--mode local` 和一个未跟踪
+的 credentials JSON；AWS 模式必须显式指定 `--mode aws`，缺少任一 Cognito、DynamoDB、S3
+或 worker network 配置都会 fail closed。
+
+状态机固定为：
+
+```text
+assigned → provisioning → ready → recording → finalizing → uploading → submitted
+                                 ↘ failed / expired / terminated
+                                                                         ↕
+                                                                   discarded → deleted
+```
+
+`MemoryPortalStore` 只用于本地测试。生产使用 single-table `DynamoPortalStore`：创建 workspace
+时在同一个 `TransactWriteItems` 中写 workspace、user lock、task lock 并递增 global active
+counter；因此同一 annotator、同一 task 只能各有一个 active workspace，总数最多 4。活动态
+退出时在事务中释放两把锁并递减 counter。`WorkspaceJanitor` 对 ready-idle 45 分钟和全部活动
+workspace 180 分钟 hard TTL 执行清理；worker 本身仍应保留独立的 termination backstop，不能
+只依赖 gateway 进程。
+
+Cognito User Pool 关闭 self-registration。管理员通过
+`scripts/python/create_annotation_portal_users.py` 创建固定账户；脚本用 `MessageAction=SUPPRESS`
+生成一次性临时密码，只写到用户指定的本地 `0600` 文件，不在 stdout、Git 或日志展示密码。
+首次登录的 `NEW_PASSWORD_REQUIRED` Cognito session 留在 gateway 内存，浏览器只收到短期 opaque
+challenge ID；正式 portal cookie 同样是 opaque random token，DynamoDB 只存 SHA256，cookie
+使用 `HttpOnly + Secure + SameSite=Lax`，不把 Cognito token 放进 localStorage。
+
+noVNC 的 HTML/JS 和 WebSocket 都通过已认证的 gateway 路由：
+
+```text
+/api/workspaces/<session>/vnc/<asset>
+/api/workspaces/<session>/vnc/websockify
+```
+
+每次请求都校验 session owner/admin，然后 gateway 通过 worker private IP 的 5910 连接；HTTP
+client 显式 `trust_env=False`，不会再次受本机/实例 proxy 影响。worker SG 的 5000/5910 只接受
+gateway SG，不对 annotator 公网开放。CloudFront 必须转发所有 cookies、query strings 和除
+Host 外的 viewer headers，尤其是 `Sec-WebSocket-*`；缓存策略使用 CachingDisabled。预览继续
+固定 `quality=0&compression=9&resize=scale`，不改变 guest 1920×1080 录制清晰度。
+
+生产入口使用 CloudFront 默认 `*.cloudfront.net` HTTPS，不要求自有域名。IaC 为
+`infra/annotation_portal/template.yaml`：gateway EC2 位于 private subnet，并以 CloudFront VPC
+Origin 作为唯一入口，不创建 ALB/NLB。CloudFront VPC Origin 官方要求 private subnet；香港默认
+VPC 原本只有 public subnets，因此模板会创建一个自动选择且不与现有 subnet 重叠的 private
+`/24`，并使用 public subnet 中的 `t4g.nano` NAT instance 出站。不要把 gateway 改回 public
+subnet，也不要为了省事换成约 USD 0.045/hour 的 managed NAT Gateway。
+
+gateway 使用 Canonical Ubuntu 24.04 `t3.micro`，启动时建立 2 GiB swap，并从 stack 的 private
+S3 bucket 下载 content-addressed source tarball、校验 SHA256、建立 `.venv` 后启动 systemd。
+`scripts/python/deploy_annotation_portal.py` 先创建无 compute 的 control plane，再上传 deterministic
+bundle，最后启用 NAT/gateway/CloudFront；bundle 包含完整 `benchmark_construction` Python package、
+portal 所需的最小 AWS DesktopEnv 路径、pilot configs/artifacts 和 requirements，不包含 `.git`、
+results、`secret_keys.sh` 或 credentials。重复部署时 bundle 使用 content hash key，CloudFormation
+稳定后通过 SSM 下载、校验并原地刷新 gateway service；annotation S3 bucket 继续保留。gateway
+role 保留最小 SSM agent channel 权限，便于诊断 private instance，不开放 SSH 或公网 IP。
+
+当前香港按需成本基线约 USD 24/month：`t3.micro` gateway、`t4g.nano` NAT、1 个 public IPv4 和
+48 GiB gp3。每个 live `t3.xlarge` worker 约 USD 0.24/hour 加少量 IPv4/gp3，hard TTL 180 分钟。
+portal 显式设置 `AWS_EBS_IOPS=3000`、`AWS_EBS_THROUGHPUT_MIBPS=125`，不得继承通用 runner 的
+4000/1000 高性能默认值造成额外存储费用。实际创建这些持续计费资源必须再次获得用户明确授权。
+
+Portal 的 AWS controller 直接持有每个 live `DesktopEnv`，网页按钮分别调用 start/stop API，
+不使用 PTY 或向旧 CLI 伪造 Enter。reference annotation 仍禁用周期截图，并复用现有 XInput、
+guest FFmpeg、duration integrity、key/pointer overlay、最终 XLSX 和 manifest 逻辑。AWS manager
+仅在主线程安装 SIGINT/SIGTERM handler，使最多四个后台 provisioning thread 可以并发分配实例；
+原单人 CLI 的信号清理行为不变。
+
+停止录制后先在 gateway 本地完成 bundle。`S3BundlePublisher` 对每个文件计算 SHA256，上传时写
+object metadata，并用 `HeadObject` 核对；所有文件成功后最后写
+`reference-annotations/<user>/<task>/<run>/COMPLETE.json`。上传或校验失败时不写 complete marker、
+不删除本地 bundle，但仍请求终止 worker，避免为重试上传继续支付 EC2 费用。
+
+2026-08-17 的 portal operations v2 已实现并部署：task card 会安全渲染完整 `TASK.md`，packet
+内相对图片/附件通过 owner-checked API 提供，绝对、带 scheme 或 `..` 链接会被禁用；停止后页面
+按 capture、raw collection、overlay render、artifact、manifest、S3 verify、worker termination
+显示真实阶段，不伪造百分比。`WorkspaceSession` 在 launch 时冻结 `catalog_version` 和不可变
+`task_config_path`，因此动态批次切换不会改变已启动任务。
+
+提交历史从 DynamoDB workspace 记录读取。`recording.mp4` 预览必须走 owner-checked 的同源
+`/api/submissions/<session>/video`；gateway 将浏览器 `Range` 转发给 private S3，并以 200/206、
+`Content-Length`、`Content-Range`、`Accept-Ranges` 流式返回。不要再把 presigned regional S3 URL
+放进 `<video>`：大陆/代理网络可能能访问 CloudFront Portal 却不能访问第二个 S3 域名。网关还
+必须对 `recording.mp4` 强制返回 `Content-Type: video/mp4`，不能信任历史 S3 对象的
+`binary/octet-stream` 元数据；新上传 bundle 同时按扩展名写入正确 MIME 类型。
+可将整次 run 标成 `discarded` 并在 7 天内恢复。后台 janitor 到期后删除该精确 S3 prefix
+的全部 object versions，再置为 `deleted`。不要用 S3 `Expiration Days=7` 代替：它按 object
+创建时间而不是 discard 时间计算，无法保证七天恢复窗口。gateway role 因此需要
+`Get/PutObjectTagging`、`DeleteObjectVersion` 和 `ListBucketVersions`。
+
+新增任务使用 `scripts/python/publish_annotation_batch.py`，不得运行 full deploy：publisher 把
+完整 pilot 打成 content-addressed immutable snapshot，经 SSM 安装到
+`/opt/osworld/published-pilots/<hash>/pilot`，校验后用 `ln -sfnT` 原子切换 `live-pilot`，再 upsert
+assignments；portal 的 `ReloadingTaskCatalog` 按 symlink target 热加载，不重启 systemd。完整代码
+部署则原子取得 Dynamo maintenance lock：同一事务要求 active count 为 0，lock 存在时新的
+workspace admission fail closed；30 分钟 TTL 防止部署进程异常退出后永久锁死。
+
+结果回收使用 `scripts/python/download_annotation_results.py`。它只下载存在 `COMPLETE.json` 的
+run，默认跳过 discarded，检查 manifest 路径边界，并在 size/SHA256 全部通过后原子 rename；
+不要用未经校验的 `aws s3 sync` 作为正式 benchmark ingestion。
+
+operations v2 首次部署尝试在任何资源变更前失败：DynamoDB 将 `ttl` 识别为 condition expression
+保留字。maintenance-lock 的 Put 和 workspace admission ConditionCheck 现在统一使用
+`ExpressionAttributeNames={"#ttl": "ttl"}` 与 `#ttl < :now`；对应回归测试必须保留。修复后 source
+bundle `52431107632c...` 部署成功。线上复核为 CloudFront health 200、未认证 tasks 401、systemd
+active、`live-pilot` 4 个 `TASK.md`、maintenance lock released、active workspace 0、live
+`Role=AnnotationWorker` 0。额外一次 SSM Python 诊断因本地构造的嵌套 shell quoting 丢失路径引号
+而失败，但同一 invocation 已先输出 systemd active 和正确 symlink；随后无嵌套引号的 packet
+检查成功，不能把这类诊断命令语法错误误判为 portal 服务故障。
+
+四人默认 assignment 文件示例在
+`evaluation_examples/expert_skill_learning/annotation_portal/assignments.example.json`。当前四个
+packages 都是 pending，所以正式 portal 默认显示 0 个任务；工程 smoke 必须显式
+`--allow-pending`。部署/付费 smoke 前先运行：
+
+```bash
+PYTHONPATH=. conda run -n osworld-aws-dev pytest -q \
+  tests/test_annotation_portal.py \
+  tests/test_annotation_portal_infra.py \
+  tests/test_aws_launch_config.py \
+  tests/test_reference_recording.py \
+  tests/test_reference_annotation.py
+```
+
+CloudFront VPC Origin 以及 WebSocket 的约束以 AWS 官方文档为准：香港 region 已支持 VPC
+origin，且 CloudFront 支持 RFC 6455 WebSocket；变更模板时不得退回 public gateway/worker
+端口方案。
+
+2026-08-17 已完成真实部署：stack `osworld-annotation-portal` 为 `UPDATE_COMPLETE`，入口为
+`https://d3iwl4nu2200t4.cloudfront.net/`。公网 `/healthz` 返回 200，首页返回 200，未认证
+`/api/tasks` 返回 401；四个 Cognito 用户均 enabled 且处于首次改密状态，active annotation
+worker 为 0。CloudFront VPC Origin 创建后必须允许 AWS service-managed
+`CloudFront-VPCOrigins-Service-SG` 到 gateway 8080；部署脚本会自动补该规则。
+
+首次验收的 504 根因不是 CloudFront 或 proxy，而是精简 source bundle 缺少
+`benchmark_construction/models.py`：Python 加载 package `__init__.py` 时即退出，gateway 8080
+因此未监听。SSM `systemctl status`/`journalctl` 定位后，bundle 改为包含完整 package，并新增
+bundle 内容测试和 SSM 原地刷新。遇到同类 504 时依次检查 CloudFront/VPC Origin 状态、gateway
+SG service-managed source、EC2 status、SSM journal 和实例内 `curl 127.0.0.1:8080/healthz`；不要
+通过开放公网端口来绕过诊断。
+
+同日首个真实 worker smoke 到达 `ready` 后，noVNC 静态资源均为 200，但 WebSocket 403。gateway
+journal 显示浏览器请求被重复拼成
+`/api/.../vnc/api/.../vnc/websockify`；原因是前端传给 noVNC 的 `path` 没有前导 `/`，浏览器按
+iframe 当前目录解析成相对 WebSocket URL。`app.js` 现固定传
+`/api/workspaces/<session>/vnc/websockify` 的绝对 path，并有回归测试。诊断时若 HTML/JS 200 但
+noVNC 显示 `Failed to connect to server`，先看 gateway journal 中实际 WebSocket path；出现重复
+`/vnc/api/` 时不是本机 proxy、worker readiness 或 security group 问题。活动 workspace 期间只
+热更新静态文件，不重启 portal service，否则会丢失 gateway 进程内持有的 DesktopEnv runtime。
+
+修复 WebSocket 后，`annotator-hk-1` 于 2026-08-17 完成首个真实 portal annotation，session
+`1ce7dffe47cb4df79d7bbe6c3e89af24`。后台成功生成 overlay MP4、raw MP4、最终 XLSX、输入事件、
+截图和 manifest，共 20 个 S3 objects，最后写入 `COMPLETE.json`；worker 于提交后 terminate，
+对应 TTL schedule、EBS 和 ENI 均为 0。页面一度看似卡住不是 finalization 失败：后端已异步处理
+且浏览器每 2 秒读到了 `submitted`，但前端 terminal branch 只停止 polling，没有清除 completed
+workspace 或重新启用任务卡。现在 `submitted` 会显示明确成功消息并执行 dashboard refresh；不要
+因旧页面未复位而重复录制，先核对 DynamoDB status、S3 complete marker 和 EC2 终态。
 
 本文档是当前默认开发流程。2026-08-03 起，主线转为在原始 OSWorld task 上评测
 omni-model 能否从拆分重组的专家 reference videos 中归纳高效操作技能，并让固定的

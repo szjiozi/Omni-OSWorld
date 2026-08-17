@@ -108,18 +108,40 @@ repeated operations are allowed when they keep the task natural, and must be
 declared separately. The sampler groups 2–5 same-app skills, retries model
 rejections, and reports unresolved skills if `--max-attempts` is exhausted.
 
-Create or refresh the self-contained reviewer directories:
+Render the complete, deterministic construction documents that preserve the old
+review-page content:
+
+```bash
+python scripts/python/manage_reference_review_packets.py details
+```
+
+Each `pilot/task_details/<reference-task-id>/TASK_DETAIL.md` is the exact input
+to a separate LLM call that generates a structured Chinese novice guide:
+
+```bash
+python scripts/python/generate_reference_reviewer_guides.py
+```
+
+The guide output records the TASK_DETAIL SHA256, prompt hash, model, token usage,
+and cost in `pilot/reviewer_guides.json`. Finally create or refresh the
+self-contained reviewer directories:
 
 ```bash
 python scripts/python/manage_reference_review_packets.py export
 ```
 
+The frozen four-guide run used `gpt-5.6-terra`, 12374 input tokens, 7606 output
+tokens, and an estimated `$0.116020`. Each guide covers every required skill ID
+and is bound to its exact TASK_DETAIL input hash.
+
 Start at `pilot/review_packets/index.md`, open one task's `TASK.md`, inspect the
-copied artifact and preview, and fill that directory's standalone `review.json`.
-The exporter preserves local review edits. If an already-reviewed task's inputs
-change, it refuses to refresh the stale packet; `--force` explicitly refreshes
-the packet and resets that local decision so the changed task must be reviewed
-again.
+initial-state preview, launch the environment to inspect the workbook itself,
+and fill that directory's standalone `review.json`. `TASK.md` is the concise
+reviewer-facing page; `TASK_DETAIL.md` remains in the packet as the complete,
+unlinked guide-generation input. The exporter preserves local review edits. If
+an already-reviewed task's inputs or Chinese guide change, it refuses to refresh
+the stale packet; `--force` explicitly refreshes the packet and resets that local
+decision so the changed task must be reviewed again.
 
 After reviewing, validate and collect all per-task forms:
 

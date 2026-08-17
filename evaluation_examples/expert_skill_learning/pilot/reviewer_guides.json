@@ -1,0 +1,489 @@
+{
+  "schema_version": "1.0",
+  "guides": [
+    {
+      "reference_task_id": "reference-task-r01-001",
+      "task_detail_sha256": "40a978f7df9f9886a0db85190c96e923b884ee5b89470f1b9d610ca90742f81d",
+      "guide": {
+        "final_verification": [
+          "工作簿中有一个名为 Program Registration Counts 的工作表，其中的数据透视表按 Program 列出 Community Garden、Digital Basics、First Aid、Resume Lab；Participant Code 的计数分别为 8、7、6、7，合计为 28。",
+          "Enrollment Log 的 G2:G29 中，恰好 8 个值为 Review 的单元格显示淡琥珀色背景 #FCE4D6；值为 Ready 或 Confirmed 的单元格没有该背景。",
+          "选择任一 Review 单元格并检查条件格式时，可看到它来自公式规则和新建的单元格样式，而不是手动填充颜色。"
+        ],
+        "language": "zh-CN",
+        "overview": "本指南将在 Enrollment Log 的 28 条报名记录上建立按 Program 汇总的注册人数数据透视表，并对 Queue Flag 列中的 Review 状态应用基于公式的淡琥珀色条件格式。",
+        "reference_task_id": "reference-task-r01-001",
+        "starting_state_checks": [
+          "确认工作簿已打开，当前工作表为 Enrollment Log。",
+          "确认原始数据表连续位于 A1:G29，第一行是标题行；其中 Program 位于 B 列、Participant Code 位于 D 列、Queue Flag 位于 G 列。",
+          "确认尚不存在名为 Program Registration Counts 的工作表，且 Queue Flag 列当前没有针对 Review 的淡琥珀色条件格式。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "先确认列位置和数据末行，后续可一次性准确选择 A1:G29 与 G2:G29，避免把标题行或空白区域包含进规则。",
+            "instructions": [
+              "在 Enrollment Log 中查看第 1 行标题，确认 B1 为 Program、D1 为 Participant Code、G1 为 Queue Flag。",
+              "确认数据从第 2 行延续到第 29 行，且 Queue Flag 的数据范围是 G2:G29。",
+              "可在 Queue Flag 列中查看 Review、Ready 和 Confirmed 值；此时不要直接给单元格填充颜色。"
+            ],
+            "skill_ids": [],
+            "step_number": 1,
+            "title": "确认原始报名表和目标范围",
+            "visible_success_signal": "可以看到 Enrollment Log 的完整 A1:G29 数据表，并能确定 Program、Participant Code 与 Queue Flag 三个字段。"
+          },
+          {
+            "efficiency_tip": "从包含标题的完整连续数据区域启动数据透视表，Calc 才能正确识别所有字段名称。",
+            "instructions": [
+              "在 Enrollment Log 中选中 A1:G29。可先单击 A1，再按住 Shift 单击 G29，确保标题行也被选中。",
+              "打开“数据”菜单，选择“数据透视表”中的“插入或编辑”（不同版本的文字可能略有差异）。",
+              "在出现的数据源确认界面中，确认当前选择的数据范围为 Enrollment Log 的 A1:G29，然后继续进入数据透视表布局窗口。"
+            ],
+            "skill_ids": [],
+            "step_number": 2,
+            "title": "从报名记录创建数据透视表",
+            "visible_success_signal": "屏幕显示数据透视表布局窗口，字段列表中包含 Program 和 Participant Code。"
+          },
+          {
+            "efficiency_tip": "将 Participant Code 放入数据字段后立刻打开其设置并改为 Count，可避免默认汇总方式不符合“报名记录数”的要求。",
+            "instructions": [
+              "在数据透视表布局中，将 Program 字段拖放到“行字段”区域，使每个 Program 成为一行汇总项目。",
+              "将 Participant Code 字段拖放到“数据字段”区域。",
+              "双击“数据字段”区域中的 Participant Code，打开该数据字段的设置。",
+              "在汇总方式中选择 Count，而不是 Sum 或其他数值汇总方式；确认设置。",
+              "确认布局中 Program 位于行字段、Participant Code 位于数据字段且汇总方式为 Count，然后确认数据透视表布局。"
+            ],
+            "skill_ids": [
+              "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-04"
+            ],
+            "step_number": 3,
+            "title": "按 Program 统计非空 Participant Code",
+            "visible_success_signal": "数据字段设置显示 Participant Code 使用 Count（计数）汇总，布局可按 Program 输出计数。"
+          },
+          {
+            "efficiency_tip": "让透视表输出到新工作表可使原始 Enrollment Log 保持不变，也便于单独检查汇总结果。",
+            "instructions": [
+              "在选择结果位置的界面中，选择将数据透视表放到新工作表，然后确认创建。",
+              "在新建工作表的标签上右键或双击标签，选择重命名，将工作表名称改为 Program Registration Counts。",
+              "检查透视表的 Program 行项目和 Participant Code 计数。若字段标题显示为类似“Count - Participant Code”，这是正常的计数数据字段标题。"
+            ],
+            "skill_ids": [],
+            "step_number": 4,
+            "title": "创建并命名 Program Registration Counts 汇总表",
+            "visible_success_signal": "存在名为 Program Registration Counts 的新工作表；表中四个 Program 的计数为 Community Garden 8、Digital Basics 7、First Aid 6、Resume Lab 7，合计为 28。"
+          },
+          {
+            "efficiency_tip": "先只选择 G2:G29，再建立一条公式规则；这样公式会逐行相对计算，并且不会影响 Queue Flag 标题或其他列。",
+            "instructions": [
+              "切换回 Enrollment Log 工作表。",
+              "选中 Queue Flag 数据单元格 G2:G29，不要包含标题单元格 G1。",
+              "打开“格式”菜单，选择“条件”，再选择“条件…”。",
+              "在条件类型下拉列表中选择 Formula is（公式为）。",
+              "在公式输入框中输入 =G2=\"Review\"。这里的 G2 是所选范围左上角的相对引用，Calc 会对 G3、G4 等后续单元格分别判断对应行的值。"
+            ],
+            "skill_ids": [
+              "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-01"
+            ],
+            "step_number": 5,
+            "title": "为 Review 建立公式条件",
+            "visible_success_signal": "条件格式对话框中已显示 Formula is，且公式框包含 =G2=\"Review\"。"
+          },
+          {
+            "efficiency_tip": "从条件格式对话框中新建样式，样式会被规则引用；不要使用工具栏的直接填充色，以免所有状态都被永久着色。",
+            "instructions": [
+              "仍在条件格式对话框中，打开 Apply Style（应用样式）下拉列表并选择 New Style（新建样式）。",
+              "为新样式输入一个易识别的名称，例如 Review Pale Amber。",
+              "在样式设置窗口中打开“背景”设置，再打开颜色选择器。",
+              "选择或输入背景颜色 #FCE4D6，并确认颜色选择。",
+              "确认样式设置窗口，使新建样式返回到条件格式规则的 Apply Style 列表中并被选中。"
+            ],
+            "skill_ids": [
+              "8b1ce5f2-59d2-4dcc-b0b0-666a714b9a14.skill-02"
+            ],
+            "step_number": 6,
+            "title": "新建淡琥珀色 Review 条件样式",
+            "visible_success_signal": "条件格式规则已分配一个新建样式，该样式的背景色为 #FCE4D6。"
+          },
+          {
+            "efficiency_tip": "保存后同时检查“匹配的单元格”和“不匹配的单元格”，能快速发现公式引用是否错误或是否把标题行包含在范围内。",
+            "instructions": [
+              "确认条件格式对话框以保存规则。",
+              "查看 G2:G29：所有内容为 Review 的 Queue Flag 单元格应显示淡琥珀色背景 #FCE4D6。",
+              "逐项确认 Ready 和 Confirmed 单元格保持原有外观，没有淡琥珀色背景。",
+              "如有必要，重新打开“格式 > 条件 > 条件…”检查应用范围仍是 G2:G29，公式仍是 =G2=\"Review\"，并确认使用的是刚创建的样式。"
+            ],
+            "skill_ids": [],
+            "step_number": 7,
+            "title": "保存规则并完成核验",
+            "visible_success_signal": "Enrollment Log 中仅 8 个 Review 单元格被淡琥珀色突出显示，Ready 和 Confirmed 单元格未被突出显示。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "005ded9a-904a-470d-9a86-a2053084ddcf",
+        "prompt_sha256": "54e7db2ceb7ec2a10163598bb6ad5bd21c0d13d3f7b8acef2160b808caf92b6c",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3279,
+        "output_tokens": 2170,
+        "estimated_cost_usd": 0.032598
+      }
+    },
+    {
+      "reference_task_id": "reference-task-r01-002",
+      "task_detail_sha256": "5d49a1192094ebbd382e30e508af3e82751ccfe56b87a378f7dc5f5be634bf57",
+      "guide": {
+        "final_verification": [
+          "返回“Funding Log”工作表，确认 I2:I17 均不再为空，且这些单元格显示为货币金额；单击其中若干单元格时，编辑栏中的公式引用应随所在行变化。",
+          "确认源数据仍保留在 Funding Log 的 A1:I17，标题行和 16 条记录没有被删除或覆盖。",
+          "确认存在一个单独的新工作表，其中的原生数据透视表按 Service Area 列出 Northside、Harbor、Meadow，并为每个区域显示 Net Allocation 的求和结果。"
+        ],
+        "language": "zh-CN",
+        "overview": "本任务先在“Funding Log”中计算每个 workshop 的 Net Allocation：从 Award Received 扣除 Credit Reversal、Asset Recovery 以及 Venue Cost 到 Facilitator Cost 的三项连续成本。随后以完整数据表建立原生数据透视表，在新工作表中按 Service Area 汇总 Net Allocation 的总和。",
+        "reference_task_id": "reference-task-r01-002",
+        "starting_state_checks": [
+          "确认工作簿标题为“Workshop Grant Reconciliation”。",
+          "确认开始时只有“Funding Log”工作表。",
+          "确认 Funding Log 中的数据区域为 A1:I17：第 1 行是标题，数据在第 2 至第 17 行，I 列标题为“Net Allocation”，且 I2:I17 为空。",
+          "确认 A 至 H 列包含 Workshop ID、Award Received、Credit Reversal、Asset Recovery、Service Area、Venue Cost、Materials Cost 和 Facilitator Cost，避免在错误列中输入公式。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "先只在第一条记录建立公式；将 F2:H2 作为连续区域交给 SUM 一次计算，比逐个减去三项成本更简洁，也更不容易漏列。",
+            "instructions": [
+              "打开“Funding Log”工作表，单击输出列的第一个数据单元格 I2。",
+              "输入公式 `=B2-C2-D2-SUM(F2:H2)`，然后按 Enter 确认。该公式以 Award Received 为起点，依次扣除 Credit Reversal、Asset Recovery，以及 F 至 H 列的三项成本总额。",
+              "检查 I2 显示一个货币结果；再次选中 I2 时，可在输入行看到刚输入的公式。"
+            ],
+            "skill_ids": [
+              "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-01"
+            ],
+            "step_number": 1,
+            "title": "在首条记录计算 Net Allocation",
+            "visible_success_signal": "I2 显示货币金额，且其公式为 `=B2-C2-D2-SUM(F2:H2)` 或含义相同的行内公式。"
+          },
+          {
+            "efficiency_tip": "使用填充柄或复制到连续目标区域，可以让 Calc 自动调整行号，无需为 16 条记录逐条重输公式。",
+            "instructions": [
+              "选中 I2。",
+              "将 I2 的公式向下填充到 I17。可拖动选中单元格右下角的填充柄至 I17；也可复制 I2，选中 I3:I17 后粘贴。",
+              "选中例如 I3、I10 或 I17 进行抽查，确认公式中的行号已变为对应行号，例如 I3 使用第 3 行引用。"
+            ],
+            "skill_ids": [],
+            "step_number": 2,
+            "title": "将公式填充到全部 workshop 记录",
+            "visible_success_signal": "I2:I17 全部显示货币结果，没有空白输出；各行公式的引用随行号自动调整。"
+          },
+          {
+            "efficiency_tip": "从包含标题和计算结果的完整连续区域启动数据透视表，Calc 更容易正确识别字段及全部 16 条记录。",
+            "instructions": [
+              "在“Funding Log”中选择完整源数据区域 A1:I17，务必包含标题行、Service Area 列和已完成的 Net Allocation 列。",
+              "选择菜单“数据”>“数据透视表”>“插入或编辑…”。在数据源选择界面确认当前选区为 A1:I17，然后继续进入数据透视表布局设置。"
+            ],
+            "skill_ids": [
+              "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-01"
+            ],
+            "step_number": 3,
+            "title": "以完整资金记录作为数据透视表来源",
+            "visible_success_signal": "数据透视表布局窗口显示可用字段，其中包括“Service Area”和“Net Allocation”，并且来源是 Funding Log 的完整表格。"
+          },
+          {
+            "efficiency_tip": "只放置一个行字段和一个数据字段，能得到清晰、便于核对的按区域汇总表。",
+            "instructions": [
+              "在布局设置中，将“Service Area”放入“行字段”区域。",
+              "将“Net Allocation”放入“数据字段”区域。若该字段的汇总方式不是求和，双击或打开该数据字段的选项，将函数设为“求和”。",
+              "继续到输出位置设置，选择在新工作表中创建数据透视表，然后确认完成。"
+            ],
+            "skill_ids": [],
+            "step_number": 4,
+            "title": "按 Service Area 配置 Net Allocation 求和汇总",
+            "visible_success_signal": "Calc 创建一个新的工作表，其中的数据透视表以 Service Area 为行标签，并显示 Net Allocation 的总和列。"
+          },
+          {
+            "efficiency_tip": "完成后先用三项区域名称和一列总计快速核对结构；这样可立即发现字段放错区域或被计数而非求和的问题。",
+            "instructions": [
+              "查看新工作表中的数据透视表，确认行标签包含 Northside、Harbor 和 Meadow。",
+              "确认每个 Service Area 对应的是 Net Allocation 的汇总金额，而不是记录计数；如标题显示计数或结果明显为小整数，应返回布局将 Net Allocation 的汇总函数改为“求和”。",
+              "保留 Funding Log 源表及新建的数据透视表工作表，不要用手工汇总值替换数据透视表结果。"
+            ],
+            "skill_ids": [],
+            "step_number": 5,
+            "title": "核对数据透视表结果和工作簿结构",
+            "visible_success_signal": "新工作表可见 Northside、Harbor、Meadow 三个区域及各自的 Net Allocation 求和金额，同时 Funding Log 的 16 条原始记录和计算列仍完整存在。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "36d5f515-a2a7-4517-bc7f-e81a5325bb61",
+        "prompt_sha256": "85944eb1105c8dff122bf74711253f888135b75b7d6f3981af158c64246981b1",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2893,
+        "output_tokens": 1382,
+        "estimated_cost_usd": 0.02237
+      }
+    },
+    {
+      "reference_task_id": "reference-task-r01-003",
+      "task_detail_sha256": "e7ef9b0947c492081badd293fc5e1fcfc6c73eb7311a288014d6d7b69f97aba2",
+      "guide": {
+        "final_verification": [
+          "工作簿中有且只有一个新增的工作表，标签名称为“Route Dashboard”。",
+          "“Route Dashboard”中存在带有说明性标题的路线/追踪标签列表；从第 2 行到第 31 行均显示由 Dispatch Log 中对应行的 Route 与 Tracking Code 组成的文本。",
+          "标签公式引用 Dispatch Log 工作表，且向下填充后每一行引用对应的源数据行，例如第 31 行对应 Dispatch Log 的第 31 行。",
+          "“Route Dashboard”中存在不与标签列表重叠的 Pivot Table，按 Carrier 分组，并显示每个 Carrier 的 Tracking Code 数量。",
+          "在 Pivot Table 中，各承运商旁显示数值计数列；30 条源记录应被这些承运商计数完整汇总。"
+        ],
+        "language": "zh-CN",
+        "overview": "本指南将现有“Dispatch Log”中的 30 条派送记录整理到新的“Route Dashboard”工作表：先建立路线与追踪码组合标签，再在同一工作表的另一块空白区域创建按 Carrier 汇总 Tracking Code 数量的 Pivot Table。",
+        "reference_task_id": "reference-task-r01-003",
+        "starting_state_checks": [
+          "确认工作簿已打开，并且底部当前只显示一个名为“Dispatch Log”的工作表标签。",
+          "切换到“Dispatch Log”，确认源数据位于 A1:E31：第 1 行是表头，第 2 至 31 行为派送记录；应能看到 Carrier、Tracking Code 和 Route 列。",
+          "确认工作簿中尚未出现“Route Dashboard”工作表，也没有现成的 Pivot Table 或路线/追踪标签列表。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "直接使用工作表标签栏的加号可立即新建空白表，无需打开工作表管理窗口。",
+            "instructions": [
+              "在窗口底部的工作表标签栏中，点击“Dispatch Log”标签旁的加号（+）。",
+              "等待 Calc 创建并自动激活新的空白工作表。"
+            ],
+            "skill_ids": [
+              "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04"
+            ],
+            "step_number": 1,
+            "title": "插入仪表板工作表",
+            "visible_success_signal": "底部出现一个新的空白工作表标签，且该标签处于活动状态。"
+          },
+          {
+            "efficiency_tip": "在新表仍处于活动状态时马上改名，后续设置公式和 Pivot Table 输出位置时更容易识别目标表。",
+            "instructions": [
+              "双击刚创建的工作表标签，使标签名称进入编辑状态。",
+              "输入 Route Dashboard，然后按 Enter 确认。"
+            ],
+            "skill_ids": [
+              "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05"
+            ],
+            "step_number": 2,
+            "title": "将新工作表命名为 Route Dashboard",
+            "visible_success_signal": "活动工作表标签清楚显示为“Route Dashboard”。"
+          },
+          {
+            "efficiency_tip": "将标签列表放在左侧，例如 A 列，可在右侧预留连续空白区域给 Pivot Table，避免两者重叠。",
+            "instructions": [
+              "保持在“Route Dashboard”工作表中，选择 A1 并输入一个说明性标题，例如 Route / Tracking Tag。",
+              "选择 A2，输入公式 `=$'Dispatch Log'.D2&\" - \"&$'Dispatch Log'.C2`，然后按 Enter。",
+              "该公式将 Dispatch Log 的 Route（D 列）和 Tracking Code（C 列）用 ` - ` 连接。工作表名称被固定，而行号会在向下填充时相应变化。"
+            ],
+            "skill_ids": [
+              "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05"
+            ],
+            "step_number": 3,
+            "title": "创建第一条跨工作表路线/追踪标签",
+            "visible_success_signal": "A2 显示一条包含路线名称和追踪码的文本标签，而不是公式错误；公式栏显示对“Dispatch Log”的引用。"
+          },
+          {
+            "efficiency_tip": "用填充柄一次拖到最后一条相邻记录，比逐行复制或反复输入公式更快，并能保留相对行引用。",
+            "instructions": [
+              "选中包含首个公式的 A2 单元格。",
+              "将指针移到选区右下角的小方块（填充柄），直到可以拖动填充。",
+              "按住并向下拖动填充柄至 A31，然后释放。",
+              "如有需要，点击 A31 检查公式：其中的源行应为 31，而不是仍然引用第 2 行。"
+            ],
+            "skill_ids": [
+              "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03"
+            ],
+            "step_number": 4,
+            "title": "使用填充柄完成全部标签",
+            "visible_success_signal": "A2:A31 都有路线/追踪标签；各行显示对应的追踪码，且没有手工重复录入公式的痕迹。"
+          },
+          {
+            "efficiency_tip": "先精确选择含表头的完整源范围，可让 Calc 自动识别 Carrier 和 Tracking Code 等字段名称。",
+            "instructions": [
+              "切换到“Dispatch Log”工作表。",
+              "选择完整源表范围 A1:E31，务必包含第 1 行字段标题。",
+              "打开“数据”菜单，进入“数据透视表（Pivot Table）”相关命令，并选择用于插入或创建 Pivot Table 的选项。",
+              "在确认源数据范围的界面中，确认范围仍为 Dispatch Log 的 A1:E31，然后继续到 Pivot Table 布局界面。"
+            ],
+            "skill_ids": [],
+            "step_number": 5,
+            "title": "以 Dispatch Log 源表创建 Pivot Table",
+            "visible_success_signal": "显示 Pivot Table 布局窗口，并在可用字段列表中能看到 Carrier、Tracking Code、Route 等源表字段。"
+          },
+          {
+            "efficiency_tip": "先把 Carrier 放入行字段建立分组，再将 Tracking Code 放入数据字段；同一承运商的多条派送记录会自动合并为一组。",
+            "instructions": [
+              "在布局窗口的“可用字段”列表中找到 Carrier，并将其拖到“行字段”区域。",
+              "在“可用字段”列表中找到 Tracking Code，并将其拖到“数据字段”区域。",
+              "如果数据字段设置没有自动使用计数，打开该数据字段的设置，将汇总函数改为 Count（计数）；不要使用 Sum，因为 Tracking Code 是文本标识。"
+            ],
+            "skill_ids": [
+              "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03"
+            ],
+            "step_number": 6,
+            "title": "按 Carrier 分组并添加 Tracking Code 计数",
+            "visible_success_signal": "布局预览或字段区域中，Carrier 位于行字段，Tracking Code 位于数据字段，并显示为计数类型的汇总值。"
+          },
+          {
+            "efficiency_tip": "选择一个远离 A 列标签清单的起始单元格，例如 Route Dashboard 的 G1，可为 Pivot Table 的扩展行列保留空间。",
+            "instructions": [
+              "在 Pivot Table 的输出位置或结果位置设置中，选择输出到现有工作表。",
+              "将目标设为“Route Dashboard”工作表的 G1（或该表中其他与 A1:A31 标签区域不重叠的空白区域）。",
+              "确认布局和输出位置后，点击确定以生成 Pivot Table。"
+            ],
+            "skill_ids": [],
+            "step_number": 7,
+            "title": "将 Pivot Table 放置到 Route Dashboard 的非重叠区域",
+            "visible_success_signal": "切换或查看“Route Dashboard”时，左侧保留路线/追踪标签列表，右侧空白区域出现 Pivot Table，二者没有覆盖。"
+          },
+          {
+            "efficiency_tip": "最终同时检查明细标签和汇总表，可及时发现 Pivot Table 输出位置重叠、字段放错区域或填充范围不足的问题。",
+            "instructions": [
+              "在“Route Dashboard”中检查标签列表的首行、末行以及中间任意一行，确认标签均含 Route 和 Tracking Code。",
+              "检查 Pivot Table 的行标签是 Carrier，并且其数值列是 Tracking Code 的计数。",
+              "确认所有 Carrier 的计数相加为 30；这表示全部 30 条 Dispatch Log 记录均被纳入汇总。",
+              "保存工作簿。"
+            ],
+            "skill_ids": [],
+            "step_number": 8,
+            "title": "核对仪表板结果并保存",
+            "visible_success_signal": "Route Dashboard 同时显示完整的 30 条路线/追踪标签和按 Carrier 汇总的 Tracking Code 数量，且 Pivot Table 计数总和为 30。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "7e03beff-c50c-49db-9516-e6a04a22dd49",
+        "prompt_sha256": "42a5c9c05ee71ce59f97e4e60c32fd7dfd86f430cf59f5051c75dab14c2ea9e0",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3721,
+        "output_tokens": 2172,
+        "estimated_cost_usd": 0.033506
+      }
+    },
+    {
+      "reference_task_id": "reference-task-r01-004",
+      "task_detail_sha256": "6119d3134d8d33454976fce36419c1d50f6dbdd8c4ef4dcb46203909b6cc5c43",
+      "guide": {
+        "final_verification": [
+          "回到“Service Log”，确认 F2:F25 的 24 个 Billed Charge 单元格都含有计算结果，且显示为带货币符号和两位小数的金额。",
+          "确认“Service Log”中的 Billed Charge 结果与同一行的 Units × Hourly Rate 相符；例如可选中任意一行检查公式栏是否为相应的乘法公式。",
+          "确认工作簿中新建了一个包含数据透视表的工作表；表中应有 Avery Cole、Imani Park、Jules Rowan、Morgan Lee 和 Tessa Vale 等协调员行标签，并且每人旁边有 Billed Charge 的汇总金额。",
+          "确认数据透视表的金额字段是求和结果，而不是计数；表中通常会有总计行，且总计应对应所有 24 条服务记录的 Billed Charge 总和。"
+        ],
+        "language": "zh-CN",
+        "overview": "本指南将在“Service Log”工作表中计算 24 条社区工作坊服务记录的 Billed Charge（Units × Hourly Rate），将结果显示为货币金额，然后在新工作表创建按 Coordinator 汇总 Billed Charge 总额的数据透视表。",
+        "reference_task_id": "reference-task-r01-004",
+        "starting_state_checks": [
+          "确认工作簿已打开且当前可见“Service Log”工作表。",
+          "确认第 1 行是标题行，A1:F1 依次包含 Work Order、Coordinator、Service Tier、Units、Hourly Rate、Billed Charge；数据应延续至第 25 行。",
+          "确认 Billed Charge 列 F2:F25 仍为空白，且当前没有数据透视表汇总工作表。",
+          "确认 Units 位于 D 列、Hourly Rate 位于 E 列、Billed Charge 位于 F 列，以便使用正确的乘法公式。"
+        ],
+        "steps": [
+          {
+            "efficiency_tip": "先只在第一个结果单元格中建立正确公式，确认无误后再填充，可避免对每一行重复输入公式。",
+            "instructions": [
+              "在“Service Log”中单击单元格 F2，即第一条服务记录的 Billed Charge 单元格。",
+              "输入公式 `=D2*E2`，然后按 Enter。该公式会用本行 Units 乘以本行 Hourly Rate。",
+              "确认 F2 显示一个非零数值；选中 F2 时，公式输入栏应显示 `=D2*E2`。"
+            ],
+            "skill_ids": [],
+            "step_number": 1,
+            "title": "计算第一条服务记录的 Billed Charge",
+            "visible_success_signal": "F2 不再为空白，而是显示 Units 与 Hourly Rate 相乘得到的数值。"
+          },
+          {
+            "efficiency_tip": "在填充公式前先给 F2 设置货币格式；向下填充时，Calc 通常会同时保留该格式。",
+            "instructions": [
+              "保持 F2 处于选中状态。",
+              "在 Calc 工具栏上单击“格式化为货币”按钮（货币图标）。",
+              "查看 F2 的显示方式：它应改为带货币符号且保留两位小数的金额。"
+            ],
+            "skill_ids": [
+              "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-02"
+            ],
+            "step_number": 2,
+            "title": "将首个计算结果设置为货币格式",
+            "visible_success_signal": "F2 以货币金额显示，而不是普通的小数或常规数字。"
+          },
+          {
+            "efficiency_tip": "使用填充柄或“向下填充”可一次把公式和货币格式复制到剩余 23 行，比逐行输入更快。",
+            "instructions": [
+              "再次选中 F2，然后将选区扩展为 F2:F25。可在名称框中输入 `F2:F25` 并按 Enter，或先选中 F2 后按住 Shift 单击 F25。",
+              "选择“工作表”菜单中的“填充单元格”→“向下填充”，使 F2 的公式复制到 F3:F25。",
+              "检查 F3 和 F25：每行公式应随行号调整，例如 F3 对应 `=D3*E3`，F25 对应 `=D25*E25`。",
+              "如果填充后某些单元格未显示货币格式，选中整个 F2:F25，并再次单击工具栏的“格式化为货币”按钮。"
+            ],
+            "skill_ids": [],
+            "step_number": 3,
+            "title": "向下填充全部 24 条 Billed Charge 公式",
+            "visible_success_signal": "F2:F25 全部包含非零计算结果，并以带货币符号和两位小数的格式显示。"
+          },
+          {
+            "efficiency_tip": "选中包含标题的完整连续数据区域，可让 Calc 自动把第一行识别为数据透视表字段名。",
+            "instructions": [
+              "在“Service Log”中选中完整源数据范围 A1:F25，包括标题行和全部 24 条记录。可单击 A1 后按住 Shift 单击 F25。",
+              "打开“数据”菜单，选择“数据透视表”中的“插入或编辑”（不同版本可能显示为“插入或创建”），启动数据透视表创建流程。",
+              "在数据源确认对话框中，确认使用当前选定区域作为数据源，然后继续进入数据透视表布局对话框。"
+            ],
+            "skill_ids": [],
+            "step_number": 4,
+            "title": "以完整服务日志作为数据透视表源",
+            "visible_success_signal": "屏幕显示数据透视表布局界面，并在“可用字段”列表中可看到 Coordinator 和 Billed Charge 等字段。"
+          },
+          {
+            "efficiency_tip": "将字段从“可用字段”直接拖到目标区域，避免先放错位置后再调整。",
+            "instructions": [
+              "在数据透视表布局对话框的“可用字段”列表中找到 `Coordinator`。",
+              "将 `Coordinator` 直接拖入“行字段”区域。",
+              "确认 `Coordinator` 已显示在“行字段”区域中，而不是“列字段”或“数据字段”区域。"
+            ],
+            "skill_ids": [
+              "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-02"
+            ],
+            "step_number": 5,
+            "title": "将 Coordinator 放入数据透视表的行字段",
+            "visible_success_signal": "布局中的“行字段”区域包含 Coordinator，预示结果会按每位协调员分行显示。"
+          },
+          {
+            "efficiency_tip": "数值金额字段放入“数据字段”后应使用“求和”；若 Calc 自动选择了计数，应在创建前改正。",
+            "instructions": [
+              "从“可用字段”列表将 `Billed Charge` 拖入“数据字段”区域。",
+              "检查该数据字段的汇总方式是否为“求和”或显示类似“Sum - Billed Charge”。如果显示“计数”，双击或打开该数据字段的选项，将汇总函数改为“求和”。",
+              "确认布局只需 Coordinator 作为行字段，Billed Charge 作为数据字段；不需要将其他字段加入列字段。"
+            ],
+            "skill_ids": [],
+            "step_number": 6,
+            "title": "将 Billed Charge 配置为求和数据字段",
+            "visible_success_signal": "“数据字段”区域显示 Billed Charge 的求和汇总，而“行字段”区域仍显示 Coordinator。"
+          },
+          {
+            "efficiency_tip": "选择在新工作表输出可避免覆盖原始服务日志，也便于单独查看汇总结果。",
+            "instructions": [
+              "在布局对话框中确认字段设置后，点击“确定”或继续到输出位置设置。",
+              "选择将数据透视表输出到“新工作表”，然后确认创建。",
+              "切换到新建的数据透视表工作表，必要时可将工作表重命名为易辨识的名称，例如“Coordinator Summary”。"
+            ],
+            "skill_ids": [],
+            "step_number": 7,
+            "title": "在新工作表生成协调员收费汇总",
+            "visible_success_signal": "出现一个新的工作表，其中数据透视表按 Coordinator 显示行标签，并在相邻列显示 Billed Charge 的汇总金额和总计。"
+          }
+        ]
+      },
+      "generation": {
+        "request_id": "b2f08c1a-41d1-4db8-9d45-159da50ec4ae",
+        "prompt_sha256": "ab9b9a5f55b41fa99cfcd71f1c316650880ea9e41f13b44713cf3d635107aeed",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2481,
+        "output_tokens": 1882,
+        "estimated_cost_usd": 0.027546
+      }
+    }
+  ],
+  "totals": {
+    "calls": 4,
+    "input_tokens": 12374,
+    "output_tokens": 7606,
+    "estimated_cost_usd": 0.11602,
+    "pricing_complete": true
+  }
+}

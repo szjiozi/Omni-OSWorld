@@ -61,6 +61,61 @@
           "iam:PassedToService": "ec2.amazonaws.com"
         }
       }
+    },
+    {
+      "Sid": "ManageOnlyAnnotationPortalRoles",
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateRole",
+        "iam:DeleteRole",
+        "iam:GetRole",
+        "iam:GetRolePolicy",
+        "iam:PutRolePolicy",
+        "iam:DeleteRolePolicy",
+        "iam:TagRole",
+        "iam:UntagRole",
+        "iam:UpdateAssumeRolePolicy"
+      ],
+      "Resource": "arn:aws:iam::*:role/osworld-annotation-portal-*"
+    },
+    {
+      "Sid": "ManageOnlyAnnotationPortalInstanceProfile",
+      "Effect": "Allow",
+      "Action": [
+        "iam:AddRoleToInstanceProfile",
+        "iam:CreateInstanceProfile",
+        "iam:DeleteInstanceProfile",
+        "iam:GetInstanceProfile",
+        "iam:RemoveRoleFromInstanceProfile",
+        "iam:TagInstanceProfile",
+        "iam:UntagInstanceProfile"
+      ],
+      "Resource": [
+        "arn:aws:iam::*:instance-profile/osworld-annotation-portal-*",
+        "arn:aws:iam::*:role/osworld-annotation-portal-*"
+      ]
+    },
+    {
+      "Sid": "PassOnlyAnnotationPortalGatewayToEc2",
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": "arn:aws:iam::*:role/osworld-annotation-portal-gateway",
+      "Condition": {
+        "StringEquals": {
+          "iam:PassedToService": "ec2.amazonaws.com"
+        }
+      }
+    },
+    {
+      "Sid": "PassOnlyAnnotationPortalScheduler",
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": "arn:aws:iam::*:role/osworld-annotation-portal-scheduler",
+      "Condition": {
+        "StringEquals": {
+          "iam:PassedToService": "scheduler.amazonaws.com"
+        }
+      }
     }
   ]
 }

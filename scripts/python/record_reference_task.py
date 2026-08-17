@@ -49,6 +49,7 @@ from benchmark_construction.reference_annotation import (
     require_launchable_review,
 )
 from benchmark_construction.reference_recording import (
+    calibrate_recording_timeline,
     collect_guest_reference_recording,
     start_guest_reference_recording,
     stop_guest_reference_recording,
@@ -431,6 +432,7 @@ def main() -> int:
     video_start_monotonic_ns = None
     video_stop_monotonic_ns = None
     recording_duration_metadata: dict[str, float] = {}
+    recording_timeline_metadata: dict[str, int | float | str] = {}
     key_overlay_event_count = 0
     pointer_overlay_event_count = 0
     sampler_stop = None
@@ -555,6 +557,10 @@ def main() -> int:
                     "schema_version": "1.0",
                     "clock": "guest_monotonic_ns",
                     "video_start_monotonic_ns": video_start_monotonic_ns,
+                    "provisional_video_start_monotonic_ns": (
+                        video_start_monotonic_ns
+                    ),
+                    "alignment_status": "provisional",
                 },
             )
             artifacts["input_timing"] = "input_timing.json"
@@ -607,6 +613,28 @@ def main() -> int:
             start_monotonic_ns=video_start_monotonic_ns,
             stop_monotonic_ns=video_stop_monotonic_ns,
         )
+        timeline = calibrate_recording_timeline(
+            provisional_start_monotonic_ns=video_start_monotonic_ns,
+            stop_monotonic_ns=video_stop_monotonic_ns,
+            actual_duration_seconds=recording_duration_metadata["actual_seconds"],
+        )
+        calibrated_video_start_monotonic_ns = (
+            timeline.calibrated_video_start_monotonic_ns
+        )
+        recording_timeline_metadata = timeline.to_dict()
+        if capture_retrieved:
+            _write_json(
+                output_dir / "input_timing.json",
+                {
+                    "schema_version": "1.0",
+                    "clock": "guest_monotonic_ns",
+                    "video_start_monotonic_ns": (
+                        calibrated_video_start_monotonic_ns
+                    ),
+                    "alignment_status": "calibrated",
+                    **recording_timeline_metadata,
+                },
+            )
         artifacts["recording_raw"] = raw_recording_path.name
         if recording_log_path.is_file():
             artifacts["recording_capture_log"] = recording_log_path.name
@@ -628,14 +656,14 @@ def main() -> int:
             key_events = parse_timestamped_xinput(
                 timestamped_text,
                 keymap_text,
-                video_start_monotonic_ns=video_start_monotonic_ns,
+                video_start_monotonic_ns=calibrated_video_start_monotonic_ns,
             )
             key_overlay_event_count = len(key_events)
             write_key_events(output_dir / "key_events.jsonl", key_events)
             artifacts["key_events"] = "key_events.jsonl"
             pointer_events = parse_timestamped_pointer_events(
                 timestamped_text,
-                video_start_monotonic_ns=video_start_monotonic_ns,
+                video_start_monotonic_ns=calibrated_video_start_monotonic_ns,
             )
             pointer_overlay_event_count = len(pointer_events)
             write_pointer_events(
@@ -694,6 +722,7 @@ def main() -> int:
                 "pointer_overlay_event_count": pointer_overlay_event_count,
                 "recording_capture_preset": "ultrafast",
                 "recording_duration": recording_duration_metadata,
+                "recording_timeline": recording_timeline_metadata,
                 "preferred_reference_video": "recording.mp4",
             },
         )

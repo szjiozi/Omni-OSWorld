@@ -1,0 +1,5 @@
+Study the four anonymous reference demonstrations supplied in this message. Their video IDs, in the same order as the video inputs, are:
+
+{video_ids_json}
+
+Induce a compact pool of reusable LibreOffice Calc operation skills. Use only the videos and this generic instruction. Return JSON only.

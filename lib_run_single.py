@@ -5,11 +5,33 @@ import os
 import time
 from multiprocessing import current_process
 
-from wrapt_timeout_decorator import *
 from lib_results_logger import log_task_completion
 from desktop_env.trajectory import TrajectoryRecorder
 
 logger = logging.getLogger("desktopenv.experiment")
+
+
+def _episode_metadata(agent, args, instruction):
+    metadata = {"instruction": instruction}
+    for name in (
+        "experiment_status",
+        "condition",
+        "model",
+        "seed",
+        "skill_artifact_sha256",
+    ):
+        value = getattr(args, name, None)
+        if value is not None:
+            metadata[name] = value
+    model_usage = getattr(agent, "model_usage", None)
+    if model_usage is not None:
+        metadata["model_usage"] = dict(model_usage)
+        metadata["pricing"] = {
+            "currency": "CNY",
+            "as_of": "2026-08-12",
+            "source": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        }
+    return metadata
 
 
 def run_single_example(agent, env, example, max_steps, instruction, args, example_result_dir, scores):
@@ -96,6 +118,9 @@ def run_single_example(agent, env, example, max_steps, instruction, args, exampl
                 metadata={
                     "response": response,
                     "action_count": len(actions),
+                    "model_call": dict(
+                        getattr(agent, "last_call_metadata", {})
+                    ),
                 },
             )
 
@@ -236,7 +261,7 @@ def run_single_example(agent, env, example, max_steps, instruction, args, exampl
             status="completed",
             result=result,
             artifacts=artifacts,
-            metadata={"instruction": instruction},
+            metadata=_episode_metadata(agent, args, instruction),
         )
     except Exception as exc:
         if execution_started_ns is not None:
@@ -254,7 +279,7 @@ def run_single_example(agent, env, example, max_steps, instruction, args, exampl
             result=result,
             artifacts=artifacts,
             error=f"{type(exc).__name__}: {exc}",
-            metadata={"instruction": instruction},
+            metadata=_episode_metadata(agent, args, instruction),
         )
         raise
 
@@ -810,13 +835,12 @@ def run_single_example_uipath(agent, env, example, max_steps, instruction, args,
     env.controller.end_recording(os.path.join(example_result_dir, "recording.mp4"))
 
 
-from mm_agents.os_symphony.utils.common_utils import draw_coordinates
-from mm_agents.os_symphony.utils.process_context import set_current_result_dir
-
-
 logger = logging.getLogger("desktopenv.experiment")
 
 def run_single_example_os_symphony(agent, env, example, max_steps, instruction, args, example_result_dir, scores):
+    from mm_agents.os_symphony.utils.common_utils import draw_coordinates
+    from mm_agents.os_symphony.utils.process_context import set_current_result_dir
+
     set_current_result_dir(example_result_dir)
     
     agent.reset(result_dir=example_result_dir)

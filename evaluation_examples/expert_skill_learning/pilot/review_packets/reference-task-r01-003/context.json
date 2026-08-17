@@ -378,6 +378,144 @@
       ]
     }
   ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-r01-003",
+    "task_detail_sha256": "e7ef9b0947c492081badd293fc5e1fcfc6c73eb7311a288014d6d7b69f97aba2",
+    "guide": {
+      "final_verification": [
+        "工作簿中有且只有一个新增的工作表，标签名称为“Route Dashboard”。",
+        "“Route Dashboard”中存在带有说明性标题的路线/追踪标签列表；从第 2 行到第 31 行均显示由 Dispatch Log 中对应行的 Route 与 Tracking Code 组成的文本。",
+        "标签公式引用 Dispatch Log 工作表，且向下填充后每一行引用对应的源数据行，例如第 31 行对应 Dispatch Log 的第 31 行。",
+        "“Route Dashboard”中存在不与标签列表重叠的 Pivot Table，按 Carrier 分组，并显示每个 Carrier 的 Tracking Code 数量。",
+        "在 Pivot Table 中，各承运商旁显示数值计数列；30 条源记录应被这些承运商计数完整汇总。"
+      ],
+      "language": "zh-CN",
+      "overview": "本指南将现有“Dispatch Log”中的 30 条派送记录整理到新的“Route Dashboard”工作表：先建立路线与追踪码组合标签，再在同一工作表的另一块空白区域创建按 Carrier 汇总 Tracking Code 数量的 Pivot Table。",
+      "reference_task_id": "reference-task-r01-003",
+      "starting_state_checks": [
+        "确认工作簿已打开，并且底部当前只显示一个名为“Dispatch Log”的工作表标签。",
+        "切换到“Dispatch Log”，确认源数据位于 A1:E31：第 1 行是表头，第 2 至 31 行为派送记录；应能看到 Carrier、Tracking Code 和 Route 列。",
+        "确认工作簿中尚未出现“Route Dashboard”工作表，也没有现成的 Pivot Table 或路线/追踪标签列表。"
+      ],
+      "steps": [
+        {
+          "efficiency_tip": "直接使用工作表标签栏的加号可立即新建空白表，无需打开工作表管理窗口。",
+          "instructions": [
+            "在窗口底部的工作表标签栏中，点击“Dispatch Log”标签旁的加号（+）。",
+            "等待 Calc 创建并自动激活新的空白工作表。"
+          ],
+          "skill_ids": [
+            "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-04"
+          ],
+          "step_number": 1,
+          "title": "插入仪表板工作表",
+          "visible_success_signal": "底部出现一个新的空白工作表标签，且该标签处于活动状态。"
+        },
+        {
+          "efficiency_tip": "在新表仍处于活动状态时马上改名，后续设置公式和 Pivot Table 输出位置时更容易识别目标表。",
+          "instructions": [
+            "双击刚创建的工作表标签，使标签名称进入编辑状态。",
+            "输入 Route Dashboard，然后按 Enter 确认。"
+          ],
+          "skill_ids": [
+            "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-05"
+          ],
+          "step_number": 2,
+          "title": "将新工作表命名为 Route Dashboard",
+          "visible_success_signal": "活动工作表标签清楚显示为“Route Dashboard”。"
+        },
+        {
+          "efficiency_tip": "将标签列表放在左侧，例如 A 列，可在右侧预留连续空白区域给 Pivot Table，避免两者重叠。",
+          "instructions": [
+            "保持在“Route Dashboard”工作表中，选择 A1 并输入一个说明性标题，例如 Route / Tracking Tag。",
+            "选择 A2，输入公式 `=$'Dispatch Log'.D2&\" - \"&$'Dispatch Log'.C2`，然后按 Enter。",
+            "该公式将 Dispatch Log 的 Route（D 列）和 Tracking Code（C 列）用 ` - ` 连接。工作表名称被固定，而行号会在向下填充时相应变化。"
+          ],
+          "skill_ids": [
+            "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-05"
+          ],
+          "step_number": 3,
+          "title": "创建第一条跨工作表路线/追踪标签",
+          "visible_success_signal": "A2 显示一条包含路线名称和追踪码的文本标签，而不是公式错误；公式栏显示对“Dispatch Log”的引用。"
+        },
+        {
+          "efficiency_tip": "用填充柄一次拖到最后一条相邻记录，比逐行复制或反复输入公式更快，并能保留相对行引用。",
+          "instructions": [
+            "选中包含首个公式的 A2 单元格。",
+            "将指针移到选区右下角的小方块（填充柄），直到可以拖动填充。",
+            "按住并向下拖动填充柄至 A31，然后释放。",
+            "如有需要，点击 A31 检查公式：其中的源行应为 31，而不是仍然引用第 2 行。"
+          ],
+          "skill_ids": [
+            "035f41ba-6653-43ab-aa63-c86d449d62e5.skill-03"
+          ],
+          "step_number": 4,
+          "title": "使用填充柄完成全部标签",
+          "visible_success_signal": "A2:A31 都有路线/追踪标签；各行显示对应的追踪码，且没有手工重复录入公式的痕迹。"
+        },
+        {
+          "efficiency_tip": "先精确选择含表头的完整源范围，可让 Calc 自动识别 Carrier 和 Tracking Code 等字段名称。",
+          "instructions": [
+            "切换到“Dispatch Log”工作表。",
+            "选择完整源表范围 A1:E31，务必包含第 1 行字段标题。",
+            "打开“数据”菜单，进入“数据透视表（Pivot Table）”相关命令，并选择用于插入或创建 Pivot Table 的选项。",
+            "在确认源数据范围的界面中，确认范围仍为 Dispatch Log 的 A1:E31，然后继续到 Pivot Table 布局界面。"
+          ],
+          "skill_ids": [],
+          "step_number": 5,
+          "title": "以 Dispatch Log 源表创建 Pivot Table",
+          "visible_success_signal": "显示 Pivot Table 布局窗口，并在可用字段列表中能看到 Carrier、Tracking Code、Route 等源表字段。"
+        },
+        {
+          "efficiency_tip": "先把 Carrier 放入行字段建立分组，再将 Tracking Code 放入数据字段；同一承运商的多条派送记录会自动合并为一组。",
+          "instructions": [
+            "在布局窗口的“可用字段”列表中找到 Carrier，并将其拖到“行字段”区域。",
+            "在“可用字段”列表中找到 Tracking Code，并将其拖到“数据字段”区域。",
+            "如果数据字段设置没有自动使用计数，打开该数据字段的设置，将汇总函数改为 Count（计数）；不要使用 Sum，因为 Tracking Code 是文本标识。"
+          ],
+          "skill_ids": [
+            "1954cced-e748-45c4-9c26-9855b97fbc5e.skill-03"
+          ],
+          "step_number": 6,
+          "title": "按 Carrier 分组并添加 Tracking Code 计数",
+          "visible_success_signal": "布局预览或字段区域中，Carrier 位于行字段，Tracking Code 位于数据字段，并显示为计数类型的汇总值。"
+        },
+        {
+          "efficiency_tip": "选择一个远离 A 列标签清单的起始单元格，例如 Route Dashboard 的 G1，可为 Pivot Table 的扩展行列保留空间。",
+          "instructions": [
+            "在 Pivot Table 的输出位置或结果位置设置中，选择输出到现有工作表。",
+            "将目标设为“Route Dashboard”工作表的 G1（或该表中其他与 A1:A31 标签区域不重叠的空白区域）。",
+            "确认布局和输出位置后，点击确定以生成 Pivot Table。"
+          ],
+          "skill_ids": [],
+          "step_number": 7,
+          "title": "将 Pivot Table 放置到 Route Dashboard 的非重叠区域",
+          "visible_success_signal": "切换或查看“Route Dashboard”时，左侧保留路线/追踪标签列表，右侧空白区域出现 Pivot Table，二者没有覆盖。"
+        },
+        {
+          "efficiency_tip": "最终同时检查明细标签和汇总表，可及时发现 Pivot Table 输出位置重叠、字段放错区域或填充范围不足的问题。",
+          "instructions": [
+            "在“Route Dashboard”中检查标签列表的首行、末行以及中间任意一行，确认标签均含 Route 和 Tracking Code。",
+            "检查 Pivot Table 的行标签是 Carrier，并且其数值列是 Tracking Code 的计数。",
+            "确认所有 Carrier 的计数相加为 30；这表示全部 30 条 Dispatch Log 记录均被纳入汇总。",
+            "保存工作簿。"
+          ],
+          "skill_ids": [],
+          "step_number": 8,
+          "title": "核对仪表板结果并保存",
+          "visible_success_signal": "Route Dashboard 同时显示完整的 30 条路线/追踪标签和按 Carrier 汇总的 Tracking Code 数量，且 Pivot Table 计数总和为 30。"
+        }
+      ]
+    },
+    "generation": {
+      "request_id": "7e03beff-c50c-49db-9516-e6a04a22dd49",
+      "prompt_sha256": "42a5c9c05ee71ce59f97e4e60c32fd7dfd86f430cf59f5051c75dab14c2ea9e0",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 3721,
+      "output_tokens": 2172,
+      "estimated_cost_usd": 0.033506
+    }
+  },
   "artifact": {
     "manifest_entry": {
       "reference_task_id": "reference-task-r01-003",

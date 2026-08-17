@@ -4,6 +4,7 @@ import logging
 import dotenv
 import re
 import signal
+import threading
 from datetime import datetime, timedelta, timezone
 from typing import Mapping
 
@@ -60,6 +61,12 @@ IMAGE_ID_MAP = {
 }
 
 
+def can_manage_process_signals() -> bool:
+    """Signal handlers are process-global and can only be changed by the main thread."""
+
+    return threading.current_thread() is threading.main_thread()
+
+
 def resolve_ami_id(
     region: str,
     screen_size: tuple[int, int],
@@ -94,8 +101,13 @@ def _allocate_vm(region=DEFAULT_REGION, screen_size=(1920, 1080)):
 
     ec2_client = boto3.client('ec2', region_name=region)
     instance_id = None
-    original_sigint_handler = signal.getsignal(signal.SIGINT)
-    original_sigterm_handler = signal.getsignal(signal.SIGTERM)
+    manages_process_signals = can_manage_process_signals()
+    original_sigint_handler = (
+        signal.getsignal(signal.SIGINT) if manages_process_signals else None
+    )
+    original_sigterm_handler = (
+        signal.getsignal(signal.SIGTERM) if manages_process_signals else None
+    )
     
     def signal_handler(sig, frame):
         if instance_id:
@@ -133,8 +145,9 @@ def _allocate_vm(region=DEFAULT_REGION, screen_size=(1920, 1080)):
     
     try:
         # Set up signal handlers for both SIGINT and SIGTERM
-        signal.signal(signal.SIGINT, signal_handler)
-        signal.signal(signal.SIGTERM, signal_handler)
+        if manages_process_signals:
+            signal.signal(signal.SIGINT, signal_handler)
+            signal.signal(signal.SIGTERM, signal_handler)
         
         if not os.getenv('AWS_SECURITY_GROUP_ID'):
             raise ValueError("AWS_SECURITY_GROUP_ID is not set in the environment variables.")
@@ -249,8 +262,9 @@ def _allocate_vm(region=DEFAULT_REGION, screen_size=(1920, 1080)):
         raise
     finally:
         # Restore original signal handlers
-        signal.signal(signal.SIGINT, original_sigint_handler)
-        signal.signal(signal.SIGTERM, original_sigterm_handler)
+        if manages_process_signals:
+            signal.signal(signal.SIGINT, original_sigint_handler)
+            signal.signal(signal.SIGTERM, original_sigterm_handler)
 
     return instance_id
 

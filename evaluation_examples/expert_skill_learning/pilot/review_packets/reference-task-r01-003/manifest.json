@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "generated_by": "scripts/python/manage_reference_review_packets.py export",
   "reference_task_id": "reference-task-r01-003",
-  "context_fingerprint": "423bafba615f03851773cd5547e77efad366e5f84667e660bbdee3758fb12593",
+  "context_fingerprint": "c2a725ec19627dff51c2152449b8d67c34f698ca0c5addb857801b1d82a75e0d",
   "inputs": [
     {
       "role": "artifact",
@@ -33,11 +33,15 @@
   "generated_files": [
     {
       "path": "TASK.md",
+      "sha256": "07980f7f17ebd09f1b89b5f65dbddeb28220d4ae5b0284c60febf7830deb560d"
+    },
+    {
+      "path": "TASK_DETAIL.md",
       "sha256": "e7ef9b0947c492081badd293fc5e1fcfc6c73eb7311a288014d6d7b69f97aba2"
     },
     {
       "path": "context.json",
-      "sha256": "ee7434a82d7e608a2913635a17c6abe2d7b1203736647ba32ee437354ae0961d"
+      "sha256": "e263879e9630757ada7381b6827855185f237e35ec711285a883af9ca6e18c79"
     },
     {
       "path": "task_config.json",

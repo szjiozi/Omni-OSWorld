@@ -15,6 +15,7 @@ if str(REPO_ROOT) not in sys.path:
 from benchmark_construction.reference_review_packets import (
     collect_packet_reviews,
     export_review_packets,
+    export_task_details,
 )
 
 
@@ -33,6 +34,12 @@ def _shared_paths(parser: argparse.ArgumentParser) -> None:
     )
     parser.add_argument(
         "--packet-root", type=Path, default=PILOT_ROOT / "review_packets"
+    )
+    parser.add_argument(
+        "--task-detail-root", type=Path, default=PILOT_ROOT / "task_details"
+    )
+    parser.add_argument(
+        "--reviewer-guides", type=Path, default=PILOT_ROOT / "reviewer_guides.json"
     )
     parser.add_argument("--task-id")
     parser.add_argument(
@@ -55,6 +62,11 @@ def parse_args() -> argparse.Namespace:
         description="Manage one self-contained review directory per reference task."
     )
     commands = parser.add_subparsers(dest="command", required=True)
+    details = commands.add_parser(
+        "details", help="Render the full TASK_DETAIL.md inputs for guide generation."
+    )
+    _shared_paths(details)
+
     export = commands.add_parser("export", help="Build or refresh review packets.")
     _shared_paths(export)
     export.add_argument(
@@ -75,6 +87,22 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
+    if args.command == "details":
+        task_ids = export_task_details(
+            repo_root=REPO_ROOT,
+            skill_pool_path=args.skill_pool,
+            packages_path=args.packages,
+            source_tasks_path=args.source_tasks,
+            reviews_path=args.reviews,
+            artifact_manifest_path=args.artifact_manifest,
+            task_config_manifest_path=args.task_config_manifest,
+            output_root=args.task_detail_root,
+            task_id=args.task_id,
+        )
+        print(f"Rendered {len(task_ids)} task detail document(s): {', '.join(task_ids)}")
+        print(f"Task detail root: {args.task_detail_root}")
+        return 0
+
     if args.command == "export":
         task_ids = export_review_packets(
             repo_root=REPO_ROOT,
@@ -84,6 +112,8 @@ def main() -> int:
             reviews_path=args.reviews,
             artifact_manifest_path=args.artifact_manifest,
             task_config_manifest_path=args.task_config_manifest,
+            task_detail_root=args.task_detail_root,
+            reviewer_guides_path=args.reviewer_guides,
             output_root=args.packet_root,
             task_id=args.task_id,
             force=args.force,
@@ -100,6 +130,8 @@ def main() -> int:
         reviews_path=args.reviews,
         artifact_manifest_path=args.artifact_manifest,
         task_config_manifest_path=args.task_config_manifest,
+        task_detail_root=args.task_detail_root,
+        reviewer_guides_path=args.reviewer_guides,
         coverage_path=args.coverage,
         packet_root=args.packet_root,
         task_id=args.task_id,

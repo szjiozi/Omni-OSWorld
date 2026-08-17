@@ -182,24 +182,13 @@ with open(DONE, "w", encoding="utf-8") as stream:
 """.strip()
 
 _GUEST_RECORDING_START_SOURCE = r"""
-import os
+import json
 from pathlib import Path
 
-starts = []
-ticks = os.sysconf("SC_CLK_TCK")
-for proc_dir in Path("/proc").iterdir():
-    if not proc_dir.name.isdigit():
-        continue
-    try:
-        cmdline = (proc_dir / "cmdline").read_bytes()
-        if b"ffmpeg" not in cmdline or b"/tmp/recording.mp4" not in cmdline:
-            continue
-        starts.append(int((proc_dir / "stat").read_text().split()[21]))
-    except (OSError, IndexError, ValueError):
-        continue
-if not starts:
-    raise RuntimeError("No OSWorld recording ffmpeg process found")
-print(int(max(starts) * 1_000_000_000 / ticks))
+data = json.loads(
+    Path("/tmp/osworld-reference-recording-start.json").read_text(encoding="utf-8")
+)
+print(int(data["first_frame_monotonic_ns"]))
 """.strip()
 
 
@@ -301,7 +290,7 @@ else:
 
 
 def guest_recording_start_monotonic_ns(env: Any) -> int:
-    """Read ffmpeg's process start time in the guest monotonic clock domain."""
+    """Read the first encoded frame time in the guest monotonic clock domain."""
 
     encoded = base64.b64encode(_GUEST_RECORDING_START_SOURCE.encode("utf-8")).decode(
         "ascii"
