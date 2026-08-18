@@ -61,7 +61,9 @@ def test_reviewer_guide_request_uses_complete_task_detail(tmp_path):
     assert "provenance for human similarity review only" in request.system_prompt
     assert "annotation environment uses the English LibreOffice UI" in request.system_prompt
     assert "点击 `Format`，选择 `Format Cells...`" in request.system_prompt
-    assert request.prompt_name == "generate_reviewer_guide.v2"
+    assert "default-path-plus-recovery structure" in request.system_prompt
+    assert "`Data Ranges`" in request.system_prompt
+    assert request.prompt_name == "generate_reviewer_guide.v3"
 
 
 def test_reviewer_guide_validation_requires_exact_skill_coverage():
@@ -88,6 +90,26 @@ def test_reviewer_guide_rejects_translated_visible_ui_labels():
 
     guide["steps"][0]["instructions"] = [
         "右键单击选区，然后选择 `Format Cells...`。"
+    ]
+    validate_reviewer_guide("reference-task-1", ["skill-1", "skill-2"], guide)
+
+
+def test_reviewer_guide_requires_chart_data_and_placement_recoveries():
+    guide = _guide()
+    guide["steps"][1]["instructions"] = [
+        "保留 Region 作为分类标签，并将 Requested Funding 作为数据系列。",
+        "完成后将图表放在从 E2 开始的空白区域。",
+    ]
+
+    with pytest.raises(ValueError, match="chart data roles"):
+        validate_reviewer_guide(
+            "reference-task-1", ["skill-1", "skill-2"], guide
+        )
+
+    guide["steps"][1]["instructions"] = [
+        "图表若已显示六个 Region 分类标签和一个 Requested Funding 数据系列，则无需调整。",
+        "若分类标签或数值不正确，双击图表并打开 `Format` > `Data Ranges`，在 `Data Series` 中将 `Categories` 修正为 Region 范围，并将 `Y-Values` 修正为 Requested Funding 范围。",
+        "若图表已经位于 E2 附近的空白区域且没有遮挡源数据，则无需调整；否则选择图表外框并拖动整个图表，使左上角靠近 E2。",
     ]
     validate_reviewer_guide("reference-task-1", ["skill-1", "skill-2"], guide)
 

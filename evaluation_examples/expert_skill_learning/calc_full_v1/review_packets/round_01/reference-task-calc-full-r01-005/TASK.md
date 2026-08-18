@@ -189,84 +189,96 @@ Allowed variation: The expert may perform the sort before or after filling formu
 
 > 以下是一个可以参考的操作 guide。标注者可以根据实际 LibreOffice 界面采用等价操作。
 
-此工作簿用于完成补货调度复核：从 `Catalog` 分类全部调度记录，为票号生成七位文本代码，标记唯一最高补货成本，汇总调度单位数，并按 SKU 排序完整日志。开始前不要覆盖已有表头或原始 A–D 列数据。
+本指南完成补货审查工作簿：从 `Catalog` 查找每条发运记录的 Supply Group，生成七位 Ticket Code，突出唯一最高的 Restock Cost，在 `Summary` 汇总已发运单位数，并将完整 `Dispatch_Log` 按 SKU 升序排列。
 
 #### 启动后的初始状态检查
 
-- 确认工作簿中有 `Catalog`、`Dispatch_Log` 和 `Summary` 三个工作表。
-- 在 `Catalog` 中确认 `A1:B9` 是 SKU 与 Supply Group 的对照表，数据范围为 `A2:B9`。
-- 在 `Dispatch_Log` 中确认 `A1:F19` 有表头，`E2:E19` 和 `F2:F19` 为空，且原始记录尚未按 SKU 排序。
-- 确认 `Summary!B2` 为空；`Dispatch_Log` 中尚未出现 Restock Cost 的条件格式高亮。
+- 确认工作簿已打开，并且可见工作表 `Catalog`、`Dispatch_Log` 和 `Summary`。
+- 在 `Catalog` 中确认 `A1:B9` 是 SKU 与 Supply Group 的参考表，数据从第 2 行到第 9 行。
+- 在 `Dispatch_Log` 中确认第 1 行包含 `Ticket Number`、`SKU`、`Units Dispatched`、`Restock Cost`、`Supply Group`、`Ticket Code`，且 `E2:E19` 与 `F2:F19` 目前为空。
+- 确认 `Summary!B2` 为空，且 `Dispatch_Log` 的 SKU 当前尚未按字母顺序排列。
 
-#### 第 1 步：用 SKU 查找并填充 Supply Group
+#### 第 1 步：确认发运日志的目标列
 
-1. 切换到 `Dispatch_Log` 工作表，单击 `E2`。
-2. 输入精确匹配查找公式：`=VLOOKUP(B2,$Catalog.$A$2:$B$9,2,FALSE)`，然后按 `Enter`。如果当前 Calc 设置要求用分号分隔参数，则输入等价公式 `=VLOOKUP(B2;$Catalog.$A$2:$B$9;2;FALSE)`。
-3. 再次选中 `E2`，将该公式向下填充到 `E19`。可复制 `E2`，选中 `E3:E19` 后粘贴；也可使用单元格右下角的填充柄向下拖动。
-
-- 对应 skills：`7e429b8d-a3f0-4ed0-9b58-08957d00b127.skill-01`
-- 高效操作：先只在第一条记录写公式，再用填充一次性覆盖其余 17 条记录；查找表范围使用绝对引用，向下填充时不会移动。
-- 完成标志：`E2:E19` 不再为空。每个 SKU 都显示对应类别，例如 `SKU-305` 显示 `Hand Tools`，相同 SKU 的类别相同。
-
-#### 第 2 步：生成七位 Ticket Code
-
-1. 在仍为 `Dispatch_Log` 的工作表中，单击 `F2`。
-2. 输入 `=TEXT(A2,"0000000")`，然后按 `Enter`。该公式把数值票号显示为七位文本，而不改变 A 列原始数值。
-3. 选中 `F2`，将公式向下填充至 `F19`，可复制后粘贴到 `F3:F19`，或用填充柄完成。
-
-- 对应 skills：`0bf05a7d-b28b-44d2-955a-50b41e24012a.skill-01`
-- 高效操作：`TEXT` 的格式字符串固定为七个零；只建立一次公式并填充，可避免手工输入前导零时遗漏位数。
-- 完成标志：`F2:F19` 全部有值，并出现固定七位显示，例如 `0004821`、`0000930` 和 `0017654`。
-
-#### 第 3 步：条件格式标记最高 Restock Cost
-
-1. 在 `Dispatch_Log` 中选择 Restock Cost 数据范围 `D2:D19`，不要包含表头 `D1`。
-2. 打开 `Format` > `Conditional` > `Condition`。
-3. 在条件类型下拉选项中选择 `Formula is`。
-4. 输入公式 `$D2=MAX($D$2:$D$19)`。这里的 `$D2` 会随规则向下检查各行，而 `$D$2:$D$19` 始终比较整段成本数据。
-5. 通过此对话框中的样式选择或样式创建控件，为命中的单元格指定明显可见的高亮样式，例如醒目的填充色或字体色，然后确认对话框保存规则。
-
-- 对应 skills：`21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-04`
-- 高效操作：先选择完整成本数据范围，再以当前行相对、最大值范围绝对的公式建立一条规则，即可评估所有 18 条记录。
-- 完成标志：在 `D2:D19` 中，只有显示 `540.00` 的单元格具有所选高亮；其余 Restock Cost 单元格保持普通外观。
-
-#### 第 4 步：汇总 Total Units Dispatched
-
-1. 切换到 `Summary` 工作表并单击 `B2`。
-2. 输入跨工作表汇总公式 `=SUM($Dispatch_Log.C2:C19)`，然后按 `Enter`。
-3. 确认不要把总数作为普通数字手工键入；保留公式，以便结果与 `Dispatch_Log` 的 Units Dispatched 数据保持联动。
-
-- 对应 skills：`26a8440e-c166-4c50-aef4-bfb77314b46b.skill-03`
-- 高效操作：直接对完整源范围使用一个 `SUM` 跨表公式，既可避免手工加总，也会在调度单位变化时自动更新。
-- 完成标志：`Summary!B2` 显示 `649`；选中该单元格时，输入栏中可见 `=SUM($Dispatch_Log.C2:C19)`。
-
-#### 第 5 步：按 SKU 升序排列完整 Dispatch_Log
-
-1. 返回 `Dispatch_Log`，选中完整日志范围 `A1:F19`，包括表头和所有 18 条记录。
-2. 使用工具栏上的升序排序图标（带向下箭头的 A–Z 图标）进行升序排序。若 Calc 显示是否扩展选择的提示，选择 `Extend selection`，使整行数据一起排序。
-3. 如果出现排序设置对话框，指定按 `SKU` 升序排序，并将第一行作为表头处理后确认。
-
-- 对应 skills：`3a7c8185-25c1-4941-bd7b-96e823c9f21f.skill-01`
-- 高效操作：排序前选中整块连续日志数据，而非只移动 SKU 列；这样所有票号、单位数、成本及派生结果都会跟随所属记录移动。
-- 完成标志：日志第一组记录的 SKU 为 `SKU-104`，随后依次为 `SKU-118`、`SKU-203`、`SKU-217`、`SKU-305`、`SKU-322`、`SKU-411`、`SKU-426`；对应的 Supply Group、Ticket Code、单位数和成本均仍与各自记录同行。
-
-#### 第 6 步：完成最终核对并保存
-
-1. 检查 `Dispatch_Log`：确认 `E2:E19` 和 `F2:F19` 均完整填充，`D` 列只有 `540.00` 被高亮，并且 SKU 已升序。
-2. 检查 `Summary!B2`：确认结果为 `649` 且它是公式计算结果。
-3. 如有未保存的修改，使用 `File` > `Save` 保存工作簿。
+1. 切换到 `Dispatch_Log` 工作表，确认数据记录范围是第 2 行到第 19 行。
+2. 确认 `SKU` 位于 B 列、空白的 `Supply Group` 位于 E 列、空白的 `Ticket Code` 位于 F 列；`Restock Cost` 位于 D 列。
 
 - 对应 skills：无；这是准备或检查步骤。
-- 高效操作：使用工作表标签逐项检查关键输出，比逐行重新计算更快；尤其要确认排序后公式结果和条件格式仍附着在正确记录上。
-- 完成标志：三个工作表均呈现完整结果：分类和代码已填满、最大成本已标记、汇总为 `649`，并且完整调度日志按 SKU 升序排列。
+- 高效操作：先确认列和行范围，可避免将公式填入标题行或遗漏最后一条记录。
+- 完成标志：可以看到 `Dispatch_Log` 的 `E2:E19` 和 `F2:F19` 是待填充区域，且 A 到 D 列已有 18 条发运记录。
+
+#### 第 2 步：用精确匹配查找填充 Supply Group
+
+1. 在 `Dispatch_Log` 中选择单元格 `E2`。
+2. 输入精确匹配公式 `=VLOOKUP(B2;$Catalog.$A$2:$B$9;2;FALSE)`，然后按 `Enter`。该公式用本行 SKU 在 `Catalog` 中查找并返回第二列的 Supply Group。
+3. 再次选中 `E2`，然后将选择扩展到 `E2:E19`，按 `Ctrl+D` 向下填充公式。
+4. 若 `E2` 已显示与 B2 中 SKU 对应的类别，则不需要调整公式。若出现 `#N/A`，检查 B2 的 SKU 是否与 `Catalog!A2:A9` 中的文本完全一致，并确认公式中的查找范围仍是 `$Catalog.$A$2:$B$9`、最后一个参数仍为 `FALSE`。
+
+- 对应 skills：`7e429b8d-a3f0-4ed0-9b58-08957d00b127.skill-01`
+- 高效操作：使用绝对引用 `$Catalog.$A$2:$B$9` 固定查找表；随后向下填充时，查找表不会随行号移动。
+- 完成标志：`E2:E19` 不再为空，每条记录均显示 Supply Group；相同的 SKU 显示相同分类。
+
+#### 第 3 步：生成七位 Ticket Code
+
+1. 选择 `Dispatch_Log!F2`。
+2. 输入公式 `=TEXT(A2;"0000000")`，然后按 `Enter`。该公式将数值 Ticket Number 转换为固定七位的文本显示。
+3. 选中 `F2` 并将选择扩展到 `F2:F19`，按 `Ctrl+D` 填充其余记录。
+4. 若 `F2` 已显示七个字符的代码，例如 `0004821`，不需要调整。若显示的位数少于七位，双击 `F2` 并确认格式字符串准确为 `"0000000"`，然后重新向下填充。
+
+- 对应 skills：`0bf05a7d-b28b-44d2-955a-50b41e24012a.skill-01`
+- 高效操作：只需在第一行输入一次 `TEXT` 公式，再用 `Ctrl+D` 填满整列，可避免逐条手动补零。
+- 完成标志：`F2:F19` 均显示七位 Ticket Code；例如 Ticket Number `4821` 显示为 `0004821`，`930` 显示为 `0000930`。
+
+#### 第 4 步：用公式条件格式标记最高 Restock Cost
+
+1. 在 `Dispatch_Log` 中选中范围 `D2:D19`。
+2. 打开 `Format` > `Conditional` > `Condition...`。
+3. 在条件类型下拉列表中选择 `Formula is`，并输入公式 `$D2=MAX($D$2:$D$19)`。
+4. 在该对话框的样式区域选择或创建一个明显可见的高亮样式，然后确认对话框以保存规则。
+5. 保存后，若只有 `540.00` 的 Restock Cost 单元格被高亮，则不需要调整。若多个单元格被高亮，重新打开 `Format` > `Conditional` > `Condition...`，确认公式中的当前行引用是 `$D2`，而最大值范围准确为 `$D$2:$D$19`。
+
+- 对应 skills：`21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-04`
+- 高效操作：同一条公式规则应用于完整成本范围即可；`$D2` 固定成本列但保留相对行号，规则会逐行判断。
+- 完成标志：在 D2:D19 中，只有数值 `540.00` 的 Restock Cost 单元格具有所选的明显高亮样式。
+
+#### 第 5 步：在 Summary 汇总已发运单位数
+
+1. 切换到 `Summary` 工作表并选择 `B2`，即 `Total Units Dispatched` 标签右侧的空白值单元格。
+2. 输入 `=SUM($Dispatch_Log.C2:C19)`，然后按 `Enter`。
+3. 若 B2 已显示公式计算出的总数 `649`，不需要调整。若 B2 显示错误或为空，双击 B2，确认公式以 `=` 开头、工作表名称为 `$Dispatch_Log`，并且汇总范围为 `C2:C19`，再按 `Enter`。
+
+- 对应 skills：`26a8440e-c166-4c50-aef4-bfb77314b46b.skill-03`
+- 高效操作：用一个跨工作表 `SUM` 公式汇总完整 Units Dispatched 范围，比逐项相加更快且能随源数据更新。
+- 完成标志：`Summary!B2` 显示公式结果 `649`，并且选择该单元格时可在输入行看到跨工作表 `SUM` 公式。
+
+#### 第 6 步：按 SKU 升序排序完整 Dispatch_Log
+
+1. 返回 `Dispatch_Log`，选中完整范围 `A1:F19`，包括标题行和所有 18 条记录。
+2. 打开 `Data` > `Sort...`。在排序设置中将排序依据设为 `SKU`，选择 `Ascending`，并指定该范围包含列标题后确认。
+3. 完成后，若第 1 行仍是原来的标题且 SKU 从 `SKU-104` 逐步排到 `SKU-426`，不需要调整。若标题行被混入数据排序，立即再次选中 `A1:F19`，打开 `Data` > `Sort...`，启用范围包含列标题的设置，再按 `SKU` 的 `Ascending` 重排。
+4. 若使用工具栏的 A–Z 升序排序图标而 Calc 询问是否扩展选择，请选择 `Extend selection`，使 A 到 F 列的同一条记录一起移动。
+
+- 对应 skills：`3a7c8185-25c1-4941-bd7b-96e823c9f21f.skill-01`
+- 高效操作：先选择完整的 `A1:F19` 连续表格，可使所有字段跟随各自 SKU 的记录一起移动，不会破坏行内关联。
+- 完成标志：`Dispatch_Log` 从 `SKU-104` 开始并以 `SKU-426` 结束，所有记录字段仍保持正确的行内对应关系，最高成本的条件格式高亮也随该记录保留。
+
+#### 第 7 步：进行最终核对并保存
+
+1. 检查 `Dispatch_Log`：E 列全部有分类、F 列全部是七位代码，且 D 列仅有一个 `540.00` 高亮。
+2. 检查 `Summary!B2` 是否保留公式并显示总计 `649`。
+3. 使用 `File` > `Save` 保存完成后的工作簿。
+
+- 对应 skills：无；这是准备或检查步骤。
+- 高效操作：最终一次同时检查公式结果、显示格式和排序状态，可在保存前发现遗漏。
+- 完成标志：工作簿已保存，发运日志已分类、补零编码、突出最高成本并按 SKU 升序排列，Summary 中已显示总单位数。
 
 #### 最终结果检查
 
-- `Dispatch_Log` 中的记录按 `SKU` 从 `SKU-104` 到 `SKU-426` 升序排列；每一行的 A–F 列数据仍属于同一条原始记录。
-- `Dispatch_Log!E2:E19` 均显示由 `Catalog` 返回的 Supply Group，重复 SKU 的类别一致。
-- `Dispatch_Log!F2:F19` 均为七位 Ticket Code 文本；例如票号 `4821` 显示为 `0004821`，票号 `930` 显示为 `0000930`。
-- `Dispatch_Log` 的 Restock Cost 数据中，仅数值 `540.00` 具有设置的条件格式高亮。
-- `Summary!B2` 显示 `649`，选中该单元格时公式栏显示跨工作表的 `SUM` 公式，而不是手工输入的数字。
+- 在 `Dispatch_Log` 中，`SKU` 已按 A–Z 排列，从 `SKU-104` 到 `SKU-426`；每一行的 Ticket Number、Units Dispatched、Restock Cost、Supply Group 和 Ticket Code 仍与该行 SKU 对应。
+- `Dispatch_Log!E2:E19` 都有 Supply Group 分类，重复 SKU 的分类一致；例如 `SKU-104` 对应 `Fasteners`，`SKU-322` 对应 `Electrical`。
+- `Dispatch_Log!F2:F19` 都显示七位 Ticket Code，例如 Ticket Number `4821` 显示为 `0004821`，Ticket Number `930` 显示为 `0000930`。
+- Restock Cost 中只有数值 `540.00` 的单元格具有所选的明显条件格式高亮，其他 Restock Cost 单元格没有该高亮。
+- `Summary!B2` 含有跨工作表的 `SUM` 公式，并显示 Total Units Dispatched 的目标总计 `649`。
 
 ## Source-task similarity review
 

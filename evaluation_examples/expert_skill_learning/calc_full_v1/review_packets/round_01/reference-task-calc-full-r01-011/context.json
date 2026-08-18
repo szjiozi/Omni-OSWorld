@@ -795,102 +795,88 @@
     "task_detail_sha256": "27ba8a66dc60f95b0622cd1d85d38893309839bcf3d80bdd98003a53d9576f98",
     "guide": {
       "final_verification": [
-        "在 `Event Ledger` 中检查 `B2:B19`：每一行都有 Gross Revenue 的货币计算结果；例如 `B2` 的公式为 `=D2*E2`，末行 `B19` 不应为空。",
-        "检查 `C2:C19`：每一行都有 Community Share 的货币计算结果；例如 `C2` 的公式为 `=B2+F2`，末行 `C19` 不应为空。",
-        "切换到 `Upload`，确认 `A1` 为 `Event Code`，且 `A2:A19` 依次包含全部 18 个事件代码，最后一个为 `EVT-118`。",
-        "返回 `Event Ledger`，确认工作表中存在嵌入式簇状柱形图；图表使用 Event Code 作为类别，并有 Gross Revenue 与 Community Share 两个独立数据系列。"
+        "`Event Ledger` 的 `B2:B19` 均为货币金额，且由 `=D2*E2` 按行计算；例如最后一行 `B19` 不再为空。",
+        "`Event Ledger` 的 `C2:C19` 均为货币金额，且每行均为对应 Gross Revenue 加 Sponsor Grant；`C19` 已有计算结果。",
+        "`Upload` 工作表的 `A1:A19` 包含 `Event Code` 标题以及 `EVT-101` 至 `EVT-118` 的完整列表。",
+        "`Event Ledger` 上存在嵌入式簇状柱形图：横轴类别是 Event Code，图例中有 Gross Revenue 和 Community Share 两个独立系列，且源数据区域未被图表遮挡。"
       ],
       "language": "zh-CN",
-      "overview": "本指南完成社区工作坊活动账本：先将两列已有首行公式快速填充到所有活动，再把完整的 Event Code 列交给 `Upload` 工作表，最后在 `Event Ledger` 中建立 Gross Revenue 与 Community Share 的簇状柱形比较图。",
+      "overview": "此工作簿用于完成社区工作坊活动的收入台账：向下填充两列现有计算公式，将完整的 Event Code 列交给 `Upload` 工作表，并在 `Event Ledger` 中创建比较 Gross Revenue 与 Community Share 的簇状柱形图。",
       "reference_task_id": "reference-task-calc-full-r01-011",
       "starting_state_checks": [
-        "确认当前打开的是目标工作簿，且活动工作表为 `Event Ledger`。",
-        "确认 `Event Ledger` 的表头位于第 1 行，事件数据从第 2 行连续到第 19 行；`A1:C19` 中的 B、C 列除第 2 行外尚未填充。",
-        "单击 `B2` 和 `C2`，在输入行确认已有公式分别为 `=D2*E2` 与 `=B2+F2`。若其中一个公式意外缺失，先在对应单元格输入该公式并按 `Enter`。",
-        "确认存在名为 `Upload` 的工作表，其中目前只有 `A1` 的 `Event Code` 表头，`A2:A19` 为空。",
-        "确认 `Event Ledger` 中尚未有图表。"
+        "确认当前打开的工作簿含有 `Event Ledger` 和 `Upload` 两个工作表，且 `Event Ledger` 是活动工作表。",
+        "确认 `Event Ledger` 的标题位于第 1 行，记录连续至第 19 行；`B2` 显示公式 `=D2*E2`，`C2` 显示公式 `=B2+F2`，而 `B3:C19` 尚为空白。",
+        "确认 `Upload` 中只有 `A1` 的 `Event Code` 标题，`A2:A19` 为空，且 `Event Ledger` 中尚未插入图表。"
       ],
       "steps": [
         {
-          "efficiency_tip": "双击填充柄会按照相邻连续数据区域自动判断最后一行，比手动拖到第 19 行更快，也避免拖错范围。",
+          "efficiency_tip": "利用相邻的连续输入记录来决定填充终点，比手动拖动到第 19 行更快，也不容易填错行数。",
           "instructions": [
-            "在 `Event Ledger` 中单击公式单元格 `B2`。",
-            "将指针移到所选单元格右下角的小方块（填充柄）；当可以拖动时，双击该填充柄。",
-            "不要修改已填充单元格中的相对引用；Calc 会按行自动将公式延伸。"
+            "在 `Event Ledger` 中单击 `B2`。确认编辑栏或单元格中的公式为 `=D2*E2`；如果 `B2` 不是该公式，直接输入 `=D2*E2` 后按 `Enter`。",
+            "选中 `B2` 后，找到选中框右下角的小方块（填充柄），双击它。Calc 会根据相邻连续的记录自动向下复制公式。",
+            "查看 `B2:B19`。预期所有行都会显示两位小数的货币金额，不需要进一步调整。若 `B3:B19` 中仍有空白，选中 `B2` 后再次双击填充柄；若仍未扩展到第 19 行，可将 `B2` 复制并粘贴到 `B3:B19`，以完成同一按行公式。"
           ],
           "skill_ids": [
             "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-05"
           ],
           "step_number": 1,
           "title": "向下填充 Gross Revenue 公式",
-          "visible_success_signal": "`B2:B19` 均显示货币金额，且选中任一后续单元格（如 `B3`）可见按本行计算的公式，例如 `=D3*E3`。"
+          "visible_success_signal": "`B2:B19` 都已填入计算结果，最后一个活动所在的 `B19` 显示货币金额而不是空白。"
         },
         {
-          "efficiency_tip": "先完成 B 列后再填充 C 列，可让 Community Share 公式在每一行都引用已计算完成的同一行 Gross Revenue。",
+          "efficiency_tip": "先完成 Gross Revenue 列后再双击 Community Share 的填充柄，可使每一行都引用同一行已计算完成的 B 列数值。",
           "instructions": [
-            "单击 `C2`，确认它仍包含公式 `=B2+F2`。",
-            "双击 `C2` 右下角的小方块填充柄，使公式沿相邻连续事件记录向下扩展。",
-            "保留公式的默认相对引用，不要把 `B2` 或 `F2` 改成固定引用。"
+            "单击 `C2`，确认公式为 `=B2+F2`。如果该单元格没有此公式，输入 `=B2+F2` 并按 `Enter`。",
+            "选中 `C2`，双击其右下角的填充柄，让 Calc 沿连续活动记录向下填充。",
+            "预期 `C2:C19` 都会显示货币计算结果，其中每一行是 Gross Revenue 加 Sponsor Grant，因此不需要调整。若 `C3:C19` 出现空白或填充没有到最后一行，重新选中 `C2` 并双击填充柄；必要时将 `C2` 复制到 `C3:C19`。"
           ],
           "skill_ids": [
             "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-02"
           ],
           "step_number": 2,
           "title": "向下填充 Community Share 公式",
-          "visible_success_signal": "`C2:C19` 均填有货币金额；单击 `C19` 时可见其公式对应第 19 行，且最后一项不为空。"
+          "visible_success_signal": "`C2:C19` 已全部显示计算后的货币金额，`C19` 也有数值。"
         },
         {
-          "efficiency_tip": "直接选择列标 `A` 可一次包含表头和所有现有、后续可见单元格，不必逐行框选事件代码。",
+          "efficiency_tip": "单击列标一次即可选中整列，能同时带上标题和所有现有、后续可见的 Event Code 单元格，无须逐行拖选。",
           "instructions": [
-            "在 `Event Ledger` 中，单击列标 `A`，选中整个 Event Code 列。",
+            "在 `Event Ledger` 中单击列标 `A`，选中整列 Event Code；可看到整列 A 被高亮。",
             "按 `Ctrl+C` 复制整列。",
-            "切换到 `Upload` 工作表，单击 `A1`，然后按 `Ctrl+V` 粘贴。",
-            "如出现粘贴选项，保持普通粘贴即可，使来源列的表头和事件代码一起写入目标列。"
+            "切换到 `Upload` 工作表，单击 `A1`，然后按 `Ctrl+V` 粘贴。这样会用来源列的标题和记录替换该模板列中的对应内容。",
+            "预期 `Upload` 的 `A1` 仍显示 `Event Code`，`A2:A19` 显示完整事件代码列表，因此无需调整。若粘贴后没有从 `A1` 开始，撤销该次粘贴，重新单击 `A1` 后再按 `Ctrl+V`；若只有标题而没有代码，返回 `Event Ledger` 并确认是单击列标 `A` 后复制，再执行粘贴。"
           ],
           "skill_ids": [
             "1273e544-688f-496b-8d89-3e0f40aa0606.skill-01"
           ],
           "step_number": 3,
-          "title": "复制完整 Event Code 列到 Upload",
-          "visible_success_signal": "`Upload` 的 A 列显示 `Event Code` 表头以及从 `EVT-101` 到 `EVT-118` 的完整连续代码列表。"
+          "title": "复制 Event Code 列到 Upload",
+          "visible_success_signal": "`Upload` 的 A 列从 `A1` 到 `A19` 已显示 `Event Code` 标题和 18 个 Event Code，首尾分别为 `EVT-101` 与 `EVT-118`。"
         },
         {
-          "efficiency_tip": "在插入图表前一次选中完整的 `A1:C19`，可让 Calc 自动识别第一列为类别标签、第一行为系列名称，减少后续调整数据范围的需要。",
+          "efficiency_tip": "在插入图表前一次性选择连续的 `A1:C19`，通常可让 Calc 自动把第一列识别为类别、后两列识别为两个数值系列，避免之后修改数据范围。",
           "instructions": [
-            "切换回 `Event Ledger`。",
-            "选中连续区域 `A1:C19`，其中包括 Event Code 表头、Gross Revenue 表头、Community Share 表头及全部 18 行数据。",
-            "使用工具栏上的 `Insert Chart` 图标，或打开 `Insert` > `Chart...`。",
-            "在图表向导中选择 `Column` 图表类型，并选择 `Clustered Column` 变体。",
-            "确认类别来自 Event Code，数据系列为 Gross Revenue 和 Community Share；然后点击 `Finish` 将图表嵌入当前工作表。"
+            "切换回 `Event Ledger`，选择连续区域 `A1:C19`，其中包含 `Event Code`、`Gross Revenue` 和 `Community Share` 三个标题及全部 18 条记录。",
+            "使用 `Insert` > `Chart...` 打开图表向导。在图表类型中选择 `Column`，并选择 `Clustered Column` 变体；完成向导时点击 `Finish`。",
+            "完成后应看到嵌入式图表，横轴类别为 Event Code，图例或系列名称为 Gross Revenue 和 Community Share，且每个 Event Code 有两根并列柱形；如果已经如此显示，不需要调整。",
+            "如果类别标签显示为数值、系列不正确或缺少一个系列，双击图表进入编辑状态，打开 `Format` > `Data Ranges`。在 `Data Series` 中将类别范围改为 `Event Ledger.A2:A19`，并确认 Gross Revenue 的 `Y-Values` 为 `Event Ledger.B2:B19`、Community Share 的 `Y-Values` 为 `Event Ledger.C2:C19`；同时使用第 1 行作为系列名称。完成后关闭对话框。",
+            "若图表覆盖了源数据，或没有位于工作表的空白区域，单击图表外边框以选中整个对象，再拖动它，使其左上角靠近 `E2` 且 `A1:C19` 仍清晰可见。若图表已经处于该空白区域且不遮挡源数据，则不需要移动。"
           ],
           "skill_ids": [
             "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-01"
           ],
           "step_number": 4,
-          "title": "创建 Gross Revenue 与 Community Share 簇状柱形图",
-          "visible_success_signal": "`Event Ledger` 上出现嵌入式柱形图，横轴按 Event Code 显示活动类别，并为 Gross Revenue 和 Community Share 显示并列的两组柱形及对应系列标识。"
-        },
-        {
-          "efficiency_tip": "最终检查时优先查看末行和图表系列；这些位置最容易发现填充范围不足、粘贴遗漏或图表源范围选错的问题。",
-          "instructions": [
-            "在 `Event Ledger` 中检查 `B19` 和 `C19` 都已计算，确保两个公式列没有在中途停止。",
-            "在 `Upload` 中检查 `A1:A19`，确认表头和 18 个事件代码均已粘贴。",
-            "在 `Event Ledger` 中检查图表仍可见，并确认它比较的是 Gross Revenue 与 Community Share，而不是输入列 D:F。"
-          ],
-          "skill_ids": [],
-          "step_number": 5,
-          "title": "完成最终可见性检查",
-          "visible_success_signal": "两个计算列、`Upload` 的完整事件代码清单以及 `Event Ledger` 的两系列簇状柱形图均同时存在并可见。"
+          "title": "创建 Gross Revenue 与 Community Share 比较图表",
+          "visible_success_signal": "`Event Ledger` 上显示一个簇状柱形嵌入式图表；每个 Event Code 都有 Gross Revenue 和 Community Share 两个独立柱形系列。"
         }
       ]
     },
     "generation": {
-      "request_id": "9dac2abd-c86c-499e-994e-6a547710151f",
-      "prompt_sha256": "430fe6ae53924ed0cd4ffdc3f819f8e78bb2a647c4d07ee16f98b5489e05d1c3",
+      "request_id": "e5a2876e-18c6-41a7-8ec5-9703bc7a5479",
+      "prompt_sha256": "65a331dee6441511b666581074c45fbd175830c6ea36ef3b16702625573332f2",
       "model": "gpt-5.6-terra",
-      "input_tokens": 3814,
-      "output_tokens": 1985,
-      "estimated_cost_usd": 0.031448
+      "input_tokens": 4137,
+      "output_tokens": 2006,
+      "estimated_cost_usd": 0.030429
     }
   },
   "artifact": {

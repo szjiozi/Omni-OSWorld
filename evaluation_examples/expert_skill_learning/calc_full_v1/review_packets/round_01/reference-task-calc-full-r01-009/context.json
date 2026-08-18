@@ -778,98 +778,113 @@
     "task_detail_sha256": "f9d603fc3a2e76fd58d1d729220c5a7fa2699e9baaea08cddd514f40705d2b3a",
     "guide": {
       "final_verification": [
-        "切换到 `Activity Log`，检查 `E2:E19`：18 条记录均已生成 `Record Summary` 文本，且每条中的 `Scheduled Units`、`Completed Units`、`Rework Units` 都显示为恰好两位小数。",
-        "切换到 `Allocation Summary`，确认 `A1` 仍为深海军蓝填充，`Workshop Allocation Share` 为白色且清晰可读。",
-        "确认 `Allocation Summary` 的标题下方存在原生 Pivot Table；它按 `Zone` 分行，汇总的是 `Completed Units`，数值显示为百分比而非普通数值，并有总计结果。",
-        "查看各 Zone 的百分比及 Pivot Table 的总计，确认各类别合计代表全部 `Completed Units` 的 100%份额。"
+        "在 `Activity Log` 中查看 `E2:E19`：18 个 `Record Summary` 单元格均有文本；每条文本依次包含 `Batch Code`、`Scheduled Units`、`Completed Units` 和 `Rework Units` 的标题与值，三个单位数值均显示为两位小数。",
+        "在 `Allocation Summary` 中查看 `A1`：`Workshop Allocation Share` 仍保留深色背景，文字为清晰可见的白色。",
+        "在 `Allocation Summary` 的标题下方查看数据透视表：每个 `Zone` 只出现一行，汇总字段是 `Completed Units`，各区域值以百分比显示，`Grand Total` 应表示全部完成单位的总占比（通常为 100%）。",
+        "确认数据透视表是通过 Calc 的 `Pivot Table` 功能生成，而不是在普通单元格中手工输入的汇总公式。"
       ],
       "language": "zh-CN",
-      "overview": "本指南完成三个结果：在 `Activity Log` 中为全部分配记录生成统一的两位小数叙述文字；将 `Allocation Summary` 的深色标题改为白字；并在该汇总表创建原生 Pivot Table，以百分比显示各 `Zone` 占全部 `Completed Units` 的份额。",
+      "overview": "本任务在现有工作簿中完成三项整理：为每条活动记录生成统一的两位小数文字摘要、将深色报告标题改为白色文字，以及在 `Allocation Summary` 上建立按 `Zone` 汇总 `Completed Units` 总占比的原生数据透视表。",
       "reference_task_id": "reference-task-calc-full-r01-009",
       "starting_state_checks": [
-        "确认工作簿已打开，底部可见工作表 `Activity Log` 和 `Allocation Summary`。",
-        "在 `Activity Log` 中确认第 1 行是表头、已有 18 条数据记录，且 `Record Summary` 输出列的数据单元格目前为空。",
-        "在 `Allocation Summary` 中确认 `A1` 显示 `Workshop Allocation Share`，具有深色填充，但文字尚不是白色；标题下方的汇总区域为空。",
-        "确认源表的字段列表中可找到用于分组的 `Zone`，以及用于汇总的 `Completed Units`；创建 Pivot Table 时必须使用这两个字段。"
+        "确认工作簿中有 `Activity Log` 和 `Allocation Summary` 两张工作表。",
+        "在 `Activity Log` 中确认第 1 行是源表标题、第 2 至第 19 行是 18 条记录，并且 `Record Summary` 列目前没有预填摘要或公式。",
+        "在 `Allocation Summary` 中确认 `A1` 显示 `Workshop Allocation Share`，具有深色填充，但文字尚不是白色；标题下方应有可放置汇总结果的空白区域。",
+        "创建区域数据透视表前，确认源数据中存在标题完全为 `Zone` 的区域字段，以及标题为 `Completed Units` 的数值字段。若当前可见源表确实只有 `Batch Code`、`Scheduled Units`、`Completed Units`、`Rework Units` 和 `Record Summary` 而没有 `Zone`，不要根据批次代码自行推断或编造区域；因为缺少分组字段时无法建立所要求的按区域数据透视表，应先补正源工作簿数据后再继续该部分。"
       ],
       "steps": [
         {
-          "efficiency_tip": "先只在 `E2` 完成一次正确公式，再一次性向下填充，可避免逐行输入并保持全部记录的文字格式一致。",
+          "efficiency_tip": "先只在第一条记录写好公式，再一次性向下填充；绝对引用标题单元格可避免复制后标题引用发生偏移。",
           "instructions": [
-            "切换到 `Activity Log`，单击 `E2`。不要覆盖 `E1` 中的 `Record Summary` 表头。",
-            "在 `E2` 输入以下公式后按 `Enter`：`=$A$1&\": \"&A2&\", \"&$B$1&\": \"&FIXED(B2,2)&\", \"&$C$1&\": \"&FIXED(C2,2)&\", \"&$D$1&\": \"&FIXED(D2,2)`。其中表头引用含 `$`，复制时会固定；第 2 行的数据引用会随行号改变。",
-            "再次选中 `E2`，将选择范围扩展为 `E2:E19`，然后按 `Ctrl+D` 向下填充。"
+            "打开 `Activity Log`，单击 `E2`，这是第一条记录对应的 `Record Summary` 输出单元格。",
+            "输入以下公式后按 `Enter`：`=$A$1&\": \"&A2&\", \"&$B$1&\": \"&FIXED(B2,2)&\", \"&$C$1&\": \"&FIXED(C2,2)&\", \"&$D$1&\": \"&FIXED(D2,2)`。",
+            "公式中的 `$A$1`、`$B$1`、`$C$1`、`$D$1` 固定引用第 1 行标题；`A2`、`B2`、`C2`、`D2` 则会在向下填充时改为当前记录所在行。`FIXED(...,2)` 会把三个单位数值转换成固定两位小数的文本。"
           ],
           "skill_ids": [
             "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-02"
           ],
           "step_number": 1,
-          "title": "生成所有记录的两位小数叙述",
-          "visible_success_signal": "`E2:E19` 均显示由字段名称和数值组成的可读文本；每条记录中的三个单位数值均以两位小数显示，例如 `12.00`。"
+          "title": "在第一条记录中建立标准化摘要公式",
+          "visible_success_signal": "`E2` 显示一段可读文本，包含四个标题和值；其中 `Scheduled Units`、`Completed Units` 和 `Rework Units` 后的数值均显示两位小数。"
         },
         {
-          "efficiency_tip": "标题单元格保持选中时立刻设置字体颜色，深色背景会即时帮助你判断白字是否已生效。",
+          "efficiency_tip": "使用 `Ctrl+D` 可将选区最上方的公式填入其余所有选中行，避免逐行复制。",
           "instructions": [
-            "切换到 `Allocation Summary`，单击深色标题单元格 `A1`。",
-            "打开工具栏上的 `Font Color` 下拉颜色面板，选择白色。",
-            "保持 `A1` 选中，检查文字与深色填充之间的对比度。"
+            "选中范围 `E2:E19`，确保 `E2` 是选区的最上方单元格并保留刚输入的公式。",
+            "按 `Ctrl+D` 向下填充公式。",
+            "查看 `E3` 和 `E19`，确认引用中的记录值已随行号变化，而标题文字保持不变。"
+          ],
+          "skill_ids": [
+            "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-02"
+          ],
+          "step_number": 2,
+          "title": "将摘要公式填充到全部记录",
+          "visible_success_signal": "`E2:E19` 都不再为空，每一行都有对应记录的摘要文本，且每个单位数值均带有两位小数。"
+        },
+        {
+          "efficiency_tip": "在标题单元格仍被选中时直接设置文字颜色，深色背景会立即帮助判断对比度是否足够。",
+          "instructions": [
+            "切换到 `Allocation Summary`，选中 `A1`。",
+            "在工具栏打开 `Font Color` 的下拉颜色面板，选择白色。",
+            "如果文字已在深色背景上清晰显示为白色，则无需再调整。若文字仍为深色、灰色或与背景对比不足，重新打开 `Font Color` 并选择纯白色样本。"
           ],
           "skill_ids": [
             "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-04"
           ],
-          "step_number": 2,
-          "title": "将报告标题改为白色文字",
-          "visible_success_signal": "`A1` 中的 `Workshop Allocation Share` 显示为白色，并在深海军蓝背景上清晰可读。"
+          "step_number": 3,
+          "title": "将报告标题文字改为白色",
+          "visible_success_signal": "`A1` 中的 `Workshop Allocation Share` 为白色粗体文字，并且在深色背景上清楚可读。"
         },
         {
-          "efficiency_tip": "直接从完整连续源表建立 Pivot Table，能够让字段名称和所有 18 条记录一次性进入字段布局，避免遗漏记录。",
+          "efficiency_tip": "从包含标题行的连续源表开始创建数据透视表，可让 Calc 自动识别可用字段；不要把目标工作表的空白区域混入源数据选择。",
           "instructions": [
-            "返回 `Activity Log`，选中包含表头和全部记录的连续源数据区域。选择范围必须包含 `Zone` 和 `Completed Units` 字段；如果表格范围显示为 `A1:E19`，可从 `A1` 拖选到最后一个已使用的单元格。",
-            "打开 `Data` > `Pivot Table` > `Insert or Edit...`。在创建对话框中确认当前选择的数据源正确，然后继续进入字段布局设置。",
-            "在字段布局中，将 `Zone` 放到行分组区域，使每个 Zone 成为一行；将 `Completed Units` 放到数据区域，并确认其汇总函数为求和。",
-            "将结果位置设在 `Allocation Summary` 的标题下方空白区，例如 `A3`，随后确认创建。确保结果不会覆盖 `A1` 标题。"
+            "返回 `Activity Log`，选中包含 `Zone`、`Completed Units` 及其所有记录的完整连续源数据区域，并包含第 1 行字段标题。",
+            "打开 `Data` > `Pivot Table` > `Insert or Edit...`，以当前选中的源数据建立数据透视表。",
+            "在数据透视表布局区域中，将 `Zone` 放入行分组区域，将 `Completed Units` 放入数据字段区域，使其按求和方式汇总。",
+            "确认布局后，在结果位置提示中将输出位置设在 `Allocation Summary` 的空白区域，例如选择 `A3`，再确认创建。",
+            "如果 Calc 已显示每个区域一行并以 `Completed Units` 的合计作为数值，说明字段角色已正确推断，无需调整。若 `Zone` 出现在数值区、`Completed Units` 出现在行标签区，返回布局设置并将两字段分别移回行分组区域和数据字段区域后重新确认。"
           ],
           "skill_ids": [],
-          "step_number": 3,
-          "title": "创建按 Zone 汇总 Completed Units 的原生 Pivot Table",
-          "visible_success_signal": "`Allocation Summary` 的标题下方出现 Pivot Table，其中可见多个 Zone 行和 `Completed Units` 的汇总值；不再只是空白区域。"
+          "step_number": 4,
+          "title": "创建按区域汇总完成单位的数据透视表",
+          "visible_success_signal": "`Allocation Summary` 的标题下方出现原生数据透视表，其中显示各个 `Zone` 的独立行及对应的 `Completed Units` 汇总值，且没有覆盖 `A1` 标题。"
         },
         {
-          "efficiency_tip": "使用 Pivot Table 自带的百分比显示计算，可在源数据变化或刷新 Pivot Table 后自动维持正确份额，无需在表外编写辅助公式。",
+          "efficiency_tip": "使用数据透视表内建的总计百分比显示方式，可在源数据更新后自动重新计算份额，无需在表外维护辅助公式。",
           "instructions": [
-            "在新建的 Pivot Table 中，打开 `Completed Units` 数据字段的选项或显示值设置。",
-            "在显示值设置中打开 `Type` 下拉列表；它可能初始显示 `Normal`。",
-            "从 `Type` 中选择 `% of total`，然后用 `OK` 或 `Enter` 确认数据字段选项。",
-            "如需退出布局或更新提示，继续确认对话框，并观察 Pivot Table 的数据列显示格式。"
+            "在数据透视表的布局或字段设置中，打开 `Completed Units` 数据字段的数据字段选项。",
+            "打开 `Show Values As` 的显示值设置，将 `Type` 下拉选项从普通数值改为 `% of total`，然后用 `OK` 确认。",
+            "如果表中的区域值已经显示百分号，并且总计显示为 100% 或等值的全部占比，则无需再调整。若区域值仍显示为原始完成单位数值，重新进入 `Completed Units` 的数据字段选项，确认 `Type` 确实为 `% of total` 后再次用 `OK` 保存。",
+            "若百分比表位于空白汇总区且未遮挡标题或源数据，则无需移动。若它遮挡了标题或放置位置不清晰，可选中数据透视表整体并将其移到 `Allocation Summary` 中标题下方的空白区域。"
           ],
           "skill_ids": [
             "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-09"
           ],
-          "step_number": 4,
-          "title": "将 Completed Units 显示为总计百分比",
-          "visible_success_signal": "Pivot Table 中每个 `Zone` 的 `Completed Units` 值显示为百分比，且总计行表示全部 Completed Units 的总份额。"
+          "step_number": 5,
+          "title": "将完成单位汇总值显示为总计百分比",
+          "visible_success_signal": "数据透视表中的每个 `Zone` 对应值带有百分比表示，且这些区域份额共同构成全部 `Completed Units` 的总计。"
         },
         {
-          "efficiency_tip": "最终检查时先核对结构和格式，再核对数字总计；这样可以同时发现遗漏填充、标题格式错误或透视表显示方式未更新的问题。",
+          "efficiency_tip": "最终抽查首尾记录和数据透视表总计，可以快速发现未填充公式、错误字段或未应用百分比显示的情况。",
           "instructions": [
-            "在 `Activity Log` 中查看第一条、中间一条和最后一条 `Record Summary`，确认每项均含 `Batch Code`、`Scheduled Units`、`Completed Units` 和 `Rework Units` 的标签与值，并且数值为两位小数。",
-            "在 `Allocation Summary` 中确认 `A1` 标题未被 Pivot Table 覆盖，且仍保持白色文字和深色背景。",
-            "检查 Pivot Table：每个 `Zone` 仅作为一个分组行出现，数值列为 `Completed Units` 的百分比显示，并检查总计是否为全部份额。"
+            "回到 `Activity Log`，抽查 `E2`、中间任一摘要单元格和 `E19`，确认每条摘要都包含当前行的批次代码及三个两位小数单位值。",
+            "回到 `Allocation Summary`，确认 `A1` 标题仍可见且为白色文字。",
+            "确认数据透视表的行标签为 `Zone`，数值字段对应 `Completed Units`，并以百分比而非原始单位数显示。"
           ],
           "skill_ids": [],
-          "step_number": 5,
-          "title": "进行最终结果检查",
-          "visible_success_signal": "工作簿同时具备完整的 18 条标准化记录叙述、白色可读标题，以及按 Zone 显示 Completed Units 总份额的原生 Pivot Table。"
+          "step_number": 6,
+          "title": "完成最终核对",
+          "visible_success_signal": "两个工作表均呈现完整结果：活动记录已有 18 条统一摘要，汇总表保留可读标题并显示各区域的完成单位总计占比。"
         }
       ]
     },
     "generation": {
-      "request_id": "f36aafc5-b0eb-4d54-8f00-b9e4aa0912af",
-      "prompt_sha256": "61e399f5487c06c0fe21438ea5cfbf5bb8e73a45a1305212833cc64a75c7e2b5",
+      "request_id": "863a35f1-0f01-4557-96b7-0311f27a23e1",
+      "prompt_sha256": "27e5f6569ef7021bad7ceaad7ae209893dd65044f161375369c42c49be469337",
       "model": "gpt-5.6-terra",
-      "input_tokens": 3909,
-      "output_tokens": 2493,
-      "estimated_cost_usd": 0.037734
+      "input_tokens": 4232,
+      "output_tokens": 3822,
+      "estimated_cost_usd": 0.052411
     }
   },
   "artifact": {

@@ -795,99 +795,102 @@
     "task_detail_sha256": "73ac6905251319108cb3972d4a698618057f348c61de295d0211b62c5b5d56d6",
     "guide": {
       "final_verification": [
-        "在 `Overview` 中确认 `B2:E2` 依次为 `Rate verified`、`Adjustment reviewed`、`Estimate prepared`、`Ready to send`，而 `A3:A6` 已不再保留这些源标签。",
-        "切换到 `Service Requests`，确认 `E2:E19` 每一行都有文字形式的估算说明，没有空白单元格；选中任一结果单元格时，公式栏显示该行的服务代码、数量和调整率引用会随行号变化。",
-        "检查 `Rate Card` 的查找区域仍为 `A2:B7`，且其费率和 `Service Requests!A2:D19` 的原始输入均未被改动。",
-        "确认底部状态栏的缩放比例低于开始时的默认比例，并且当前视图能比开始时容纳更多工作表内容。"
+        "在`Overview`中，`B2:E2`从左到右显示`Rate verified`、`Adjustment reviewed`、`Estimate prepared`、`Ready to send`，而`A3:A6`不再保留这些标签。",
+        "在`Service Requests`中，`E2:E19`全部为非空的可读文本估算说明；选中任一结果单元格时，公式栏中的公式应引用当前行的`B`、`C`、`D`列，并固定引用`Rate Card`的`$A$2:$B$7`。",
+        "确认`E2`的计算结果与该行数据相符：`DIAG`的单价为`42.50`、`2`个单位、`0.00`调整后，说明中应显示约`$85.00`的估算金额（货币符号显示可随本地设置略有不同）。",
+        "保持在`Service Requests`工作表时，状态栏右下角的缩放显示应低于开始时的默认缩放，且屏幕上可见的表格行或列比开始时更多。"
       ],
       "language": "zh-CN",
-      "overview": "本指南完成三项服务估算审核整理：将 `Overview` 的纵向检查标签移动并转置为横向标题，在 `Service Requests` 中用 `Rate Card` 的费率生成每条请求的文字估算说明，再将结果向下填满并适度缩小显示比例。",
+      "overview": "本任务在现有的三个工作表中完成：将`Overview`的纵向检查项剪切并转置为横向标题；在`Service Requests`中用`Rate Card`的固定费率表生成每条请求的文字估算说明，再向下填充；最后略微缩小工作表显示比例。",
       "reference_task_id": "reference-task-calc-full-r01-003",
       "starting_state_checks": [
-        "确认工作簿包含 `Service Requests`、`Rate Card` 和 `Overview` 三个工作表，且最初打开的是 `Service Requests`。",
-        "在 `Service Requests` 中确认标题位于 `A1:E1`，请求数据连续位于 `A2:D19`，并且 `E2:E19` 仍为空白。",
-        "在 `Rate Card` 中确认 `A1:B7` 是包含 `Service Code` 和 `Unit Rate` 的完整费率表；不要修改此表。",
-        "在 `Overview` 中确认四个标签仍纵向位于 `A3:A6`，而目标区域 `B2:E2` 为空白。",
-        "查看右下角状态栏，确认尚未缩小工作表显示比例。"
+        "确认当前工作簿包含`Service Requests`、`Rate Card`和`Overview`三个工作表，且没有新增工作表。",
+        "在`Service Requests`中确认标题位于`A1:E1`，请求数据连续位于`A2:D19`，而`Estimate Note`列的`E2:E19`仍为空。",
+        "在`Rate Card`中确认`A1:B7`包含`Service Code`和`Unit Rate`费率表；不要修改其中的费率或服务代码。",
+        "在`Overview`中确认四个检查项仍纵向位于`A3:A6`，并且目标区域`B2:E2`为空。",
+        "查看右下角状态栏的缩放控件，确认尚未进行缩小显示。"
       ],
       "steps": [
         {
-          "efficiency_tip": "先使用剪切而不是复制，转置完成后源区域会自动清空，无需再手动删除旧的纵向标签。",
+          "efficiency_tip": "先一次选中完整的四格源区域，并使用剪切而不是复制；这样转置成功后，原来的纵向标签会自动移除，无须再单独清空。",
           "instructions": [
-            "切换到 `Overview` 工作表，选中连续源区域 `A3:A6`。",
-            "按 `Ctrl+X` 剪切这四个标签。",
-            "单击目标左上角单元格 `B2`，右键单击该单元格，打开 `Paste Special`，然后选择 `Transpose`。"
+            "切换到`Overview`工作表，拖选源区域`A3:A6`，其中应依次显示四个检查项。",
+            "按`Ctrl+X`剪切所选区域。",
+            "单击目标左上角单元格`B2`，右键打开快捷菜单，进入`Paste Special`并选择`Transpose`。",
+            "应看到标签按原先从上到下的顺序，改为从左到右显示在`B2:E2`。如果结果已经位于`B2:E2`且`A3:A6`已清空，则无需调整；如果标签仍竖排、位置不对或源区域仍有内容，按`Ctrl+Z`撤销这次放置后，重新剪切`A3:A6`，从`B2`开始使用`Paste Special`中的`Transpose`。"
           ],
           "skill_ids": [
             "26a8440e-c166-4c50-aef4-bfb77314b46b.skill-05"
           ],
           "step_number": 1,
-          "title": "将审核清单移动并转置为横向标题",
-          "visible_success_signal": "`B2:E2` 从左到右显示 `Rate verified`、`Adjustment reviewed`、`Estimate prepared`、`Ready to send`；原来的 `A3:A6` 不再包含这些标签。"
+          "title": "将 Overview 检查项剪切并转置为横向标题",
+          "visible_success_signal": "`Overview!B2:E2`依次显示`Rate verified`、`Adjustment reviewed`、`Estimate prepared`、`Ready to send`，并且`A3:A6`为空。"
         },
         {
-          "efficiency_tip": "一次写出带绝对查找区域的完整公式；只有当前请求行的引用应随填充改变，费率表范围不应改变。",
+          "efficiency_tip": "只在第一条请求中建立一次完整公式。将费率表范围写成绝对引用，可使向下填充时查找范围始终不变。",
           "instructions": [
-            "切换到 `Service Requests`，单击第一个输出单元格 `E2`。",
-            "输入以下文字结果公式，然后按 `Enter`：`=\"Estimated total: \"&TEXT(VLOOKUP(B2,$'Rate Card'.$A$2:$B$7,2,FALSE())*C2*(1-D2),\"$#,##0.00\")`。",
-            "保持或重新选中 `E2`，查看公式栏：其中 `B2`、`C2`、`D2` 是当前行引用，而 `$'Rate Card'.$A$2:$B$7` 是固定的跨工作表查找区域。"
+            "切换到`Service Requests`工作表，单击第一个输出单元格`E2`。",
+            "输入以下公式后按`Enter`：`=\"Estimate: \"&TEXT(VLOOKUP(B2,$'Rate Card'.$A$2:$B$7,2,FALSE())*C2*(1-D2),\"$0.00\")`",
+            "该公式会按本行的服务代码`B2`在`Rate Card`中查找单价，再计算单价 × 单位数`C2` × (1 − 调整值`D2`)，并将金额组合为文字说明。",
+            "`E2`应显示以`Estimate:`开头的文字和货币金额。若已经显示类似`Estimate: $85.00`的说明，则无需调整；如果出现公式错误而不是文字结果，检查`B2`至`D2`是否仍为本行数据、工作表名称和绝对范围是否为`$'Rate Card'.$A$2:$B$7`，然后重新输入公式。若当前安装环境要求使用分号作为函数参数分隔符，将公式中的参数逗号改为分号后重新确认。"
           ],
           "skill_ids": [
             "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-01"
           ],
           "step_number": 2,
-          "title": "在首条请求中建立费率查找和估算文字公式",
-          "visible_success_signal": "`E2` 显示以 `Estimated total:` 开头的文字及货币金额；对于第一条 `DIAG`、2 个单位、0% 调整的请求，金额应反映费率乘以数量后的结果。"
+          "title": "在首条请求中建立文字估算公式",
+          "visible_success_signal": "`E2`显示可读的估算文字；选中`E2`时，公式栏可见相对引用`B2`、`C2`、`D2`以及固定的`$'Rate Card'.$A$2:$B$7`查找范围。"
         },
         {
-          "efficiency_tip": "使用填充柄双击可自动识别旁边连续的请求数据并填至最后一行，避免逐行复制公式。",
+          "efficiency_tip": "双击填充柄比逐行复制更快，Calc 会根据相邻的连续请求数据自动填充到最后一行。",
           "instructions": [
-            "选中含有已验证公式的 `E2`。",
-            "找到选中单元格右下角的小方块填充柄，并双击它。",
-            "向下检查结果区域，必要时滚动到第 19 行，确认填充已经覆盖全部请求记录。"
+            "重新单击`E2`，使其成为当前选中单元格。",
+            "将指针移到选中框右下角的小方块，即填充柄；双击该填充柄。",
+            "由于相邻的请求数据连续到第`19`行，Calc 应自动将公式填充至`E19`，各行中的相对引用会随行号变化。",
+            "如果自动填充已经覆盖`E2:E19`且没有空白结果，则无需调整；如果填充在`E19`之前停止，选中范围`E2:E19`，然后使用`Sheet` > `Fill Cells` > `Down`，将`E2`的公式填满所选范围。"
           ],
           "skill_ids": [
             "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-03"
           ],
           "step_number": 3,
-          "title": "将估算说明公式填充到所有请求行",
-          "visible_success_signal": "`E2:E19` 均包含文字估算说明且没有空白；例如选中较低行的结果时，公式中的相对引用会变为该行的 `B`、`C`、`D` 单元格引用，而 `Rate Card` 范围保持固定。"
+          "title": "向下填充全部 Estimate Note 结果",
+          "visible_success_signal": "`E2:E19`每个单元格都包含以`Estimate:`开头的文字估算说明，没有空白输出单元格。"
         },
         {
-          "efficiency_tip": "直接在滑块上选择一个稍低的舒适比例，通常比反复点击缩小端更快，也更容易控制缩放幅度。",
+          "efficiency_tip": "用状态栏滑块做一次有目的的缩小即可；直接点向较小比例的一侧通常比反复小幅点击更快。",
           "instructions": [
-            "保持在 `Service Requests` 工作表，以便立即观察表格的可见范围。",
-            "在窗口右下角状态栏找到缩放滑块。",
-            "单击滑块的左侧或将滑块向左调整一次，使显示比例比初始默认比例略低。"
+            "保持在`Service Requests`工作表，以便直接观察请求表的可见范围。",
+            "在窗口右下角状态栏找到缩放滑块，点击滑块的左侧或向左拖动滑块，使缩放比例比开始时略低。",
+            "当状态栏显示的比例已低于初始默认比例，并且能同时看到更多请求行或列时，无需继续调整；如果比例仍与开始时相同，继续向左进行一次小幅调整。若缩得过小而难以阅读，将滑块略向右移到仍低于初始比例、但文字清晰的水平。"
           ],
           "skill_ids": [
             "1334ca3e-f9e3-4db8-9ca7-b4c653be7d17.skill-01"
           ],
           "step_number": 4,
-          "title": "适度缩小工作表显示比例",
-          "visible_success_signal": "状态栏显示的缩放比例低于开始时的比例，且屏幕上可同时看到更多行或列，同时仍能清楚选择单元格。"
+          "title": "缩小 Service Requests 的显示比例",
+          "visible_success_signal": "状态栏显示的缩放比例低于开始时，且工作表视图中可见更多服务请求记录或更多列。"
         },
         {
-          "efficiency_tip": "最终只抽查首行、末行和一个中间行即可有效发现未填充、行引用错误或费率范围被移动等问题，无需逐格重做。",
+          "efficiency_tip": "最终只需抽查首行、末行和转置区域，即可高效发现是否有未填充、引用漂移或遗漏的情况。",
           "instructions": [
-            "在 `Service Requests` 中抽查 `E2`、一个中间结果单元格以及 `E19`，确认它们都是文字结果并包含金额。",
-            "选中其中一个非首行结果，确认其公式采用该行的 `B`、`C`、`D` 引用，并仍使用 `$'Rate Card'.$A$2:$B$7`。",
-            "返回 `Overview`，确认横向标题仍只在 `B2:E2`，且 `A3:A6` 为空。"
+            "抽查`Service Requests!E2`和`E19`：两者都应为文字估算说明，而非空白或错误值。",
+            "选中`E19`并查看公式栏，确认相对引用已随行更新为`B19`、`C19`、`D19`，同时费率表查找范围仍固定为`$'Rate Card'.$A$2:$B$7`。",
+            "切换回`Overview`，确认检查项只在`B2:E2`中横向出现，`A3:A6`不再包含这些标签。"
           ],
           "skill_ids": [],
           "step_number": 5,
-          "title": "完成最终内容与布局核验",
-          "visible_success_signal": "服务请求的 18 条估算说明完整、审核标签仅保留为横向标题，且缩小后的显示比例仍处于生效状态。"
+          "title": "完成最终核对",
+          "visible_success_signal": "三项结果同时成立：横向检查项已就位、`E2:E19`均有正确的文字估算、且`Service Requests`保持缩小后的显示比例。"
         }
       ]
     },
     "generation": {
-      "request_id": "2b4d961b-9521-4d29-9ca5-5ce77af175b0",
-      "prompt_sha256": "fe618f8c7e529c59db88fa5e55661475ed506966578c7666165d563aad6c2770",
+      "request_id": "22a5d9eb-367e-4dbb-b1fd-d0811db3e3b5",
+      "prompt_sha256": "b5f14d8deb511e45e6ef0e6f653c236b000e54a5bfb863e6e447df6dbabb86d8",
       "model": "gpt-5.6-terra",
-      "input_tokens": 4412,
-      "output_tokens": 2095,
-      "estimated_cost_usd": 0.033964
+      "input_tokens": 4735,
+      "output_tokens": 2572,
+      "estimated_cost_usd": 0.038417
     }
   },
   "artifact": {

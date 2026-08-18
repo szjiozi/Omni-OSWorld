@@ -753,89 +753,84 @@
     "task_detail_sha256": "0e205b1033f2735cb1349ff9b210318196393552107050c72f8ac952cac5b3aa",
     "guide": {
       "final_verification": [
-        "在 `Handoff Summary` 中确认上方有完整的转置覆盖表：第一行是 `Shift`、`Morning`、`Midday`、`Afternoon`，第一列依次列出 `Kiosk North`、`Kiosk Central`、`Kiosk South`，且各覆盖目标数值与 `Coverage Setup` 对应但方向已旋转。",
-        "确认同一张 `Handoff Summary` 中另有一个不与覆盖表重叠的 Pivot Table；它按 `Kiosk` 显示 `Kiosk North`、`Kiosk Central`、`Kiosk South`，并显示每个 kiosk 的 `Ticket Code` 非空记录数。",
-        "确认 Pivot Table 的数值字段标题明确包含 `Count`，而不是 `Sum`；三个 kiosk 的计数合计应为 `30`，因为 `CheckIn Log` 有 30 条数据记录且每条都有 `Ticket Code`。",
-        "保存工作簿，必要时使用 `File` > `Save` 或按 `Ctrl+S`，以保留 `Handoff Summary` 上的两个结果。"
+        "`Handoff Summary` 中上方有一个完整的 4×4 覆盖目标表：第一列为 `Shift`、`Morning`、`Midday`、`Afternoon`，第一行依次显示 `Shift`、`Morning`、`Midday`、`Afternoon`；`Kiosk North`、`Kiosk Central`、`Kiosk South` 位于纵向行标签中，数值与 `Coverage Setup` 的原表旋转对应。",
+        "`Handoff Summary` 的另一块空白区域中有 Pivot Table，按 `Kiosk` 分行，显示 `Kiosk North`、`Kiosk Central`、`Kiosk South`，并有 `Ticket Code` 的计数结果。",
+        "Pivot Table 的数据字段标题明确表示 `Count`，而不是 `Sum`；三个 kiosk 的计数合计应对应 `CheckIn Log` 中 30 条非空 `Ticket Code` 记录。",
+        "两个输出均位于 `Handoff Summary`，彼此不重叠，且没有遮挡转置覆盖表。"
       ],
       "language": "zh-CN",
-      "overview": "本任务在 `Handoff Summary` 上完成两个彼此分开的交接视图：先把 `Coverage Setup` 的完整 shift-by-kiosk 矩阵转置到上方，再根据 `CheckIn Log` 创建按 kiosk 汇总的 Pivot Table，并将 `Ticket Code` 汇总方式明确设为计数。",
+      "overview": "在现有工作簿中，将 `Coverage Setup` 的完整班次与服务台覆盖目标矩阵转置到 `Handoff Summary`，然后根据 `CheckIn Log` 创建以 `Kiosk` 为行标签、以非空 `Ticket Code` 出现次数为值的 Pivot Table。",
       "reference_task_id": "reference-task-calc-full-r01-014",
       "starting_state_checks": [
-        "确认当前打开的是目标工作簿，且起始活动工作表为无内容的 `Handoff Summary`。",
-        "检查 `Coverage Setup` 的 A1:D4 是完整的带标题矩阵，包含 `Shift`、三个 kiosk 标题以及 `Morning`、`Midday`、`Afternoon` 三个班次。",
-        "检查 `CheckIn Log` 的 A1:D31 是连续数据表，标题包含 `Check-in Time`、`Kiosk`、`Ticket Code`、`Repair Type`；特别确认 `Ticket Code` 在数据行中均非空。",
-        "确认 `Handoff Summary` 尚未存在转置表或 Pivot Table，并预留上方区域给覆盖表、下方或右侧区域给 Pivot Table。"
+        "确认工作簿已经打开，当前活动工作表为 `Handoff Summary`，并且该表仍为空白，没有已有的转置表或 Pivot Table。",
+        "点击 `Coverage Setup` 工作表标签，确认 A1:D4 是完整连续的覆盖目标矩阵，首行包含 `Shift`、`Kiosk North`、`Kiosk Central`、`Kiosk South`。",
+        "点击 `CheckIn Log` 工作表标签，确认 A1:D31 是连续的数据表，且含有 `Kiosk` 与 `Ticket Code` 列；每条数据记录的 `Ticket Code` 都非空。"
       ],
       "steps": [
         {
-          "efficiency_tip": "一次选中带标题的整个 A1:D4 区域，能让转置后的表同时保留 kiosk 和 shift 标签，无需另行补写标题。",
+          "efficiency_tip": "一次选中带标题的完整 A1:D4 区域并复制，能让转置结果同时保留行列标签，无需手工重排。",
           "instructions": [
-            "切换到 `Coverage Setup` 工作表。",
-            "选择完整矩阵 A1:D4，包括标题行和标题列。",
-            "按 `Ctrl+C` 复制所选区域。",
-            "切换回 `Handoff Summary`，在上方的空白区域选定一个左上角目标单元格，例如 A1。",
-            "右键单击该目标单元格，打开 `Paste Special`，并选择 `Transpose` 以粘贴转置后的内容。"
+            "在 `Coverage Setup` 工作表中，选中 A1:D4；该范围必须包含标题行和三条班次记录。",
+            "按 `Ctrl+C` 复制该矩阵。",
+            "切换到 `Handoff Summary`，选择 A1 作为上方输出区域的左上角。",
+            "右键单击 A1，打开 `Paste Special`，选择 `Transpose`。"
           ],
           "skill_ids": [
             "eb03d19a-b88d-4de4-8a64-ca0ac66f426b.skill-01"
           ],
           "step_number": 1,
-          "title": "将覆盖目标矩阵转置到交接表",
-          "visible_success_signal": "`Handoff Summary` 出现一个 4 列 × 4 行的覆盖表：kiosk 名称竖向列在第一列，`Morning`、`Midday`、`Afternoon` 横向位于第一行，所有数值仍与原覆盖目标对应。"
+          "title": "转置覆盖目标矩阵",
+          "visible_success_signal": "A1:D4 出现旋转后的完整表格：班次名称横向排列在首行，`Kiosk North`、`Kiosk Central`、`Kiosk South` 纵向排列在首列，所有覆盖目标数值仍在对应的 kiosk 与班次交叉位置。"
         },
         {
-          "efficiency_tip": "在插入 Pivot Table 前先选中连续数据表中的任意一个单元格，Calc 通常可自动识别整个相邻数据区域，减少手动输入源范围的机会。",
+          "efficiency_tip": "从表内任意单元格开始选择整个连续数据区域，可避免遗漏标题或末尾记录；使用完整表作为 Pivot Table 来源可让字段名称自动可用。",
           "instructions": [
-            "切换到 `CheckIn Log` 工作表，并单击 A1:D31 连续表格内的任意单元格。",
+            "切换到 `CheckIn Log`，选中 A1:D31 的完整数据区域，包括标题行。",
             "打开 `Data` > `Pivot Table` > `Insert or Edit...`。",
-            "确认 Pivot Table 的源数据范围覆盖带标题的 `CheckIn Log` 表，即 A1:D31；如自动识别的范围正确则继续。",
-            "在字段布局区域中，将 `Kiosk` 放入 `Row Fields`，使每个 kiosk 成为一行。",
-            "将 `Ticket Code` 放入 `Data Fields`，准备对每条非空 ticket 记录进行汇总。",
-            "选择将结果放在已有工作表的选项，并把输出位置指定为 `Handoff Summary` 中覆盖表下方或右侧的空白起始单元格，例如 A8；确保不会覆盖转置表。",
-            "确认创建 Pivot Table。"
+            "在 Pivot Table 布局对话框中，找到字段列表中的 `Kiosk` 和 `Ticket Code`。将 `Kiosk` 放入 `Row Fields` 区域，将 `Ticket Code` 放入 `Data Fields` 区域。",
+            "在结果位置设置中，选择将结果输出到 `Handoff Summary` 的未使用区域，例如 A7。若默认预览已显示结果将从 A7 附近开始、且不会覆盖 A1:D4 的转置表，则无需调整。若预览或位置设置显示结果会与转置表重叠，请把结果起始单元格改为 A7 或另一块足够大的空白区域。"
           ],
           "skill_ids": [],
           "step_number": 2,
-          "title": "创建按 kiosk 分组的 Pivot Table",
-          "visible_success_signal": "`Handoff Summary` 的空白区域出现 Pivot Table，行标签按 kiosk 分组，并有一个来自 `Ticket Code` 的数据结果列。"
+          "title": "建立按服务台汇总的 Pivot Table 布局",
+          "visible_success_signal": "布局对话框中，`Kiosk` 显示在 `Row Fields`，`Ticket Code` 显示在 `Data Fields`，并且结果目标是 `Handoff Summary` 中不与转置表重叠的空白区域。"
         },
         {
-          "efficiency_tip": "刚把 `Ticket Code` 加入 `Data Fields` 时立即调整汇总方式，可以避免之后误把数值汇总结果当成所需的记录数量。",
+          "efficiency_tip": "刚把 `Ticket Code` 放入 `Data Fields` 后立即修改汇总方式，能避免先生成不正确的默认汇总结果再返工。",
           "instructions": [
-            "如仍在 Pivot Table 的布局/编辑窗口，双击 `Data Fields` 区域中的 `Ticket Code` 字段；若 Pivot Table 已生成，可通过 `Data` > `Pivot Table` > `Insert or Edit...` 重新打开其字段布局后再双击该字段。",
-            "在打开的数据字段选项中选择 `Count`，使 Calc 统计非空 `Ticket Code` 的出现次数，而不是使用数值求和。",
-            "确认设置并完成 Pivot Table 的更新。"
+            "在 Pivot Table 布局对话框的 `Data Fields` 区域，双击 `Ticket Code` 字段条目以打开其数据字段选项。",
+            "选择 `Count` 作为汇总方式，然后确认返回 Pivot Table 布局。",
+            "完成布局对话框并创建 Pivot Table。若创建后的值字段标题已表示 `Count` 且每个 kiosk 显示一个数值，则无需调整。",
+            "如果 Pivot Table 的值字段标题显示 `Sum`，或 `Ticket Code` 没有按出现次数统计，请在 Pivot Table 内双击任意单元格以编辑它，双击 `Data Fields` 中的 `Ticket Code`，选择 `Count` 后确认并更新表格。"
           ],
           "skill_ids": [
             "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-08"
           ],
           "step_number": 3,
           "title": "将 Ticket Code 数据字段设为计数",
-          "visible_success_signal": "Pivot Table 的值字段标签显示 `Count`，并且 `Kiosk North`、`Kiosk Central`、`Kiosk South` 各自显示 ticket 记录数量，而非金额或求和结果。"
+          "visible_success_signal": "`Handoff Summary` 中出现单独的 Pivot Table：行标签为各 kiosk，值字段标题含有 `Count`，并显示每个 kiosk 的 `Ticket Code` 非空记录数。"
         },
         {
-          "efficiency_tip": "使用 Pivot Table 的总计快速核对源数据行数；这比逐行手动计数更快，也能及早发现源范围漏选。",
+          "efficiency_tip": "通过查看字段标题和行标签即可快速确认汇总逻辑，无需逐条手算所有记录。",
           "instructions": [
-            "回到 `Handoff Summary`，检查转置覆盖表和 Pivot Table 之间有足够空白，不存在覆盖或混在同一表格内的情况。",
-            "核对 Pivot Table 中每个 `Kiosk` 都只作为一个分组行出现，并且数值字段为 `Count` 类型的 `Ticket Code` 结果。",
-            "查看 Pivot Table 的总计；由于源表 30 条数据记录的 `Ticket Code` 都非空，三个 kiosk 的计数总和应为 30。",
-            "按 `Ctrl+S` 保存。"
+            "查看 `Handoff Summary`：确认转置覆盖表仍完整可见，Pivot Table 位于不同的空白区域。",
+            "确认 Pivot Table 的行中列出了 `Kiosk North`、`Kiosk Central`、`Kiosk South`，且数值字段是 `Ticket Code` 的 `Count`。",
+            "如有重叠，单击 Pivot Table 外边框选中整个对象并将其拖到更空的区域，使源转置表保持可见；不要移动或改写转置表中的单元格内容。"
           ],
           "skill_ids": [],
           "step_number": 4,
-          "title": "检查布局、计数结果并保存",
-          "visible_success_signal": "`Handoff Summary` 清楚地同时展示转置后的 coverage layout 和独立的 kiosk check-in Count Pivot Table，且 Pivot Table 总计为 `30`。"
+          "title": "核对交付页面",
+          "visible_success_signal": "`Handoff Summary` 清晰同时展示转置后的 kiosk-by-shift 覆盖目标布局，以及按 kiosk 统计的 `Ticket Code` 计数 Pivot Table。"
         }
       ]
     },
     "generation": {
-      "request_id": "3f5142ed-596a-4efa-8c1b-76705c19954a",
-      "prompt_sha256": "d69497b83e3fa3a41282e1a1f14eee0b4512abb2f0026cc662c381d12fc1e36e",
+      "request_id": "4f01611a-b29e-4650-8970-be0164bab88a",
+      "prompt_sha256": "5968fc2b2246f74335c2e021cb97ad4ce7af64770c3a62d0a8e645b25835a410",
       "model": "gpt-5.6-terra",
-      "input_tokens": 3052,
-      "output_tokens": 1699,
-      "estimated_cost_usd": 0.026492
+      "input_tokens": 3375,
+      "output_tokens": 1733,
+      "estimated_cost_usd": 0.025629
     }
   },
   "artifact": {

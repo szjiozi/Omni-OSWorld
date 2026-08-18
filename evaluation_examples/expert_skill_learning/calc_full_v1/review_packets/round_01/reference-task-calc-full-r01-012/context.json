@@ -722,94 +722,86 @@
     "task_detail_sha256": "32f7af048be74566fa082dada1fbef5ff79a3135b31991ae3098ebad837fcf67",
     "guide": {
       "final_verification": [
-        "`Dispatch Log` 工作表仍保留 24 条日期连续的派送记录，原始的 `Planned Kits` 和 `Verified Kits` 数据没有被改动。",
-        "`B2:B25` 均显示为一位小数的百分比；抽查任意一行时，该行的 Completion Rate 等于 `Verified Kits ÷ Planned Kits`。",
-        "工作表中有一个清晰可读的折线图：横轴为 Dispatch Date，只有一条 Completion Rate 数据线，并且线条上没有数据点标记。"
+        "`Dispatch Log` 工作表仍保留 24 条 2026 年 4 月的原始派送记录，且没有新增不相关的工作表或汇总数据。",
+        "`B2:B25` 均为一位小数的百分比；例如选中任意一行的 B 列单元格，在输入行可看到该行形式为 `=D行号/C行号` 的公式，数值等于 Verified Kits 除以 Planned Kits。",
+        "图表清晰可见且未遮住源表：横轴为 Dispatch Date 的日期类别，仅有一条 Completion Rate 折线，并且线条没有数据点标记。"
       ],
       "language": "zh-CN",
-      "overview": "本任务将在 `Dispatch Log` 中计算每个派送日期的完成率：用 `Verified Kits` 除以 `Planned Kits`，再利用日期和完成率创建一张无数据点标记的折线图，以查看每日完成率的变化趋势。",
+      "overview": "在 `Dispatch Log` 中先以相对引用计算每日 Completion Rate，再快速向下填满 24 条记录，最后以 Dispatch Date 和 Completion Rate 创建无标记的折线图来展示每日完成率趋势。",
       "reference_task_id": "reference-task-calc-full-r01-012",
       "starting_state_checks": [
-        "确认当前活动工作表是 `Dispatch Log`。",
-        "确认第 1 行是标题行，数据位于第 2 行至第 25 行；`B2:B25` 的 Completion Rate 目前为空。",
-        "确认 C 列 `Planned Kits` 与 D 列 `Verified Kits` 每一行都有数值，且工作簿中尚未存在图表。"
+        "确认当前活动工作表为 `Dispatch Log`。",
+        "确认第 1 行是标题行，数据位于第 2 至第 25 行；`B2:B25` 为空但显示为百分比格式，C 列为 Planned Kits、D 列为 Verified Kits。",
+        "确认工作表中尚未存在图表对象。"
       ],
       "steps": [
         {
-          "efficiency_tip": "先只在首个结果单元格写一次采用相对引用的公式；后续行可自动调整引用，无需逐行计算。",
+          "efficiency_tip": "只输入一次使用相对引用的公式；后续复制时 Calc 会自动按行调整引用，无需逐行计算。",
           "instructions": [
-            "单击单元格 `B2`，它是第一条记录的 Completion Rate 结果位置。",
-            "输入公式 `=D2/C2`，然后按 `Enter`。其中 D 列是 `Verified Kits`，C 列是 `Planned Kits`。",
-            "保留现有百分比格式，不要把结果改成普通数字格式。"
+            "单击第一个结果单元格 `B2`。",
+            "输入公式 `=D2/C2`，然后按 `Enter`。这里 D 列的 Verified Kits 是分子，C 列的 Planned Kits 是分母。",
+            "观察 `B2` 显示为一位小数的百分比。若显示的是普通小数而不是百分比，选中 `B2`，点击 `Format` > `Format Cells...`，在数字格式中选择百分比并设置为 1 位小数。"
           ],
           "skill_ids": [
             "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-01"
           ],
           "step_number": 1,
           "title": "在首行计算完成率",
-          "visible_success_signal": "`B2` 显示一个带一位小数的百分比，且其数值与第 2 行的 `Verified Kits ÷ Planned Kits` 相符。"
+          "visible_success_signal": "`B2` 已显示一个百分比结果，且该结果等于第 2 行 `D2` 的 Verified Kits 除以 `C2` 的 Planned Kits。"
         },
         {
-          "efficiency_tip": "对已完成公式的填充柄双击，比拖动到第 25 行更快，也可减少选择错行的风险。",
+          "efficiency_tip": "对有相邻连续数据的表格，双击填充柄比拖动或重复输入公式更快，也较不容易漏行。",
           "instructions": [
-            "重新选中 `B2`。",
-            "将指针移到选中单元格右下角的小方块，即填充柄。",
-            "当指针位于填充柄上时双击。Calc 会依据相邻 C、D 列连续的数据，将公式填充到其余记录行。"
+            "保持或重新选中 `B2`。",
+            "将指针移到 `B2` 选中边框右下角的小方块（填充柄）。当指针表示可填充时，双击该填充柄。",
+            "Calc 会沿着相邻的连续数据区域向下复制公式，直到第 25 行。",
+            "若双击后没有填充到 `B25`，选中 `B2`，复制该单元格，然后选中 `B3:B25` 并粘贴；相对引用会随行号自动变化。"
           ],
           "skill_ids": [
             "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-02"
           ],
           "step_number": 2,
-          "title": "向下填充所有完成率公式",
-          "visible_success_signal": "`B2:B25` 都已填入百分比。单击例如 `B3` 时，编辑栏中的公式应为与该行对应的 `=D3/C3`，而不是仍引用第 2 行。"
+          "title": "向下填充所有每日完成率",
+          "visible_success_signal": "`B2:B25` 均显示百分比结果；例如选择 `B25` 时，输入行中的公式为 `=D25/C25`。"
         },
         {
-          "efficiency_tip": "图表源区域只选择日期和完成率两列，可避免把计划数量或核验数量误绘制为额外数据线。",
+          "efficiency_tip": "一次选中包含标题的日期和完成率两列，可让 Calc 自动把日期识别为类别、把 Completion Rate 识别为唯一的数据系列。",
           "instructions": [
-            "选择包含标题的范围 `A1:B25`。A 列 `Dispatch Date` 将作为横轴类别，B 列 `Completion Rate` 将作为唯一的数据系列。",
-            "确认选择范围包含 24 条数据及第 1 行标题，并且 B 列中的计算结果均已显示。"
-          ],
-          "skill_ids": [],
-          "step_number": 3,
-          "title": "选择图表数据源",
-          "visible_success_signal": "选区覆盖 `Dispatch Date` 和 `Completion Rate` 两个标题，以及从第 2 行到第 25 行的对应数据。"
-        },
-        {
-          "efficiency_tip": "在完成创建前就选定 `Line` 及无标记的变体，可避免创建后再返回修改图表类型。",
-          "instructions": [
-            "在保持 `A1:B25` 被选中的状态下，点击插入图表的图标以打开图表创建界面。",
-            "在图表类型中选择 `Line`。",
-            "选择仅显示线条、没有点标记的变体；在此界面中它显示为从右侧数第三个图标。",
-            "点击 `Finish` 插入图表。"
+            "选择图表源数据范围 `A1:B25`，其中 A 列为 Dispatch Date，B 列为已计算的 Completion Rate，且第 1 行标题也要包含在选择中。",
+            "打开 `Insert` > `Chart...`。在图表创建窗口中选择 `Line` 图表类型。",
+            "在该类型的变体图标中，选择无点标记、仅显示线条的变体（此界面中为从右数第三个图标），然后点击 `Finish`。",
+            "完成后查看图表：应以 Dispatch Date 为横轴类别，显示一条 Completion Rate 连线且没有点标记。若已经符合此结果，无需调整。",
+            "如果横轴标签不是日期、绘制了错误的列或数值不正确，双击图表进入编辑状态，打开 `Format` > `Data Ranges`，在 `Data Series` 中将 `Categories` 设为 `$'Dispatch Log'.$A$2:$A$25`，并将该系列的 `Y-Values` 设为 `$'Dispatch Log'.$B$2:$B$25`；完成后退出图表编辑状态。"
           ],
           "skill_ids": [
             "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-04"
           ],
-          "step_number": 4,
-          "title": "插入无标记折线图",
-          "visible_success_signal": "`Dispatch Log` 上出现图表，图中只有一条连续的 Completion Rate 线，没有圆点或其他数据点标记，日期显示为横轴类别。"
+          "step_number": 3,
+          "title": "创建无标记的完成率折线图",
+          "visible_success_signal": "工作表上出现一张折线图：日期用作横轴类别，只有一条随日期变化的 Completion Rate 线，并且线上没有圆点或其他数据点标记。"
         },
         {
-          "efficiency_tip": "如图表覆盖了表格或文字过小，可拖动图表到空白区域并调整大小，以便同时检查数据表和趋势线。",
+          "efficiency_tip": "先核对少量代表性行和图表的系列数量，能快速发现公式未填满、选择范围过大或图表角色识别错误等问题。",
           "instructions": [
-            "检查图表是否清楚显示日期顺序和完成率的上下变化。",
-            "如有需要，将图表移动或调整为不会遮挡 `A1:D25` 数据表的可读大小。",
-            "抽查图表仅有一个 Completion Rate 系列；不要加入 `Planned Kits` 或 `Verified Kits` 系列。"
+            "确认图表没有遮挡 `A1:D25` 的源数据。若图表已在空白区域且源单元格可读，无需调整。",
+            "如果图表遮住了数据，单击图表外边框以选中整个对象，然后拖动整个图表到工作表的空白区域，或适度调整其大小，使数据表和图表都清晰可见。",
+            "抽查 `B2`、中间任意一行和 `B25`：每个结果都应为百分比，且同一行的完成率应与 Verified Kits ÷ Planned Kits 一致。",
+            "最后确认图表没有额外数据系列，横轴仍显示每日日期，且折线趋势不是一条完全水平的线。"
           ],
           "skill_ids": [],
-          "step_number": 5,
-          "title": "检查图表和最终结果",
-          "visible_success_signal": "数据表与图表可同时辨认：`B2:B25` 为完成率百分比，图表显示 24 个日期对应的一条无标记完成率趋势线。"
+          "step_number": 4,
+          "title": "整理图表并完成核对",
+          "visible_success_signal": "原始表格、所有 24 个完成率和一张可读的无标记单系列折线图同时清晰可见。"
         }
       ]
     },
     "generation": {
-      "request_id": "4c5a6097-03fd-446d-9217-0541ccff331f",
-      "prompt_sha256": "03067d0861c64a012496a7fc4c52dcfeb76ad07501ce0de970685f4a271e6e55",
+      "request_id": "c47e0bba-687e-4c77-aea2-5fc1bc7a53e6",
+      "prompt_sha256": "09395a34da7caf0c61deb413889975a40edd4d55ea1d0246f88343cee7dc5c7d",
       "model": "gpt-5.6-terra",
-      "input_tokens": 3063,
-      "output_tokens": 1429,
-      "estimated_cost_usd": 0.023274
+      "input_tokens": 3386,
+      "output_tokens": 1910,
+      "estimated_cost_usd": 0.027775
     }
   },
   "artifact": {

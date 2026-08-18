@@ -86,82 +86,78 @@ Allowed variation: The expert may use any equivalent LibreOffice Calc Pivot Tabl
 
 > 以下是一个可以参考的操作 guide。标注者可以根据实际 LibreOffice 界面采用等价操作。
 
-在 `Activity Log` 的完整活动记录上创建 Pivot Table，并将结果放到新的空白工作表或空白输出区域。布局应为：`Program` 在行、`Quarter` 在列、`Service Hours` 作为数值汇总，以便按园艺项目和季度查看志愿服务总小时数。
+本任务要从 `Activity Log` 的志愿服务记录创建一个 Pivot Table。完成后的报告按 `Program` 分行、按 `Quarter` 分列，并在交叉单元格中显示 `Service Hours` 的合计。
 
 #### 启动后的初始状态检查
 
-- 确认当前活动工作表是 `Activity Log`。
-- 确认源数据连续覆盖 `A1:E37`：第 1 行包含 `Program`、`Quarter`、`Garden Site`、`Activity Type`、`Service Hours` 标题，且中间没有空白行或空白列。
-- 确认工作簿中尚未有 Pivot Table 或预先建立的汇总输出工作表。
+- 确认当前打开的是 `Garden Volunteer Activity` 工作簿，活动工作表为 `Activity Log`。
+- 确认源表从 A1 开始，第一行包含 `Program`、`Quarter`、`Garden Site`、`Activity Type`、`Service Hours`，且数据连续至第 37 行；不要在表内插入空白行或列。
+- 确认尚不存在包含该汇总结果的工作表或 Pivot Table。
 
-#### 第 1 步：选择活动记录并打开 Pivot Table 布局
+#### 第 1 步：选择完整的志愿活动记录作为数据源
 
-1. 在 `Activity Log` 中选中完整源表 `A1:E37`，务必包含标题行。
-2. 点击 `Data` > `Pivot Table` > `Insert or Edit...`，使用当前选定的数据区域作为 Pivot Table 的源。
-3. 继续进入用于摆放字段的 Pivot Table 布局对话框。
-
-- 对应 skills：无；这是准备或检查步骤。
-- 高效操作：先在源表内选中任意单元格，再一次性选取完整连续数据区域；这样 Pivot Table 会同时获得字段标题和所有记录。
-- 完成标志：Pivot Table 布局对话框出现，并在可用字段列表中能看到 `Program`、`Quarter`、`Garden Site`、`Activity Type` 和 `Service Hours`。
-
-#### 第 2 步：按 Program 建立行标签
-
-1. 在可用字段列表中找到 `Program`。
-2. 将 `Program` 拖到 `Row Fields` 区域，使每个园艺项目成为一行标签。
-3. 检查 `Program` 已显示在 `Row Fields` 区域内。
+1. 在 `Activity Log` 中选择完整源范围 A1:E37。可单击名称框并输入 `A1:E37` 后按 Enter，或从 A1 拖动选择到 E37。
+2. 打开 `Data` > `Pivot Table` > `Insert or Edit...`。在数据源确认界面中，确认所用范围是 `Activity Log` 中的 A1:E37，然后继续进入 Pivot Table 布局对话框。
 
 - 对应 skills：无；这是准备或检查步骤。
-- 高效操作：直接从可用字段列表拖到目标区域，避免先添加字段后再重新定位。
-- 完成标志：`Row Fields` 区域中可见 `Program`，说明 Pivot Table 将按项目分行。
+- 高效操作：先在源表内单击任意一个有数据的单元格，再一次性选择整个连续表，可避免把工作表外的空白单元格纳入数据源。
+- 完成标志：Pivot Table 布局对话框打开，`Available Fields` 中可见 `Program`、`Quarter`、`Garden Site`、`Activity Type` 和 `Service Hours` 等字段。
+
+#### 第 2 步：用 Program 建立报告行标签
+
+1. 在 `Available Fields` 中找到 `Program`，将它拖入 `Row Fields` 区域。
+2. 布局预览中应把 `Program` 作为纵向分组字段。若 `Program` 被误放到其他区域，将该字段从错误区域拖回 `Row Fields`。
+
+- 对应 skills：无；这是准备或检查步骤。
+- 高效操作：直接从 `Available Fields` 拖到目标区域，不要先添加后再重新移动字段。
+- 完成标志：`Row Fields` 区域中显示 `Program`，这表示输出将按园艺项目逐行汇总。
 
 #### 第 3 步：将 Quarter 放入列字段区域
 
-1. 在可用字段列表中找到 `Quarter`。
-2. 将 `Quarter` 直接拖到 `Column Fields` 区域。
-3. 确认 `Quarter` 留在 `Column Fields` 区域中，而非 `Row Fields` 或 `Data Fields`。
+1. 在 `Available Fields` 中找到 `Quarter`，直接拖入 `Column Fields` 区域。
+2. 预期结果是 `Quarter` 将成为横向列分组；如果它已经出现在 `Column Fields` 中则无需调整。若它误出现在 `Row Fields`、`Data Fields` 或其他区域，把该字段拖到 `Column Fields`。
 
 - 对应 skills：`1de60575-bb6e-4c3d-9e6a-2fa699f9f197.skill-02`
-- 高效操作：将分类字段 `Quarter` 直接拖入列区域；不需要先放入其他区域再移动。
-- 完成标志：`Column Fields` 区域中显示 `Quarter`，完成后各季度会横向显示为列标题。
+- 高效操作：在添加数值度量前先完成行列布局，能更清楚地核对交叉汇总表的结构。
+- 完成标志：`Column Fields` 区域中显示 `Quarter`，最终报告会在顶部按季度生成不同列标题。
 
-#### 第 4 步：将 Service Hours 作为汇总数值
+#### 第 4 步：将 Service Hours 作为汇总数据度量
 
-1. 在可用字段列表中找到数值字段 `Service Hours`。
-2. 将 `Service Hours` 拖到 `Data Fields` 区域，且只放置一次。
-3. 确认数据字段采用求和汇总；如果布局对话框显示该字段的汇总方式，确保它是 `Sum`，以汇总服务小时数而非计数。
+1. 在 `Available Fields` 中找到数值字段 `Service Hours`，将它拖入 `Data Fields` 区域。
+2. 数值字段通常会自动使用合计方式。若布局中已显示为服务时长合计，则无需调整。
+3. 如果数据字段名称显示为计数，或完成后数字明显是记录数量而不是小时数，编辑该数据字段的汇总设置并选择 `Sum`，然后确认返回布局对话框。
 
 - 对应 skills：`1de60575-bb6e-4c3d-9e6a-2fa699f9f197.skill-03`
-- 高效操作：在行、列布局已经清楚后再添加数值字段，可立即确认该数值会按 Program 和 Quarter 交叉汇总。
-- 完成标志：`Data Fields` 区域中出现 `Service Hours` 的求和数据项，表示输出将显示聚合小时数。
+- 高效操作：只添加一次 `Service Hours`，这样最终表中每个项目与季度的交叉位置只会有一个清晰的服务时长汇总值。
+- 完成标志：`Data Fields` 区域包含 `Service Hours` 的合计度量，表示 Pivot Table 将聚合小时数而非列出原始记录。
 
-#### 第 5 步：输出 Pivot Table 到空白汇总位置
+#### 第 5 步：在独立输出位置生成 Pivot Table
 
-1. 在布局对话框中将结果位置指定为新工作表；也可以选择一个没有数据的工作表，并将输出起点设在该表的空白单元格 `A1`。
-2. 确认目标位置不会与 `Activity Log` 的源数据重叠。
-3. 点击 `OK` 创建 Pivot Table。
-4. 如创建的是新工作表，可按需要将该工作表改为便于识别的名称，例如 `Volunteer Summary`。
-
-- 对应 skills：无；这是准备或检查步骤。
-- 高效操作：将结果放在新的空白工作表可避免覆盖原始活动记录，也使源数据与汇总报告便于区分。
-- 完成标志：出现一个新的 Pivot Table：左侧是 `Program`，顶部横向显示不同的 `Quarter`，内部单元格为汇总后的 `Service Hours` 数值。
-
-#### 第 6 步：核对完成的志愿服务小时汇总
-
-1. 检查行区域：每个 `Program` 应作为单独的行标签。
-2. 检查列区域：`Quarter` 的不同值应横向位于表格顶部。
-3. 检查数值区域：各交叉单元格应是服务小时数的总和，而不是源表中的单条记录。
-4. 如果某字段位置不正确，可返回 Pivot Table 编辑功能调整字段区域，然后再次确认结果。
+1. 在布局对话框的输出位置设置中，选择创建到新工作表的选项；也可以选择任何明确空白、不会覆盖源表的工作表区域。
+2. 确认布局：`Program` 位于 `Row Fields`，`Quarter` 位于 `Column Fields`，`Service Hours` 位于 `Data Fields`。然后确认对话框以生成 Pivot Table。
+3. 如果生成位置不符合预期或覆盖了已有内容，撤销该次创建，重新打开 `Data` > `Pivot Table` > `Insert or Edit...`，并选择新的空白输出工作表或区域。
 
 - 对应 skills：无；这是准备或检查步骤。
-- 高效操作：用交叉检查的方式核对布局：先看字段位置，再看数值是否为汇总值，可快速发现字段被放错区域的问题。
-- 完成标志：Pivot Table 清晰呈现“Program × Quarter”的交叉汇总，所有可见数据值均为 `Service Hours` 的聚合值。
+- 高效操作：把结果输出到新工作表可避免覆盖 `Activity Log` 的源数据，也便于一眼区分原始记录和汇总报告。
+- 完成标志：Calc 切换到新建的输出工作表或指定空白区域，且可见已经生成的 Pivot Table。
+
+#### 第 6 步：核对交叉汇总的字段方向与数值
+
+1. 查看完成的 Pivot Table：左侧应是各个 `Program` 标签，顶部应是不同的 `Quarter` 标题，表内应是对应的服务时长汇总值。
+2. 若 `Quarter` 没有横向显示为列标题，右击 Pivot Table 内任一单元格并选择编辑 Pivot Table 的命令，随后将 `Quarter` 放回 `Column Fields` 并确认更新。
+3. 若表内显示单个活动记录或记录数而非小时数合计，编辑 Pivot Table 布局，确认 `Service Hours` 位于 `Data Fields`，并将其汇总方式改为 `Sum` 后更新。
+
+- 对应 skills：无；这是准备或检查步骤。
+- 高效操作：优先核对结构和汇总含义，而不是逐个手工重算全部结果；这能更快发现字段放错区域或度量使用计数的问题。
+- 完成标志：最终可见的报告按 `Program` 分行、按 `Quarter` 分列，交叉单元格显示聚合后的 `Service Hours` 数值。
 
 #### 最终结果检查
 
-- 工作簿中存在一个单独的汇总输出区域或新工作表，且其中显示原生 Pivot Table，而不是手工输入的汇总结果。
-- Pivot Table 的左侧行标签为 `Program`，每个 Program 只出现一行汇总。
-- 表格顶部有 `Quarter` 的不同季度列标题，且季度下方显示对应 Program 的汇总值。
-- 值区域显示的是 `Service Hours` 的聚合结果（通常为 Sum），不是逐条活动记录；行和列总计如自动显示，可保留。
+- 应能看到一个原生 Pivot Table，而不是逐条复制的活动记录。
+- Pivot Table 的行标签为 `Program`；每个不同的园艺项目各占一行，并可见总计行（其是否显示取决于当前 Pivot Table 默认设置）。
+- 顶部横向标题为不同的 `Quarter` 值；每个项目在各季度下显示汇总后的数值。
+- 显示的数据度量是 `Service Hours` 的合计：数值应为汇总服务时长，而非记录数或单条活动记录。
+- 源工作表 `Activity Log` 仍保留 A1:E37 的原始表格，且新输出工作表或空白输出区域没有遮挡源数据。
 
 ## Source-task similarity review
 

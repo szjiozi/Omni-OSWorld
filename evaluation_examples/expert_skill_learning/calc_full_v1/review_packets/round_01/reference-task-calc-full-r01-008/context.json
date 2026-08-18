@@ -878,84 +878,99 @@
     "task_detail_sha256": "bf42d172507bd3413aea517e1d77dab4683f92ff91df30c576b28f62903c3ac3",
     "guide": {
       "final_verification": [
-        "工作簿中有且只有源数据工作表 `Delivery Log` 和新建的默认工作表 `Sheet2`。",
-        "在 `Delivery Log` 中，`E2:E25` 的每一行均显示货币格式的 Line Total 计算结果；选中例如 `E3` 时，公式栏应显示随行号调整的相对引用公式，例如 `=C3*D3`。",
-        "`Sheet2` 中存在一个 Pivot Table：`Garden Zone` 是行项目，`Line Total` 是汇总金额，并且每个 Garden Zone 各有一行金额及 Grand Total。",
-        "透视表中的各 Garden Zone 汇总金额彼此不应全部相同，且汇总依据是已填满的 `Line Total` 列。"
+        "`Delivery Log` 的 `E2:E25` 都显示货币金额；任选例如 `E3`，公式栏应显示随行号变化的乘法公式，如 `=C3*D3`。",
+        "工作簿有且仅需新增的默认工作表标签 `Sheet2`，并且没有对该标签进行重命名。",
+        "`Sheet2` 中的 Pivot Table 以 `Garden Zone` 分组，每个 Garden Zone 各有一行；数值列是 `Line Total` 的求和而非计数，并显示总计行。",
+        "源数据 `Delivery Log!A1:E25` 仍可见，且 Pivot Table 没有覆盖源登记表。"
       ],
       "language": "zh-CN",
-      "overview": "完成 `Delivery Log` 的 24 条配送记录的 Line Total 公式，再保留新工作表的默认名称 `Sheet2`，在其中建立按 `Garden Zone` 分组、按 `Line Total` 求和的 Pivot Table。",
+      "overview": "完成 Garden Supply Delivery Register：先将 `Line Total` 的种子公式从 `E2` 快速填充到全部 24 条送货记录，再新建默认名称为 `Sheet2` 的工作表，并在其中建立按 `Garden Zone` 汇总 `Line Total` 总支出的 Pivot Table。",
       "reference_task_id": "reference-task-calc-full-r01-008",
       "starting_state_checks": [
-        "确认当前工作簿开始时只有一个工作表标签 `Delivery Log`，尚未出现 `Sheet2`。",
-        "在 `Delivery Log` 中确认表格连续位于 `A1:E25`，第 1 行是标题，`E2` 已有公式 `=C2*D2`，而 `E3:E25` 仍为空白。",
-        "确认尚未在任何工作表中创建 Pivot Table；活动单元格即使位于源表中任意位置也可以继续操作。"
+        "确认当前工作簿只有一个工作表标签 `Delivery Log`；尚未出现 `Sheet2` 或任何 Pivot Table。",
+        "打开 `Delivery Log`，确认连续数据表位于 `A1:E25`，第 1 行包含标题，`E2` 已有公式 `=C2*D2`，而 `E3:E25` 仍为空。",
+        "确认 `Quantity` 是整数显示，`Unit Price` 和 `Line Total` 列使用两位小数的货币格式；不要改动原始字段标题。"
       ],
       "steps": [
         {
-          "efficiency_tip": "双击填充柄会依据相邻连续的数据列自动判断终止行，比手动拖到第 25 行更快，也更不容易多填或漏填。",
+          "efficiency_tip": "先利用已有的种子公式，只需一次双击填充柄即可完成其余 23 行，避免逐行输入公式。",
           "instructions": [
-            "切换到 `Delivery Log`，单击含有已种子公式的单元格 `E2`。确认输入行或公式栏中显示 `=C2*D2`。",
-            "保持 `E2` 选中，将指针移到该单元格右下角的小方块（填充柄）。当指针可用于填充时，双击该填充柄。",
-            "检查填充结果是否延伸到第 25 行。可单击 `E3` 查看其公式是否变为 `=C3*D3`，并检查 `E25` 是否也有相应的计算结果。"
+            "在 `Delivery Log` 中单击 `E2`。确认输入行或公式栏显示 `=C2*D2`，而不是手动输入一个固定金额。",
+            "将鼠标移到所选单元格右下角的小方块（填充柄）。在相邻的 `Quantity`、`Unit Price` 数据连续到第 25 行的情况下，双击该填充柄。",
+            "Calc 应沿连续记录自动填充至 `E25`。如果双击后只填充了部分行，或 `E3:E25` 仍有空白，请重新选择 `E2`，拖动填充柄向下直到 `E25`；也可将 `E2` 的公式复制到缺失区域，确保相对引用按行变化。"
           ],
           "skill_ids": [
             "0bf05a7d-b28b-44d2-955a-50b41e24012a.skill-02"
           ],
           "step_number": 1,
-          "title": "向下填充全部 Line Total 公式",
-          "visible_success_signal": "`E2:E25` 都显示两位小数的货币金额，不再只有 `E2` 有值；后续行公式中的行号会随所在行自动变化。"
+          "title": "填充全部 Line Total 公式",
+          "visible_success_signal": "`E2:E25` 均显示货币金额。单击例如 `E3` 时，公式栏显示 `=C3*D3`，而单击 `E25` 时显示对应第 25 行的相对引用。"
         },
         {
-          "efficiency_tip": "需要默认名称时直接使用工作表标签旁的加号，无须进入重命名流程。",
+          "efficiency_tip": "默认名称正是所需名称时，使用工作表标签旁的加号比通过重命名流程更快。",
           "instructions": [
-            "在窗口底部工作表标签区域，点击工作表标签旁的加号按钮以插入一个工作表。",
-            "不要重命名新工作表，确认自动生成的标签名称为 `Sheet2`。"
+            "在底部工作表标签区域，点击 `Delivery Log` 标签旁的加号按钮以插入工作表。",
+            "观察新建的工作表标签。预期 Calc 自动命名为 `Sheet2`，此时不需要作任何改名操作。",
+            "如果新标签不是 `Sheet2`，说明工作簿中已有同名工作表或新增了额外工作表；返回标签区域确认并使用本任务所需的默认新建工作表作为 Pivot Table 输出页，且不要把 `Delivery Log` 改名。"
           ],
           "skill_ids": [
             "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-01"
           ],
           "step_number": 2,
-          "title": "添加默认命名的工作表",
-          "visible_success_signal": "底部可同时看到 `Delivery Log` 与 `Sheet2` 标签，且 `Sheet2` 是空白工作表。"
+          "title": "插入默认名称的工作表",
+          "visible_success_signal": "底部同时可见 `Delivery Log` 和新标签 `Sheet2`，其中 `Sheet2` 是空白工作表。"
         },
         {
-          "efficiency_tip": "源表只有一个连续数据区域时，先在表内激活任意单元格再按 `Ctrl+A`，可避免手动输入或修改数据源范围。",
+          "efficiency_tip": "通过 `Ctrl+A` 一次选中整个连续登记表，让 Calc 自动识别 Pivot Table 的源范围，无须手工逐格指定。",
           "instructions": [
-            "单击 `Delivery Log` 标签返回源数据表，并在 `A1:E25` 的表格内单击任一单元格。",
-            "按 `Ctrl+A` 选中整个连续数据表，选择范围应包括标题行和所有 24 条记录，即 `A1:E25`。",
-            "打开 `Data` > `Pivot Table` > `Insert or Edit...`。在出现的数据源确认界面中，检查识别的数据范围是 `Delivery Log` 的完整表格范围，然后确认继续。"
+            "点击 `Delivery Log` 标签返回源表，并点击表格内任意单元格，例如 `A2`。",
+            "按 `Ctrl+A` 选择当前连续数据区域。预期选择范围覆盖标题和所有记录，即 `A1:E25`。",
+            "如果可见选择没有覆盖从 `A1` 到 `E25` 的完整表格，请单击 `A1` 后重新按 `Ctrl+A`；若仍未得到该范围，则直接选中 `A1:E25`，不要把空白工作表的大量单元格作为数据源。",
+            "打开 `Data` > `Pivot Table` > `Insert or Edit...`。在出现的初始 Pivot Table 来源对话框中，确认检测到的是 `Delivery Log` 的完整表格范围，然后确认进入字段布局对话框。"
           ],
           "skill_ids": [
             "1de60575-bb6e-4c3d-9e6a-2fa699f9f197.skill-01"
           ],
           "step_number": 3,
-          "title": "以完整配送表作为 Pivot Table 数据源",
-          "visible_success_signal": "Pivot Table 的布局设置界面已打开，并以 `Delivery Log` 的完整表格作为数据源；字段列表中可看到 `Garden Zone` 和 `Line Total`。"
+          "title": "选择完整送货登记表并启动 Pivot Table",
+          "visible_success_signal": "Pivot Table 字段布局对话框打开，且可用字段中包含 `Garden Zone` 和 `Line Total`；来源是 `Delivery Log` 的完整登记表。"
         },
         {
-          "efficiency_tip": "直接把字段从 `Available Fields` 拖到对应区域，可让 Calc 自动采用数值字段常用的求和汇总方式，避免逐项设置。",
+          "efficiency_tip": "在布局对话框中直接拖放字段到对应区域；数值字段通常会自动采用求和，不必先打开额外设置。",
           "instructions": [
-            "在 Pivot Table 布局界面的 `Available Fields` 列表中，拖动 `Garden Zone` 到 `Row Fields` 区域。",
-            "再将 `Line Total` 从 `Available Fields` 拖动到 `Data Fields` 区域。确认该数据字段显示为对 `Line Total` 的 Sum 汇总；如果界面显示汇总名称，通常会包含 `Sum`。",
-            "确认布局后继续。在输出位置的选择界面中，选择将结果放到现有工作表 `Sheet2`，并指定一个清晰且不会与其他内容重叠的起始单元格，例如 `A1`，然后确认创建。"
+            "在可用字段列表中，将 `Garden Zone` 拖到 `Row Fields` 区域。",
+            "将 `Line Total` 拖到 `Data Fields` 区域。预期该数据字段显示为对 `Line Total` 的 `Sum` 聚合；若已经显示为求和，无需调整。",
+            "如果 `Line Total` 在数据区域显示为计数或其他非求和汇总，双击该数据字段，在字段汇总设置中选择 `Sum`，然后确认返回布局。若字段被放到了错误区域，将其从错误区域拖出，再按上述方式放入 `Row Fields` 或 `Data Fields`。",
+            "在布局对话框的结果输出位置控件中，将输出位置指定为 `Sheet2` 的空白区域，例如 `Sheet2.A1`（若该控件使用绝对引用格式，则使用 `$Sheet2.$A$1`）。确认输出不会与现有内容重叠后，点击 `OK` 生成结果。"
           ],
           "skill_ids": [
             "535364ea-05bd-46ea-9937-9f55c68507e8.skill-01"
           ],
           "step_number": 4,
-          "title": "在 Sheet2 生成按 Garden Zone 汇总的 Pivot Table",
-          "visible_success_signal": "`Sheet2` 出现 Pivot Table，其中每个 `Garden Zone` 占一行，旁边显示对应的 `Line Total` 求和金额，表格末尾还显示 Grand Total。"
+          "title": "按 Garden Zone 生成 Line Total 汇总",
+          "visible_success_signal": "`Sheet2` 出现 Pivot Table：`Garden Zone` 是行标签，每个区域有一个汇总行，数值列为 `Line Total` 的求和，并包含总计。"
+        },
+        {
+          "efficiency_tip": "最后只抽查首尾公式和 Pivot Table 的字段角色，即可快速发现填充范围、错误计数或错误输出页等常见问题。",
+          "instructions": [
+            "回到 `Delivery Log`，检查 `E2`、中间任一行和 `E25` 都是带两位小数的货币结果，并确认没有遗漏的空白 Line Total 单元格。",
+            "切换到 `Sheet2`，确认每个 `Garden Zone` 只作为一个行类别出现，数值是支出金额而不是记录数量，并确认存在总计行。",
+            "如果 Pivot Table 出现在错误工作表或覆盖了内容，使用 `Data` > `Pivot Table` > `Insert or Edit...` 重新打开其设置，将结果输出位置改为 `Sheet2` 的清晰空白区域，例如 `$Sheet2.$A$1`，然后重新生成。"
+          ],
+          "skill_ids": [],
+          "step_number": 5,
+          "title": "核对完成结果",
+          "visible_success_signal": "源表的 24 条记录均有计算后的 `Line Total`，且 `Sheet2` 清晰显示按 `Garden Zone` 汇总的 Line Total 求和 Pivot Table。"
         }
       ]
     },
     "generation": {
-      "request_id": "a8227049-aa45-4d35-a48c-5cb9f893e3cf",
-      "prompt_sha256": "5814f606ebc23dea638151cc819517b25452d493d4a8890d473ab0e6685c0ed2",
+      "request_id": "1f7f6de4-49fe-429a-aae1-3b1a32a21b1f",
+      "prompt_sha256": "8bf4aa363caa4b25baa7b1923915db79c6ade73eba33c7f8b2ebb88c118cdedf",
       "model": "gpt-5.6-terra",
-      "input_tokens": 3736,
-      "output_tokens": 1447,
-      "estimated_cost_usd": 0.024836
+      "input_tokens": 4059,
+      "output_tokens": 2660,
+      "estimated_cost_usd": 0.038121
     }
   },
   "artifact": {

@@ -99,61 +99,56 @@ Allowed variation: The demonstrator may create the chart before or after opening
 
 > 以下是一个可以参考的操作 guide。标注者可以根据实际 LibreOffice 界面采用等价操作。
 
-本指南先利用 `Route Snapshot` 中已准备好的区域汇总数据插入横向条形图，再返回 `Deliveries`，以完整配送记录作为来源打开 Pivot Table Layout。最后停留在布局对话框，不创建 Pivot Table。
+本任务在同一工作簿完成两项准备工作：先用 `Route Snapshot` 中按花园区域汇总的交付数量建立条形图，再为 `Deliveries` 的完整记录打开 Pivot Table 布局，以便后续按花园区域分析。最后应停留在 Pivot Table Layout 对话框，不创建透视表结果。
 
 #### 启动后的初始状态检查
 
-- 确认工作簿已打开，起始工作表为 `Deliveries`，活动单元格是 `A1`。
-- 确认 `Deliveries` 的数据连续位于 `A1:G37`，首行包含字段标题，范围内部没有空行或空列。
-- 确认存在 `Route Snapshot` 工作表，其图表源数据连续位于 `A1:B7`，包括 `Garden Zone` 和 `Delivered Units` 标题。
-- 确认目前没有已插入的图表，也没有 Pivot Table 结果。
+- 确认工作簿当前有 `Deliveries` 和 `Route Snapshot` 两张工作表；起始时没有已有图表或 Pivot Table 输出。
+- 在 `Deliveries` 中确认数据从 `A1` 到 `G37` 连续排列，第一行是字段标题，包括 `Garden Zone`、`Units Delivered` 等。
+- 切换到 `Route Snapshot` 时，确认 `A1:B7` 是连续的两列表格，标题为 `Garden Zone` 和 `Delivered Units`。
 
-#### 第 1 步：选择花园区域汇总数据并启动图表创建
+#### 第 1 步：从 Route Snapshot 创建 Delivered Units 条形图
 
 1. 点击工作表标签 `Route Snapshot`。
-2. 选中完整图表源范围 `A1:B7`，其中应包括标题行 `Garden Zone`、`Delivered Units` 以及全部六个区域数据行。
-3. 点击工具栏中的图表图标以启动图表创建；如果通过菜单启动，可使用 `Insert` > `Chart...`。
+2. 选择包含标题的完整区域 `A1:B7`。可先点击 `A1`，再拖动到 `B7`；也可在名称框中输入 `A1:B7` 后按 Enter。
+3. 打开 `Insert` > `Chart...`。在图表向导中选择 `Bar` 图表类型，然后完成向导以插入图表。
+4. 完成后，查看图表：应显示花园区域类别以及表示 `Delivered Units` 的条形。若类别标签和条形数值已经正确对应，则无需调整。
+5. 如果图表显示的类别或数值不正确，双击图表进入编辑状态，打开 `Format` > `Data Ranges`。在 `Data Series` 中，将 `Categories` 指向 `Route Snapshot.$A$2:$A$7`，并将该数据系列的 `Y-Values` 指向 `Route Snapshot.$B$2:$B$7`，然后确认。
+6. 若图表已经位于源数据之外的空白区域且未遮挡 `A1:B7`，无需移动。如果图表覆盖了源数据，单击图表外边框选中整个图表对象，将它拖到工作表空白处，使左上角靠近 `E2`。
 
 - 对应 skills：`0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-04`
-- 高效操作：先选中包含标题的两个完整列，图表向导通常能同时识别类别标签和数值系列，无需随后逐项指定数据。
-- 完成标志：出现图表创建向导或图表编辑界面，且数据来源对应 `Route Snapshot` 的 `A1:B7`。
+- 高效操作：源数据只有两列且包含标题，一次选择整个 `A1:B7` 可让图表向导自动同时识别类别和数值。
+- 完成标志：`Route Snapshot` 上可见条形图，花园区域作为类别，条形长度或数值表示各区域的 `Delivered Units`，且源数据仍可见。
 
-#### 第 2 步：创建 Delivered Units 横向条形图
-
-1. 在图表类型选择处选择 `Bar`。
-2. 检查预览：应显示以花园区域为类别的横向条形，并以 `Delivered Units` 作为数值。
-3. 确认图表创建；如向导提供 `Finish`，点击 `Finish`。
-4. 完成后单击工作表中的空白单元格，确保图表对象已插入并且在 `Route Snapshot` 上可见。
-
-- 对应 skills：`0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-04`
-- 高效操作：在图表类型列表中直接选择 `Bar`，而不是先创建其他类型再转换，可减少后续设置。
-- 完成标志：`Route Snapshot` 上可见条形图，包含花园区域类别及对应的 `Delivered Units` 条形。
-
-#### 第 3 步：选择完整配送记录作为 Pivot Table 来源
+#### 第 2 步：为 Deliveries 打开 Pivot Table Layout
 
 1. 点击工作表标签 `Deliveries`。
-2. 选中完整配送记录范围 `A1:G37`，包括字段标题行和全部记录。可点击 `A1` 后拖动到 `G37`，也可在名称框中输入 `A1:G37` 并按 Enter。
-3. 确认选区首行包括 `Delivery ID`、`Delivery Date`、`Garden Zone`、`Supply Category`、`Item`、`Units Delivered` 和 `Delivery Cost`。
-
-- 对应 skills：无；这是准备或检查步骤。
-- 高效操作：使用完整连续数据块 `A1:G37` 作为选择，可让 Calc 自动推断所有配送字段，避免遗漏 `Garden Zone` 或 `Units Delivered` 等分析字段。
-- 完成标志：`Deliveries` 中的 `A1:G37` 被高亮选中，选区覆盖全部七个字段及全部配送记录。
-
-#### 第 4 步：打开 Deliveries 的 Pivot Table Layout
-
-1. 在保持 `A1:G37` 被选中的情况下，打开 `Data` > `Pivot Table` > `Insert or Edit...`；也可以使用 Pivot Table 工具栏图标。
-2. 如果出现来源选择或确认窗口，接受当前推断的选区 `A1:G37`，可直接按 Enter 继续。
-3. 等待 Pivot Table Layout 对话框打开后停止，不要拖放字段，也不要选择输出位置或确认创建。
+2. 选择完整的交付记录区域 `A1:G37`，包括标题行。
+3. 打开 `Data` > `Pivot Table` > `Insert or Edit...`。
+4. 若 Calc 先显示数据源选择界面，并且已推断出 `Deliveries` 的 `A1:G37`，直接确认以继续打开布局。
+5. 如果推断的范围不是完整的 `Deliveries` 数据，例如遗漏了某一列或某些记录，在数据源输入框中改为 `Deliveries.$A$1:$G$37`，再确认继续。
+6. 在打开的 Pivot Table Layout 对话框中不要拖放字段，也不要确认创建输出；让该布局对话框保持打开。
 
 - 对应 skills：`30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-06`
-- 高效操作：保持数据范围处于选中状态再调用 Pivot Table 命令，随后接受 Calc 推断的来源范围即可，不必手动重新输入范围。
-- 完成标志：Pivot Table Layout 对话框保持打开，其来源对应 `Deliveries` 的配送记录范围；工作簿中尚未生成 Pivot Table 输出。
+- 高效操作：在连续数据块内选择完整范围后再打开 Pivot Table，Calc 可直接采用该范围，不必逐列重建数据源。
+- 完成标志：Pivot Table Layout 对话框处于打开状态，字段来自 `Deliveries` 记录，且尚未在任何工作表中生成 Pivot Table。
+
+#### 第 3 步：完成最终状态核对
+
+1. 在仍打开的 Pivot Table Layout 对话框中确认没有输出表或结果预览被创建。
+2. 透过对话框或在此前已确认的工作表状态中，确认 `Route Snapshot` 的条形图已保留。
+3. 结束时保持 Pivot Table Layout 对话框打开。
+
+- 对应 skills：无；这是准备或检查步骤。
+- 高效操作：最终只需目视确认图表仍存在，并保持布局对话框打开；不要按会创建 Pivot Table 的确认按钮。
+- 完成标志：工作簿保留 `Route Snapshot` 条形图，同时 Pivot Table Layout 对话框仍打开，符合“准备分析但不创建透视表”的状态。
 
 #### 最终结果检查
 
-- `Route Snapshot` 工作表中可见一个横向条形图，类别来自花园区域，条形表示 `Delivered Units`。
-- 当前仍显示 `Deliveries` 数据的 Pivot Table Layout 对话框；尚未确认创建任何 Pivot Table 输出。
-- 工作簿仍只有原有数据工作表，未因 Pivot Table 操作新增结果表或结果数据区域。
+- `Route Snapshot` 工作表中可见一个条形图，类别为各个 `Garden Zone`，每个条形的数值对应 `Delivered Units`。
+- 该图没有遮住 `A1:B7` 的源数据；若位置不理想，图表左上角应在工作表的空白区域附近。
+- Calc 的 Pivot Table Layout 对话框仍保持打开状态，且其源数据来自 `Deliveries` 的 `A1:G37`。
+- 尚未确认或生成任何 Pivot Table 输出结果。
 
 ## Source-task similarity review
 

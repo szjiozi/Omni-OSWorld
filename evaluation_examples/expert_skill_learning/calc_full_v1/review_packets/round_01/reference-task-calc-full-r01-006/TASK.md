@@ -194,87 +194,96 @@ Allowed variation: The expert may use menus, keyboard shortcuts, or equivalent C
 
 > 以下是一个可以参考的操作 guide。标注者可以根据实际 LibreOffice 界面采用等价操作。
 
-本指南完成 municipal route-output review：从 `Daily Metrics` 复制 12 天的 Output Volume，在 `Route Review` 计算逐日百分比变化，生成非空且不重复的路线名单，制作无标记折线图，并导出指定路径的 PDF。源表 `Daily Metrics` 是固定数据来源，不应在其中输入或修改数据。
+本指南在 `Route Review` 中完成市政路线产出复核：复制每日产出、用固定来源工作表计算日变化率、生成非空且不重复的路线名册、制作无标记折线图，并导出 PDF。
 
 #### 启动后的初始状态检查
 
-- 确认当前活动工作表是 `Route Review`，并且日期已在 `A5:A16` 预先填好。
-- 确认 `Route Review!B5:B16`、`Route Review!C5:C16` 和 `Route Review!E5:E20` 仍为空；`C` 列已经是带一位小数的百分比格式。
-- 切换到 `Daily Metrics`，确认 `A1:D13` 是完整源表，包含 `Service Date`、`Output Volume`、`Crew Hours` 和 `Service Route` 四列。不要编辑这个范围。
-- 确认 `Route Review` 上尚没有图表对象。
+- 确认当前活动工作表是 `Route Review`，且日期已位于 `A5:A16`。
+- 确认 `Route Review!B5:B16`、`C5:C16` 和 `E5:E20` 仍为空；`C` 列应已显示为一位小数的百分比格式。
+- 切换到 `Daily Metrics` 后，确认 `A1:D13` 是完整来源表，其中 `B2:B13` 为 Output Volume，`D1:D13` 为 Service Route；后续只读取该表，不修改它。
 
-#### 第 1 步：复制 12 天的 Working Output 数值
+#### 第 1 步：确认工作簿的来源和输出位置
 
-1. 切换到 `Daily Metrics` 工作表，选中 `B2:B13`，即 12 天的 `Output Volume` 数据；不要包含标题单元格 `B1`。
-2. 按 `Ctrl+C` 复制所选区域。
-3. 切换回 `Route Review`，单击 `B5`，然后按 `Ctrl+V`。
-
-- 对应 skills：`37608790-6147-45d0-9f20-1137bb35703d.skill-01`
-- 高效操作：一次选中完整的 12 个连续源单元格并粘贴，既快速又不会改变源数据。
-- 完成标志：`Route Review!B5:B16` 已连续填入 12 个整数值，并与 `Daily Metrics!B2:B13` 相同；源表的 `Output Volume` 列仍然保留。
-
-#### 第 2 步：计算固定源表的 Daily Change
-
-1. 在 `Route Review` 中单击 `C6`。`C5` 必须保持为空，因为第一天没有前一天可比较。
-2. 输入公式 `=($'Daily Metrics'.B3-$'Daily Metrics'.B2)/$'Daily Metrics'.B2`，然后按 `Enter`。其中 `$'Daily Metrics'` 固定的是源工作表名称，`B3` 和 `B2` 的行号仍可在向下填充时变化。
-3. 再次选中 `C6`，复制该单元格；选中 `C7:C16` 后粘贴，以将公式填充到其余 10 天。也可以拖动 `C6` 右下角的填充柄直到 `C16`。
-4. 单击 `C7` 或更靠下的一个结果单元格查看输入行，确认引用仍是 `Daily Metrics`，且源行号已相应前进。
-
-- 对应 skills：`04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-03`
-- 高效操作：先只建立一个正确的固定工作表引用公式，再向下填充，可避免逐行重输公式。
-- 完成标志：`C6:C16` 显示百分比结果且保留一位小数，`C5` 为空；例如 `C6` 使用 `Daily Metrics` 的第 3 行和第 2 行，后续公式使用相邻的后续源行。
-
-#### 第 3 步：筛选并复制不重复的非空 Service Route 名单
-
-1. 切换到 `Daily Metrics`，选中包含标题的 `D1:D13`，即 `Service Route` 整列源范围。
-2. 打开 `Data` > `More Filters` > `Standard Filter...`。在筛选条件中，将字段设为 `Service Route`，并将条件设为 `Not empty`，以排除空路线单元格。
-3. 展开或点击 `Options`，启用 `No duplications`，使每个路线只保留首次出现的一项。
-4. 在同一选项区域启用 `Copy results to`，在目标框输入 `$'Route Review'.E5`，然后确认对话框。
-5. 返回 `Route Review` 检查输出。若 Calc 同时复制源标题，标题会位于路线结果上方；非空且不重复的路线项目应在其下连续列出。
-
-- 对应 skills：`abed40dc-063f-4598-8ba5-9fe749c0615d.skill-01`
-- 高效操作：筛选前先选择完整的单列源范围并直接填写输出锚点，可保留首次出现顺序，免去手动比较和复制。
-- 完成标志：`Route Review` 的 E 列输出区域显示每条非空路线一次，顺序为 `North Loop`、`Harbor Spur`、`Cedar Link`、`Ridge Run`、`Quarry Way`、`Canal Point`，且没有空白路线项目。
-
-#### 第 4 步：创建 Daily Change 的无标记折线图
-
-1. 在 `Route Review` 中选择 `A4:A16`，使选择包含 Service Date 标题和全部日期。按住 `Ctrl`，再选择 `C4:C16`，使选择同时包含 `Daily Change` 标题和计算结果。
-2. 使用图表按钮，或打开 `Insert` > `Chart...`，开始插入图表。
-3. 在图表类型中选择 `Line`，然后选择只显示线条、没有数据点标记的子类型。
-4. 在图表向导中确认日期列被用作类别标签、`Daily Change` 是唯一数据序列；如该向导显示数据方向选项，使用按列组织数据，并保留首行作为标签。完成图表插入。
-5. 如有需要，拖动图表到 `Route Review` 中不遮挡表格的位置。不要将图表放到 `Daily Metrics` 源表中。
-
-- 对应 skills：`0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-07`
-- 高效操作：同时选择日期和完整计算列（包括列标题）后立即选择折线的无标记子类型，比先插入默认图再修改更省时。
-- 完成标志：`Route Review` 上出现一个图表对象；它以 Service Date 为横轴类别，只有一条 Daily Change 连续折线，线上没有圆点或其他数据点标记。
-
-#### 第 5 步：导出前检查完成的 Route Review
-
-1. 回到 `Route Review`，检查 `B5:B16`、`C6:C16`、路线名单和图表都可见且完整。
-2. 特别确认 `C5` 仍为空，路线名单不含空白项，图表是仅线条样式而不是带标记的线图。
-3. 如工作簿中仍显示复制或筛选后的活动虚线边框，可单击空白单元格或按 `Esc` 结束当前复制状态，再进行导出。
+1. 在 `Route Review` 中查看列标题和空白目标区域：`A5:A16` 是已准备好的日期，`B5:B16` 用于 `Working Output`，`C5:C16` 用于 `Daily Change`，`E5` 起用于路线名册。
+2. 需要查看来源时点击工作表标签 `Daily Metrics`；完成来源查看后可随时点击 `Route Review` 返回。不要在来源表输入、删除或移动数据。
 
 - 对应 skills：无；这是准备或检查步骤。
-- 高效操作：导出前集中检查所有输出区域，可在生成 PDF 前发现漏填的公式、名单或图表。
-- 完成标志：当前 `Route Review` 视图中能看到已填入的 Working Output、Daily Change 百分比、Distinct Route Roster 和折线图，准备导出。
+- 高效操作：先确认各目标区域均为空，可避免粘贴或筛选结果覆盖已有内容。
+- 完成标志：`Daily Metrics` 保持完整来源表，`Route Review` 的三个目标区域仍可用于填入结果。
 
-#### 第 6 步：导出 Route Review 为指定 PDF
+#### 第 2 步：复制每日 Output Volume 到 Working Output
 
-1. 打开 `File` > `Export as PDF...`；如果该命令位于子菜单中，则在 `File` > `Export As` 中选择 `Export as PDF...`。
-2. 在文件名输入框中键入完整路径 `/home/oai/share/route_operations_review.pdf`。
-3. 点击 `Export` 完成 PDF 创建。如出现 PDF 选项窗口，保持能够导出当前完成工作簿的设置并继续确认导出。
+1. 点击 `Daily Metrics` 工作表标签。在 `B2` 按住鼠标拖到 `B13`，选中全部 12 个 Output Volume 值。
+2. 按 `Ctrl+C`，点击 `Route Review` 工作表标签，再点击 `B5`，按 `Ctrl+V`。
+3. 查看粘贴区域；如只出现一个值或起始位置不对，先按 `Ctrl+Z`，重新选中完整的 `B2:B13`，并以 `B5` 作为粘贴起点。
+
+- 对应 skills：`37608790-6147-45d0-9f20-1137bb35703d.skill-01`
+- 高效操作：一次选择并复制完整的 12 个连续单元格，比逐日复制更快，也不会影响来源列。
+- 完成标志：`Route Review!B5:B16` 已填满 12 个数值，并与 `Daily Metrics!B2:B13` 对应相同；来源列仍保留原值。
+
+#### 第 3 步：计算固定来源表的每日百分比变化
+
+1. 返回 `Route Review`，保持 `C5` 为空，因为第一天没有前一天可比较。
+2. 点击 `C6`，输入公式 `=($'Daily Metrics'.B3-$'Daily Metrics'.B2)/$'Daily Metrics'.B2`，然后按 `Enter`。其中 `$` 仅固定来源工作表 `Daily Metrics`，而 `B3` 和 `B2` 的行号可随填充变化。
+3. 再次选中 `C6`，复制该公式；选中 `C7:C16` 后按 `Ctrl+V`。这样会将日变化计算填入余下 10 天。
+4. 若 `C6:C16` 已按一位小数百分比显示，便无需调整格式。如果显示为普通小数，选中 `C6:C16`，打开 `Format` > `Format Cells...`，在数字格式中选择百分比并设为一位小数。
+
+- 对应 skills：`04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-03`
+- 高效操作：先写好一个带工作表固定符号的公式再向下填充，行号会自动递进，无需逐行重写。
+- 完成标志：`C6:C16` 显示百分比值，且检查 `C7` 的公式时可见其已递进为引用 `$'Daily Metrics'.B4` 和 `$'Daily Metrics'.B3`；`C5` 仍为空。
+
+#### 第 4 步：筛选并复制非空的不重复路线名册
+
+1. 切换到 `Daily Metrics`，选中 `D1:D13`，务必包含 `Service Route` 标题和下面所有路线单元格。
+2. 打开 `Data` > `More Filters` > `Standard Filter`。在筛选条件中，以 `Service Route` 字段设置非空条件，选择 `Not empty`，使空白路线不会输出。
+3. 展开或打开 `Options`，启用 `No duplications`，再启用 `Copy results to`。在目标单元格框中输入 `$'Route Review'.E5`。
+4. 点击 `OK` 执行筛选并复制结果。由于来源选择包含标题，通常标题会位于 `Route Review!E5`，实际路线从下一行开始；这正是正常结果。
+5. 如果 `E5` 起没有得到结果，确认目标引用为 `$'Route Review'.E5`、已选择 `Not empty` 且启用了 `No duplications`，然后重新执行筛选。若出现重复或空白路线，也返回相同对话框修正这两项后再执行。
+
+- 对应 skills：`abed40dc-063f-4598-8ba5-9fe749c0615d.skill-01`
+- 高效操作：从含标题的整列来源范围直接使用筛选的复制结果功能，可同时排除空白、去重并保留首次出现顺序。
+- 完成标志：`Route Review` 的 `E5` 起显示筛选复制结果；名册仅含一次出现的 `North Loop`、`Harbor Spur`、`Cedar Link`、`Ridge Run`、`Quarry Way`、`Canal Point`，且没有空白项目。
+
+#### 第 5 步：创建 Daily Change 的无标记折线图
+
+1. 返回 `Route Review`。先选中日期范围 `A5:A16`，然后按住 `Ctrl` 再选中变化率范围 `C5:C16`，以便同时提供横轴日期和数据系列。
+2. 点击工具栏中的图表图标，在图表向导中选择 `Line` 图表类别，并选择仅显示线条、没有圆点或其他数据点标记的子类型。完成插入。
+3. 完成后，若图表已显示日期类别和一条 Daily Change 折线，则无需调整。若日期标签或数值系列不正确，双击图表进入编辑状态，打开 `Format` > `Data Ranges`，在 `Data Series` 中将 `Categories` 改为 `Route Review.$A$5:$A$16`，并将该系列的 `Y-Values` 改为 `Route Review.$C$5:$C$16`。
+4. 若折线仍带有点标记，在图表编辑状态重新打开图表类型设置，并选择仅线条的 `Line` 子类型。
+5. 如果图表已经位于 `E2` 附近的空白区且未遮住来源数据，就无需移动；否则点击图表外框选中整个图表，拖动其外框，使左上角靠近 `E2` 且 `A:C` 的复核数据仍可见。
+
+- 对应 skills：`0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-07`
+- 高效操作：在插入时直接选择无标记的折线子类型，避免创建图表后还要再次修改样式。
+- 完成标志：`Route Review` 上有一张可见图表，横轴为日期，图中只有一条连续的 Daily Change 折线且没有数据点标记。
+
+#### 第 6 步：导出完成的路线复核 PDF
+
+1. 确认当前显示的是完成后的 `Route Review`，其中可见复制的数值、变化率、路线名册和趋势图。
+2. 打开 `File` > `Export as PDF...`。
+3. 在文件名字段输入完整路径 `/home/oai/share/route_operations_review.pdf`，然后点击 `Export`。
+4. 若出现 PDF 选项窗口，使用其默认导出设置继续完成导出；若提示同名文件已存在，确认要替换时才继续，以保证目标文件是本次完成的版本。
 
 - 对应 skills：`aa3a8974-2e85-438b-b29e-a64df44deb4b.skill-02`
-- 高效操作：在导出窗口中直接输入完整路径和文件名，不必逐层浏览文件夹，也能避免保存到错误位置。
-- 完成标志：导出操作完成，文件 `/home/oai/share/route_operations_review.pdf` 已创建。
+- 高效操作：直接输入完整文件路径和文件名，无需在保存窗口逐层浏览文件夹。
+- 完成标志：导出对话框关闭，PDF 已以 `route_operations_review.pdf` 的名称写入 `/home/oai/share/`。
+
+#### 第 7 步：完成最终复核
+
+1. 回到 `Route Review`，确认 `B5:B16` 没有空缺，`C5` 为空而 `C6:C16` 均为百分比结果。
+2. 点击 `C6` 和 `C7` 分别查看公式，确认工作表名均固定为 `$'Daily Metrics'`，而相邻的来源行号已由 `B3/B2` 递进到 `B4/B3`。
+3. 确认路线名册不含空白或重复项，图表为无标记单线图，并确认已经完成到指定 PDF 路径的导出。
+
+- 对应 skills：无；这是准备或检查步骤。
+- 高效操作：抽查首个和第二个变化率公式即可同时验证固定工作表引用与向下递进的行引用。
+- 完成标志：工作表和 PDF 导出均满足复核要求，且 `Daily Metrics` 来源数据未发生改动。
 
 #### 最终结果检查
 
-- 在 `Route Review` 中确认 `B5:B16` 已填满 12 个 Working Output 数值，且逐项对应 `Daily Metrics!B2:B13`；`Daily Metrics` 的源数据仍保留且没有被改写。
-- 确认 `C5` 为空，`C6:C16` 显示一位小数的百分比。逐个抽查例如 `C6` 的公式应为 `=($'Daily Metrics'.B3-$'Daily Metrics'.B2)/$'Daily Metrics'.B2`，向下的公式仍固定引用 `Daily Metrics` 工作表、但行号会递进。
-- 确认 Distinct Route Roster 中没有空白项目，并且非空路线按首次出现顺序各出现一次：`North Loop`、`Harbor Spur`、`Cedar Link`、`Ridge Run`、`Quarry Way`、`Canal Point`。
-- 确认 `Route Review` 上有图表对象：横轴为 Service Date，只有一个 Daily Change 折线序列，折线没有数据点标记。
-- 确认已在 `/home/oai/share/route_operations_review.pdf` 创建 PDF 文件；导出前的工作表视图中应可看到完整的数值、计算结果、路线名单和图表。
+- `Route Review!B5:B16` 中有 12 个 `Working Output` 数值，并与 `Daily Metrics!B2:B13` 逐项相同；`Daily Metrics` 的原始表仍存在且未被改写。
+- `Route Review!C5` 保持空白，`C6:C16` 显示百分比结果。选中例如 `C6`、`C7` 查看输入行，可见公式分别引用相邻的 `$'Daily Metrics'.B3`/`$'Daily Metrics'.B2`、`$'Daily Metrics'.B4`/`$'Daily Metrics'.B3` 等来源行。
+- 筛选输出区域含有一次出现的非空路线：`North Loop`、`Harbor Spur`、`Cedar Link`、`Ridge Run`、`Quarry Way`、`Canal Point`，没有空白路线项；若筛选一并复制了标题，`E5` 为标题而路线从其下方开始。
+- `Route Review` 上可见一张趋势图：横轴为 Service Date，只有一条 `Daily Change` 连续折线，且没有数据点标记；图表未遮住用于核对的源数据。
+- 已通过导出对话框完成 PDF 导出，目标文件为 `/home/oai/share/route_operations_review.pdf`。
 
 ## Source-task similarity review
 

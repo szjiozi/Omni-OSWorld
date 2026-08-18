@@ -22,6 +22,19 @@ CHINESE_QUOTED_UI_ACTION = re.compile(
     r"(?:点击|单击|双击|右键单击|选择|打开|进入|切换到|从)"
     r"[^。；\n]{0,32}[“\"]([^”\"]*[\u3400-\u4dbf\u4e00-\u9fff][^”\"]*)[”\"]"
 )
+CHART_DATA_ROLE_PATTERN = re.compile(
+    r"(?:分类标签|分类轴|数据系列|数值系列|`Categories`|`Y-Values`)"
+)
+CHART_PLACEMENT_PATTERN = re.compile(
+    r"(?:将图表放|图表.{0,24}(?:空白区域|遮挡|位置)|(?:移动|拖动).{0,12}图表)"
+)
+CONDITIONAL_PATTERN = re.compile(r"(?:如果|若|如不|如未|否则)")
+CHART_DATA_RECOVERY_PATTERN = re.compile(
+    r"(?:`Data Series`|`Data Ranges`|重新选择.{0,20}(?:范围|数据))"
+)
+CHART_PLACEMENT_RECOVERY_PATTERN = re.compile(
+    r"(?:拖动|移动).{0,30}(?:图表|外框|边框)|(?:图表|外框|边框).{0,30}(?:拖动|移动)"
+)
 
 
 @dataclass(frozen=True)
@@ -69,7 +82,7 @@ def build_reviewer_guide_request(
         },
     )
     return JSONRequest(
-        prompt_name="generate_reviewer_guide.v2",
+        prompt_name="generate_reviewer_guide.v3",
         system_prompt=system_prompt,
         user_prompt=user_prompt,
         response_schema=load_schema(REVIEWER_GUIDE_SCHEMA),
@@ -90,6 +103,41 @@ def _guide_explanatory_text(guide: dict[str, Any]) -> str:
         )
     values.extend(guide["final_verification"])
     return "\n".join(values)
+
+
+def _guide_instructions(guide: dict[str, Any]) -> list[str]:
+    return [
+        instruction
+        for step in guide["steps"]
+        for instruction in step["instructions"]
+    ]
+
+
+def _validate_default_dependent_recoveries(guide: dict[str, Any]) -> None:
+    explanatory_text = _guide_explanatory_text(guide)
+    instructions = _guide_instructions(guide)
+    if CHART_DATA_ROLE_PATTERN.search(explanatory_text):
+        has_data_recovery = any(
+            CONDITIONAL_PATTERN.search(instruction)
+            and CHART_DATA_RECOVERY_PATTERN.search(instruction)
+            for instruction in instructions
+        )
+        if not has_data_recovery:
+            raise ValueError(
+                "Reviewer guide describes inferred chart data roles without a "
+                "conditional correction path"
+            )
+    if CHART_PLACEMENT_PATTERN.search(explanatory_text):
+        has_placement_recovery = any(
+            CONDITIONAL_PATTERN.search(instruction)
+            and CHART_PLACEMENT_RECOVERY_PATTERN.search(instruction)
+            for instruction in instructions
+        )
+        if not has_placement_recovery:
+            raise ValueError(
+                "Reviewer guide describes chart placement without a conditional "
+                "drag-or-move correction path"
+            )
 
 
 def validate_reviewer_guide(
@@ -131,6 +179,7 @@ def validate_reviewer_guide(
                     "Reviewer guide uses a Chinese visible UI label in an action: "
                     f"{match.group(1)!r}. Use the exact English UI label in backticks."
                 )
+    _validate_default_dependent_recoveries(guide)
 
 
 async def generate_reviewer_guides(

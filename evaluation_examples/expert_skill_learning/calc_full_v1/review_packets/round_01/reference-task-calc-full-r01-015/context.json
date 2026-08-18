@@ -827,89 +827,101 @@
     "task_detail_sha256": "dc613c01b652b8449bd68ecfd090039520352e0d761b1e658b3600727fd2f050",
     "guide": {
       "final_verification": [
-        "在 `Dispatch Log` 中检查 `E2:E25`：每一行都有由公式计算出的估算油量，且选中不同单元格时公式栏中的行号会随行变化。",
-        "检查 `E28`：其中是公式 `=SUM(E2:E25)` 的计算结果，而不是手动输入的固定数字。",
-        "检查工作表标签：原来的 `Analysis` 已改为 `Zone Fuel Summary`。",
-        "打开 `Zone Fuel Summary`：其中有原生 Pivot Table，按 `Zone` 分组列出区域，并显示 `Estimated Liters` 的求和；各区域汇总应与 `Dispatch Log` 中对应记录相符。"
+        "在 `Dispatch Log` 中，`E2:E25` 的每条路线都有计算出的 Estimated Liters 数值；选中其中任一后续单元格（如 E3）时，公式栏应显示随行号变化的乘法公式。",
+        "`E28` 显示一个数值总计；选中它时，公式栏显示 `=SUM(E2:E25)`。",
+        "原 `Analysis` 工作表标签已改为 `Zone Fuel Summary`。",
+        "`Zone Fuel Summary` 中存在原生 Pivot Table：行标签为各个 Zone，数值列为 Estimated Liters 的求和，并且每个 Zone 只汇总显示一次。"
       ],
       "language": "zh-CN",
-      "overview": "本任务会完成车队调度记录的逐路线耗油估算，在总计单元格计算全车队预计升数，然后将空白分析工作表改名，并建立按区域汇总预计耗油量的 Pivot Table。",
+      "overview": "完成 `Dispatch Log` 中 24 条调度记录的油耗估算和总计，然后将空白分析工作表改名为 `Zone Fuel Summary`，并在该工作表创建按 Zone 汇总 Estimated Liters 的 Pivot Table。",
       "reference_task_id": "reference-task-calc-full-r01-015",
       "starting_state_checks": [
-        "确认当前活动工作表是 `Dispatch Log`，并且数据表的表头位于第 1 行，路线记录连续位于 `A2:E25`。",
-        "确认 `E1` 为 `Estimated Liters`，`E2` 已有计算公式，而 `E3:E25` 仍为空白。",
-        "确认第 28 行中 `D28` 为 `Total estimated liters`，且 `E28` 为空白；第 26 和 27 行保持空白，以便数据区域与总计区域分隔。",
-        "确认存在一个空白工作表标签 `Analysis`，其中尚无报表或 Pivot Table。"
+        "确认当前活动工作表是 `Dispatch Log`，并且源数据表连续位于 A1:E25，首行为字段标题。",
+        "确认 `E1` 为 `Estimated Liters`，仅 `E2` 已有公式 `=C2*D2`，而 `E3:E25` 仍为空白。",
+        "确认 `D28` 显示 `Total estimated liters`，`E28` 为空白，且第 26、27 行没有源数据。",
+        "确认存在一个空白工作表标签 `Analysis`，其中尚未建立报告或 Pivot Table。"
       ],
       "steps": [
         {
-          "efficiency_tip": "利用已有的 `E2` 公式和相邻 A:D 列的连续记录，双击填充柄可一次填满全部路线，避免逐行复制或重输公式。",
+          "efficiency_tip": "双击填充柄会利用相邻连续的 A:D 列自动识别最后一条记录，比手动拖到第 25 行更快，也避免漏行。",
           "instructions": [
-            "在 `Dispatch Log` 中单击单元格 `E2`，确认它显示的是用于计算本行油量的公式。",
-            "将鼠标移动到 `E2` 选中边框右下角的小方块（填充柄）。当指针可用于填充时，双击该小方块。",
-            "Calc 会根据连续的相邻数据行向下复制公式。查看 `E3:E25`，必要时单击其中几格，确认公式中的相对行号已随所在行调整。"
+            "在 `Dispatch Log` 中单击 E2；该单元格应包含种子公式 `=C2*D2`。",
+            "将鼠标移到所选单元格右下角的小方块（填充柄）。当指针适合填充时，双击该小方块。",
+            "Calc 应将公式向下填充至相邻连续记录的末行，即 E25。若双击后没有填充到 E25，或中途停止，请重新选中 E2，并拖动其右下角填充柄直到 E25；然后检查 A:D 中是否有意外空白行。"
           ],
           "skill_ids": [
             "4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-01"
           ],
           "step_number": 1,
-          "title": "向下填充各路线的预计耗油公式",
-          "visible_success_signal": "`E2:E25` 均显示数值形式的预计耗油量，不再有空白结果单元格；例如选中 `E3` 时，公式引用的是第 3 行的距离和每公里油耗。"
+          "title": "向下填充每条路线的预计油耗公式",
+          "visible_success_signal": "E2:E25 都显示数值。单击 E3、E4 等单元格时，公式栏中的引用会对应各自行号，例如 E3 使用 `=C3*D3`。"
         },
         {
-          "efficiency_tip": "使用一个 `SUM` 公式覆盖完整的结果范围，比逐项相加更快，也会在路线数据变动时自动更新总计。",
+          "efficiency_tip": "使用一个 `SUM` 公式一次覆盖完整的估算结果区域，比逐项相加更快且后续数据核对更容易。",
           "instructions": [
-            "单击指定的总计结果单元格 `E28`。",
+            "单击指定总计结果单元格 E28。",
             "输入公式 `=SUM(E2:E25)`，然后按 `Enter`。",
-            "保留 `D28` 中的标签 `Total estimated liters`，不要把总计写入数据表的第 25 行以内。"
+            "若 E28 没有显示数值而显示公式文本，选中 E28 后使用 `Format` > `Cells...`，在数字格式区域将该单元格改为可计算的常规数值格式，再重新输入 `=SUM(E2:E25)` 并按 `Enter`。"
           ],
           "skill_ids": [
             "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-01"
           ],
           "step_number": 2,
-          "title": "计算整体预计升数总计",
-          "visible_success_signal": "`E28` 显示一个数值总计；选中该单元格时，公式输入栏显示 `=SUM(E2:E25)`。"
+          "title": "计算全车队预计油耗总计",
+          "visible_success_signal": "E28 显示一个数值总计，选中 E28 时公式栏显示 `=SUM(E2:E25)`。"
         },
         {
-          "efficiency_tip": "在建立 Pivot Table 前先改名，后续选择报表输出位置时能直接识别目标工作表，避免将结果放回源数据页。",
+          "efficiency_tip": "先为目标工作表改名，可在后续 Pivot Table 的输出位置中直接辨认正确的报告工作表。",
           "instructions": [
-            "在窗口底部找到工作表标签 `Analysis`。",
-            "双击 `Analysis` 标签，使标签名称进入编辑状态。",
-            "输入 `Zone Fuel Summary`，然后按 `Enter` 应用名称。"
+            "在窗口底部找到工作表标签 `Analysis`，双击该标签。",
+            "输入 `Zone Fuel Summary`，然后按 `Enter`。",
+            "若标签文字没有改变，说明可能仍处于编辑状态或名称未提交；再次双击 `Analysis`，完整输入 `Zone Fuel Summary` 后按 `Enter`。"
           ],
           "skill_ids": [
             "535364ea-05bd-46ea-9937-9f55c68507e8.skill-02"
           ],
           "step_number": 3,
-          "title": "重命名分析工作表",
-          "visible_success_signal": "底部工作表标签显示为 `Zone Fuel Summary`，不再显示 `Analysis`。"
+          "title": "重命名空白分析工作表",
+          "visible_success_signal": "工作表标签由 `Analysis` 变为 `Zone Fuel Summary`，该工作表仍为空白。"
         },
         {
-          "efficiency_tip": "先从源表中选取完整连续区域 `A1:E25`，可让 Calc 自动识别字段名和数据范围；不要把第 28 行的总计区纳入 Pivot Table 源数据。",
+          "efficiency_tip": "只选择连续的 A1:E25 源表，不要包含第 28 行的总计；这样 Pivot Table 会将 `Estimated Liters` 识别为可汇总的数据字段。",
           "instructions": [
-            "切换回 `Dispatch Log`，单击数据表内任意单元格，例如 `A1`。",
-            "按 `Ctrl+A`，选择包含表头的连续数据区域 `A1:E25`。确认选区未延伸到空白行之后的总计标签。",
-            "打开 `Data` > `Pivot Table` > `Insert or Edit...`。在初始来源确认窗口中接受当前检测到的选定范围，以进入字段布局对话框。",
-            "在字段布局对话框中，将字段 `Zone` 放入行分组区域，将字段 `Estimated Liters` 放入数据值区域。确保该数值字段的汇总函数为 `Sum`；如果自动设置的函数不是求和，请在该数据字段的设置中改为 `Sum`。",
-            "将 Pivot Table 的结果位置设为工作表 `Zone Fuel Summary` 的起始单元格 `A1`，然后确认创建。",
-            "切换到 `Zone Fuel Summary` 查看生成的报表。"
+            "切换回 `Dispatch Log`，单击源表内任一单元格，例如 A1。",
+            "按 `Ctrl+A` 选择当前连续数据区域。选择范围应为 A1:E25，包含标题行且不包含第 28 行总计。若选区包含了其他区域，请单击名称框或直接拖选 A1:E25 以修正。",
+            "打开 `Data` > `Pivot Table` > `Insert or Edit...`。在首次创建对话框中，已检测到的源范围应为 A1:E25；若该范围正确，直接确认以进入字段布局对话框。若范围不正确，将源范围改为 `Dispatch Log` 的 A1:E25 后再继续。",
+            "在字段布局中，将 `Zone` 放入行分组区域，使每个 Zone 成为一行；将 `Estimated Liters` 放入数据汇总区域。",
+            "对于 `Estimated Liters`，Calc 通常会自动采用求和。若布局中已经显示该字段为 Sum，则无需调整。若显示为 Count 或其他汇总方式，打开该数据字段的设置，将汇总函数改为 Sum。",
+            "在布局对话框的输出位置区域，选择将结果放到现有工作表，并指定 `Zone Fuel Summary` 的 A1 作为起始位置，然后确认创建 Pivot Table。若结果被放到了新工作表或错误位置，删除该错误 Pivot Table 后重新创建，并在输出位置明确选择 `Zone Fuel Summary` 的 A1。"
           ],
           "skill_ids": [
             "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-03"
           ],
           "step_number": 4,
-          "title": "建立按区域汇总的燃油 Pivot Table",
-          "visible_success_signal": "`Zone Fuel Summary` 中出现 Pivot Table：每个 `Zone` 只出现一行（或作为一个行项目），并且对应的 `Estimated Liters` 数值列显示各区域的 `Sum` 汇总。"
+          "title": "创建按 Zone 汇总预计油耗的 Pivot Table",
+          "visible_success_signal": "`Zone Fuel Summary` 中出现 Pivot Table；Zone 名称各自作为行项，旁边的数值列显示每个 Zone 的 `Estimated Liters` 总和，并通常带有总计行。"
+        },
+        {
+          "efficiency_tip": "通过查看 Pivot Table 的行标签和数值字段名称即可快速确认分组字段与汇总方式，无需逐条手工计算。",
+          "instructions": [
+            "切换到 `Zone Fuel Summary`，确认 Pivot Table 没有遮挡任何源数据，因为源数据仍应保留在 `Dispatch Log`。",
+            "确认行项目是 Zone 值，而不是 Route Code；确认数值列对应 `Estimated Liters` 的 Sum。",
+            "若行中显示 Route Code、数值列不是 Estimated Liters，或数值不是求和，请在 Pivot Table 内单击任一单元格，使用 `Data` > `Pivot Table` > `Edit Layout...`，将 `Zone` 设为行字段，将 `Estimated Liters` 设为数据字段并设为 Sum，然后确认更新。"
+          ],
+          "skill_ids": [],
+          "step_number": 5,
+          "title": "核对工作簿中的最终结果",
+          "visible_success_signal": "`Dispatch Log` 具有完整的 E2:E25 计算结果和 E28 总计，`Zone Fuel Summary` 具有按 Zone 的 Estimated Liters 求和 Pivot Table。"
         }
       ]
     },
     "generation": {
-      "request_id": "59fa9532-6645-4ee3-955f-6f24089cf8e2",
-      "prompt_sha256": "06ced28fe76ba972ef2c0f557d7e0fc455a3db4394bc292f5d94db08ca7f076c",
+      "request_id": "46306d5a-ff54-472c-bef3-56f708a8e353",
+      "prompt_sha256": "95bed9c9b8434bfaffd17e0b9fd84b39a72811db98f64c94ba82580640848c61",
       "model": "gpt-5.6-terra",
-      "input_tokens": 3760,
-      "output_tokens": 1894,
-      "estimated_cost_usd": 0.030248
+      "input_tokens": 4083,
+      "output_tokens": 2198,
+      "estimated_cost_usd": 0.032625
     }
   },
   "artifact": {
