@@ -128,7 +128,7 @@
           "efficiency_tip": "Use one SUM formula that references the Units Dispatched range on Dispatch_Log rather than manually adding values.",
           "operation_intent": "Calculate the Total Units Dispatched metric in Summary from the Units Dispatched range on Dispatch_Log using a cross-sheet range-total formula.",
           "skill_id": "26a8440e-c166-4c50-aef4-bfb77314b46b.skill-03",
-          "visible_success_signal": "Summary!B2 shows the aggregate dispatched-unit total, 649, and it is formula-derived."
+          "visible_success_signal": "Summary!B2 shows the aggregate dispatched-unit total, 609, and it is formula-derived."
         },
         {
           "efficiency_tip": "Sort the whole contiguous log, or extend the selection when prompted, so ticket details, costs, and generated values travel with their SKU rows.",
@@ -137,7 +137,7 @@
           "visible_success_signal": "Dispatch_Log records are in ascending SKU order from SKU-104 through SKU-426 with intact row associations."
         }
       ],
-      "recording_end_state": "The dispatch log is SKU-ascending, fully classified and assigned seven-digit text ticket codes, its unique largest restock cost is visibly formula-highlighted, and Summary shows the cross-sheet total of 649 units.",
+      "recording_end_state": "The dispatch log is SKU-ascending, fully classified and assigned seven-digit text ticket codes, its unique largest restock cost is visibly formula-highlighted, and Summary shows the cross-sheet total of 609 units.",
       "recording_start_state": "Open the supplied Replenishment Review workbook with the Catalog reference data, unsorted Dispatch_Log inputs, blank derived columns, and blank Summary total."
     },
     "expected_incidental_operations": [
@@ -900,14 +900,14 @@
   ],
   "reviewer_guide": {
     "reference_task_id": "reference-task-calc-full-r01-005",
-    "task_detail_sha256": "3eaa2859692b47c56eb1632c946af197933ff6318412046cdeec63f1b2b7a470",
+    "task_detail_sha256": "0900ea4866064c52ee0a541b884f5661022476d26df87d4ef0f48d35daab9568",
     "guide": {
       "final_verification": [
         "在 `Dispatch_Log` 中，`SKU` 已按 A–Z 排列，从 `SKU-104` 到 `SKU-426`；每一行的 Ticket Number、Units Dispatched、Restock Cost、Supply Group 和 Ticket Code 仍与该行 SKU 对应。",
         "`Dispatch_Log!E2:E19` 都有 Supply Group 分类，重复 SKU 的分类一致；例如 `SKU-104` 对应 `Fasteners`，`SKU-322` 对应 `Electrical`。",
         "`Dispatch_Log!F2:F19` 都显示七位 Ticket Code，例如 Ticket Number `4821` 显示为 `0004821`，Ticket Number `930` 显示为 `0000930`。",
         "Restock Cost 中只有数值 `540.00` 的单元格具有所选的明显条件格式高亮，其他 Restock Cost 单元格没有该高亮。",
-        "`Summary!B2` 含有跨工作表的 `SUM` 公式，并显示 Total Units Dispatched 的目标总计 `649`。"
+        "`Summary!B2` 含有跨工作表的 `SUM` 公式，并显示 Total Units Dispatched 的目标总计 `609`。"
       ],
       "language": "zh-CN",
       "overview": "本指南完成补货审查工作簿：从 `Catalog` 查找每条发运记录的 Supply Group，生成七位 Ticket Code，突出唯一最高的 Restock Cost，在 `Summary` 汇总已发运单位数，并将完整 `Dispatch_Log` 按 SKU 升序排列。",
@@ -981,14 +981,14 @@
           "instructions": [
             "切换到 `Summary` 工作表并选择 `B2`，即 `Total Units Dispatched` 标签右侧的空白值单元格。",
             "输入 `=SUM($Dispatch_Log.C2:C19)`，然后按 `Enter`。",
-            "若 B2 已显示公式计算出的总数 `649`，不需要调整。若 B2 显示错误或为空，双击 B2，确认公式以 `=` 开头、工作表名称为 `$Dispatch_Log`，并且汇总范围为 `C2:C19`，再按 `Enter`。"
+            "若 B2 已显示公式计算出的总数 `609`，不需要调整。若 B2 显示错误或为空，双击 B2，确认公式以 `=` 开头、工作表名称为 `$Dispatch_Log`，并且汇总范围为 `C2:C19`，再按 `Enter`。"
           ],
           "skill_ids": [
             "26a8440e-c166-4c50-aef4-bfb77314b46b.skill-03"
           ],
           "step_number": 5,
           "title": "在 Summary 汇总已发运单位数",
-          "visible_success_signal": "`Summary!B2` 显示公式结果 `649`，并且选择该单元格时可在输入行看到跨工作表 `SUM` 公式。"
+          "visible_success_signal": "`Summary!B2` 显示公式结果 `609`，并且选择该单元格时可在输入行看到跨工作表 `SUM` 公式。"
         },
         {
           "efficiency_tip": "先选择完整的 `A1:F19` 连续表格，可使所有字段跟随各自 SKU 的记录一起移动，不会破坏行内关联。",
@@ -1009,7 +1009,7 @@
           "efficiency_tip": "最终一次同时检查公式结果、显示格式和排序状态，可在保存前发现遗漏。",
           "instructions": [
             "检查 `Dispatch_Log`：E 列全部有分类、F 列全部是七位代码，且 D 列仅有一个 `540.00` 高亮。",
-            "检查 `Summary!B2` 是否保留公式并显示总计 `649`。",
+            "检查 `Summary!B2` 是否保留公式并显示总计 `609`。",
             "使用 `File` > `Save` 保存完成后的工作簿。"
           ],
           "skill_ids": [],
@@ -1032,7 +1032,7 @@
     "manifest_entry": {
       "reference_task_id": "reference-task-calc-full-r01-005",
       "artifact_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/initial_artifact.xlsx",
-      "artifact_sha256": "b87b0b381f2cdf867ae4e97b1d200710016252754cef26c484f9f0698c65a2cf",
+      "artifact_sha256": "17d591f70eb4e19cd7f11cf89f7269ef947db9a70655781db868a97be9639f1c",
       "blueprint_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/artifact_blueprint.json",
       "qa_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/artifact_qa.json",
       "manual_setup_required": false,
@@ -1044,7 +1044,7 @@
     "manifest_entry": {
       "reference_task_id": "reference-task-calc-full-r01-005",
       "task_config_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-005.json",
-      "artifact_sha256": "b87b0b381f2cdf867ae4e97b1d200710016252754cef26c484f9f0698c65a2cf",
+      "artifact_sha256": "17d591f70eb4e19cd7f11cf89f7269ef947db9a70655781db868a97be9639f1c",
       "blueprint_request_id": "f85d3323-bca4-4e4c-9aad-1a16661796b2"
     },
     "packet_path": "task_config.json"

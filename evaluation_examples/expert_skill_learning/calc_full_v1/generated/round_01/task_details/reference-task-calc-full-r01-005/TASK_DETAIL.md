@@ -205,7 +205,7 @@ Artifact previews:
 - Skill: `26a8440e-c166-4c50-aef4-bfb77314b46b.skill-03`
 - Intent: Calculate the Total Units Dispatched metric in Summary from the Units Dispatched range on Dispatch_Log using a cross-sheet range-total formula.
 - Efficiency: Use one SUM formula that references the Units Dispatched range on Dispatch_Log rather than manually adding values.
-- Visible success: Summary!B2 shows the aggregate dispatched-unit total, 649, and it is formula-derived.
+- Visible success: Summary!B2 shows the aggregate dispatched-unit total, 609, and it is formula-derived.
 
 ### Demonstration 5
 
@@ -216,7 +216,7 @@ Artifact previews:
 
 Recording start: Open the supplied Replenishment Review workbook with the Catalog reference data, unsorted Dispatch_Log inputs, blank derived columns, and blank Summary total.
 
-Recording end: The dispatch log is SKU-ascending, fully classified and assigned seven-digit text ticket codes, its unique largest restock cost is visibly formula-highlighted, and Summary shows the cross-sheet total of 649 units.
+Recording end: The dispatch log is SKU-ascending, fully classified and assigned seven-digit text ticket codes, its unique largest restock cost is visibly formula-highlighted, and Summary shows the cross-sheet total of 609 units.
 
 Allowed variation: The expert may perform the sort before or after filling formulas and may use equivalent range-selection or autofill methods. Use LibreOffice Calc-compatible argument separators and an equivalent visible conditional style, while retaining an exact-match lookup and a formula-based maximum test.
 

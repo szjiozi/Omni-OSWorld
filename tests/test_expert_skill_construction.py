@@ -770,9 +770,15 @@ def test_calc_full_task_five_keeps_formula_destination_columns_general():
     dispatch_log = next(
         sheet for sheet in task.blueprint["sheets"] if sheet["name"] == "Dispatch_Log"
     )
+    summary = next(
+        sheet for sheet in task.blueprint["sheets"] if sheet["name"] == "Summary"
+    )
 
     assert dispatch_log["column_types"][4:6] == ["text", "text"]
     assert dispatch_log["column_number_formats"][4:6] == ["General", "General"]
+    assert sum(int(row["values"][2]) for row in dispatch_log["rows"]) == 609
+    assert summary["column_types"] == ["text", "text"]
+    assert summary["column_number_formats"] == ["@", "General"]
 
 
 def test_reference_response_must_return_exact_sampled_skill_ids():

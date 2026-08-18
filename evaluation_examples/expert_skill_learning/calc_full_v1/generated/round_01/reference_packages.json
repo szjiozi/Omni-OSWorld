@@ -2586,7 +2586,7 @@
             "efficiency_tip": "Use one SUM formula that references the Units Dispatched range on Dispatch_Log rather than manually adding values.",
             "operation_intent": "Calculate the Total Units Dispatched metric in Summary from the Units Dispatched range on Dispatch_Log using a cross-sheet range-total formula.",
             "skill_id": "26a8440e-c166-4c50-aef4-bfb77314b46b.skill-03",
-            "visible_success_signal": "Summary!B2 shows the aggregate dispatched-unit total, 649, and it is formula-derived."
+            "visible_success_signal": "Summary!B2 shows the aggregate dispatched-unit total, 609, and it is formula-derived."
           },
           {
             "efficiency_tip": "Sort the whole contiguous log, or extend the selection when prompted, so ticket details, costs, and generated values travel with their SKU rows.",
@@ -2595,7 +2595,7 @@
             "visible_success_signal": "Dispatch_Log records are in ascending SKU order from SKU-104 through SKU-426 with intact row associations."
           }
         ],
-        "recording_end_state": "The dispatch log is SKU-ascending, fully classified and assigned seven-digit text ticket codes, its unique largest restock cost is visibly formula-highlighted, and Summary shows the cross-sheet total of 649 units.",
+        "recording_end_state": "The dispatch log is SKU-ascending, fully classified and assigned seven-digit text ticket codes, its unique largest restock cost is visibly formula-highlighted, and Summary shows the cross-sheet total of 609 units.",
         "recording_start_state": "Open the supplied Replenishment Review workbook with the Catalog reference data, unsorted Dispatch_Log inputs, blank derived columns, and blank Summary total."
       },
       "expected_incidental_operations": [

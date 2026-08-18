@@ -1021,7 +1021,7 @@
             "autofilter_range": null,
             "column_number_formats": [
               "@",
-              "@"
+              "General"
             ],
             "column_types": [
               "text",

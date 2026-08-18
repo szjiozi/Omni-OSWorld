@@ -170,7 +170,7 @@ Directly referenced source actions:
 - Skill: `26a8440e-c166-4c50-aef4-bfb77314b46b.skill-03`
 - Intent: Calculate the Total Units Dispatched metric in Summary from the Units Dispatched range on Dispatch_Log using a cross-sheet range-total formula.
 - Efficiency: Use one SUM formula that references the Units Dispatched range on Dispatch_Log rather than manually adding values.
-- Visible success: Summary!B2 shows the aggregate dispatched-unit total, 649, and it is formula-derived.
+- Visible success: Summary!B2 shows the aggregate dispatched-unit total, 609, and it is formula-derived.
 
 #### Demonstration 5
 
@@ -181,7 +181,7 @@ Directly referenced source actions:
 
 Recording start: Open the supplied Replenishment Review workbook with the Catalog reference data, unsorted Dispatch_Log inputs, blank derived columns, and blank Summary total.
 
-Recording end: The dispatch log is SKU-ascending, fully classified and assigned seven-digit text ticket codes, its unique largest restock cost is visibly formula-highlighted, and Summary shows the cross-sheet total of 649 units.
+Recording end: The dispatch log is SKU-ascending, fully classified and assigned seven-digit text ticket codes, its unique largest restock cost is visibly formula-highlighted, and Summary shows the cross-sheet total of 609 units.
 
 Allowed variation: The expert may perform the sort before or after filling formulas and may use equivalent range-selection or autofill methods. Use LibreOffice Calc-compatible argument separators and an equivalent visible conditional style, while retaining an exact-match lookup and a formula-based maximum test.
 
@@ -245,11 +245,11 @@ Allowed variation: The expert may perform the sort before or after filling formu
 
 1. 切换到 `Summary` 工作表并选择 `B2`，即 `Total Units Dispatched` 标签右侧的空白值单元格。
 2. 输入 `=SUM($Dispatch_Log.C2:C19)`，然后按 `Enter`。
-3. 若 B2 已显示公式计算出的总数 `649`，不需要调整。若 B2 显示错误或为空，双击 B2，确认公式以 `=` 开头、工作表名称为 `$Dispatch_Log`，并且汇总范围为 `C2:C19`，再按 `Enter`。
+3. 若 B2 已显示公式计算出的总数 `609`，不需要调整。若 B2 显示错误或为空，双击 B2，确认公式以 `=` 开头、工作表名称为 `$Dispatch_Log`，并且汇总范围为 `C2:C19`，再按 `Enter`。
 
 - 对应 skills：`26a8440e-c166-4c50-aef4-bfb77314b46b.skill-03`
 - 高效操作：用一个跨工作表 `SUM` 公式汇总完整 Units Dispatched 范围，比逐项相加更快且能随源数据更新。
-- 完成标志：`Summary!B2` 显示公式结果 `649`，并且选择该单元格时可在输入行看到跨工作表 `SUM` 公式。
+- 完成标志：`Summary!B2` 显示公式结果 `609`，并且选择该单元格时可在输入行看到跨工作表 `SUM` 公式。
 
 #### 第 6 步：按 SKU 升序排序完整 Dispatch_Log
 
@@ -265,7 +265,7 @@ Allowed variation: The expert may perform the sort before or after filling formu
 #### 第 7 步：进行最终核对并保存
 
 1. 检查 `Dispatch_Log`：E 列全部有分类、F 列全部是七位代码，且 D 列仅有一个 `540.00` 高亮。
-2. 检查 `Summary!B2` 是否保留公式并显示总计 `649`。
+2. 检查 `Summary!B2` 是否保留公式并显示总计 `609`。
 3. 使用 `File` > `Save` 保存完成后的工作簿。
 
 - 对应 skills：无；这是准备或检查步骤。
@@ -278,7 +278,7 @@ Allowed variation: The expert may perform the sort before or after filling formu
 - `Dispatch_Log!E2:E19` 都有 Supply Group 分类，重复 SKU 的分类一致；例如 `SKU-104` 对应 `Fasteners`，`SKU-322` 对应 `Electrical`。
 - `Dispatch_Log!F2:F19` 都显示七位 Ticket Code，例如 Ticket Number `4821` 显示为 `0004821`，Ticket Number `930` 显示为 `0000930`。
 - Restock Cost 中只有数值 `540.00` 的单元格具有所选的明显条件格式高亮，其他 Restock Cost 单元格没有该高亮。
-- `Summary!B2` 含有跨工作表的 `SUM` 公式，并显示 Total Units Dispatched 的目标总计 `649`。
+- `Summary!B2` 含有跨工作表的 `SUM` 公式，并显示 Total Units Dispatched 的目标总计 `609`。
 
 ## Source-task similarity review
 

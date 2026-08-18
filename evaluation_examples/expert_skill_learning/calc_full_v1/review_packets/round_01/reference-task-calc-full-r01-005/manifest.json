@@ -2,17 +2,17 @@
   "schema_version": "1.0",
   "generated_by": "scripts/python/manage_reference_review_packets.py export",
   "reference_task_id": "reference-task-calc-full-r01-005",
-  "context_fingerprint": "2ef8cd811e26acd30e449a2bff34c7ba427d6f785328b0a510aafde405f7dee8",
+  "context_fingerprint": "4385e914fe2414ce53c736f231eb930ee9fed25d6fbcf43990a08c0b834069d8",
   "inputs": [
     {
       "role": "artifact",
       "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/initial_artifact.xlsx",
-      "sha256": "b87b0b381f2cdf867ae4e97b1d200710016252754cef26c484f9f0698c65a2cf"
+      "sha256": "17d591f70eb4e19cd7f11cf89f7269ef947db9a70655781db868a97be9639f1c"
     },
     {
       "role": "artifact_blueprint",
       "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/artifact_blueprint.json",
-      "sha256": "0aad9cf87a3002ee5970e4c8a327a74b6b776776d99a30d314dc69a4ccd8f4a3"
+      "sha256": "8d74db7f73100fd6ad0abaa4d8b4bfc64517545d08632bba809c27cdfa539a6d"
     },
     {
       "role": "artifact_qa",
@@ -22,7 +22,7 @@
     {
       "role": "task_config",
       "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-005.json",
-      "sha256": "6a32a2dcce2c118969eb468cd5877a8b99dab355ac5eddfc4f0e0e3c00691c82"
+      "sha256": "7f391507c255a22baea89c37d2b091eea691630a839607ed7791fd6d9d71b606"
     },
     {
       "role": "artifact_preview",
@@ -43,27 +43,27 @@
   "generated_files": [
     {
       "path": "TASK.md",
-      "sha256": "4e9bd6ed3bf7b1624cfae0531fa2f9dcb02f3e49b0e9ce3d7d3f827eb3d88118"
+      "sha256": "1ff9b384a3619396e9fbb6b4c09a0719696e6443e6ade24e14744a75a1718f6e"
     },
     {
       "path": "TASK_DETAIL.md",
-      "sha256": "3eaa2859692b47c56eb1632c946af197933ff6318412046cdeec63f1b2b7a470"
+      "sha256": "0900ea4866064c52ee0a541b884f5661022476d26df87d4ef0f48d35daab9568"
     },
     {
       "path": "context.json",
-      "sha256": "95689d3d2715ec34f60cc68f8b770ac4b1077ef57dafb4042da5e2830511e14f"
+      "sha256": "e93d8a70745118ac895df820887897a76cfdfa799d0bd2300a94f89d3db7d420"
     },
     {
       "path": "task_config.json",
-      "sha256": "6a32a2dcce2c118969eb468cd5877a8b99dab355ac5eddfc4f0e0e3c00691c82"
+      "sha256": "7f391507c255a22baea89c37d2b091eea691630a839607ed7791fd6d9d71b606"
     },
     {
       "path": "artifact/initial_artifact.xlsx",
-      "sha256": "b87b0b381f2cdf867ae4e97b1d200710016252754cef26c484f9f0698c65a2cf"
+      "sha256": "17d591f70eb4e19cd7f11cf89f7269ef947db9a70655781db868a97be9639f1c"
     },
     {
       "path": "artifact/artifact_blueprint.json",
-      "sha256": "0aad9cf87a3002ee5970e4c8a327a74b6b776776d99a30d314dc69a4ccd8f4a3"
+      "sha256": "8d74db7f73100fd6ad0abaa4d8b4bfc64517545d08632bba809c27cdfa539a6d"
     },
     {
       "path": "artifact/artifact_qa.json",
