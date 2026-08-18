@@ -695,83 +695,87 @@
     "task_detail_sha256": "86d7951c101527ae5c0d5101034a9ec11ad469fbc00fcbb2c7e931995613f08d",
     "guide": {
       "final_verification": [
-        "“Funding Plan”工作表的 C2:C7 均以类似“3.6 M”的形式显示：保留一位小数，数字与 M 之间有空格；选中任一单元格时，编辑栏中的基础值仍是完整的数值而不是文本。",
-        "工作表中存在一个按 Region 比较 Requested Funding 的柱形图，且使用六个地区作为分类标签。",
-        "图表上方可见标题“Regional Funding Requests”。"
+        "在 `Funding Plan` 中查看 C2:C7：六个 `Requested Funding` 值均显示为一位小数、数字与 `M` 之间有空格的形式，例如 `3.6 M`；不应显示完整的美元金额。",
+        "确认工作表上存在按 Region 比较 Requested Funding 的柱形图，且图表可见标题为 `Regional Funding Requests`。",
+        "单击 C 列中的任一金额并查看编辑栏（或公式输入行）：底层应仍是完整的数值金额，而不是文本 `M` 值。"
       ],
       "language": "zh-CN",
-      "overview": "本指南将“Funding Plan”中的六项 Requested Funding 统一显示为以百万为单位、保留一位小数且带空格 M 后缀的数值，并在右侧空白区域创建按地区比较请求资金的柱形图，最后为图表设置标题。",
+      "overview": "本任务在 `Funding Plan` 工作表完成两项整理：将六条 `Requested Funding` 记录仅以“百万、保留一位小数、M 前有空格”的显示格式呈现；随后创建一个按 Region 比较请求金额的柱形图，并将标题设为 `Regional Funding Requests`。",
       "reference_task_id": "reference-task-calc-full-r01-001",
       "starting_state_checks": [
-        "确认已打开工作簿，且只有名为“Funding Plan”的工作表需要处理。",
-        "确认 A1:C7 是连续数据表：第 1 行为表头，A 列为 Region，B 列为 Grant Theme，C 列为 Requested Funding。",
-        "确认 C2:C7 当前仍显示普通货币或常规完整数值，没有 M 后缀；并确认从 E2 开始有可用于放置图表的空白区域。",
-        "确认工作表中尚不存在图表，也没有显示“Regional Funding Requests”的图表标题。"
+        "确认当前工作簿只有名为 `Funding Plan` 的工作表，并切换到该表。",
+        "确认源数据位于 A1:C7：第 1 行是标题行，A 列为 `Region`，B 列为 `Grant Theme`，C 列为 `Requested Funding`。",
+        "确认 C2:C7 目前显示为普通数值或货币金额，尚未带有 `M` 后缀；并确认从 E2 开始有空白区域可放置图表。",
+        "确认工作表上尚未存在区域资金比较图，且没有显示 `Regional Funding Requests` 的图表标题。"
       ],
       "steps": [
         {
-          "efficiency_tip": "先一次选中完整的 C2:C7 范围，随后只需设置一次格式，避免逐个单元格重复操作。",
+          "efficiency_tip": "先一次选中全部六个金额单元格，能避免逐个单元格重复设置格式。",
           "instructions": [
-            "在“Funding Plan”工作表中，选择 Requested Funding 的六个数据单元格 C2:C7，不要包含 C1 表头。",
-            "右键单击所选区域，选择“Format Cells...”。",
-            "在单元格格式对话框中进入可输入数字格式代码的位置；如有类别列表，可选择“User-defined”或自定义格式。",
-            "在格式代码框中输入 `0.0,, \\M`，然后按 Enter 确认并应用。该代码中的两个逗号会将显示值按百万缩放，`0.0` 保留一位小数，空格和 `\\M` 会显示分隔开的 M 后缀。"
+            "在 `Funding Plan` 中选择 C2:C7；不要包含 C1 标题单元格。",
+            "右键单击所选区域，选择 `Format Cells...`。",
+            "在打开的对话框中切换到 `Numbers` 选项卡。",
+            "找到格式代码输入区域，将格式代码设为 `0.0,, \\M`，然后按 `Enter` 或确认对话框。",
+            "该代码中的两个逗号会将显示值缩放为百万，`0.0` 保留一位小数，反斜杠后的 `M` 作为文字单位显示，前面的空格使单位与数字分开。"
           ],
           "skill_ids": [
             "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-02"
           ],
           "step_number": 1,
-          "title": "将请求资金显示为一位小数的百万金额",
-          "visible_success_signal": "C2:C7 的每个金额都显示为类似“3.6 M”的形式，而不是完整的美元数值；数值与 M 之间清楚可见一个空格。"
+          "title": "将请求金额显示为带空格 M 后缀的百万数",
+          "visible_success_signal": "C2:C7 中每个金额都显示为类似 `3.6 M` 的形式，均有一位小数且 `M` 前存在可见空格。"
         },
         {
-          "efficiency_tip": "由于 A 列和 C 列不相邻，可先选中 A1:A7，再按住 Ctrl 选中 C1:C7；这样可直接将地区作为分类标签、资金作为唯一数值系列。",
+          "efficiency_tip": "使用 `Ctrl` 选择不相邻的 Region 与金额两列，可避免把中间的 `Grant Theme` 文本列作为图表数据。",
           "instructions": [
-            "选择图表源数据：先选择 A1:A7（包括 Region 表头和六个地区），然后按住 Ctrl 再选择 C1:C7（包括 Requested Funding 表头和六个金额）。",
-            "使用“Insert”菜单中的“Chart...”命令开始插入图表。",
-            "在图表向导中选择柱形图或其他清晰比较各地区资金的列式图表；保留地区名称作为分类标签，并将 Requested Funding 作为数据系列。",
-            "完成图表创建，将图表放在从 E2 开始的空白区域，避免遮挡 A1:C7 的源数据。"
+            "先选择 A1:A7，其中包括 `Region` 标题和六个区域名称。",
+            "按住 `Ctrl`，再选择 C1:C7，其中包括 `Requested Funding` 标题和六个金额。",
+            "使用 `Insert` > `Chart...` 开始创建图表。",
+            "在图表设置界面选择柱形的列式图表类型；确保区域名称用于分类轴，`Requested Funding` 作为数值系列。若设置界面提供标签选项，保留“第一行作为标签”和“第一列作为标签”的对应设置。",
+            "完成图表创建，并将图表放在从 E2 开始的空白区域。"
           ],
           "skill_ids": [],
           "step_number": 2,
-          "title": "创建按地区比较请求资金的柱形图",
-          "visible_success_signal": "工作表中出现一个柱形图，横轴或分类轴显示六个 Region 名称，每个地区对应一根表示 Requested Funding 的柱。"
+          "title": "创建按区域比较请求金额的柱形图",
+          "visible_success_signal": "工作表空白区域中出现柱形图，每个 Region 对应一个柱，图表反映 C 列的 Requested Funding 金额。"
         },
         {
-          "efficiency_tip": "图表刚创建后通常仍处于活动状态，此时立即设置标题，无需之后再重新选择图表。",
+          "efficiency_tip": "图表刚创建完成时通常仍处于活动状态，立即设置标题可免去之后重新选中并进入编辑状态。",
           "instructions": [
-            "保持新图表处于选中或编辑状态，打开图表的“Chart elements”控件。",
-            "在图表元素中选择标题文本框。",
-            "输入标题 `Regional Funding Requests`，然后按 Enter 应用。"
+            "保持新建图表处于活动状态；如图表未处于编辑状态，双击图表以激活其编辑控件。",
+            "打开 `Chart elements`。",
+            "点击标题文本框，输入 `Regional Funding Requests`，然后按 `Enter` 应用。",
+            "单击图表外的空白工作表区域以结束图表编辑，同时保留图表。"
           ],
           "skill_ids": [
             "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-05"
           ],
           "step_number": 3,
           "title": "通过图表元素设置图表标题",
-          "visible_success_signal": "图表上方清楚显示标题“Regional Funding Requests”。"
+          "visible_success_signal": "图表上方可见且完整显示标题 `Regional Funding Requests`。"
         },
         {
-          "efficiency_tip": "用一次快速目视检查同时确认格式、图表分类和标题，可在结束前及时发现选择范围或标题遗漏。",
+          "efficiency_tip": "最后同时检查数值显示、分类标签和标题，可在保存前一次发现范围选择或格式遗漏。",
           "instructions": [
-            "检查 C2:C7：所有六个单元格均应为一位小数的百万显示，并带有与数字分开的 M。",
-            "检查图表：它应比较六个地区的 Requested Funding，且没有将 Grant Theme 误作为数值系列。",
-            "检查标题拼写和大小写是否恰为 `Regional Funding Requests`。"
+            "检查 C2:C7，确认六个单元格都使用百万显示格式，而不是只格式化了部分记录。",
+            "检查图表分类标签来自 A 列 Region，图中没有把 `Grant Theme` 当作额外的数据系列。",
+            "检查标题文字精确为 `Regional Funding Requests`，并确认图表没有遮挡源表数据。",
+            "保存工作簿。"
           ],
           "skill_ids": [],
           "step_number": 4,
-          "title": "完成最终核对",
-          "visible_success_signal": "格式化金额和标题均可见，图表按地区显示资金比较，且源数据表没有被图表遮挡。"
+          "title": "核对完成结果并保存",
+          "visible_success_signal": "`Funding Plan` 同时保留完整源表、六个带 `M` 的金额显示，以及标题正确的区域资金柱形比较图。"
         }
       ]
     },
     "generation": {
-      "request_id": "85587293-c999-4ae2-848f-2c824b338aba",
-      "prompt_sha256": "24208f7632b3c845b59c77a3a794dd3e7170b53984e7a274935cb509af5ad6e2",
+      "request_id": "7c2f41cc-36fc-4040-b53e-957bf1539f4d",
+      "prompt_sha256": "abae4c9b9a81ab61ee5c18446d535c4eefe5cfb983c66da22c93e8ff23ca5214",
       "model": "gpt-5.6-terra",
-      "input_tokens": 2597,
-      "output_tokens": 1183,
-      "estimated_cost_usd": 0.01939
+      "input_tokens": 2822,
+      "output_tokens": 1524,
+      "estimated_cost_usd": 0.023932
     }
   },
   "artifact": {

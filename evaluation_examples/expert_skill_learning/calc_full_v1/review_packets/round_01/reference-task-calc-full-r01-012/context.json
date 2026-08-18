@@ -722,87 +722,94 @@
     "task_detail_sha256": "32f7af048be74566fa082dada1fbef5ff79a3135b31991ae3098ebad837fcf67",
     "guide": {
       "final_verification": [
-        "“Dispatch Log”工作表仍保留第1行标题和第2至25行的24条每日调度记录，没有新增无关工作表、汇总行或分析列。",
-        "检查 B2:B25：每个单元格都有结果且以一位小数的百分比显示；例如选中任一结果单元格时，公式栏中的公式应使用该行的 D 列除以 C 列。",
-        "工作表中存在一个清晰可读的折线图：横轴类别来自 Dispatch Date，只有一个 Completion Rate 数据系列，折线连续且不显示数据点标记。",
-        "确认图表未遮住需要查看的源数据；必要时可将图表拖到表格右侧或下方的空白区域。"
+        "`Dispatch Log` 工作表仍保留 24 条日期连续的派送记录，原始的 `Planned Kits` 和 `Verified Kits` 数据没有被改动。",
+        "`B2:B25` 均显示为一位小数的百分比；抽查任意一行时，该行的 Completion Rate 等于 `Verified Kits ÷ Planned Kits`。",
+        "工作表中有一个清晰可读的折线图：横轴为 Dispatch Date，只有一条 Completion Rate 数据线，并且线条上没有数据点标记。"
       ],
       "language": "zh-CN",
-      "overview": "在“Dispatch Log”中，先以 Verified Kits ÷ Planned Kits 计算每天的 Completion Rate，再把公式快速填充至全部24条记录，最后用 Dispatch Date 和 Completion Rate 创建无数据点标记的折线图，展示每日完成率变化。",
+      "overview": "本任务将在 `Dispatch Log` 中计算每个派送日期的完成率：用 `Verified Kits` 除以 `Planned Kits`，再利用日期和完成率创建一张无数据点标记的折线图，以查看每日完成率的变化趋势。",
       "reference_task_id": "reference-task-calc-full-r01-012",
       "starting_state_checks": [
-        "确认 LibreOffice Calc 已打开工作簿，当前活动工作表名称为“Dispatch Log”。",
-        "确认第1行显示标题 Dispatch Date、Completion Rate、Planned Kits、Verified Kits，且数据位于第2行至第25行。",
-        "确认 B2:B25 目前为空白，但该列已经显示为一位小数的百分比格式；C 列和 D 列每一条记录都有数值。",
-        "确认工作表中尚未存在图表对象。"
+        "确认当前活动工作表是 `Dispatch Log`。",
+        "确认第 1 行是标题行，数据位于第 2 行至第 25 行；`B2:B25` 的 Completion Rate 目前为空。",
+        "确认 C 列 `Planned Kits` 与 D 列 `Verified Kits` 每一行都有数值，且工作簿中尚未存在图表。"
       ],
       "steps": [
         {
-          "efficiency_tip": "先核对列含义再输入公式，可避免把计划数量和已核验数量的除数、被除数写反。",
+          "efficiency_tip": "先只在首个结果单元格写一次采用相对引用的公式；后续行可自动调整引用，无需逐行计算。",
           "instructions": [
-            "单击单元格 B2，这是第一条记录的 Completion Rate 结果位置。",
-            "输入公式 `=D2/C2`，其中 D2 是 Verified Kits，C2 是 Planned Kits。",
-            "按 Enter 确认公式。由于 B 列已预设为百分比且保留一位小数，结果会自动按百分比显示。"
+            "单击单元格 `B2`，它是第一条记录的 Completion Rate 结果位置。",
+            "输入公式 `=D2/C2`，然后按 `Enter`。其中 D 列是 `Verified Kits`，C 列是 `Planned Kits`。",
+            "保留现有百分比格式，不要把结果改成普通数字格式。"
           ],
           "skill_ids": [
             "21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-01"
           ],
           "step_number": 1,
-          "title": "计算第一天的完成率",
-          "visible_success_signal": "B2 显示一个一位小数的百分比，而不是空白；其数值与同一行 Verified Kits 除以 Planned Kits 的结果一致。"
+          "title": "在首行计算完成率",
+          "visible_success_signal": "`B2` 显示一个带一位小数的百分比，且其数值与第 2 行的 `Verified Kits ÷ Planned Kits` 相符。"
         },
         {
-          "efficiency_tip": "使用填充柄双击会自动依据相邻 C、D 列的连续数据向下填充，比逐行输入或长距离拖动更快，也更不容易漏行。",
+          "efficiency_tip": "对已完成公式的填充柄双击，比拖动到第 25 行更快，也可减少选择错行的风险。",
           "instructions": [
-            "重新选中含有公式的 B2。",
-            "将鼠标移到 B2 单元格右下角的小方块（填充柄）。鼠标指针变为适合填充的形状时，双击该填充柄。",
-            "确认 Calc 将公式向下复制到与相邻数据区域对应的最后一行，即 B25。",
-            "可单击例如 B3 或 B25，在公式栏中检查引用已随行号变化，例如 B3 使用 `=D3/C3`。"
+            "重新选中 `B2`。",
+            "将指针移到选中单元格右下角的小方块，即填充柄。",
+            "当指针位于填充柄上时双击。Calc 会依据相邻 C、D 列连续的数据，将公式填充到其余记录行。"
           ],
           "skill_ids": [
             "51719eea-10bc-4246-a428-ac7c433dd4b3.skill-02"
           ],
           "step_number": 2,
-          "title": "向下自动填充全部完成率公式",
-          "visible_success_signal": "B2:B25 全部显示百分比结果，且不同日期的结果有变化；后续行公式引用各自所在行的 C 列和 D 列。"
+          "title": "向下填充所有完成率公式",
+          "visible_success_signal": "`B2:B25` 都已填入百分比。单击例如 `B3` 时，编辑栏中的公式应为与该行对应的 `=D3/C3`，而不是仍引用第 2 行。"
         },
         {
-          "efficiency_tip": "一次选中包含标题的两列数据，可让 Calc 自动将 Dispatch Date 识别为类别标签，并将 Completion Rate 识别为唯一的数据系列。",
+          "efficiency_tip": "图表源区域只选择日期和完成率两列，可避免把计划数量或核验数量误绘制为额外数据线。",
           "instructions": [
-            "选择图表源数据区域 A1:B25，包含 Dispatch Date、Completion Rate 及全部24条数据。",
-            "在工具栏中点击插入图表的图标以打开图表创建向导；也可使用菜单“插入”中的图表命令。",
-            "在图表类型中选择“折线图”。",
-            "在折线图的变体中选择仅显示线条、不带数据点标记的“线条”变体（此界面中为从右侧数第三个图标）。",
-            "确认数据范围仍为 A1:B25，且首行作为标签使用；然后点击“完成”插入图表。"
+            "选择包含标题的范围 `A1:B25`。A 列 `Dispatch Date` 将作为横轴类别，B 列 `Completion Rate` 将作为唯一的数据系列。",
+            "确认选择范围包含 24 条数据及第 1 行标题，并且 B 列中的计算结果均已显示。"
+          ],
+          "skill_ids": [],
+          "step_number": 3,
+          "title": "选择图表数据源",
+          "visible_success_signal": "选区覆盖 `Dispatch Date` 和 `Completion Rate` 两个标题，以及从第 2 行到第 25 行的对应数据。"
+        },
+        {
+          "efficiency_tip": "在完成创建前就选定 `Line` 及无标记的变体，可避免创建后再返回修改图表类型。",
+          "instructions": [
+            "在保持 `A1:B25` 被选中的状态下，点击插入图表的图标以打开图表创建界面。",
+            "在图表类型中选择 `Line`。",
+            "选择仅显示线条、没有点标记的变体；在此界面中它显示为从右侧数第三个图标。",
+            "点击 `Finish` 插入图表。"
           ],
           "skill_ids": [
             "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-04"
           ],
-          "step_number": 3,
-          "title": "创建每日完成率的无标记折线图",
-          "visible_success_signal": "“Dispatch Log”上出现折线图，横轴按日期显示，图中仅有一条 Completion Rate 折线，并且线条上没有圆点或其他数据点标记。"
+          "step_number": 4,
+          "title": "插入无标记折线图",
+          "visible_success_signal": "`Dispatch Log` 上出现图表，图中只有一条连续的 Completion Rate 线，没有圆点或其他数据点标记，日期显示为横轴类别。"
         },
         {
-          "efficiency_tip": "若图表与表格重叠，优先拖动图表边框整体移动到右侧或下方空白处；这样无需改变数据源即可提高可读性。",
+          "efficiency_tip": "如图表覆盖了表格或文字过小，可拖动图表到空白区域并调整大小，以便同时检查数据表和趋势线。",
           "instructions": [
-            "查看图表是否完整显示日期趋势和完成率线条。",
-            "如图表遮挡了表格，单击图表边框并将其移动或调整为可读的大小，避免覆盖 B2:B25 或源数据标题。",
-            "确认图表仍只绘制 Completion Rate，日期仍作为横轴类别。"
+            "检查图表是否清楚显示日期顺序和完成率的上下变化。",
+            "如有需要，将图表移动或调整为不会遮挡 `A1:D25` 数据表的可读大小。",
+            "抽查图表仅有一个 Completion Rate 系列；不要加入 `Planned Kits` 或 `Verified Kits` 系列。"
           ],
           "skill_ids": [],
-          "step_number": 4,
-          "title": "整理图表并检查结果",
-          "visible_success_signal": "源表数据和图表可以同时查看；图表清晰显示随 April 2026 各日期变化的非平坦完成率趋势。"
+          "step_number": 5,
+          "title": "检查图表和最终结果",
+          "visible_success_signal": "数据表与图表可同时辨认：`B2:B25` 为完成率百分比，图表显示 24 个日期对应的一条无标记完成率趋势线。"
         }
       ]
     },
     "generation": {
-      "request_id": "7f2737f9-8ac2-482c-a622-9849689ad40b",
-      "prompt_sha256": "36a62aa14c675e2f39425b687d487e3779ccfd96d2e02b6a3cbb1a7d3de27504",
+      "request_id": "4c5a6097-03fd-446d-9217-0541ccff331f",
+      "prompt_sha256": "03067d0861c64a012496a7fc4c52dcfeb76ad07501ce0de970685f4a271e6e55",
       "model": "gpt-5.6-terra",
-      "input_tokens": 2838,
-      "output_tokens": 1366,
-      "estimated_cost_usd": 0.022068
+      "input_tokens": 3063,
+      "output_tokens": 1429,
+      "estimated_cost_usd": 0.023274
     }
   },
   "artifact": {

@@ -152,77 +152,81 @@ Allowed variation: The expert may complete the archive copy before or after the 
 
 > 以下是一个可以参考的操作 guide。标注者可以根据实际 LibreOffice 界面采用等价操作。
 
-本指南将在 "Supply Rounds" 的三个配送批次中计算 Remaining Packs（Prepared Packs 减 Issued Packs），并新建名为 "Archive" 的工作表，保存 Round A 的 A1:C7 输入快照。公式先在 Round A 建立并填满，再整体复制到后两个结构相同的批次。
+本任务是在 `Supply Rounds` 中计算三个配送批次的剩余包数，并新建 `Archive` 工作表保存 Round A 的输入数据快照。剩余包数的关系是同一行的 `Prepared Packs` 减去 `Issued Packs`。
 
 #### 启动后的初始状态检查
 
-- 确认当前打开的工作簿只有一个名为 "Supply Rounds" 的工作表。
-- 确认 "Supply Rounds" 中有三个区块：Round A 位于 A1:D7、Round B 位于 A9:D15、Round C 位于 A17:D23。
-- 确认 D3:D7、D11:D15 和 D19:D23 目前为空；不要覆盖 A:C 中已有的物品和数量。
-- 确认尚未存在名为 "Archive" 的工作表。
+- 确认当前仅有一个名为 `Supply Rounds` 的工作表。
+- 确认 `Supply Rounds` 中有三个区块：Round A 位于 `A1:D7`、Round B 位于 `A9:D15`、Round C 位于 `A17:D23`。
+- 确认结果区域 `D3:D7`、`D11:D15`、`D19:D23` 目前为空；不要覆盖 A 到 C 列的原始物品和数量。
 
-#### 第 1 步：新建并命名 Archive 工作表
+#### 第 1 步：在 Round A 的第一行计算 Remaining Packs
 
-1. 在窗口底部的工作表标签区域，点击工作表标签旁的 `+` 按钮。
-2. Calc 会立即创建并切换到一个新的空白工作表。
-3. 将新工作表改名为 `Archive`：可双击新工作表标签，输入 `Archive` 后按 Enter。
-
-- 对应 skills：`04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-02`
-- 高效操作：先创建空白目标表，可在复制时直接粘贴，避免在工作表之间临时来回切换。
-- 完成标志：底部能看到独立的 "Archive" 工作表标签，且当前表格为空白。
-
-#### 第 2 步：复制 Round A 输入快照到 Archive
-
-1. 切换回 "Supply Rounds" 工作表。
-2. 选中连续区域 A1:C7：点击 A1，然后拖动到 C7，使整个三列七行区域被选中。
-3. 按 Ctrl+C 复制。
-4. 切换到 "Archive" 工作表，点击 A1 作为粘贴区域的左上角。
-5. 按 Ctrl+V 粘贴。
-
-- 对应 skills：`21df9241-f8d7-4509-b7f1-37e501a823f7.skill-01`
-- 高效操作：一次选中 A1:C7 可保留标题、三列标题和全部五条记录，不必逐项重新输入。
-- 完成标志："Archive" 的 A1:C7 已显示 "Round A — Tuesday"、第 2 行的三个标题及五行 Round A 的物品和数量。
-
-#### 第 3 步：在 Round A 创建首个剩余包数公式
-
-1. 返回 "Supply Rounds" 工作表。
-2. 点击 D3；这是 Round A 的第一条记录 Seed Trays 对应的 Remaining Packs 单元格。
-3. 输入公式 `=B3-C3`，然后按 Enter。
-4. 如需要确认计算关系，再次选中 D3，查看公式栏是否显示 `=B3-C3`。
+1. 在 `Supply Rounds` 工作表中单击单元格 `D3`。
+2. 输入公式 `=B3-C3`，然后按 `Enter`。
+3. 如有需要，重新选中 `D3`，查看输入栏以确认公式引用的是同一行的 `B3` 和 `C3`。
 
 - 对应 skills：`1e8df695-bd1b-45b3-b557-e7d599cf7597.skill-01`
-- 高效操作：使用相对引用的首行公式，后续向下填充时行号会自动变化，无需逐行重新键入。
-- 完成标志：D3 显示 55，表示 84 个 Prepared Packs 减去 29 个 Issued Packs。
+- 高效操作：先只在第一条数据记录写一次公式，后续复制时使用相对引用可自动调整行号。
+- 完成标志：`D3` 显示 `55`，因为 `84-29=55`；该单元格包含公式 `=B3-C3`。
 
-#### 第 4 步：填充 Round A 的其余公式
+#### 第 2 步：将公式填充到 Round A 的其余记录
 
-1. 选中 D3:D7。可先点击 D3，再拖动到 D7。
-2. 使用菜单 `工作表` > `填充单元格` > `向下填充`，将 D3 的公式填充到 D4:D7。
-3. 检查 D3:D7 是否均显示计算结果。
+1. 选中 `D3` 并按 `Ctrl+C`。
+2. 拖动选择目标区域 `D4:D7`，然后按 `Ctrl+V`。
+3. 检查 Round A 的五个结果单元格 `D3:D7` 是否都已有数值。
 
 - 对应 skills：无；这是准备或检查步骤。
-- 高效操作：用填充命令将一个已验证的公式扩展到相邻行，比手动输入五个公式更快且更不易出错。
-- 完成标志：D3:D7 全部有整数结果；从上到下应显示 55、45、74、19、78。
+- 高效操作：复制已有公式比逐行输入更快，也能避免把某一行的单元格引用写错。
+- 完成标志：`D3:D7` 都显示结果，依次为 `55`、`45`、`74`、`19`、`78`；例如 `D4` 会基于本行显示 `=B4-C4`。
 
-#### 第 5 步：将完整公式范围复制到 Round B 和 Round C
+#### 第 3 步：将 Round A 的公式范围复制到 Round B 和 Round C
 
-1. 选中已完成的公式范围 D3:D7。
-2. 按 Ctrl+C 复制该五单元格公式范围。
-3. 点击 D11，即 Round B 的第一条数据行的 Remaining Packs 单元格，然后按 Ctrl+V。
-4. 点击 D19，即 Round C 的第一条数据行的 Remaining Packs 单元格，然后再次按 Ctrl+V。
-5. 分别查看 D11:D15 和 D19:D23，确认没有空白的 Remaining Packs 单元格。
+1. 选择完整公式范围 `D3:D7`，按 `Ctrl+C`。
+2. 单击 Round B 结果区左上角的 `D11`，按 `Ctrl+V`。
+3. 单击 Round C 结果区左上角的 `D19`，再次按 `Ctrl+V`。
+4. 分别选中 `D11` 和 `D19`，确认它们的公式引用本区块对应行，例如公式分别从 `=B11-C11` 和 `=B19-C19` 开始。
 
 - 对应 skills：`f9584479-3d0d-4c79-affa-9ad7afdd8850.skill-03`
-- 高效操作：复制完整的五单元格公式区域一次，再粘贴到两个同结构区域，Calc 会自动保留相对引用并按新行计算。
-- 完成标志：Round B 的 D11:D15 显示 45、37、71、16、81；Round C 的 D19:D23 显示 57、45、76、19、93。
+- 高效操作：一次选中完整的五行公式区域，再分别粘贴到两个结构相同的区块，可保留公式并自动改用目标行的引用。
+- 完成标志：Round B 的 `D11:D15` 和 Round C 的 `D19:D23` 全部显示计算结果，而不是空白；每个公式均引用本行的 B 列和 C 列。
+
+#### 第 4 步：新建并命名 Archive 工作表
+
+1. 在底部工作表标签区域，单击工作表标签旁的 `+` 按钮。
+2. 新建的空白工作表会被激活。双击新工作表的标签，将名称改为 `Archive`，然后按 `Enter`。
+
+- 对应 skills：`04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-02`
+- 高效操作：使用工作表标签旁的加号可直接得到空白目标表，无需先处理插入工作表对话框。
+- 完成标志：底部可见独立的 `Archive` 工作表标签，且该工作表为空白并处于可编辑状态。
+
+#### 第 5 步：复制 Round A 输入数据到 Archive
+
+1. 切换回 `Supply Rounds` 工作表。
+2. 从 `A1` 拖动选择到 `C7`，确保选择包括标题、表头和五条 Round A 记录，但不包括 `Remaining Packs` 列。
+3. 按 `Ctrl+C` 复制选区。
+4. 切换到 `Archive` 工作表，单击 `A1`，然后按 `Ctrl+V`。
+
+- 对应 skills：`21df9241-f8d7-4509-b7f1-37e501a823f7.skill-01`
+- 高效操作：一次复制 `A1:C7` 可同时保留标题、表头、项目名称和两列数量，避免逐段重建快照。
+- 完成标志：`Archive` 的 `A1:C7` 显示 `Round A — Tuesday`、`Item`、`Prepared Packs`、`Issued Packs`，以及五条 Round A 的物品和数量记录。
+
+#### 第 6 步：完成最终核对
+
+1. 回到 `Supply Rounds`，检查三个 Remaining Packs 区域均已填满。
+2. 确认 Round A 为 `55, 45, 74, 19, 78`，Round B 为 `45, 37, 71, 16, 81`，Round C 为 `57, 45, 76, 19, 93`。
+3. 切换到 `Archive`，确认快照从 `A1` 开始，内容覆盖 `A1:C7`，且没有遗漏标题、表头或任何一条记录。
+
+- 对应 skills：无；这是准备或检查步骤。
+- 高效操作：最后同时检查数值、公式和归档内容，可及时发现错误粘贴到标题行或错误工作表的情况。
+- 完成标志：工作簿同时满足：三个轮次的 `Remaining Packs` 全部为公式计算结果，并且 `Archive` 中存在完整的 Round A 快照。
 
 #### 最终结果检查
 
-- 工作簿底部有且仅需确认存在两个相关工作表："Supply Rounds" 和 "Archive"。
-- 在 "Supply Rounds" 中检查 D3:D7、D11:D15、D19:D23 均不再为空，且每个单元格显示整数的剩余包数。
-- 抽查公式：选中 D3 时公式栏为 `=B3-C3`；选中 D11 时应为 `=B11-C11`；选中 D19 时应为 `=B19-C19`，说明引用已随粘贴位置自动调整。
-- 核对结果示例：D3 为 55，D7 为 78，D11 为 45，D15 为 81，D19 为 57，D23 为 93。
-- 打开 "Archive"，确认 A1:C7 显示 "Round A — Tuesday"、第 2 行的 Item/Prepared Packs/Issued Packs 标题，以及五条 Round A 物品和数量记录。
+- 工作簿底部有且有两个工作表标签：`Supply Rounds` 与 `Archive`。
+- 在 `Supply Rounds` 中，`D3:D7`、`D11:D15` 和 `D19:D23` 均不再为空；选中其中任一结果单元格时，输入栏显示对应行的 `Prepared Packs` 减去 `Issued Packs` 的公式。
+- 结果应依次为：Round A 的 `D3:D7` 是 `55, 45, 74, 19, 78`；Round B 的 `D11:D15` 是 `45, 37, 71, 16, 81`；Round C 的 `D19:D23` 是 `57, 45, 76, 19, 93`。
+- 打开 `Archive` 后，`A1:C7` 显示完整的 Round A 快照：标题 `Round A — Tuesday`、三列表头以及五条物品和数量记录。
 
 ## Source-task similarity review
 

@@ -785,97 +785,98 @@
     "task_detail_sha256": "2f8c8481d5dee150098793598aa44a63f79375f3c1ebc8ac9f0be63fad0b4e72",
     "guide": {
       "final_verification": [
-        "在 Reimbursements 工作表中，G2:G25 的每条请求均显示 Net Reimbursement 计算结果；抽查任一行的公式栏，应符合“材料费 + 运费 - Sponsor Credit”的同一行引用逻辑。",
-        "左侧行号应出现跳号：5 后直接到 7、12 后直接到 14、19 后直接到 21，表示第 6、13、20 行已隐藏而非删除。",
-        "F27 仍显示标签 Total Reimbursement，G27 显示货币格式的总额；选中 G27 时，公式栏应为 =SUM(G2:G25)。",
-        "确认记录区域仍包含原有请求：隐藏行前后的可见记录没有被移动、筛选或清除。"
+        "`Reimbursements` 工作表中，`G2:G25` 的每一条请求记录均显示货币格式的 Net Reimbursement 计算结果；选择任一例如 `G3` 的单元格时，编辑栏中的公式应使用该行相对引用，例如 `=D3+E3-F3`。",
+        "行号区域可见跳过 `6`、`13`、`20` 的编号，说明这些行已隐藏；相邻记录仍保留且没有被删除。",
+        "`F27` 仍显示 `Total Reimbursement`，其右侧的 `G27` 显示一个货币总额。选择 `G27` 后确认公式为 `=SUM(G2:G25)`，范围覆盖全部 24 条记录，包括当前隐藏行。"
       ],
       "language": "zh-CN",
-      "overview": "本指南将在 Reimbursements 工作表中完成每条 workshop supply request 的 Net Reimbursement，隐藏指定的内部测试记录，并在 Total Reimbursement 标签右侧计算全部请求记录的总额。",
+      "overview": "在 `Reimbursements` 工作表中，先将 `G2` 的 Net Reimbursement 种子公式快速填充到所有记录行，再在 `G27` 汇总完整的 Net Reimbursement 范围，最后隐藏内部测试记录所在的非连续行。隐藏行不会删除数据，也不会让总计公式漏算这些记录。",
       "reference_task_id": "reference-task-calc-full-r01-016",
       "starting_state_checks": [
-        "确认已打开的工作簿包含名为 Reimbursements 的工作表，并切换到该工作表。",
-        "确认第 1 行是标题行，记录从第 2 行延续到第 25 行；第 26 行应为空白间隔行，F27 应为 Total Reimbursement，G27 应为空白。",
-        "确认 G2 已有公式 =D2+E2-F2，而 G3:G25 尚未填入计算结果。",
-        "确认第 6、13、20 行在开始时均可见；这些行是要隐藏的记录，不应删除或清空。"
+        "确认当前打开的工作簿只有一个名为 `Reimbursements` 的工作表，并且该工作表处于可见状态。",
+        "确认第 1 行是标题行，数据记录位于第 2 至第 25 行；第 26 行为空白间隔行，`F27` 显示 `Total Reimbursement`，而 `G27` 仍为空。",
+        "检查 `G2` 已有公式 `=D2+E2-F2`，但 `G3:G25` 尚未填入计算结果；同时行 `6`、`13`、`20` 在开始时均可见。"
       ],
       "steps": [
         {
-          "efficiency_tip": "先利用已有的 G2 公式再自动填充，避免逐行输入相同结构的计算公式。",
+          "efficiency_tip": "先核对种子公式和相邻数据是否连续，可避免自动填充范围过短或把错误公式传播到整列。",
           "instructions": [
-            "在 Reimbursements 工作表中单击单元格 G2。",
-            "查看输入行或公式栏，确认该单元格的公式为 =D2+E2-F2；如不是该公式，应先停止并重新检查起始工作簿。"
+            "在 `Reimbursements` 工作表中选择单元格 `G2`。",
+            "查看输入行或公式编辑区域，确认其中是 `=D2+E2-F2`。",
+            "确认 `G2` 左侧相邻的记录数据从第 2 行连续延伸至第 25 行，且第 26 行为空白。"
           ],
           "skill_ids": [],
           "step_number": 1,
-          "title": "确认 Net Reimbursement 的公式种子",
-          "visible_success_signal": "G2 被选中，并且公式栏显示 =D2+E2-F2；G3:G25 仍为空。"
+          "title": "确认公式种子与可填充的数据区域",
+          "visible_success_signal": "`G2` 显示首条记录的货币结果，且其公式为 `=D2+E2-F2`；第 3 至第 25 行的相邻数据均存在，`G26` 对应空白间隔行。"
         },
         {
-          "efficiency_tip": "双击填充柄比拖到第 25 行更快；由于相邻的记录列在第 2 至 25 行连续有数据，Calc 可据此确定填充终点。",
+          "efficiency_tip": "对填充柄双击比拖动到第 25 行更快；Calc 会依据旁边连续的记录区域自动确定终点。",
           "instructions": [
-            "保持 G2 处于选中状态。",
-            "将指针移到 G2 选框右下角的小方块（填充柄）。",
-            "双击填充柄，让 Calc 将公式自动向下填充整个连续记录区。",
-            "检查 G3 到 G25 已出现计算结果。"
+            "保持或重新选择 `G2`。",
+            "将指针移到 `G2` 右下角的小方块，即填充柄。",
+            "双击填充柄，让 Calc 将公式向下填充到连续数据区域的末行。",
+            "选择 `G3` 或其他已填充的单元格，确认公式的行号已随行变化；例如 `G3` 应为 `=D3+E3-F3`。"
           ],
           "skill_ids": [
             "7e429b8d-a3f0-4ed0-9b58-08957d00b127.skill-02"
           ],
           "step_number": 2,
           "title": "向下自动填充 Net Reimbursement 公式",
-          "visible_success_signal": "G3:G25 显示货币计算结果；选中例如 G3 时，公式应按行号自动调整为 =D3+E3-F3，而 G2 保留原公式。"
+          "visible_success_signal": "`G3:G25` 均显示计算出的货币值，`G2` 保持原种子公式；各行公式引用对应本行的 `D`、`E`、`F` 单元格。"
         },
         {
-          "efficiency_tip": "按住 Ctrl 一次选中所有不相邻行，再执行一次隐藏命令，可避免逐行隐藏造成遗漏。",
+          "efficiency_tip": "直接输入一个 `SUM` 公式即可汇总整段 Net Reimbursement 数据；`G2:G25` 的明确范围不会把总计单元格自身包括进去。",
           "instructions": [
-            "单击左侧的行号 6，选中整行。",
-            "按住 Ctrl 键不放，依次单击行号 13 和行号 20，使这三个不相邻行同时处于选中状态。",
-            "释放 Ctrl 键。",
-            "在任一已选中的行号上右键单击，然后选择 Hide Rows（隐藏行）。"
-          ],
-          "skill_ids": [
-            "6054afcb-5bab-4702-90a0-b259b5d3217c.skill-01"
-          ],
-          "step_number": 3,
-          "title": "隐藏内部测试请求行",
-          "visible_success_signal": "左侧行号显示 5 后接 7、12 后接 14、19 后接 21；数据没有被删除，只是第 6、13、20 行暂时不可见。"
-        },
-        {
-          "efficiency_tip": "使用明确的完整数据范围 G2:G25；第 26 行为空白，因此不会把 G27 的总计单元格误包含到汇总范围中。",
-          "instructions": [
-            "单击 Total Reimbursement 标签右侧的单元格 G27。",
-            "输入公式 =SUM(G2:G25)。",
-            "按 Enter 确认公式。"
+            "选择 `F27` 中 `Total Reimbursement` 标签右侧的结果单元格 `G27`。",
+            "输入公式 `=SUM(G2:G25)`。",
+            "按 `Enter` 确认公式。",
+            "如有需要，选择 `G27` 检查公式编辑区域，确认引用范围仍为 `G2:G25`。"
           ],
           "skill_ids": [
             "0a2e43bf-b26c-4631-a966-af9dfa12c9e5.skill-01"
           ],
-          "step_number": 4,
-          "title": "计算总体 reimbursement 总额",
-          "visible_success_signal": "G27 显示一个货币总额；选中 G27 时，公式栏显示 =SUM(G2:G25)。"
+          "step_number": 3,
+          "title": "计算整体报销总额",
+          "visible_success_signal": "`G27` 显示货币格式的总额，且 `F27` 左侧标签仍为 `Total Reimbursement`。"
         },
         {
-          "efficiency_tip": "通过抽查公式栏和行号跳号即可快速确认计算、隐藏和汇总三项结果，无需逐项修改记录。",
+          "efficiency_tip": "按住 `Ctrl` 一次选中所有非连续行后只执行一次隐藏命令，比逐行隐藏更高效，也更不容易遗漏目标行。",
           "instructions": [
-            "抽查一个仍可见的 Net Reimbursement 单元格，例如 G10 或 G18，确认它包含本行 D、E、F 列的相对引用公式。",
-            "确认 G27 的 SUM 范围是 G2:G25，即使其中部分记录行已隐藏，仍会汇总完整记录范围。",
-            "确认 F27 的标签仍为 Total Reimbursement，且第 6、13、20 行没有被删除。"
+            "点击行标题 `6`，选中整行。",
+            "按住 `Ctrl` 不放，依次点击行标题 `13` 和 `20`，使三条非连续行标题同时处于选中状态。",
+            "松开 `Ctrl`。",
+            "在任一已选中的行标题上右键单击，并选择 `Hide Rows`。",
+            "不要删除行，也不要使用筛选来排除这些记录。"
+          ],
+          "skill_ids": [
+            "6054afcb-5bab-4702-90a0-b259b5d3217c.skill-01"
+          ],
+          "step_number": 4,
+          "title": "隐藏内部测试请求行",
+          "visible_success_signal": "左侧行号连续显示时会跳过 `6`、`13`、`20`，例如第 5 行后显示第 7 行；其他记录行仍在原有位置。"
+        },
+        {
+          "efficiency_tip": "最终检查时同时核对公式范围、隐藏行号和总计位置，可快速确认计算完整且隐藏操作没有影响汇总。",
+          "instructions": [
+            "检查可见的 `G` 列记录，确认从第 2 至第 25 行的每条记录都已得到 Net Reimbursement 结果。",
+            "选择 `G27`，确认其公式为 `=SUM(G2:G25)`，即使其中部分行已隐藏，公式范围仍保留完整记录区间。",
+            "确认行号区域跳过 `6`、`13`、`20`，并确认 `F27` 的 `Total Reimbursement` 标签与 `G27` 的总额仍可见。"
           ],
           "skill_ids": [],
           "step_number": 5,
-          "title": "核对最终工作表状态",
-          "visible_success_signal": "所有记录均已计算、指定三行保持隐藏、G27 已显示完整记录范围的总 reimbursement 金额。"
+          "title": "完成最终核对",
+          "visible_success_signal": "工作表同时满足三项结果：全部记录已计算、行 `6`、`13`、`20` 已隐藏未删除、`G27` 显示涵盖 `G2:G25` 的总报销额。"
         }
       ]
     },
     "generation": {
-      "request_id": "69bfb008-97d4-4d63-a4ef-4967c118c303",
-      "prompt_sha256": "d8469a1d3a3b00474be611b34d6dbff2c25c8b7c7a1b685c5cdbce9de7f4effb",
+      "request_id": "3b150c4a-4a83-4387-884b-2e3e03119aa8",
+      "prompt_sha256": "d34721e607658dc1a2f0f2a8d46fd460bdc1cb7ee3462e56bef1b6acb830aed4",
       "model": "gpt-5.6-terra",
-      "input_tokens": 3232,
-      "output_tokens": 1343,
-      "estimated_cost_usd": 0.02258
+      "input_tokens": 3457,
+      "output_tokens": 1779,
+      "estimated_cost_usd": 0.028262
     }
   },
   "artifact": {

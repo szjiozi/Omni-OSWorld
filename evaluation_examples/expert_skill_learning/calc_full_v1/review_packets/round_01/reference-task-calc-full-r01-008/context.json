@@ -878,102 +878,84 @@
     "task_detail_sha256": "bf42d172507bd3413aea517e1d77dab4683f92ff91df30c576b28f62903c3ac3",
     "guide": {
       "final_verification": [
-        "在 Delivery Log 中检查 E2:E25：每个数据行都有 Line Total 计算结果，金额以货币和两位小数显示；任选如 E3、E25 的单元格，编辑栏中的公式应随行号变化，例如 E3 为 =C3*D3。",
-        "检查底部工作表标签：除 Delivery Log 外，还存在默认名称为 Sheet2 的工作表。",
-        "打开 Sheet2：透视表按 Garden Zone 列出各园区，并在数值列显示 Line Total 的求和金额；表中还应有总计（Grand Total）行。",
-        "确认透视表的每个 Garden Zone 只出现一次，且金额列是汇总值而不是原始的 24 条明细记录。"
+        "工作簿中有且只有源数据工作表 `Delivery Log` 和新建的默认工作表 `Sheet2`。",
+        "在 `Delivery Log` 中，`E2:E25` 的每一行均显示货币格式的 Line Total 计算结果；选中例如 `E3` 时，公式栏应显示随行号调整的相对引用公式，例如 `=C3*D3`。",
+        "`Sheet2` 中存在一个 Pivot Table：`Garden Zone` 是行项目，`Line Total` 是汇总金额，并且每个 Garden Zone 各有一行金额及 Grand Total。",
+        "透视表中的各 Garden Zone 汇总金额彼此不应全部相同，且汇总依据是已填满的 `Line Total` 列。"
       ],
       "language": "zh-CN",
-      "overview": "本任务先将 Delivery Log 中已在 E2 输入的 Line Total 公式快速填充到全部 24 条配送记录，再新增默认命名的 Sheet2，并在该工作表建立按 Garden Zone 汇总 Line Total 的透视表。",
+      "overview": "完成 `Delivery Log` 的 24 条配送记录的 Line Total 公式，再保留新工作表的默认名称 `Sheet2`，在其中建立按 `Garden Zone` 分组、按 `Line Total` 求和的 Pivot Table。",
       "reference_task_id": "reference-task-calc-full-r01-008",
       "starting_state_checks": [
-        "确认工作簿开始时只有一个名为 Delivery Log 的工作表，尚未出现 Sheet2。",
-        "在 Delivery Log 中确认数据表是连续区域 A1:E25，第一行包含 Delivery Code、Garden Zone、Quantity、Unit Price、Line Total 等标题。",
-        "单击 E2 并查看输入行，确认该单元格已有公式 =C2*D2；确认 E3:E25 仍未填入计算结果。",
-        "确认当前工作簿中尚未创建透视表。"
+        "确认当前工作簿开始时只有一个工作表标签 `Delivery Log`，尚未出现 `Sheet2`。",
+        "在 `Delivery Log` 中确认表格连续位于 `A1:E25`，第 1 行是标题，`E2` 已有公式 `=C2*D2`，而 `E3:E25` 仍为空白。",
+        "确认尚未在任何工作表中创建 Pivot Table；活动单元格即使位于源表中任意位置也可以继续操作。"
       ],
       "steps": [
         {
-          "efficiency_tip": "当公式旁边的明细数据没有空行时，双击填充柄会自动识别相邻连续数据的末行，比向下拖动到第 25 行更快。",
+          "efficiency_tip": "双击填充柄会依据相邻连续的数据列自动判断终止行，比手动拖到第 25 行更快，也更不容易多填或漏填。",
           "instructions": [
-            "在 Delivery Log 工作表中单击 E2。该单元格是 Line Total 列第一个数据行，公式应为 =C2*D2。",
-            "保持 E2 选中，将鼠标移到选中单元格右下角的小方块（填充柄）。",
-            "在填充柄上双击。Calc 会将公式沿 Line Total 列自动填充到与相邻配送数据对应的最后一行。",
-            "单击 E3 或 E25，查看输入行以确认公式引用已按行号调整，例如 E3 显示 =C3*D3。"
+            "切换到 `Delivery Log`，单击含有已种子公式的单元格 `E2`。确认输入行或公式栏中显示 `=C2*D2`。",
+            "保持 `E2` 选中，将指针移到该单元格右下角的小方块（填充柄）。当指针可用于填充时，双击该填充柄。",
+            "检查填充结果是否延伸到第 25 行。可单击 `E3` 查看其公式是否变为 `=C3*D3`，并检查 `E25` 是否也有相应的计算结果。"
           ],
           "skill_ids": [
             "0bf05a7d-b28b-44d2-955a-50b41e24012a.skill-02"
           ],
           "step_number": 1,
-          "title": "将 Line Total 公式填充到所有配送记录",
-          "visible_success_signal": "E2:E25 全部显示计算出的货币金额，不再有空白的 Line Total 数据单元格；后续行的公式引用对应各自所在行。"
+          "title": "向下填充全部 Line Total 公式",
+          "visible_success_signal": "`E2:E25` 都显示两位小数的货币金额，不再只有 `E2` 有值；后续行公式中的行号会随所在行自动变化。"
         },
         {
-          "efficiency_tip": "既然需要默认工作表名，直接使用工作表标签旁的加号即可，无需打开重命名操作。",
+          "efficiency_tip": "需要默认名称时直接使用工作表标签旁的加号，无须进入重命名流程。",
           "instructions": [
-            "在窗口底部的工作表标签区域，单击新增工作表的加号（+）。",
-            "不要更改新建工作表的名称。Calc 会按照默认命名规则创建下一张工作表。"
+            "在窗口底部工作表标签区域，点击工作表标签旁的加号按钮以插入一个工作表。",
+            "不要重命名新工作表，确认自动生成的标签名称为 `Sheet2`。"
           ],
           "skill_ids": [
             "30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-01"
           ],
           "step_number": 2,
-          "title": "新增默认名称的工作表",
-          "visible_success_signal": "底部出现一个名为 Sheet2 的新标签，并且该工作表目前为空白。"
+          "title": "添加默认命名的工作表",
+          "visible_success_signal": "底部可同时看到 `Delivery Log` 与 `Sheet2` 标签，且 `Sheet2` 是空白工作表。"
         },
         {
-          "efficiency_tip": "当活动工作表只有一个连续的数据表时，先在表内单击再按 Ctrl+A，可一次选中完整数据源，不必手工输入范围。",
+          "efficiency_tip": "源表只有一个连续数据区域时，先在表内激活任意单元格再按 `Ctrl+A`，可避免手动输入或修改数据源范围。",
           "instructions": [
-            "单击底部的 Delivery Log 标签，返回源数据工作表。",
-            "在 A1:E25 表格内任意单击一个单元格，然后按 Ctrl+A，选中整个连续数据表和标题行。",
-            "从菜单选择“数据”>“数据透视表”>“插入或编辑…”。如果工具栏上有数据透视表插入/编辑按钮，也可以使用该按钮。",
-            "在首先出现的数据源对话框中，检查检测到的源区域是 Delivery Log 中的完整表格 A1:E25（或等价的该工作表完整数据区域），然后确认继续。"
+            "单击 `Delivery Log` 标签返回源数据表，并在 `A1:E25` 的表格内单击任一单元格。",
+            "按 `Ctrl+A` 选中整个连续数据表，选择范围应包括标题行和所有 24 条记录，即 `A1:E25`。",
+            "打开 `Data` > `Pivot Table` > `Insert or Edit...`。在出现的数据源确认界面中，检查识别的数据范围是 `Delivery Log` 的完整表格范围，然后确认继续。"
           ],
           "skill_ids": [
             "1de60575-bb6e-4c3d-9e6a-2fa699f9f197.skill-01"
           ],
           "step_number": 3,
-          "title": "选择完整配送表并启动数据透视表",
-          "visible_success_signal": "数据透视表布局设置窗口打开，且可用字段中包含 Garden Zone 和 Line Total。"
+          "title": "以完整配送表作为 Pivot Table 数据源",
+          "visible_success_signal": "Pivot Table 的布局设置界面已打开，并以 `Delivery Log` 的完整表格作为数据源；字段列表中可看到 `Garden Zone` 和 `Line Total`。"
         },
         {
-          "efficiency_tip": "直接将字段从“可用字段”拖到相应区域即可。Line Total 是数值字段，放入“数据字段”后通常会自动使用“求和”。",
+          "efficiency_tip": "直接把字段从 `Available Fields` 拖到对应区域，可让 Calc 自动采用数值字段常用的求和汇总方式，避免逐项设置。",
           "instructions": [
-            "在数据透视表布局窗口的“可用字段”列表中，找到 Garden Zone。将 Garden Zone 拖到“行字段”区域。",
-            "在“可用字段”列表中找到 Line Total。将 Line Total 拖到“数据字段”区域。",
-            "检查数据字段的标签显示为 Line Total 的求和（例如“Sum - Line Total”或等价文字）。若未显示求和，打开该数据字段的选项并将汇总函数设为“求和”。",
-            "在布局窗口中将结果输出位置设为现有工作表 Sheet2 的空白区域，例如 Sheet2 的 A1。若需要输入引用，可使用 $Sheet2.$A$1 这样的单元格引用。",
-            "确认布局并单击“确定”创建数据透视表。"
+            "在 Pivot Table 布局界面的 `Available Fields` 列表中，拖动 `Garden Zone` 到 `Row Fields` 区域。",
+            "再将 `Line Total` 从 `Available Fields` 拖动到 `Data Fields` 区域。确认该数据字段显示为对 `Line Total` 的 Sum 汇总；如果界面显示汇总名称，通常会包含 `Sum`。",
+            "确认布局后继续。在输出位置的选择界面中，选择将结果放到现有工作表 `Sheet2`，并指定一个清晰且不会与其他内容重叠的起始单元格，例如 `A1`，然后确认创建。"
           ],
           "skill_ids": [
             "535364ea-05bd-46ea-9937-9f55c68507e8.skill-01"
           ],
           "step_number": 4,
-          "title": "按 Garden Zone 创建 Line Total 求和透视表",
-          "visible_success_signal": "Sheet2 中出现数据透视表：Garden Zone 位于行标签区域，每个园区对应一个 Line Total 求和金额，并显示总计行。"
-        },
-        {
-          "efficiency_tip": "完成后优先检查结构和总计，不必逐条重算所有源记录；透视表的园区行数应明显少于原始配送记录数。",
-          "instructions": [
-            "切换到 Sheet2，确认透视表没有与其他内容重叠。",
-            "检查行标签中的每个 Garden Zone 都来自 Delivery Log，且没有空白园区标签。",
-            "检查金额字段是 Line Total 的求和结果，且底部存在总计。",
-            "如有需要，保存工作簿以保留公式和透视表。"
-          ],
-          "skill_ids": [],
-          "step_number": 5,
-          "title": "核对汇总结果并保存",
-          "visible_success_signal": "工作簿同时保留完整的 Delivery Log 明细计算和 Sheet2 上按 Garden Zone 汇总的透视表。"
+          "title": "在 Sheet2 生成按 Garden Zone 汇总的 Pivot Table",
+          "visible_success_signal": "`Sheet2` 出现 Pivot Table，其中每个 `Garden Zone` 占一行，旁边显示对应的 `Line Total` 求和金额，表格末尾还显示 Grand Total。"
         }
       ]
     },
     "generation": {
-      "request_id": "40ea8468-bee7-4a8e-a085-1879cf947edb",
-      "prompt_sha256": "b707afd10c963b85093712176e363b51251eba85b211a8af4b605096d2988272",
+      "request_id": "a8227049-aa45-4d35-a48c-5cb9f893e3cf",
+      "prompt_sha256": "5814f606ebc23dea638151cc819517b25452d493d4a8890d473ab0e6685c0ed2",
       "model": "gpt-5.6-terra",
-      "input_tokens": 3511,
-      "output_tokens": 1905,
-      "estimated_cost_usd": 0.029882
+      "input_tokens": 3736,
+      "output_tokens": 1447,
+      "estimated_cost_usd": 0.024836
     }
   },
   "artifact": {

@@ -59,7 +59,9 @@ def test_reviewer_guide_request_uses_complete_task_detail(tmp_path):
     assert "Expected incidental operations" in request.user_prompt
     assert '"skill-1"' in request.user_prompt
     assert "provenance for human similarity review only" in request.system_prompt
-    assert request.prompt_name == "generate_reviewer_guide.v1"
+    assert "annotation environment uses the English LibreOffice UI" in request.system_prompt
+    assert "点击 `Format`，选择 `Format Cells...`" in request.system_prompt
+    assert request.prompt_name == "generate_reviewer_guide.v2"
 
 
 def test_reviewer_guide_validation_requires_exact_skill_coverage():
@@ -71,6 +73,23 @@ def test_reviewer_guide_validation_requires_exact_skill_coverage():
         validate_reviewer_guide(
             "reference-task-1", ["skill-1", "skill-2"], guide
         )
+
+
+def test_reviewer_guide_rejects_translated_visible_ui_labels():
+    guide = _guide()
+    guide["steps"][0]["instructions"] = [
+        "右键单击选区，然后选择“设置单元格格式”。"
+    ]
+
+    with pytest.raises(ValueError, match="Chinese visible UI label"):
+        validate_reviewer_guide(
+            "reference-task-1", ["skill-1", "skill-2"], guide
+        )
+
+    guide["steps"][0]["instructions"] = [
+        "右键单击选区，然后选择 `Format Cells...`。"
+    ]
+    validate_reviewer_guide("reference-task-1", ["skill-1", "skill-2"], guide)
 
 
 def test_reviewer_guide_round_trip_records_task_detail_hash(tmp_path):

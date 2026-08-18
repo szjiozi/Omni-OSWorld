@@ -973,119 +973,118 @@
     "task_detail_sha256": "262e3f15caa3ce9673d65c103b2c76cc95b41729a634575b7f177d4f5e477abc",
     "guide": {
       "final_verification": [
-        "切换到 Route Review，确认 A5:A16 仍为 12 个日期，B5:B16 已填入 12 个 Working Output 值，且与 Daily Metrics!B2:B13 一致。",
-        "单击 C6:C16 中的任意单元格并查看输入行，确认公式引用的是 $'Daily Metrics'.B...；C5 保持为空，C6:C16 显示为一位小数的百分比。",
-        "确认 E5 起的路线名单按首次出现顺序仅包含 North Loop、Harbor Spur、Cedar Link、Ridge Run、Quarry Way、Canal Point，且没有空白项目或重复项目。",
-        "确认 Route Review 上有一个以日期为横轴、以 Daily Change 为唯一数据系列的折线图，折线没有数据点标记。",
-        "确认已通过导出对话框将 PDF 输出为 /home/oai/share/route_operations_review.pdf。"
+        "在 `Route Review` 中确认 `B5:B16` 已填满 12 个 Working Output 数值，且逐项对应 `Daily Metrics!B2:B13`；`Daily Metrics` 的源数据仍保留且没有被改写。",
+        "确认 `C5` 为空，`C6:C16` 显示一位小数的百分比。逐个抽查例如 `C6` 的公式应为 `=($'Daily Metrics'.B3-$'Daily Metrics'.B2)/$'Daily Metrics'.B2`，向下的公式仍固定引用 `Daily Metrics` 工作表、但行号会递进。",
+        "确认 Distinct Route Roster 中没有空白项目，并且非空路线按首次出现顺序各出现一次：`North Loop`、`Harbor Spur`、`Cedar Link`、`Ridge Run`、`Quarry Way`、`Canal Point`。",
+        "确认 `Route Review` 上有图表对象：横轴为 Service Date，只有一个 Daily Change 折线序列，折线没有数据点标记。",
+        "确认已在 `/home/oai/share/route_operations_review.pdf` 创建 PDF 文件；导出前的工作表视图中应可看到完整的数值、计算结果、路线名单和图表。"
       ],
       "language": "zh-CN",
-      "overview": "本指南将在 Route Review 完成工作输出量副本、基于 Daily Metrics 固定工作表引用的日变化百分比、非空且去重的路线名册，以及无标记折线图，最后导出完成的审查表为 PDF。Daily Metrics 是源数据，操作期间不要修改其中的内容。",
+      "overview": "本指南完成 municipal route-output review：从 `Daily Metrics` 复制 12 天的 Output Volume，在 `Route Review` 计算逐日百分比变化，生成非空且不重复的路线名单，制作无标记折线图，并导出指定路径的 PDF。源表 `Daily Metrics` 是固定数据来源，不应在其中输入或修改数据。",
       "reference_task_id": "reference-task-calc-full-r01-006",
       "starting_state_checks": [
-        "确认当前打开的是 initial_artifact.xlsx，且 Route Review 是活动工作表。",
-        "确认 Daily Metrics!A1:D13 包含带标题的完整源表；不要在该工作表中改写、删除或排序数据。",
-        "确认 Route Review!A5:A16 已有日期，而 B5:B16、C5:C16 与 E5:E20 仍为空；C 列已显示为一位小数的百分比格式。",
-        "确认 Route Review 上尚未有图表对象。"
+        "确认当前活动工作表是 `Route Review`，并且日期已在 `A5:A16` 预先填好。",
+        "确认 `Route Review!B5:B16`、`Route Review!C5:C16` 和 `Route Review!E5:E20` 仍为空；`C` 列已经是带一位小数的百分比格式。",
+        "切换到 `Daily Metrics`，确认 `A1:D13` 是完整源表，包含 `Service Date`、`Output Volume`、`Crew Hours` 和 `Service Route` 四列。不要编辑这个范围。",
+        "确认 `Route Review` 上尚没有图表对象。"
       ],
       "steps": [
         {
-          "efficiency_tip": "先一次选中完整的 12 行连续数据再复制，可避免逐格复制并保留源表不变。",
+          "efficiency_tip": "一次选中完整的 12 个连续源单元格并粘贴，既快速又不会改变源数据。",
           "instructions": [
-            "单击工作表标签 Daily Metrics，选中 B2，然后拖动到 B13，选中 Output Volume 的 12 个数据单元格，不要包含标题 B1。",
-            "按 Ctrl+C 复制所选范围。",
-            "切换回 Route Review，单击 B5，然后按 Ctrl+V。"
+            "切换到 `Daily Metrics` 工作表，选中 `B2:B13`，即 12 天的 `Output Volume` 数据；不要包含标题单元格 `B1`。",
+            "按 `Ctrl+C` 复制所选区域。",
+            "切换回 `Route Review`，单击 `B5`，然后按 `Ctrl+V`。"
           ],
           "skill_ids": [
             "37608790-6147-45d0-9f20-1137bb35703d.skill-01"
           ],
           "step_number": 1,
-          "title": "复制 Output Volume 到 Working Output",
-          "visible_success_signal": "Route Review!B5:B16 显示 12 个整数值，并逐行对应 Daily Metrics!B2:B13；Daily Metrics 中的原始 Output Volume 仍然存在。"
+          "title": "复制 12 天的 Working Output 数值",
+          "visible_success_signal": "`Route Review!B5:B16` 已连续填入 12 个整数值，并与 `Daily Metrics!B2:B13` 相同；源表的 `Output Volume` 列仍然保留。"
         },
         {
-          "efficiency_tip": "先把首个公式写成带固定工作表名、相对行号的形式，再向下填充，所有后续行会自动推进源数据行号。",
+          "efficiency_tip": "先只建立一个正确的固定工作表引用公式，再向下填充，可避免逐行重输公式。",
           "instructions": [
-            "在 Route Review 中单击 C6。C5 是第一天，没有前一天可比较，应保持空白。",
-            "输入公式 =($'Daily Metrics'.B3-$'Daily Metrics'.B2)/$'Daily Metrics'.B2，然后按 Enter。",
-            "再次选中 C6 并复制。选中 C7:C16 后粘贴，使该公式填充到所有剩余日期。",
-            "单击 C7 或更下面任意一个结果单元格，检查输入行中的源工作表仍为 $'Daily Metrics'，而 B 列和行号已随行推进。"
+            "在 `Route Review` 中单击 `C6`。`C5` 必须保持为空，因为第一天没有前一天可比较。",
+            "输入公式 `=($'Daily Metrics'.B3-$'Daily Metrics'.B2)/$'Daily Metrics'.B2`，然后按 `Enter`。其中 `$'Daily Metrics'` 固定的是源工作表名称，`B3` 和 `B2` 的行号仍可在向下填充时变化。",
+            "再次选中 `C6`，复制该单元格；选中 `C7:C16` 后粘贴，以将公式填充到其余 10 天。也可以拖动 `C6` 右下角的填充柄直到 `C16`。",
+            "单击 `C7` 或更靠下的一个结果单元格查看输入行，确认引用仍是 `Daily Metrics`，且源行号已相应前进。"
           ],
           "skill_ids": [
             "04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-03"
           ],
           "step_number": 2,
           "title": "计算固定源表的 Daily Change",
-          "visible_success_signal": "C5 为空，C6:C16 显示一位小数的百分比结果；例如 C6 的公式比较 Daily Metrics 的 B3 与 B2，后续行比较相邻的下一对源值。"
+          "visible_success_signal": "`C6:C16` 显示百分比结果且保留一位小数，`C5` 为空；例如 `C6` 使用 `Daily Metrics` 的第 3 行和第 2 行，后续公式使用相邻的后续源行。"
         },
         {
-          "efficiency_tip": "在打开筛选对话框前选中整列源字段（含标题），并在对话框内直接指定输出锚点，可一次得到保留首次出现顺序的非空去重名单。",
+          "efficiency_tip": "筛选前先选择完整的单列源范围并直接填写输出锚点，可保留首次出现顺序，免去手动比较和复制。",
           "instructions": [
-            "切换到 Daily Metrics，选中 D1:D13，其中包括 Service Route 标题和全部路线记录。",
-            "选择 Data > More Filters > Standard Filter。",
-            "在筛选条件中，将字段设为 Service Route，并把条件/值设为 Not empty，以排除空白路线。",
-            "展开 Options，启用 No duplications。再启用 Copy results to，并在目标位置输入 $'Route Review'.$E$4。该位置让复制的字段标题位于第 4 行，而路线结果从 E5 开始。",
-            "确认设置并单击 OK。必要时切换回 Route Review；如果复制的字段标题覆盖了 E4，可将 E4 改回 Distinct Route Roster，勿改动 E5 起的筛选结果。"
+            "切换到 `Daily Metrics`，选中包含标题的 `D1:D13`，即 `Service Route` 整列源范围。",
+            "打开 `Data` > `More Filters` > `Standard Filter...`。在筛选条件中，将字段设为 `Service Route`，并将条件设为 `Not empty`，以排除空路线单元格。",
+            "展开或点击 `Options`，启用 `No duplications`，使每个路线只保留首次出现的一项。",
+            "在同一选项区域启用 `Copy results to`，在目标框输入 `$'Route Review'.E5`，然后确认对话框。",
+            "返回 `Route Review` 检查输出。若 Calc 同时复制源标题，标题会位于路线结果上方；非空且不重复的路线项目应在其下连续列出。"
           ],
           "skill_ids": [
             "abed40dc-063f-4598-8ba5-9fe749c0615d.skill-01"
           ],
           "step_number": 3,
-          "title": "生成非空且去重的路线名册",
-          "visible_success_signal": "Route Review 的 E5 起依首次出现顺序显示 North Loop、Harbor Spur、Cedar Link、Ridge Run、Quarry Way、Canal Point，每个仅出现一次，且没有空白路线项。"
+          "title": "筛选并复制不重复的非空 Service Route 名单",
+          "visible_success_signal": "`Route Review` 的 E 列输出区域显示每条非空路线一次，顺序为 `North Loop`、`Harbor Spur`、`Cedar Link`、`Ridge Run`、`Quarry Way`、`Canal Point`，且没有空白路线项目。"
         },
         {
-          "efficiency_tip": "通过 Ctrl 选择两个不相邻的完整列范围（连同标题）后直接插入图表，可使 Calc 自动使用日期作为分类标签、Daily Change 作为系列名。",
+          "efficiency_tip": "同时选择日期和完整计算列（包括列标题）后立即选择折线的无标记子类型，比先插入默认图再修改更省时。",
           "instructions": [
-            "在 Route Review 中选中 A4:A16，其中 A4 是 Service Date 标题，A5:A16 是日期。",
-            "按住 Ctrl，再选中 C4:C16，其中 C4 是 Daily Change 标题；C5 的空白会保留为第一天无变化值。",
-            "使用工具栏的图表按钮，或选择 Insert > Chart，打开图表向导。",
-            "在图表类型中选择 Line，并选择仅线条、没有数据点标记的子类型。",
-            "确认数据范围包含所选的日期列和 Daily Change 列；在图表中使用第一列作为分类标签，并将第一行用作数据系列名称。完成图表插入后，将图表放在 Route Review 的空白区域，避免遮住表格结果。"
+            "在 `Route Review` 中选择 `A4:A16`，使选择包含 Service Date 标题和全部日期。按住 `Ctrl`，再选择 `C4:C16`，使选择同时包含 `Daily Change` 标题和计算结果。",
+            "使用图表按钮，或打开 `Insert` > `Chart...`，开始插入图表。",
+            "在图表类型中选择 `Line`，然后选择只显示线条、没有数据点标记的子类型。",
+            "在图表向导中确认日期列被用作类别标签、`Daily Change` 是唯一数据序列；如该向导显示数据方向选项，使用按列组织数据，并保留首行作为标签。完成图表插入。",
+            "如有需要，拖动图表到 `Route Review` 中不遮挡表格的位置。不要将图表放到 `Daily Metrics` 源表中。"
           ],
           "skill_ids": [
             "0326d92d-d218-48a8-9ca1-981cd6d064c7.skill-07"
           ],
           "step_number": 4,
-          "title": "建立 Daily Change 无标记折线图",
-          "visible_success_signal": "Route Review 上出现图表，横轴为 Service Date 日期，只有一条 Daily Change 连续折线，线上没有圆点或其他数据点标记。"
+          "title": "创建 Daily Change 的无标记折线图",
+          "visible_success_signal": "`Route Review` 上出现一个图表对象；它以 Service Date 为横轴类别，只有一条 Daily Change 连续折线，线上没有圆点或其他数据点标记。"
         },
         {
-          "efficiency_tip": "在导出窗口的文件名框直接输入完整路径和文件名，不必逐层浏览文件夹，且可确保输出到指定位置。",
+          "efficiency_tip": "导出前集中检查所有输出区域，可在生成 PDF 前发现漏填的公式、名单或图表。",
           "instructions": [
-            "确认 Route Review 处于可见状态，并且复制的数据、百分比、路线名册和图表都已完成。",
-            "选择 File > Export as PDF。",
-            "在文件名字段输入 /home/oai/share/route_operations_review.pdf。",
-            "单击 Export；如出现 PDF 选项窗口，保留适合当前工作表的常规设置后确认导出。"
+            "回到 `Route Review`，检查 `B5:B16`、`C6:C16`、路线名单和图表都可见且完整。",
+            "特别确认 `C5` 仍为空，路线名单不含空白项，图表是仅线条样式而不是带标记的线图。",
+            "如工作簿中仍显示复制或筛选后的活动虚线边框，可单击空白单元格或按 `Esc` 结束当前复制状态，再进行导出。"
+          ],
+          "skill_ids": [],
+          "step_number": 5,
+          "title": "导出前检查完成的 Route Review",
+          "visible_success_signal": "当前 `Route Review` 视图中能看到已填入的 Working Output、Daily Change 百分比、Distinct Route Roster 和折线图，准备导出。"
+        },
+        {
+          "efficiency_tip": "在导出窗口中直接输入完整路径和文件名，不必逐层浏览文件夹，也能避免保存到错误位置。",
+          "instructions": [
+            "打开 `File` > `Export as PDF...`；如果该命令位于子菜单中，则在 `File` > `Export As` 中选择 `Export as PDF...`。",
+            "在文件名输入框中键入完整路径 `/home/oai/share/route_operations_review.pdf`。",
+            "点击 `Export` 完成 PDF 创建。如出现 PDF 选项窗口，保持能够导出当前完成工作簿的设置并继续确认导出。"
           ],
           "skill_ids": [
             "aa3a8974-2e85-438b-b29e-a64df44deb4b.skill-02"
           ],
-          "step_number": 5,
-          "title": "导出完成的 Route Review 为 PDF",
-          "visible_success_signal": "导出过程完成，目标位置为 /home/oai/share/route_operations_review.pdf。"
-        },
-        {
-          "efficiency_tip": "最终检查时随机对照首行、中间行和末行，能快速发现遗漏的粘贴行或未填充的公式。",
-          "instructions": [
-            "返回 Route Review，随机比较 B5、B10、B16 与 Daily Metrics 中对应的 B2、B7、B13。",
-            "检查 C5 为空，并检查 C6 与 C16 均为百分比结果；单击其中一个单元格确认其公式仍引用 $'Daily Metrics'。",
-            "查看 E5 起的路线列表和图表，确认没有重复或空白路线，且图表仍为无标记的单线图。"
-          ],
-          "skill_ids": [],
           "step_number": 6,
-          "title": "完成最终可见性核对",
-          "visible_success_signal": "工作表上同时可见完整 Working Output、Daily Change、Distinct Route Roster 和 Daily Change 趋势图，且 PDF 已按指定路径导出。"
+          "title": "导出 Route Review 为指定 PDF",
+          "visible_success_signal": "导出操作完成，文件 `/home/oai/share/route_operations_review.pdf` 已创建。"
         }
       ]
     },
     "generation": {
-      "request_id": "ec4a72e4-d2c2-4118-a773-3948a3489476",
-      "prompt_sha256": "62c3e39ae90e1fc86c8a381133a7861ac99245dddc59745732f6f9c52b370ddc",
+      "request_id": "be86b877-0350-49fd-9457-404558b67b01",
+      "prompt_sha256": "6c0827061df8517efd10a6d9712c01c27e6c3c004ecadfeabbb24d0b90f4f145",
       "model": "gpt-5.6-terra",
-      "input_tokens": 4454,
-      "output_tokens": 2636,
-      "estimated_cost_usd": 0.04054
+      "input_tokens": 4679,
+      "output_tokens": 3062,
+      "estimated_cost_usd": 0.046102
     }
   },
   "artifact": {

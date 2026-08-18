@@ -148,79 +148,75 @@ Allowed variation: The expert may complete the two calculated columns in either 
 
 > 以下是一个可以参考的操作 guide。标注者可以根据实际 LibreOffice 界面采用等价操作。
 
-本指南完成社区工作坊活动财务台账：将两列已有的首行公式快速填充到全部活动记录，把完整的 Event Code 列交给 Upload 工作表，并在 Event Ledger 中创建比较 Gross Revenue 与 Community Share 的簇状柱形图。
+本指南完成社区工作坊活动账本：先将两列已有首行公式快速填充到所有活动，再把完整的 Event Code 列交给 `Upload` 工作表，最后在 `Event Ledger` 中建立 Gross Revenue 与 Community Share 的簇状柱形比较图。
 
 #### 启动后的初始状态检查
 
-- 确认当前活动工作表是“Event Ledger”。
-- 确认 Event Ledger 的数据位于 A1:F19，A 列为 Event Code，B 列为 Gross Revenue，C 列为 Community Share，D:F 为已填好的输入数据。
-- 确认 B2 已有公式 =D2*E2，C2 已有公式 =B2+F2，而 B3:C19 在开始时仍为空白。
-- 确认“Upload”工作表存在，且仅在 A1 显示标题“Event Code”；尚未填入活动代码。
-- 确认 Event Ledger 中尚未插入图表。
+- 确认当前打开的是目标工作簿，且活动工作表为 `Event Ledger`。
+- 确认 `Event Ledger` 的表头位于第 1 行，事件数据从第 2 行连续到第 19 行；`A1:C19` 中的 B、C 列除第 2 行外尚未填充。
+- 单击 `B2` 和 `C2`，在输入行确认已有公式分别为 `=D2*E2` 与 `=B2+F2`。若其中一个公式意外缺失，先在对应单元格输入该公式并按 `Enter`。
+- 确认存在名为 `Upload` 的工作表，其中目前只有 `A1` 的 `Event Code` 表头，`A2:A19` 为空。
+- 确认 `Event Ledger` 中尚未有图表。
 
 #### 第 1 步：向下填充 Gross Revenue 公式
 
-1. 在“Event Ledger”中单击 B2，查看输入行或公式栏，确认公式为 =D2*E2。
-2. 如 B2 没有该公式，请在 B2 输入 =D2*E2 并按 Enter。
-3. 保持 B2 为选中状态。将鼠标移到该单元格右下角的小方块（填充柄）。鼠标指针变为可填充状态后，双击填充柄。
-4. 检查 B3:B19 是否已自动填入按各行 Registrations 与 Fee per Registration 计算的 Gross Revenue。
+1. 在 `Event Ledger` 中单击公式单元格 `B2`。
+2. 将指针移到所选单元格右下角的小方块（填充柄）；当可以拖动时，双击该填充柄。
+3. 不要修改已填充单元格中的相对引用；Calc 会按行自动将公式延伸。
 
 - 对应 skills：`04d9aeaf-7bed-4024-bedb-e10e6f00eb7f.skill-05`
-- 高效操作：先确认种子公式正确，再用填充柄双击；这样 Calc 会利用相邻的连续数据行自动判断应填充到第几行，不必手动拖到最后一条记录。
-- 完成标志：B2:B19 均显示货币金额；选中任一填充后的单元格（如 B19）时，可看到其公式使用对应行的相对引用，例如 =D19*E19。
+- 高效操作：双击填充柄会按照相邻连续数据区域自动判断最后一行，比手动拖到第 19 行更快，也避免拖错范围。
+- 完成标志：`B2:B19` 均显示货币金额，且选中任一后续单元格（如 `B3`）可见按本行计算的公式，例如 `=D3*E3`。
 
 #### 第 2 步：向下填充 Community Share 公式
 
-1. 单击 C2，确认公式为 =B2+F2。
-2. 如 C2 没有该公式，请在 C2 输入 =B2+F2 并按 Enter。
-3. 选中 C2，找到单元格右下角的填充柄并双击它。
-4. 检查 C3:C19，确认每一行均已根据同一行的 Gross Revenue 和 Sponsor Grant 自动计算 Community Share。
+1. 单击 `C2`，确认它仍包含公式 `=B2+F2`。
+2. 双击 `C2` 右下角的小方块填充柄，使公式沿相邻连续事件记录向下扩展。
+3. 保留公式的默认相对引用，不要把 `B2` 或 `F2` 改成固定引用。
 
 - 对应 skills：`21ab7b40-77c2-4ae6-8321-e00d3a086c73.skill-02`
-- 高效操作：C 列依靠已连续存在的相邻记录和 B 列结果确定填充范围。双击填充柄可避免逐行复制公式。
-- 完成标志：C2:C19 都已填有带两位小数的货币结果，C19 不为空；公式随行号变化，例如 C19 为 =B19+F19。
+- 高效操作：先完成 B 列后再填充 C 列，可让 Community Share 公式在每一行都引用已计算完成的同一行 Gross Revenue。
+- 完成标志：`C2:C19` 均填有货币金额；单击 `C19` 时可见其公式对应第 19 行，且最后一项不为空。
 
-#### 第 3 步：复制 Event Code 列到 Upload
+#### 第 3 步：复制完整 Event Code 列到 Upload
 
-1. 仍在“Event Ledger”工作表时，单击列标“A”，使整列 A 被选中。
-2. 按 Ctrl+C 复制整列。
-3. 切换到“Upload”工作表。
-4. 单击 A1，然后按 Ctrl+V 粘贴。若出现粘贴相关提示，使用普通粘贴即可。
-5. 检查 Upload 的 A 列：标题和活动代码应一同出现。
+1. 在 `Event Ledger` 中，单击列标 `A`，选中整个 Event Code 列。
+2. 按 `Ctrl+C` 复制整列。
+3. 切换到 `Upload` 工作表，单击 `A1`，然后按 `Ctrl+V` 粘贴。
+4. 如出现粘贴选项，保持普通粘贴即可，使来源列的表头和事件代码一起写入目标列。
 
 - 对应 skills：`1273e544-688f-496b-8d89-3e0f40aa0606.skill-01`
-- 高效操作：单击列标“A”会一次选中整列，包含标题和所有活动代码；这比手工框选 A1:A19 更快，也不会漏掉标题。
-- 完成标志：Upload!A1 显示“Event Code”，Upload!A2:A19 显示完整活动代码列表，从 EVT-101 到 EVT-118。
+- 高效操作：直接选择列标 `A` 可一次包含表头和所有现有、后续可见单元格，不必逐行框选事件代码。
+- 完成标志：`Upload` 的 A 列显示 `Event Code` 表头以及从 `EVT-101` 到 `EVT-118` 的完整连续代码列表。
 
-#### 第 4 步：创建活动收入比较簇状柱形图
+#### 第 4 步：创建 Gross Revenue 与 Community Share 簇状柱形图
 
-1. 切换回“Event Ledger”工作表。
-2. 拖动选择连续区域 A1:C19，必须包含标题行、Event Code 列、Gross Revenue 列和 Community Share 列。
-3. 选择“插入”菜单中的“图表…”，或使用工具栏上的插入图表按钮。
-4. 在图表向导中选择“柱形图”，并选择“簇状柱形图”变体。
-5. 确认数据范围为 A1:C19，数据系列为 Gross Revenue 与 Community Share，并让第一行作为系列名称、第一列作为类别标签（Event Code）。
-6. 完成向导以将图表嵌入当前工作表；如图表放置位置遮住数据，可在不改变其数据范围的情况下拖动图表到表格旁的空白区域。
+1. 切换回 `Event Ledger`。
+2. 选中连续区域 `A1:C19`，其中包括 Event Code 表头、Gross Revenue 表头、Community Share 表头及全部 18 行数据。
+3. 使用工具栏上的 `Insert Chart` 图标，或打开 `Insert` > `Chart...`。
+4. 在图表向导中选择 `Column` 图表类型，并选择 `Clustered Column` 变体。
+5. 确认类别来自 Event Code，数据系列为 Gross Revenue 和 Community Share；然后点击 `Finish` 将图表嵌入当前工作表。
 
 - 对应 skills：`12382c62-0cd1-4bf2-bdc8-1d20bf9b2371.skill-01`
-- 高效操作：在插入图表前一次选中 A1:C19，可让 Calc 自动识别第一列为 Event Code 类别标签，并将后两列识别为两个比较数据系列。
-- 完成标志：Event Ledger 上出现嵌入式簇状柱形图，横轴类别为各 Event Code，并对每个代码并列显示 Gross Revenue 和 Community Share 两个系列。
+- 高效操作：在插入图表前一次选中完整的 `A1:C19`，可让 Calc 自动识别第一列为类别标签、第一行为系列名称，减少后续调整数据范围的需要。
+- 完成标志：`Event Ledger` 上出现嵌入式柱形图，横轴按 Event Code 显示活动类别，并为 Gross Revenue 和 Community Share 显示并列的两组柱形及对应系列标识。
 
-#### 第 5 步：完成最终核对
+#### 第 5 步：完成最终可见性检查
 
-1. 检查 Event Ledger 的 B2:C19，确认两列均没有空白的活动记录行。
-2. 检查“Upload”中的 A1:A19，确认标题及 18 个 Event Code 都已粘贴。
-3. 单击图表并查看其图例和横轴，确认图例包含 Gross Revenue、Community Share，横轴为 Event Code。
+1. 在 `Event Ledger` 中检查 `B19` 和 `C19` 都已计算，确保两个公式列没有在中途停止。
+2. 在 `Upload` 中检查 `A1:A19`，确认表头和 18 个事件代码均已粘贴。
+3. 在 `Event Ledger` 中检查图表仍可见，并确认它比较的是 Gross Revenue 与 Community Share，而不是输入列 D:F。
 
 - 对应 skills：无；这是准备或检查步骤。
-- 高效操作：最终从数据、交接表和图表三个位置核对，可同时发现遗漏的公式行、漏复制的活动代码或错误的图表数据范围。
-- 完成标志：计算列、Upload 活动代码清单和嵌入式比较图表均完整可见。
+- 高效操作：最终检查时优先查看末行和图表系列；这些位置最容易发现填充范围不足、粘贴遗漏或图表源范围选错的问题。
+- 完成标志：两个计算列、`Upload` 的完整事件代码清单以及 `Event Ledger` 的两系列簇状柱形图均同时存在并可见。
 
 #### 最终结果检查
 
-- 在“Event Ledger”中检查 B2:B19：每一行都有“Gross Revenue”计算结果，且显示为带两位小数的货币。例如 B2 的公式应为 =D2*E2，最后一条记录 B19 也不应为空。
-- 检查 C2:C19：每一行都有“Community Share”计算结果，且显示为带两位小数的货币。例如 C2 的公式应为 =B2+F2，最后一条记录 C19 也不应为空。
-- 切换到“Upload”工作表，确认 A1 为“Event Code”，A2:A19 已依次显示 EVT-101 至 EVT-118。
-- 返回“Event Ledger”，确认工作表中存在嵌入式簇状柱形图；图表类别为 Event Code，且包含 Gross Revenue 和 Community Share 两个独立数据系列。
+- 在 `Event Ledger` 中检查 `B2:B19`：每一行都有 Gross Revenue 的货币计算结果；例如 `B2` 的公式为 `=D2*E2`，末行 `B19` 不应为空。
+- 检查 `C2:C19`：每一行都有 Community Share 的货币计算结果；例如 `C2` 的公式为 `=B2+F2`，末行 `C19` 不应为空。
+- 切换到 `Upload`，确认 `A1` 为 `Event Code`，且 `A2:A19` 依次包含全部 18 个事件代码，最后一个为 `EVT-118`。
+- 返回 `Event Ledger`，确认工作表中存在嵌入式簇状柱形图；图表使用 Event Code 作为类别，并有 Gross Revenue 与 Community Share 两个独立数据系列。
 
 ## Source-task similarity review
 

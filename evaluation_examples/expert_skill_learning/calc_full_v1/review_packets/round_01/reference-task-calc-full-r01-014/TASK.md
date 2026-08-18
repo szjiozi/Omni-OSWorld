@@ -102,94 +102,68 @@ Allowed variation: The expert may choose any non-overlapping placement on Handof
 
 > 以下是一个可以参考的操作 guide。标注者可以根据实际 LibreOffice 界面采用等价操作。
 
-本操作将在“ Handoff Summary ”中制作两项交接信息：先将“Coverage Setup”的按班次排列的覆盖目标矩阵转置为按 kiosk 纵向排列的布局，再依据“CheckIn Log”建立按 Kiosk 分组、按 Ticket Code 计数的 Pivot Table。
+本任务在 `Handoff Summary` 上完成两个彼此分开的交接视图：先把 `Coverage Setup` 的完整 shift-by-kiosk 矩阵转置到上方，再根据 `CheckIn Log` 创建按 kiosk 汇总的 Pivot Table，并将 `Ticket Code` 汇总方式明确设为计数。
 
 #### 启动后的初始状态检查
 
-- 确认工作簿已打开，当前活动工作表为“Handoff Summary”，并且该表尚未放入覆盖目标布局或 Pivot Table。
-- 切换到“Coverage Setup”，确认 A1:D4 是完整的带标题矩阵：第一行为 Shift、Kiosk North、Kiosk Central、Kiosk South；其余三行包含 Morning、Midday、Afternoon 及对应数值。
-- 切换到“CheckIn Log”，确认 A1:D31 是连续的数据区域，列标题包括 Check-in Time、Kiosk、Ticket Code、Repair Type，且 Ticket Code 列的数据行均非空。
-- 返回“Handoff Summary”，确认将在上方放置转置表、在较下方的空白区域放置 Pivot Table，以避免两项结果互相覆盖。
+- 确认当前打开的是目标工作簿，且起始活动工作表为无内容的 `Handoff Summary`。
+- 检查 `Coverage Setup` 的 A1:D4 是完整的带标题矩阵，包含 `Shift`、三个 kiosk 标题以及 `Morning`、`Midday`、`Afternoon` 三个班次。
+- 检查 `CheckIn Log` 的 A1:D31 是连续数据表，标题包含 `Check-in Time`、`Kiosk`、`Ticket Code`、`Repair Type`；特别确认 `Ticket Code` 在数据行中均非空。
+- 确认 `Handoff Summary` 尚未存在转置表或 Pivot Table，并预留上方区域给覆盖表、下方或右侧区域给 Pivot Table。
 
-#### 第 1 步：复制覆盖目标源矩阵
+#### 第 1 步：将覆盖目标矩阵转置到交接表
 
-1. 单击底部工作表标签“Coverage Setup”。
-2. 拖动选择完整区域 A1:D4；选择范围必须包含标题行和左侧的 Shift 标签列。
-3. 按 Ctrl+C 复制该区域。
-
-- 对应 skills：无；这是准备或检查步骤。
-- 高效操作：一次选中完整的带标题区域并复制，可使转置后的表同时保留 kiosk、班次和数值标签，无需手工重排。
-- 完成标志：A1:D4 周围显示选中边框；复制后该区域通常会出现移动的虚线边框。
-
-#### 第 2 步：将覆盖矩阵转置到交接汇总表
-
-1. 切换回“Handoff Summary”。
-2. 单击 A1，作为转置覆盖表的左上角位置。
-3. 右键单击 A1，选择“选择性粘贴”，再选择“转置”。如果界面先打开“选择性粘贴”对话框，请勾选或选择“转置”后确认。
-4. 单击空白单元格以取消复制状态。
+1. 切换到 `Coverage Setup` 工作表。
+2. 选择完整矩阵 A1:D4，包括标题行和标题列。
+3. 按 `Ctrl+C` 复制所选区域。
+4. 切换回 `Handoff Summary`，在上方的空白区域选定一个左上角目标单元格，例如 A1。
+5. 右键单击该目标单元格，打开 `Paste Special`，并选择 `Transpose` 以粘贴转置后的内容。
 
 - 对应 skills：`eb03d19a-b88d-4de4-8a64-ca0ac66f426b.skill-01`
-- 高效操作：在目标区域只指定左上角单元格即可；使用“选择性粘贴”的转置功能比逐个复制单元格更快，也能避免错位。
-- 完成标志：A1:D4 显示旋转后的表格：第一行是 Shift、Morning、Midday、Afternoon，第一列依次是 Kiosk North、Kiosk Central、Kiosk South，所有覆盖目标数值均已保留在旋转后的对应位置。
+- 高效操作：一次选中带标题的整个 A1:D4 区域，能让转置后的表同时保留 kiosk 和 shift 标签，无需另行补写标题。
+- 完成标志：`Handoff Summary` 出现一个 4 列 × 4 行的覆盖表：kiosk 名称竖向列在第一列，`Morning`、`Midday`、`Afternoon` 横向位于第一行，所有数值仍与原覆盖目标对应。
 
-#### 第 3 步：以签到记录作为 Pivot Table 数据源
+#### 第 2 步：创建按 kiosk 分组的 Pivot Table
 
-1. 切换到“CheckIn Log”。
-2. 选择 A1:D31，包括四个字段标题及全部 30 条记录。
-3. 打开“数据”菜单，选择“数据透视表”，再选择“插入或编辑…”。
-4. 在数据源选择中保留当前选中的单元格区域，并继续进入 Pivot Table 布局窗口。
-
-- 对应 skills：无；这是准备或检查步骤。
-- 高效操作：选择完整的连续数据区域而非单独一列，Pivot Table 才能同时使用 Kiosk 作为分组字段和 Ticket Code 作为计数字段。
-- 完成标志：显示 Pivot Table 的布局窗口，可看到 Check-in Time、Kiosk、Ticket Code 和 Repair Type 等可用字段。
-
-#### 第 4 步：设置 kiosk 分组与票号数据字段
-
-1. 在布局窗口中，将字段“Kiosk”拖入“行字段”区域。
-2. 将字段“Ticket Code”拖入“数据字段”区域。
-3. 不要将 Check-in Time 或 Repair Type 放入行、列或数据区域，除非界面自动带入后需要将其移除。
+1. 切换到 `CheckIn Log` 工作表，并单击 A1:D31 连续表格内的任意单元格。
+2. 打开 `Data` > `Pivot Table` > `Insert or Edit...`。
+3. 确认 Pivot Table 的源数据范围覆盖带标题的 `CheckIn Log` 表，即 A1:D31；如自动识别的范围正确则继续。
+4. 在字段布局区域中，将 `Kiosk` 放入 `Row Fields`，使每个 kiosk 成为一行。
+5. 将 `Ticket Code` 放入 `Data Fields`，准备对每条非空 ticket 记录进行汇总。
+6. 选择将结果放在已有工作表的选项，并把输出位置指定为 `Handoff Summary` 中覆盖表下方或右侧的空白起始单元格，例如 A8；确保不会覆盖转置表。
+7. 确认创建 Pivot Table。
 
 - 对应 skills：无；这是准备或检查步骤。
-- 高效操作：只使用完成任务所需的两个字段：将 Kiosk 放在行区域、将 Ticket Code 放在数据区域，可让结果保持简洁且易于交接查看。
-- 完成标志：布局窗口的“行字段”区域包含 Kiosk，“数据字段”区域包含 Ticket Code。
+- 高效操作：在插入 Pivot Table 前先选中连续数据表中的任意一个单元格，Calc 通常可自动识别整个相邻数据区域，减少手动输入源范围的机会。
+- 完成标志：`Handoff Summary` 的空白区域出现 Pivot Table，行标签按 kiosk 分组，并有一个来自 `Ticket Code` 的数据结果列。
 
-#### 第 5 步：将 Ticket Code 数据字段设置为计数
+#### 第 3 步：将 Ticket Code 数据字段设为计数
 
-1. 在 Pivot Table 布局窗口的“数据字段”区域中，双击“Ticket Code”字段。
-2. 在数据字段选项中选择“Count”作为汇总方式；不要选择 Sum。
-3. 确认设置返回布局窗口，并检查 Ticket Code 数据字段的显示名称已反映 Count 或计数。
-4. 确认布局设置以继续选择输出位置。
+1. 如仍在 Pivot Table 的布局/编辑窗口，双击 `Data Fields` 区域中的 `Ticket Code` 字段；若 Pivot Table 已生成，可通过 `Data` > `Pivot Table` > `Insert or Edit...` 重新打开其字段布局后再双击该字段。
+2. 在打开的数据字段选项中选择 `Count`，使 Calc 统计非空 `Ticket Code` 的出现次数，而不是使用数值求和。
+3. 确认设置并完成 Pivot Table 的更新。
 
 - 对应 skills：`30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-08`
-- 高效操作：在刚加入数据字段后立即打开其设置，可以直接确认聚合方式，避免先生成不符合要求的汇总表后再返工。
-- 完成标志：Ticket Code 数据字段的汇总方式显示为 Count/计数，表示它将统计每个 kiosk 中非空 Ticket Code 的出现次数。
+- 高效操作：刚把 `Ticket Code` 加入 `Data Fields` 时立即调整汇总方式，可以避免之后误把数值汇总结果当成所需的记录数量。
+- 完成标志：Pivot Table 的值字段标签显示 `Count`，并且 `Kiosk North`、`Kiosk Central`、`Kiosk South` 各自显示 ticket 记录数量，而非金额或求和结果。
 
-#### 第 6 步：将 kiosk 计数 Pivot Table 放到交接汇总表
+#### 第 4 步：检查布局、计数结果并保存
 
-1. 在 Pivot Table 的输出位置设置中，选择将结果放在现有工作表。
-2. 指定“Handoff Summary”上的 A7 作为输出区域左上角；该位置位于 A1:D4 转置表下方，并留有空白行。
-3. 确认创建 Pivot Table。必要时切换回“Handoff Summary”查看结果。
-
-- 对应 skills：无；这是准备或检查步骤。
-- 高效操作：将 Pivot Table 放在转置表下方并预留空行，能让两个交接输出清晰分开，也便于以后刷新或扩展 Pivot Table。
-- 完成标志：“Handoff Summary”从 A7 附近开始出现 Pivot Table，其中按 Kiosk 列出 Kiosk North、Kiosk Central、Kiosk South，并显示 Ticket Code 的 Count/计数列及总计。
-
-#### 第 7 步：核对交接汇总输出
-
-1. 检查上方转置表的行列方向：kiosk 应在第一列纵向显示，Morning、Midday、Afternoon 应横向显示在第一行。
-2. 检查 Pivot Table 的行项目是 kiosk，数据字段是 Ticket Code 的 Count/计数。
-3. 确认 Pivot Table 的三个 kiosk 计数相加为 30，并确认其位置未覆盖转置覆盖表。
+1. 回到 `Handoff Summary`，检查转置覆盖表和 Pivot Table 之间有足够空白，不存在覆盖或混在同一表格内的情况。
+2. 核对 Pivot Table 中每个 `Kiosk` 都只作为一个分组行出现，并且数值字段为 `Count` 类型的 `Ticket Code` 结果。
+3. 查看 Pivot Table 的总计；由于源表 30 条数据记录的 `Ticket Code` 都非空，三个 kiosk 的计数总和应为 30。
+4. 按 `Ctrl+S` 保存。
 
 - 对应 skills：无；这是准备或检查步骤。
-- 高效操作：最后同时核对布局方向和计数汇总方式，可快速发现将数据字段误设为求和或将 Pivot Table 放错位置等问题。
-- 完成标志：“Handoff Summary”清楚地同时展示转置后的覆盖目标布局和独立的 kiosk Ticket Code 计数 Pivot Table。
+- 高效操作：使用 Pivot Table 的总计快速核对源数据行数；这比逐行手动计数更快，也能及早发现源范围漏选。
+- 完成标志：`Handoff Summary` 清楚地同时展示转置后的 coverage layout 和独立的 kiosk check-in Count Pivot Table，且 Pivot Table 总计为 `30`。
 
 #### 最终结果检查
 
-- 查看“Handoff Summary”：上方应有一个 4×4 的覆盖目标表，第一行依次为 Shift、Morning、Midday、Afternoon，第一列为 Kiosk North、Kiosk Central、Kiosk South；各目标数字应与“Coverage Setup”中对应的原始数据一致但方向已旋转。
-- 在“Handoff Summary”下方确认存在 Pivot Table：行标签按 Kiosk North、Kiosk Central、Kiosk South 分组，并显示 Ticket Code 的计数结果（通常还会有总计行）。
-- 确认 Pivot Table 的数据字段标题明确包含“Count”或“计数”，而不是“Sum”或“求和”；三个 kiosk 的计数合计应为 CheckIn Log 中的 30 条数据记录。
-- 确认两个输出没有重叠，且“Coverage Setup”和“CheckIn Log”中的原始数据仍保留。
+- 在 `Handoff Summary` 中确认上方有完整的转置覆盖表：第一行是 `Shift`、`Morning`、`Midday`、`Afternoon`，第一列依次列出 `Kiosk North`、`Kiosk Central`、`Kiosk South`，且各覆盖目标数值与 `Coverage Setup` 对应但方向已旋转。
+- 确认同一张 `Handoff Summary` 中另有一个不与覆盖表重叠的 Pivot Table；它按 `Kiosk` 显示 `Kiosk North`、`Kiosk Central`、`Kiosk South`，并显示每个 kiosk 的 `Ticket Code` 非空记录数。
+- 确认 Pivot Table 的数值字段标题明确包含 `Count`，而不是 `Sum`；三个 kiosk 的计数合计应为 `30`，因为 `CheckIn Log` 有 30 条数据记录且每条都有 `Ticket Code`。
+- 保存工作簿，必要时使用 `File` > `Save` 或按 `Ctrl+S`，以保留 `Handoff Summary` 上的两个结果。
 
 ## Source-task similarity review
 

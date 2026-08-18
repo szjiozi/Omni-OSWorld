@@ -604,83 +604,70 @@
     "task_detail_sha256": "0a6356d138605183b8124da3c1f8dd74b7a35e58e590fa28ca0a40a5cbcfa8fd",
     "guide": {
       "final_verification": [
-        "在“Funding Plan”工作表中，C2:C11 均已填入数值，且每行对应的原始金额与同一行 B 列的 Planned Allocation (USD) 一致。",
-        "C2:C11 的显示均为一位小数、数字与 B 之间带空格的十亿单位形式，例如 C2 显示为“12.5 B”、C3 显示为“8.8 B”、C4 显示为“3.6 B”。",
-        "单击任意 Board View 单元格（例如 C2）后，编辑栏/输入行中仍可看到完整的原始数值 12450000000，而不是已缩放的 12.5。",
-        "A 列 Initiative 和 B 列 Planned Allocation (USD) 的内容没有被改动。"
+        "在 `Funding Plan` 工作表中，`C2:C11` 均已填入数值，且 `B2:B11` 的原始金额和 Initiative 列没有被改动。",
+        "Board View 显示为带一位小数、数字与单位间有空格的十亿单位，例如 `12.5 B`、`8.8 B`、`3.6 B`。",
+        "单击任一 Board View 单元格（例如 C2）时，输入行/公式栏显示完整的底层金额 `12450000000`，而不是已缩放的 `12.5`；这确认仅改变显示格式，未改变数值。",
+        "检查 C2:C11 的所有条目均使用相同的十亿显示格式，并保留一位小数和 `B` 后缀。"
       ],
       "language": "zh-CN",
-      "overview": "本指南将“Funding Plan”中的 Planned Allocation (USD) 数值复制到空白的 Board View 列，再仅通过自定义数字格式把副本显示为保留一位小数、带空格 B 后缀的十亿金额。该格式只改变显示方式，不会改变原始数值。",
+      "overview": "本指南将把 `Funding Plan` 中的 Planned Allocation 金额复制到空白的 Board View 列，然后只通过自定义数字格式把该列显示为“十亿、保留一位小数、空格加 B 后缀”的董事会视图。底层金额将保持原始数值，方便后续计算。",
       "reference_task_id": "reference-task-calc-full-r01-002",
       "starting_state_checks": [
-        "确认当前打开的工作表名称为“Funding Plan”。",
-        "确认第 1 行是标题行，A1、B1、C1 分别对应 Initiative、Planned Allocation (USD) 和 Board View。",
-        "确认 B2:B11 已有数值金额，C2:C11 仍为空白。",
-        "确认将要复制的是 B2:B11，而不是标题单元格 B1。"
+        "确认当前打开的工作表是 `Funding Plan`。",
+        "确认第 1 行是标题行，`B2:B11` 含有数值金额，且 `C2:C11` 的 Board View 区域仍为空白。",
+        "确认列 B 的金额是可计算的数值而非文本；选择例如 B2 时，输入行/公式栏应显示完整金额。",
+        "确认 Board View 列尚未显示类似 `12.5 B` 的十亿缩放格式。"
       ],
       "steps": [
         {
-          "efficiency_tip": "先检查连续区域的首尾单元格，可避免把标题行或范围外的内容一起复制。",
+          "efficiency_tip": "一次选中完整连续区域并复制，可避免逐行复制时漏掉项目或错位。",
           "instructions": [
-            "在“Funding Plan”工作表中，单击 B2。",
-            "按住鼠标左键拖动到 B11，选中 B2:B11 中的全部 Planned Allocation (USD) 金额。",
-            "按 Ctrl+C 复制该范围。"
+            "选中源金额区域 `B2:B11`，不要包含标题单元格 B1。",
+            "按 `Ctrl+C` 复制所选金额。此时可见移动边框，表示该区域仍在剪贴板中可供粘贴。"
           ],
           "skill_ids": [],
           "step_number": 1,
-          "title": "复制计划拨款金额",
-          "visible_success_signal": "B2:B11 周围出现移动的复制边框，表示这 10 个数值已在剪贴板中；C2:C11 仍为空白。"
+          "title": "复制 Planned Allocation 金额",
+          "visible_success_signal": "`B2:B11` 周围出现复制边框，且 Board View 的 `C2:C11` 仍为空白。"
         },
         {
-          "efficiency_tip": "只需选中目标区域左上角 C2 后立即粘贴，Calc 会自动按原范围大小填充到 C11，无需逐行粘贴。",
+          "efficiency_tip": "复制后立即从目标区域的第一个单元格粘贴，Calc 会自动将整段连续数据按相同行数填入，无需逐项处理。",
           "instructions": [
-            "在复制边框仍显示时，单击空白目标列的第一个单元格 C2。",
-            "按 Ctrl+V，将复制的数值粘贴到 Board View 列。"
+            "在复制边框仍存在时，单击目标起始单元格 C2。",
+            "按 `Ctrl+V`，将复制的范围从 C2 开始粘贴到 Board View 列。",
+            "确认粘贴覆盖的是 `C2:C11`，不要修改 A 列 Initiative 或 B 列源金额。"
           ],
           "skill_ids": [
             "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-03"
           ],
           "step_number": 2,
           "title": "将复制的金额粘贴到 Board View",
-          "visible_success_signal": "C2:C11 已连续填入 10 个金额，并且每一行的数值与同一行 B 列相同；A 列和 B 列内容保持不变。"
+          "visible_success_signal": "`C2:C11` 已全部填入，并与对应的 `B2:B11` 具有相同的底层金额；例如 C2 包含 `12450000000`。"
         },
         {
-          "efficiency_tip": "一次选择整个 C2:C11 范围并统一设置格式，比逐个单元格设置更快，也能确保显示规则一致。",
+          "efficiency_tip": "使用自定义数字格式缩放显示，而不是用公式或除法改写数值；这样能保留完整原始金额并一次格式化整列目标区域。",
           "instructions": [
-            "选中 C2:C11。可以单击 C2 后拖动到 C11。",
-            "在选中区域内右键单击，选择“设置单元格格式…”（Format Cells）。",
-            "在“设置单元格格式”对话框中，切换到用于设置数字格式的页面，并定位到格式代码输入框。",
-            "在格式代码框中输入 `0.0,,, \\B`，然后按 Enter 确认；如对话框仍打开，再确认应用该设置。",
-            "返回工作表后，保持 C2:C11 的格式应用范围不变。"
+            "选中刚粘贴的区域 `C2:C11`。",
+            "在所选区域上右键单击，选择 `Format Cells...`。",
+            "在打开的对话框中找到用于输入自定义格式代码的输入框，激活或选中其中现有的格式代码。",
+            "输入 `0.0,,, \\B`，然后按 `Enter` 确认并应用格式。三个逗号会按十亿缩放显示，`0.0` 保留一位小数，反斜杠后的 `B` 作为带前置空格的文字后缀显示。"
           ],
           "skill_ids": [
             "21df9241-f8d7-4509-b7f1-37e501a823f7.skill-04"
           ],
           "step_number": 3,
-          "title": "把 Board View 显示为十亿并添加 B 后缀",
-          "visible_success_signal": "C2:C11 不再显示完整金额，而显示为类似“12.5 B”、“8.8 B”和“3.6 B”的文本外观：有一位小数，数字和 B 之间有一个空格。"
-        },
-        {
-          "efficiency_tip": "抽查首行、中间行和末行能迅速发现是否有漏粘贴、格式未覆盖或行错位的问题。",
-          "instructions": [
-            "单击 C2，确认工作表中显示“12.5 B”，并查看编辑栏/输入行是否仍为完整数值 12450000000。",
-            "检查 C3 是否显示“8.8 B”、C4 是否显示“3.6 B”，再检查 C11 是否带一位小数和空格 B 后缀。",
-            "对照 B 列确认 C2:C11 的每个 Board View 项目均对应同一行的计划拨款金额。"
-          ],
-          "skill_ids": [],
-          "step_number": 4,
-          "title": "核对显示格式和原始数值",
-          "visible_success_signal": "Board View 的全部 10 行均以一位小数的“数字 B”形式显示，同时选中单元格时编辑栏仍保留未缩放的完整金额。"
+          "title": "将 Board View 格式化为十亿显示",
+          "visible_success_signal": "`C2:C11` 显示为一位小数加空格和 `B`，例如 C2 显示 `12.5 B`、C3 显示 `8.8 B`、C4 显示 `3.6 B`。"
         }
       ]
     },
     "generation": {
-      "request_id": "c7ba191c-8394-4220-8da9-dae93e7891e4",
-      "prompt_sha256": "9d1b1a73d02853f30a11690a60ae1e076ca1d87e4d906802d1fe2c6c20feb219",
+      "request_id": "30099569-e129-4a11-a483-2c840139ddcb",
+      "prompt_sha256": "62a03ad9636718fdc91c041e1adf0ba1ac5d8371086c7a4d00b50c43e300db23",
       "model": "gpt-5.6-terra",
-      "input_tokens": 2615,
-      "output_tokens": 1447,
-      "estimated_cost_usd": 0.022594
+      "input_tokens": 2840,
+      "output_tokens": 1272,
+      "estimated_cost_usd": 0.020944
     }
   },
   "artifact": {

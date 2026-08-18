@@ -18,6 +18,10 @@ from .schema import load_schema, validate_payload
 REVIEWER_GUIDE_SCHEMA = "reference-reviewer-guide.schema.json"
 SHA256_PATTERN = re.compile(r"^[0-9a-f]{64}$")
 CHINESE_PATTERN = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff]")
+CHINESE_QUOTED_UI_ACTION = re.compile(
+    r"(?:点击|单击|双击|右键单击|选择|打开|进入|切换到|从)"
+    r"[^。；\n]{0,32}[“\"]([^”\"]*[\u3400-\u4dbf\u4e00-\u9fff][^”\"]*)[”\"]"
+)
 
 
 @dataclass(frozen=True)
@@ -65,7 +69,7 @@ def build_reviewer_guide_request(
         },
     )
     return JSONRequest(
-        prompt_name="generate_reviewer_guide.v1",
+        prompt_name="generate_reviewer_guide.v2",
         system_prompt=system_prompt,
         user_prompt=user_prompt,
         response_schema=load_schema(REVIEWER_GUIDE_SCHEMA),
@@ -119,6 +123,14 @@ def validate_reviewer_guide(
         )
     if not CHINESE_PATTERN.search(_guide_explanatory_text(guide)):
         raise ValueError("Reviewer guide explanatory content must be Chinese")
+    for step in guide["steps"]:
+        for instruction in step["instructions"]:
+            match = CHINESE_QUOTED_UI_ACTION.search(instruction)
+            if match:
+                raise ValueError(
+                    "Reviewer guide uses a Chinese visible UI label in an action: "
+                    f"{match.group(1)!r}. Use the exact English UI label in backticks."
+                )
 
 
 async def generate_reviewer_guides(

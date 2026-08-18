@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "generated_by": "scripts/python/manage_reference_review_packets.py export",
   "reference_task_id": "reference-task-calc-full-r01-019",
-  "context_fingerprint": "4f0fefdbdc62ca89f291d22fb626ddff6e384611a1ea98c53bcf7d3fe68296db",
+  "context_fingerprint": "d48f66d39989073ac15117c045428cb9d3f97753b6043393f04649ea0d9e3b2d",
   "inputs": [
     {
       "role": "artifact",
@@ -33,7 +33,7 @@
   "generated_files": [
     {
       "path": "TASK.md",
-      "sha256": "f801d48b00152d0cac14e54a3d9e7d51f89c374e0ef481f19a649c839687b030"
+      "sha256": "609bfb21d2b4a2367351c83f6ac4d230dd7adcf349e68b3da92d766ecdce0768"
     },
     {
       "path": "TASK_DETAIL.md",
@@ -41,7 +41,7 @@
     },
     {
       "path": "context.json",
-      "sha256": "386983c9cdb403df4e9f4d3d272262712e5a3e84496f85ec45af017ee0f155db"
+      "sha256": "177b5dbe82fd5d617c3a18d42be3a0d577b2646702b1aaa74ca621dfbeac74d7"
     },
     {
       "path": "task_config.json",

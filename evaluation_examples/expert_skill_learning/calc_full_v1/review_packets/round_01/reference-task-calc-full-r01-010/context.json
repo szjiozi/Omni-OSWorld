@@ -606,107 +606,107 @@
     "task_detail_sha256": "5bc707b9163522d69c9569cef9251c31a13e569f310679cacec720f4e044a012",
     "guide": {
       "final_verification": [
-        "工作簿中有一个新的汇总工作表或明确为空的输出区域，且其中显示原生数据透视表。",
-        "数据透视表的行标签为 Program；顶部列标题显示 Quarter 的不同季度值。",
-        "数据区域显示的是 Service Hours 的汇总数值（通常为求和），而不是36条原始活动记录；每个 Program 行在各季度列下都有对应总工时。",
-        "确认源工作表“Activity Log”仍保留完整的 A1:E37 原始数据表。"
+        "工作簿中存在一个单独的汇总输出区域或新工作表，且其中显示原生 Pivot Table，而不是手工输入的汇总结果。",
+        "Pivot Table 的左侧行标签为 `Program`，每个 Program 只出现一行汇总。",
+        "表格顶部有 `Quarter` 的不同季度列标题，且季度下方显示对应 Program 的汇总值。",
+        "值区域显示的是 `Service Hours` 的聚合结果（通常为 Sum），不是逐条活动记录；行和列总计如自动显示，可保留。"
       ],
       "language": "zh-CN",
-      "overview": "在“Activity Log”的连续源数据上创建数据透视表，并将结果放到新的汇总工作表。透视表以 Program 为行、Quarter 为列，并汇总 Service Hours，从而按项目和季度查看志愿服务总小时数。",
+      "overview": "在 `Activity Log` 的完整活动记录上创建 Pivot Table，并将结果放到新的空白工作表或空白输出区域。布局应为：`Program` 在行、`Quarter` 在列、`Service Hours` 作为数值汇总，以便按园艺项目和季度查看志愿服务总小时数。",
       "reference_task_id": "reference-task-calc-full-r01-010",
       "starting_state_checks": [
-        "确认当前打开的是“Activity Log”工作表，且第1行包含 Program、Quarter、Garden Site、Activity Type、Service Hours 标题。",
-        "确认数据表是连续区域 A1:E37，中间没有空白行或空白列。",
-        "确认当前尚未存在数据透视表，也没有预先创建的汇总输出工作表。"
+        "确认当前活动工作表是 `Activity Log`。",
+        "确认源数据连续覆盖 `A1:E37`：第 1 行包含 `Program`、`Quarter`、`Garden Site`、`Activity Type`、`Service Hours` 标题，且中间没有空白行或空白列。",
+        "确认工作簿中尚未有 Pivot Table 或预先建立的汇总输出工作表。"
       ],
       "steps": [
         {
-          "efficiency_tip": "先确认源表没有中断；连续区域可让 Calc 自动正确识别整个数据范围，避免漏掉记录或字段。",
+          "efficiency_tip": "先在源表内选中任意单元格，再一次性选取完整连续数据区域；这样 Pivot Table 会同时获得字段标题和所有记录。",
           "instructions": [
-            "在“Activity Log”中单击源数据区域内任意单元格，例如标题行或任一记录行。",
-            "检查第1行字段名是否包括 Program、Quarter、Garden Site、Activity Type、Service Hours，并确认记录延续到第37行。",
-            "如需明确选择数据源，可拖选 A1:E37；不要只选中某一列。"
+            "在 `Activity Log` 中选中完整源表 `A1:E37`，务必包含标题行。",
+            "点击 `Data` > `Pivot Table` > `Insert or Edit...`，使用当前选定的数据区域作为 Pivot Table 的源。",
+            "继续进入用于摆放字段的 Pivot Table 布局对话框。"
           ],
           "skill_ids": [],
           "step_number": 1,
-          "title": "检查并选择志愿活动源数据",
-          "visible_success_signal": "“Activity Log”中的 A1:E37 是一块完整的五列数据区域，包含36条活动记录和一行标题。"
+          "title": "选择活动记录并打开 Pivot Table 布局",
+          "visible_success_signal": "Pivot Table 布局对话框出现，并在可用字段列表中能看到 `Program`、`Quarter`、`Garden Site`、`Activity Type` 和 `Service Hours`。"
         },
         {
-          "efficiency_tip": "从已选中的源区域启动数据透视表，可减少在设置过程中手动输入范围的需要。",
+          "efficiency_tip": "直接从可用字段列表拖到目标区域，避免先添加字段后再重新定位。",
           "instructions": [
-            "保持光标位于源数据区域内，打开菜单“数据”中的“数据透视表”命令，并选择用于插入或创建数据透视表的选项。",
-            "在数据源确认界面中，确认使用当前选定区域或当前数据选区作为源；范围应覆盖“Activity Log”中的 A1:E37。",
-            "继续进入数据透视表布局对话框。"
+            "在可用字段列表中找到 `Program`。",
+            "将 `Program` 拖到 `Row Fields` 区域，使每个园艺项目成为一行标签。",
+            "检查 `Program` 已显示在 `Row Fields` 区域内。"
           ],
           "skill_ids": [],
           "step_number": 2,
-          "title": "打开数据透视表布局",
-          "visible_success_signal": "出现数据透视表布局对话框，Available Fields（可用字段）中可见 Program、Quarter、Garden Site、Activity Type 和 Service Hours。"
+          "title": "按 Program 建立行标签",
+          "visible_success_signal": "`Row Fields` 区域中可见 `Program`，说明 Pivot Table 将按项目分行。"
         },
         {
-          "efficiency_tip": "直接把字段从 Available Fields 拖入目标区域，避免先添加后再移动字段。先完成分类布局，随后再添加数值字段，结构更容易核对。",
+          "efficiency_tip": "将分类字段 `Quarter` 直接拖入列区域；不需要先放入其他区域再移动。",
           "instructions": [
-            "在 Available Fields 中找到 Program，将它拖到 Row fields（行字段）区域。",
-            "在 Available Fields 中找到 Quarter，将它直接拖到 Column fields（列字段）区域。",
-            "检查布局区域：Program 应显示在行字段框中，Quarter 应显示在列字段框中。"
+            "在可用字段列表中找到 `Quarter`。",
+            "将 `Quarter` 直接拖到 `Column Fields` 区域。",
+            "确认 `Quarter` 留在 `Column Fields` 区域中，而非 `Row Fields` 或 `Data Fields`。"
           ],
           "skill_ids": [
             "1de60575-bb6e-4c3d-9e6a-2fa699f9f197.skill-02"
           ],
           "step_number": 3,
-          "title": "设置 Program 行和 Quarter 列",
-          "visible_success_signal": "布局对话框的 Row fields 中有 Program，Column fields 中有 Quarter，表示输出将按项目分行、按季度分列。"
+          "title": "将 Quarter 放入列字段区域",
+          "visible_success_signal": "`Column Fields` 区域中显示 `Quarter`，完成后各季度会横向显示为列标题。"
         },
         {
-          "efficiency_tip": "仅将需要汇总的数值字段放入 Data fields；在行列结构已经确定后添加它，可以立即判断汇总指标是否正确。",
+          "efficiency_tip": "在行、列布局已经清楚后再添加数值字段，可立即确认该数值会按 Program 和 Quarter 交叉汇总。",
           "instructions": [
-            "在 Available Fields 中找到数值字段 Service Hours。",
-            "将 Service Hours 拖到 Data fields（数据字段）区域。",
-            "确认数据字段显示 Service Hours，汇总函数应为求和；如果 Calc 显示为“Sum - Service Hours”或等效的求和名称，即表示设置正确。",
-            "确认布局对话框以应用字段配置。"
+            "在可用字段列表中找到数值字段 `Service Hours`。",
+            "将 `Service Hours` 拖到 `Data Fields` 区域，且只放置一次。",
+            "确认数据字段采用求和汇总；如果布局对话框显示该字段的汇总方式，确保它是 `Sum`，以汇总服务小时数而非计数。"
           ],
           "skill_ids": [
             "1de60575-bb6e-4c3d-9e6a-2fa699f9f197.skill-03"
           ],
           "step_number": 4,
-          "title": "将 Service Hours 作为汇总值",
-          "visible_success_signal": "Data fields 区域中显示 Service Hours 的求和汇总，布局已同时包含 Program、Quarter 和该数值指标。"
+          "title": "将 Service Hours 作为汇总数值",
+          "visible_success_signal": "`Data Fields` 区域中出现 `Service Hours` 的求和数据项，表示输出将显示聚合小时数。"
         },
         {
-          "efficiency_tip": "将透视表放在新工作表可避免覆盖源记录，也便于单独查看和复核汇总结果。",
+          "efficiency_tip": "将结果放在新的空白工作表可避免覆盖原始活动记录，也使源数据与汇总报告便于区分。",
           "instructions": [
-            "在输出位置或结果位置设置界面中，选择创建到新的工作表（或选择一个确认为空的工作表位置）。",
-            "确认创建数据透视表；如创建了默认名称的新工作表，可按需要将其重命名为清晰的名称，例如“Program Summary”。",
-            "不要在“Activity Log”的原始表 A1:E37 内放置输出结果。"
+            "在布局对话框中将结果位置指定为新工作表；也可以选择一个没有数据的工作表，并将输出起点设在该表的空白单元格 `A1`。",
+            "确认目标位置不会与 `Activity Log` 的源数据重叠。",
+            "点击 `OK` 创建 Pivot Table。",
+            "如创建的是新工作表，可按需要将该工作表改为便于识别的名称，例如 `Volunteer Summary`。"
           ],
           "skill_ids": [],
           "step_number": 5,
-          "title": "将汇总结果放到新工作表",
-          "visible_success_signal": "Calc 切换到新的输出工作表或显示指定的空白输出区域，数据透视表已生成且未覆盖“Activity Log”源数据。"
+          "title": "输出 Pivot Table 到空白汇总位置",
+          "visible_success_signal": "出现一个新的 Pivot Table：左侧是 `Program`，顶部横向显示不同的 `Quarter`，内部单元格为汇总后的 `Service Hours` 数值。"
         },
         {
-          "efficiency_tip": "用行、列和数值区域同时检查结果，比只检查透视表是否出现更快发现字段放错区域的问题。",
+          "efficiency_tip": "用交叉检查的方式核对布局：先看字段位置，再看数值是否为汇总值，可快速发现字段被放错区域的问题。",
           "instructions": [
-            "查看透视表左侧的行标签，确认显示多个 Program 项目。",
-            "查看透视表顶部，确认 Quarter 的不同季度值作为独立列标题显示。",
-            "查看 Program 与 Quarter 的交叉单元格，确认其中是 Service Hours 的汇总数值而非原始明细；如有总计行或总计列，也应与汇总结构一致。",
-            "保存工作簿以保留新的数据透视表和汇总工作表。"
+            "检查行区域：每个 `Program` 应作为单独的行标签。",
+            "检查列区域：`Quarter` 的不同值应横向位于表格顶部。",
+            "检查数值区域：各交叉单元格应是服务小时数的总和，而不是源表中的单条记录。",
+            "如果某字段位置不正确，可返回 Pivot Table 编辑功能调整字段区域，然后再次确认结果。"
           ],
           "skill_ids": [],
           "step_number": 6,
-          "title": "核对并保存数据透视表",
-          "visible_success_signal": "可见的透视表按 Program 分行、按 Quarter 分列，并在交叉位置显示汇总的 Service Hours 数值。"
+          "title": "核对完成的志愿服务小时汇总",
+          "visible_success_signal": "Pivot Table 清晰呈现“Program × Quarter”的交叉汇总，所有可见数据值均为 `Service Hours` 的聚合值。"
         }
       ]
     },
     "generation": {
-      "request_id": "34d2a71c-48a7-4c24-8fc7-e8f70f3901d9",
-      "prompt_sha256": "ff2933870af44c2beb93cc6133f46bcbdba8f00f550b6d9aae38cb96980b01f3",
+      "request_id": "80326680-6e46-46d1-a62a-593abc27b785",
+      "prompt_sha256": "24ff720bf2e0fc3716a81fe458bb195c19e0fd2dd8557071de2b1772811d72fd",
       "model": "gpt-5.6-terra",
-      "input_tokens": 2403,
-      "output_tokens": 1404,
-      "estimated_cost_usd": 0.021654
+      "input_tokens": 2628,
+      "output_tokens": 1854,
+      "estimated_cost_usd": 0.027504
     }
   },
   "artifact": {

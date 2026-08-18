@@ -126,73 +126,73 @@ Allowed variation: The expert may use LibreOffice Calc menus, toolbar controls, 
 
 > 以下是一个可以参考的操作 guide。标注者可以根据实际 LibreOffice 界面采用等价操作。
 
-本指南完成三项工作：为每条活动记录生成统一的两位小数叙述文字、提高深色报告标题的可读性，以及在“Allocation Summary”中创建按 Zone 汇总 Completed Units 且显示总计占比的原生数据透视表。
+本指南完成三个结果：在 `Activity Log` 中为全部分配记录生成统一的两位小数叙述文字；将 `Allocation Summary` 的深色标题改为白字；并在该汇总表创建原生 Pivot Table，以百分比显示各 `Zone` 占全部 `Completed Units` 的份额。
 
 #### 启动后的初始状态检查
 
-- 确认工作簿中有“Activity Log”和“Allocation Summary”两个工作表。
-- 在“Activity Log”中确认第 1 行为表头、数据记录位于第 2 至第 19 行，且“Record Summary”列当前为空；确认源表中可找到 Zone 和 Completed Units 字段。
-- 在“Allocation Summary”中确认 A1 显示“Workshop Allocation Share”，底色为深色，且 A3 起的区域为空。
-- 确认尚未存在数据透视表，以免编辑到旧结果。
+- 确认工作簿已打开，底部可见工作表 `Activity Log` 和 `Allocation Summary`。
+- 在 `Activity Log` 中确认第 1 行是表头、已有 18 条数据记录，且 `Record Summary` 输出列的数据单元格目前为空。
+- 在 `Allocation Summary` 中确认 `A1` 显示 `Workshop Allocation Share`，具有深色填充，但文字尚不是白色；标题下方的汇总区域为空。
+- 确认源表的字段列表中可找到用于分组的 `Zone`，以及用于汇总的 `Completed Units`；创建 Pivot Table 时必须使用这两个字段。
 
-#### 第 1 步：在第一条记录中建立两位小数叙述公式
+#### 第 1 步：生成所有记录的两位小数叙述
 
-1. 打开“Activity Log”工作表并单击 E2，即“Record Summary”标题下的第一条记录。
-2. 输入以下公式后按 Enter：=$A$1&": "&A2&", "&$B$1&": "&FIXED(B2,2)&", "&$C$1&": "&FIXED(C2,2)&", "&$D$1&": "&FIXED(D2,2)
-3. 其中 $A$1、$B$1、$C$1 和 $D$1 固定引用第 1 行标题；A2:D2 仍是当前记录行。FIXED(B2,2)、FIXED(C2,2) 和 FIXED(D2,2) 会把单位数值转换为恰好两位小数的文本。
+1. 切换到 `Activity Log`，单击 `E2`。不要覆盖 `E1` 中的 `Record Summary` 表头。
+2. 在 `E2` 输入以下公式后按 `Enter`：`=$A$1&": "&A2&", "&$B$1&": "&FIXED(B2,2)&", "&$C$1&": "&FIXED(C2,2)&", "&$D$1&": "&FIXED(D2,2)`。其中表头引用含 `$`，复制时会固定；第 2 行的数据引用会随行号改变。
+3. 再次选中 `E2`，将选择范围扩展为 `E2:E19`，然后按 `Ctrl+D` 向下填充。
 
 - 对应 skills：`4de54231-e4b5-49e3-b2ba-61a0bec721c0.skill-02`
-- 高效操作：先只在 E2 写好使用绝对表头引用、相对数据行引用的公式，后续可一次填满所有记录，避免逐行输入。
-- 完成标志：E2 显示一段可读的标签和值组合文字，例如包含 Batch Code 以及三个单位字段；三个单位数值都带有两位小数。
+- 高效操作：先只在 `E2` 完成一次正确公式，再一次性向下填充，可避免逐行输入并保持全部记录的文字格式一致。
+- 完成标志：`E2:E19` 均显示由字段名称和数值组成的可读文本；每条记录中的三个单位数值均以两位小数显示，例如 `12.00`。
 
-#### 第 2 步：将记录叙述填充到全部 18 条记录
+#### 第 2 步：将报告标题改为白色文字
 
-1. 再次选中 E2，然后按住 Shift 并选中 E19，使 E2:E19 成为选区。
-2. 使用 Ctrl+D 向下填充。若更习惯菜单，可使用用于向下填充单元格的命令。
-3. 抽查 E3 和 E19：Batch Code 与单位值应分别对应各自所在行，而字段标签保持不变。
-
-- 对应 skills：无；这是准备或检查步骤。
-- 高效操作：选中包含首个公式在内的整个目标区域后使用向下填充，可让相对行号自动从第 2 行变为第 3 至第 19 行。
-- 完成标志：E2:E19 均不再为空；每一行都有自己的记录叙述，且 Scheduled Units、Completed Units、Rework Units 均以两位小数显示。
-
-#### 第 3 步：将深色报告标题改为白色文字
-
-1. 切换到“Allocation Summary”工作表并选中 A1，其中包含“Workshop Allocation Share”。
-2. 在工具栏打开字体颜色的下拉调色板。
-3. 从调色板选择白色。不要更改该单元格原有的深色填充或标题文字。
+1. 切换到 `Allocation Summary`，单击深色标题单元格 `A1`。
+2. 打开工具栏上的 `Font Color` 下拉颜色面板，选择白色。
+3. 保持 `A1` 选中，检查文字与深色填充之间的对比度。
 
 - 对应 skills：`30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-04`
-- 高效操作：A1 已有深色填充，保持该单元格处于选中状态即可立即看到白色文字与深色背景的对比。
-- 完成标志：A1 中的“Workshop Allocation Share”文字为白色，并清晰显示在原有的深海军蓝背景上。
+- 高效操作：标题单元格保持选中时立刻设置字体颜色，深色背景会即时帮助你判断白字是否已生效。
+- 完成标志：`A1` 中的 `Workshop Allocation Share` 显示为白色，并在深海军蓝背景上清晰可读。
 
-#### 第 4 步：创建按 Zone 汇总 Completed Units 的原生数据透视表
+#### 第 3 步：创建按 Zone 汇总 Completed Units 的原生 Pivot Table
 
-1. 返回“Activity Log”，在源表内单击任意单元格，然后选中包含所有表头和记录的完整连续源表区域。
-2. 选择“数据”菜单中的“数据透视表”创建命令，开始建立数据透视表；在源数据确认界面确认使用当前选中的数据区域。
-3. 在数据透视表布局界面，将 Zone 放入“行字段”区域，将 Completed Units 放入“数据字段”区域。确认 Completed Units 的汇总方式为“求和”。
-4. 在输出位置设置中选择现有工作表“Allocation Summary”，并指定不覆盖标题的空白起点，例如 A3。确认创建数据透视表。
+1. 返回 `Activity Log`，选中包含表头和全部记录的连续源数据区域。选择范围必须包含 `Zone` 和 `Completed Units` 字段；如果表格范围显示为 `A1:E19`，可从 `A1` 拖选到最后一个已使用的单元格。
+2. 打开 `Data` > `Pivot Table` > `Insert or Edit...`。在创建对话框中确认当前选择的数据源正确，然后继续进入字段布局设置。
+3. 在字段布局中，将 `Zone` 放到行分组区域，使每个 Zone 成为一行；将 `Completed Units` 放到数据区域，并确认其汇总函数为求和。
+4. 将结果位置设在 `Allocation Summary` 的标题下方空白区，例如 `A3`，随后确认创建。确保结果不会覆盖 `A1` 标题。
 
 - 对应 skills：无；这是准备或检查步骤。
-- 高效操作：从源表中选择整个连续数据区域而非只选两列，可确保数据透视表正确识别表头和全部记录；将结果放在 A3 可保留标题可见。
-- 完成标志：“Allocation Summary”从 A3 或其他未覆盖标题的位置开始显示数据透视表；每个 Zone 各有一行，并显示 Completed Units 的求和结果及总计。
+- 高效操作：直接从完整连续源表建立 Pivot Table，能够让字段名称和所有 18 条记录一次性进入字段布局，避免遗漏记录。
+- 完成标志：`Allocation Summary` 的标题下方出现 Pivot Table，其中可见多个 Zone 行和 `Completed Units` 的汇总值；不再只是空白区域。
 
-#### 第 5 步：将 Completed Units 显示为总计百分比
+#### 第 4 步：将 Completed Units 显示为总计百分比
 
-1. 在新建的数据透视表中，打开 Completed Units 数据字段的选项；通常可双击该数据字段，或通过字段的右键菜单打开数据字段设置。
-2. 在数据字段选项中打开“显示的值”相关控件，将“类型”从 Normal 改为“% of total”。
-3. 使用“确定”或 Enter 确认数据字段选项；如仍有数据透视表设置窗口，也确认该窗口以更新结果。
-4. 查看每个 Zone 的数据值，确认它们以百分比而非原始单位数显示。
+1. 在新建的 Pivot Table 中，打开 `Completed Units` 数据字段的选项或显示值设置。
+2. 在显示值设置中打开 `Type` 下拉列表；它可能初始显示 `Normal`。
+3. 从 `Type` 中选择 `% of total`，然后用 `OK` 或 `Enter` 确认数据字段选项。
+4. 如需退出布局或更新提示，继续确认对话框，并观察 Pivot Table 的数据列显示格式。
 
 - 对应 skills：`30e3e107-1cfb-46ee-a755-2cd080d7ba6a.skill-09`
-- 高效操作：使用数据字段本身的“显示的值”选项计算占总计百分比，避免在透视表外另建公式，也能在源数据更新后保持汇总逻辑一致。
-- 完成标志：数据透视表的 Zone 行显示百分比形式的 Completed Units 份额；各类别百分比共同对应总计，Grand Total 为整体总量。
+- 高效操作：使用 Pivot Table 自带的百分比显示计算，可在源数据变化或刷新 Pivot Table 后自动维持正确份额，无需在表外编写辅助公式。
+- 完成标志：Pivot Table 中每个 `Zone` 的 `Completed Units` 值显示为百分比，且总计行表示全部 Completed Units 的总份额。
+
+#### 第 5 步：进行最终结果检查
+
+1. 在 `Activity Log` 中查看第一条、中间一条和最后一条 `Record Summary`，确认每项均含 `Batch Code`、`Scheduled Units`、`Completed Units` 和 `Rework Units` 的标签与值，并且数值为两位小数。
+2. 在 `Allocation Summary` 中确认 `A1` 标题未被 Pivot Table 覆盖，且仍保持白色文字和深色背景。
+3. 检查 Pivot Table：每个 `Zone` 仅作为一个分组行出现，数值列为 `Completed Units` 的百分比显示，并检查总计是否为全部份额。
+
+- 对应 skills：无；这是准备或检查步骤。
+- 高效操作：最终检查时先核对结构和格式，再核对数字总计；这样可以同时发现遗漏填充、标题格式错误或透视表显示方式未更新的问题。
+- 完成标志：工作簿同时具备完整的 18 条标准化记录叙述、白色可读标题，以及按 Zone 显示 Completed Units 总份额的原生 Pivot Table。
 
 #### 最终结果检查
 
-- 在“Activity Log”中检查 E2:E19：18 条记录均有“Record Summary”文字；每条均包含 Batch Code、Scheduled Units、Completed Units 和 Rework Units 的标签及数值，三个单位数值均显示为两位小数。
-- 切换到“Allocation Summary”：A1 的“Workshop Allocation Share”仍使用深海军蓝底色，文字为醒目的白色。
-- 确认“Allocation Summary”中存在原生数据透视表，按 Zone 分行，数据字段为 Completed Units；各 Zone 的值以百分比显示，并有总计，类别百分比合计为总计。
-- 确认标题没有被透视表覆盖，且没有用工作表辅助公式替代透视表的百分比计算。
+- 切换到 `Activity Log`，检查 `E2:E19`：18 条记录均已生成 `Record Summary` 文本，且每条中的 `Scheduled Units`、`Completed Units`、`Rework Units` 都显示为恰好两位小数。
+- 切换到 `Allocation Summary`，确认 `A1` 仍为深海军蓝填充，`Workshop Allocation Share` 为白色且清晰可读。
+- 确认 `Allocation Summary` 的标题下方存在原生 Pivot Table；它按 `Zone` 分行，汇总的是 `Completed Units`，数值显示为百分比而非普通数值，并有总计结果。
+- 查看各 Zone 的百分比及 Pivot Table 的总计，确认各类别合计代表全部 `Completed Units` 的 100%份额。
 
 ## Source-task similarity review
 
