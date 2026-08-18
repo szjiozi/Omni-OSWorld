@@ -28,7 +28,7 @@
     {
       "reference_task_id": "reference-task-calc-full-r01-005",
       "task_config_path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-005.json",
-      "artifact_sha256": "1801c28ec72cbd18b122ee96a9cdae0fecc0fc29241e82568968100a52a05d93",
+      "artifact_sha256": "b87b0b381f2cdf867ae4e97b1d200710016252754cef26c484f9f0698c65a2cf",
       "blueprint_request_id": "f85d3323-bca4-4e4c-9aad-1a16661796b2"
     },
     {

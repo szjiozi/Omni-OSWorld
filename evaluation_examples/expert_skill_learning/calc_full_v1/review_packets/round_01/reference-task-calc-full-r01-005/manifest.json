@@ -2,17 +2,17 @@
   "schema_version": "1.0",
   "generated_by": "scripts/python/manage_reference_review_packets.py export",
   "reference_task_id": "reference-task-calc-full-r01-005",
-  "context_fingerprint": "5ff205c86863a63799463843dd2bda69d1998a78537b54520156f472f88f1d53",
+  "context_fingerprint": "2ef8cd811e26acd30e449a2bff34c7ba427d6f785328b0a510aafde405f7dee8",
   "inputs": [
     {
       "role": "artifact",
       "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/initial_artifact.xlsx",
-      "sha256": "1801c28ec72cbd18b122ee96a9cdae0fecc0fc29241e82568968100a52a05d93"
+      "sha256": "b87b0b381f2cdf867ae4e97b1d200710016252754cef26c484f9f0698c65a2cf"
     },
     {
       "role": "artifact_blueprint",
       "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/artifact_blueprint.json",
-      "sha256": "3de2c604d693ae1f011efdf43a89f48827bf34c9066ce96e610b5432472ee0e6"
+      "sha256": "0aad9cf87a3002ee5970e4c8a327a74b6b776776d99a30d314dc69a4ccd8f4a3"
     },
     {
       "role": "artifact_qa",
@@ -22,22 +22,22 @@
     {
       "role": "task_config",
       "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/task_configs/reference-task-calc-full-r01-005.json",
-      "sha256": "501f5e127b0091ae72b9f07446193ddf0a958258f5b9822a88810b93ea454535"
+      "sha256": "6a32a2dcce2c118969eb468cd5877a8b99dab355ac5eddfc4f0e0e3c00691c82"
     },
     {
       "role": "artifact_preview",
       "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/previews/Catalog.png",
-      "sha256": "f662e7b2d19020703db748f5da27b5b3b559fc815ac09014bef1ff712b6c9979"
+      "sha256": "f2c61dc97d6576dc1d871401492043961973acfac573755b912633d37b7154d6"
     },
     {
       "role": "artifact_preview",
       "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/previews/Dispatch_Log.png",
-      "sha256": "76204774a90fbf11664db0b73dfdab2202ba8a93ed0353b335c889f6dd0cf582"
+      "sha256": "506e8c8f2960eeda421d1d637e7a3d4c20df284b5a67c2d160bc8ba440b0e68d"
     },
     {
       "role": "artifact_preview",
       "path": "evaluation_examples/expert_skill_learning/calc_full_v1/generated/round_01/artifacts/reference-task-calc-full-r01-005/previews/Summary.png",
-      "sha256": "3be68a1b8e0b33775104c37f2a17d19aeb6b6f6790cd71275bd69d94a9c0e6d6"
+      "sha256": "6ac88cab0942c73827bf16988004a3de337e28c926648923ae30159a550f7c34"
     }
   ],
   "generated_files": [
@@ -51,19 +51,19 @@
     },
     {
       "path": "context.json",
-      "sha256": "2f58da052c9e99472a21dce660b358673429abccfe1073bb8c4058710d1bc458"
+      "sha256": "95689d3d2715ec34f60cc68f8b770ac4b1077ef57dafb4042da5e2830511e14f"
     },
     {
       "path": "task_config.json",
-      "sha256": "501f5e127b0091ae72b9f07446193ddf0a958258f5b9822a88810b93ea454535"
+      "sha256": "6a32a2dcce2c118969eb468cd5877a8b99dab355ac5eddfc4f0e0e3c00691c82"
     },
     {
       "path": "artifact/initial_artifact.xlsx",
-      "sha256": "1801c28ec72cbd18b122ee96a9cdae0fecc0fc29241e82568968100a52a05d93"
+      "sha256": "b87b0b381f2cdf867ae4e97b1d200710016252754cef26c484f9f0698c65a2cf"
     },
     {
       "path": "artifact/artifact_blueprint.json",
-      "sha256": "3de2c604d693ae1f011efdf43a89f48827bf34c9066ce96e610b5432472ee0e6"
+      "sha256": "0aad9cf87a3002ee5970e4c8a327a74b6b776776d99a30d314dc69a4ccd8f4a3"
     },
     {
       "path": "artifact/artifact_qa.json",
@@ -71,15 +71,15 @@
     },
     {
       "path": "artifact/previews/Catalog.png",
-      "sha256": "f662e7b2d19020703db748f5da27b5b3b559fc815ac09014bef1ff712b6c9979"
+      "sha256": "f2c61dc97d6576dc1d871401492043961973acfac573755b912633d37b7154d6"
     },
     {
       "path": "artifact/previews/Dispatch_Log.png",
-      "sha256": "76204774a90fbf11664db0b73dfdab2202ba8a93ed0353b335c889f6dd0cf582"
+      "sha256": "506e8c8f2960eeda421d1d637e7a3d4c20df284b5a67c2d160bc8ba440b0e68d"
     },
     {
       "path": "artifact/previews/Summary.png",
-      "sha256": "3be68a1b8e0b33775104c37f2a17d19aeb6b6f6790cd71275bd69d94a9c0e6d6"
+      "sha256": "6ac88cab0942c73827bf16988004a3de337e28c926648923ae30159a550f7c34"
     }
   ],
   "editable_review": {

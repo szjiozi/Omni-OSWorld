@@ -812,8 +812,8 @@
               "@",
               "0",
               "$#,##0.00",
-              "@",
-              "@"
+              "General",
+              "General"
             ],
             "column_types": [
               "integer",

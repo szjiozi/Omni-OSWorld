@@ -6,7 +6,7 @@ Create realistic tabular values for every requested sheet. Row values are string
 
 Formulas use Excel/Calc-compatible A1 syntax and begin with '='. Only add formulas that the initial state explicitly requires. Do not fill formulas through a range when the recorded task is supposed to demonstrate autofill. Do not create final formulas, final formats, Pivot results, or conditional formatting that the operator is meant to demonstrate.
 
-Set column_number_formats explicitly for every column. Use General for a deliberately unformatted target column, @ for text, 0 for integers, 0.00 for ordinary decimals, $#,##0.00 for currency, and yyyy-mm-dd for dates. Initial-state and generation-note requirements override the default suggested by column_types. Do not pre-format a result column when formatting it is a recorded skill.
+Set column_number_formats explicitly for every column. Use General for a deliberately unformatted target column, @ for text, 0 for integers, 0.00 for ordinary decimals, $#,##0.00 for currency, and yyyy-mm-dd for dates. Initial-state and generation-note requirements override the default suggested by column_types. Do not pre-format a result column when formatting it is a recorded skill. A blank target column where the annotator must enter formulas must use General even when those formulas return text and the semantic column_type is text; using @ would cause Calc to treat an entered formula as literal text.
 
 Set autofilter_range to the complete header-plus-data range only when the artifact specification explicitly requires an AutoFilter. Otherwise return null, especially when the initial state says filter-free. The builder implements this as a native spreadsheet table with filter controls.
 

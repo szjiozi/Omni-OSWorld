@@ -752,6 +752,29 @@ def test_task_four_keeps_hourly_rate_plain_for_currency_skill_demo():
     assert service_log["column_number_formats"][4:6] == ["0.00", "General"]
 
 
+def test_calc_full_task_five_keeps_formula_destination_columns_general():
+    calc_root = (
+        Path(__file__).resolve().parents[1]
+        / "evaluation_examples"
+        / "expert_skill_learning"
+        / "calc_full_v1"
+        / "generated"
+        / "round_01"
+    )
+    results = load_artifact_blueprints(calc_root / "artifact_blueprints.json")
+    task = next(
+        item
+        for item in results
+        if item.reference_task_id == "reference-task-calc-full-r01-005"
+    )
+    dispatch_log = next(
+        sheet for sheet in task.blueprint["sheets"] if sheet["name"] == "Dispatch_Log"
+    )
+
+    assert dispatch_log["column_types"][4:6] == ["text", "text"]
+    assert dispatch_log["column_number_formats"][4:6] == ["General", "General"]
+
+
 def test_reference_response_must_return_exact_sampled_skill_ids():
     skills, _ = _pilot_construction_inputs()
     sample = SkillSample(app="libreoffice_calc", skills=tuple(skills[:2]))
