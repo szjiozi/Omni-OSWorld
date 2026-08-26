@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+  "app": "libreoffice_impress",
+  "single_action_count": 9,
+  "prompt_sha256": "ca8d9df70565ad49f5f2e16eb04263394fdd9a89abb3a43cc6db027cf131a29f",
+  "request_id": "b832bb5b-b500-479b-bdf4-70c2ca9f3f60",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 826,
+    "cached_input_tokens": 0,
+    "output_tokens": 310,
+    "estimated_cost_usd": 0.005372
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set a slide background color",
+        "procedure": [
+          "In the Slides pane, select the slide whose background you want to change.",
+          "In the right Sidebar's slide/background formatting controls, open the background color dropdown.",
+          "Choose the desired color, for example a yellow swatch. The selected slide's background updates.",
+          "Repeat the same background-color operation for other applicable slides; each slide can be formatted independently."
+        ],
+        "efficiency_tip": "Keep the Sidebar open while working through several slides, then select each target slide and reuse the same color choice instead of reopening unrelated formatting dialogs.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "name": "Replace text in a title placeholder",
+        "procedure": [
+          "Select the slide containing the title placeholder in the Slides pane.",
+          "Double-click the existing title text to enter text-editing mode inside the placeholder; this is different from merely selecting the shape object.",
+          "Type the replacement title text. Typing while the existing text is selected replaces it; otherwise, select the existing text first with Ctrl+A while editing the placeholder."
+        ],
+        "efficiency_tip": "Double-click directly on the title text rather than on the placeholder border so that the cursor enters text-editing mode immediately.",
+        "action_ids": [
+          6,
+          7,
+          8
+        ]
+      }
+    ]
+  }
+}

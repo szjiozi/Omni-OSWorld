@@ -1,0 +1,97 @@
+{
+  "id": "reference-task-impress-full-r01-004",
+  "snapshot": "libreoffice_impress",
+  "instruction": "Prepare the Community Garden Field Brief for the volunteer walk-through. Give the two working slides (Slides 2 and 3) the shared pale-mint background #E5F1E8 by selecting them together. On Slide 2, resize the existing garden-bed illustration to exactly 5.80 cm wide by 3.60 cm high, and set the “Morning Walk Checklist” callout text in the lower-left card to Liberation Sans. On Slide 3, update the four consecutive column labels in the existing table’s header row to “Area”, “Visit time”, “Coordinator”, and “Materials”, moving across the row as each label is replaced. Keep the rest of the brief unchanged.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-004/initial_artifact.pptx",
+            "path": "/home/user/Desktop/community_garden_brief.pptx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/community_garden_brief.pptx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_impress"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-impress-full-r01-004",
+    "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-004/initial_artifact.pptx",
+    "artifact_sha256": "040e8ba300986ab728351d46c268e83fff77d85c25a16385ff93457b23464292",
+    "guest_artifact_path": "/home/user/Desktop/community_garden_brief.pptx",
+    "required_skill_ids": [
+      "5cfb9197-e72b-454b-900e-c06b0c802b40.skill-01",
+      "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-02",
+      "af2d657a-e6b3-4c6a-9f67-9e3ed015974c.skill-01",
+      "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01"
+    ],
+    "operator_guide": {
+      "recommended_demonstration": [
+        {
+          "skill_id": "5cfb9197-e72b-454b-900e-c06b0c802b40.skill-01",
+          "operation_intent": "Replace all four adjacent header labels in the Slide 3 assignment table while retaining the existing table structure.",
+          "visible_success_signal": "The header row reads, from left to right, “Area”, “Visit time”, “Coordinator”, and “Materials”, with the body rows unchanged.",
+          "efficiency_tip": "Place the text cursor in the first header cell and use Tab to advance through the remaining consecutive header cells after replacing each cell’s text."
+        },
+        {
+          "skill_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-02",
+          "operation_intent": "Set the existing Slide 2 garden-bed illustration to the specified physical dimensions.",
+          "visible_success_signal": "The selected illustration’s size controls show Width 5.80 cm and Height 3.60 cm.",
+          "efficiency_tip": "Enter the width and then use Tab to reach the height field in the same size-control interaction."
+        },
+        {
+          "skill_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c.skill-01",
+          "operation_intent": "Change only the lower-left Slide 2 checklist callout’s font family to Liberation Sans.",
+          "visible_success_signal": "“Morning Walk Checklist” displays in Liberation Sans while its neighboring title and checklist items retain their original font formatting.",
+          "efficiency_tip": "Enter text-editing mode in the callout and select its full text before entering the requested font family in the font-name control."
+        },
+        {
+          "skill_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01",
+          "operation_intent": "Prepare the two working slides for one shared background update.",
+          "visible_success_signal": "Slides 2 and 3 are simultaneously highlighted in the Slides pane before the pale-mint background is applied, and both slides receive #E5F1E8.",
+          "efficiency_tip": "Select one target thumbnail and Ctrl-click the other target thumbnail so the shared background change can be applied once."
+        }
+      ],
+      "allowed_variation": "Equivalent LibreOffice controls and navigation paths are acceptable, provided the specified slide selection, background colors, table text, image dimensions, and isolated font-family change are achieved.",
+      "recording_start_state": "Open the supplied three-slide Community Garden Field Brief in Normal view with no multi-slide selection active.",
+      "recording_end_state": "Slides 2 and 3 share pale-mint #E5F1E8 backgrounds; the Slide 2 illustration is 5.80 cm by 3.60 cm; the specified Slide 2 callout is Liberation Sans; and the Slide 3 header row contains the four requested labels."
+    },
+    "expected_incidental_operations": [
+      {
+        "operation": "Apply the pale-mint #E5F1E8 slide background after Slides 2 and 3 have been selected together.",
+        "reason": "This is the shared visible outcome that makes the multi-slide selection meaningful within the coordinated brief update.",
+        "category": "task_specific"
+      },
+      {
+        "operation": "Select the intended image, callout text object, and table header cells before performing their requested edits.",
+        "reason": "Target selection is necessary scaffolding to restrict each formatting or text change to the specified object.",
+        "category": "scaffolding"
+      }
+    ],
+    "ready_state_checks": [
+      "Confirm that the uploaded presentation is open in LibreOffice Impress in Normal view.",
+      "Confirm that the Slides pane shows exactly three slide thumbnails.",
+      "Confirm that Slide 1, the Community Garden Field Brief cover slide, is the initially visible and selected slide.",
+      "Confirm that Slides 2 and 3 are separate, unselected thumbnails before beginning the task."
+    ],
+    "setup_notes": [
+      "Open the supplied presentation after upload and leave it at its initial cover slide."
+    ],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

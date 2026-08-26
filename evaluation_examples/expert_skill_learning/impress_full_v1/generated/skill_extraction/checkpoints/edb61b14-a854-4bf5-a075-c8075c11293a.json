@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+  "app": "libreoffice_impress",
+  "single_action_count": 5,
+  "prompt_sha256": "c2b069188f6db5b9534087163a4e7984c0ce6f36b4c6c5bbb192933d66247edd",
+  "request_id": "853542e3-3250-47c8-9000-7995a28195b1",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 753,
+    "cached_input_tokens": 0,
+    "output_tokens": 177,
+    "estimated_cost_usd": 0.00363
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Change the font family of selected text or a text object",
+        "procedure": [
+          "Select the text box or other text-containing object whose font family you want to change. If only part of its text should change, enter text-editing mode and select that text first.",
+          "Click the font-name field on the formatting toolbar; use a triple-click if needed to select the entire current font name.",
+          "Type a font family name, such as “Times New Roman,” and press Enter to apply it to the selected text or text object."
+        ],
+        "efficiency_tip": "When formatting all text in one text box, select the object rather than editing and selecting its individual characters; this applies the font family to the whole object in one operation.",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ]
+  }
+}

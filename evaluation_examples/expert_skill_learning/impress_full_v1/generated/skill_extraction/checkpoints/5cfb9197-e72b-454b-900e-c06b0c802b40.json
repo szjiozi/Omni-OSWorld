@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+  "app": "libreoffice_impress",
+  "single_action_count": 13,
+  "prompt_sha256": "f1167dcdaa1d2eeef053fb1b8f58c2ae1d7e4212a20fe3f0f39c9536713367ad",
+  "request_id": "54d4944e-c5a0-4d6e-afbd-a2b2b27c3759",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 840,
+    "cached_input_tokens": 0,
+    "output_tokens": 313,
+    "estimated_cost_usd": 0.005436
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Overwrite text in consecutive table cells using Tab",
+        "procedure": [
+          "Click inside the first table cell whose existing text should be replaced; this places the text cursor in the cell rather than merely selecting the table object.",
+          "Press Ctrl+A to select the current cell's text, then type the replacement value.",
+          "Press Tab to move the text cursor to the next cell in the row.",
+          "Repeat Ctrl+A, typing the replacement value, and Tab navigation for each subsequent cell. Do not press Tab after the final cell unless you intend to continue editing cells."
+        ],
+        "efficiency_tip": "Keep the cursor inside the table and use Tab to advance across cells, avoiding repeated mouse selection of each cell.",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    ]
+  }
+}

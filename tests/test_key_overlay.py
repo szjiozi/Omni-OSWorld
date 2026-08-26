@@ -205,6 +205,33 @@ def test_pointer_parser_accepts_split_coordinates_and_event_boundaries():
     ]
 
 
+def test_pointer_parser_labels_modifier_assisted_selections():
+    start = 6_000_000_000
+    lines = []
+    lines += _event("KeyPress", 50, start + 50_000_000)
+    lines += _button_event("ButtonPress", 1, start + 100_000_000, 100, 200)
+    lines += _button_event("ButtonRelease", 1, start + 120_000_000, 100, 200)
+    lines += _event("KeyRelease", 50, start + 130_000_000)
+    lines += _event("KeyPress", 37, start + 200_000_000)
+    lines += _button_event("ButtonPress", 1, start + 250_000_000, 300, 200)
+    lines += _button_event("ButtonRelease", 1, start + 270_000_000, 300, 200)
+    lines += _event("KeyPress", 50, start + 300_000_000)
+    lines += _button_event("ButtonPress", 1, start + 350_000_000, 500, 200)
+    lines += _button_event("ButtonRelease", 1, start + 370_000_000, 500, 200)
+
+    events = parse_timestamped_pointer_events(
+        "\n".join(lines),
+        video_start_monotonic_ns=start,
+        keymap_text=KEYMAP,
+    )
+
+    assert [event.label for event in events] == [
+        "Shift + Left Click",
+        "Ctrl + Left Click",
+        "Ctrl + Shift + Left Click",
+    ]
+
+
 def test_ass_renderer_includes_pointer_labels_and_writes_jsonl(tmp_path):
     pointer_events = [
         PointerOverlayEvent(100, "left_click", 100, 200, "Left Click"),

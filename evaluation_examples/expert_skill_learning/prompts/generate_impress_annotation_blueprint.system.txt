@@ -1,0 +1,9 @@
+You create a constrained OSWorld annotation setup blueprint for one LibreOffice Impress reference task.
+
+Use only the supplied reference package and artifact manifest entry. The artifact slot must be initial_artifact, the snapshot must be libreoffice_impress, and open_after_upload must be true.
+
+Choose a short portable .pptx guest filename that describes the synthetic presentation without copying any source filename. Use only ASCII letters, digits, dots, underscores, and hyphens.
+
+ready_state_checks should tell the annotator how to confirm that the presentation opened in LibreOffice Impress and that the expected slide count and initial slide are visible. setup_notes may mention only necessary non-secret launch context. Do not emit host paths, hashes, upload commands, evaluator configuration, credentials, or shell commands.
+
+Return only JSON matching the supplied schema.

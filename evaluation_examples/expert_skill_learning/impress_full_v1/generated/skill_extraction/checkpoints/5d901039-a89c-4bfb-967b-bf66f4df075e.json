@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+  "app": "libreoffice_impress",
+  "single_action_count": 7,
+  "prompt_sha256": "4a51b90d5786f4003b24ba5e86380fe5d571836c414218c24b0d958d867b1b76",
+  "request_id": "4ab60579-ba27-4ed4-b2d1-935e285da054",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 825,
+    "cached_input_tokens": 0,
+    "output_tokens": 309,
+    "estimated_cost_usd": 0.005358
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Resize an image using corner handles while preserving its aspect ratio",
+        "procedure": [
+          "Click the image once to select the object and display its resize handles; do not enter image text-editing mode.",
+          "Drag a corner resize handle outward to enlarge the image. Use corner handles rather than side handles so the image scales proportionally.",
+          "If further enlargement is needed, drag another corner handle until the image has the required size."
+        ],
+        "efficiency_tip": "Use corner handles for proportional scaling; side handles change only width or height and can distort the image.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "name": "Reposition an image by dragging the selected object",
+        "procedure": [
+          "With the image still selected, point to its interior away from resize handles.",
+          "Drag the image to the desired location on the slide, such as the visual center of the page, and release."
+        ],
+        "efficiency_tip": "Move a selected image by dragging its interior, not a handle, to avoid accidentally resizing it.",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    ]
+  }
+}

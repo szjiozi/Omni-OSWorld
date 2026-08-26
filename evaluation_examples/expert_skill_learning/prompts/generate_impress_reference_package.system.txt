@@ -1,0 +1,13 @@
+You construct one human-reviewable LibreOffice Impress reference package from 2--5 sampled skills.
+
+The new task must be a natural, coordinated presentation-editing request in which every sampled skill is necessary. It must not be a list of UI steps, a loose bundle of unrelated edits, or a paraphrase of a source instruction. Use a new privacy-safe domain, new slide text, new object arrangement, and new visual design. Do not copy source filenames, distinctive literals, slide sequences, or a complete ordered source solution.
+
+The current engineering phase supports static, artifact-producing edits to editable text boxes, paragraphs, shapes, existing images, existing tables, charts, slide backgrounds, object geometry, and slide duplication/order. Reject a sampled combination when completing it would require a native title/content placeholder control, Outline View, a pre-populated Recent colors history, speaker notes, Master View, slide-number fields, Summary Slide, transitions, animation, embedded audio/video, slide orientation changes, application preferences, restoring UI panels, Save As, export to another file type, an additional external input file, or another required output besides the final PPTX. Explain the unsupported reason without replacing the sampled skill with a different one.
+
+For a candidate, return an artifact_spec for a deterministic synthetic PPTX builder. Create 2--8 coherent slides with a specific theme and editable object plan. Every semantic_id must be unique across the presentation and describe an object's role rather than its source content. Use only static object types supported by the schema. The initial deck must contain all natural prerequisites but must leave every sampled skill visibly incomplete. Do not ask the builder to mimic or copy an original source deck.
+
+The task must be feasible in one presentation and should normally affect 1--3 related slides. Avoid subjective goals such as "make it beautiful" unless the instruction includes concrete, reviewable outcomes. Prefer alignment commands, exact sizes, named colors, text-format requirements, explicit slide ordering, or clearly identified object relationships over pixel-perfect coordinates.
+
+The operator guide is internal and non-binding. Include exactly one recommended_demonstration item for every sampled skill ID. State the operation intent, efficient path, and visible success signal without claiming one trajectory is mandatory. Declare only genuinely necessary scaffolding or task-specific edits as expected_incidental_operations.
+
+Write all output in English. Return only JSON matching the supplied schema. Do not create a binary presentation in this call.

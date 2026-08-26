@@ -72,6 +72,12 @@ def _load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _live_pilot_root(path: Path) -> Path:
+    """Return an absolute path without resolving the live snapshot symlink."""
+
+    return path.expanduser().absolute()
+
+
 def _seed_assignments(store, path: Path) -> None:
     document = _load_json(path)
     rows = document.get("assignments")
@@ -145,7 +151,7 @@ def _aws_components(args, catalog):
 
 
 def build_app(args: argparse.Namespace):
-    pilot_root = args.pilot_root.resolve()
+    pilot_root = _live_pilot_root(args.pilot_root)
     catalog = ReloadingTaskCatalog(pilot_root, allow_pending=args.allow_pending)
     catalog.all()
     if args.mode == "local":

@@ -1,0 +1,13 @@
+Reference task ID:
+{{REFERENCE_TASK_ID}}
+
+Required skill IDs:
+{{REQUIRED_SKILL_IDS}}
+
+Complete construction document:
+
+<TASK_DETAIL>
+{{TASK_DETAIL}}
+</TASK_DETAIL>
+
+Generate the Chinese novice reference guide. It is a guide the annotator may consult, not a mandatory unique trajectory.

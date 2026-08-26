@@ -75,15 +75,21 @@ class PasswordChallengeManager:
             )
         return challenge_id
 
-    def consume(self, challenge_id: str, username: str) -> str:
+    def resolve(self, challenge_id: str, username: str) -> str:
         with self._lock:
-            challenge = self._challenges.pop(challenge_id, None)
+            challenge = self._challenges.get(challenge_id)
         if challenge is None:
-            raise PermissionError("Password challenge is missing or already used")
+            raise PermissionError("Password challenge is missing")
         expected_username, cognito_session, expires_at = challenge
         if expires_at <= int(time.time()) or expected_username != username:
+            with self._lock:
+                self._challenges.pop(challenge_id, None)
             raise PermissionError("Password challenge is invalid or expired")
         return cognito_session
+
+    def discard(self, challenge_id: str) -> None:
+        with self._lock:
+            self._challenges.pop(challenge_id, None)
 
 
 class CognitoIdentityProvider:

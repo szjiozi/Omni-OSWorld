@@ -35,6 +35,7 @@ from benchmark_construction.reference_recording import (
     stop_guest_reference_recording,
     validate_recording_duration,
 )
+from benchmark_construction.reference_applications import get_reference_application
 
 from .models import WorkspaceSession
 from .service import PreparedWorkspace
@@ -113,11 +114,12 @@ class AWSReferenceWorkspaceController:
             actor="human",
             episode_id=workspace.session_id,
         )
+        profile = get_reference_application(task["snapshot"])
         artifacts = {
             "normalized_trajectory": "events.jsonl",
             "manifest": "episode_manifest.json",
             "task_config": "reference_task_config.json",
-            "initial_artifact": "initial_artifact.xlsx",
+            "initial_artifact": profile.packet_artifact_filename,
         }
         env = None
         try:
@@ -301,6 +303,7 @@ class AWSReferenceWorkspaceController:
         pointer_events = parse_timestamped_pointer_events(
             timestamped_text,
             video_start_monotonic_ns=calibrated_start_ns,
+            keymap_text=keymap_text,
         )
         write_key_events(runtime.output_dir / "key_events.jsonl", key_events)
         write_pointer_events(runtime.output_dir / "pointer_events.jsonl", pointer_events)
@@ -317,10 +320,14 @@ class AWSReferenceWorkspaceController:
         burn_key_overlay_in_guest(runtime.env, overlay_path, recording_path)
         runtime.artifacts["recording"] = recording_path.name
 
-        notify("saving_artifact", "Saving the final workbook and result artifacts.")
-        final_artifact = runtime.output_dir / "final_artifact.xlsx"
+        profile = get_reference_application(runtime.task["snapshot"])
+        notify(
+            "saving_artifact",
+            f"Saving the final {profile.artifact_label.lower()} and result artifacts.",
+        )
+        final_artifact = runtime.output_dir / profile.final_artifact_filename
         guest_path = runtime.task["reference_annotation"]["guest_artifact_path"]
-        _save_guest_workbook(runtime.env, guest_path, final_artifact)
+        _save_guest_artifact(runtime.env, guest_path, final_artifact, profile.app)
         runtime.artifacts["final_artifact"] = final_artifact.name
         final_ref = _save_observation(
             runtime.output_dir,
@@ -420,8 +427,7 @@ def _load_task_config(path: Path) -> dict[str, Any]:
     files[0]["local_path"] = str(local_path.resolve())
     if steps[1].get("parameters", {}).get("path") != files[0].get("path"):
         raise ValueError("The open action must target the uploaded artifact")
-    if task.get("snapshot") != "libreoffice_calc":
-        raise ValueError("Only libreoffice_calc reference annotation is supported")
+    get_reference_application(task.get("snapshot", ""))
     expected_hash = task["reference_annotation"]["artifact_sha256"]
     if _sha256(local_path) != expected_hash:
         raise ValueError("Initial artifact SHA256 does not match task config")
@@ -433,7 +439,8 @@ def _copy_preparation_artifacts(
 ) -> None:
     shutil.copy2(task_config_path, output_dir / "reference_task_config.json")
     artifact = Path(task["config"][0]["parameters"]["files"][0]["local_path"])
-    shutil.copy2(artifact, output_dir / "initial_artifact.xlsx")
+    profile = get_reference_application(task["snapshot"])
+    shutil.copy2(artifact, output_dir / profile.packet_artifact_filename)
     _write_json(
         output_dir / "operator_guide.json",
         task["reference_annotation"]["operator_guide"],
@@ -463,16 +470,27 @@ def _save_observation(
     return screenshot_ref
 
 
-def _save_guest_workbook(env: Any, guest_path: str, output_path: Path) -> None:
+def _save_guest_artifact(
+    env: Any, guest_path: str, output_path: Path, app: str
+) -> None:
+    profile = get_reference_application(app)
     result = env.controller.execute_python_command(
         "import pyautogui,time; pyautogui.hotkey('ctrl','s'); time.sleep(3)"
     )
     if not result:
-        raise RuntimeError("Could not send Ctrl+S to LibreOffice Calc")
+        raise RuntimeError(f"Could not send Ctrl+S to {profile.app}")
     content = env.controller.get_file(guest_path)
     if not content or not content.startswith(b"PK"):
-        raise RuntimeError("Could not retrieve a valid final XLSX workbook")
+        raise RuntimeError(
+            f"Could not retrieve a valid final {profile.artifact_type.upper()} artifact"
+        )
     output_path.write_bytes(content)
+
+
+def _save_guest_workbook(env: Any, guest_path: str, output_path: Path) -> None:
+    """Backward-compatible Calc wrapper used by existing tests and callers."""
+
+    _save_guest_artifact(env, guest_path, output_path, "libreoffice_calc")
 
 
 def _sha256(path: Path) -> str:

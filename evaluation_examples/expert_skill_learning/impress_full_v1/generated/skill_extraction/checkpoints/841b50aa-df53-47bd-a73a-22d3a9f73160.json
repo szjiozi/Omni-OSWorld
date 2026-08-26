@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+  "app": "libreoffice_impress",
+  "single_action_count": 8,
+  "prompt_sha256": "f52416194bcbb7949eb353bde27b016264ed293ce402a0b1e19fc6e6bab6f184",
+  "request_id": "64edf440-26bc-40d8-ba64-6a0ee8acd2a3",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 789,
+    "cached_input_tokens": 0,
+    "output_tokens": 346,
+    "estimated_cost_usd": 0.00573
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set a slide background color",
+        "procedure": [
+          "Open the slide background formatting control, such as the Background drop-down in the slide properties area.",
+          "Choose the color background option, open its color palette, and select a desired color (for example, a purple swatch).",
+          "The selected color is applied as the background for the current slide."
+        ],
+        "efficiency_tip": "Select the slide before opening background controls so the color applies to the intended slide rather than requiring later correction.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Add text to speaker notes",
+        "procedure": [
+          "Choose View > Notes to display the slide's notes editing area.",
+          "Click the notes placeholder labeled “Click to add notes” to place the text cursor in the notes field.",
+          "Type a short note, for example “Reminder”; this text is stored as speaker notes rather than appearing on the slide canvas."
+        ],
+        "efficiency_tip": "Use the Notes view when entering several notes, since the dedicated notes placeholder keeps typing focused on presenter content instead of slide objects.",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    ]
+  }
+}

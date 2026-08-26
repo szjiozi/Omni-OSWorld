@@ -31,6 +31,7 @@ from benchmark_construction.semantic_similarity import (
     EmbeddingConfig,
     OpenAIEmbeddingAsyncClient,
 )
+from benchmark_construction.skill_readiness import eligible_skill_ids
 
 
 def parse_args() -> argparse.Namespace:
@@ -66,12 +67,24 @@ def parse_args() -> argparse.Namespace:
             "start this run covered without being regenerated."
         ),
     )
+    parser.add_argument(
+        "--skill-readiness-policy",
+        type=Path,
+        help="Optional readiness policy; only --eligible-status skills are sampled.",
+    )
+    parser.add_argument(
+        "--eligible-status",
+        action="append",
+        default=None,
+        help="Generation status allowed by --skill-readiness-policy; repeatable.",
+    )
     parser.add_argument("--model", default="gpt-5.6-terra")
     parser.add_argument("--embedding-model", default="text-embedding-3-small")
     parser.add_argument("--skip-semantic-similarity", action="store_true")
     parser.add_argument("--base-url", default=None)
     parser.add_argument("--api-key-env", default="OPENAI_API_KEY")
     parser.add_argument("--concurrency", type=int, default=4)
+    parser.add_argument("--semantic-retries", type=int, default=2)
     parser.add_argument(
         "--response-format",
         choices=("json_schema", "json_object", "text"),
@@ -127,6 +140,16 @@ async def run(args: argparse.Namespace) -> int:
     source_tasks = load_source_manifest(
         args.source_manifest, expected_app=args.app
     )
+    generation_eligible = None
+    if args.skill_readiness_policy:
+        generation_eligible = eligible_skill_ids(
+            args.skill_readiness_policy,
+            skills,
+            expected_app=args.app,
+            statuses=args.eligible_status or ["pilot_static"],
+        )
+    elif args.eligible_status:
+        raise SystemExit("--eligible-status requires --skill-readiness-policy")
     initial_uncovered = None
     blocked_groups = ()
     revisions = ()
@@ -195,9 +218,11 @@ async def run(args: argparse.Namespace) -> int:
         max_candidates=args.max_candidates,
         task_id_prefix=args.task_id_prefix,
         initial_uncovered_skill_ids=initial_uncovered,
+        generation_eligible_skill_ids=generation_eligible,
         blocked_groups=blocked_groups,
         revisions=revisions,
         semantic_client=semantic_client,
+        semantic_retries=args.semantic_retries,
     )
     write_reference_packages(
         args.output,

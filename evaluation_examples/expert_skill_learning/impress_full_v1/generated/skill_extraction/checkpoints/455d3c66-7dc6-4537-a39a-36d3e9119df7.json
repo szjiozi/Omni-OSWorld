@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+  "app": "libreoffice_impress",
+  "single_action_count": 5,
+  "prompt_sha256": "f411e50d4c7bf697c55fed5a235adc03302881dca7eae4c9ce84b28b3d51eb2a",
+  "request_id": "be2df238-1ef4-431e-9fad-98fdb847691c",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 772,
+    "cached_input_tokens": 0,
+    "output_tokens": 135,
+    "estimated_cost_usd": 0.003164
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Export an Impress presentation to an image format",
+        "procedure": [
+          "Open the File menu and choose Export.",
+          "In the export dialog, enter an output filename with the desired image extension, such as `.png`; LibreOffice uses the extension to select the image format.",
+          "Confirm the export and accept the format’s default options in the subsequent settings dialog, if shown."
+        ],
+        "efficiency_tip": "Use the intended image extension directly in the filename field to choose the export format without changing a separate file-type control.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ]
+  }
+}

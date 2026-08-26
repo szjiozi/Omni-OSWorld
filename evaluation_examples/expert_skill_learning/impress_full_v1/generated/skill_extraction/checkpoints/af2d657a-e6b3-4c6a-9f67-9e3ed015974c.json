@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+  "app": "libreoffice_impress",
+  "single_action_count": 5,
+  "prompt_sha256": "38489f2fc6a83a5a342474770c44533fde4ed55d044dcb1240499a5e52390731",
+  "request_id": "7ab53af5-7f82-41cc-b605-1ed18b19d66d",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 770,
+    "cached_input_tokens": 0,
+    "output_tokens": 148,
+    "estimated_cost_usd": 0.003316
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Change the font family of selected text",
+        "procedure": [
+          "Enter text-editing mode in a text placeholder or shape, then select the text whose font family you want to change. For example, use Ctrl+A while the text cursor is active to select all text in that text object.",
+          "Click the font-name box on the formatting toolbar, replace its current value with a font family name such as “Microsoft JhengHei,” and apply the entry."
+        ],
+        "efficiency_tip": "Select the text before changing the font so the font change affects only the intended text object rather than future typing.",
+        "action_ids": [
+          2,
+          3,
+          4
+        ]
+      }
+    ]
+  }
+}

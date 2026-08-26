@@ -1,0 +1,565 @@
+{
+  "presentation_title": "Community Garden Field Brief",
+  "slide_size": "wide",
+  "theme": {
+    "primary_color": "C4512D",
+    "secondary_color": "355C4D",
+    "accent_color": "E3A83B",
+    "background_color": "FFFDF7",
+    "title_font": "Liberation Serif",
+    "body_font": "Liberation Sans"
+  },
+  "slides": [
+    {
+      "slide_number": 1,
+      "purpose": "Brief cover that establishes the volunteer walk-through context",
+      "background_color": "FFFDF7",
+      "objects": [
+        {
+          "semantic_id": "cover_top_rule",
+          "type": "shape",
+          "x": 0.72,
+          "y": 0.72,
+          "w": 2.1,
+          "h": 0.09,
+          "content": {
+            "text": null,
+            "shape_kind": "rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "C4512D",
+            "line_color": "C4512D",
+            "text_color": "C4512D",
+            "font_face": "Liberation Sans",
+            "font_size": 10,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "cover_title",
+          "type": "text",
+          "x": 0.72,
+          "y": 1.5,
+          "w": 8.6,
+          "h": 1.35,
+          "content": {
+            "text": "Community Garden\nField Brief",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFDF7",
+            "line_color": "FFFDF7",
+            "text_color": "355C4D",
+            "font_face": "Liberation Serif",
+            "font_size": 31,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "cover_subtitle",
+          "type": "text",
+          "x": 0.75,
+          "y": 3.15,
+          "w": 6.6,
+          "h": 0.45,
+          "content": {
+            "text": "Saturday volunteer walk-through",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFDF7",
+            "line_color": "FFFDF7",
+            "text_color": "C4512D",
+            "font_face": "Liberation Sans",
+            "font_size": 17,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "cover_seedling_motif",
+          "type": "image",
+          "x": 9.62,
+          "y": 0.92,
+          "w": 2.85,
+          "h": 2.4,
+          "content": {
+            "text": null,
+            "shape_kind": null,
+            "image_kind": "botanical",
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "E3A83B",
+            "line_color": "355C4D",
+            "text_color": "355C4D",
+            "font_face": "Liberation Sans",
+            "font_size": 10,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        }
+      ]
+    },
+    {
+      "slide_number": 2,
+      "purpose": "Working-slide checklist with a garden-bed visual reference",
+      "background_color": "FFFDF7",
+      "objects": [
+        {
+          "semantic_id": "checklist_section_label",
+          "type": "text",
+          "x": 0.72,
+          "y": 0.65,
+          "w": 3.1,
+          "h": 0.3,
+          "content": {
+            "text": "FIELD WALK • EAST GATE",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFDF7",
+            "line_color": "FFFDF7",
+            "text_color": "C4512D",
+            "font_face": "Liberation Sans",
+            "font_size": 10,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "checklist_title",
+          "type": "text",
+          "x": 0.72,
+          "y": 1.02,
+          "w": 5.85,
+          "h": 0.7,
+          "content": {
+            "text": "Start at the east gate",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFDF7",
+            "line_color": "FFFDF7",
+            "text_color": "355C4D",
+            "font_face": "Liberation Serif",
+            "font_size": 25,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "garden_bed_illustration",
+          "type": "image",
+          "x": 9.05,
+          "y": 2.03,
+          "w": 1.653543,
+          "h": 1.062992,
+          "content": {
+            "text": null,
+            "shape_kind": null,
+            "image_kind": "garden",
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFDF7",
+            "line_color": "355C4D",
+            "text_color": "355C4D",
+            "font_face": "Liberation Sans",
+            "font_size": 10,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "garden_bed_caption",
+          "type": "text",
+          "x": 8.45,
+          "y": 3.3,
+          "w": 2.9,
+          "h": 0.42,
+          "content": {
+            "text": "Raised beds: herbs + greens",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFDF7",
+            "line_color": "FFFDF7",
+            "text_color": "355C4D",
+            "font_face": "Liberation Sans",
+            "font_size": 11,
+            "bold": false,
+            "italic": true,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "checklist_callout_card",
+          "type": "shape",
+          "x": 0.72,
+          "y": 4.5,
+          "w": 5.55,
+          "h": 2.05,
+          "content": {
+            "text": null,
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "F4E5C7",
+            "line_color": "E3A83B",
+            "text_color": "355C4D",
+            "font_face": "Liberation Sans",
+            "font_size": 10,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "checklist_callout_text",
+          "type": "text",
+          "x": 1.03,
+          "y": 4.77,
+          "w": 4.7,
+          "h": 0.42,
+          "content": {
+            "text": "Morning Walk Checklist",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "F4E5C7",
+            "line_color": "F4E5C7",
+            "text_color": "C4512D",
+            "font_face": "Liberation Serif",
+            "font_size": 16,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "checklist_item_one",
+          "type": "text",
+          "x": 1.05,
+          "y": 5.38,
+          "w": 4.7,
+          "h": 0.35,
+          "content": {
+            "text": "• Check hose connections at each spigot",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "F4E5C7",
+            "line_color": "F4E5C7",
+            "text_color": "355C4D",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "checklist_item_two",
+          "type": "text",
+          "x": 1.05,
+          "y": 5.88,
+          "w": 4.7,
+          "h": 0.35,
+          "content": {
+            "text": "• Note ripe produce for the welcome table",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "F4E5C7",
+            "line_color": "F4E5C7",
+            "text_color": "355C4D",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        }
+      ]
+    },
+    {
+      "slide_number": 3,
+      "purpose": "Working-slide assignment grid for the garden walk",
+      "background_color": "FFFDF7",
+      "objects": [
+        {
+          "semantic_id": "assignment_section_label",
+          "type": "text",
+          "x": 0.94,
+          "y": 0.65,
+          "w": 3.3,
+          "h": 0.3,
+          "content": {
+            "text": "VOLUNTEER ASSIGNMENTS",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFDF7",
+            "line_color": "FFFDF7",
+            "text_color": "C4512D",
+            "font_face": "Liberation Sans",
+            "font_size": 10,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "assignment_title",
+          "type": "text",
+          "x": 0.94,
+          "y": 1.04,
+          "w": 7.2,
+          "h": 0.6,
+          "content": {
+            "text": "Walk-through assignments",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFDF7",
+            "line_color": "FFFDF7",
+            "text_color": "355C4D",
+            "font_face": "Liberation Serif",
+            "font_size": 25,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "assignment_intro",
+          "type": "text",
+          "x": 0.94,
+          "y": 1.78,
+          "w": 8.5,
+          "h": 0.4,
+          "content": {
+            "text": "Confirm each stop, then return materials to the welcome desk.",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFDF7",
+            "line_color": "FFFDF7",
+            "text_color": "355C4D",
+            "font_face": "Liberation Sans",
+            "font_size": 13,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "assignment_table",
+          "type": "table",
+          "x": 1.2,
+          "y": 2.55,
+          "w": 10.9,
+          "h": 2.7,
+          "content": {
+            "text": null,
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [
+              [
+                "Bed",
+                "Window",
+                "Guide",
+                "Gear"
+              ],
+              [
+                "Herb border",
+                "9:00–9:20",
+                "Maya R.",
+                "Plant tags"
+              ],
+              [
+                "Tomato row",
+                "9:20–9:45",
+                "Jon P.",
+                "Twine + clips"
+              ],
+              [
+                "Compost corner",
+                "9:45–10:05",
+                "Inez L.",
+                "Moisture meter"
+              ]
+            ],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFDF7",
+            "line_color": "355C4D",
+            "text_color": "355C4D",
+            "font_face": "Liberation Sans",
+            "font_size": 13,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "assignment_footer_note",
+          "type": "text",
+          "x": 0.94,
+          "y": 6.25,
+          "w": 8.5,
+          "h": 0.35,
+          "content": {
+            "text": "Report route changes or supply needs to the welcome desk.",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFDF7",
+            "line_color": "FFFDF7",
+            "text_color": "355C4D",
+            "font_face": "Liberation Sans",
+            "font_size": 11,
+            "bold": false,
+            "italic": true,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "assignment_side_marker",
+          "type": "shape",
+          "x": 0.72,
+          "y": 2.55,
+          "w": 0.12,
+          "h": 2.7,
+          "content": {
+            "text": null,
+            "shape_kind": "rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "C4512D",
+            "line_color": "C4512D",
+            "text_color": "C4512D",
+            "font_face": "Liberation Sans",
+            "font_size": 10,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        }
+      ]
+    }
+  ],
+  "manual_setup_steps": []
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+  "app": "libreoffice_impress",
+  "single_action_count": 11,
+  "prompt_sha256": "d17e0e0331fc84e762c7a6ca45b2e01e6de236751be80ec1e12351a1107d7f24",
+  "request_id": "85e09bf8-1dbb-460e-9b09-79e6d3ec444c",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 888,
+    "cached_input_tokens": 0,
+    "output_tokens": 479,
+    "estimated_cost_usd": 0.007524
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Create image slides with Photo Album",
+        "procedure": [
+          "In LibreOffice Impress, choose Insert > Media > Photo Album to open the Photo Album dialog.",
+          "Click Add and use the file picker to navigate to the folder containing the images.",
+          "Select the images to import. For a contiguous numerically ordered range, select the first file and then hold Shift while selecting the last file; confirm the selection with Enter.",
+          "Click Insert Slides in the Photo Album dialog. Impress creates a slide for each selected image, using the file-picker selection order."
+        ],
+        "efficiency_tip": "Use a consistent zero-padded or numerical filename sequence and select the complete contiguous range at once, rather than inserting each image separately.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    ]
+  }
+}

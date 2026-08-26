@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "06682b06202222dfe2c6b1ac58d7865e39212eaab65c43fb75b71ffa1e94ddeb",
+  "request_id": "cfb07de0-f738-46df-9243-0cbce27a8d71",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 742,
+    "cached_input_tokens": 0,
+    "output_tokens": 150,
+    "estimated_cost_usd": 0.003284
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Insert a table using the placeholder table grid",
+        "procedure": [
+          "Select the slide that contains a content placeholder with a table icon.",
+          "Click the placeholder's table icon to open the mini-table grid.",
+          "Move to the grid cell representing the required column and row count; for example, point to the second column in the fifth row to choose a 2-column by 5-row table.",
+          "Click that grid cell to insert the table into the placeholder."
+        ],
+        "efficiency_tip": "Use the placeholder table icon and hover grid when available; it creates the table at the selected dimensions without opening the separate Insert Table dialog.",
+        "action_ids": [
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

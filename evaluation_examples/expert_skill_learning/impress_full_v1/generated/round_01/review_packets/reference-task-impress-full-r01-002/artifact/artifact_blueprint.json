@@ -1,0 +1,372 @@
+{
+  "presentation_title": "Neighborhood Night Market",
+  "slide_size": "wide",
+  "theme": {
+    "primary_color": "C7D5E0",
+    "secondary_color": "1F2A44",
+    "accent_color": "D58B44",
+    "background_color": "F7F3EA",
+    "title_font": "Liberation Sans",
+    "body_font": "Liberation Sans"
+  },
+  "slides": [
+    {
+      "slide_number": 1,
+      "purpose": "Opening overview for the council preview",
+      "background_color": "F7F3EA",
+      "objects": [
+        {
+          "semantic_id": "opening_headline",
+          "type": "text",
+          "x": 0.8,
+          "y": 1.15,
+          "w": 11.7,
+          "h": 0.7,
+          "content": {
+            "text": "After-Dark Market Plan",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "F7F3EA",
+            "line_color": "F7F3EA",
+            "text_color": "1F2A44",
+            "font_face": "Liberation Sans",
+            "font_size": 32,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "opening_subtitle",
+          "type": "text",
+          "x": 0.82,
+          "y": 2.0,
+          "w": 8.5,
+          "h": 0.5,
+          "content": {
+            "text": "Council preview • Saturday pilot on Cedar Avenue",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "F7F3EA",
+            "line_color": "F7F3EA",
+            "text_color": "1F2A44",
+            "font_face": "Liberation Sans",
+            "font_size": 18,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "opening_time_badge",
+          "type": "shape",
+          "x": 0.82,
+          "y": 3.0,
+          "w": 2.35,
+          "h": 0.62,
+          "content": {
+            "text": "6:00–10:00 PM",
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "D58B44",
+            "line_color": "D58B44",
+            "text_color": "F7F3EA",
+            "font_face": "Liberation Sans",
+            "font_size": 16,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "opening_streetline",
+          "type": "shape",
+          "x": 0.82,
+          "y": 6.38,
+          "w": 11.7,
+          "h": 0.08,
+          "content": {
+            "text": null,
+            "shape_kind": "line",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "1F2A44",
+            "line_color": "D58B44",
+            "text_color": "1F2A44",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        }
+      ]
+    },
+    {
+      "slide_number": 2,
+      "purpose": "Operating schedule overview",
+      "background_color": "F7F3EA",
+      "objects": [
+        {
+          "semantic_id": "schedule_heading",
+          "type": "text",
+          "x": 0.85,
+          "y": 0.82,
+          "w": 5.8,
+          "h": 0.55,
+          "content": {
+            "text": "Pilot Night Schedule",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "F7F3EA",
+            "line_color": "F7F3EA",
+            "text_color": "1F2A44",
+            "font_face": "Liberation Sans",
+            "font_size": 28,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "schedule_time_list",
+          "type": "text",
+          "x": 0.88,
+          "y": 1.72,
+          "w": 5.7,
+          "h": 2.25,
+          "content": {
+            "text": "4:30 PM  Vendor arrival\n6:00 PM  Market opens\n10:00 PM  Street reopens",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "F7F3EA",
+            "line_color": "F7F3EA",
+            "text_color": "1F2A44",
+            "font_face": "Liberation Sans",
+            "font_size": 24,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "top"
+          }
+        },
+        {
+          "semantic_id": "schedule_vendor_note",
+          "type": "text",
+          "x": 0.9,
+          "y": 4.48,
+          "w": 5.55,
+          "h": 0.72,
+          "content": {
+            "text": "Vendor vehicles clear the curb lane before public opening.",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "F7F3EA",
+            "line_color": "F7F3EA",
+            "text_color": "1F2A44",
+            "font_face": "Liberation Sans",
+            "font_size": 16,
+            "bold": false,
+            "italic": true,
+            "underline": false,
+            "align": "left",
+            "valign": "top"
+          }
+        },
+        {
+          "semantic_id": "schedule_clock_icon",
+          "type": "shape",
+          "x": 8.35,
+          "y": 1.65,
+          "w": 3.15,
+          "h": 3.15,
+          "content": {
+            "text": "8\nPM",
+            "shape_kind": "ellipse",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "C7D5E0",
+            "line_color": "1F2A44",
+            "text_color": "1F2A44",
+            "font_face": "Liberation Sans",
+            "font_size": 26,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        }
+      ]
+    },
+    {
+      "slide_number": 3,
+      "purpose": "Closing action prompt for council coordination",
+      "background_color": "F7F3EA",
+      "objects": [
+        {
+          "semantic_id": "action_heading",
+          "type": "text",
+          "x": 0.9,
+          "y": 1.0,
+          "w": 9.65,
+          "h": 0.7,
+          "content": {
+            "text": "Coordinate the Pilot",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "F7F3EA",
+            "line_color": "F7F3EA",
+            "text_color": "1F2A44",
+            "font_face": "Liberation Sans",
+            "font_size": 34,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "action_request",
+          "type": "text",
+          "x": 0.92,
+          "y": 2.0,
+          "w": 8.9,
+          "h": 1.15,
+          "content": {
+            "text": "Confirm permit routing and neighborhood outreach leads.\nShare questions before the final street notice.",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "F7F3EA",
+            "line_color": "F7F3EA",
+            "text_color": "1F2A44",
+            "font_face": "Liberation Sans",
+            "font_size": 20,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "top"
+          }
+        },
+        {
+          "semantic_id": "action_deadline_badge",
+          "type": "shape",
+          "x": 0.92,
+          "y": 4.0,
+          "w": 3.35,
+          "h": 0.72,
+          "content": {
+            "text": "Reply by May 16",
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "D58B44",
+            "line_color": "D58B44",
+            "text_color": "F7F3EA",
+            "font_face": "Liberation Sans",
+            "font_size": 17,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "action_path_marker",
+          "type": "shape",
+          "x": 9.62,
+          "y": 5.65,
+          "w": 2.45,
+          "h": 0.9,
+          "content": {
+            "text": null,
+            "shape_kind": "chevron",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "1F2A44",
+            "line_color": "1F2A44",
+            "text_color": "F7F3EA",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        }
+      ]
+    }
+  ],
+  "manual_setup_steps": []
+}

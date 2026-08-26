@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+  "app": "libreoffice_impress",
+  "single_action_count": 8,
+  "prompt_sha256": "33e2102e41d17a27483b561c29fea47051374cc41175dbc96b4b035d568405e1",
+  "request_id": "67a62b20-135b-4376-aaaf-23dc4fc7f8cc",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 841,
+    "cached_input_tokens": 0,
+    "output_tokens": 356,
+    "estimated_cost_usd": 0.005954
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply an exact font color to text in text boxes",
+        "procedure": [
+          "On the slide, enter text-editing mode for a text box and select the text whose color should change. For example, triple-click a short text line to select it, or double-click the text box and select the required text.",
+          "Use the Font Color control on the formatting toolbar. Open its dropdown when needed to display the color palette.",
+          "Choose the required standard palette color, such as Yellow, Red, or Green. The selected text immediately receives that exact font color.",
+          "Repeat for other text boxes, selecting each text range before applying its color. Use the same standard palette swatch when an exact color is required rather than choosing a visually similar shade."
+        ],
+        "efficiency_tip": "Select the text directly before changing its color; this avoids recoloring the entire text box or unrelated objects. After opening the palette, apply the desired standard swatch rather than using custom color dialogs when exact built-in colors are requested.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    ]
+  }
+}

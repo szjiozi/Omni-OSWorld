@@ -1,0 +1,1877 @@
+{
+  "schema_version": "1.1",
+  "skills": [
+    {
+      "skill_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Apply an exact font color to text in text boxes",
+      "procedure": [
+        "On the slide, enter text-editing mode for a text box and select the text whose color should change. For example, triple-click a short text line to select it, or double-click the text box and select the required text.",
+        "Use the Font Color control on the formatting toolbar. Open its dropdown when needed to display the color palette.",
+        "Choose the required standard palette color, such as Yellow, Red, or Green. The selected text immediately receives that exact font color.",
+        "Repeat for other text boxes, selecting each text range before applying its color. Use the same standard palette swatch when an exact color is required rather than choosing a visually similar shade."
+      ],
+      "efficiency_tip": "Select the text directly before changing its color; this avoids recoloring the entire text box or unrelated objects. After opening the palette, apply the desired standard swatch rather than using custom color dialogs when exact built-in colors are requested.",
+      "source": {
+        "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "skill_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Set paragraph alignment in a text box",
+      "procedure": [
+        "Navigate to the slide containing the text box.",
+        "Click the text in the shape to enter text-editing mode, rather than merely selecting the shape.",
+        "Press Ctrl+A to select the text in that text box.",
+        "Click the desired paragraph alignment control, such as Align Right, Center, or Align Left, in the toolbar or Sidebar Paragraph section.",
+        "For example, choose Center to center all selected text within the text box."
+      ],
+      "efficiency_tip": "After entering text-editing mode, Ctrl+A selects the text in the current text box, allowing one alignment command to format the entire text box without manually dragging over its contents.",
+      "source": {
+        "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    },
+    {
+      "skill_id": "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Right-align text in a slide text box",
+      "procedure": [
+        "Select the text box containing the paragraph to format. Click inside the text to enter text-editing mode, rather than only selecting the shape border.",
+        "Place the cursor in the target paragraph or select its text.",
+        "Click the Right Align button on the formatting toolbar. This right-aligns the current paragraph; for example, it can align a title paragraph to the right edge of its text box."
+      ],
+      "efficiency_tip": "You do not need to select every character when the text box contains one paragraph: placing the cursor anywhere in that paragraph is sufficient before using Right Align.",
+      "source": {
+        "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+        "action_ids": [
+          1,
+          3
+        ]
+      }
+    },
+    {
+      "skill_id": "0a211154-fda0-48d0-9274-eaac4ce5486d.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Set a slide background color",
+      "procedure": [
+        "In the Slides pane, select the slide whose background you want to change.",
+        "In the right Sidebar's slide/background formatting controls, open the background color dropdown.",
+        "Choose the desired color, for example a yellow swatch. The selected slide's background updates.",
+        "Repeat the same background-color operation for other applicable slides; each slide can be formatted independently."
+      ],
+      "efficiency_tip": "Keep the Sidebar open while working through several slides, then select each target slide and reuse the same color choice instead of reopening unrelated formatting dialogs.",
+      "source": {
+        "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "skill_id": "0a211154-fda0-48d0-9274-eaac4ce5486d.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Replace text in a title placeholder",
+      "procedure": [
+        "Select the slide containing the title placeholder in the Slides pane.",
+        "Double-click the existing title text to enter text-editing mode inside the placeholder; this is different from merely selecting the shape object.",
+        "Type the replacement title text. Typing while the existing text is selected replaces it; otherwise, select the existing text first with Ctrl+A while editing the placeholder."
+      ],
+      "efficiency_tip": "Double-click directly on the title text rather than on the placeholder border so that the cursor enters text-editing mode immediately.",
+      "source": {
+        "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+        "action_ids": [
+          6,
+          7,
+          8
+        ]
+      }
+    },
+    {
+      "skill_id": "0f84bef9-9790-432e-92b7-eece357603fb.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Disable the Presenter Console",
+      "procedure": [
+        "Open LibreOffice Impress settings with Alt+F12.",
+        "In the settings navigation, expand LibreOffice Impress and select General.",
+        "Under Presentation, clear the Enable Presenter console checkbox, then confirm the setting."
+      ],
+      "efficiency_tip": "Use Alt+F12 to open the settings dialog directly instead of navigating through the main menus.",
+      "source": {
+        "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "skill_id": "15aece23-a215-4579-91b4-69eec72e18da.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Reposition a text box on a slide",
+      "procedure": [
+        "In Normal view, select the slide containing the object in the Slides pane.",
+        "Click the text box border once to select the text box as an object; do not click into the text if you only want to move it.",
+        "Drag the selected text box to the desired location on the slide, such as nearer the lower edge, and release the mouse."
+      ],
+      "efficiency_tip": "Drag the object by its border rather than entering text-editing mode; use alignment guides or arrow keys afterward if a small positional adjustment is needed.",
+      "source": {
+        "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "skill_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Apply a slide transition from the Slide Transition pane",
+      "procedure": [
+        "Select the slide whose transition you want to change.",
+        "Open the Slide Transition pane in LibreOffice Impress.",
+        "Scroll the transition-type list if necessary to locate the desired effect.",
+        "Click a transition effect, for example Dissolve, to apply it to the selected slide."
+      ],
+      "efficiency_tip": "Select the target slide before opening the pane; the chosen effect applies immediately, so no separate confirmation dialog is needed.",
+      "source": {
+        "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "skill_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Move a slide object by dragging",
+      "procedure": [
+        "In Normal view, navigate to the slide containing the object.",
+        "Click the image once to select the object; selection handles indicate object-selection mode rather than image crop or text-editing mode.",
+        "Drag the selected image from its current position to the desired location on the slide and release the mouse button."
+      ],
+      "efficiency_tip": "Drag from inside the selected image rather than from a resize handle, which would resize instead of move it.",
+      "source": {
+        "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "skill_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Configure AutoRecovery save interval in application preferences",
+      "procedure": [
+        "Open LibreOffice Options with Alt+F12.",
+        "In the left category tree, expand or select Load/Save, then choose General.",
+        "Enable “Save AutoRecovery information every” if it is not already enabled.",
+        "Enter a desired interval in the minutes field, for example 3, and confirm with OK."
+      ],
+      "efficiency_tip": "Use Alt+F12 to open Options directly; this setting applies through LibreOffice preferences rather than needing to configure each presentation separately.",
+      "source": {
+        "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "skill_id": "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Set font size for text in a text box",
+      "procedure": [
+        "Click inside the target text box to enter text-editing mode, rather than merely selecting the shape frame.",
+        "Select the text whose size should change; a triple-click can select the paragraph in a text box when appropriate.",
+        "Click the Font Size box on the Formatting toolbar, replace its current value with a point size such as 60 pt, and press Enter to apply it.",
+        "Repeat the same selection-and-Font-Size-box procedure for other text boxes or paragraphs that require different sizes, for example 28 pt."
+      ],
+      "efficiency_tip": "After selecting a paragraph, type the desired point value directly into the Font Size box instead of searching the dropdown list; pressing Enter applies the value immediately.",
+      "source": {
+        "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+        "action_ids": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "skill_id": "358aa0a7-6677-453f-ae35-e440f004c31e.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Apply a font to all slide text through Outline view",
+      "procedure": [
+        "Switch to the Outline pane or Outline view so the presentation text can be selected as outline content rather than selecting text boxes one by one.",
+        "Press Ctrl+A while the Outline has focus to select all outline text across the presentation.",
+        "Use the Font Name drop-down on the formatting toolbar, type a desired installed font family, and press Enter to apply it to the selected text."
+      ],
+      "efficiency_tip": "Keep focus in the Outline before pressing Ctrl+A; otherwise the shortcut may select an individual object or other content instead of all presentation text.",
+      "source": {
+        "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "39be0d19-634d-4475-8768-09c130f5425d.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Insert a table using the placeholder table grid",
+      "procedure": [
+        "Select the slide that contains a content placeholder with a table icon.",
+        "Click the placeholder's table icon to open the mini-table grid.",
+        "Move to the grid cell representing the required column and row count; for example, point to the second column in the fifth row to choose a 2-column by 5-row table.",
+        "Click that grid cell to insert the table into the placeholder."
+      ],
+      "efficiency_tip": "Use the placeholder table icon and hover grid when available; it creates the table at the selected dimensions without opening the separate Insert Table dialog.",
+      "source": {
+        "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+        "action_ids": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "skill_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Set a master slide background to a custom color",
+      "procedure": [
+        "Open Slide > Master View to edit the slide master rather than an individual normal slide.",
+        "With the master selected, choose Slide > Slide Properties and open the Background tab.",
+        "Activate the color value field, replace its value with a desired hexadecimal color value, and confirm the dialog to apply the background to slides using that master."
+      ],
+      "efficiency_tip": "Use Master View when multiple slides share the same master; changing the master background avoids repeating the same formatting on each slide.",
+      "source": {
+        "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "skill_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Apply a recent background color to individual slides",
+      "procedure": [
+        "Select the target slide in the Slides pane, then open Slide > Slide Properties.",
+        "Choose a color from the recent colors list in the background-color control and confirm the dialog.",
+        "Repeat for other slides only when they need a slide-specific background that differs from their master."
+      ],
+      "efficiency_tip": "After choosing a custom color once, reuse it from recent colors instead of reopening a color-value editor for every slide.",
+      "source": {
+        "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+        "action_ids": [
+          8,
+          9,
+          10,
+          13,
+          14,
+          15,
+          18,
+          19,
+          20
+        ]
+      }
+    },
+    {
+      "skill_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Export an Impress presentation to an image format",
+      "procedure": [
+        "Open the File menu and choose Export.",
+        "In the export dialog, enter an output filename with the desired image extension, such as `.png`; LibreOffice uses the extension to select the image format.",
+        "Confirm the export and accept the format’s default options in the subsequent settings dialog, if shown."
+      ],
+      "efficiency_tip": "Use the intended image extension directly in the filename field to choose the export format without changing a separate file-type control.",
+      "source": {
+        "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Apply a font color to selected text in a shape",
+      "procedure": [
+        "Click a text-containing shape to enter text-editing mode, rather than merely selecting the shape as an object.",
+        "Select the target text with Ctrl+A when the shape contains only the text to format, or select only the relevant text range.",
+        "Open the Font Color drop-down on the formatting toolbar and choose the desired color, for example black.",
+        "The selected text remains selected after the color change, allowing additional character formatting to be applied without reselecting it."
+      ],
+      "efficiency_tip": "When formatting all text in a title or other single-purpose text box, enter text-editing mode and use Ctrl+A instead of dragging across the text.",
+      "source": {
+        "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4,
+          7,
+          8,
+          9,
+          10,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    },
+    {
+      "skill_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Underline selected text",
+      "procedure": [
+        "With text already selected in text-editing mode, click the Underline button on the formatting toolbar.",
+        "Use the same button again to toggle underlining off for a selected range when needed."
+      ],
+      "efficiency_tip": "Apply underline immediately after another character-formatting change while the text selection is still active, avoiding an extra click into the text box and reselection.",
+      "source": {
+        "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+        "action_ids": [
+          5,
+          11,
+          17
+        ]
+      }
+    },
+    {
+      "skill_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Apply strikethrough formatting to multiple text lines",
+      "procedure": [
+        "Click within the text object to enter text-editing mode, rather than merely selecting the shape.",
+        "Select the first target line, for example by triple-clicking it.",
+        "Hold Shift and click another line to extend the text selection across additional lines.",
+        "Click the Strikethrough button on the formatting toolbar to apply strikethrough to all selected text."
+      ],
+      "efficiency_tip": "Select all noncontiguous or adjacent target lines in one text selection before clicking Strikethrough, so the formatting control only needs to be used once.",
+      "source": {
+        "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "skill_id": "57667013-ea97-417c-9dce-2713091e6e2a.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Set selected text color from the font-color palette",
+      "procedure": [
+        "Click inside a text box to enter text-editing mode, rather than merely selecting the shape border.",
+        "Select the text to recolor, for example with Ctrl+A when all text in the active text box should be affected.",
+        "Open the Font Color drop-down on the formatting toolbar.",
+        "Choose the desired color swatch from the palette, for example the standard Yellow swatch. The selected text adopts that color."
+      ],
+      "efficiency_tip": "Use Ctrl+A only after the text cursor is active inside the intended text box; otherwise it may select slide objects instead of the box's text.",
+      "source": {
+        "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "57667013-ea97-417c-9dce-2713091e6e2a.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Apply the currently active font color to another text selection",
+      "procedure": [
+        "Enter text-editing mode in another text box and select the target text, such as by triple-clicking a paragraph when appropriate.",
+        "Click the Font Color button itself (not its drop-down arrow) to apply the currently active font color to that selection."
+      ],
+      "efficiency_tip": "After choosing a color once from the palette, use the main Font Color button for additional selections to avoid reopening the palette.",
+      "source": {
+        "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "skill_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Apply bold formatting to all text in a text shape",
+      "procedure": [
+        "Select the text shape containing the text to format. If the shape is not already in text-editing mode, double-click inside it to place the text cursor.",
+        "Press Ctrl+A while editing the shape to select all text in that shape, rather than selecting slide objects.",
+        "Click the Bold toolbar button to toggle bold formatting for the selected text."
+      ],
+      "efficiency_tip": "Use Ctrl+A only after entering text-editing mode; this selects the shape's text quickly and avoids manually dragging across multiple lines.",
+      "source": {
+        "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+        "action_ids": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8
+        ]
+      }
+    },
+    {
+      "skill_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Underline selected text",
+      "procedure": [
+        "With the relevant text already selected in a text shape, click the Underline toolbar button to apply or remove underlining.",
+        "Use the button again on selected underlined text to toggle the underline off."
+      ],
+      "efficiency_tip": "Apply underline while the same text selection is active as other character formatting to avoid re-entering text-editing mode.",
+      "source": {
+        "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+        "action_ids": [
+          3
+        ]
+      }
+    },
+    {
+      "skill_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03",
+      "app": "libreoffice_impress",
+      "name": "Set an exact font size for selected text",
+      "procedure": [
+        "Keep the target text selected in the text shape.",
+        "Open the font-size dropdown in the formatting toolbar.",
+        "Choose the required point-size value, such as 44 pt, to resize the selected text."
+      ],
+      "efficiency_tip": "Set the size before deselecting the text; the chosen size applies only to the active text selection rather than the entire slide.",
+      "source": {
+        "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+        "action_ids": [
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "skill_id": "5cfb9197-e72b-454b-900e-c06b0c802b40.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Overwrite text in consecutive table cells using Tab",
+      "procedure": [
+        "Click inside the first table cell whose existing text should be replaced; this places the text cursor in the cell rather than merely selecting the table object.",
+        "Press Ctrl+A to select the current cell's text, then type the replacement value.",
+        "Press Tab to move the text cursor to the next cell in the row.",
+        "Repeat Ctrl+A, typing the replacement value, and Tab navigation for each subsequent cell. Do not press Tab after the final cell unless you intend to continue editing cells."
+      ],
+      "efficiency_tip": "Keep the cursor inside the table and use Tab to advance across cells, avoiding repeated mouse selection of each cell.",
+      "source": {
+        "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "skill_id": "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Resize an image using corner handles while preserving its aspect ratio",
+      "procedure": [
+        "Click the image once to select the object and display its resize handles; do not enter image text-editing mode.",
+        "Drag a corner resize handle outward to enlarge the image. Use corner handles rather than side handles so the image scales proportionally.",
+        "If further enlargement is needed, drag another corner handle until the image has the required size."
+      ],
+      "efficiency_tip": "Use corner handles for proportional scaling; side handles change only width or height and can distort the image.",
+      "source": {
+        "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Reposition an image by dragging the selected object",
+      "procedure": [
+        "With the image still selected, point to its interior away from resize handles.",
+        "Drag the image to the desired location on the slide, such as the visual center of the page, and release."
+      ],
+      "efficiency_tip": "Move a selected image by dragging its interior, not a handle, to avoid accidentally resizing it.",
+      "source": {
+        "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "skill_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Set a slide background to a solid color",
+      "procedure": [
+        "Select the target slide in the Slides pane.",
+        "Open the slide Background formatting control.",
+        "Choose the Color background option.",
+        "Open the color palette and select the desired solid color, for example a red swatch."
+      ],
+      "efficiency_tip": "Select the slide before opening Background so the change applies to that slide rather than requiring later corrections.",
+      "source": {
+        "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+        "action_ids": [
+          5,
+          6,
+          7,
+          8
+        ]
+      }
+    },
+    {
+      "skill_id": "7ae48c60-f143-4119-b659-15b8f485eb9a.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Set an image's exact height",
+      "procedure": [
+        "Select the image as an object on the slide; do not enter text-editing mode.",
+        "Open the image's Position and Size controls if the Height field is not already visible, for example through the Properties sidebar's Position and Size section.",
+        "Select the entire current value in the Height field, type a measurement with a unit such as `20 cm`, and press Enter to apply the new height."
+      ],
+      "efficiency_tip": "Keep the Properties sidebar open while resizing several images; after selecting each image, replace the Height value directly rather than reopening the full formatting dialog.",
+      "source": {
+        "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          8,
+          9,
+          10,
+          11,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    },
+    {
+      "skill_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Apply bold formatting to text in a slide shape",
+      "procedure": [
+        "On the target slide, click the text-containing shape to select it. If only part of its text should be bold, enter text-editing mode (for example, double-click the shape) and select that text first.",
+        "Press Ctrl+B to toggle bold character formatting for the selected text or the selected shape's text.",
+        "For example, select a title text box and use Ctrl+B to make its title bold."
+      ],
+      "efficiency_tip": "Use Ctrl+B rather than opening the Character formatting dialog; select only the required text when the shape contains mixed formatting.",
+      "source": {
+        "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+        "action_ids": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "skill_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Add speaker notes in Notes view",
+      "procedure": [
+        "Open the View menu and choose Notes to display the slide's notes area.",
+        "Click the notes placeholder, such as “Click to add notes,” to place the text cursor in it.",
+        "Type the desired note text. For example, add a short reminder that corresponds to the slide heading."
+      ],
+      "efficiency_tip": "Switch to Notes view once and enter the note directly in the placeholder; this avoids creating an extra text box on the slide canvas.",
+      "source": {
+        "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+        "action_ids": [
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "skill_id": "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Set a slide background color",
+      "procedure": [
+        "Open the slide background formatting control, such as the Background drop-down in the slide properties area.",
+        "Choose the color background option, open its color palette, and select a desired color (for example, a purple swatch).",
+        "The selected color is applied as the background for the current slide."
+      ],
+      "efficiency_tip": "Select the slide before opening background controls so the color applies to the intended slide rather than requiring later correction.",
+      "source": {
+        "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "skill_id": "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Add text to speaker notes",
+      "procedure": [
+        "Choose View > Notes to display the slide's notes editing area.",
+        "Click the notes placeholder labeled “Click to add notes” to place the text cursor in the notes field.",
+        "Type a short note, for example “Reminder”; this text is stored as speaker notes rather than appearing on the slide canvas."
+      ],
+      "efficiency_tip": "Use the Notes view when entering several notes, since the dedicated notes placeholder keeps typing focused on presenter content instead of slide objects.",
+      "source": {
+        "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "skill_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Set a slide background color",
+      "procedure": [
+        "With the target slide active, open the background formatting dropdown or color control.",
+        "Open the color palette and choose a desired background color, for example a purple swatch.",
+        "The selected color is applied to the slide background."
+      ],
+      "efficiency_tip": "Choose the background color directly from the palette rather than creating or formatting a full-slide shape.",
+      "source": {
+        "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "skill_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Add speaker notes in Notes view",
+      "procedure": [
+        "Open the View menu and choose Notes to switch from normal slide editing to the slide's notes view.",
+        "Click the notes placeholder labeled to add text; this enters text-editing mode in the notes area rather than selecting a slide object.",
+        "Type the speaker-note content, such as a short reminder or narration cue for the slide."
+      ],
+      "efficiency_tip": "Use Notes view when adding presenter-only content so the text is stored as speaker notes and does not appear on the slide canvas.",
+      "source": {
+        "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "skill_id": "986fc832-6af2-417c-8845-9272b3a1528b.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Underline selected text in text boxes and tables",
+      "procedure": [
+        "To underline text in a text box, click inside the text so the insertion caret is active; selecting the shape itself is not enough to format its characters.",
+        "Press Ctrl+A while editing the text box to select its text, then press Ctrl+U to toggle underline formatting.",
+        "To underline text in a table, click in a table cell, place the caret at the start of the intended range, and drag to the end of the range to select the cell text.",
+        "Press Ctrl+U to apply underline to the selected table text."
+      ],
+      "efficiency_tip": "Use Ctrl+A only after entering text-editing mode in a text box. For tables, drag-select the required cell text range before applying the shortcut, rather than formatting each cell separately.",
+      "source": {
+        "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+        "action_ids": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "skill_id": "986fc832-6af2-417c-8845-9272b3a1528b.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Apply a font color to selected text",
+      "procedure": [
+        "With text already selected in a text-editing context, click the Font Color control on the formatting toolbar.",
+        "Choose the required color from the color palette to apply it to the current selection."
+      ],
+      "efficiency_tip": "Keep the text selection active while opening the Font Color palette so the chosen color is applied immediately without reselecting the text.",
+      "source": {
+        "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+        "action_ids": [
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Set a slide background to a solid color",
+      "procedure": [
+        "With the target slide active, open the slide background formatting control.",
+        "Choose the Color background option.",
+        "Open the color palette and select a desired solid color, for example a green swatch."
+      ],
+      "efficiency_tip": "Select the target slide before opening background formatting so the chosen color is applied directly without revisiting the control.",
+      "source": {
+        "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "skill_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Select multiple slides in the Slides pane",
+      "procedure": [
+        "In Normal view, locate the target slide thumbnails in the Slides pane.",
+        "Click the first slide thumbnail.",
+        "Hold Ctrl and click each additional slide thumbnail to add it to the selection without replacing the existing selection.",
+        "For example, Ctrl-click a neighboring slide after selecting the first one to prepare both slides for a shared operation."
+      ],
+      "efficiency_tip": "Use Ctrl-click to build a multi-slide selection before applying an operation once, rather than repeating it for each slide.",
+      "source": {
+        "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Duplicate selected slides from the context menu",
+      "procedure": [
+        "Select one or more slide thumbnails in the Slides pane.",
+        "Right-click the selected thumbnail group.",
+        "Choose Duplicate Slides from the context menu to create copies of every selected slide."
+      ],
+      "efficiency_tip": "Duplicate a multi-slide selection together when all selected slides need copies; their internal order is retained in the duplicated set.",
+      "source": {
+        "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "skill_id": "a434992a-89df-4577-925c-0c58b747f0f4.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Set a slide background color",
+      "procedure": [
+        "With no object text being edited, open the slide background control's dropdown.",
+        "Choose the background color option, then open its color palette.",
+        "Select a desired solid color, such as red, to apply it to the current slide background."
+      ],
+      "efficiency_tip": "Set the slide background before working on objects so a selected text box does not obscure whether the slide itself is being formatted.",
+      "source": {
+        "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "skill_id": "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Change text font size in a text box",
+      "procedure": [
+        "Select the text box, then select the text whose size should change; clicking a text box is distinct from entering text-editing mode when only part of its text is to be formatted.",
+        "Select the current value in the font-size field, type the desired point size, such as 12, and press Enter to apply it."
+      ],
+      "efficiency_tip": "Use the font-size field to enter an exact point value instead of repeatedly clicking increase or decrease font-size buttons.",
+      "source": {
+        "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "skill_id": "a434992a-89df-4577-925c-0c58b747f0f4.skill-03",
+      "app": "libreoffice_impress",
+      "name": "Apply a font color to selected text",
+      "procedure": [
+        "With the target text selected or with the text box active for text formatting, open the font-color dropdown palette.",
+        "Choose a color, such as orange, to apply that font color to the selected text."
+      ],
+      "efficiency_tip": "Keep the text selection active while opening the font-color palette so the color applies only to the intended text rather than becoming a default for future typing.",
+      "source": {
+        "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+        "action_ids": [
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "skill_id": "a53f80cd-4a90-4490-8310-097b011433f6.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Apply a font color to title text on multiple slides",
+      "procedure": [
+        "In the Slides pane, select the slide containing the title.",
+        "Enter text-editing mode for the title and select its text; for example, triple-click the title text when that selects the full title paragraph.",
+        "Use the Font Color control: open its dropdown when a palette choice is needed, then choose the desired color such as black. If the control already shows the desired color, clicking the Font Color icon applies that current color to the selection.",
+        "Repeat on other slides while preserving the same formatting choice."
+      ],
+      "efficiency_tip": "After choosing a color from the dropdown once, the Font Color button usually retains it, so subsequent selected titles can be colored with a single click.",
+      "source": {
+        "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "skill_id": "a53f80cd-4a90-4490-8310-097b011433f6.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Bold the currently selected text",
+      "procedure": [
+        "Ensure the target text is still selected in text-editing mode inside its shape or placeholder.",
+        "Click the Bold button on the formatting toolbar, or press Ctrl+B, to toggle bold formatting for the selection.",
+        "Apply the same command to other title selections as needed."
+      ],
+      "efficiency_tip": "Apply bold immediately after another character-formatting change while the text remains selected; this avoids re-entering text-editing mode and selecting the text again.",
+      "source": {
+        "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+        "action_ids": [
+          4,
+          8
+        ]
+      }
+    },
+    {
+      "skill_id": "a53f80cd-4a90-4490-8310-097b011433f6.skill-03",
+      "app": "libreoffice_impress",
+      "name": "Marquee-select several slide objects and delete them",
+      "procedure": [
+        "Open the slide containing the objects to remove.",
+        "Start in an empty area just outside the upper-left edge of the target object cluster, then drag a selection rectangle to an opposite corner so that all intended objects are enclosed.",
+        "Press Delete to remove every selected object from the slide."
+      ],
+      "efficiency_tip": "Begin and end the marquee in blank slide space where possible. This reduces the risk of entering text-editing mode or moving an object instead of selecting the group.",
+      "source": {
+        "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+        "action_ids": [
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "skill_id": "a669ef01-ded5-4099-9ea9-25e99b569840.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Remove bullet formatting from an outline paragraph",
+      "procedure": [
+        "Click within the target paragraph to place the text caret at the very beginning of its text; this enters text-editing mode rather than merely selecting the text box.",
+        "Press Backspace at the start of the paragraph. In an Impress outline or bulleted text box, this removes the leading bullet/list level so the paragraph can align with the surrounding non-bulleted text.",
+        "If the paragraph remains at an undesired outline level, use Shift+Tab to promote it or Tab to demote it while the caret is in that paragraph."
+      ],
+      "efficiency_tip": "Place the caret before the first character instead of selecting and retyping the paragraph; Backspace preserves the existing text while changing its list formatting.",
+      "source": {
+        "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+        "action_ids": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "skill_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Move a selected object by dragging",
+      "procedure": [
+        "In Normal view, select the object by clicking its border; do not enter text-editing mode inside the object.",
+        "Move the pointer onto the object's border or another draggable area until the move cursor appears.",
+        "Drag the object to the desired position on the slide and release the mouse button."
+      ],
+      "efficiency_tip": "Drag from an object border rather than from text or a table cell to avoid activating text or cell editing. Use alignment guides or the slide edge as visual placement references.",
+      "source": {
+        "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+        "action_ids": [
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "skill_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Enable slide numbers on all slides",
+      "procedure": [
+        "Open the Insert menu and choose Header and Footer.",
+        "In the Slide tab, enable the Slide number checkbox.",
+        "Choose Apply to All to add the slide-number field throughout the presentation."
+      ],
+      "efficiency_tip": "Use Apply to All instead of enabling slide numbers separately on individual slides.",
+      "source": {
+        "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "skill_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Set slide-number field font color in Master View",
+      "procedure": [
+        "Open Master View so that edits affect slide-layout placeholders rather than only one ordinary slide.",
+        "Select the slide-number placeholder box; select the object rather than entering text-editing mode unless you need to edit its contents.",
+        "Use the Font Color control to choose the desired color.",
+        "Repeat the formatting on slide-number placeholders in other master layouts when those layouts use separate slide-number objects. After choosing a color once, the Font Color button can apply the current color directly to another selected placeholder."
+      ],
+      "efficiency_tip": "Format the slide-number placeholder in each relevant master layout instead of recoloring slide numbers on every individual slide.",
+      "source": {
+        "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    },
+    {
+      "skill_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Create a summary slide from selected slides",
+      "procedure": [
+        "In LibreOffice Impress, select the slides whose titles should be summarized in the Slides pane; use Ctrl-click to select multiple nonadjacent slides if needed.",
+        "Open the Slide menu on the menu bar and choose Summary Slide.",
+        "Impress inserts a new summary slide containing a bulleted list based on the selected slides' titles. Edit or format the generated text afterward as needed."
+      ],
+      "efficiency_tip": "Select all relevant source slides before opening the Slide menu so one Summary Slide command creates the summary without manually copying slide titles.",
+      "source": {
+        "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+        "action_ids": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "skill_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Change the font family of selected text",
+      "procedure": [
+        "Enter text-editing mode in a text placeholder or shape, then select the text whose font family you want to change. For example, use Ctrl+A while the text cursor is active to select all text in that text object.",
+        "Click the font-name box on the formatting toolbar, replace its current value with a font family name such as “Microsoft JhengHei,” and apply the entry."
+      ],
+      "efficiency_tip": "Select the text before changing the font so the font change affects only the intended text object rather than future typing.",
+      "source": {
+        "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+        "action_ids": [
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Copy a formatted text box to another slide",
+      "procedure": [
+        "Select the source text box as an object, rather than placing the caret inside its text.",
+        "Press Ctrl+C to copy the text box, including its text formatting such as font color.",
+        "Select the destination slide in the Slides pane and press Ctrl+V to paste the copied text box onto that slide."
+      ],
+      "efficiency_tip": "Copying an existing text box is faster and more reliable than recreating its font color and other formatting manually.",
+      "source": {
+        "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "skill_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Replace the text of a text box while retaining its formatting",
+      "procedure": [
+        "On the destination text box, enter text-editing mode and triple-click its existing single-paragraph text to select that paragraph.",
+        "Type replacement text; the new text retains the character formatting of the selected text when the selection is replaced."
+      ],
+      "efficiency_tip": "Select the existing text before typing so that it is replaced instead of appended, while preserving the text box and its formatting.",
+      "source": {
+        "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+        "action_ids": [
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "skill_id": "bf4e9888-f10f-47af-8dba-76413038b73c.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Create image slides with Photo Album",
+      "procedure": [
+        "In LibreOffice Impress, choose Insert > Media > Photo Album to open the Photo Album dialog.",
+        "Click Add and use the file picker to navigate to the folder containing the images.",
+        "Select the images to import. For a contiguous numerically ordered range, select the first file and then hold Shift while selecting the last file; confirm the selection with Enter.",
+        "Click Insert Slides in the Photo Album dialog. Impress creates a slide for each selected image, using the file-picker selection order."
+      ],
+      "efficiency_tip": "Use a consistent zero-padded or numerical filename sequence and select the complete contiguous range at once, rather than inserting each image separately.",
+      "source": {
+        "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "skill_id": "c59742c0-4323-4b9d-8a02-723c251deaa0.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Insert an audio file onto a slide",
+      "procedure": [
+        "In LibreOffice Impress, open the target slide, then choose Insert > Audio and Video.",
+        "In the file picker, navigate to the folder containing the audio file, select the desired audio file, and confirm (for example, press Enter).",
+        "Impress inserts an audio object on the slide; it can then be selected and repositioned or configured as needed."
+      ],
+      "efficiency_tip": "Use Insert > Audio and Video directly rather than manually creating a media placeholder; selecting the file and confirming in the same dialog completes the insertion.",
+      "source": {
+        "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Insert an image onto a slide",
+      "procedure": [
+        "With the target slide active, click the Insert Image icon or use Insert > Image.",
+        "In the file picker, navigate to the folder containing the image, select the desired image file, and press Enter or click Open.",
+        "The image is inserted onto the current slide and remains selected for immediate formatting."
+      ],
+      "efficiency_tip": "Insert the image while the intended slide is already active so no later move between slides is needed.",
+      "source": {
+        "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Set an image to exact width and height",
+      "procedure": [
+        "Select the image object on the slide, then open the Position and Size controls from the object formatting options.",
+        "Scroll within the controls if necessary until the Width and Height fields are visible.",
+        "Replace the Width value with a measurement such as 1 cm, press Tab to move to Height, enter the required height such as 1 cm, and press Enter to apply the dimensions."
+      ],
+      "efficiency_tip": "Use Tab after entering Width to reach Height directly; this avoids reopening controls or selecting the object again.",
+      "source": {
+        "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+        "action_ids": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    },
+    {
+      "skill_id": "ce88f674-ab7a-43da-9201-468d38539e4a.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Change slide orientation to portrait",
+      "procedure": [
+        "Open the Slide menu and choose Slide Properties.",
+        "In the Paper format section, select Portrait.",
+        "Confirm the dialog to apply the orientation to the presentation slides."
+      ],
+      "efficiency_tip": "Use Slide Properties when changing the document-wide slide page orientation; this avoids resizing or rotating individual slide objects.",
+      "source": {
+        "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "skill_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Set an image's exact height",
+      "procedure": [
+        "In Normal view, select the image as an object so that resize handles appear; do not enter text-editing mode.",
+        "Open or scroll to the image's size controls and activate the Height field.",
+        "Replace the existing height value with the required measurement, for example `20 cm`, and press Enter to apply the exact object height."
+      ],
+      "efficiency_tip": "Use the numeric Height field rather than dragging resize handles when a precise dimension is required. Check whether aspect ratio is locked before changing only one dimension.",
+      "source": {
+        "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "skill_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Set font size for text in multiple text boxes",
+      "procedure": [
+        "For each text box, enter text-editing mode and select the text whose size should change. Selecting text inside the shape is different from selecting the shape object itself.",
+        "Activate the Font Size box on the formatting toolbar, replace its value with the desired point size, for example `40 pt`, and press Enter.",
+        "Repeat for the remaining independently formatted text boxes on the slide."
+      ],
+      "efficiency_tip": "After applying a size, move directly to the next text box and use the Font Size box again; this avoids opening character-format dialogs for each text box.",
+      "source": {
+        "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+        "action_ids": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "skill_id": "ed43c15f-00cb-4054-9c95-62c880865d68.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Underline all text in a text box",
+      "procedure": [
+        "Enter text-editing mode for the text box, for example by double-clicking its text so that a caret appears.",
+        "Press Ctrl+A to select the text within the active text box. In text-editing mode this selects text rather than all slide objects.",
+        "Press Ctrl+U to toggle underline formatting for the selected text.",
+        "Repeat on other text boxes as needed; Ctrl+U applies the same underline technique to each independently selected text range."
+      ],
+      "efficiency_tip": "Use Ctrl+A followed by Ctrl+U while the caret is inside each text box to format its full contents without manually dragging across the text.",
+      "source": {
+        "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+        "action_ids": [
+          0,
+          1,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "ed43c15f-00cb-4054-9c95-62c880865d68.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Reposition an image by dragging",
+      "procedure": [
+        "Click the image once to select the image object and show its selection handles.",
+        "Drag the selected image from inside its bounds to the desired location on the slide, then release the mouse button.",
+        "Avoid dragging a resize handle, which changes the image size instead of its position."
+      ],
+      "efficiency_tip": "Drag from the image interior rather than from an edge or handle to move it cleanly without resizing or cropping.",
+      "source": {
+        "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "skill_id": "edb61b14-a854-4bf5-a075-c8075c11293a.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Change the font family of selected text or a text object",
+      "procedure": [
+        "Select the text box or other text-containing object whose font family you want to change. If only part of its text should change, enter text-editing mode and select that text first.",
+        "Click the font-name field on the formatting toolbar; use a triple-click if needed to select the entire current font name.",
+        "Type a font family name, such as “Times New Roman,” and press Enter to apply it to the selected text or text object."
+      ],
+      "efficiency_tip": "When formatting all text in one text box, select the object rather than editing and selecting its individual characters; this applies the font family to the whole object in one operation.",
+      "source": {
+        "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Show or hide the Slides pane",
+      "procedure": [
+        "In LibreOffice Impress, open the View menu from the menu bar.",
+        "Select Slide Pane to toggle the left-side slide thumbnail pane visible or hidden."
+      ],
+      "efficiency_tip": "Use View > Slide Pane whenever slide thumbnails disappear; the same command toggles the pane, so avoid repeatedly opening other sidebar controls.",
+      "source": {
+        "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+        "action_ids": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "skill_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Apply bulleted-list formatting to text in a content placeholder",
+      "procedure": [
+        "Select the text box or content placeholder that contains the paragraph to format.",
+        "Open the List control from the Impress toolbar or sidebar and choose the bullet-list option.",
+        "Impress applies bullet formatting to the current paragraph or selected paragraphs; click in a paragraph before applying the command when no text range is selected."
+      ],
+      "efficiency_tip": "Place the text cursor in the target paragraph before opening the List control, so the bullet style is applied without selecting unrelated text.",
+      "source": {
+        "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    }
+  ],
+  "source_task_outcomes": [
+    {
+      "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "04578141-1d42-4146-b9cf-6fab4ce5fd74.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/04578141-1d42-4146-b9cf-6fab4ce5fd74.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/05dd4c1d-c489-4c85-8389-a7836c4f0567.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/08aced46-45a2-48d7-993b-ed3fb5b32302.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "0a211154-fda0-48d0-9274-eaac4ce5486d.skill-01",
+        "0a211154-fda0-48d0-9274-eaac4ce5486d.skill-02"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/0a211154-fda0-48d0-9274-eaac4ce5486d.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "0f84bef9-9790-432e-92b7-eece357603fb.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/0f84bef9-9790-432e-92b7-eece357603fb.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "15aece23-a215-4579-91b4-69eec72e18da.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/15aece23-a215-4579-91b4-69eec72e18da.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "21760ecb-8f62-40d2-8d85-0cee5725cb72.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/21760ecb-8f62-40d2-8d85-0cee5725cb72.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/2b94c692-6abb-48ae-ab0b-b3e8a19cb340.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "2cd43775-7085-45d8-89fa-9e35c0a915cf.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/2cd43775-7085-45d8-89fa-9e35c0a915cf.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/3161d64e-3120-47b4-aaad-6a764a92493b.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "358aa0a7-6677-453f-ae35-e440f004c31e.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/358aa0a7-6677-453f-ae35-e440f004c31e.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "39be0d19-634d-4475-8768-09c130f5425d.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/39be0d19-634d-4475-8768-09c130f5425d.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-01",
+        "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-02"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/3b27600c-3668-4abd-8f84-7bcdebbccbdb.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "455d3c66-7dc6-4537-a39a-36d3e9119df7.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/455d3c66-7dc6-4537-a39a-36d3e9119df7.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-01",
+        "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "550ce7e7-747b-495f-b122-acdc4d0b8e54.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/550ce7e7-747b-495f-b122-acdc4d0b8e54.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "57667013-ea97-417c-9dce-2713091e6e2a.skill-01",
+        "57667013-ea97-417c-9dce-2713091e6e2a.skill-02"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/57667013-ea97-417c-9dce-2713091e6e2a.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-01",
+        "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-02",
+        "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "5cfb9197-e72b-454b-900e-c06b0c802b40.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/5cfb9197-e72b-454b-900e-c06b0c802b40.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-01",
+        "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-02"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/5d901039-a89c-4bfb-967b-bf66f4df075e.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/70bca0cc-c117-427e-b0be-4df7299ebeb6.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+      "decision": "no_reusable_skill",
+      "decision_reason": "The steps only select a slide and text placeholder, then enter task-specific literal text; they do not demonstrate an independently reusable Impress operation technique.",
+      "skill_ids": [],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/73c99fb9-f828-43ce-b87a-01dc07faa224.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "7ae48c60-f143-4119-b659-15b8f485eb9a.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/7ae48c60-f143-4119-b659-15b8f485eb9a.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01",
+        "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-02"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-01",
+        "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-02"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/841b50aa-df53-47bd-a73a-22d3a9f73160.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-01",
+        "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-02"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/8979838c-54a5-4454-a2b8-3d135a1a5c8f.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "986fc832-6af2-417c-8845-9272b3a1528b.skill-01",
+        "986fc832-6af2-417c-8845-9272b3a1528b.skill-02"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/986fc832-6af2-417c-8845-9272b3a1528b.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "9cf05d24-6bd9-4dae-8967-f67d88f5d38a.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/9cf05d24-6bd9-4dae-8967-f67d88f5d38a.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01",
+        "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-02"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/9ec204e4-f0a3-42f8-8458-b772a6797cab.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+      "decision": "no_reusable_skill",
+      "decision_reason": "The sequence only performs a task-specific Save As operation with a literal filename and destination selection, which is excluded as scaffolding/file naming rather than a reusable Impress editing technique.",
+      "skill_ids": [],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/a097acff-6266-4291-9fbd-137af7ecd439.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "a434992a-89df-4577-925c-0c58b747f0f4.skill-01",
+        "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+        "a434992a-89df-4577-925c-0c58b747f0f4.skill-03"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/a434992a-89df-4577-925c-0c58b747f0f4.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "a53f80cd-4a90-4490-8310-097b011433f6.skill-01",
+        "a53f80cd-4a90-4490-8310-097b011433f6.skill-02",
+        "a53f80cd-4a90-4490-8310-097b011433f6.skill-03"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/a53f80cd-4a90-4490-8310-097b011433f6.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "a669ef01-ded5-4099-9ea9-25e99b569840.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/a669ef01-ded5-4099-9ea9-25e99b569840.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "ac1b39ff-ee4d-4483-abce-c117e98942f0.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/ac1b39ff-ee4d-4483-abce-c117e98942f0.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-01",
+        "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-02"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/ac9bb6cb-1888-43ab-81e4-a98a547918cd.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "af23762e-2bfd-4a1d-aada-20fa8de9ce07.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/af23762e-2bfd-4a1d-aada-20fa8de9ce07.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "af2d657a-e6b3-4c6a-9f67-9e3ed015974c.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/af2d657a-e6b3-4c6a-9f67-9e3ed015974c.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb.skill-01",
+        "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb.skill-02"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/b8adbc24-cef2-4b15-99d5-ecbe7ff445eb.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "bf4e9888-f10f-47af-8dba-76413038b73c.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/bf4e9888-f10f-47af-8dba-76413038b73c.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "c59742c0-4323-4b9d-8a02-723c251deaa0.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/c59742c0-4323-4b9d-8a02-723c251deaa0.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-01",
+        "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-02"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/c82632a4-56b6-4db4-9dd1-3820ee3388e4.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "ce88f674-ab7a-43da-9201-468d38539e4a.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/ce88f674-ab7a-43da-9201-468d38539e4a.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-01",
+        "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-02"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/e4ef0baf-4b52-4590-a47e-d4d464cca2d7.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "ed43c15f-00cb-4054-9c95-62c880865d68.skill-01",
+        "ed43c15f-00cb-4054-9c95-62c880865d68.skill-02"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/ed43c15f-00cb-4054-9c95-62c880865d68.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "edb61b14-a854-4bf5-a075-c8075c11293a.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/edb61b14-a854-4bf5-a075-c8075c11293a.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "ef9d12bd-bcee-4ba0-a40e-918400f43ddf.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/ef9d12bd-bcee-4ba0-a40e-918400f43ddf.json",
+      "reused_checkpoint": false
+    },
+    {
+      "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+      "decision": "skills_extracted",
+      "decision_reason": "",
+      "skill_ids": [
+        "f23acfd2-c485-4b7c-a1e7-d4303ddfe864.skill-01"
+      ],
+      "checkpoint": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/skill_extraction/checkpoints/f23acfd2-c485-4b7c-a1e7-d4303ddfe864.json",
+      "reused_checkpoint": false
+    }
+  ]
+}

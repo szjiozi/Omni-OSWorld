@@ -1,0 +1,108 @@
+{
+  "id": "reference-task-impress-full-r01-005",
+  "snapshot": "libreoffice_impress",
+  "instruction": "Finalize the “Dawn Marsh Survey” checklist slide for the field-team handoff: give the slide a solid midnight-teal background; convert the three unbulleted readiness statements in the checklist panel into a bulleted list; recolor the full “Launch window: 08:30” line to Yellow; underline every character in the “Carry spare batteries” reminder box; and remove the three pale draft-marker shapes clustered in the upper-right corner with one marquee selection. Keep the rest of the briefing deck unchanged.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-005/initial_artifact.pptx",
+            "path": "/home/user/Desktop/dawn_marsh_checklist.pptx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/dawn_marsh_checklist.pptx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_impress"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-impress-full-r01-005",
+    "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-005/initial_artifact.pptx",
+    "artifact_sha256": "f25f40ad5600910922e78bd73060b9ae4253e589ed9a1bdd2a2b308fee6c1412",
+    "guest_artifact_path": "/home/user/Desktop/dawn_marsh_checklist.pptx",
+    "required_skill_ids": [
+      "f23acfd2-c485-4b7c-a1e7-d4303ddfe864.skill-01",
+      "9cf05d24-6bd9-4dae-8967-f67d88f5d38a.skill-01",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-03",
+      "57667013-ea97-417c-9dce-2713091e6e2a.skill-01",
+      "ed43c15f-00cb-4054-9c95-62c880865d68.skill-01"
+    ],
+    "operator_guide": {
+      "recommended_demonstration": [
+        {
+          "skill_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864.skill-01",
+          "operation_intent": "Turn the three readiness statements in the checklist text area into a bulleted list.",
+          "visible_success_signal": "Each of the three readiness statements has a visible bullet, with no bullets added to the heading, status line, or reminder.",
+          "efficiency_tip": "Activate the checklist text area and place the caret in a readiness paragraph before using the bullet-list control; select all three list paragraphs if needed."
+        },
+        {
+          "skill_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a.skill-01",
+          "operation_intent": "Apply the requested solid midnight-teal background to the active checklist slide.",
+          "visible_success_signal": "The entire slide canvas behind all objects is a uniform midnight teal (#0B3D4A), while the content objects remain in place.",
+          "efficiency_tip": "Select slide 2 before opening the slide-background control so the color is applied only to the checklist slide."
+        },
+        {
+          "skill_id": "a53f80cd-4a90-4490-8310-097b011433f6.skill-03",
+          "operation_intent": "Remove the three obsolete pale draft markers together.",
+          "visible_success_signal": "All three upper-right pale circles disappear, while the heading, checklist panel, route note, status line, and reminder remain visible.",
+          "efficiency_tip": "Drag from blank space just outside the cluster to blank space beyond its opposite edge, ensuring the selection rectangle encloses only the three circles before pressing Delete."
+        },
+        {
+          "skill_id": "57667013-ea97-417c-9dce-2713091e6e2a.skill-01",
+          "operation_intent": "Set the complete launch-window status line to Yellow.",
+          "visible_success_signal": "Every character in “Launch window: 08:30” is Yellow, with no other text recolored by this operation.",
+          "efficiency_tip": "Enter text-editing mode in the status line and select its full text before choosing the standard Yellow swatch from the font-color palette."
+        },
+        {
+          "skill_id": "ed43c15f-00cb-4054-9c95-62c880865d68.skill-01",
+          "operation_intent": "Underline the entire battery reminder text box.",
+          "visible_success_signal": "Every character in “Carry spare batteries” has an underline; the surrounding outlined box itself is unchanged.",
+          "efficiency_tip": "Place a caret inside the reminder text box, select all text within that box, then use the underline shortcut."
+        }
+      ],
+      "allowed_variation": "Equivalent LibreOffice Impress controls, menus, keyboard shortcuts, or toolbar paths are acceptable as long as the specified final slide state is produced and unrelated objects remain unchanged.",
+      "recording_start_state": "Open the supplied two-slide PPTX in LibreOffice Impress with slide 2 available in normal editing view and all described unfinished elements present.",
+      "recording_end_state": "Slide 2 shows the midnight-teal background, a three-item bulleted readiness list, Yellow launch-time text, a fully underlined battery reminder, and the former upper-right draft-marker cluster removed."
+    },
+    "expected_incidental_operations": [
+      {
+        "operation": "Navigate from the cover to slide 2 and make it the active slide before slide-level editing.",
+        "reason": "All requested changes are confined to the checklist slide.",
+        "category": "substantive_prerequisite"
+      },
+      {
+        "operation": "Enter text-editing mode and select only the required text range inside each target text box.",
+        "reason": "The requested font-color and underline changes apply to text rather than to the text-box border or other objects.",
+        "category": "task_specific"
+      },
+      {
+        "operation": "Click an empty area after deleting the marker cluster to verify that no retained object remains selected.",
+        "reason": "This makes it easy to confirm that only the obsolete shapes were removed.",
+        "category": "scaffolding"
+      }
+    ],
+    "ready_state_checks": [
+      "Confirm the presentation is open in LibreOffice Impress in normal editing view.",
+      "Confirm the slide pane shows exactly 2 slides.",
+      "Confirm slide 1 is selected and visible as the initial cover slide for “Dawn Marsh Survey.”"
+    ],
+    "setup_notes": [
+      "Use the supplied presentation artifact as the initial state."
+    ],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

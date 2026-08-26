@@ -169,6 +169,12 @@ def _render_task_markdown(markdown_text: str, task_id: str) -> str:
             target = child.attrGet(attribute) or ""
             if not target or target.startswith("#"):
                 continue
+            if child.type == "link_open" and target == "review.json":
+                child.attrSet(
+                    attribute,
+                    f"/api/tasks/{quote(task_id, safe='')}/review.json?download=true",
+                )
+                continue
             if ":" in target.split("/", 1)[0] or target.startswith("/"):
                 child.attrSet(attribute, "#")
                 continue

@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "pptx",
+  "opens_as_zip_package": true,
+  "libreoffice_render_succeeded": true,
+  "slide_count": 3,
+  "semantic_object_count": 18,
+  "geometric_overlap_warnings": [
+    {
+      "slide_number": 2,
+      "objects": [
+        "checklist_callout_card",
+        "checklist_callout_text"
+      ],
+      "overlap_area": 1.974
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "checklist_callout_card",
+        "checklist_item_one"
+      ],
+      "overlap_area": 1.645
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "checklist_callout_card",
+        "checklist_item_two"
+      ],
+      "overlap_area": 1.645
+    }
+  ],
+  "placeholder_matches": [],
+  "media_part_count": 3,
+  "notes_part_count": 8,
+  "slides": [
+    {
+      "slide_number": 1,
+      "text": [
+        "Community Garden",
+        "Field Brief",
+        "Saturday volunteer walk-through"
+      ],
+      "shape_count": 3,
+      "picture_count": 1,
+      "graphic_frame_count": 0
+    },
+    {
+      "slide_number": 2,
+      "text": [
+        "FIELD WALK • EAST GATE",
+        "Start at the east gate",
+        "Raised beds: herbs + greens",
+        "Morning Walk Checklist",
+        "• Check hose connections at each spigot",
+        "• Note ripe produce for the welcome table"
+      ],
+      "shape_count": 7,
+      "picture_count": 1,
+      "graphic_frame_count": 0
+    },
+    {
+      "slide_number": 3,
+      "text": [
+        "VOLUNTEER ASSIGNMENTS",
+        "Walk-through assignments",
+        "Confirm each stop, then return materials to the welcome desk.",
+        "Bed",
+        "Window",
+        "Guide",
+        "Gear",
+        "Herb border",
+        "9:00–9:20",
+        "Maya R.",
+        "Plant tags",
+        "Tomato row",
+        "9:20–9:45",
+        "Jon P.",
+        "Twine + clips",
+        "Compost corner",
+        "9:45–10:05",
+        "Inez L.",
+        "Moisture meter",
+        "Report route changes or supply needs to the welcome desk."
+      ],
+      "shape_count": 5,
+      "picture_count": 0,
+      "graphic_frame_count": 1
+    }
+  ],
+  "preview_files": [
+    "slide-01.png",
+    "slide-02.png",
+    "slide-03.png"
+  ],
+  "contact_sheet": "contact-sheet.png",
+  "visual_review_required": true
+}

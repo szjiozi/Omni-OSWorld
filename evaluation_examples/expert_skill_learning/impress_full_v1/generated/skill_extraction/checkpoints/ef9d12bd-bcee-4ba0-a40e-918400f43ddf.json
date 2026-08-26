@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+  "app": "libreoffice_impress",
+  "single_action_count": 2,
+  "prompt_sha256": "86d1cdf74ebb852eceef2920f8882a9da9ea943cd66e0a6591b9a74bb983963f",
+  "request_id": "2a56cfc4-db6e-470b-9f09-df5770fc150c",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 739,
+    "cached_input_tokens": 0,
+    "output_tokens": 101,
+    "estimated_cost_usd": 0.00269
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Show or hide the Slides pane",
+        "procedure": [
+          "In LibreOffice Impress, open the View menu from the menu bar.",
+          "Select Slide Pane to toggle the left-side slide thumbnail pane visible or hidden."
+        ],
+        "efficiency_tip": "Use View > Slide Pane whenever slide thumbnails disappear; the same command toggles the pane, so avoid repeatedly opening other sidebar controls.",
+        "action_ids": [
+          0,
+          1
+        ]
+      }
+    ]
+  }
+}

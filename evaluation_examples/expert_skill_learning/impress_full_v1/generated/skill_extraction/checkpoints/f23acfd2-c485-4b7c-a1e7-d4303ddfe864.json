@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "cdc91693ce2b2dfa35ae67502b19cfb785aa2ca5060702fb7f2d2ef8eef4e570",
+  "request_id": "9d1c7f36-1204-4581-b3cc-61174151c586",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 727,
+    "cached_input_tokens": 0,
+    "output_tokens": 137,
+    "estimated_cost_usd": 0.003098
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply bulleted-list formatting to text in a content placeholder",
+        "procedure": [
+          "Select the text box or content placeholder that contains the paragraph to format.",
+          "Open the List control from the Impress toolbar or sidebar and choose the bullet-list option.",
+          "Impress applies bullet formatting to the current paragraph or selected paragraphs; click in a paragraph before applying the command when no text range is selected."
+        ],
+        "efficiency_tip": "Place the text cursor in the target paragraph before opening the List control, so the bullet style is applied without selecting unrelated text.",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

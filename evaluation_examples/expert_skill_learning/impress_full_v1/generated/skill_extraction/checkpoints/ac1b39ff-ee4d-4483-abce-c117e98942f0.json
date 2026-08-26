@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+  "app": "libreoffice_impress",
+  "single_action_count": 4,
+  "prompt_sha256": "0e2a3372c519c24caed75585ecb209985c7c7b392dabe0bdf1952a2d9f732759",
+  "request_id": "909b9fdd-22c4-4401-b739-18fcc9a56671",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 754,
+    "cached_input_tokens": 0,
+    "output_tokens": 137,
+    "estimated_cost_usd": 0.003152
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Move a selected object by dragging",
+        "procedure": [
+          "In Normal view, select the object by clicking its border; do not enter text-editing mode inside the object.",
+          "Move the pointer onto the object's border or another draggable area until the move cursor appears.",
+          "Drag the object to the desired position on the slide and release the mouse button."
+        ],
+        "efficiency_tip": "Drag from an object border rather than from text or a table cell to avoid activating text or cell editing. Use alignment guides or the slide edge as visual placement references.",
+        "action_ids": [
+          1,
+          2,
+          3
+        ]
+      }
+    ]
+  }
+}

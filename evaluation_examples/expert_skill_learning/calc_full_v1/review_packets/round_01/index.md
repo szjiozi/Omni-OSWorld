@@ -4,7 +4,7 @@ Open one task directory at a time, read `TASK.md`, and fill only its `review.jso
 
 | Task | Workbook | Local review |
 | --- | --- | --- |
-| [reference-task-calc-full-r01-001](reference-task-calc-full-r01-001/TASK.md) | Regional Community Grant Requests | pending |
+| [reference-task-calc-full-r01-001](reference-task-calc-full-r01-001/TASK.md) | Regional Community Grant Requests | approved |
 | [reference-task-calc-full-r01-002](reference-task-calc-full-r01-002/TASK.md) | Regional Funding Board View | pending |
 | [reference-task-calc-full-r01-003](reference-task-calc-full-r01-003/TASK.md) | Service Estimate Review | pending |
 | [reference-task-calc-full-r01-004](reference-task-calc-full-r01-004/TASK.md) | Garden Supply Round Reconciliation | pending |

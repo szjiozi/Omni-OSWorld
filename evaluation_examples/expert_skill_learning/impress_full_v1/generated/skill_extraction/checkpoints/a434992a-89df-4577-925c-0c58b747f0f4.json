@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+  "app": "libreoffice_impress",
+  "single_action_count": 10,
+  "prompt_sha256": "e0e9e32b7eac8c32ffac1cbae45ad614c9e086f2e45a5c2202806bc18f4e0151",
+  "request_id": "69ed1109-004c-4088-8f46-ef6a56f0c08a",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 836,
+    "cached_input_tokens": 0,
+    "output_tokens": 330,
+    "estimated_cost_usd": 0.005632
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set a slide background color",
+        "procedure": [
+          "With no object text being edited, open the slide background control's dropdown.",
+          "Choose the background color option, then open its color palette.",
+          "Select a desired solid color, such as red, to apply it to the current slide background."
+        ],
+        "efficiency_tip": "Set the slide background before working on objects so a selected text box does not obscure whether the slide itself is being formatted.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Change text font size in a text box",
+        "procedure": [
+          "Select the text box, then select the text whose size should change; clicking a text box is distinct from entering text-editing mode when only part of its text is to be formatted.",
+          "Select the current value in the font-size field, type the desired point size, such as 12, and press Enter to apply it."
+        ],
+        "efficiency_tip": "Use the font-size field to enter an exact point value instead of repeatedly clicking increase or decrease font-size buttons.",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "name": "Apply a font color to selected text",
+        "procedure": [
+          "With the target text selected or with the text box active for text formatting, open the font-color dropdown palette.",
+          "Choose a color, such as orange, to apply that font color to the selected text."
+        ],
+        "efficiency_tip": "Keep the text selection active while opening the font-color palette so the color applies only to the intended text rather than becoming a default for future typing.",
+        "action_ids": [
+          8,
+          9
+        ]
+      }
+    ]
+  }
+}

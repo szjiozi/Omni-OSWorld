@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+  "app": "libreoffice_impress",
+  "single_action_count": 12,
+  "prompt_sha256": "d445ae13c025c643fd3531c17bca256abbf64c77e5b84f8a52bc212bfa83e528",
+  "request_id": "7f8d71c8-3f4e-41f7-b6ce-ce914916ee45",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 831,
+    "cached_input_tokens": 0,
+    "output_tokens": 310,
+    "estimated_cost_usd": 0.005382
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Insert an image onto a slide",
+        "procedure": [
+          "With the target slide active, click the Insert Image icon or use Insert > Image.",
+          "In the file picker, navigate to the folder containing the image, select the desired image file, and press Enter or click Open.",
+          "The image is inserted onto the current slide and remains selected for immediate formatting."
+        ],
+        "efficiency_tip": "Insert the image while the intended slide is already active so no later move between slides is needed.",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "name": "Set an image to exact width and height",
+        "procedure": [
+          "Select the image object on the slide, then open the Position and Size controls from the object formatting options.",
+          "Scroll within the controls if necessary until the Width and Height fields are visible.",
+          "Replace the Width value with a measurement such as 1 cm, press Tab to move to Height, enter the required height such as 1 cm, and press Enter to apply the dimensions."
+        ],
+        "efficiency_tip": "Use Tab after entering Width to reach Height directly; this avoids reopening controls or selecting the object again.",
+        "action_ids": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    ]
+  }
+}

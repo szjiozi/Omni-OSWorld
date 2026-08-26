@@ -1,0 +1,1130 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-impress-full-r01-003",
+  "package": {
+    "reference_task_id": "reference-task-impress-full-r01-003",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_impress",
+    "task_instruction": "Update the “Riverside Pollinator Walk” field-brief deck for the volunteer check-in. On slide 2, set the small teal section label “FIELD SNAPSHOT” to 18 pt and set each of the three metric captions (“Nesting sites mapped”, “Late-season blooms”, and “Volunteer pairs”) to 22 pt. Resize the bee-and-wildflower illustration to exactly 6.5 cm high, then move it into the open upper-right area of the slide, above the metric cards and to the right of the summary text. Keep all wording, colors, and other objects unchanged.",
+    "required_skill_ids": [
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+      "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-02",
+      "7ae48c60-f143-4119-b659-15b8f485eb9a.skill-01",
+      "ed43c15f-00cb-4054-9c95-62c880865d68.skill-02"
+    ],
+    "artifact_spec": {
+      "artifact_type": "pptx",
+      "domain": "community pollinator habitat survey",
+      "presentation_title": "Riverside Pollinator Walk",
+      "slide_size": "wide",
+      "theme": {
+        "primary_color": "D8EFE8",
+        "secondary_color": "1E5B55",
+        "accent_color": "E49A3A",
+        "background_color": "FAF8F1",
+        "title_font": "Liberation Sans",
+        "body_font": "Liberation Sans"
+      },
+      "slides": [
+        {
+          "slide_number": 1,
+          "purpose": "Introduce the volunteer field-briefing deck.",
+          "layout": "title",
+          "object_plan": [
+            {
+              "semantic_id": "cover_background_band",
+              "type": "shape",
+              "purpose": "Muted green title-area background band",
+              "editable": true
+            },
+            {
+              "semantic_id": "cover_main_title",
+              "type": "text",
+              "purpose": "Presentation title text",
+              "editable": true
+            },
+            {
+              "semantic_id": "cover_subtitle",
+              "type": "text",
+              "purpose": "Field walk date and location subtitle",
+              "editable": true
+            },
+            {
+              "semantic_id": "cover_botanical_motif",
+              "type": "image",
+              "purpose": "Decorative illustrated flower cluster",
+              "editable": true
+            }
+          ]
+        },
+        {
+          "slide_number": 2,
+          "purpose": "Summarize the survey focus and three field metrics for volunteer check-in.",
+          "layout": "data_story",
+          "object_plan": [
+            {
+              "semantic_id": "snapshot_section_label",
+              "type": "text",
+              "purpose": "Small teal field-snapshot section label requiring a single text size adjustment",
+              "editable": true
+            },
+            {
+              "semantic_id": "snapshot_heading",
+              "type": "text",
+              "purpose": "Main slide heading",
+              "editable": true
+            },
+            {
+              "semantic_id": "snapshot_summary_copy",
+              "type": "text",
+              "purpose": "Two-line survey summary positioned on the left",
+              "editable": true
+            },
+            {
+              "semantic_id": "pollinator_illustration",
+              "type": "image",
+              "purpose": "Bee-and-wildflower illustration requiring an exact height and relocation",
+              "editable": true
+            },
+            {
+              "semantic_id": "metric_card_nesting",
+              "type": "shape",
+              "purpose": "Background card for nesting-site metric",
+              "editable": true
+            },
+            {
+              "semantic_id": "metric_value_nesting",
+              "type": "text",
+              "purpose": "Nesting-site metric value",
+              "editable": true
+            },
+            {
+              "semantic_id": "metric_caption_nesting",
+              "type": "text",
+              "purpose": "Nesting-sites-mapped caption requiring a text size adjustment",
+              "editable": true
+            },
+            {
+              "semantic_id": "metric_card_blooms",
+              "type": "shape",
+              "purpose": "Background card for late-bloom metric",
+              "editable": true
+            },
+            {
+              "semantic_id": "metric_value_blooms",
+              "type": "text",
+              "purpose": "Late-bloom metric value",
+              "editable": true
+            },
+            {
+              "semantic_id": "metric_caption_blooms",
+              "type": "text",
+              "purpose": "Late-season-blooms caption requiring a text size adjustment",
+              "editable": true
+            },
+            {
+              "semantic_id": "metric_card_pairs",
+              "type": "shape",
+              "purpose": "Background card for volunteer-pair metric",
+              "editable": true
+            },
+            {
+              "semantic_id": "metric_value_pairs",
+              "type": "text",
+              "purpose": "Volunteer-pair metric value",
+              "editable": true
+            },
+            {
+              "semantic_id": "metric_caption_pairs",
+              "type": "text",
+              "purpose": "Volunteer-pairs caption requiring the same text size adjustment",
+              "editable": true
+            }
+          ]
+        },
+        {
+          "slide_number": 3,
+          "purpose": "Provide concise observation guidance for the walking route.",
+          "layout": "two_column",
+          "object_plan": [
+            {
+              "semantic_id": "guidance_title",
+              "type": "text",
+              "purpose": "Observation guidance title",
+              "editable": true
+            },
+            {
+              "semantic_id": "guidance_route_panel",
+              "type": "shape",
+              "purpose": "Route-side background panel",
+              "editable": true
+            },
+            {
+              "semantic_id": "guidance_route_steps",
+              "type": "text",
+              "purpose": "Short route observation checklist",
+              "editable": true
+            },
+            {
+              "semantic_id": "guidance_safety_panel",
+              "type": "shape",
+              "purpose": "Safety reminder background panel",
+              "editable": true
+            },
+            {
+              "semantic_id": "guidance_safety_copy",
+              "type": "text",
+              "purpose": "Safety and data-recording reminder",
+              "editable": true
+            },
+            {
+              "semantic_id": "guidance_leaf_marker",
+              "type": "image",
+              "purpose": "Decorative leaf illustration",
+              "editable": true
+            }
+          ]
+        }
+      ],
+      "initial_state": [
+        "Slide 2 contains the exact editable texts “FIELD SNAPSHOT”, “Nesting sites mapped”, “Late-season blooms”, and “Volunteer pairs” in separate text boxes.",
+        "The “FIELD SNAPSHOT” text is initially 14 pt, not 18 pt.",
+        "The three metric captions are initially 16 pt, not 22 pt, and each caption is separate from its metric value.",
+        "Slide 2 contains an existing bee-and-wildflower image at 4.0 cm high, located below the left summary copy rather than in the requested upper-right area.",
+        "The upper-right area of slide 2 is intentionally empty above the metric-card row, providing a clear destination for the image."
+      ],
+      "must_not_be_completed": [
+        "Do not change the wording, colors, font family, or font size of the slide title, summary copy, or metric values.",
+        "Do not resize the image by width, crop it, replace it, or alter its aspect ratio.",
+        "Do not move any metric card, text box, or object other than the bee-and-wildflower image.",
+        "Do not edit slides 1 or 3."
+      ],
+      "generation_notes": [
+        "Use a clean editorial field-guide aesthetic with a warm off-white background, deep teal typography, pale mint metric cards, and restrained amber details.",
+        "Place the three metric cards as an evenly spaced row across the lower third of slide 2; each card should contain a large value and a caption in a separate editable text object.",
+        "Render the pollinator illustration as a static editable image object with an obvious rectangular selection boundary when selected.",
+        "Initially place the image immediately to the right of the summary text, slightly overlapping the visual balance of that left-side region, while leaving enough empty space in the upper-right for a clear drag destination.",
+        "Use ordinary editable text boxes rather than native placeholders for every text object."
+      ]
+    },
+    "operator_guide": {
+      "recommended_demonstration": [
+        {
+          "skill_id": "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+          "operation_intent": "Set the separate “FIELD SNAPSHOT” text box to exactly 18 pt.",
+          "visible_success_signal": "The teal section label remains unchanged in wording and color but displays visibly larger at 18 pt.",
+          "efficiency_tip": "Enter text-editing mode in the label and type the exact value in the Font Size field rather than using incremental size controls."
+        },
+        {
+          "skill_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-02",
+          "operation_intent": "Set the “Nesting sites mapped”, “Late-season blooms”, and “Volunteer pairs” metric-caption text boxes to exactly 22 pt.",
+          "visible_success_signal": "All three targeted captions display at the same 22 pt size while their associated metric values remain unchanged.",
+          "efficiency_tip": "Select the three caption text boxes together when practical, then enter 22 pt once in the Font Size field; otherwise update each independent caption box in sequence."
+        },
+        {
+          "skill_id": "7ae48c60-f143-4119-b659-15b8f485eb9a.skill-01",
+          "operation_intent": "Set the bee-and-wildflower image to an exact height of 6.5 cm.",
+          "visible_success_signal": "The selected image reports a height of 6.5 cm and retains its original proportions.",
+          "efficiency_tip": "Use the image Position and Size controls and replace the height measurement directly."
+        },
+        {
+          "skill_id": "ed43c15f-00cb-4054-9c95-62c880865d68.skill-02",
+          "operation_intent": "Relocate the resized bee-and-wildflower image into the empty upper-right region above the metric cards.",
+          "visible_success_signal": "The image sits to the right of the summary copy and above the card row without covering text or cards.",
+          "efficiency_tip": "Drag from the image interior, not a selection handle, to avoid changing its size while positioning it."
+        }
+      ],
+      "allowed_variation": "Minor final placement variation is acceptable provided the image is clearly in the open upper-right region, above the metric cards, to the right of the summary text, and no overlap occurs.",
+      "recording_start_state": "Open the supplied three-slide deck with slide 2 visible in normal editing view.",
+      "recording_end_state": "Slide 2 shows the requested 18 pt label, all three 22 pt metric captions, and the 6.5 cm-high illustration placed in the upper-right."
+    },
+    "expected_incidental_operations": [
+      {
+        "operation": "Navigate to slide 2 and select the individual text and image objects needed for the requested edits.",
+        "reason": "The requested changes are all confined to distinct editable objects on the field-snapshot slide.",
+        "category": "substantive_prerequisite"
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        }
+      ],
+      "dominant_source_task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+      "dominant_source_skill_fraction": 0.25,
+      "complete_source_skill_sets_included": [
+        "7ae48c60-f143-4119-b659-15b8f485eb9a"
+      ]
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+        "max_sequence_similarity": 0.264662,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+            "sequence_similarity": 0.253521
+          },
+          {
+            "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+            "sequence_similarity": 0.199422
+          },
+          {
+            "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+            "sequence_similarity": 0.113074
+          },
+          {
+            "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+            "sequence_similarity": 0.19062
+          },
+          {
+            "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+            "sequence_similarity": 0.014101
+          },
+          {
+            "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+            "sequence_similarity": 0.144112
+          },
+          {
+            "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+            "sequence_similarity": 0.119863
+          },
+          {
+            "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+            "sequence_similarity": 0.106952
+          },
+          {
+            "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+            "sequence_similarity": 0.15025
+          },
+          {
+            "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+            "sequence_similarity": 0.118443
+          },
+          {
+            "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+            "sequence_similarity": 0.010825
+          },
+          {
+            "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+            "sequence_similarity": 0.137221
+          },
+          {
+            "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+            "sequence_similarity": 0.210191
+          },
+          {
+            "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+            "sequence_similarity": 0.19697
+          },
+          {
+            "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+            "sequence_similarity": 0.133333
+          },
+          {
+            "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+            "sequence_similarity": 0.016598
+          },
+          {
+            "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+            "sequence_similarity": 0.242245
+          },
+          {
+            "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+            "sequence_similarity": 0.186978
+          },
+          {
+            "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+            "sequence_similarity": 0.096386
+          },
+          {
+            "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+            "sequence_similarity": 0.171348
+          },
+          {
+            "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+            "sequence_similarity": 0.153846
+          },
+          {
+            "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+            "sequence_similarity": 0.088339
+          },
+          {
+            "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+            "sequence_similarity": 0.105622
+          },
+          {
+            "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+            "sequence_similarity": 0.206323
+          },
+          {
+            "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+            "sequence_similarity": 0.154882
+          },
+          {
+            "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+            "sequence_similarity": 0.127367
+          },
+          {
+            "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+            "sequence_similarity": 0.163934
+          },
+          {
+            "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+            "sequence_similarity": 0.136842
+          },
+          {
+            "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+            "sequence_similarity": 0.213371
+          },
+          {
+            "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+            "sequence_similarity": 0.086655
+          },
+          {
+            "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+            "sequence_similarity": 0.239748
+          },
+          {
+            "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+            "sequence_similarity": 0.264662
+          },
+          {
+            "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+            "sequence_similarity": 0.013141
+          },
+          {
+            "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+            "sequence_similarity": 0.130053
+          },
+          {
+            "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+            "sequence_similarity": 0.232278
+          },
+          {
+            "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+            "sequence_similarity": 0.217707
+          },
+          {
+            "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+            "sequence_similarity": 0.114007
+          },
+          {
+            "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+            "sequence_similarity": 0.117647
+          },
+          {
+            "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+            "sequence_similarity": 0.018462
+          },
+          {
+            "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+            "sequence_similarity": 0.016529
+          },
+          {
+            "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+            "sequence_similarity": 0.109402
+          },
+          {
+            "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+            "sequence_similarity": 0.123675
+          },
+          {
+            "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+            "sequence_similarity": 0.184713
+          },
+          {
+            "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+            "sequence_similarity": 0.126456
+          },
+          {
+            "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+            "sequence_similarity": 0.104712
+          },
+          {
+            "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+            "sequence_similarity": 0.115502
+          },
+          {
+            "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+            "sequence_similarity": 0.095575
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+        "max_cosine_similarity": 0.461807,
+        "by_source_task": [
+          {
+            "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+            "cosine_similarity": 0.401511
+          },
+          {
+            "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+            "cosine_similarity": 0.349658
+          },
+          {
+            "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+            "cosine_similarity": 0.438942
+          },
+          {
+            "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+            "cosine_similarity": 0.388673
+          },
+          {
+            "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+            "cosine_similarity": 0.236242
+          },
+          {
+            "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+            "cosine_similarity": 0.370314
+          },
+          {
+            "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+            "cosine_similarity": 0.27579
+          },
+          {
+            "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+            "cosine_similarity": 0.424272
+          },
+          {
+            "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+            "cosine_similarity": 0.135617
+          },
+          {
+            "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+            "cosine_similarity": 0.420674
+          },
+          {
+            "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+            "cosine_similarity": 0.324086
+          },
+          {
+            "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+            "cosine_similarity": 0.396181
+          },
+          {
+            "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+            "cosine_similarity": 0.368844
+          },
+          {
+            "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+            "cosine_similarity": 0.282978
+          },
+          {
+            "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+            "cosine_similarity": 0.364023
+          },
+          {
+            "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+            "cosine_similarity": 0.347176
+          },
+          {
+            "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+            "cosine_similarity": 0.388865
+          },
+          {
+            "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+            "cosine_similarity": 0.426928
+          },
+          {
+            "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+            "cosine_similarity": 0.397253
+          },
+          {
+            "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+            "cosine_similarity": 0.289009
+          },
+          {
+            "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+            "cosine_similarity": 0.347718
+          },
+          {
+            "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+            "cosine_similarity": 0.337458
+          },
+          {
+            "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+            "cosine_similarity": 0.461366
+          },
+          {
+            "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+            "cosine_similarity": 0.445337
+          },
+          {
+            "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+            "cosine_similarity": 0.397634
+          },
+          {
+            "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+            "cosine_similarity": 0.461807
+          },
+          {
+            "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+            "cosine_similarity": 0.395543
+          },
+          {
+            "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+            "cosine_similarity": 0.403831
+          },
+          {
+            "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+            "cosine_similarity": 0.355319
+          },
+          {
+            "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+            "cosine_similarity": 0.267899
+          },
+          {
+            "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+            "cosine_similarity": 0.412389
+          },
+          {
+            "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+            "cosine_similarity": 0.439053
+          },
+          {
+            "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+            "cosine_similarity": 0.284301
+          },
+          {
+            "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+            "cosine_similarity": 0.361767
+          },
+          {
+            "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+            "cosine_similarity": 0.367179
+          },
+          {
+            "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+            "cosine_similarity": 0.310347
+          },
+          {
+            "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+            "cosine_similarity": 0.393861
+          },
+          {
+            "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+            "cosine_similarity": 0.395653
+          },
+          {
+            "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+            "cosine_similarity": 0.312481
+          },
+          {
+            "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+            "cosine_similarity": 0.239897
+          },
+          {
+            "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+            "cosine_similarity": 0.339329
+          },
+          {
+            "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+            "cosine_similarity": 0.404505
+          },
+          {
+            "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+            "cosine_similarity": 0.457097
+          },
+          {
+            "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+            "cosine_similarity": 0.421215
+          },
+          {
+            "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+            "cosine_similarity": 0.43316
+          },
+          {
+            "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+            "cosine_similarity": 0.260847
+          },
+          {
+            "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+            "cosine_similarity": 0.399251
+          }
+        ],
+        "embedding_request_id": "63b28a34-d573-43c1-a131-f8b4a867da7a"
+      }
+    },
+    "generation": {
+      "attempt": 3,
+      "kind": "new_combination",
+      "request_id": "36022601-7ead-4ac8-9133-cbdff7ef5e81",
+      "prompt_sha256": "2adecef69320bea39e2e0042da50cbf1bd01716e64f5dc142f640835ff40231b"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Change text font size in a text box",
+      "procedure": [
+        "Select the text box, then select the text whose size should change; clicking a text box is distinct from entering text-editing mode when only part of its text is to be formatted.",
+        "Select the current value in the font-size field, type the desired point size, such as 12, and press Enter to apply it."
+      ],
+      "efficiency_tip": "Use the font-size field to enter an exact point value instead of repeatedly clicking increase or decrease font-size buttons.",
+      "source": {
+        "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "skill_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Set font size for text in multiple text boxes",
+      "procedure": [
+        "For each text box, enter text-editing mode and select the text whose size should change. Selecting text inside the shape is different from selecting the shape object itself.",
+        "Activate the Font Size box on the formatting toolbar, replace its value with the desired point size, for example `40 pt`, and press Enter.",
+        "Repeat for the remaining independently formatted text boxes on the slide."
+      ],
+      "efficiency_tip": "After applying a size, move directly to the next text box and use the Font Size box again; this avoids opening character-format dialogs for each text box.",
+      "source": {
+        "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+        "action_ids": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "skill_id": "7ae48c60-f143-4119-b659-15b8f485eb9a.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Set an image's exact height",
+      "procedure": [
+        "Select the image as an object on the slide; do not enter text-editing mode.",
+        "Open the image's Position and Size controls if the Height field is not already visible, for example through the Properties sidebar's Position and Size section.",
+        "Select the entire current value in the Height field, type a measurement with a unit such as `20 cm`, and press Enter to apply the new height."
+      ],
+      "efficiency_tip": "Keep the Properties sidebar open while resizing several images; after selecting each image, replace the Height value directly rather than reopening the full formatting dialog.",
+      "source": {
+        "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          8,
+          9,
+          10,
+          11,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    },
+    {
+      "skill_id": "ed43c15f-00cb-4054-9c95-62c880865d68.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Reposition an image by dragging",
+      "procedure": [
+        "Click the image once to select the image object and show its selection handles.",
+        "Drag the selected image from inside its bounds to the desired location on the slide, then release the mouse button.",
+        "Avoid dragging a resize handle, which changes the image size instead of its position."
+      ],
+      "efficiency_tip": "Drag from the image interior rather than from an edge or handle to move it cleanly without resizing or cropping.",
+      "source": {
+        "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+      "instruction": "Change picture's height to 20, 30, 25cm on slide 3, 4, 6 respectively.",
+      "required_skill_ids": [
+        "7ae48c60-f143-4119-b659-15b8f485eb9a.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 1,
+          "action": "`CLICK` photo on the right"
+        },
+        {
+          "action_id": 2,
+          "action": "`SCROLL` down to height text box"
+        },
+        {
+          "action_id": 3,
+          "action": "`TRIPLE_CLICK` height text box"
+        },
+        {
+          "action_id": 4,
+          "action": "`TYPING` 20cm"
+        },
+        {
+          "action_id": 5,
+          "action": "`PRESS` enter"
+        },
+        {
+          "action_id": 7,
+          "action": "`CLICK` photo on the right"
+        },
+        {
+          "action_id": 8,
+          "action": "`CLICK` position and size dropdown"
+        },
+        {
+          "action_id": 9,
+          "action": "`TRIPLE_CLICK` height text box"
+        },
+        {
+          "action_id": 10,
+          "action": "`TYPING` 30cm"
+        },
+        {
+          "action_id": 11,
+          "action": "`PRESS` enter"
+        },
+        {
+          "action_id": 13,
+          "action": "`CLICK` photo"
+        },
+        {
+          "action_id": 14,
+          "action": "`TRIPLE_CLICK` height text box"
+        },
+        {
+          "action_id": 15,
+          "action": "`TYPING` 25cm"
+        },
+        {
+          "action_id": 16,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` slide 3",
+        "`CLICK` photo on the right",
+        "`SCROLL` down to height text box",
+        "`TRIPLE_CLICK` height text box",
+        "`TYPING` 20cm",
+        "`PRESS` enter",
+        "`CLICK` slide 4",
+        "`CLICK` photo on the right",
+        "`CLICK` position and size dropdown",
+        "`TRIPLE_CLICK` height text box",
+        "`TYPING` 30cm",
+        "`PRESS` enter",
+        "`CLICK` slide 6",
+        "`CLICK` photo",
+        "`TRIPLE_CLICK` height text box",
+        "`TYPING` 25cm",
+        "`PRESS` enter"
+      ]
+    },
+    {
+      "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+      "instruction": "Change the font size of the content to 12, and change the font color to orange. Change the slide's background to red.",
+      "required_skill_ids": [
+        "a434992a-89df-4577-925c-0c58b747f0f4.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 4,
+          "action": "`CLICK` the content text box"
+        },
+        {
+          "action_id": 5,
+          "action": "`TRIPLE_CLICK` the font size text field"
+        },
+        {
+          "action_id": 6,
+          "action": "`TYPING` 12"
+        },
+        {
+          "action_id": 7,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` background dropdown arrow",
+        "`CLICK` color",
+        "`CLICK` color dropdown arrow",
+        "`CLICK` red (2nd row, 5th from left)",
+        "`CLICK` the content text box",
+        "`TRIPLE_CLICK` the font size text field",
+        "`TYPING` 12",
+        "`PRESS` enter",
+        "`CLICK` the font color dropdown arrow",
+        "`CLICK` the orange color (2nd row, 3rd from left)"
+      ]
+    },
+    {
+      "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+      "instruction": "The height of picture should be 20cm on slide 3 while the font size of all textboxes should be 40pt on slide 6.",
+      "required_skill_ids": [
+        "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 8,
+          "action": "`TRIPLE_CLICK` text in 'our founder'."
+        },
+        {
+          "action_id": 9,
+          "action": "`TRIPLE_CLICK` font size dropdown"
+        },
+        {
+          "action_id": 10,
+          "action": "`TYPING` 40pt"
+        },
+        {
+          "action_id": 11,
+          "action": "`PRESS` enter"
+        },
+        {
+          "action_id": 12,
+          "action": "`TRIPLE_CLICK` text in 'name surname'."
+        },
+        {
+          "action_id": 13,
+          "action": "`TRIPLE_CLICK` font size dropdown"
+        },
+        {
+          "action_id": 14,
+          "action": "`TYPING` 40pt"
+        },
+        {
+          "action_id": 15,
+          "action": "`PRESS` enter"
+        },
+        {
+          "action_id": 16,
+          "action": "`TRIPLE_CLICK` text in 'presentations are...'."
+        },
+        {
+          "action_id": 17,
+          "action": "`TRIPLE_CLICK` font size dropdown"
+        },
+        {
+          "action_id": 18,
+          "action": "`TYPING` 40pt"
+        },
+        {
+          "action_id": 19,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` slide 3.",
+        "`CLICK` image",
+        "`SCROLL` down to height text box",
+        "`TRIPLE_CLICK` height text box",
+        "`HOTKEY` ctrl-a",
+        "`TYPING` 20cm",
+        "`PRESS` enter",
+        "`CLICK` slide 6.",
+        "`TRIPLE_CLICK` text in 'our founder'.",
+        "`TRIPLE_CLICK` font size dropdown",
+        "`TYPING` 40pt",
+        "`PRESS` enter",
+        "`TRIPLE_CLICK` text in 'name surname'.",
+        "`TRIPLE_CLICK` font size dropdown",
+        "`TYPING` 40pt",
+        "`PRESS` enter",
+        "`TRIPLE_CLICK` text in 'presentations are...'.",
+        "`TRIPLE_CLICK` font size dropdown",
+        "`TYPING` 40pt",
+        "`PRESS` enter"
+      ]
+    },
+    {
+      "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+      "instruction": "Move the picture on page 2 to slide top. Make textboxes underlined on slide 1 and 2.",
+      "required_skill_ids": [
+        "ed43c15f-00cb-4054-9c95-62c880865d68.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 5,
+          "action": "`CLICK` image"
+        },
+        {
+          "action_id": 6,
+          "action": "`DRAG_TO` top of slide"
+        }
+      ],
+      "single_actions": [
+        "`HOTKEY` ctrl-a",
+        "`HOTKEY` ctrl-U",
+        "`CLICK` slide 2",
+        "`HOTKEY` ctrl-a",
+        "`HOTKEY` ctrl-U",
+        "`CLICK` image",
+        "`DRAG_TO` top of slide"
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-impress-full-r01-003",
+    "task_detail_sha256": "b8468dcbdcd63f6c75267f583d931597c1e9c35be4935ed69c0b750d13011dab",
+    "guide": {
+      "reference_task_id": "reference-task-impress-full-r01-003",
+      "language": "zh-CN",
+      "overview": "本指南只编辑第 2 张 “Riverside Pollinator Walk” 数据概览页：将 “FIELD SNAPSHOT” 调为 18 pt，将三个独立指标说明调为 22 pt，并把蜜蜂与野花插图等比设为 6.5 cm 高后移到右上方空白区。不要修改任何文字内容、颜色、字体名称、指标数值、卡片或第 1、3 张幻灯片。",
+      "starting_state_checks": [
+        "确认演示文稿处于普通编辑视图，左侧缩略图窗格可见 3 张幻灯片；单击第 2 张缩略图以选中幻灯片，而不是在缩略图窗格中拖动它。",
+        "在第 2 张中确认可见独立文本对象 “FIELD SNAPSHOT”、“Nesting sites mapped”、“Late-season blooms” 和 “Volunteer pairs”；三个说明文字各自位于下方指标卡中，并与较大的指标数值分离。",
+        "确认蜜蜂与野花插图是可选中的图像对象：单击图像边缘/内部一次应出现矩形选择边框和控制点。它初始较小且不在最终右上目标位置；不要选择或移动指标卡。",
+        "可接受的初始状态是右上方、指标卡行上方且摘要文字右侧存在明显空白区域。若该区域被其他临时选中对象的边框遮挡，先单击幻灯片空白处取消选择，再辨认该空白目的地。"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "title": "将 “FIELD SNAPSHOT” 设置为 18 pt",
+          "instructions": [
+            "保持第 2 张缩略图被选中。在幻灯片上单击 “FIELD SNAPSHOT” 文本框的边框，使其作为对象被选中；这一步只会显示对象边框，尚未进入文字编辑。",
+            "再次双击该文本框内部以进入文字编辑模式，然后用 `Ctrl+A` 仅选中此文本框中的 “FIELD SNAPSHOT” 字符。不要在幻灯片空白处使用 `Ctrl+A`，否则会选中整页对象。",
+            "在格式工具栏的 `Font Size` 框中选中原数值，输入 `18 pt` 并按 `Enter`。随后单击文本框外的幻灯片空白处，退出文字编辑并查看结果。",
+            "若该标签已经显示为 18 pt、文字仍为 “FIELD SNAPSHOT” 且仍是原来的 teal 颜色，则无需再调整；如果字号未改变，重新进入该文本框的文字编辑模式，确认高亮的是文本字符而不是对象边框，再在 `Font Size` 中输入 `18 pt`。"
+          ],
+          "skill_ids": [
+            "a434992a-89df-4577-925c-0c58b747f0f4.skill-02"
+          ],
+          "efficiency_tip": "直接在 `Font Size` 中输入精确值，比反复使用增大/减小字号按钮更快，也不会误设为相邻字号。",
+          "visible_success_signal": "“FIELD SNAPSHOT” 的措辞和 teal 颜色不变，但视觉上比原来更大；重新选中文本时，`Font Size` 显示 `18 pt`。"
+        },
+        {
+          "step_number": 2,
+          "title": "同时将三个指标说明设置为 22 pt",
+          "instructions": [
+            "先单击 “Nesting sites mapped” 文本框的边框，确认选中的是整个说明文本对象而非卡片形状或大号指标数值。按住 `Shift`，依次单击 “Late-season blooms” 和 “Volunteer pairs” 各自文本框的边框。三者都应显示选择边框；不要把任何 metric card 或 metric value 加入选择。",
+            "在三个文本框对象同时选中的状态下，使用工具栏的 `Font Size`，替换数值为 `22 pt`，然后按 `Enter`。这会对这三个独立文本框的全部文字应用相同字号。",
+            "单击幻灯片空白处取消多选，逐一目视检查三个卡片说明。若其中某个说明因难以精确多选而没有变为 22 pt，双击该说明文字进入文字编辑，用 `Ctrl+A` 选中该文本框内部文字，在 `Font Size` 输入 `22 pt` 并按 `Enter`；仅修复未正确设置的说明。",
+            "若三个说明已同为 22 pt、对应的大号数值仍保持原大小，则无需进一步调整；如果大号数值也意外改变，立即选择该数值所在的独立文本框，恢复其原有字号，而不要修改说明文字或卡片的位置。"
+          ],
+          "skill_ids": [
+            "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-02"
+          ],
+          "efficiency_tip": "通过 `Shift` 选择三个文本框边框后只设置一次 `Font Size`，可避免对三个相同格式对象重复操作；选中边框与双击进入文字编辑是不同状态。",
+          "visible_success_signal": "“Nesting sites mapped”、“Late-season blooms” 和 “Volunteer pairs” 三条说明显示为一致且更大的 22 pt；三个大号指标数值、卡片颜色及位置均未改变。"
+        },
+        {
+          "step_number": 3,
+          "title": "把蜜蜂与野花图像的高度精确设为 6.5 cm",
+          "instructions": [
+            "单击蜜蜂与野花插图一次，选择图像对象并显示其矩形边框和控制点；不要双击图像，也不要进入任何文字编辑状态。",
+            "选择 `Format` > `Position and Size...` 打开 `Position and Size` 对话框。找到 `Height` 字段；如有 `Keep ratio` 选项，检查它已启用，以便只改高度时保持原始纵横比。",
+            "选中 `Height` 的完整当前值，输入 `6.5 cm`，然后按 `Enter` 或确认对话框中的 `OK` 以应用。不要更改 `Width`，不要使用裁剪控制，也不要替换图像。",
+            "若图像高度已显示为 `6.5 cm` 且图像比例自然、没有被拉伸，则无需再调整；如果图像看起来变形或 `Keep ratio` 未启用，启用 `Keep ratio` 后再次在 `Height` 输入 `6.5 cm` 并确认。"
+          ],
+          "skill_ids": [
+            "7ae48c60-f143-4119-b659-15b8f485eb9a.skill-01"
+          ],
+          "efficiency_tip": "使用 `Position and Size...` 的 `Height` 字段输入带单位的精确值，避免拖动控制点造成近似尺寸或意外改变宽度。",
+          "visible_success_signal": "选中插图时可在 `Position and Size` 中读到 `Height` 为 `6.5 cm`；图像仍保持原有蜜蜂与野花内容和正常比例。"
+        },
+        {
+          "step_number": 4,
+          "title": "将已缩放插图拖到右上方开放区域",
+          "instructions": [
+            "保持插图作为对象被选中。将指针放在图像内部、远离边缘和八个控制点的位置，按住鼠标拖动到第 2 张幻灯片右上方的空白区域后释放。目标是位于摘要文字右侧、指标卡行上方。",
+            "拖放后检查图像不遮挡 “FIELD SNAPSHOT”、标题、摘要文字，以及任何指标卡、指标数值或说明文字。图像应完全处于上半区域，并与下方卡片行留出可见间隔。",
+            "可接受的结果是插图清楚地处于右上空白区、摘要文字右侧且卡片行上方，轻微横向或纵向位置差不需要调整。若图像仍在摘要文字下方、覆盖文字/卡片，或其下边缘进入卡片行，重新从图像内部拖到更靠右或更靠上的空白处；不要拖动控制点。",
+            "若拖动时尺寸意外变化，撤销该次操作或重新按第 3 步将 `Height` 设回 `6.5 cm`，再从图像内部进行移动。"
+          ],
+          "skill_ids": [
+            "ed43c15f-00cb-4054-9c95-62c880865d68.skill-02"
+          ],
+          "efficiency_tip": "拖动图像内部而非选择边框或控制点，可仅改变位置，不会触发缩放或裁剪。",
+          "visible_success_signal": "蜜蜂与野花插图位于第 2 张的开放右上区域，明显在指标卡行上方、摘要文字右侧，且没有覆盖任何文本或卡片。"
+        },
+        {
+          "step_number": 5,
+          "title": "在第 2 张完成局部复核并保存",
+          "instructions": [
+            "单击幻灯片空白处取消所有对象选择，以无边框状态检查最终版面。确认 “FIELD SNAPSHOT” 是 18 pt，三个说明均为 22 pt，文字内容和颜色均未改动。",
+            "再次单击插图的边框并通过 `Format` > `Position and Size...` 复核 `Height` 为 `6.5 cm`；确认后关闭对话框并取消选择。",
+            "使用 `Ctrl+S` 保存演示文稿。"
+          ],
+          "skill_ids": [],
+          "efficiency_tip": "在无选择边框的状态下复核，最容易发现图像是否压住文字或卡片；仅在需要读精确高度时再选中图像。",
+          "visible_success_signal": "第 2 张呈现整洁的右上插图与下方三张指标卡布局，且保存操作完成后没有出现未保存修改提示。"
+        }
+      ],
+      "final_verification": [
+        "检查左侧缩略图顺序仍为原来的第 1、2、3 张；第 2 张仍是数据概览页，没有新增、删除或重排幻灯片。",
+        "在第 2 张确认仅发生以下编辑：`FIELD SNAPSHOT` 为 18 pt；“Nesting sites mapped”、“Late-season blooms” 和 “Volunteer pairs” 均为 22 pt；原有蜜蜂与野花图像为 6.5 cm 高且在右上空白区。",
+        "确认第 2 张的标题、摘要文字、三个指标数值、三张 metric card、全部文字措辞、颜色和字体名称均保持不变；没有其他对象被移动。",
+        "单击第 1 张和第 3 张缩略图进行目视检查：两张幻灯片的标题、图像、形状和文本均与编辑前一致。最后可返回第 2 张，确认最终展示页仍符合版面要求。"
+      ]
+    },
+    "generation": {
+      "request_id": "544367fa-9b1b-4a18-8557-ae7ea7e8ee87",
+      "prompt_sha256": "85effc1022cb93e29ebd11250eb1273768b716df703754c118bb6a9ac72c446d",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 4077,
+      "output_tokens": 2682,
+      "estimated_cost_usd": 0.040338
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-impress-full-r01-003",
+      "app": "libreoffice_impress",
+      "artifact_type": "pptx",
+      "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-003/initial_artifact.pptx",
+      "artifact_sha256": "1af037728afb02a51eb0a8b278761ea6486b884051104b3c415e0bb9eba7035a",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-003/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-003/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.pptx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-impress-full-r01-003",
+      "task_config_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/task_configs/reference-task-impress-full-r01-003.json",
+      "artifact_sha256": "1af037728afb02a51eb0a8b278761ea6486b884051104b3c415e0bb9eba7035a",
+      "blueprint_request_id": "eeb8be3c-5fc9-4646-a51e-45eb654c932f"
+    },
+    "packet_path": "task_config.json"
+  }
+}

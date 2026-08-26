@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "pptx",
+  "opens_as_zip_package": true,
+  "libreoffice_render_succeeded": true,
+  "slide_count": 2,
+  "semantic_object_count": 19,
+  "geometric_overlap_warnings": [
+    {
+      "slide_number": 1,
+      "objects": [
+        "cover_location_badge",
+        "cover_location_label"
+      ],
+      "overlap_area": 0.63
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "checklist_heading_band",
+        "checklist_slide_heading"
+      ],
+      "overlap_area": 3.726
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "checklist_intro_panel",
+        "checklist_intro_label"
+      ],
+      "overlap_area": 1.705
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "readiness_list_panel",
+        "readiness_list_text"
+      ],
+      "overlap_area": 10.03
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "battery_reminder_panel",
+        "battery_reminder_box"
+      ],
+      "overlap_area": 1.6128
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "route_note_panel",
+        "route_note"
+      ],
+      "overlap_area": 2.808
+    }
+  ],
+  "placeholder_matches": [],
+  "media_part_count": 1,
+  "notes_part_count": 6,
+  "slides": [
+    {
+      "slide_number": 1,
+      "text": [
+        "Dawn Marsh Survey",
+        "Early field briefing · 14 May · Estuary team",
+        "NORTH BASIN MARSH"
+      ],
+      "shape_count": 5,
+      "picture_count": 0,
+      "graphic_frame_count": 0
+    },
+    {
+      "slide_number": 2,
+      "text": [
+        "Departure readiness",
+        "Verify before leaving the staging point",
+        "Calibrate water meter",
+        "Pack sample envelopes",
+        "Confirm trail access",
+        "Launch window: 08:30",
+        "Carry spare batteries",
+        "Route note",
+        "Use boardwalk entrance B"
+      ],
+      "shape_count": 14,
+      "picture_count": 0,
+      "graphic_frame_count": 0
+    }
+  ],
+  "preview_files": [
+    "slide-01.png",
+    "slide-02.png"
+  ],
+  "contact_sheet": "contact-sheet.png",
+  "visual_review_required": true
+}

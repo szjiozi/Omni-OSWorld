@@ -1,0 +1,97 @@
+{
+  "id": "reference-task-impress-full-r01-002",
+  "snapshot": "libreoffice_impress",
+  "instruction": "Prepare the three-slide “Neighborhood Night Market” briefing for a council preview. Give the opening slide a Midnight Blue background and right-align its headline, “After-Dark Market Plan,” at 42 pt. Set the closing slide background to Pale Sage so it reads as a distinct action slide. Keep the middle slide unchanged; its 24 pt schedule text is included as a readable size reference for the deck’s existing body style.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-002/initial_artifact.pptx",
+            "path": "/home/user/Desktop/night_market_briefing.pptx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/night_market_briefing.pptx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_impress"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-impress-full-r01-002",
+    "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-002/initial_artifact.pptx",
+    "artifact_sha256": "140300c655f2ad8a68c7320979b924a68ef53b8d9e0b8e02b6be7394721afb95",
+    "guest_artifact_path": "/home/user/Desktop/night_market_briefing.pptx",
+    "required_skill_ids": [
+      "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-01",
+      "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01",
+      "0a211154-fda0-48d0-9274-eaac4ce5486d.skill-01",
+      "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01"
+    ],
+    "operator_guide": {
+      "recommended_demonstration": [
+        {
+          "skill_id": "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-01",
+          "operation_intent": "Apply the Midnight Blue background to the opening slide.",
+          "visible_success_signal": "Slide 1's full canvas changes from Ivory to Midnight Blue while its objects remain in place.",
+          "efficiency_tip": "Select slide 1 before opening the background color control so the opening canvas is the target."
+        },
+        {
+          "skill_id": "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01",
+          "operation_intent": "Change the opening headline’s text size from 32 pt to 42 pt.",
+          "visible_success_signal": "“After-Dark Market Plan” is visibly larger, with the Font Size control reporting 42 pt for the formatted headline.",
+          "efficiency_tip": "Enter text-editing mode in the headline and type 42 directly into the Font Size box after selecting its paragraph."
+        },
+        {
+          "skill_id": "0a211154-fda0-48d0-9274-eaac4ce5486d.skill-01",
+          "operation_intent": "Apply the Pale Sage background to the closing action slide independently of the opening slide.",
+          "visible_success_signal": "Slide 3's entire canvas changes to Pale Sage, while slides 1 and 2 retain their separate backgrounds.",
+          "efficiency_tip": "Keep the slide background controls available, select slide 3 in the Slides pane, then choose Pale Sage."
+        },
+        {
+          "skill_id": "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01",
+          "operation_intent": "Right-align the opening headline paragraph.",
+          "visible_success_signal": "The headline’s rightmost characters align to the right edge of its text box on slide 1.",
+          "efficiency_tip": "With the cursor anywhere in the single headline paragraph, use Right Align; selecting every character is unnecessary."
+        }
+      ],
+      "allowed_variation": "Equivalent static Impress controls may be used, provided slide 1 ends Midnight Blue with its 42 pt headline right aligned, slide 3 ends Pale Sage, and all non-target content remains unchanged.",
+      "recording_start_state": "Open the supplied three-slide deck in normal editing view with slide 1 selected; all backgrounds are Ivory and the opening headline is left aligned at 32 pt.",
+      "recording_end_state": "Slide 1 has a Midnight Blue background and a right-aligned 42 pt opening headline; slide 3 has a Pale Sage background; slide 2 remains unchanged."
+    },
+    "expected_incidental_operations": [
+      {
+        "operation": "Select slide 1 and slide 3 in the Slides pane before applying their respective backgrounds.",
+        "reason": "Each background edit must apply to its intended individual slide.",
+        "category": "task_specific"
+      },
+      {
+        "operation": "Enter text-editing mode in the opening headline before changing paragraph alignment and font size.",
+        "reason": "The requested text formatting applies to the headline paragraph rather than the text box frame.",
+        "category": "substantive_prerequisite"
+      }
+    ],
+    "ready_state_checks": [
+      "Confirm the presentation is open in LibreOffice Impress in normal editing view.",
+      "Confirm the Slides pane shows exactly three slides.",
+      "Confirm slide 1 is selected and visible as the initial slide.",
+      "Confirm slide 1 has an Ivory background and the “After-Dark Market Plan” headline is left aligned at 32 pt.",
+      "Confirm slide 2 remains Ivory and displays its schedule text.",
+      "Confirm slide 3 remains Ivory before any edits."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

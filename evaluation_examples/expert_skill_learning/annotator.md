@@ -17,7 +17,14 @@
 1. 用临时密码登录并由本人设置新密码；项目不开放自助注册；
 2. 在 `Your tasks` 中展开 `Task instructions (TASK.md)`；它是网页上唯一的任务说明来源，内容
    直接来自当前发布批次对应 review packet 的 `TASK.md`，不再同时拼接旧 instruction、quick
-   guide 或 skill list；
+   guide 或 skill list。一个账号分配多个任务时，页面一次只显示一个任务，使用
+   `Previous task` / `Next task` 左右切换，并在顶部显示当前位置；
+   - 在任务下方填写 `Review decision`。decision 只能是 approved、revision requested 或
+     rejected；reason codes 使用复选框，revision instructions 每行一条英文要求，reviewer ID
+     自动使用当前登录用户名；
+   - `Save review.json` 会把标准六字段 review 按 catalog version 和 task ID 持久化到 DynamoDB，
+     页面刷新或重新登录后仍会恢复；`Download review.json` 和 TASK.md 内的 review.json 链接都
+     下载当前在线版本，而不是 immutable snapshot 中的空白模板；
 3. 点击 `Launch workspace`。状态为 `provisioning` 时等待，不重复点击；变为 `ready` 后 noVNC
    会嵌入同一网页；
 4. 在 noVNC 中确认初始 workbook 正确，此时尚未录制；
@@ -50,6 +57,18 @@ IP、5000 或 5910；也不需要修改本机 proxy。湾区 annotator 第一轮
 根据实测延迟再决定是否增加美国 worker pool。
 
 以下 terminal/AWS 流程保留为管理员诊断与单人 fallback，普通协作者无需执行。
+
+管理员在需要运行本地 collector 前，将全部在线 review 安全同步回本地 packet：
+
+```bash
+PYTHONPATH=. conda run -n osworld-aws-dev python \
+  scripts/python/sync_annotation_portal_reviews.py \
+  --profile osworld-dev \
+  --region ap-east-1
+```
+
+默认只覆盖空白 review；若本地已有不同的非空审核，脚本会 fail closed。人工确认以 Portal
+版本为准后，显式加 `--overwrite`。
 
 ## 1. 标注前准备
 

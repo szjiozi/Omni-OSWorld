@@ -1,0 +1,449 @@
+{
+  "presentation_title": "Harbor Pollinator Day",
+  "slide_size": "wide",
+  "theme": {
+    "primary_color": "0B3D4A",
+    "secondary_color": "E8F1EE",
+    "accent_color": "007C83",
+    "background_color": "FFFDF7",
+    "title_font": "Aptos Display",
+    "body_font": "Aptos"
+  },
+  "slides": [
+    {
+      "slide_number": 1,
+      "purpose": "Introduce the volunteer event and establish a botanical harbor theme.",
+      "background_color": "FFFDF7",
+      "objects": [
+        {
+          "semantic_id": "cover_harbor_band",
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "w": 13.333,
+          "h": 1.15,
+          "content": {
+            "text": null,
+            "shape_kind": "rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "0B3D4A",
+            "line_color": "0B3D4A",
+            "text_color": "FFFFFF",
+            "font_face": "Aptos",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "cover_event_title",
+          "type": "text",
+          "x": 0.8,
+          "y": 1.65,
+          "w": 6.9,
+          "h": 1.05,
+          "content": {
+            "text": "Harbor Pollinator Day",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFDF7",
+            "line_color": "FFFDF7",
+            "text_color": "0B3D4A",
+            "font_face": "Aptos Display",
+            "font_size": 34,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "cover_event_subtitle",
+          "type": "text",
+          "x": 0.84,
+          "y": 2.85,
+          "w": 5.9,
+          "h": 0.65,
+          "content": {
+            "text": "Saturday, May 18  •  Pier Garden, Harborfront",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFDF7",
+            "line_color": "FFFDF7",
+            "text_color": "36454F",
+            "font_face": "Aptos",
+            "font_size": 17,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "cover_botanical_illustration",
+          "type": "image",
+          "x": 7.35,
+          "y": 1.35,
+          "w": 5.15,
+          "h": 5.35,
+          "content": {
+            "text": null,
+            "shape_kind": null,
+            "image_kind": "pollinator",
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFFFF",
+            "line_color": "007C83",
+            "text_color": "0B3D4A",
+            "font_face": "Aptos",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "cover_partner_mark",
+          "type": "shape",
+          "x": 0.84,
+          "y": 5.65,
+          "w": 0.78,
+          "h": 0.78,
+          "content": {
+            "text": null,
+            "shape_kind": "ellipse",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "007C83",
+            "line_color": "007C83",
+            "text_color": "FFFFFF",
+            "font_face": "Aptos",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        }
+      ]
+    },
+    {
+      "slide_number": 2,
+      "purpose": "Present the volunteer schedule and a closing registration callout.",
+      "background_color": "FFFDF7",
+      "objects": [
+        {
+          "semantic_id": "schedule_section_title",
+          "type": "text",
+          "x": 0.7,
+          "y": 0.48,
+          "w": 7.8,
+          "h": 0.62,
+          "content": {
+            "text": "Volunteer schedule",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFDF7",
+            "line_color": "FFFDF7",
+            "text_color": "0B3D4A",
+            "font_face": "Aptos Display",
+            "font_size": 25,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "schedule_intro_caption",
+          "type": "text",
+          "x": 0.72,
+          "y": 1.15,
+          "w": 7.2,
+          "h": 0.38,
+          "content": {
+            "text": "A simple morning rhythm for restoring shoreline habitat.",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFDF7",
+            "line_color": "FFFDF7",
+            "text_color": "36454F",
+            "font_face": "Aptos",
+            "font_size": 14,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "schedule_card_arrival",
+          "type": "shape",
+          "x": 0.7,
+          "y": 3,
+          "w": 3.85,
+          "h": 2.15,
+          "content": {
+            "text": null,
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "E8F1EE",
+            "line_color": "B8D5CF",
+            "text_color": "0B3D4A",
+            "font_face": "Aptos",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "schedule_card_planting",
+          "type": "shape",
+          "x": 4.75,
+          "y": 3,
+          "w": 3.85,
+          "h": 2.15,
+          "content": {
+            "text": null,
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "E8F1EE",
+            "line_color": "B8D5CF",
+            "text_color": "0B3D4A",
+            "font_face": "Aptos",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "schedule_card_cleanup",
+          "type": "shape",
+          "x": 8.8,
+          "y": 3,
+          "w": 3.85,
+          "h": 2.15,
+          "content": {
+            "text": null,
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "E8F1EE",
+            "line_color": "B8D5CF",
+            "text_color": "0B3D4A",
+            "font_face": "Aptos",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "schedule_arrival_text",
+          "type": "text",
+          "x": 1.02,
+          "y": 3.53,
+          "w": 3.15,
+          "h": 0.95,
+          "content": {
+            "text": "9:00\nCheck in at Pier Garden",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "E8F1EE",
+            "line_color": "E8F1EE",
+            "text_color": "0B3D4A",
+            "font_face": "Aptos",
+            "font_size": 17,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "schedule_planting_text",
+          "type": "text",
+          "x": 5.07,
+          "y": 3.53,
+          "w": 3.15,
+          "h": 0.95,
+          "content": {
+            "text": "9:30\nPlant shoreline natives",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "E8F1EE",
+            "line_color": "E8F1EE",
+            "text_color": "0B3D4A",
+            "font_face": "Aptos",
+            "font_size": 17,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "schedule_cleanup_text",
+          "type": "text",
+          "x": 9.12,
+          "y": 3.53,
+          "w": 3.15,
+          "h": 0.95,
+          "content": {
+            "text": "11:30\nReturn tools and sort compost",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "E8F1EE",
+            "line_color": "E8F1EE",
+            "text_color": "0B3D4A",
+            "font_face": "Aptos",
+            "font_size": 17,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "rsvp_callout_panel",
+          "type": "shape",
+          "x": 0.7,
+          "y": 1.72,
+          "w": 4.35,
+          "h": 0.9,
+          "content": {
+            "text": null,
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "E8F1EE",
+            "line_color": "B8D5CF",
+            "text_color": "36454F",
+            "font_face": "Aptos",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "rsvp_closing_callout",
+          "type": "text",
+          "x": 0.92,
+          "y": 1.86,
+          "w": 3.9,
+          "h": 0.62,
+          "content": {
+            "text": "Bring water, sun protection, and gloves.\nRegister by Friday to reserve a planting kit.",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "E8F1EE",
+            "line_color": "E8F1EE",
+            "text_color": "36454F",
+            "font_face": "Aptos",
+            "font_size": 13,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        }
+      ]
+    }
+  ],
+  "manual_setup_steps": []
+}

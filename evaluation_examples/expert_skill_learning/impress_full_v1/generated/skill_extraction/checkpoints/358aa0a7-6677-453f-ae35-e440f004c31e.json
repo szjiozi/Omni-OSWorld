@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+  "app": "libreoffice_impress",
+  "single_action_count": 5,
+  "prompt_sha256": "03402615ad72f5807bcce93d3cf7aff6a0f51568f080f795cf6dbcd85e5454f6",
+  "request_id": "7b233013-0897-42e7-84df-aa19aa5e5d82",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 782,
+    "cached_input_tokens": 0,
+    "output_tokens": 220,
+    "estimated_cost_usd": 0.004204
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply a font to all slide text through Outline view",
+        "procedure": [
+          "Switch to the Outline pane or Outline view so the presentation text can be selected as outline content rather than selecting text boxes one by one.",
+          "Press Ctrl+A while the Outline has focus to select all outline text across the presentation.",
+          "Use the Font Name drop-down on the formatting toolbar, type a desired installed font family, and press Enter to apply it to the selected text."
+        ],
+        "efficiency_tip": "Keep focus in the Outline before pressing Ctrl+A; otherwise the shortcut may select an individual object or other content instead of all presentation text.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ]
+  }
+}

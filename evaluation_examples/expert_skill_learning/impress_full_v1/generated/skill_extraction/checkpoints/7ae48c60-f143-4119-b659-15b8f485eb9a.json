@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+  "app": "libreoffice_impress",
+  "single_action_count": 17,
+  "prompt_sha256": "376e3f4718fe6db051b1e507fcb25fa07a9643ca1af353d3204ce094c1643947",
+  "request_id": "ec3f9bb3-b600-4ce5-97ef-9545d5b705cd",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 893,
+    "cached_input_tokens": 0,
+    "output_tokens": 176,
+    "estimated_cost_usd": 0.003898
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set an image's exact height",
+        "procedure": [
+          "Select the image as an object on the slide; do not enter text-editing mode.",
+          "Open the image's Position and Size controls if the Height field is not already visible, for example through the Properties sidebar's Position and Size section.",
+          "Select the entire current value in the Height field, type a measurement with a unit such as `20 cm`, and press Enter to apply the new height."
+        ],
+        "efficiency_tip": "Keep the Properties sidebar open while resizing several images; after selecting each image, replace the Height value directly rather than reopening the full formatting dialog.",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          8,
+          9,
+          10,
+          11,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    ]
+  }
+}

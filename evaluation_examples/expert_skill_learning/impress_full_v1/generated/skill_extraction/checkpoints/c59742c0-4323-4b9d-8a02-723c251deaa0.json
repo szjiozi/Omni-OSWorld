@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+  "app": "libreoffice_impress",
+  "single_action_count": 5,
+  "prompt_sha256": "b53f6580ab1bcb6b98af5f67e22226ff3bc18e3fe3a7b02863c9bd902e13efbc",
+  "request_id": "ddf05b28-23d5-4f8c-a3a6-6e46451c9224",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 786,
+    "cached_input_tokens": 0,
+    "output_tokens": 187,
+    "estimated_cost_usd": 0.003816
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Insert an audio file onto a slide",
+        "procedure": [
+          "In LibreOffice Impress, open the target slide, then choose Insert > Audio and Video.",
+          "In the file picker, navigate to the folder containing the audio file, select the desired audio file, and confirm (for example, press Enter).",
+          "Impress inserts an audio object on the slide; it can then be selected and repositioned or configured as needed."
+        ],
+        "efficiency_tip": "Use Insert > Audio and Video directly rather than manually creating a media placeholder; selecting the file and confirming in the same dialog completes the insertion.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ]
+  }
+}

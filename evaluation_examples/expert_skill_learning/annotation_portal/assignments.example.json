@@ -3,19 +3,43 @@
   "assignments": [
     {
       "username": "annotator-hk-1",
-      "task_ids": ["reference-task-r01-001"]
+      "task_ids": [
+        "reference-task-calc-full-r01-001",
+        "reference-task-calc-full-r01-005",
+        "reference-task-calc-full-r01-009",
+        "reference-task-calc-full-r01-013",
+        "reference-task-calc-full-r01-017"
+      ]
     },
     {
       "username": "annotator-hk-2",
-      "task_ids": ["reference-task-r01-002"]
+      "task_ids": [
+        "reference-task-calc-full-r01-002",
+        "reference-task-calc-full-r01-006",
+        "reference-task-calc-full-r01-010",
+        "reference-task-calc-full-r01-014",
+        "reference-task-calc-full-r01-018"
+      ]
     },
     {
       "username": "annotator-hk-3",
-      "task_ids": ["reference-task-r01-003"]
+      "task_ids": [
+        "reference-task-calc-full-r01-003",
+        "reference-task-calc-full-r01-007",
+        "reference-task-calc-full-r01-011",
+        "reference-task-calc-full-r01-015",
+        "reference-task-calc-full-r01-019"
+      ]
     },
     {
       "username": "annotator-us-1",
-      "task_ids": ["reference-task-r01-004"]
+      "task_ids": [
+        "reference-task-calc-full-r01-004",
+        "reference-task-calc-full-r01-008",
+        "reference-task-calc-full-r01-012",
+        "reference-task-calc-full-r01-016",
+        "reference-task-calc-full-r01-020"
+      ]
     }
   ]
 }

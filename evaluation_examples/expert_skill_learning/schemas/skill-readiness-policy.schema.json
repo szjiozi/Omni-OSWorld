@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://osworld.local/schemas/skill-readiness-policy.schema.json",
+  "title": "Reference-task skill generation readiness policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "app", "default_status", "overrides"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "app": {"type": "string", "minLength": 1},
+    "default_status": {
+      "enum": ["pilot_static", "phase_2", "phase_3", "waiver_candidate"]
+    },
+    "overrides": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["skill_id", "status", "reason"],
+        "properties": {
+          "skill_id": {"type": "string", "minLength": 1},
+          "status": {
+            "enum": ["pilot_static", "phase_2", "phase_3", "waiver_candidate"]
+          },
+          "reason": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

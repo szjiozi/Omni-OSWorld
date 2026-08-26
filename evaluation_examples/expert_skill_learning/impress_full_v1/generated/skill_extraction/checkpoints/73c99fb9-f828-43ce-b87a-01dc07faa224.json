@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "eda25283b89ef8c0960edb58d6e659444505a420cc1006b9534a07db2ac595ba",
+  "request_id": "849449c7-90da-497f-a2d4-f70e6d89a378",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 740,
+    "cached_input_tokens": 0,
+    "output_tokens": 70,
+    "estimated_cost_usd": 0.00232
+  },
+  "response": {
+    "decision": "no_reusable_skill",
+    "decision_reason": "The steps only select a slide and text placeholder, then enter task-specific literal text; they do not demonstrate an independently reusable Impress operation technique.",
+    "skills": []
+  }
+}

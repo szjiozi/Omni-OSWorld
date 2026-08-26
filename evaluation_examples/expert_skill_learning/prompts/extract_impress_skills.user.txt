@@ -1,0 +1,7 @@
+Task instruction:
+{{TASK_INSTRUCTION}}
+
+Indexed single steps:
+{{SINGLE_STEPS}}
+
+Extract reusable LibreOffice Impress operation skills. Keep each skill independently demonstrable, assign each source action index at most once, and do not reproduce the full source task as one skill.

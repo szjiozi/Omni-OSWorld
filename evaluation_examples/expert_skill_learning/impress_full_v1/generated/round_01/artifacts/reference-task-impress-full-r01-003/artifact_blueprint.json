@@ -1,0 +1,680 @@
+{
+  "presentation_title": "Riverside Pollinator Walk",
+  "slide_size": "wide",
+  "theme": {
+    "primary_color": "D8EFE8",
+    "secondary_color": "1E5B55",
+    "accent_color": "E49A3A",
+    "background_color": "FAF8F1",
+    "title_font": "Liberation Sans",
+    "body_font": "Liberation Sans"
+  },
+  "slides": [
+    {
+      "slide_number": 1,
+      "purpose": "Introduce the volunteer field-briefing deck.",
+      "background_color": "FAF8F1",
+      "objects": [
+        {
+          "semantic_id": "cover_background_band",
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "w": 13.333,
+          "h": 3.15,
+          "content": {
+            "text": null,
+            "shape_kind": "rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "1E5B55",
+            "line_color": "1E5B55",
+            "text_color": "FAF8F1",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "top"
+          }
+        },
+        {
+          "semantic_id": "cover_main_title",
+          "type": "text",
+          "x": 0.8,
+          "y": 0.92,
+          "w": 7.8,
+          "h": 0.78,
+          "content": {
+            "text": "Riverside Pollinator Walk",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FAF8F1",
+            "line_color": "FAF8F1",
+            "text_color": "FAF8F1",
+            "font_face": "Liberation Sans",
+            "font_size": 32,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "cover_subtitle",
+          "type": "text",
+          "x": 0.83,
+          "y": 1.88,
+          "w": 6.6,
+          "h": 0.42,
+          "content": {
+            "text": "Volunteer field brief • Riverside greenway • September 14",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FAF8F1",
+            "line_color": "FAF8F1",
+            "text_color": "D8EFE8",
+            "font_face": "Liberation Sans",
+            "font_size": 16,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "cover_botanical_motif",
+          "type": "image",
+          "x": 8.55,
+          "y": 2.52,
+          "w": 3.65,
+          "h": 3.65,
+          "content": {
+            "text": null,
+            "shape_kind": null,
+            "image_kind": "botanical",
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FAF8F1",
+            "line_color": "FAF8F1",
+            "text_color": "1E5B55",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "top"
+          }
+        }
+      ]
+    },
+    {
+      "slide_number": 2,
+      "purpose": "Summarize the survey focus and three field metrics for volunteer check-in.",
+      "background_color": "FAF8F1",
+      "objects": [
+        {
+          "semantic_id": "snapshot_section_label",
+          "type": "text",
+          "x": 0.8,
+          "y": 0.66,
+          "w": 2.4,
+          "h": 0.32,
+          "content": {
+            "text": "FIELD SNAPSHOT",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FAF8F1",
+            "line_color": "FAF8F1",
+            "text_color": "1E5B55",
+            "font_face": "Liberation Sans",
+            "font_size": 14,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "snapshot_heading",
+          "type": "text",
+          "x": 0.8,
+          "y": 1.08,
+          "w": 6.3,
+          "h": 0.68,
+          "content": {
+            "text": "A focused walk for late-season habitat clues",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FAF8F1",
+            "line_color": "FAF8F1",
+            "text_color": "1E5B55",
+            "font_face": "Liberation Sans",
+            "font_size": 27,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "snapshot_summary_copy",
+          "type": "text",
+          "x": 0.8,
+          "y": 2.05,
+          "w": 3.9,
+          "h": 1.02,
+          "content": {
+            "text": "Pair up along the river path to note nesting shelter,\nnectar plants, and repeat pollinator activity.",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FAF8F1",
+            "line_color": "FAF8F1",
+            "text_color": "1E5B55",
+            "font_face": "Liberation Sans",
+            "font_size": 17,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "top"
+          }
+        },
+        {
+          "semantic_id": "pollinator_illustration",
+          "type": "image",
+          "x": 3.95,
+          "y": 3.48,
+          "w": 2.05,
+          "h": 1.5748,
+          "content": {
+            "text": null,
+            "shape_kind": null,
+            "image_kind": "pollinator",
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FAF8F1",
+            "line_color": "FAF8F1",
+            "text_color": "1E5B55",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "top"
+          }
+        },
+        {
+          "semantic_id": "metric_card_nesting",
+          "type": "shape",
+          "x": 0.8,
+          "y": 5.18,
+          "w": 3.72,
+          "h": 1.45,
+          "content": {
+            "text": null,
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "D8EFE8",
+            "line_color": "D8EFE8",
+            "text_color": "1E5B55",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "top"
+          }
+        },
+        {
+          "semantic_id": "metric_value_nesting",
+          "type": "text",
+          "x": 1.1,
+          "y": 5.45,
+          "w": 1.1,
+          "h": 0.48,
+          "content": {
+            "text": "24",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "D8EFE8",
+            "line_color": "D8EFE8",
+            "text_color": "1E5B55",
+            "font_face": "Liberation Sans",
+            "font_size": 28,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "metric_caption_nesting",
+          "type": "text",
+          "x": 1.1,
+          "y": 5.98,
+          "w": 2.95,
+          "h": 0.44,
+          "content": {
+            "text": "Nesting sites mapped",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "D8EFE8",
+            "line_color": "D8EFE8",
+            "text_color": "1E5B55",
+            "font_face": "Liberation Sans",
+            "font_size": 16,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "metric_card_blooms",
+          "type": "shape",
+          "x": 4.81,
+          "y": 5.18,
+          "w": 3.72,
+          "h": 1.45,
+          "content": {
+            "text": null,
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "D8EFE8",
+            "line_color": "D8EFE8",
+            "text_color": "1E5B55",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "top"
+          }
+        },
+        {
+          "semantic_id": "metric_value_blooms",
+          "type": "text",
+          "x": 5.11,
+          "y": 5.45,
+          "w": 1.1,
+          "h": 0.48,
+          "content": {
+            "text": "17",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "D8EFE8",
+            "line_color": "D8EFE8",
+            "text_color": "1E5B55",
+            "font_face": "Liberation Sans",
+            "font_size": 28,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "metric_caption_blooms",
+          "type": "text",
+          "x": 5.11,
+          "y": 5.98,
+          "w": 2.95,
+          "h": 0.44,
+          "content": {
+            "text": "Late-season blooms",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "D8EFE8",
+            "line_color": "D8EFE8",
+            "text_color": "1E5B55",
+            "font_face": "Liberation Sans",
+            "font_size": 16,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "metric_card_pairs",
+          "type": "shape",
+          "x": 8.82,
+          "y": 5.18,
+          "w": 3.72,
+          "h": 1.45,
+          "content": {
+            "text": null,
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "D8EFE8",
+            "line_color": "D8EFE8",
+            "text_color": "1E5B55",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "top"
+          }
+        },
+        {
+          "semantic_id": "metric_value_pairs",
+          "type": "text",
+          "x": 9.12,
+          "y": 5.45,
+          "w": 1.1,
+          "h": 0.48,
+          "content": {
+            "text": "8",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "D8EFE8",
+            "line_color": "D8EFE8",
+            "text_color": "1E5B55",
+            "font_face": "Liberation Sans",
+            "font_size": 28,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "metric_caption_pairs",
+          "type": "text",
+          "x": 9.12,
+          "y": 5.98,
+          "w": 2.95,
+          "h": 0.44,
+          "content": {
+            "text": "Volunteer pairs",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "D8EFE8",
+            "line_color": "D8EFE8",
+            "text_color": "1E5B55",
+            "font_face": "Liberation Sans",
+            "font_size": 16,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        }
+      ]
+    },
+    {
+      "slide_number": 3,
+      "purpose": "Provide concise observation guidance for the walking route.",
+      "background_color": "FAF8F1",
+      "objects": [
+        {
+          "semantic_id": "guidance_title",
+          "type": "text",
+          "x": 0.8,
+          "y": 0.72,
+          "w": 7.0,
+          "h": 0.58,
+          "content": {
+            "text": "Observe, record, and keep the path welcoming",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FAF8F1",
+            "line_color": "FAF8F1",
+            "text_color": "1E5B55",
+            "font_face": "Liberation Sans",
+            "font_size": 27,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "guidance_route_panel",
+          "type": "shape",
+          "x": 0.8,
+          "y": 1.75,
+          "w": 6.02,
+          "h": 4.75,
+          "content": {
+            "text": null,
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "D8EFE8",
+            "line_color": "D8EFE8",
+            "text_color": "1E5B55",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "top"
+          }
+        },
+        {
+          "semantic_id": "guidance_route_steps",
+          "type": "text",
+          "x": 1.18,
+          "y": 2.15,
+          "w": 5.12,
+          "h": 3.65,
+          "content": {
+            "text": "ROUTE OBSERVATIONS\n\n1. Pause at sunny edge plantings.\n2. Scan stems, bare soil, and old wood.\n3. Count open blooms in a small patch.\n4. Mark repeat visits before moving on.",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "D8EFE8",
+            "line_color": "D8EFE8",
+            "text_color": "1E5B55",
+            "font_face": "Liberation Sans",
+            "font_size": 18,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "top"
+          }
+        },
+        {
+          "semantic_id": "guidance_safety_panel",
+          "type": "shape",
+          "x": 7.18,
+          "y": 1.75,
+          "w": 5.35,
+          "h": 4.75,
+          "content": {
+            "text": null,
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "1E5B55",
+            "line_color": "1E5B55",
+            "text_color": "FAF8F1",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "top"
+          }
+        },
+        {
+          "semantic_id": "guidance_safety_copy",
+          "type": "text",
+          "x": 7.62,
+          "y": 2.22,
+          "w": 4.05,
+          "h": 2.28,
+          "content": {
+            "text": "FIELD REMINDER\n\nStay with your partner, leave flowers in place, and record only what you can observe without disturbing habitat.\n\nUse one shared check-in note per pair.",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "1E5B55",
+            "line_color": "1E5B55",
+            "text_color": "FAF8F1",
+            "font_face": "Liberation Sans",
+            "font_size": 17,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "top"
+          }
+        },
+        {
+          "semantic_id": "guidance_leaf_marker",
+          "type": "image",
+          "x": 10.55,
+          "y": 4.72,
+          "w": 1.35,
+          "h": 1.18,
+          "content": {
+            "text": null,
+            "shape_kind": null,
+            "image_kind": "botanical",
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "1E5B55",
+            "line_color": "1E5B55",
+            "text_color": "FAF8F1",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "top"
+          }
+        }
+      ]
+    }
+  ],
+  "manual_setup_steps": []
+}

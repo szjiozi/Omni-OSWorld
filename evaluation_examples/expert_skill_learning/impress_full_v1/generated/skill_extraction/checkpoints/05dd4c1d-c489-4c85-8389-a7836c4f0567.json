@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+  "app": "libreoffice_impress",
+  "single_action_count": 12,
+  "prompt_sha256": "00b98cdca5fc9a0b13837d72e0ab3bafa09eca2540d047e98fabd0b4f2612199",
+  "request_id": "8bb2a8c2-6fdc-4824-868e-d41eec9c2da2",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 849,
+    "cached_input_tokens": 0,
+    "output_tokens": 184,
+    "estimated_cost_usd": 0.003906
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set paragraph alignment in a text box",
+        "procedure": [
+          "Navigate to the slide containing the text box.",
+          "Click the text in the shape to enter text-editing mode, rather than merely selecting the shape.",
+          "Press Ctrl+A to select the text in that text box.",
+          "Click the desired paragraph alignment control, such as Align Right, Center, or Align Left, in the toolbar or Sidebar Paragraph section.",
+          "For example, choose Center to center all selected text within the text box."
+        ],
+        "efficiency_tip": "After entering text-editing mode, Ctrl+A selects the text in the current text box, allowing one alignment command to format the entire text box without manually dragging over its contents.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    ]
+  }
+}

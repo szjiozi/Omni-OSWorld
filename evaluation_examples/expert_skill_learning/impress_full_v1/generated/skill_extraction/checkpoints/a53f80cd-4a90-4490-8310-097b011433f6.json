@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+  "app": "libreoffice_impress",
+  "single_action_count": 13,
+  "prompt_sha256": "55570b5aa5e6610e26bf8f26faf504b2469cce643a0aa626b4098f8ece7fb9ca",
+  "request_id": "7d7e1be5-3daa-451f-bfd6-3202731b88ee",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 874,
+    "cached_input_tokens": 0,
+    "output_tokens": 773,
+    "estimated_cost_usd": 0.011024
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply a font color to title text on multiple slides",
+        "procedure": [
+          "In the Slides pane, select the slide containing the title.",
+          "Enter text-editing mode for the title and select its text; for example, triple-click the title text when that selects the full title paragraph.",
+          "Use the Font Color control: open its dropdown when a palette choice is needed, then choose the desired color such as black. If the control already shows the desired color, clicking the Font Color icon applies that current color to the selection.",
+          "Repeat on other slides while preserving the same formatting choice."
+        ],
+        "efficiency_tip": "After choosing a color from the dropdown once, the Font Color button usually retains it, so subsequent selected titles can be colored with a single click.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "name": "Bold the currently selected text",
+        "procedure": [
+          "Ensure the target text is still selected in text-editing mode inside its shape or placeholder.",
+          "Click the Bold button on the formatting toolbar, or press Ctrl+B, to toggle bold formatting for the selection.",
+          "Apply the same command to other title selections as needed."
+        ],
+        "efficiency_tip": "Apply bold immediately after another character-formatting change while the text remains selected; this avoids re-entering text-editing mode and selecting the text again.",
+        "action_ids": [
+          4,
+          8
+        ]
+      },
+      {
+        "name": "Marquee-select several slide objects and delete them",
+        "procedure": [
+          "Open the slide containing the objects to remove.",
+          "Start in an empty area just outside the upper-left edge of the target object cluster, then drag a selection rectangle to an opposite corner so that all intended objects are enclosed.",
+          "Press Delete to remove every selected object from the slide."
+        ],
+        "efficiency_tip": "Begin and end the marquee in blank slide space where possible. This reduces the risk of entering text-editing mode or moving an object instead of selecting the group.",
+        "action_ids": [
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    ]
+  }
+}

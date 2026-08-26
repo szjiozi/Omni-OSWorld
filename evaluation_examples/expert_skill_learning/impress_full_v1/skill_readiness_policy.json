@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0",
+  "app": "libreoffice_impress",
+  "default_status": "pilot_static",
+  "overrides": [
+    {
+      "skill_id": "0a211154-fda0-48d0-9274-eaac4ce5486d.skill-02",
+      "status": "phase_2",
+      "reason": "Title-placeholder editing requires native placeholder generation and round-trip QA."
+    },
+    {
+      "skill_id": "0f84bef9-9790-432e-92b7-eece357603fb.skill-01",
+      "status": "waiver_candidate",
+      "reason": "Presenter Console is global application state and is not observable in the final PPTX artifact."
+    },
+    {
+      "skill_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72.skill-01",
+      "status": "phase_3",
+      "reason": "Transition authoring and LibreOffice round-trip evaluation are deferred."
+    },
+    {
+      "skill_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf.skill-01",
+      "status": "waiver_candidate",
+      "reason": "AutoRecovery interval is global application state and is not represented by the final PPTX."
+    },
+    {
+      "skill_id": "358aa0a7-6677-453f-ae35-e440f004c31e.skill-01",
+      "status": "phase_2",
+      "reason": "Outline View editing requires native title/body placeholders that participate in the outline."
+    },
+    {
+      "skill_id": "39be0d19-634d-4475-8768-09c130f5425d.skill-01",
+      "status": "phase_2",
+      "reason": "The placeholder table-grid control requires native content-placeholder generation."
+    },
+    {
+      "skill_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-01",
+      "status": "phase_2",
+      "reason": "Master View editing requires a master-aware artifact and preservation validator."
+    },
+    {
+      "skill_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-02",
+      "status": "phase_2",
+      "reason": "Recent-colors palette history is transient UI state and cannot be seeded by the PPTX alone."
+    },
+    {
+      "skill_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7.skill-01",
+      "status": "waiver_candidate",
+      "reason": "The current annotation contract records one final PPTX and not an additional exported PNG."
+    },
+    {
+      "skill_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-02",
+      "status": "phase_2",
+      "reason": "Speaker notes require notes-aware blueprint generation and QA."
+    },
+    {
+      "skill_id": "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-02",
+      "status": "phase_2",
+      "reason": "Speaker notes require notes-aware blueprint generation and QA."
+    },
+    {
+      "skill_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-02",
+      "status": "phase_2",
+      "reason": "Speaker notes require notes-aware blueprint generation and QA."
+    },
+    {
+      "skill_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-01",
+      "status": "phase_2",
+      "reason": "Slide-number fields need a field-aware builder and validator."
+    },
+    {
+      "skill_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-02",
+      "status": "phase_2",
+      "reason": "Slide-number formatting in Master View needs master-aware QA."
+    },
+    {
+      "skill_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07.skill-01",
+      "status": "phase_2",
+      "reason": "Summary Slide creation requires structure-aware preservation checks."
+    },
+    {
+      "skill_id": "bf4e9888-f10f-47af-8dba-76413038b73c.skill-01",
+      "status": "phase_2",
+      "reason": "Photo Album requires multiple external input images in the annotation setup."
+    },
+    {
+      "skill_id": "c59742c0-4323-4b9d-8a02-723c251deaa0.skill-01",
+      "status": "phase_3",
+      "reason": "Embedded audio requires multi-file setup and media-preservation QA."
+    },
+    {
+      "skill_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-01",
+      "status": "phase_2",
+      "reason": "Image insertion requires an additional external image input in the annotation setup."
+    },
+    {
+      "skill_id": "ce88f674-ab7a-43da-9201-468d38539e4a.skill-01",
+      "status": "phase_2",
+      "reason": "Portrait orientation needs a dedicated layout-aware artifact profile and visual QA."
+    },
+    {
+      "skill_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf.skill-01",
+      "status": "waiver_candidate",
+      "reason": "Slides pane visibility is transient UI state and is not represented by the final PPTX."
+    }
+  ]
+}

@@ -56,3 +56,13 @@ similarity evidence, and the Chinese reference solution guide.
 Do not generate round 2 until every round-1 packet has a review decision. The
 copy-pasteable collect command in each `TASK.md` and in the round index uses the
 full `calc_full_v1` paths and writes `generated/round_01/coverage_state.json`.
+
+## Portal review batch
+
+Round 1 can be published to the shared Annotation Portal without rearranging this
+dataset on disk. The publisher temporarily normalizes `generated/round_01/` and
+`review_packets/round_01/`, then assigns the 20 tasks round-robin to the four fixed
+reviewer accounts. The Portal shows one task per page with previous/next navigation
+and saves the standard `review.json` fields durably in DynamoDB. Before running the
+local collector, use `scripts/python/sync_annotation_portal_reviews.py` to copy the
+online records into the corresponding packet files.

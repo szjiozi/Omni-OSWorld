@@ -18,9 +18,9 @@ from fastapi import (
     WebSocketDisconnect,
     status,
 )
-from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from .auth import (
     IdentityProvider,
@@ -34,6 +34,10 @@ from .service import AnnotationPortalService
 
 
 SESSION_COOKIE = "osworld_annotation_session"
+PASSWORD_POLICY_DETAIL = (
+    "Password must be at least 12 characters and include uppercase, lowercase, "
+    "a number, and a symbol."
+)
 
 
 @dataclass(frozen=True)
@@ -57,6 +61,13 @@ class NewPasswordBody(BaseModel):
 class AssignmentBody(BaseModel):
     username: str
     task_id: str
+
+
+class TaskReviewBody(BaseModel):
+    decision: str = ""
+    reason_codes: list[str] = Field(default_factory=list)
+    revision_instructions: list[str] = Field(default_factory=list)
+    notes: str = ""
 
 
 def create_app(
@@ -125,17 +136,25 @@ def create_app(
     @app.post("/api/auth/new-password")
     def new_password(body: NewPasswordBody, response: Response) -> dict[str, object]:
         try:
-            cognito_session = challenge_manager.consume(
+            cognito_session = challenge_manager.resolve(
                 body.challenge_id, body.username.strip()
             )
             result = identity_provider.complete_new_password(
                 body.username.strip(), body.new_password, cognito_session
             )
         except Exception as exc:
+            error_code = getattr(exc, "response", {}).get("Error", {}).get("Code")
+            detail = (
+                PASSWORD_POLICY_DETAIL
+                if error_code
+                in {"InvalidPasswordException", "PasswordHistoryPolicyViolationException"}
+                else "Password change failed; restart sign-in"
+            )
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Password change failed; restart sign-in",
+                detail=detail,
             ) from exc
+        challenge_manager.discard(body.challenge_id)
         set_session_cookie(response, result.identity)
         return {"status": "authenticated", "user": _identity_dict(result.identity)}
 
@@ -172,6 +191,47 @@ def create_app(
             raise HTTPException(status_code=status.HTTP_403_FORBIDDEN) from exc
         except (KeyError, FileNotFoundError) as exc:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND) from exc
+
+    @app.get("/api/tasks/{task_id}/review.json")
+    def task_review(
+        task_id: str,
+        identity: Annotated[UserIdentity, Depends(current_identity)],
+        download: bool = False,
+    ) -> JSONResponse:
+        try:
+            review = service.task_review_for(identity, task_id)
+        except PermissionError as exc:
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN) from exc
+        except KeyError as exc:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND) from exc
+        headers = (
+            {"Content-Disposition": 'attachment; filename="review.json"'}
+            if download
+            else None
+        )
+        return JSONResponse(review, headers=headers)
+
+    @app.put("/api/tasks/{task_id}/review.json")
+    def save_task_review(
+        task_id: str,
+        body: TaskReviewBody,
+        identity: Annotated[UserIdentity, Depends(current_identity)],
+    ) -> dict[str, object]:
+        try:
+            return service.save_task_review(
+                identity,
+                task_id,
+                decision=body.decision,
+                reason_codes=body.reason_codes,
+                revision_instructions=body.revision_instructions,
+                notes=body.notes,
+            )
+        except PermissionError as exc:
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN) from exc
+        except KeyError as exc:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND) from exc
+        except ValueError as exc:
+            raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=str(exc)) from exc
 
     @app.post("/api/tasks/{task_id}/launch")
     def launch(
@@ -270,6 +330,20 @@ def create_app(
             media_type=stream.content_type,
             headers=headers,
         )
+
+    @app.put("/api/submissions/{session_id}/final")
+    def select_final_submission(
+        session_id: str,
+        identity: Annotated[UserIdentity, Depends(current_identity)],
+    ) -> dict[str, str]:
+        try:
+            return service.select_final_submission(identity, session_id)
+        except KeyError as exc:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND) from exc
+        except PermissionError as exc:
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN) from exc
+        except RuntimeError as exc:
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=str(exc))
 
     @app.post("/api/submissions/{session_id}/discard")
     def discard_submission(

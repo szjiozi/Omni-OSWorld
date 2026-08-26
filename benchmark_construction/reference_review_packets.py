@@ -15,6 +15,7 @@ from typing import Any, Iterable, Sequence
 
 from .osworld_human import load_source_manifest
 from .reference_generation import load_skill_pool
+from .reference_applications import get_reference_application
 from .reference_review import (
     compute_review_state,
     load_reference_packages,
@@ -215,9 +216,10 @@ def _render_task_detail_markdown(
     review: dict[str, Any],
 ) -> str:
     task_id = package["reference_task_id"]
+    profile = get_reference_application(package.get("app", "libreoffice_calc"))
     artifact_spec = package.get("artifact_spec", {})
     guide = package.get("operator_guide", {})
-    title = artifact_spec.get("workbook_title") or task_id
+    title = artifact_spec.get(profile.title_field) or task_id
     lines = [
         f"# {title}",
         "",
@@ -277,7 +279,9 @@ def _render_task_detail_markdown(
             "## Initial artifact",
             "",
             f"- Domain: {artifact_spec.get('domain', '')}",
-            f"- Workbook: [initial_artifact.xlsx](artifact/initial_artifact.xlsx)",
+            f"- {profile.artifact_label}: "
+            f"[{profile.packet_artifact_filename}]"
+            f"(artifact/{profile.packet_artifact_filename})",
             f"- Blueprint: [artifact_blueprint.json](artifact/artifact_blueprint.json)",
             f"- QA report: [artifact_qa.json](artifact/artifact_qa.json)",
             "",
@@ -305,6 +309,24 @@ def _render_task_detail_markdown(
             lines.append(
                 f"| {sheet.get('name', '')} | {sheet.get('row_count', '')} | "
                 f"{sheet.get('purpose', '')} | {columns} |"
+            )
+    slides = artifact_spec.get("slides", [])
+    if slides:
+        lines.extend(
+            [
+                "",
+                "| Slide | Layout | Purpose | Editable objects |",
+                "| ---: | --- | --- | --- |",
+            ]
+        )
+        for slide in slides:
+            objects = ", ".join(
+                f"{item.get('semantic_id', '')} ({item.get('type', '')})"
+                for item in slide.get("object_plan", [])
+            )
+            lines.append(
+                f"| {slide.get('slide_number', '')} | {slide.get('layout', '')} | "
+                f"{slide.get('purpose', '')} | {objects} |"
             )
     lines.extend(["", "Must remain incomplete before recording:", ""])
     lines.extend(_markdown_list(artifact_spec.get("must_not_be_completed", [])))
@@ -519,9 +541,15 @@ def _render_task_markdown(
     reviewer_doc_link: str,
 ) -> str:
     task_id = package["reference_task_id"]
+    profile = get_reference_application(package.get("app", "libreoffice_calc"))
     artifact_spec = package.get("artifact_spec", {})
     operator_guide = package.get("operator_guide", {})
-    title = artifact_spec.get("workbook_title") or task_id
+    title = artifact_spec.get(profile.title_field) or task_id
+    natural_task_label = (
+        "natural Calc task" if profile.app == "libreoffice_calc" else "natural Impress task"
+    )
+    artifact_noun = "workbook" if profile.app == "libreoffice_calc" else "presentation"
+    artifact_contents = "data" if profile.app == "libreoffice_calc" else "content"
     lines = [
         f"# {title}",
         "",
@@ -626,10 +654,10 @@ def _render_task_markdown(
             "Before choosing a decision, complete all three checks:",
             "",
             "- [ ] **Task naturalness and skill necessity:** Is the reference task a "
-            "natural Calc task, and is every listed required skill genuinely necessary "
+            f"{natural_task_label}, and is every listed required skill genuinely necessary "
             "and observable when solving it?",
             "- [ ] **Initial artifact correctness:** Launch the environment and confirm "
-            "that the workbook opens correctly, contains the data needed by the "
+            f"that the {artifact_noun} opens correctly, contains the {artifact_contents} needed by the "
             "instruction, and has not already completed the requested results.",
             "- [ ] **Source-task similarity:** Compare the reference task with the source "
             "instructions and complete single-action sequences above. Confirm that it is "
@@ -943,9 +971,13 @@ def export_review_packets(
     for item in prepared:
         package = item["package"]
         current_id = package["reference_task_id"]
+        profile = get_reference_application(
+            package.get("app", "libreoffice_calc")
+        )
         packet_dir = item["packet_dir"]
         artifact_dir = packet_dir / "artifact"
-        _atomic_copy(item["artifact_path"], artifact_dir / "initial_artifact.xlsx")
+        packet_artifact = artifact_dir / profile.packet_artifact_filename
+        _atomic_copy(item["artifact_path"], packet_artifact)
         _atomic_copy(item["blueprint_path"], artifact_dir / "artifact_blueprint.json")
         _atomic_copy(item["qa_path"], artifact_dir / "artifact_qa.json")
         for preview_path in item["preview_paths"]:
@@ -962,7 +994,7 @@ def export_review_packets(
             "reviewer_guide": item["reviewer_guide_entry"],
             "artifact": {
                 "manifest_entry": item["artifact_entry"],
-                "packet_path": "artifact/initial_artifact.xlsx",
+                "packet_path": f"artifact/{profile.packet_artifact_filename}",
             },
             "task_config": {
                 "manifest_entry": item["config_entry"],
@@ -996,7 +1028,7 @@ def export_review_packets(
             packet_dir / "TASK_DETAIL.md",
             packet_dir / "context.json",
             packet_dir / "task_config.json",
-            artifact_dir / "initial_artifact.xlsx",
+            packet_artifact,
             artifact_dir / "artifact_blueprint.json",
             artifact_dir / "artifact_qa.json",
             *(artifact_dir / "previews" / path.name for path in item["preview_paths"]),
@@ -1076,7 +1108,7 @@ def _write_index(
         "Open one task directory at a time, read `TASK.md`, and fill only its "
         "`review.json` file.",
         "",
-        "| Task | Workbook | Local review |",
+        "| Task | Artifact | Local review |",
         "| --- | --- | --- |",
     ]
     for package in packages:
@@ -1084,7 +1116,10 @@ def _write_index(
         if task_id not in exported:
             continue
         review = _packet_review(output_root / task_id) or _blank_review(task_id)
-        title = package.get("artifact_spec", {}).get("workbook_title", task_id)
+        profile = get_reference_application(
+            package.get("app", "libreoffice_calc")
+        )
+        title = package.get("artifact_spec", {}).get(profile.title_field, task_id)
         rows.append(
             f"| [{task_id}]({task_id}/TASK.md) | {title} | "
             f"{review['decision'] or 'pending'} |"

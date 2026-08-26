@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+  "app": "libreoffice_impress",
+  "single_action_count": 20,
+  "prompt_sha256": "4bb9e70148c95e21be94098ba10fff713818aef30be8e7c554c8628b2c39149a",
+  "request_id": "4d4f5396-c9b4-4e69-8306-79a892451a68",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 941,
+    "cached_input_tokens": 0,
+    "output_tokens": 445,
+    "estimated_cost_usd": 0.007222
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set an image's exact height",
+        "procedure": [
+          "In Normal view, select the image as an object so that resize handles appear; do not enter text-editing mode.",
+          "Open or scroll to the image's size controls and activate the Height field.",
+          "Replace the existing height value with the required measurement, for example `20 cm`, and press Enter to apply the exact object height."
+        ],
+        "efficiency_tip": "Use the numeric Height field rather than dragging resize handles when a precise dimension is required. Check whether aspect ratio is locked before changing only one dimension.",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "name": "Set font size for text in multiple text boxes",
+        "procedure": [
+          "For each text box, enter text-editing mode and select the text whose size should change. Selecting text inside the shape is different from selecting the shape object itself.",
+          "Activate the Font Size box on the formatting toolbar, replace its value with the desired point size, for example `40 pt`, and press Enter.",
+          "Repeat for the remaining independently formatted text boxes on the slide."
+        ],
+        "efficiency_tip": "After applying a size, move directly to the next text box and use the Font Size box again; this avoids opening character-format dialogs for each text box.",
+        "action_ids": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      }
+    ]
+  }
+}

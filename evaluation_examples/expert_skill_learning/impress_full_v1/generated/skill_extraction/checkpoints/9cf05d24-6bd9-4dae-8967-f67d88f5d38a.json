@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+  "app": "libreoffice_impress",
+  "single_action_count": 4,
+  "prompt_sha256": "5e8eff3165e07bc2f8b414bd7e9981fe1d7b19252c205f0ad2a90ba044245165",
+  "request_id": "32a2c25f-5b0c-4d1c-ad1c-7dfff9f5875d",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 746,
+    "cached_input_tokens": 0,
+    "output_tokens": 110,
+    "estimated_cost_usd": 0.002812
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set a slide background to a solid color",
+        "procedure": [
+          "With the target slide active, open the slide background formatting control.",
+          "Choose the Color background option.",
+          "Open the color palette and select a desired solid color, for example a green swatch."
+        ],
+        "efficiency_tip": "Select the target slide before opening background formatting so the chosen color is applied directly without revisiting the control.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ]
+  }
+}

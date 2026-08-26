@@ -1,0 +1,9 @@
+{
+  "app": "libreoffice_impress",
+  "copy_policy": "byte-for-byte",
+  "license_file_present_at_source_root": false,
+  "schema_version": "1.0",
+  "source_commit": "deff1a7cd8940f6040a895593097fc3c5511f36b",
+  "source_repository": "https://github.com/WukLab/osworld-human",
+  "task_count": 47
+}

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import logging
 import threading
 from datetime import UTC, datetime, timedelta
@@ -17,12 +18,14 @@ from .models import (
     ACTIVE_WORKSPACE_STATUSES,
     UserIdentity,
     UserRole,
+    TaskReviewRecord,
     WorkspaceSession,
     WorkspaceStatus,
     utc_now_iso,
 )
 from .storage import PrivateObjectStream, S3BundlePublisher
 from .store import PortalStore
+from benchmark_construction.reference_review import validate_reference_review_form
 
 
 logger = logging.getLogger(__name__)
@@ -128,11 +131,14 @@ class AnnotationPortalService:
 
     def tasks_for(self, identity: UserIdentity) -> list[dict[str, Any]]:
         allowed = self._allowed_task_ids(identity)
-        return [
-            task.to_public_dict()
-            for task in self.catalog.all()
-            if allowed is None or task.task_id in allowed
-        ]
+        tasks: list[dict[str, Any]] = []
+        for task in self.catalog.all():
+            if allowed is not None and task.task_id not in allowed:
+                continue
+            public = task.to_public_dict()
+            public["portal_review"] = self.task_review_for(identity, task.task_id)
+            tasks.append(public)
+        return tasks
 
     def task_for(self, identity: UserIdentity, task_id: str) -> AnnotationTask:
         task = self.catalog.get(task_id)
@@ -148,6 +154,66 @@ class AnnotationPortalService:
         if not candidate.is_relative_to(root) or not candidate.is_file():
             raise FileNotFoundError(relative)
         return candidate
+
+    def task_review_for(
+        self, identity: UserIdentity, task_id: str
+    ) -> dict[str, Any]:
+        task = self.task_for(identity, task_id)
+        record = self.store.get_task_review(task.catalog_version, task_id)
+        if record is not None:
+            return dict(record.review)
+        review_path = task.packet_dir / "review.json"
+        if review_path.is_file():
+            review = json.loads(review_path.read_text(encoding="utf-8"))
+        else:
+            review = {
+                "reference_task_id": task_id,
+                "decision": "",
+                "reason_codes": [],
+                "revision_instructions": [],
+                "reviewer": "",
+                "notes": "",
+            }
+        validate_reference_review_form(review)
+        if review["reference_task_id"] != task_id:
+            raise ValueError(f"Review template ID does not match {task_id}")
+        return review
+
+    def save_task_review(
+        self,
+        identity: UserIdentity,
+        task_id: str,
+        *,
+        decision: str,
+        reason_codes: list[str],
+        revision_instructions: list[str],
+        notes: str,
+    ) -> dict[str, Any]:
+        task = self.task_for(identity, task_id)
+        decision = decision.strip()
+        review = {
+            "reference_task_id": task_id,
+            "decision": decision,
+            "reason_codes": [item.strip() for item in reason_codes if item.strip()],
+            "revision_instructions": [
+                item.strip() for item in revision_instructions if item.strip()
+            ],
+            "reviewer": identity.username if decision else "",
+            "notes": notes.strip() if decision else "",
+        }
+        if not decision:
+            review["reason_codes"] = []
+            review["revision_instructions"] = []
+        validate_reference_review_form(review)
+        self.store.put_task_review(
+            TaskReviewRecord(
+                catalog_version=task.catalog_version,
+                task_id=task_id,
+                username=identity.username,
+                review=review,
+            )
+        )
+        return review
 
     def launch(self, identity: UserIdentity, task_id: str) -> WorkspaceSession:
         task = self.task_for(identity, task_id)
@@ -341,16 +407,40 @@ class AnnotationPortalService:
 
     def submissions_for(self, identity: UserIdentity) -> list[dict[str, Any]]:
         username = None if identity.role == UserRole.ADMIN else identity.username
-        return [
-            workspace.to_dict()
-            for workspace in self.store.workspaces_for_user(username)
-            if workspace.status
-            in {
+        submissions: list[dict[str, Any]] = []
+        final_by_task: dict[tuple[str, str], str | None] = {}
+        for workspace in self.store.workspaces_for_user(username):
+            if workspace.status not in {
                 WorkspaceStatus.SUBMITTED,
                 WorkspaceStatus.DISCARDED,
                 WorkspaceStatus.DELETED,
-            }
-        ]
+            }:
+                continue
+            key = (workspace.username, workspace.task_id)
+            if key not in final_by_task:
+                final_by_task[key] = self.store.final_submission_for(*key)
+            public = workspace.to_dict()
+            public["is_final"] = (
+                workspace.status == WorkspaceStatus.SUBMITTED
+                and final_by_task[key] == workspace.session_id
+            )
+            submissions.append(public)
+        return submissions
+
+    def select_final_submission(
+        self, identity: UserIdentity, session_id: str
+    ) -> dict[str, str]:
+        workspace = self._owned_workspace(identity, session_id)
+        if workspace.status != WorkspaceStatus.SUBMITTED:
+            raise RuntimeError("Only an active submitted video can be selected as final")
+        self.store.put_final_submission(
+            workspace.username, workspace.task_id, workspace.session_id
+        )
+        return {
+            "task_id": workspace.task_id,
+            "session_id": workspace.session_id,
+            "status": "selected",
+        }
 
     def recording_stream(
         self,
@@ -378,7 +468,7 @@ class AnnotationPortalService:
         if self.publisher is None or not workspace.output_prefix:
             raise RuntimeError("Private recording storage is not configured")
         self.publisher.mark_discarded(workspace.output_prefix, discarded=True)
-        return self.store.update_workspace(
+        discarded = self.store.update_workspace(
             session_id,
             expected={WorkspaceStatus.SUBMITTED},
             status=WorkspaceStatus.DISCARDED,
@@ -386,6 +476,10 @@ class AnnotationPortalService:
             progress_stage="discarded",
             progress_message="Discarded; recoverable for seven days.",
         )
+        self.store.clear_final_submission(
+            workspace.username, workspace.task_id, workspace.session_id
+        )
+        return discarded
 
     def restore_submission(
         self, identity: UserIdentity, session_id: str

@@ -19,6 +19,7 @@ from .reference_generation import (
     SkillSample,
     _source_contribution,
 )
+from .reference_applications import get_reference_application
 from .schema import load_schema, validate_payload
 from .semantic_similarity import (
     EmbeddingBatchResult,
@@ -45,6 +46,8 @@ class ReferencePackageGenerationResult:
     initial_covered_skill_ids: tuple[str, ...]
     candidate_covered_skill_ids: tuple[str, ...]
     unresolved_skill_ids: tuple[str, ...]
+    generation_eligible_skill_ids: tuple[str, ...]
+    generation_deferred_skill_ids: tuple[str, ...]
     semantic_batch: EmbeddingBatchResult | None
 
 
@@ -72,12 +75,10 @@ def build_reference_package_request(
     ]
     if not source_instructions:
         raise ValueError(f"No source instructions available for app {sample.app}")
-    system_prompt = load_prompt(
-        prompt_root / "generate_reference_package.system.txt"
-    )
-    user_template = load_prompt(
-        prompt_root / "generate_reference_package.user.txt"
-    )
+    profile = get_reference_application(sample.app)
+    stem = profile.package_prompt_stem
+    system_prompt = load_prompt(prompt_root / f"{stem}.system.txt")
+    user_template = load_prompt(prompt_root / f"{stem}.user.txt")
     user_prompt = render_prompt(
         user_template,
         {
@@ -94,10 +95,10 @@ def build_reference_package_request(
         },
     )
     return JSONRequest(
-        prompt_name="generate_reference_package.v2",
+        prompt_name=f"{stem}.v2",
         system_prompt=system_prompt,
         user_prompt=user_prompt,
-        response_schema=load_schema(PACKAGE_RESPONSE_SCHEMA),
+        response_schema=load_schema(profile.package_schema),
         schema_name="reference_package_candidate",
     )
 
@@ -105,7 +106,8 @@ def build_reference_package_request(
 def validate_reference_package_response(
     sample: SkillSample, response: dict[str, Any]
 ) -> None:
-    validate_payload(response, load_schema(PACKAGE_RESPONSE_SCHEMA))
+    profile = get_reference_application(sample.app)
+    validate_payload(response, load_schema(profile.package_schema))
     if response["decision"] == "rejected_combination":
         if response["task_instruction"].strip():
             raise ValueError("A rejected package must have an empty task instruction")
@@ -145,15 +147,31 @@ def validate_reference_package_response(
         )
 
     artifact = response["artifact_spec"]
-    sheet_names = [sheet["name"].strip() for sheet in artifact["sheets"]]
-    if any(not name or len(name) > 31 for name in sheet_names):
-        raise ValueError("Artifact sheet names must be non-empty and at most 31 chars")
-    if len(set(sheet_names)) != len(sheet_names):
-        raise ValueError("Artifact sheet names must be unique")
-    for sheet in artifact["sheets"]:
-        columns = [column["name"].strip() for column in sheet["columns"]]
-        if any(not name for name in columns) or len(set(columns)) != len(columns):
-            raise ValueError("Artifact column names must be non-empty and unique")
+    if artifact["artifact_type"] != profile.artifact_type:
+        raise ValueError("Artifact type differs from the sampled application")
+    if profile.artifact_type == "xlsx":
+        sheet_names = [sheet["name"].strip() for sheet in artifact["sheets"]]
+        if any(not name or len(name) > 31 for name in sheet_names):
+            raise ValueError(
+                "Artifact sheet names must be non-empty and at most 31 chars"
+            )
+        if len(set(sheet_names)) != len(sheet_names):
+            raise ValueError("Artifact sheet names must be unique")
+        for sheet in artifact["sheets"]:
+            columns = [column["name"].strip() for column in sheet["columns"]]
+            if any(not name for name in columns) or len(set(columns)) != len(columns):
+                raise ValueError("Artifact column names must be non-empty and unique")
+    else:
+        slide_numbers = [slide["slide_number"] for slide in artifact["slides"]]
+        if slide_numbers != list(range(1, len(slide_numbers) + 1)):
+            raise ValueError("Artifact slide numbers must be consecutive from 1")
+        semantic_ids = [
+            item["semantic_id"]
+            for slide in artifact["slides"]
+            for item in slide["object_plan"]
+        ]
+        if len(semantic_ids) != len(set(semantic_ids)):
+            raise ValueError("Artifact semantic object IDs must be globally unique")
 
 
 def _normalize(value: str) -> str:
@@ -222,14 +240,18 @@ async def generate_reference_packages(
     max_candidates: int | None = None,
     task_id_prefix: str = "reference-task",
     initial_uncovered_skill_ids: Sequence[str] | None = None,
+    generation_eligible_skill_ids: Sequence[str] | None = None,
     blocked_groups: Sequence[Sequence[str]] = (),
     revisions: Sequence[RevisionSample] = (),
     semantic_client: OpenAIEmbeddingAsyncClient | None = None,
+    semantic_retries: int = 2,
 ) -> ReferencePackageGenerationResult:
     if generation_round < 1 or max_attempts < 1:
         raise ValueError("generation_round and max_attempts must be positive")
     if max_candidates is not None and max_candidates < 1:
         raise ValueError("max_candidates must be positive when provided")
+    if semantic_retries < 0:
+        raise ValueError("semantic_retries must be non-negative")
     if not task_id_prefix or not re.fullmatch(r"[a-z0-9-]+", task_id_prefix):
         raise ValueError("task_id_prefix must contain lowercase letters, digits, or hyphens")
     skill_by_id = {skill.skill_id: skill for skill in skills}
@@ -243,12 +265,34 @@ async def generate_reference_packages(
     if unknown:
         raise ValueError(f"Unknown initial uncovered skills: {sorted(unknown)}")
     initial_covered = set(all_skill_ids).difference(uncovered)
+    generation_eligible = set(
+        all_skill_ids
+        if generation_eligible_skill_ids is None
+        else generation_eligible_skill_ids
+    )
+    unknown_eligible = generation_eligible.difference(skill_by_id)
+    if unknown_eligible:
+        raise ValueError(
+            f"Unknown generation-eligible skills: {sorted(unknown_eligible)}"
+        )
+    eligible_records = [
+        skill for skill in skills if skill.skill_id in generation_eligible
+    ]
+    if len(eligible_records) < 2 and uncovered.intersection(generation_eligible):
+        raise ValueError("Reference generation requires at least two eligible skills")
 
-    revision_groups = [revision.sample.skill_ids for revision in revisions]
+    revision_groups = [
+        revision.sample.skill_ids
+        for revision in revisions
+        if set(revision.sample.skill_ids).issubset(generation_eligible)
+    ]
+    eligible_blocked_groups = [
+        group for group in blocked_groups if set(group).issubset(generation_eligible)
+    ]
     sampler = SeededCoverageSampler(
-        skills,
+        eligible_records,
         seed=seed,
-        blocked_groups=[*blocked_groups, *revision_groups],
+        blocked_groups=[*eligible_blocked_groups, *revision_groups],
     )
     packages: list[dict[str, Any]] = []
     attempts: list[dict[str, Any]] = []
@@ -268,9 +312,50 @@ async def generate_reference_packages(
             for sample, feedback, _, _ in jobs
         ]
         results = await client.generate_many(requests)
-        for job, request, result in zip(jobs, requests, results):
+        validated: list[tuple[JSONRequest, JSONResult]] = []
+        for job, base_request, initial_result in zip(jobs, requests, results):
+            sample, _, _, _ = job
+            request = base_request
+            result = initial_result
+            last_error: ValueError | None = None
+            for retry in range(semantic_retries + 1):
+                try:
+                    validate_reference_package_response(sample, result.data)
+                except ValueError as exc:
+                    last_error = exc
+                    if retry >= semantic_retries:
+                        break
+                    request = JSONRequest(
+                        prompt_name=base_request.prompt_name,
+                        system_prompt=base_request.system_prompt,
+                        user_prompt=(
+                            base_request.user_prompt
+                            + f"\n\nCorrection attempt {retry + 1}. The previous "
+                            "response failed local validation: "
+                            + str(exc)
+                            + ". Return a complete corrected response. For a "
+                            "candidate, required_skill_ids and the operator guide "
+                            "must each contain exactly these sampled IDs once: "
+                            + json.dumps(list(sample.skill_ids))
+                            + ". For a rejected combination, keep every package "
+                            "component empty or null as required by the schema."
+                        ),
+                        response_schema=base_request.response_schema,
+                        schema_name=base_request.schema_name,
+                    )
+                    result = await client.generate_json(request)
+                    continue
+                last_error = None
+                validated.append((request, result))
+                break
+            if last_error is not None:
+                raise ValueError(
+                    "Reference package remained invalid after retries: "
+                    + str(last_error)
+                )
+
+        for job, (request, result) in zip(jobs, validated):
             sample, _, kind, parent_id = job
-            validate_reference_package_response(sample, result.data)
             attempt_index = len(attempts) + 1
             attempts.append(
                 _attempt_record(
@@ -331,12 +416,13 @@ async def generate_reference_packages(
         )
         for revision in revisions
         if set(revision.sample.skill_ids).intersection(uncovered)
+        and set(revision.sample.skill_ids).issubset(generation_eligible)
     ]
     if revision_jobs:
         await process_jobs(revision_jobs[:max_attempts])
 
     while (
-        uncovered
+        uncovered.intersection(generation_eligible)
         and len(attempts) < max_attempts
         and (max_candidates is None or len(packages) < max_candidates)
     ):
@@ -349,7 +435,7 @@ async def generate_reference_packages(
             )
         )
         samples = sampler.sample_wave(
-            uncovered, limit=candidate_budget
+            uncovered.intersection(generation_eligible), limit=candidate_budget
         )
         await process_jobs(
             [(sample, (), "new_combination", None) for sample in samples]
@@ -384,6 +470,12 @@ async def generate_reference_packages(
         ),
         candidate_covered_skill_ids=covered,
         unresolved_skill_ids=unresolved,
+        generation_eligible_skill_ids=tuple(
+            skill_id for skill_id in all_skill_ids if skill_id in generation_eligible
+        ),
+        generation_deferred_skill_ids=tuple(
+            skill_id for skill_id in all_skill_ids if skill_id not in generation_eligible
+        ),
         semantic_batch=semantic_batch,
     )
 
@@ -413,6 +505,12 @@ def write_reference_packages(
             "initially_covered_skill_ids": list(result.initial_covered_skill_ids),
             "round_candidate_covered_skill_ids": list(
                 result.candidate_covered_skill_ids
+            ),
+            "generation_eligible_skill_ids": list(
+                result.generation_eligible_skill_ids
+            ),
+            "generation_deferred_skill_ids": list(
+                result.generation_deferred_skill_ids
             ),
             "covered_skill_ids": list(
                 dict.fromkeys(

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+  "app": "libreoffice_impress",
+  "single_action_count": 10,
+  "prompt_sha256": "d7436290378b452bb9388a7226a1c5cdfe5054a34d2529549c8c0431c4105d71",
+  "request_id": "74d68d75-325c-47e6-877c-c364b56ef801",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 820,
+    "cached_input_tokens": 0,
+    "output_tokens": 276,
+    "estimated_cost_usd": 0.004952
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set font size for text in a text box",
+        "procedure": [
+          "Click inside the target text box to enter text-editing mode, rather than merely selecting the shape frame.",
+          "Select the text whose size should change; a triple-click can select the paragraph in a text box when appropriate.",
+          "Click the Font Size box on the Formatting toolbar, replace its current value with a point size such as 60 pt, and press Enter to apply it.",
+          "Repeat the same selection-and-Font-Size-box procedure for other text boxes or paragraphs that require different sizes, for example 28 pt."
+        ],
+        "efficiency_tip": "After selecting a paragraph, type the desired point value directly into the Font Size box instead of searching the dropdown list; pressing Enter applies the value immediately.",
+        "action_ids": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    ]
+  }
+}

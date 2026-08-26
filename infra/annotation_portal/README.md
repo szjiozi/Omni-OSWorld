@@ -113,6 +113,47 @@ Remove `--allow-pending` for approved production batches. Assignment writes are
 upserts: existing assignments and active workspaces are not removed. The
 publisher does not restart systemd or any worker.
 
+The full Calc dataset uses a round-oriented construction layout rather than the
+old pilot layout. The publisher normalizes it only inside a temporary directory,
+then publishes the immutable snapshot. Round 1 is distributed round-robin across
+the four fixed accounts, five tasks each. `--replace-assignments` deletes stale
+assignments for those four usernames before writing the new set; historical
+workspace/submission records are not deleted:
+
+```bash
+PYTHONPATH=. conda run -n osworld-aws-dev python \
+  scripts/python/publish_annotation_batch.py \
+  --profile osworld-dev \
+  --region ap-east-1 \
+  --dataset-root evaluation_examples/expert_skill_learning/calc_full_v1 \
+  --dataset-round round_01 \
+  --assignments evaluation_examples/expert_skill_learning/annotation_portal/assignments.example.json \
+  --replace-assignments \
+  --allow-pending
+```
+
+Each task review is persisted in DynamoDB under the immutable catalog version and
+task ID. The API representation is the exact six-field `review.json`; the reviewer
+field is set from the authenticated username. The task page displays one assigned
+task at a time with previous/next navigation and offers both save and download.
+The immutable batch is never modified in place. Before running the local review
+collector, sync durable online reviews into the dataset packets:
+
+```bash
+PYTHONPATH=. conda run -n osworld-aws-dev python \
+  scripts/python/sync_annotation_portal_reviews.py \
+  --profile osworld-dev --region ap-east-1
+```
+
+The sync refuses to replace a different non-empty local review unless
+`--overwrite` is explicit.
+
+The annotation result downloader performs this review sync automatically for the
+tasks it downloads. It also places the validated six-field Portal review at
+`<username>/<task_id>/<run_id>/review.json`, next to the selected recording and
+artifact. A different non-empty local packet review remains protected unless
+`--overwrite-reviews` is explicit.
+
 Keyboard and pointer overlays are rendered after capture. Their PTS origin is
 calibrated from the guest stop monotonic timestamp minus the actual MP4 duration;
 the recorder also waits for FFmpeg progress to confirm the first encoded frame
@@ -152,8 +193,9 @@ timestamp.
 
 Administrators should use the verified downloader rather than a raw `aws s3
 sync`. It discovers only `COMPLETE.json` runs, skips discarded results by
-default, prevents manifest path traversal, and verifies each file's size and
-SHA256 before an atomic local rename:
+default, reads the Portal's durable final-video selection, prevents manifest
+path traversal, and verifies each file's size and SHA256 before an atomic local
+rename:
 
 ```bash
 source secret_keys.sh
@@ -165,7 +207,9 @@ conda run -n osworld-aws-dev python \
 ```
 
 Default output is `results/reference_annotations/portal/<user>/<task>/<run>/`.
-Use `--username`, `--task-id`, or `--run-id` to narrow the download; omit
+Final-only selection is the default; `--final-only` may be passed explicitly,
+while `--all-runs` retrieves every matching complete, non-discarded run. Use
+`--username`, `--task-id`, or `--run-id` to narrow the download; omit
 `--video-only` to retrieve final XLSX, raw video, event logs, and manifests too.
 
 After CloudFront creates a VPC Origin, AWS creates the service-managed

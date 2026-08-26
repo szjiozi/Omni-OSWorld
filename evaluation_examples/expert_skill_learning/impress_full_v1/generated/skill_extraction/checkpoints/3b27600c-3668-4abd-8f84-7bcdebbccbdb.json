@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+  "app": "libreoffice_impress",
+  "single_action_count": 23,
+  "prompt_sha256": "e638b4bd12442702ad1f7a9499556c346efa0754c79ad4aea707e437fd2bba22",
+  "request_id": "d0c6693a-9e76-41db-b43d-6943b9e7c0f9",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 936,
+    "cached_input_tokens": 0,
+    "output_tokens": 777,
+    "estimated_cost_usd": 0.011196
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set a master slide background to a custom color",
+        "procedure": [
+          "Open Slide > Master View to edit the slide master rather than an individual normal slide.",
+          "With the master selected, choose Slide > Slide Properties and open the Background tab.",
+          "Activate the color value field, replace its value with a desired hexadecimal color value, and confirm the dialog to apply the background to slides using that master."
+        ],
+        "efficiency_tip": "Use Master View when multiple slides share the same master; changing the master background avoids repeating the same formatting on each slide.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "name": "Apply a recent background color to individual slides",
+        "procedure": [
+          "Select the target slide in the Slides pane, then open Slide > Slide Properties.",
+          "Choose a color from the recent colors list in the background-color control and confirm the dialog.",
+          "Repeat for other slides only when they need a slide-specific background that differs from their master."
+        ],
+        "efficiency_tip": "After choosing a custom color once, reuse it from recent colors instead of reopening a color-value editor for every slide.",
+        "action_ids": [
+          8,
+          9,
+          10,
+          13,
+          14,
+          15,
+          18,
+          19,
+          20
+        ]
+      }
+    ]
+  }
+}

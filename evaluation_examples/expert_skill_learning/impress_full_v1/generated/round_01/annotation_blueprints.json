@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0",
+  "blueprints": [
+    {
+      "reference_task_id": "reference-task-impress-full-r01-001",
+      "blueprint": {
+        "snapshot": "libreoffice_impress",
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "pollinator_rsvp.pptx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "Confirm the presentation is open in LibreOffice Impress in Normal view.",
+          "Confirm the slide pane shows exactly 2 slides.",
+          "Confirm slide 2 is selected and displays three schedule cards across the middle.",
+          "Confirm the RSVP callout is in the upper-left area of slide 2, with left-aligned dark-gray text and an unformatted dark-gray “Register by Friday” phrase."
+        ],
+        "setup_notes": [
+          "Use the uploaded presentation as provided and begin with slide 2 selected."
+        ]
+      },
+      "generation": {
+        "request_id": "bf7c0db2-3b03-480f-91a6-e21386def646",
+        "prompt_sha256": "862306d56535a37e5aa236f89607f99ce0ec92c86c3114ff9d27233bddfdd5b6",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2326,
+        "output_tokens": 207,
+        "estimated_cost_usd": 0.007136
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-r01-002",
+      "blueprint": {
+        "snapshot": "libreoffice_impress",
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "night_market_briefing.pptx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "Confirm the presentation is open in LibreOffice Impress in normal editing view.",
+          "Confirm the Slides pane shows exactly three slides.",
+          "Confirm slide 1 is selected and visible as the initial slide.",
+          "Confirm slide 1 has an Ivory background and the “After-Dark Market Plan” headline is left aligned at 32 pt.",
+          "Confirm slide 2 remains Ivory and displays its schedule text.",
+          "Confirm slide 3 remains Ivory before any edits."
+        ],
+        "setup_notes": []
+      },
+      "generation": {
+        "request_id": "997a2770-1ed1-4fc4-94d9-0e6d9e5bea4b",
+        "prompt_sha256": "0b7a548c1f575c8e78ad8adcc98f035435ddee7dd20c040ae328137b74725a86",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2068,
+        "output_tokens": 136,
+        "estimated_cost_usd": 0.005768
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-r01-003",
+      "blueprint": {
+        "snapshot": "libreoffice_impress",
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "pollinator_walk.pptx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "Confirm the presentation is open in LibreOffice Impress in normal editing view.",
+          "Confirm that the slide pane shows exactly three slides.",
+          "Confirm that slide 2 is selected and visible on the canvas."
+        ],
+        "setup_notes": []
+      },
+      "generation": {
+        "request_id": "eeb8be3c-5fc9-4646-a51e-45eb654c932f",
+        "prompt_sha256": "2dddc058e5166d5efc240f7debc760a4186a5199288d6c909d22fe5ae8b14d1a",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2722,
+        "output_tokens": 87,
+        "estimated_cost_usd": 0.006488
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-r01-004",
+      "blueprint": {
+        "snapshot": "libreoffice_impress",
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "community_garden_brief.pptx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "Confirm that the uploaded presentation is open in LibreOffice Impress in Normal view.",
+          "Confirm that the Slides pane shows exactly three slide thumbnails.",
+          "Confirm that Slide 1, the Community Garden Field Brief cover slide, is the initially visible and selected slide.",
+          "Confirm that Slides 2 and 3 are separate, unselected thumbnails before beginning the task."
+        ],
+        "setup_notes": [
+          "Open the supplied presentation after upload and leave it at its initial cover slide."
+        ]
+      },
+      "generation": {
+        "request_id": "1315147f-de9b-4152-b313-e45b9b99de33",
+        "prompt_sha256": "7ad5d0f006ea71bf173fb1f1c3f9845ac368f22a952415f10ea331344ed8bcee",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2644,
+        "output_tokens": 135,
+        "estimated_cost_usd": 0.006908
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-r01-005",
+      "blueprint": {
+        "snapshot": "libreoffice_impress",
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "dawn_marsh_checklist.pptx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "Confirm the presentation is open in LibreOffice Impress in normal editing view.",
+          "Confirm the slide pane shows exactly 2 slides.",
+          "Confirm slide 1 is selected and visible as the initial cover slide for “Dawn Marsh Survey.”"
+        ],
+        "setup_notes": [
+          "Use the supplied presentation artifact as the initial state."
+        ]
+      },
+      "generation": {
+        "request_id": "22da7645-7c80-4384-b205-c88f4ee4df56",
+        "prompt_sha256": "802d88f6dd0e1edc4ff4d7fbe7c5db9e8d2c6b814c8ad6acc906d2b971f266c9",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2710,
+        "output_tokens": 160,
+        "estimated_cost_usd": 0.00734
+      }
+    }
+  ],
+  "totals": {
+    "calls": 5,
+    "input_tokens": 12470,
+    "output_tokens": 725,
+    "estimated_cost_usd": 0.03364,
+    "pricing_complete": true
+  }
+}

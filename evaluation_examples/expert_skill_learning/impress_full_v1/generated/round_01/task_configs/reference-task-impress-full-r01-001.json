@@ -1,0 +1,97 @@
+{
+  "id": "reference-task-impress-full-r01-001",
+  "snapshot": "libreoffice_impress",
+  "instruction": "For the Harbor Pollinator Day volunteer briefing, refine the RSVP message on slide 2 so it works as a centered closing callout: move the RSVP callout from the upper-left area to the footer directly beneath the three schedule cards, center-align all paragraphs in that callout, and emphasize only the words “Register by Friday” with an underline and the exact teal color #007C83. Leave the rest of the RSVP text in its existing dark gray color and without underlining.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-001/initial_artifact.pptx",
+            "path": "/home/user/Desktop/pollinator_rsvp.pptx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/pollinator_rsvp.pptx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_impress"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-impress-full-r01-001",
+    "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-001/initial_artifact.pptx",
+    "artifact_sha256": "6752ec00d13c0607dc5af8b8e64b2ddc45dc239c994053a17056711df5fa42f5",
+    "guest_artifact_path": "/home/user/Desktop/pollinator_rsvp.pptx",
+    "required_skill_ids": [
+      "15aece23-a215-4579-91b4-69eec72e18da.skill-01",
+      "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-02",
+      "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01"
+    ],
+    "operator_guide": {
+      "recommended_demonstration": [
+        {
+          "skill_id": "15aece23-a215-4579-91b4-69eec72e18da.skill-01",
+          "operation_intent": "Reposition the RSVP text box from the upper-left area to the centered footer beneath the three schedule cards.",
+          "visible_success_signal": "The RSVP text box appears below the card row, centered in the open footer region rather than beside the heading.",
+          "efficiency_tip": "Select the text box by its border and drag it using the card row and slide-center guide as placement references."
+        },
+        {
+          "skill_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+          "operation_intent": "Underline only the deadline phrase “Register by Friday” within the RSVP callout.",
+          "visible_success_signal": "Only the deadline words have a visible underline; the surrounding packing-list and reservation text remains unlined.",
+          "efficiency_tip": "Keep the deadline phrase selected while applying the underline so no surrounding text is formatted."
+        },
+        {
+          "skill_id": "986fc832-6af2-417c-8845-9272b3a1528b.skill-02",
+          "operation_intent": "Apply the exact teal #007C83 font color to the selected deadline phrase.",
+          "visible_success_signal": "“Register by Friday” is teal while all remaining RSVP copy stays dark gray.",
+          "efficiency_tip": "Apply the teal color while the same deadline phrase remains selected after its underline is set."
+        },
+        {
+          "skill_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01",
+          "operation_intent": "Center-align every paragraph in the RSVP callout text box.",
+          "visible_success_signal": "Both sentences in the RSVP message are centered within the relocated callout area.",
+          "efficiency_tip": "Enter text-editing mode in the RSVP callout, select all text in that box, and apply paragraph centering once."
+        }
+      ],
+      "allowed_variation": "The callout may be placed with minor positional variation as long as it is clearly centered beneath the three schedule cards, does not overlap another object, and the specified text formatting is exact.",
+      "recording_start_state": "Open the provided two-slide Harbor Pollinator Day presentation in Normal view with slide 2 selected; the RSVP text box is visibly upper-left, left-aligned, and unformatted at the deadline phrase.",
+      "recording_end_state": "Slide 2 shows the RSVP text box centered in the footer below the schedule cards, with all callout paragraphs centered and only “Register by Friday” teal (#007C83) and underlined."
+    },
+    "expected_incidental_operations": [
+      {
+        "operation": "Select slide 2 in the Slides pane before editing the schedule-and-RSVP slide.",
+        "reason": "The requested callout edits all occur on slide 2.",
+        "category": "scaffolding"
+      },
+      {
+        "operation": "Enter text-editing mode and select the deadline phrase before applying character formatting.",
+        "reason": "Underline and font color must apply only to “Register by Friday,” not the full RSVP message.",
+        "category": "task_specific"
+      }
+    ],
+    "ready_state_checks": [
+      "Confirm the presentation is open in LibreOffice Impress in Normal view.",
+      "Confirm the slide pane shows exactly 2 slides.",
+      "Confirm slide 2 is selected and displays three schedule cards across the middle.",
+      "Confirm the RSVP callout is in the upper-left area of slide 2, with left-aligned dark-gray text and an unformatted dark-gray “Register by Friday” phrase."
+    ],
+    "setup_notes": [
+      "Use the uploaded presentation as provided and begin with slide 2 selected."
+    ],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

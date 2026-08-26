@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+  "app": "libreoffice_impress",
+  "single_action_count": 17,
+  "prompt_sha256": "df95523dfaf3c652e07bf43e2a9ec4a9a99194f525e574d47d17ab983c948f3e",
+  "request_id": "89893711-636e-4afb-90de-b93f18f85bde",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 879,
+    "cached_input_tokens": 0,
+    "output_tokens": 443,
+    "estimated_cost_usd": 0.007074
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Enable slide numbers on all slides",
+        "procedure": [
+          "Open the Insert menu and choose Header and Footer.",
+          "In the Slide tab, enable the Slide number checkbox.",
+          "Choose Apply to All to add the slide-number field throughout the presentation."
+        ],
+        "efficiency_tip": "Use Apply to All instead of enabling slide numbers separately on individual slides.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Set slide-number field font color in Master View",
+        "procedure": [
+          "Open Master View so that edits affect slide-layout placeholders rather than only one ordinary slide.",
+          "Select the slide-number placeholder box; select the object rather than entering text-editing mode unless you need to edit its contents.",
+          "Use the Font Color control to choose the desired color.",
+          "Repeat the formatting on slide-number placeholders in other master layouts when those layouts use separate slide-number objects. After choosing a color once, the Font Color button can apply the current color directly to another selected placeholder."
+        ],
+        "efficiency_tip": "Format the slide-number placeholder in each relevant master layout instead of recoloring slide numbers on every individual slide.",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "pptx",
+  "opens_as_zip_package": true,
+  "libreoffice_render_succeeded": true,
+  "slide_count": 2,
+  "semantic_object_count": 15,
+  "geometric_overlap_warnings": [
+    {
+      "slide_number": 1,
+      "objects": [
+        "cover_event_title",
+        "cover_botanical_illustration"
+      ],
+      "overlap_area": 0.3675
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "schedule_card_arrival",
+        "schedule_arrival_text"
+      ],
+      "overlap_area": 2.9925
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "schedule_card_planting",
+        "schedule_planting_text"
+      ],
+      "overlap_area": 2.9925
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "schedule_card_cleanup",
+        "schedule_cleanup_text"
+      ],
+      "overlap_area": 2.9925
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "rsvp_callout_panel",
+        "rsvp_closing_callout"
+      ],
+      "overlap_area": 2.418
+    }
+  ],
+  "placeholder_matches": [],
+  "media_part_count": 2,
+  "notes_part_count": 6,
+  "slides": [
+    {
+      "slide_number": 1,
+      "text": [
+        "Harbor Pollinator Day",
+        "Saturday, May 18  •  Pier Garden, Harborfront"
+      ],
+      "shape_count": 4,
+      "picture_count": 1,
+      "graphic_frame_count": 0
+    },
+    {
+      "slide_number": 2,
+      "text": [
+        "Volunteer schedule",
+        "A simple morning rhythm for restoring shoreline habitat.",
+        "9:00",
+        "Check in at Pier Garden",
+        "9:30",
+        "Plant shoreline natives",
+        "11:30",
+        "Return tools and sort compost",
+        "Bring water, sun protection, and gloves.",
+        "Register by Friday to reserve a planting kit."
+      ],
+      "shape_count": 10,
+      "picture_count": 0,
+      "graphic_frame_count": 0
+    }
+  ],
+  "preview_files": [
+    "slide-01.png",
+    "slide-02.png"
+  ],
+  "contact_sheet": "contact-sheet.png",
+  "visual_review_required": true
+}

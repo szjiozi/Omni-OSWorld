@@ -1,0 +1,15 @@
+You are constructing an inference-only computer-use benchmark from expert OSWorld actions.
+
+Extract only reusable LibreOffice Impress operation skills. Exclude presentation-domain facts, source-specific content, literal task goals, and complete end-to-end solutions. Each skill must represent one independently reusable technique that could be demonstrated in a short reference clip.
+
+Atomicity is semantic rather than one mouse event. Selecting an object, opening a formatting control, choosing a value, and confirming it may be one skill when those actions implement one technique. Split independently reusable techniques even when their actions are consecutive. Merge repeated uses of the same technique within one source task and include all of their non-overlapping source action indices.
+
+Treat ordinary slide navigation, selecting one obvious object, typing a task-specific literal, pressing Enter, and clicking OK as scaffolding unless they are necessary parts of a substantive technique. Do not create weak standalone skills merely to cover every action. Each source action index may belong to at most one skill.
+
+Distinguish techniques that are operationally different in Impress. Examples include selecting and editing text inside a shape, paragraph alignment, font styling, object movement, exact object sizing, image insertion, image crop/fill behavior, slide-background formatting, table insertion and editing, slide duplication and ordering, speaker notes, Master View edits, slide-number fields, slide orientation, transitions, embedded media, export, application preferences, and panel visibility. Do not merge them merely because one source task uses several together.
+
+Skill names must be app-general and must not contain source-specific topics, people, filenames, or slide text. Procedures must explain the actual English LibreOffice UI behavior, object or slide selection state, keyboard shortcuts, and a concrete generic example. Explicitly distinguish selecting a shape from entering text-editing mode when that distinction matters. Efficiency tips should reduce unnecessary selection, navigation, or repeated formatting without sacrificing correctness.
+
+Use only the supplied instruction and indexed single steps. Write every field in English and return only JSON matching the supplied schema. action_ids are zero-based indices shown in square brackets. Do not invent task IDs, app names, files, evaluator rules, hidden object state, or actions.
+
+Set decision to `skills_extracted`, decision_reason to an empty string, and return one or more skills when the actions contain independently reusable techniques. If the sequence contains only scaffolding, source-specific literal entry, file naming, confirmation, or another sequence with no reusable technique, set decision to `no_reusable_skill`, explain why, and return an empty skills array.

@@ -11,6 +11,7 @@ from typing import Any
 from .llm import JSONRequest, OpenAICompatibleAsyncClient
 from .models import SkillRecord, SourceTask
 from .prompts import load_prompt, render_prompt
+from .reference_applications import get_reference_application
 from .schema import load_schema, validate_payload
 
 
@@ -27,8 +28,10 @@ def build_skill_request(
     *,
     prompt_root: Path = PROMPT_ROOT,
 ) -> JSONRequest:
-    system_prompt = load_prompt(prompt_root / "extract_skills.system.txt")
-    user_template = load_prompt(prompt_root / "extract_skills.user.txt")
+    profile = get_reference_application(task.app)
+    stem = profile.skill_prompt_stem
+    system_prompt = load_prompt(prompt_root / f"{stem}.system.txt")
+    user_template = load_prompt(prompt_root / f"{stem}.user.txt")
     indexed_steps = "\n".join(
         f"[{index}] {step}" for index, step in enumerate(task.single_steps)
     )
@@ -40,7 +43,7 @@ def build_skill_request(
         },
     )
     return JSONRequest(
-        prompt_name="extract_skills.v1",
+        prompt_name=f"{stem}.v1",
         system_prompt=system_prompt,
         user_prompt=user_prompt,
         response_schema=load_schema("skill-extraction-response.schema.json"),

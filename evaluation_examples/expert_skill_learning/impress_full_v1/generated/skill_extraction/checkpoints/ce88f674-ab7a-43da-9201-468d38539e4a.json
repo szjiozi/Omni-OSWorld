@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+  "app": "libreoffice_impress",
+  "single_action_count": 4,
+  "prompt_sha256": "6f9bea49518a6881c41cea87c1c19535f71f5afe086f6c7020bbbcbcdef29bcf",
+  "request_id": "b2ec334c-1480-4b0f-bb63-21f7b01d7a17",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 740,
+    "cached_input_tokens": 0,
+    "output_tokens": 100,
+    "estimated_cost_usd": 0.00268
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Change slide orientation to portrait",
+        "procedure": [
+          "Open the Slide menu and choose Slide Properties.",
+          "In the Paper format section, select Portrait.",
+          "Confirm the dialog to apply the orientation to the presentation slides."
+        ],
+        "efficiency_tip": "Use Slide Properties when changing the document-wide slide page orientation; this avoids resizing or rotating individual slide objects.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ]
+  }
+}

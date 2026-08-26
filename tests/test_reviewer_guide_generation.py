@@ -1,11 +1,15 @@
+import asyncio
 import json
 
 import pytest
 
+from benchmark_construction.llm import JSONResult
+from benchmark_construction.pricing import TokenUsage
 from benchmark_construction.reviewer_guide_generation import (
     ReviewerGuideJob,
     ReviewerGuideResult,
     build_reviewer_guide_request,
+    generate_reviewer_guides,
     load_reviewer_guides,
     sha256_text,
     validate_reviewer_guide,
@@ -142,3 +146,56 @@ def test_reviewer_guide_round_trip_records_task_detail_hash(tmp_path):
         "estimated_cost_usd": 0.01,
         "pricing_complete": True,
     }
+
+
+def test_reviewer_guide_retries_only_local_validation_failures(tmp_path):
+    detail_path = tmp_path / "TASK_DETAIL.md"
+    detail_path.write_text("# TASK_DETAIL\n", encoding="utf-8")
+    invalid = _guide()
+    invalid["steps"][0]["instructions"] = ["选择“文本编辑模式”。"]
+    valid = _guide()
+
+    class FakeClient:
+        def __init__(self):
+            self.retry_requests = []
+
+        async def generate_many(self, requests):
+            return [
+                JSONResult(
+                    request_id="initial",
+                    model="test-model",
+                    data=invalid,
+                    usage=TokenUsage(10, 20),
+                    estimated_cost_usd=0.01,
+                )
+            ]
+
+        async def generate_json(self, request):
+            self.retry_requests.append(request)
+            return JSONResult(
+                request_id="retry",
+                model="test-model",
+                data=valid,
+                usage=TokenUsage(11, 21),
+                estimated_cost_usd=0.02,
+            )
+
+    client = FakeClient()
+    results = asyncio.run(
+        generate_reviewer_guides(
+            [
+                ReviewerGuideJob(
+                    "reference-task-1",
+                    ("skill-1", "skill-2"),
+                    detail_path,
+                )
+            ],
+            client,
+            semantic_retries=1,
+        )
+    )
+
+    assert results[0].request_id == "retry"
+    assert len(client.retry_requests) == 1
+    assert "failed local validation" in client.retry_requests[0].user_prompt
+    assert "exact English" in client.retry_requests[0].user_prompt

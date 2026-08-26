@@ -11,6 +11,7 @@ from .models import (
     ACTIVE_WORKSPACE_STATUSES,
     PortalSession,
     TaskAssignment,
+    TaskReviewRecord,
     WorkspaceSession,
     WorkspaceStatus,
     utc_now_iso,
@@ -37,6 +38,22 @@ class PortalStore(Protocol):
     def put_assignment(self, assignment: TaskAssignment) -> None: ...
 
     def assignments_for(self, username: str) -> list[TaskAssignment]: ...
+
+    def put_task_review(self, record: TaskReviewRecord) -> None: ...
+
+    def get_task_review(
+        self, catalog_version: str, task_id: str
+    ) -> TaskReviewRecord | None: ...
+
+    def put_final_submission(
+        self, username: str, task_id: str, session_id: str
+    ) -> None: ...
+
+    def final_submission_for(self, username: str, task_id: str) -> str | None: ...
+
+    def clear_final_submission(
+        self, username: str, task_id: str, session_id: str
+    ) -> None: ...
 
     def put_portal_session(self, session: PortalSession) -> None: ...
 
@@ -72,6 +89,8 @@ class MemoryPortalStore:
     def __init__(self) -> None:
         self._lock = threading.RLock()
         self._assignments: dict[tuple[str, str], TaskAssignment] = {}
+        self._task_reviews: dict[tuple[str, str], TaskReviewRecord] = {}
+        self._final_submissions: dict[tuple[str, str], str] = {}
         self._portal_sessions: dict[str, PortalSession] = {}
         self._workspaces: dict[str, WorkspaceSession] = {}
 
@@ -89,6 +108,34 @@ class MemoryPortalStore:
                 ),
                 key=lambda item: (item.assigned_at, item.task_id),
             )
+
+    def put_task_review(self, record: TaskReviewRecord) -> None:
+        with self._lock:
+            self._task_reviews[(record.catalog_version, record.task_id)] = record
+
+    def get_task_review(
+        self, catalog_version: str, task_id: str
+    ) -> TaskReviewRecord | None:
+        with self._lock:
+            return self._task_reviews.get((catalog_version, task_id))
+
+    def put_final_submission(
+        self, username: str, task_id: str, session_id: str
+    ) -> None:
+        with self._lock:
+            self._final_submissions[(username, task_id)] = session_id
+
+    def final_submission_for(self, username: str, task_id: str) -> str | None:
+        with self._lock:
+            return self._final_submissions.get((username, task_id))
+
+    def clear_final_submission(
+        self, username: str, task_id: str, session_id: str
+    ) -> None:
+        with self._lock:
+            key = (username, task_id)
+            if self._final_submissions.get(key) == session_id:
+                self._final_submissions.pop(key)
 
     def put_portal_session(self, session: PortalSession) -> None:
         with self._lock:
@@ -254,6 +301,99 @@ class DynamoPortalStore:
             ),
             key=lambda item: (item.assigned_at, item.task_id),
         )
+
+    def put_task_review(self, record: TaskReviewRecord) -> None:
+        self.client.put_item(
+            TableName=self.table_name,
+            Item=self._item(
+                {
+                    "pk": f"REVIEW#{record.catalog_version}",
+                    "sk": f"TASK#{record.task_id}",
+                    "entity": "task_review",
+                    "catalog_version": record.catalog_version,
+                    "task_id": record.task_id,
+                    "username": record.username,
+                    "review": record.review,
+                    "updated_at": record.updated_at,
+                }
+            ),
+        )
+
+    def get_task_review(
+        self, catalog_version: str, task_id: str
+    ) -> TaskReviewRecord | None:
+        response = self.client.get_item(
+            TableName=self.table_name,
+            Key=self._item(
+                {
+                    "pk": f"REVIEW#{catalog_version}",
+                    "sk": f"TASK#{task_id}",
+                }
+            ),
+            ConsistentRead=True,
+        )
+        raw = response.get("Item")
+        if raw is None:
+            return None
+        item = self._decode(raw)
+        return TaskReviewRecord(
+            catalog_version=item["catalog_version"],
+            task_id=item["task_id"],
+            username=item["username"],
+            review=dict(item["review"]),
+            updated_at=item["updated_at"],
+        )
+
+    def put_final_submission(
+        self, username: str, task_id: str, session_id: str
+    ) -> None:
+        self.client.put_item(
+            TableName=self.table_name,
+            Item=self._item(
+                {
+                    "pk": f"USER#{username}",
+                    "sk": f"FINAL_SUBMISSION#{task_id}",
+                    "entity": "final_submission",
+                    "username": username,
+                    "task_id": task_id,
+                    "session_id": session_id,
+                    "updated_at": utc_now_iso(),
+                }
+            ),
+        )
+
+    def final_submission_for(self, username: str, task_id: str) -> str | None:
+        response = self.client.get_item(
+            TableName=self.table_name,
+            Key=self._item(
+                {"pk": f"USER#{username}", "sk": f"FINAL_SUBMISSION#{task_id}"}
+            ),
+            ConsistentRead=True,
+        )
+        raw = response.get("Item")
+        return self._decode(raw)["session_id"] if raw else None
+
+    def clear_final_submission(
+        self, username: str, task_id: str, session_id: str
+    ) -> None:
+        try:
+            self.client.delete_item(
+                TableName=self.table_name,
+                Key=self._item(
+                    {
+                        "pk": f"USER#{username}",
+                        "sk": f"FINAL_SUBMISSION#{task_id}",
+                    }
+                ),
+                ConditionExpression="session_id = :session_id",
+                ExpressionAttributeValues=self._values({":session_id": session_id}),
+            )
+        except Exception as exc:
+            if getattr(exc, "response", {}).get("Error", {}).get("Code") == (
+                "ConditionalCheckFailedException"
+            ):
+                return
+            raise
 
     def put_portal_session(self, session: PortalSession) -> None:
         self.client.put_item(

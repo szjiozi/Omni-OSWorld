@@ -69,9 +69,11 @@ class AwsLaunchConfigTests(unittest.TestCase):
             {"UserData": OSWORLD_SERVICE_USER_DATA},
         )
         self.assertIn("ExecStartPre=", OSWORLD_SERVICE_DROP_IN)
-        self.assertIn("xdpyinfo", OSWORLD_SERVICE_DROP_IN)
+        self.assertIn("/tmp/.X11-unix/X0", OSWORLD_SERVICE_DROP_IN)
+        self.assertNotIn("xdpyinfo", OSWORLD_SERVICE_DROP_IN)
         self.assertIn("StartLimitIntervalSec=0", OSWORLD_SERVICE_DROP_IN)
         self.assertIn("base64 --decode", OSWORLD_SERVICE_USER_DATA)
+        self.assertIn("restart --no-block", OSWORLD_SERVICE_USER_DATA)
         self.assertNotIn("$(seq", OSWORLD_SERVICE_USER_DATA)
         encoded = re.search(
             r"printf '%s' '([^']+)'",

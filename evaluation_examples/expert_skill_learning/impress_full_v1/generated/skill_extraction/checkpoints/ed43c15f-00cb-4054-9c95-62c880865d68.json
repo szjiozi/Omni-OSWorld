@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+  "app": "libreoffice_impress",
+  "single_action_count": 7,
+  "prompt_sha256": "f0265b05e543a1fc861c135cecd7bf41341f4714832ce7b74eab02d5d85d1a26",
+  "request_id": "9a1e351e-6d4d-44ac-a1df-b02bb531e6b7",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 781,
+    "cached_input_tokens": 0,
+    "output_tokens": 609,
+    "estimated_cost_usd": 0.00887
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Underline all text in a text box",
+        "procedure": [
+          "Enter text-editing mode for the text box, for example by double-clicking its text so that a caret appears.",
+          "Press Ctrl+A to select the text within the active text box. In text-editing mode this selects text rather than all slide objects.",
+          "Press Ctrl+U to toggle underline formatting for the selected text.",
+          "Repeat on other text boxes as needed; Ctrl+U applies the same underline technique to each independently selected text range."
+        ],
+        "efficiency_tip": "Use Ctrl+A followed by Ctrl+U while the caret is inside each text box to format its full contents without manually dragging across the text.",
+        "action_ids": [
+          0,
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "name": "Reposition an image by dragging",
+        "procedure": [
+          "Click the image once to select the image object and show its selection handles.",
+          "Drag the selected image from inside its bounds to the desired location on the slide, then release the mouse button.",
+          "Avoid dragging a resize handle, which changes the image size instead of its position."
+        ],
+        "efficiency_tip": "Drag from the image interior rather than from an edge or handle to move it cleanly without resizing or cropping.",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    ]
+  }
+}

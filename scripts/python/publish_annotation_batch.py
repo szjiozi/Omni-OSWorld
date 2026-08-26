@@ -8,6 +8,7 @@ import gzip
 import hashlib
 import json
 import shlex
+import shutil
 import sys
 import tarfile
 import tempfile
@@ -35,7 +36,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--region", default="ap-east-1")
     parser.add_argument("--stack-name", default="osworld-annotation-portal")
     parser.add_argument("--pilot-root", type=Path, default=DEFAULT_PILOT)
+    parser.add_argument(
+        "--dataset-root",
+        type=Path,
+        help="Dataset root with generated/<round> and review_packets/<round>.",
+    )
+    parser.add_argument("--dataset-round", default="round_01")
     parser.add_argument("--assignments", type=Path, default=DEFAULT_ASSIGNMENTS)
+    parser.add_argument(
+        "--replace-assignments",
+        action="store_true",
+        help="Delete stale assignments for every username in the new assignment file.",
+    )
     parser.add_argument("--allow-pending", action="store_true")
     return parser.parse_args()
 
@@ -70,6 +82,61 @@ def build_snapshot(pilot_root: Path, output_path: Path) -> str:
                     filter=_archive_filter,
                 )
     return file_sha256(output_path)
+
+
+def stage_dataset_round(dataset_root: Path, round_name: str, destination: Path) -> Path:
+    """Normalize a full-dataset round into the immutable Portal pilot layout."""
+
+    dataset_root = dataset_root.resolve()
+    generated = dataset_root / "generated"
+    round_root = generated / round_name
+    packet_root = dataset_root / "review_packets" / round_name
+    artifact_root = round_root / "artifacts"
+    sources = {
+        "reference_packages.json": round_root / "reference_packages.json",
+        "reference_package_reviews.json": round_root / "reference_package_reviews.json",
+        "skill_pool.json": generated / "skill_pool.json",
+    }
+    for source in (*sources.values(), packet_root, artifact_root):
+        if not source.exists():
+            raise FileNotFoundError(source)
+    destination.mkdir(parents=True, exist_ok=False)
+    for name, source in sources.items():
+        shutil.copy2(source, destination / name)
+    normalized_packets = destination / "review_packets"
+    shutil.copytree(packet_root, normalized_packets)
+    normalized_artifacts = destination / "artifacts"
+    shutil.copytree(artifact_root, normalized_artifacts)
+    task_configs = destination / "task_configs"
+    task_configs.mkdir()
+    package_doc = json.loads(sources["reference_packages.json"].read_text(encoding="utf-8"))
+    task_ids = [item["reference_task_id"] for item in package_doc["reference_packages"]]
+    if len(task_ids) != len(set(task_ids)):
+        raise ValueError("Dataset round contains duplicate reference task IDs")
+    for task_id in task_ids:
+        packet = normalized_packets / task_id
+        for required in ("TASK.md", "review.json", "task_config.json"):
+            if not (packet / required).is_file():
+                raise FileNotFoundError(packet / required)
+        task_config = packet / "task_config.json"
+        config_doc = json.loads(task_config.read_text(encoding="utf-8"))
+        configured_files = config_doc.get("config", [{}])[0].get("parameters", {}).get(
+            "files", []
+        )
+        if len(configured_files) != 1:
+            raise ValueError(f"{task_config} must upload exactly one artifact")
+        artifact = normalized_artifacts / task_id / Path(
+            configured_files[0]["local_path"]
+        ).name
+        if not artifact.is_file():
+            raise FileNotFoundError(artifact)
+        expected_hash = config_doc.get("reference_annotation", {}).get(
+            "artifact_sha256"
+        )
+        if not expected_hash or file_sha256(artifact) != expected_hash:
+            raise ValueError(f"Initial artifact SHA256 mismatch for {task_id}")
+        shutil.copy2(task_config, task_configs / f"{task_id}.json")
+    return destination
 
 
 def stack_outputs(cloudformation: Any, stack_name: str) -> dict[str, str]:
@@ -112,11 +179,15 @@ def install_snapshot(
     validation_code = (
         "from pathlib import Path; "
         "from benchmark_construction.annotation_portal.catalog import TaskCatalog; "
+        "from benchmark_construction.annotation_portal.aws_workspace import "
+        "_load_task_config; "
         f"root=Path({(destination + '/pilot')!r}); "
         "TaskCatalog.load(packages_path=root/'reference_packages.json', "
         "skills_path=root/'skill_pool.json', "
         "reviews_path=root/'reference_package_reviews.json', "
-        f"allow_pending={allow_pending!r})"
+        f"allow_pending={allow_pending!r}); "
+        "[_load_task_config(path) for path in "
+        "sorted((root/'task_configs').glob('*.json'))]"
     )
     commands = [
         "set -eu",
@@ -150,10 +221,44 @@ def install_snapshot(
         raise RuntimeError(f"Pilot snapshot installation failed: {detail[-4000:]}") from waiter_error
 
 
-def put_assignments(dynamodb: Any, table_name: str, rows: list[tuple[str, str]]) -> None:
-    from boto3.dynamodb.types import TypeSerializer
+def put_assignments(
+    dynamodb: Any,
+    table_name: str,
+    rows: list[tuple[str, str]],
+    *,
+    replace: bool = False,
+) -> int:
+    from boto3.dynamodb.types import TypeDeserializer, TypeSerializer
 
     serializer = TypeSerializer()
+    deserializer = TypeDeserializer()
+    desired = set(rows)
+    deleted = 0
+    if replace:
+        for username in sorted({username for username, _ in rows}):
+            query: dict[str, Any] = {
+                "TableName": table_name,
+                "KeyConditionExpression": "pk = :pk AND begins_with(sk, :prefix)",
+                "ExpressionAttributeValues": {
+                    ":pk": serializer.serialize(f"USER#{username}"),
+                    ":prefix": serializer.serialize("ASSIGNMENT#"),
+                },
+            }
+            while True:
+                response = dynamodb.query(**query)
+                for raw in response.get("Items", []):
+                    item = {key: deserializer.deserialize(value) for key, value in raw.items()}
+                    if (username, item["task_id"]) in desired:
+                        continue
+                    dynamodb.delete_item(
+                        TableName=table_name,
+                        Key={"pk": raw["pk"], "sk": raw["sk"]},
+                    )
+                    deleted += 1
+                last_key = response.get("LastEvaluatedKey")
+                if not last_key:
+                    break
+                query["ExclusiveStartKey"] = last_key
     for username, task_id in rows:
         item = {
             "pk": f"USER#{username}",
@@ -167,25 +272,35 @@ def put_assignments(dynamodb: Any, table_name: str, rows: list[tuple[str, str]])
             TableName=table_name,
             Item={key: serializer.serialize(value) for key, value in item.items()},
         )
+    return deleted
 
 
 def main() -> int:
     args = parse_args()
-    pilot_root = args.pilot_root.resolve()
-    catalog = TaskCatalog.load(
-        packages_path=pilot_root / "reference_packages.json",
-        skills_path=pilot_root / "skill_pool.json",
-        reviews_path=pilot_root / "reference_package_reviews.json",
-        allow_pending=args.allow_pending,
-    )
-    task_ids = {task.task_id for task in catalog.all()}
-    assignments = load_assignments(args.assignments.resolve(), task_ids)
     import boto3
 
     session = boto3.Session(profile_name=args.profile, region_name=args.region)
     outputs = stack_outputs(session.client("cloudformation"), args.stack_name)
     with tempfile.TemporaryDirectory(prefix="osworld-pilot-") as temp_dir:
-        archive = Path(temp_dir) / "pilot.tar.gz"
+        temporary_root = Path(temp_dir)
+        pilot_root = (
+            stage_dataset_round(
+                args.dataset_root,
+                args.dataset_round,
+                temporary_root / "staged-pilot",
+            )
+            if args.dataset_root
+            else args.pilot_root.resolve()
+        )
+        catalog = TaskCatalog.load(
+            packages_path=pilot_root / "reference_packages.json",
+            skills_path=pilot_root / "skill_pool.json",
+            reviews_path=pilot_root / "reference_package_reviews.json",
+            allow_pending=args.allow_pending,
+        )
+        task_ids = {task.task_id for task in catalog.all()}
+        assignments = load_assignments(args.assignments.resolve(), task_ids)
+        archive = temporary_root / "pilot.tar.gz"
         digest = build_snapshot(pilot_root, archive)
         bucket = outputs["AnnotationBucketName"]
         key = f"task-batches/pilot-{digest}.tar.gz"
@@ -206,10 +321,11 @@ def main() -> int:
             sha256=digest,
             allow_pending=args.allow_pending,
         )
-    put_assignments(
+    deleted_assignments = put_assignments(
         session.client("dynamodb"),
         outputs["StateTableName"],
         assignments,
+        replace=args.replace_assignments,
     )
     print(
         json.dumps(
@@ -217,6 +333,7 @@ def main() -> int:
                 "catalog_version": digest,
                 "task_count": len(task_ids),
                 "assignment_count": len(assignments),
+                "deleted_assignment_count": deleted_assignments,
                 "gateway_restarted": False,
                 "s3_uri": f"s3://{bucket}/{key}",
             },

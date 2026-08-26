@@ -288,6 +288,28 @@ skill list，避免 human-edited TASK 与生成期字段出现两个版本。Ful
 `TASK.md` SHA256 与本地逐一一致；CloudFront source 已包含 `Task instructions (TASK.md)`、
 `Exit fullscreen` 与 `document.exitFullscreen`，且不再包含旧 quick-guide label。
 
+`calc_full_v1/round_01` 包含 20 个 pending Calc reference tasks，目录布局是
+`generated/round_01` + `review_packets/round_01`，不能直接作为旧 pilot root。
+`publish_annotation_batch.py --dataset-root ... --dataset-round round_01` 只在临时目录规范化
+package/review/skill pool、flatten packet round，并从每个 packet 复制 `task_config.json`；原 dataset
+不得被 publisher 改写。`--replace-assignments` 只清理新 assignment 文件中四个 username 的陈旧
+assignment，不删除历史 workspace/submission。当前分配为 task index 模 4，每个账号 5 个。
+
+Portal online review 以 DynamoDB 为事实来源，key 由 immutable `catalog_version + task_id` 组成，
+value 是通过 `validate_reference_review_form` 校验的标准六字段 review；reviewer 由登录 identity
+自动写入。TASK.md 内的 `review.json` 链接必须重写到 owner-checked online API，不能返回 snapshot
+空模板。前端一次只渲染一个 assigned task，以 Previous/Next 切换。管理员用
+`sync_annotation_portal_reviews.py` 将最新在线记录原子写回本地 packet；不同的非空本地 review
+默认拒绝覆盖。
+
+上述 calc-full Portal 更新通过 94 项 Portal/infra/review/recording 回归测试、Node syntax、
+compileall 与 diff check。source bundle `8161971d3c27...` 已部署，随后原子发布 catalog snapshot
+`f6bf55fb277b6201a7cba31f1ff4f7ac9ffbf5642d796b6d98d457ab7600698d`：20 个 task、20 条
+assignment、删除 4 条旧 assignment，gateway 未重启。SSM 核验 `live-pilot` 指向该 snapshot、
+包含 20 个 packet 且 review schema 存在；DynamoDB 核验四个账号各 5 个新 task、active count 0。
+CloudFront source 已包含 Previous/Next、Task X of Y、Save/Download review.json；未认证 PUT review
+route 返回 401，证明 PUT forwarding 与 FastAPI route 生效且没有产生测试 review。
+
 AWS runner 固定 `osworld-dev`，默认 annotation region 由
 `AWS_ANNOTATION_REGION` 决定，当前主路径为香港 `ap-east-1`。香港官方公共 AMI ID 已失效，
 因此 `AWS_AP_EAST_1_AMI_ID` 指向从 `us-east-1` 官方干净 AMI 跨区复制的私有加密副本；
@@ -367,6 +389,11 @@ Cognito User Pool 关闭 self-registration。管理员通过
 challenge ID；正式 portal cookie 同样是 opaque random token，DynamoDB 只存 SHA256，cookie
 使用 `HttpOnly + Secure + SameSite=Lax`，不把 Cognito token 放进 localStorage。
 
+User Pool 的永久密码策略是至少 12 位，并同时包含大写、小写、数字和符号。首次改密页面必须
+明确展示并在提交前校验这四项；后端遇到 `InvalidPasswordException` 时返回同样的可操作提示。
+password challenge 只能在 Cognito 改密成功后删除，策略校验失败时必须保留，允许用户直接修改
+新密码后用同一 challenge 重试。
+
 noVNC 的 HTML/JS 和 WebSocket 都通过已认证的 gateway 路由：
 
 ```text
@@ -435,6 +462,58 @@ object metadata，并用 `HeadObject` 核对；所有文件成功后最后写
 assignments；portal 的 `ReloadingTaskCatalog` 按 symlink target 热加载，不重启 systemd。完整代码
 部署则原子取得 Dynamo maintenance lock：同一事务要求 active count 为 0，lock 存在时新的
 workspace admission fail closed；30 分钟 TTL 防止部署进程异常退出后永久锁死。
+
+Portal 入口不得对 `--pilot-root /opt/osworld/live-pilot` 调用 `Path.resolve()` 后再构造
+`ReloadingTaskCatalog`。提前 resolve 会把运行中的 catalog 永久固定到发布时的旧实体 snapshot；
+后续 publisher 即使成功切换 symlink，新 assignments 与旧 catalog 取交集仍会返回空 task 列表。
+入口只做 `expanduser().absolute()`，symlink target 的 resolve 和版本比较必须留给
+`ReloadingTaskCatalog._current()` 每次请求时执行。对应入口级回归测试必须保留。
+
+2026-08-18 发布 calc-full 后，`annotator-hk-1` 页面曾显示 `No tasks are assigned yet`：DynamoDB
+实际有 5 条新 assignment，`live-pilot` 也已切到 20-task snapshot，但运行入口提前 resolve 后仍读
+旧 4-task catalog，因此 service 的 assignment/catalog 交集为空。修复通过 91 项相关回归测试并以
+source bundle `93042aee19fc...` 部署。线上复核为 health 200、systemd active、20 个 packet、hk-1
+有 5 条 assignment。以后遇到空列表应分别核对 identity、assignment count、resolved catalog target
+和二者交集，不能仅凭前端文案判断未分配任务。
+
+随后用户刷新仍为空，进一步核验发现旧 gateway 的实际 systemd `ExecStart` 没有 `--pilot-root`。
+CloudFormation UserData 模板虽已包含正确参数，但既有 EC2 在 stack/source 更新时不会重新执行
+UserData；source refresh 过去只更新代码并重启旧 unit，于是 API 一直读取 bundle 内默认 pilot。
+`_refresh_gateway_source` 现在会幂等迁移历史 unit，在 `--assignments` 前加入
+`--pilot-root /opt/osworld/live-pilot` 并执行 `systemctl daemon-reload`。诊断时必须检查实际
+`systemctl show ... -p ExecStart`，不能仅检查 CloudFormation 模板文本。
+修复部署后实际 ExecStart 已包含 live-pilot，health 为 200；以线上相同 catalog/store/service
+构造 `tasks_for(annotator-hk-1)` 返回指定的 5 个 calc-full task ID。
+
+完整 dataset round 的 snapshot 必须同时包含 `artifacts/<task-id>/initial_artifact.xlsx`。
+`AWSReferenceWorkspaceController._load_task_config` 在代码仓库相对路径不存在时会从该 snapshot
+位置回退；只发布 review packets 和 task configs 会让 provision 在创建 worker 前以
+`FileNotFoundError` 失败。publisher staging 现在复制整个 round artifact root，逐 task 校验配置中
+唯一 upload artifact 的存在性和 SHA256；远端 snapshot 安装也会对所有 config 调用实际 loader，
+验证通过后才允许原子切换 `live-pilot`。
+该修复后的 calc-full snapshot 为 `f6b8dc7a0449...`；远端独立核验包含 20 个 XLSX，task 1
+SHA256 为 `8e3b874c1d29...`，与 config 一致。
+
+Pointer overlay 解析必须接收同一录制的 XInput keymap，并把鼠标按下时仍处于 pressed 状态的
+modifier 合并到点击标签：`Shift + Left Click`、`Ctrl + Left Click`、
+`Ctrl + Shift + Left Click`。modifier 不单独生成 key event，避免 `Ctrl+A` 同时出现冗余的
+`Ctrl` 与 `Ctrl+A`；无 keymap 的历史调用仍保持原普通 click/scroll 标签。
+
+Portal 的 submission 列表必须跟随当前 task pager，只渲染该 task 的全部 runs。最终标注视频选择
+以 `USER#<username> / FINAL_SUBMISSION#<task-id>` 持久化到 DynamoDB；只有 owner 的 submitted
+run 可被选择，选择另一个 run 幂等替换旧值。discard 当前 final run 时条件删除选择，避免不同
+run 的并发选择被误清除。前端以 `is_final` 显示 Final annotation video，并为无提交任务显示
+task-scoped 空状态。
+
+`download_annotation_results.py` 默认使用 `final_only`：从 Portal state table 扫描
+`entity=final_submission`，将 `(username, task_id)` 映射到被选中的 session，再只下载对应且具有
+`COMPLETE.json` 的 S3 run。`--final-only` 可显式声明默认行为；只有 `--all-runs` 才下载全部匹配
+的非 discarded runs。下载结果需报告 selection mode、selection count 和 skipped-not-final 数量，
+仍逐文件验证 manifest size/SHA256 后原子落盘。
+
+同一下载命令会读取 Portal 中最新且通过 schema 校验的 task review，将六字段快照写入每个已下载
+run 的 `review.json`，并同步到本地 `review_packets/<round>/<task-id>/review.json`。空白本地表单默认
+更新；如本地已有不同的非空 review，必须显式传入 `--overwrite-reviews` 才允许替换。
 
 结果回收使用 `scripts/python/download_annotation_results.py`。它只下载存在 `COMPLETE.json` 的
 run，默认跳过 discarded，检查 manifest 路径边界，并在 size/SHA256 全部通过后原子 rename；

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+  "app": "libreoffice_impress",
+  "single_action_count": 4,
+  "prompt_sha256": "9995aeee44af207daff69bbd6b9931efcc6e98f074026fabeb0e4ff7424b96f8",
+  "request_id": "3b252d25-8e94-498c-a639-fd3006ab1140",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 749,
+    "cached_input_tokens": 0,
+    "output_tokens": 57,
+    "estimated_cost_usd": 0.002182
+  },
+  "response": {
+    "decision": "no_reusable_skill",
+    "decision_reason": "The sequence only performs a task-specific Save As operation with a literal filename and destination selection, which is excluded as scaffolding/file naming rather than a reusable Impress editing technique.",
+    "skills": []
+  }
+}

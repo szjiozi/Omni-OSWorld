@@ -46,6 +46,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--api-key-env", default="OPENAI_API_KEY")
     parser.add_argument("--concurrency", type=int, default=4)
     parser.add_argument(
+        "--semantic-retries",
+        type=int,
+        default=2,
+        help="Retry only guides that fail local semantic validation.",
+    )
+    parser.add_argument(
         "--response-format",
         choices=("json_schema", "json_object", "text"),
         default="json_schema",
@@ -95,6 +101,7 @@ async def run(args: argparse.Namespace) -> int:
                 reference_task_id=task_id,
                 required_skill_ids=tuple(package["required_skill_ids"]),
                 task_detail_path=detail_path,
+                app=package.get("app", "libreoffice_calc"),
             )
         )
 
@@ -109,7 +116,11 @@ async def run(args: argparse.Namespace) -> int:
         call_log=args.call_log,
         pricing=PricingTable.from_path(args.pricing),
     )
-    results = await generate_reviewer_guides(jobs, client)
+    results = await generate_reviewer_guides(
+        jobs,
+        client,
+        semantic_retries=args.semantic_retries,
+    )
     write_reviewer_guides(args.output, results)
     print(f"Wrote {len(results)} reviewer guides to {args.output}")
     print(f"Per-attempt call log: {args.call_log}")

@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+  "app": "libreoffice_impress",
+  "single_action_count": 7,
+  "prompt_sha256": "3f060573e2338080f091c9e42f0c4e6972cfdb289464de2a5d08522e3fc4692e",
+  "request_id": "b086abb8-7908-4c50-96de-a2fdf52b741b",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 797,
+    "cached_input_tokens": 0,
+    "output_tokens": 364,
+    "estimated_cost_usd": 0.005962
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply bold formatting to text in a slide shape",
+        "procedure": [
+          "On the target slide, click the text-containing shape to select it. If only part of its text should be bold, enter text-editing mode (for example, double-click the shape) and select that text first.",
+          "Press Ctrl+B to toggle bold character formatting for the selected text or the selected shape's text.",
+          "For example, select a title text box and use Ctrl+B to make its title bold."
+        ],
+        "efficiency_tip": "Use Ctrl+B rather than opening the Character formatting dialog; select only the required text when the shape contains mixed formatting.",
+        "action_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "name": "Add speaker notes in Notes view",
+        "procedure": [
+          "Open the View menu and choose Notes to display the slide's notes area.",
+          "Click the notes placeholder, such as “Click to add notes,” to place the text cursor in it.",
+          "Type the desired note text. For example, add a short reminder that corresponds to the slide heading."
+        ],
+        "efficiency_tip": "Switch to Notes view once and enter the note directly in the placeholder; this avoids creating an extra text box on the slide canvas.",
+        "action_ids": [
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    ]
+  }
+}

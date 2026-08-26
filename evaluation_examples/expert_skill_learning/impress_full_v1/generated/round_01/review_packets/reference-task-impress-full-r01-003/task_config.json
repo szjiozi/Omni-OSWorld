@@ -1,0 +1,89 @@
+{
+  "id": "reference-task-impress-full-r01-003",
+  "snapshot": "libreoffice_impress",
+  "instruction": "Update the “Riverside Pollinator Walk” field-brief deck for the volunteer check-in. On slide 2, set the small teal section label “FIELD SNAPSHOT” to 18 pt and set each of the three metric captions (“Nesting sites mapped”, “Late-season blooms”, and “Volunteer pairs”) to 22 pt. Resize the bee-and-wildflower illustration to exactly 6.5 cm high, then move it into the open upper-right area of the slide, above the metric cards and to the right of the summary text. Keep all wording, colors, and other objects unchanged.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-003/initial_artifact.pptx",
+            "path": "/home/user/Desktop/pollinator_walk.pptx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/pollinator_walk.pptx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_impress"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-impress-full-r01-003",
+    "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-003/initial_artifact.pptx",
+    "artifact_sha256": "1af037728afb02a51eb0a8b278761ea6486b884051104b3c415e0bb9eba7035a",
+    "guest_artifact_path": "/home/user/Desktop/pollinator_walk.pptx",
+    "required_skill_ids": [
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+      "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-02",
+      "7ae48c60-f143-4119-b659-15b8f485eb9a.skill-01",
+      "ed43c15f-00cb-4054-9c95-62c880865d68.skill-02"
+    ],
+    "operator_guide": {
+      "recommended_demonstration": [
+        {
+          "skill_id": "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+          "operation_intent": "Set the separate “FIELD SNAPSHOT” text box to exactly 18 pt.",
+          "visible_success_signal": "The teal section label remains unchanged in wording and color but displays visibly larger at 18 pt.",
+          "efficiency_tip": "Enter text-editing mode in the label and type the exact value in the Font Size field rather than using incremental size controls."
+        },
+        {
+          "skill_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-02",
+          "operation_intent": "Set the “Nesting sites mapped”, “Late-season blooms”, and “Volunteer pairs” metric-caption text boxes to exactly 22 pt.",
+          "visible_success_signal": "All three targeted captions display at the same 22 pt size while their associated metric values remain unchanged.",
+          "efficiency_tip": "Select the three caption text boxes together when practical, then enter 22 pt once in the Font Size field; otherwise update each independent caption box in sequence."
+        },
+        {
+          "skill_id": "7ae48c60-f143-4119-b659-15b8f485eb9a.skill-01",
+          "operation_intent": "Set the bee-and-wildflower image to an exact height of 6.5 cm.",
+          "visible_success_signal": "The selected image reports a height of 6.5 cm and retains its original proportions.",
+          "efficiency_tip": "Use the image Position and Size controls and replace the height measurement directly."
+        },
+        {
+          "skill_id": "ed43c15f-00cb-4054-9c95-62c880865d68.skill-02",
+          "operation_intent": "Relocate the resized bee-and-wildflower image into the empty upper-right region above the metric cards.",
+          "visible_success_signal": "The image sits to the right of the summary copy and above the card row without covering text or cards.",
+          "efficiency_tip": "Drag from the image interior, not a selection handle, to avoid changing its size while positioning it."
+        }
+      ],
+      "allowed_variation": "Minor final placement variation is acceptable provided the image is clearly in the open upper-right region, above the metric cards, to the right of the summary text, and no overlap occurs.",
+      "recording_start_state": "Open the supplied three-slide deck with slide 2 visible in normal editing view.",
+      "recording_end_state": "Slide 2 shows the requested 18 pt label, two 22 pt target captions matching the reference caption, and the 6.5 cm-high illustration placed in the upper-right."
+    },
+    "expected_incidental_operations": [
+      {
+        "operation": "Navigate to slide 2 and select the individual text and image objects needed for the requested edits.",
+        "reason": "The requested changes are all confined to distinct editable objects on the field-snapshot slide.",
+        "category": "substantive_prerequisite"
+      }
+    ],
+    "ready_state_checks": [
+      "Confirm the presentation is open in LibreOffice Impress in normal editing view.",
+      "Confirm that the slide pane shows exactly three slides.",
+      "Confirm that slide 2 is selected and visible on the canvas."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

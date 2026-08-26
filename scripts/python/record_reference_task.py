@@ -48,6 +48,7 @@ from benchmark_construction.reference_annotation import (
     load_review_decisions,
     require_launchable_review,
 )
+from benchmark_construction.reference_applications import get_reference_application
 from benchmark_construction.reference_recording import (
     calibrate_recording_timeline,
     collect_guest_reference_recording,
@@ -187,10 +188,7 @@ def _load_task_config(path: Path) -> dict[str, Any]:
     files[0]["local_path"] = str(_resolve(local_path).resolve())
     if steps[1].get("parameters", {}).get("path") != files[0].get("path"):
         raise ValueError("The open action must target the uploaded artifact")
-    if task.get("snapshot") != "libreoffice_calc":
-        raise ValueError(
-            "Reference annotation currently supports libreoffice_calc only"
-        )
+    get_reference_application(task.get("snapshot", ""))
     return task
 
 
@@ -349,16 +347,29 @@ def _retarget_env_to_local_api(env: Any, local_port: int) -> None:
 
 
 def _save_guest_workbook(env: Any, guest_path: str, output_path: Path) -> None:
+    """Backward-compatible Calc wrapper used by tests and older callers."""
+
+    _save_guest_artifact(
+        env, guest_path, output_path, app="libreoffice_calc"
+    )
+
+
+def _save_guest_artifact(
+    env: Any, guest_path: str, output_path: Path, *, app: str
+) -> None:
+    profile = get_reference_application(app)
     result = env.controller.execute_python_command(
         "import pyautogui,time; pyautogui.hotkey('ctrl','s'); time.sleep(3)"
     )
     if not result:
-        raise RuntimeError("Could not send Ctrl+S to LibreOffice Calc")
+        raise RuntimeError(f"Could not send Ctrl+S to {profile.app}")
     content = env.controller.get_file(guest_path)
     if not content:
-        raise RuntimeError(f"Could not retrieve final workbook from {guest_path}")
+        raise RuntimeError(f"Could not retrieve final artifact from {guest_path}")
     if not content.startswith(b"PK"):
-        raise RuntimeError("Retrieved final workbook is not an XLSX ZIP package")
+        raise RuntimeError(
+            f"Retrieved final artifact is not a {profile.artifact_type.upper()} ZIP package"
+        )
     output_path.write_bytes(content)
 
 
@@ -378,6 +389,7 @@ def main() -> int:
     package_paths = args.packages or [PILOT_ROOT / "reference_packages.json"]
     packages = load_reference_packages([_resolve(path) for path in package_paths])
     package = _select_by_id(packages, task_id, "reference package")
+    profile = get_reference_application(package.get("app", "libreoffice_calc"))
     decisions = load_review_decisions(_resolve(args.reviews))
     review_status = require_launchable_review(
         task_id, decisions, allow_pending=args.allow_pending
@@ -390,6 +402,8 @@ def main() -> int:
     task = _load_task_config(config_path)
     if task.get("id") != task_id:
         raise ValueError("Task config ID does not match --reference-task-id")
+    if task.get("snapshot") != profile.app:
+        raise ValueError("Task config application differs from reference package")
     annotation = task["reference_annotation"]
     if annotation["artifact_sha256"] != artifact_entry["artifact_sha256"]:
         raise ValueError("Task config and artifact manifest SHA256 values differ")
@@ -407,7 +421,7 @@ def main() -> int:
     aws_metadata = _configure_aws(args)
     output_dir = _episode_output_dir(args.result_dir, task_id)
     shutil.copy2(config_path, output_dir / "reference_task_config.json")
-    shutil.copy2(original_artifact, output_dir / "initial_artifact.xlsx")
+    shutil.copy2(original_artifact, output_dir / profile.packet_artifact_filename)
     _write_json(output_dir / "reference_package.json", package)
     _write_json(output_dir / "artifact_manifest_entry.json", artifact_entry)
     _write_json(
@@ -424,7 +438,7 @@ def main() -> int:
         "manifest": "episode_manifest.json",
         "task_config": "reference_task_config.json",
         "reference_package": "reference_package.json",
-        "initial_artifact": "initial_artifact.xlsx",
+        "initial_artifact": profile.packet_artifact_filename,
     }
     env = None
     recording_started = False
@@ -664,6 +678,7 @@ def main() -> int:
             pointer_events = parse_timestamped_pointer_events(
                 timestamped_text,
                 video_start_monotonic_ns=calibrated_video_start_monotonic_ns,
+                keymap_text=keymap_text,
             )
             pointer_overlay_event_count = len(pointer_events)
             write_pointer_events(
@@ -692,8 +707,13 @@ def main() -> int:
             raise RuntimeError("Could not create the default recording.mp4")
         artifacts["recording"] = recording_path.name
 
-        final_path = output_dir / "final_artifact.xlsx"
-        _save_guest_workbook(env, annotation["guest_artifact_path"], final_path)
+        final_path = output_dir / profile.final_artifact_filename
+        _save_guest_artifact(
+            env,
+            annotation["guest_artifact_path"],
+            final_path,
+            app=profile.app,
+        )
         artifacts["final_artifact"] = final_path.name
         final_obs = env._get_obs()
         final_ref, final_a11y = _save_observation(

@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+  "app": "libreoffice_impress",
+  "single_action_count": 7,
+  "prompt_sha256": "f90e44076fc96cc15b4b35fc2f50f567794a3b2b8914cbc79c4df4e858dd6c6d",
+  "request_id": "ec030f64-1739-455c-b45e-7aec41c6d47a",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 810,
+    "cached_input_tokens": 0,
+    "output_tokens": 422,
+    "estimated_cost_usd": 0.006684
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set selected text color from the font-color palette",
+        "procedure": [
+          "Click inside a text box to enter text-editing mode, rather than merely selecting the shape border.",
+          "Select the text to recolor, for example with Ctrl+A when all text in the active text box should be affected.",
+          "Open the Font Color drop-down on the formatting toolbar.",
+          "Choose the desired color swatch from the palette, for example the standard Yellow swatch. The selected text adopts that color."
+        ],
+        "efficiency_tip": "Use Ctrl+A only after the text cursor is active inside the intended text box; otherwise it may select slide objects instead of the box's text.",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "name": "Apply the currently active font color to another text selection",
+        "procedure": [
+          "Enter text-editing mode in another text box and select the target text, such as by triple-clicking a paragraph when appropriate.",
+          "Click the Font Color button itself (not its drop-down arrow) to apply the currently active font color to that selection."
+        ],
+        "efficiency_tip": "After choosing a color once from the palette, use the main Font Color button for additional selections to avoid reopening the palette.",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    ]
+  }
+}

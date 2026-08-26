@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+  "app": "libreoffice_impress",
+  "single_action_count": 6,
+  "prompt_sha256": "defbc30a00aabf7a7c60679624c5f55bcbc3041a67ba55ffaf4fe03c508369d2",
+  "request_id": "6f95303c-5b2e-4553-987d-7bb511502bc1",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 793,
+    "cached_input_tokens": 0,
+    "output_tokens": 143,
+    "estimated_cost_usd": 0.003302
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Configure AutoRecovery save interval in application preferences",
+        "procedure": [
+          "Open LibreOffice Options with Alt+F12.",
+          "In the left category tree, expand or select Load/Save, then choose General.",
+          "Enable “Save AutoRecovery information every” if it is not already enabled.",
+          "Enter a desired interval in the minutes field, for example 3, and confirm with OK."
+        ],
+        "efficiency_tip": "Use Alt+F12 to open Options directly; this setting applies through LibreOffice preferences rather than needing to configure each presentation separately.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ]
+  }
+}

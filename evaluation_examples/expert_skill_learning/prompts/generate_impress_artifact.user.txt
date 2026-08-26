@@ -1,0 +1,4 @@
+Reference package:
+{{REFERENCE_PACKAGE}}
+
+Generate the concrete editable PPTX blueprint. Keep the artifact incomplete in exactly the ways needed for the recorded demonstration.

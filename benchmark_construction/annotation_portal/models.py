@@ -67,6 +67,17 @@ class TaskAssignment:
 
 
 @dataclass(frozen=True)
+class TaskReviewRecord:
+    """Durable online review bound to one immutable task catalog version."""
+
+    catalog_version: str
+    task_id: str
+    username: str
+    review: dict[str, Any]
+    updated_at: str = field(default_factory=utc_now_iso)
+
+
+@dataclass(frozen=True)
 class PortalSession:
     """Server-side login session; only its token hash is persisted."""
 

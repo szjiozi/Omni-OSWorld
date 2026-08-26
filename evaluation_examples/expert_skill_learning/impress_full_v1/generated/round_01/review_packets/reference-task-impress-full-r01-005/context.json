@@ -1,0 +1,1086 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-impress-full-r01-005",
+  "package": {
+    "reference_task_id": "reference-task-impress-full-r01-005",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_impress",
+    "task_instruction": "Finalize the “Dawn Marsh Survey” checklist slide for the field-team handoff: give the slide a solid midnight-teal background; convert the three unbulleted readiness statements in the checklist panel into a bulleted list; recolor the full “Launch window: 08:30” line to Yellow; underline every character in the “Carry spare batteries” reminder box; and remove the three pale draft-marker shapes clustered in the upper-right corner with one marquee selection. Keep the rest of the briefing deck unchanged.",
+    "required_skill_ids": [
+      "f23acfd2-c485-4b7c-a1e7-d4303ddfe864.skill-01",
+      "9cf05d24-6bd9-4dae-8967-f67d88f5d38a.skill-01",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-03",
+      "57667013-ea97-417c-9dce-2713091e6e2a.skill-01",
+      "ed43c15f-00cb-4054-9c95-62c880865d68.skill-01"
+    ],
+    "artifact_spec": {
+      "artifact_type": "pptx",
+      "domain": "wetland field-survey briefing",
+      "presentation_title": "Dawn Marsh Survey",
+      "slide_size": "wide",
+      "theme": {
+        "primary_color": "0B3D4A",
+        "secondary_color": "D8E5DD",
+        "accent_color": "F4C542",
+        "background_color": "F7F4EC",
+        "title_font": "Liberation Sans",
+        "body_font": "Liberation Sans"
+      },
+      "slides": [
+        {
+          "slide_number": 1,
+          "purpose": "Briefing cover that establishes the survey identity and provides context for the checklist slide.",
+          "layout": "title",
+          "object_plan": [
+            {
+              "semantic_id": "cover_title",
+              "type": "text",
+              "purpose": "Presentation title",
+              "editable": true
+            },
+            {
+              "semantic_id": "cover_subtitle",
+              "type": "text",
+              "purpose": "Survey date and team descriptor",
+              "editable": true
+            },
+            {
+              "semantic_id": "cover_horizon_band",
+              "type": "shape",
+              "purpose": "Low landscape-color accent band",
+              "editable": true
+            },
+            {
+              "semantic_id": "cover_location_badge",
+              "type": "shape",
+              "purpose": "Location label background",
+              "editable": true
+            },
+            {
+              "semantic_id": "cover_location_label",
+              "type": "text",
+              "purpose": "Location label",
+              "editable": true
+            }
+          ]
+        },
+        {
+          "slide_number": 2,
+          "purpose": "Field-team setup checklist to be finalized before departure.",
+          "layout": "two_column",
+          "object_plan": [
+            {
+              "semantic_id": "checklist_heading_band",
+              "type": "shape",
+              "purpose": "Pale retained band that keeps the heading readable on either slide background",
+              "editable": true
+            },
+            {
+              "semantic_id": "checklist_slide_heading",
+              "type": "text",
+              "purpose": "Checklist slide heading",
+              "editable": true
+            },
+            {
+              "semantic_id": "checklist_intro_panel",
+              "type": "shape",
+              "purpose": "Pale retained strip that keeps the intro instruction readable after the background change",
+              "editable": true
+            },
+            {
+              "semantic_id": "checklist_intro_label",
+              "type": "text",
+              "purpose": "Short instruction above the readiness list",
+              "editable": true
+            },
+            {
+              "semantic_id": "readiness_list_panel",
+              "type": "shape",
+              "purpose": "Light panel behind the readiness list",
+              "editable": true
+            },
+            {
+              "semantic_id": "readiness_list_text",
+              "type": "text",
+              "purpose": "Three readiness statements that require bullet-list formatting",
+              "editable": true
+            },
+            {
+              "semantic_id": "launch_time_status",
+              "type": "text",
+              "purpose": "Launch-window status line whose full text requires Yellow font color",
+              "editable": true
+            },
+            {
+              "semantic_id": "battery_reminder_panel",
+              "type": "shape",
+              "purpose": "Pale retained reminder panel that preserves contrast after the background change",
+              "editable": true
+            },
+            {
+              "semantic_id": "battery_reminder_box",
+              "type": "text",
+              "purpose": "Reminder text box whose full text requires underlining",
+              "editable": true
+            },
+            {
+              "semantic_id": "route_note_panel",
+              "type": "shape",
+              "purpose": "Pale retained route-note panel that preserves contrast after the background change",
+              "editable": true
+            },
+            {
+              "semantic_id": "route_note",
+              "type": "text",
+              "purpose": "Route note retained after finalization",
+              "editable": true
+            },
+            {
+              "semantic_id": "draft_marker_one",
+              "type": "shape",
+              "purpose": "First obsolete pale draft marker in the removable upper-right cluster",
+              "editable": true
+            },
+            {
+              "semantic_id": "draft_marker_two",
+              "type": "shape",
+              "purpose": "Second obsolete pale draft marker in the removable upper-right cluster",
+              "editable": true
+            },
+            {
+              "semantic_id": "draft_marker_three",
+              "type": "shape",
+              "purpose": "Third obsolete pale draft marker in the removable upper-right cluster",
+              "editable": true
+            }
+          ]
+        }
+      ],
+      "initial_state": [
+        "The deck opens on slide 1, with slide 2 containing every target object in an intentionally unfinished checklist layout.",
+        "Slide 2 has a solid warm off-white background (#F7F4EC), not the requested midnight teal (#0B3D4A).",
+        "The editable readiness_list_text contains three separate unbulleted paragraphs: “Calibrate water meter”, “Pack sample envelopes”, and “Confirm trail access”.",
+        "The full editable launch_time_status text reads “Launch window: 08:30” in the theme's dark teal text color, not Yellow.",
+        "The editable battery_reminder_box reads “Carry spare batteries” with no underline formatting.",
+        "draft_marker_one, draft_marker_two, and draft_marker_three are three small pale circular shapes arranged as a compact upper-right cluster, fully enclosed by a single empty-space marquee without enclosing retained content.",
+        "All other slide 2 objects are positioned outside the removable-marker cluster and should remain unchanged."
+      ],
+      "must_not_be_completed": [
+        "Do not apply bullet formatting to readiness_list_text before the operator demonstration.",
+        "Do not set slide 2's background to midnight teal before the operator demonstration.",
+        "Do not recolor launch_time_status to Yellow before the operator demonstration.",
+        "Do not underline battery_reminder_box before the operator demonstration.",
+        "Do not delete any of the three draft-marker shapes before the operator demonstration.",
+        "Do not alter slide 1 or delete retained slide 2 content."
+      ],
+      "generation_notes": [
+        "Build a clean, editable two-slide PPTX using only text boxes and shapes; do not use native title or content placeholders.",
+        "Use a restrained survey-field visual style: off-white paper base, deep teal headings, pale sage panels, and a Yellow accent reserved for the requested launch-time status.",
+        "On slide 2, place the heading across the upper left, the readiness panel in the left two-thirds, the launch-time status near the lower left, and the battery reminder in a small outlined box below it.",
+        "Place the three removable pale circles in the upper-right quadrant with clear blank margin around their group so a reviewer can perform an unambiguous single marquee deletion.",
+        "The desired final review state is slide 2 with a #0B3D4A solid background, three bullet paragraphs in the readiness list, the entire launch-time line in standard Yellow, a fully underlined battery reminder, and no draft-marker circles."
+      ]
+    },
+    "operator_guide": {
+      "recommended_demonstration": [
+        {
+          "skill_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864.skill-01",
+          "operation_intent": "Turn the three readiness statements in the checklist text area into a bulleted list.",
+          "visible_success_signal": "Each of the three readiness statements has a visible bullet, with no bullets added to the heading, status line, or reminder.",
+          "efficiency_tip": "Activate the checklist text area and place the caret in a readiness paragraph before using the bullet-list control; select all three list paragraphs if needed."
+        },
+        {
+          "skill_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a.skill-01",
+          "operation_intent": "Apply the requested solid midnight-teal background to the active checklist slide.",
+          "visible_success_signal": "The entire slide canvas behind all objects is a uniform midnight teal (#0B3D4A), while the content objects remain in place.",
+          "efficiency_tip": "Select slide 2 before opening the slide-background control so the color is applied only to the checklist slide."
+        },
+        {
+          "skill_id": "a53f80cd-4a90-4490-8310-097b011433f6.skill-03",
+          "operation_intent": "Remove the three obsolete pale draft markers together.",
+          "visible_success_signal": "All three upper-right pale circles disappear, while the heading, checklist panel, route note, status line, and reminder remain visible.",
+          "efficiency_tip": "Drag from blank space just outside the cluster to blank space beyond its opposite edge, ensuring the selection rectangle encloses only the three circles before pressing Delete."
+        },
+        {
+          "skill_id": "57667013-ea97-417c-9dce-2713091e6e2a.skill-01",
+          "operation_intent": "Set the complete launch-window status line to Yellow.",
+          "visible_success_signal": "Every character in “Launch window: 08:30” is Yellow, with no other text recolored by this operation.",
+          "efficiency_tip": "Enter text-editing mode in the status line and select its full text before choosing the standard Yellow swatch from the font-color palette."
+        },
+        {
+          "skill_id": "ed43c15f-00cb-4054-9c95-62c880865d68.skill-01",
+          "operation_intent": "Underline the entire battery reminder text box.",
+          "visible_success_signal": "Every character in “Carry spare batteries” has an underline; the surrounding outlined box itself is unchanged.",
+          "efficiency_tip": "Place a caret inside the reminder text box, select all text within that box, then use the underline shortcut."
+        }
+      ],
+      "allowed_variation": "Equivalent LibreOffice Impress controls, menus, keyboard shortcuts, or toolbar paths are acceptable as long as the specified final slide state is produced and unrelated objects remain unchanged.",
+      "recording_start_state": "Open the supplied two-slide PPTX in LibreOffice Impress with slide 2 available in normal editing view and all described unfinished elements present.",
+      "recording_end_state": "Slide 2 shows the midnight-teal background, a three-item bulleted readiness list, Yellow launch-time text, a fully underlined battery reminder, and the former upper-right draft-marker cluster removed."
+    },
+    "expected_incidental_operations": [
+      {
+        "operation": "Navigate from the cover to slide 2 and make it the active slide before slide-level editing.",
+        "reason": "All requested changes are confined to the checklist slide.",
+        "category": "substantive_prerequisite"
+      },
+      {
+        "operation": "Enter text-editing mode and select only the required text range inside each target text box.",
+        "reason": "The requested font-color and underline changes apply to text rather than to the text-box border or other objects.",
+        "category": "task_specific"
+      },
+      {
+        "operation": "Click an empty area after deleting the marker cluster to verify that no retained object remains selected.",
+        "reason": "This makes it easy to confirm that only the obsolete shapes were removed.",
+        "category": "scaffolding"
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+          "skill_count": 1,
+          "skill_fraction": 0.2
+        },
+        {
+          "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+          "skill_count": 1,
+          "skill_fraction": 0.2
+        },
+        {
+          "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+          "skill_count": 1,
+          "skill_fraction": 0.2
+        },
+        {
+          "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+          "skill_count": 1,
+          "skill_fraction": 0.2
+        },
+        {
+          "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+          "skill_count": 1,
+          "skill_fraction": 0.2
+        }
+      ],
+      "dominant_source_task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+      "dominant_source_skill_fraction": 0.2,
+      "complete_source_skill_sets_included": [
+        "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+        "f23acfd2-c485-4b7c-a1e7-d4303ddfe864"
+      ]
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+        "max_sequence_similarity": 0.270115,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+            "sequence_similarity": 0.270115
+          },
+          {
+            "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+            "sequence_similarity": 0.144543
+          },
+          {
+            "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+            "sequence_similarity": 0.126812
+          },
+          {
+            "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+            "sequence_similarity": 0.231839
+          },
+          {
+            "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+            "sequence_similarity": 0.007168
+          },
+          {
+            "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+            "sequence_similarity": 0.115315
+          },
+          {
+            "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+            "sequence_similarity": 0.087719
+          },
+          {
+            "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+            "sequence_similarity": 0.109689
+          },
+          {
+            "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+            "sequence_similarity": 0.133333
+          },
+          {
+            "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+            "sequence_similarity": 0.086655
+          },
+          {
+            "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+            "sequence_similarity": 0.035862
+          },
+          {
+            "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+            "sequence_similarity": 0.123023
+          },
+          {
+            "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+            "sequence_similarity": 0.172638
+          },
+          {
+            "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+            "sequence_similarity": 0.229102
+          },
+          {
+            "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+            "sequence_similarity": 0.1331
+          },
+          {
+            "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+            "sequence_similarity": 0.025388
+          },
+          {
+            "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+            "sequence_similarity": 0.235294
+          },
+          {
+            "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+            "sequence_similarity": 0.177778
+          },
+          {
+            "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+            "sequence_similarity": 0.077601
+          },
+          {
+            "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+            "sequence_similarity": 0.237822
+          },
+          {
+            "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+            "sequence_similarity": 0.157618
+          },
+          {
+            "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+            "sequence_similarity": 0.065217
+          },
+          {
+            "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+            "sequence_similarity": 0.094241
+          },
+          {
+            "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+            "sequence_similarity": 0.149915
+          },
+          {
+            "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+            "sequence_similarity": 0.186207
+          },
+          {
+            "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+            "sequence_similarity": 0.176367
+          },
+          {
+            "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+            "sequence_similarity": 0.184564
+          },
+          {
+            "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+            "sequence_similarity": 0.154676
+          },
+          {
+            "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+            "sequence_similarity": 0.238026
+          },
+          {
+            "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+            "sequence_similarity": 0.110124
+          },
+          {
+            "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+            "sequence_similarity": 0.187097
+          },
+          {
+            "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+            "sequence_similarity": 0.113671
+          },
+          {
+            "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+            "sequence_similarity": 0.002677
+          },
+          {
+            "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+            "sequence_similarity": 0.122523
+          },
+          {
+            "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+            "sequence_similarity": 0.209553
+          },
+          {
+            "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+            "sequence_similarity": 0.168889
+          },
+          {
+            "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+            "sequence_similarity": 0.2
+          },
+          {
+            "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+            "sequence_similarity": 0.207358
+          },
+          {
+            "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+            "sequence_similarity": 0.01873
+          },
+          {
+            "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+            "sequence_similarity": 0.016854
+          },
+          {
+            "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+            "sequence_similarity": 0.101576
+          },
+          {
+            "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+            "sequence_similarity": 0.126812
+          },
+          {
+            "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+            "sequence_similarity": 0.13355
+          },
+          {
+            "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+            "sequence_similarity": 0.170358
+          },
+          {
+            "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+            "sequence_similarity": 0.161002
+          },
+          {
+            "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+            "sequence_similarity": 0.186335
+          },
+          {
+            "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+            "sequence_similarity": 0.134301
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+        "max_cosine_similarity": 0.525726,
+        "by_source_task": [
+          {
+            "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+            "cosine_similarity": 0.525726
+          },
+          {
+            "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+            "cosine_similarity": 0.386661
+          },
+          {
+            "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+            "cosine_similarity": 0.463987
+          },
+          {
+            "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+            "cosine_similarity": 0.451643
+          },
+          {
+            "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+            "cosine_similarity": 0.266376
+          },
+          {
+            "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+            "cosine_similarity": 0.389892
+          },
+          {
+            "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+            "cosine_similarity": 0.330971
+          },
+          {
+            "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+            "cosine_similarity": 0.390236
+          },
+          {
+            "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+            "cosine_similarity": 0.165565
+          },
+          {
+            "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+            "cosine_similarity": 0.407593
+          },
+          {
+            "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+            "cosine_similarity": 0.337645
+          },
+          {
+            "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+            "cosine_similarity": 0.363918
+          },
+          {
+            "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+            "cosine_similarity": 0.429574
+          },
+          {
+            "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+            "cosine_similarity": 0.258959
+          },
+          {
+            "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+            "cosine_similarity": 0.470534
+          },
+          {
+            "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+            "cosine_similarity": 0.417728
+          },
+          {
+            "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+            "cosine_similarity": 0.484281
+          },
+          {
+            "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+            "cosine_similarity": 0.488243
+          },
+          {
+            "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+            "cosine_similarity": 0.421808
+          },
+          {
+            "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+            "cosine_similarity": 0.223792
+          },
+          {
+            "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+            "cosine_similarity": 0.438369
+          },
+          {
+            "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+            "cosine_similarity": 0.368397
+          },
+          {
+            "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+            "cosine_similarity": 0.367959
+          },
+          {
+            "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+            "cosine_similarity": 0.472287
+          },
+          {
+            "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+            "cosine_similarity": 0.449747
+          },
+          {
+            "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+            "cosine_similarity": 0.501723
+          },
+          {
+            "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+            "cosine_similarity": 0.500137
+          },
+          {
+            "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+            "cosine_similarity": 0.48994
+          },
+          {
+            "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+            "cosine_similarity": 0.397088
+          },
+          {
+            "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+            "cosine_similarity": 0.301512
+          },
+          {
+            "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+            "cosine_similarity": 0.468895
+          },
+          {
+            "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+            "cosine_similarity": 0.522386
+          },
+          {
+            "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+            "cosine_similarity": 0.331046
+          },
+          {
+            "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+            "cosine_similarity": 0.384123
+          },
+          {
+            "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+            "cosine_similarity": 0.412517
+          },
+          {
+            "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+            "cosine_similarity": 0.375389
+          },
+          {
+            "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+            "cosine_similarity": 0.387309
+          },
+          {
+            "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+            "cosine_similarity": 0.440711
+          },
+          {
+            "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+            "cosine_similarity": 0.333878
+          },
+          {
+            "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+            "cosine_similarity": 0.271244
+          },
+          {
+            "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+            "cosine_similarity": 0.304868
+          },
+          {
+            "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+            "cosine_similarity": 0.397041
+          },
+          {
+            "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+            "cosine_similarity": 0.402409
+          },
+          {
+            "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+            "cosine_similarity": 0.448476
+          },
+          {
+            "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+            "cosine_similarity": 0.471361
+          },
+          {
+            "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+            "cosine_similarity": 0.297626
+          },
+          {
+            "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+            "cosine_similarity": 0.446684
+          }
+        ],
+        "embedding_request_id": "63b28a34-d573-43c1-a131-f8b4a867da7a"
+      }
+    },
+    "generation": {
+      "attempt": 5,
+      "kind": "new_combination",
+      "request_id": "6c6241a5-7128-4bc9-9180-4dd478537c6f",
+      "prompt_sha256": "b4f226a4f67c3bde9d3460804c20c13889cc0da4d40316f97f5ad7476a744b96"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Apply bulleted-list formatting to text in a content placeholder",
+      "procedure": [
+        "Select the text box or content placeholder that contains the paragraph to format.",
+        "Open the List control from the Impress toolbar or sidebar and choose the bullet-list option.",
+        "Impress applies bullet formatting to the current paragraph or selected paragraphs; click in a paragraph before applying the command when no text range is selected."
+      ],
+      "efficiency_tip": "Place the text cursor in the target paragraph before opening the List control, so the bullet style is applied without selecting unrelated text.",
+      "source": {
+        "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "skill_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Set a slide background to a solid color",
+      "procedure": [
+        "With the target slide active, open the slide background formatting control.",
+        "Choose the Color background option.",
+        "Open the color palette and select a desired solid color, for example a green swatch."
+      ],
+      "efficiency_tip": "Select the target slide before opening background formatting so the chosen color is applied directly without revisiting the control.",
+      "source": {
+        "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "skill_id": "a53f80cd-4a90-4490-8310-097b011433f6.skill-03",
+      "app": "libreoffice_impress",
+      "name": "Marquee-select several slide objects and delete them",
+      "procedure": [
+        "Open the slide containing the objects to remove.",
+        "Start in an empty area just outside the upper-left edge of the target object cluster, then drag a selection rectangle to an opposite corner so that all intended objects are enclosed.",
+        "Press Delete to remove every selected object from the slide."
+      ],
+      "efficiency_tip": "Begin and end the marquee in blank slide space where possible. This reduces the risk of entering text-editing mode or moving an object instead of selecting the group.",
+      "source": {
+        "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+        "action_ids": [
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "skill_id": "57667013-ea97-417c-9dce-2713091e6e2a.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Set selected text color from the font-color palette",
+      "procedure": [
+        "Click inside a text box to enter text-editing mode, rather than merely selecting the shape border.",
+        "Select the text to recolor, for example with Ctrl+A when all text in the active text box should be affected.",
+        "Open the Font Color drop-down on the formatting toolbar.",
+        "Choose the desired color swatch from the palette, for example the standard Yellow swatch. The selected text adopts that color."
+      ],
+      "efficiency_tip": "Use Ctrl+A only after the text cursor is active inside the intended text box; otherwise it may select slide objects instead of the box's text.",
+      "source": {
+        "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "ed43c15f-00cb-4054-9c95-62c880865d68.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Underline all text in a text box",
+      "procedure": [
+        "Enter text-editing mode for the text box, for example by double-clicking its text so that a caret appears.",
+        "Press Ctrl+A to select the text within the active text box. In text-editing mode this selects text rather than all slide objects.",
+        "Press Ctrl+U to toggle underline formatting for the selected text.",
+        "Repeat on other text boxes as needed; Ctrl+U applies the same underline technique to each independently selected text range."
+      ],
+      "efficiency_tip": "Use Ctrl+A followed by Ctrl+U while the caret is inside each text box to format its full contents without manually dragging across the text.",
+      "source": {
+        "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+        "action_ids": [
+          0,
+          1,
+          3,
+          4
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+      "instruction": "Navigate to slide 5 and set the font color of all textboxes to yellow. Use exactly 'yellow'—no variations such as light yellow, dark yellow, or any other color.",
+      "required_skill_ids": [
+        "57667013-ea97-417c-9dce-2713091e6e2a.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 1,
+          "action": "`CLICK` text in 'write an original...'"
+        },
+        {
+          "action_id": 2,
+          "action": "`HOTKEY` ctrl-A"
+        },
+        {
+          "action_id": 3,
+          "action": "`CLICK` font color dropdown."
+        },
+        {
+          "action_id": 4,
+          "action": "`CLICK` yellow (2nd row, first from left)"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` slide 5",
+        "`CLICK` text in 'write an original...'",
+        "`HOTKEY` ctrl-A",
+        "`CLICK` font color dropdown.",
+        "`CLICK` yellow (2nd row, first from left)",
+        "`TRIPLE_CLICK` text in 'Include a credit'...",
+        "`CLICK` font color."
+      ]
+    },
+    {
+      "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+      "instruction": "Move to slide 1 and give it a green background color.",
+      "required_skill_ids": [
+        "9cf05d24-6bd9-4dae-8967-f67d88f5d38a.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`CLICK` background dropdown menu"
+        },
+        {
+          "action_id": 1,
+          "action": "`CLICK` Color"
+        },
+        {
+          "action_id": 2,
+          "action": "`CLICK` the color dropdown"
+        },
+        {
+          "action_id": 3,
+          "action": "`CLICK` Green (2nd row, 2nd from right)"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` background dropdown menu",
+        "`CLICK` Color",
+        "`CLICK` the color dropdown",
+        "`CLICK` Green (2nd row, 2nd from right)"
+      ]
+    },
+    {
+      "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+      "instruction": "Set the font color of the title in slides 2 to 3 as black and bold the title. Also, delete the personal information (including the icons)in slide 4.",
+      "required_skill_ids": [
+        "a53f80cd-4a90-4490-8310-097b011433f6.skill-03"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 9,
+          "action": "`CLICK` slide 4"
+        },
+        {
+          "action_id": 10,
+          "action": "`MOVE_TO` top left corner of the location icon with some padding"
+        },
+        {
+          "action_id": 11,
+          "action": "`DRAG_TO` where bottom left corner of the pink image is"
+        },
+        {
+          "action_id": 12,
+          "action": "`PRESS` delete."
+        }
+      ],
+      "single_actions": [
+        "`CLICK` slide 2",
+        "`TRIPLE_CLICK` title text",
+        "`CLICK` font color dropdown.",
+        "`CLICK` black (1st row, first from left)",
+        "`CLICK` bold icon",
+        "`CLICK` slide 3",
+        "`TRIPLE_CLICK` title text",
+        "`CLICK` font color icon",
+        "`CLICK` bold icon",
+        "`CLICK` slide 4",
+        "`MOVE_TO` top left corner of the location icon with some padding",
+        "`DRAG_TO` where bottom left corner of the pink image is",
+        "`PRESS` delete."
+      ]
+    },
+    {
+      "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+      "instruction": "Move the picture on page 2 to slide top. Make textboxes underlined on slide 1 and 2.",
+      "required_skill_ids": [
+        "ed43c15f-00cb-4054-9c95-62c880865d68.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`HOTKEY` ctrl-a"
+        },
+        {
+          "action_id": 1,
+          "action": "`HOTKEY` ctrl-U"
+        },
+        {
+          "action_id": 3,
+          "action": "`HOTKEY` ctrl-a"
+        },
+        {
+          "action_id": 4,
+          "action": "`HOTKEY` ctrl-U"
+        }
+      ],
+      "single_actions": [
+        "`HOTKEY` ctrl-a",
+        "`HOTKEY` ctrl-U",
+        "`CLICK` slide 2",
+        "`HOTKEY` ctrl-a",
+        "`HOTKEY` ctrl-U",
+        "`CLICK` image",
+        "`DRAG_TO` top of slide"
+      ]
+    },
+    {
+      "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+      "instruction": "Add a bullet point to the content of this slide.",
+      "required_skill_ids": [
+        "f23acfd2-c485-4b7c-a1e7-d4303ddfe864.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`CLICK` text box for content"
+        },
+        {
+          "action_id": 1,
+          "action": "`CLICK` List dropdown"
+        },
+        {
+          "action_id": 2,
+          "action": "`CLICK` bullet icon"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` text box for content",
+        "`CLICK` List dropdown",
+        "`CLICK` bullet icon"
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-impress-full-r01-005",
+    "task_detail_sha256": "057111b203c3536235190be81e5dad2aadf70d0a601434e046b0b8a57c9f7d8b",
+    "guide": {
+      "reference_task_id": "reference-task-impress-full-r01-005",
+      "language": "zh-CN",
+      "overview": "本指南完成“Dawn Marsh Survey”中的第 2 张检查清单页：将页面背景设为纯色午夜青绿（#0B3D4A）、把三条准备事项变为项目符号列表、将完整状态行设为标准 Yellow、给电池提醒全文加下划线，并通过一次框选删除右上角的三个浅色圆形草稿标记。所有操作均应只影响第 2 张；第 1 张封面及第 2 张其余内容必须保留。",
+      "starting_state_checks": [
+        "确认演示文稿在 LibreOffice Impress 的普通编辑视图中打开，左侧缩略图窗格应显示共两张幻灯片。",
+        "查看第 2 张缩略图并单击它，使其成为活动幻灯片；这是“选择幻灯片缩略图”，不是选择画布上的对象。画布应显示左侧准备事项面板、下方的“Launch window: 08:30”和“Carry spare batteries”，以及右上角紧凑的三个浅色圆形标记。",
+        "初始状态中，第 2 张背景应为暖白色而非 #0B3D4A；准备事项三行没有项目符号；状态行不是 Yellow；提醒文字没有下划线。若打开的文件已经显示某项所需结果，可不重复改变该项，但仍应核对该项仅作用于指定对象。",
+        "不要通过单击文字边缘的方式误把文字框当作文本来编辑：单击一次对象外框是“选择对象”，双击文字或在文字中单击至出现插入光标才是“进入文本编辑模式”。"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "title": "激活并确认第 2 张检查清单页",
+          "instructions": [
+            "在左侧缩略图窗格中单击第 2 张缩略图。画布中出现第 2 张后，先单击画布空白处，避免任何文字框或形状仍被选中。",
+            "核对需要保留的内容：左上标题和浅色面板、左侧准备事项区、左下状态行和提醒框、右侧路线说明均存在；只有右上角三个浅色圆形是后续要删除的对象。",
+            "如果单击后仍看到某个对象的选择手柄，单击不含对象的画布空白位置取消选择；不要按 `Delete`。"
+          ],
+          "skill_ids": [],
+          "efficiency_tip": "先固定在第 2 张再进行所有页面级与对象级修改，可避免把背景或文字格式错误应用到封面。",
+          "visible_success_signal": "第 2 张缩略图处于选中状态，画布没有非目标对象被意外选中，且右上角仍可见三个浅色圆形标记。"
+        },
+        {
+          "step_number": 2,
+          "title": "将三条准备事项改为项目符号列表",
+          "instructions": [
+            "在左侧准备事项面板内的“Calibrate water meter”文字上双击，直到出现文本插入光标；此时是进入 `readiness_list_text` 的文本编辑模式，而不是仅选中其文字框边框。",
+            "按 `Ctrl+A`。确认高亮范围仅覆盖三段“Calibrate water meter”、“Pack sample envelopes”和“Confirm trail access”，而不包括标题、状态行或提醒文字。",
+            "打开 `Format` > `Bullets and Numbering...`，在对话框中打开 `Bullets` 选项卡，选择普通圆点项目符号样式后点击 `OK`。",
+            "如果只有一段出现项目符号，说明选区未覆盖三段：再次在该文字框中双击，按 `Ctrl+A` 仅选中框内文字，并重复 `Format` > `Bullets and Numbering...`。"
+          ],
+          "skill_ids": [
+            "f23acfd2-c485-4b7c-a1e7-d4303ddfe864.skill-01"
+          ],
+          "efficiency_tip": "在目标文字框已经出现插入光标后再按 `Ctrl+A`，这样选择的是框内三段文本，不会选择整页对象。",
+          "visible_success_signal": "准备事项区的三条陈述各自带有一个可见项目符号；标题、状态行和电池提醒均未新增项目符号。"
+        },
+        {
+          "step_number": 3,
+          "title": "设置第 2 张为纯色午夜青绿背景",
+          "instructions": [
+            "先单击左侧第 2 张缩略图，确保仍是第 2 张页面级选择，而不是某个文本框的文本编辑状态。",
+            "选择 `Format` > `Slide Properties...`，在打开的对话框中选择 `Background` 选项卡。将 `Fill` 设置为 `Color`。",
+            "打开 `Color` 的颜色选择器；若预设色板没有精确颜色，使用 `Custom Color...` 打开 `Color Picker`，将 `Hex #` 设为 `0B3D4A`，确认后以 `OK` 关闭颜色选择器及幻灯片属性对话框。",
+            "如果背景没有变化，重新确认选择的是第 2 张缩略图，再打开 `Format` > `Slide Properties...` 检查 `Fill` 是否为 `Color`、颜色是否为 #0B3D4A；不要修改第 1 张缩略图。"
+          ],
+          "skill_ids": [
+            "9cf05d24-6bd9-4dae-8967-f67d88f5d38a.skill-01"
+          ],
+          "efficiency_tip": "此操作前选择缩略图而不是单击某个面板，可使背景设置直接作用于整张检查清单页。",
+          "visible_success_signal": "第 2 张所有内容对象后方的整个幻灯片画布为均匀纯色 #0B3D4A；标题、面板、路线说明和文字框的位置没有移动。"
+        },
+        {
+          "step_number": 4,
+          "title": "把完整启动时间状态行设为 Yellow",
+          "instructions": [
+            "在下方左侧的“Launch window: 08:30”文字上双击，确认文字中出现插入光标。这是文本编辑模式；若只看到文本框边界和控制点，需再双击文字本身。",
+            "按 `Ctrl+A`，确认选择范围是该文本框中的完整“Launch window: 08:30”，包括“Launch window:”、空格和“08:30”。",
+            "在格式工具栏打开 `Font Color` 的下拉菜单，选择标准色块 `Yellow`。",
+            "如果仅部分字符变黄，或附近文字也被改变，撤销或重新在状态行内进入文本编辑模式，按 `Ctrl+A` 重新选中该框内全文后再选择 `Yellow`。"
+          ],
+          "skill_ids": [
+            "57667013-ea97-417c-9dce-2713091e6e2a.skill-01"
+          ],
+          "efficiency_tip": "不要在对象仅显示边框时按 `Ctrl+A`；必须先看到插入光标，否则快捷键可能选择整页对象。",
+          "visible_success_signal": "“Launch window: 08:30”的每一个字符均为标准 `Yellow`，而准备事项、路线说明和其他文字颜色未改变。"
+        },
+        {
+          "step_number": 5,
+          "title": "给电池提醒全文添加下划线",
+          "instructions": [
+            "在小型描边提醒框内的“Carry spare batteries”文字上双击，直到出现文本插入光标；不要只单击提醒框的边线，因为那只是选择对象。",
+            "按 `Ctrl+A`，使该文本框内的“Carry spare batteries”全部被选中，然后按 `Ctrl+U`。",
+            "单击画布空白处查看格式。如果文字已全部带下划线，则无需再调整。若只有部分文字带下划线，重新进入该提醒文字框的文本编辑模式，按 `Ctrl+A` 后再次按 `Ctrl+U`；若已有下划线却被切换取消，可立即再按一次 `Ctrl+U` 恢复。"
+          ],
+          "skill_ids": [
+            "ed43c15f-00cb-4054-9c95-62c880865d68.skill-01"
+          ],
+          "efficiency_tip": "在插入光标位于提醒框内时使用 `Ctrl+A`、`Ctrl+U`，比手动拖选整句更不易遗漏首尾字符。",
+          "visible_success_signal": "“Carry spare batteries”的全部字符均有下划线，而其外侧的描边提醒框形状、大小和位置均保持不变。"
+        },
+        {
+          "step_number": 6,
+          "title": "用一次框选删除右上角三个草稿标记",
+          "instructions": [
+            "单击画布空白处，退出任何文本编辑模式。不要先逐个单击圆形，也不要按住 `Shift` 逐个添加选择；本步骤需要一次矩形框选。",
+            "在右上角圆形簇左上方的空白画布处按住鼠标左键，向该簇右下方的空白位置拖动，形成选择矩形。选择矩形必须完整包围三个浅色圆形 `draft_marker_one`、`draft_marker_two` 和 `draft_marker_three`，且不能碰入标题、面板、路线说明或其他保留对象。",
+            "松开鼠标后，确认仅三个圆形显示为选中对象，然后按 `Delete` 一次。最后单击画布空白处取消选择。",
+            "如果选择手柄显示在任何保留对象上，先单击空白处取消本次选择，再从更靠近圆形簇的空白边缘重新拖出更小的框选矩形；只有确认恰好选中三个圆形时才按 `Delete`。"
+          ],
+          "skill_ids": [
+            "a53f80cd-4a90-4490-8310-097b011433f6.skill-03"
+          ],
+          "efficiency_tip": "从空白处开始并在空白处结束拖动，可避免进入文字编辑模式、移动对象，或把相邻保留内容加入选择。",
+          "visible_success_signal": "右上角三个浅色圆形全部消失；标题、清单面板、路线说明、启动时间和提醒框仍完整可见。"
+        }
+      ],
+      "final_verification": [
+        "查看第 2 张：背景为无渐变、无图案的统一 #0B3D4A 纯色；内容对象仍位于原有布局中。",
+        "确认准备事项区恰有三条带项目符号的段落，文字分别为“Calibrate water meter”、“Pack sample envelopes”和“Confirm trail access”。",
+        "确认完整“Launch window: 08:30”为标准 `Yellow`，并且完整“Carry spare batteries”带下划线；提醒框的外框没有被删除或改变。",
+        "确认右上角没有残留任何一个浅色圆形草稿标记，且删除操作没有移除标题、面板、路线说明或其他第 2 张内容。",
+        "单击第 1 张缩略图进行检查：封面标题、副标题、地平线带和位置徽章仍存在且未改动。再返回第 2 张缩略图，确认最终页面仍显示上述五项要求。"
+      ]
+    },
+    "generation": {
+      "request_id": "86f6dbcf-f266-49ee-af4a-dfb1cea96691",
+      "prompt_sha256": "d188c79bf59e39e342873a999dd62e73425c62028c95235d978b49d4e1dd4e83",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 4279,
+      "output_tokens": 3462,
+      "estimated_cost_usd": 0.0424052
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-impress-full-r01-005",
+      "app": "libreoffice_impress",
+      "artifact_type": "pptx",
+      "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-005/initial_artifact.pptx",
+      "artifact_sha256": "f25f40ad5600910922e78bd73060b9ae4253e589ed9a1bdd2a2b308fee6c1412",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-005/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-005/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.pptx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-impress-full-r01-005",
+      "task_config_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/task_configs/reference-task-impress-full-r01-005.json",
+      "artifact_sha256": "f25f40ad5600910922e78bd73060b9ae4253e589ed9a1bdd2a2b308fee6c1412",
+      "blueprint_request_id": "22da7645-7c80-4384-b205-c88f4ee4df56"
+    },
+    "packet_path": "task_config.json"
+  }
+}

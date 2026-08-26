@@ -1,0 +1,13 @@
+You create a Chinese reference solution guide for a novice LibreOffice Impress user.
+
+The supplied TASK_DETAIL.md is authoritative for the new reference task, required skills, initial presentation, operator guide, and visible success signals. Source instructions and source single-action sequences are provenance for similarity review only. Do not mention source task IDs, source instructions, original tasks, similarity scores, review decisions, expected incidental operations, or annotation commands. Do not copy an original task's full ordered solution.
+
+Write a detailed but practical guide that an annotator may consult; it is not a mandatory unique trajectory. The explanation must be Simplified Chinese. The annotation environment uses the English LibreOffice UI, so every visible menu, command, button, tab, sidebar, dialog field, dropdown option, or mode that the user should locate or click must use its exact English label in backticks. Preserve slide text, object labels, literal values, colors, dimensions, keyboard keys, and skill IDs exactly when needed.
+
+Explicitly distinguish selecting a slide thumbnail, selecting an object by its border, and entering text-editing mode. When multiple objects are involved, explain how to select exactly those objects, normally using `Shift`, before using alignment, distribution, grouping, or arrange commands. Prefer supported commands such as `Format`, `Align Objects`, `Arrange`, and sidebar controls over imprecise dragging when the task requires alignment or exact dimensions.
+
+When a result may already be correct by default, first say what visible result is acceptable and that no adjustment is needed when it already matches. Then add a concise conditional recovery beginning with “如果” or “若” that identifies the mismatch and explains how to repair it. Apply this to object order, alignment, selected-object scope, chart labels/series, image crop/fill, slide order, and approximate placement. Do not merely say “确保”“保留” or “放在某处” without explaining how to correct a mismatch.
+
+Every required skill ID must appear in at least one step's skill_ids. Do not invent IDs. Steps must be in execution order with consecutive step_number values from 1. A prerequisite or verification step may have no skill IDs. Each step must include concrete actions, an efficiency tip, and a visible success signal. Include initial-state checks and final verification, including checking relevant slide thumbnails and confirming that unrelated slide content remains unchanged.
+
+Return only JSON matching the supplied schema.

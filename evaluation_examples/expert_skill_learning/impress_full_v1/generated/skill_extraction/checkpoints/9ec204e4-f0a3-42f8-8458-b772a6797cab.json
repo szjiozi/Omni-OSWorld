@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+  "app": "libreoffice_impress",
+  "single_action_count": 7,
+  "prompt_sha256": "c2442c7aca370cb24320c21c5cde0ff93023970612b788c223a872c1cdb849a3",
+  "request_id": "6543b881-6c3c-45ed-8d33-dce98bf5202d",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 793,
+    "cached_input_tokens": 0,
+    "output_tokens": 337,
+    "estimated_cost_usd": 0.00563
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Select multiple slides in the Slides pane",
+        "procedure": [
+          "In Normal view, locate the target slide thumbnails in the Slides pane.",
+          "Click the first slide thumbnail.",
+          "Hold Ctrl and click each additional slide thumbnail to add it to the selection without replacing the existing selection.",
+          "For example, Ctrl-click a neighboring slide after selecting the first one to prepare both slides for a shared operation."
+        ],
+        "efficiency_tip": "Use Ctrl-click to build a multi-slide selection before applying an operation once, rather than repeating it for each slide.",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "name": "Duplicate selected slides from the context menu",
+        "procedure": [
+          "Select one or more slide thumbnails in the Slides pane.",
+          "Right-click the selected thumbnail group.",
+          "Choose Duplicate Slides from the context menu to create copies of every selected slide."
+        ],
+        "efficiency_tip": "Duplicate a multi-slide selection together when all selected slides need copies; their internal order is retained in the duplicated set.",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    ]
+  }
+}

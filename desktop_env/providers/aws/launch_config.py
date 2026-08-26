@@ -24,7 +24,7 @@ Wants=display-manager.service
 StartLimitIntervalSec=0
 
 [Service]
-ExecStartPre=/bin/bash -c 'for i in $(seq 1 300); do DISPLAY=:0 /usr/bin/xdpyinfo >/dev/null 2>&1 && exit 0; sleep 1; done; exit 1'
+ExecStartPre=/bin/bash -c 'for i in $(seq 1 360); do test -S /tmp/.X11-unix/X0 && exit 0; sleep 1; done; exit 1'
 Restart=on-failure
 RestartSec=5s
 """
@@ -39,7 +39,7 @@ printf '%s' '{_OSWORLD_SERVICE_DROP_IN_BASE64}' \
   > /etc/systemd/system/osworld.service.d/10-wait-for-x.conf
 systemctl daemon-reload
 systemctl reset-failed osworld.service || true
-systemctl restart osworld.service
+systemctl restart --no-block osworld.service
 """
 
 

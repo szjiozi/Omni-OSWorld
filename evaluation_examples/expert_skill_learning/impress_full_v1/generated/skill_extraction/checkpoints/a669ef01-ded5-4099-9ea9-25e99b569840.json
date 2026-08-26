@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "fad66a7fc7f2057a6a4e6d425725cac052364ff4aee24305ab859dc8f19674ed",
+  "request_id": "cd04cbd9-2b0a-4341-adde-b7df38c0517e",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 783,
+    "cached_input_tokens": 0,
+    "output_tokens": 386,
+    "estimated_cost_usd": 0.006198
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Remove bullet formatting from an outline paragraph",
+        "procedure": [
+          "Click within the target paragraph to place the text caret at the very beginning of its text; this enters text-editing mode rather than merely selecting the text box.",
+          "Press Backspace at the start of the paragraph. In an Impress outline or bulleted text box, this removes the leading bullet/list level so the paragraph can align with the surrounding non-bulleted text.",
+          "If the paragraph remains at an undesired outline level, use Shift+Tab to promote it or Tab to demote it while the caret is in that paragraph."
+        ],
+        "efficiency_tip": "Place the caret before the first character instead of selecting and retyping the paragraph; Backspace preserves the existing text while changing its list formatting.",
+        "action_ids": [
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

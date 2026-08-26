@@ -1,0 +1,2695 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "pptx",
+  "blueprints": [
+    {
+      "reference_task_id": "reference-task-impress-full-r01-001",
+      "blueprint": {
+        "presentation_title": "Harbor Pollinator Day",
+        "slide_size": "wide",
+        "theme": {
+          "primary_color": "0B3D4A",
+          "secondary_color": "E8F1EE",
+          "accent_color": "007C83",
+          "background_color": "FFFDF7",
+          "title_font": "Aptos Display",
+          "body_font": "Aptos"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Introduce the volunteer event and establish a botanical harbor theme.",
+            "background_color": "FFFDF7",
+            "objects": [
+              {
+                "semantic_id": "cover_harbor_band",
+                "type": "shape",
+                "x": 0,
+                "y": 0,
+                "w": 13.333,
+                "h": 1.15,
+                "content": {
+                  "text": null,
+                  "shape_kind": "rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "0B3D4A",
+                  "line_color": "0B3D4A",
+                  "text_color": "FFFFFF",
+                  "font_face": "Aptos",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_event_title",
+                "type": "text",
+                "x": 0.8,
+                "y": 1.65,
+                "w": 6.9,
+                "h": 1.05,
+                "content": {
+                  "text": "Harbor Pollinator Day",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFDF7",
+                  "line_color": "FFFDF7",
+                  "text_color": "0B3D4A",
+                  "font_face": "Aptos Display",
+                  "font_size": 34,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_event_subtitle",
+                "type": "text",
+                "x": 0.84,
+                "y": 2.85,
+                "w": 5.9,
+                "h": 0.65,
+                "content": {
+                  "text": "Saturday, May 18  •  Pier Garden, Harborfront",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFDF7",
+                  "line_color": "FFFDF7",
+                  "text_color": "36454F",
+                  "font_face": "Aptos",
+                  "font_size": 17,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_botanical_illustration",
+                "type": "image",
+                "x": 7.35,
+                "y": 1.35,
+                "w": 5.15,
+                "h": 5.35,
+                "content": {
+                  "text": null,
+                  "shape_kind": null,
+                  "image_kind": "pollinator",
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFFFF",
+                  "line_color": "007C83",
+                  "text_color": "0B3D4A",
+                  "font_face": "Aptos",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_partner_mark",
+                "type": "shape",
+                "x": 0.84,
+                "y": 5.65,
+                "w": 0.78,
+                "h": 0.78,
+                "content": {
+                  "text": null,
+                  "shape_kind": "ellipse",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "007C83",
+                  "line_color": "007C83",
+                  "text_color": "FFFFFF",
+                  "font_face": "Aptos",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Present the volunteer schedule and a closing registration callout.",
+            "background_color": "FFFDF7",
+            "objects": [
+              {
+                "semantic_id": "schedule_section_title",
+                "type": "text",
+                "x": 0.7,
+                "y": 0.48,
+                "w": 7.8,
+                "h": 0.62,
+                "content": {
+                  "text": "Volunteer schedule",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFDF7",
+                  "line_color": "FFFDF7",
+                  "text_color": "0B3D4A",
+                  "font_face": "Aptos Display",
+                  "font_size": 25,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "schedule_intro_caption",
+                "type": "text",
+                "x": 0.72,
+                "y": 1.15,
+                "w": 7.2,
+                "h": 0.38,
+                "content": {
+                  "text": "A simple morning rhythm for restoring shoreline habitat.",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFDF7",
+                  "line_color": "FFFDF7",
+                  "text_color": "36454F",
+                  "font_face": "Aptos",
+                  "font_size": 14,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "schedule_card_arrival",
+                "type": "shape",
+                "x": 0.7,
+                "y": 3,
+                "w": 3.85,
+                "h": 2.15,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "E8F1EE",
+                  "line_color": "B8D5CF",
+                  "text_color": "0B3D4A",
+                  "font_face": "Aptos",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "schedule_card_planting",
+                "type": "shape",
+                "x": 4.75,
+                "y": 3,
+                "w": 3.85,
+                "h": 2.15,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "E8F1EE",
+                  "line_color": "B8D5CF",
+                  "text_color": "0B3D4A",
+                  "font_face": "Aptos",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "schedule_card_cleanup",
+                "type": "shape",
+                "x": 8.8,
+                "y": 3,
+                "w": 3.85,
+                "h": 2.15,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "E8F1EE",
+                  "line_color": "B8D5CF",
+                  "text_color": "0B3D4A",
+                  "font_face": "Aptos",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "schedule_arrival_text",
+                "type": "text",
+                "x": 1.02,
+                "y": 3.53,
+                "w": 3.15,
+                "h": 0.95,
+                "content": {
+                  "text": "9:00\nCheck in at Pier Garden",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "E8F1EE",
+                  "line_color": "E8F1EE",
+                  "text_color": "0B3D4A",
+                  "font_face": "Aptos",
+                  "font_size": 17,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "schedule_planting_text",
+                "type": "text",
+                "x": 5.07,
+                "y": 3.53,
+                "w": 3.15,
+                "h": 0.95,
+                "content": {
+                  "text": "9:30\nPlant shoreline natives",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "E8F1EE",
+                  "line_color": "E8F1EE",
+                  "text_color": "0B3D4A",
+                  "font_face": "Aptos",
+                  "font_size": 17,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "schedule_cleanup_text",
+                "type": "text",
+                "x": 9.12,
+                "y": 3.53,
+                "w": 3.15,
+                "h": 0.95,
+                "content": {
+                  "text": "11:30\nReturn tools and sort compost",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "E8F1EE",
+                  "line_color": "E8F1EE",
+                  "text_color": "0B3D4A",
+                  "font_face": "Aptos",
+                  "font_size": 17,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "rsvp_callout_panel",
+                "type": "shape",
+                "x": 0.7,
+                "y": 1.72,
+                "w": 4.35,
+                "h": 0.9,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "E8F1EE",
+                  "line_color": "B8D5CF",
+                  "text_color": "36454F",
+                  "font_face": "Aptos",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "rsvp_closing_callout",
+                "type": "text",
+                "x": 0.92,
+                "y": 1.86,
+                "w": 3.9,
+                "h": 0.62,
+                "content": {
+                  "text": "Bring water, sun protection, and gloves.\nRegister by Friday to reserve a planting kit.",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "E8F1EE",
+                  "line_color": "E8F1EE",
+                  "text_color": "36454F",
+                  "font_face": "Aptos",
+                  "font_size": 13,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              }
+            ]
+          }
+        ],
+        "manual_setup_steps": []
+      },
+      "generation": {
+        "request_id": "1d56330f-af35-4607-babf-339a46145755",
+        "prompt_sha256": "e1a7ae7db880dfa561a8565f372d9e0b67cb02110e524868957f007cf5a5d320",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3244,
+        "output_tokens": 2375,
+        "estimated_cost_usd": 0.034988
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-r01-002",
+      "blueprint": {
+        "presentation_title": "Neighborhood Night Market",
+        "slide_size": "wide",
+        "theme": {
+          "primary_color": "C7D5E0",
+          "secondary_color": "1F2A44",
+          "accent_color": "D58B44",
+          "background_color": "F7F3EA",
+          "title_font": "Liberation Sans",
+          "body_font": "Liberation Sans"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Opening overview for the council preview",
+            "background_color": "F7F3EA",
+            "objects": [
+              {
+                "semantic_id": "opening_headline",
+                "type": "text",
+                "x": 0.8,
+                "y": 1.15,
+                "w": 11.7,
+                "h": 0.7,
+                "content": {
+                  "text": "After-Dark Market Plan",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F3EA",
+                  "line_color": "F7F3EA",
+                  "text_color": "1F2A44",
+                  "font_face": "Liberation Sans",
+                  "font_size": 32,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "opening_subtitle",
+                "type": "text",
+                "x": 0.82,
+                "y": 2.0,
+                "w": 8.5,
+                "h": 0.5,
+                "content": {
+                  "text": "Council preview • Saturday pilot on Cedar Avenue",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F3EA",
+                  "line_color": "F7F3EA",
+                  "text_color": "1F2A44",
+                  "font_face": "Liberation Sans",
+                  "font_size": 18,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "opening_time_badge",
+                "type": "shape",
+                "x": 0.82,
+                "y": 3.0,
+                "w": 2.35,
+                "h": 0.62,
+                "content": {
+                  "text": "6:00–10:00 PM",
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D58B44",
+                  "line_color": "D58B44",
+                  "text_color": "F7F3EA",
+                  "font_face": "Liberation Sans",
+                  "font_size": 16,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "opening_streetline",
+                "type": "shape",
+                "x": 0.82,
+                "y": 6.38,
+                "w": 11.7,
+                "h": 0.08,
+                "content": {
+                  "text": null,
+                  "shape_kind": "line",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "1F2A44",
+                  "line_color": "D58B44",
+                  "text_color": "1F2A44",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Operating schedule overview",
+            "background_color": "F7F3EA",
+            "objects": [
+              {
+                "semantic_id": "schedule_heading",
+                "type": "text",
+                "x": 0.85,
+                "y": 0.82,
+                "w": 5.8,
+                "h": 0.55,
+                "content": {
+                  "text": "Pilot Night Schedule",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F3EA",
+                  "line_color": "F7F3EA",
+                  "text_color": "1F2A44",
+                  "font_face": "Liberation Sans",
+                  "font_size": 28,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "schedule_time_list",
+                "type": "text",
+                "x": 0.88,
+                "y": 1.72,
+                "w": 5.7,
+                "h": 2.25,
+                "content": {
+                  "text": "4:30 PM  Vendor arrival\n6:00 PM  Market opens\n10:00 PM  Street reopens",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F3EA",
+                  "line_color": "F7F3EA",
+                  "text_color": "1F2A44",
+                  "font_face": "Liberation Sans",
+                  "font_size": 24,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "schedule_vendor_note",
+                "type": "text",
+                "x": 0.9,
+                "y": 4.48,
+                "w": 5.55,
+                "h": 0.72,
+                "content": {
+                  "text": "Vendor vehicles clear the curb lane before public opening.",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F3EA",
+                  "line_color": "F7F3EA",
+                  "text_color": "1F2A44",
+                  "font_face": "Liberation Sans",
+                  "font_size": 16,
+                  "bold": false,
+                  "italic": true,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "schedule_clock_icon",
+                "type": "shape",
+                "x": 8.35,
+                "y": 1.65,
+                "w": 3.15,
+                "h": 3.15,
+                "content": {
+                  "text": "8\nPM",
+                  "shape_kind": "ellipse",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "C7D5E0",
+                  "line_color": "1F2A44",
+                  "text_color": "1F2A44",
+                  "font_face": "Liberation Sans",
+                  "font_size": 26,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              }
+            ]
+          },
+          {
+            "slide_number": 3,
+            "purpose": "Closing action prompt for council coordination",
+            "background_color": "F7F3EA",
+            "objects": [
+              {
+                "semantic_id": "action_heading",
+                "type": "text",
+                "x": 0.9,
+                "y": 1.0,
+                "w": 9.65,
+                "h": 0.7,
+                "content": {
+                  "text": "Coordinate the Pilot",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F3EA",
+                  "line_color": "F7F3EA",
+                  "text_color": "1F2A44",
+                  "font_face": "Liberation Sans",
+                  "font_size": 34,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "action_request",
+                "type": "text",
+                "x": 0.92,
+                "y": 2.0,
+                "w": 8.9,
+                "h": 1.15,
+                "content": {
+                  "text": "Confirm permit routing and neighborhood outreach leads.\nShare questions before the final street notice.",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F3EA",
+                  "line_color": "F7F3EA",
+                  "text_color": "1F2A44",
+                  "font_face": "Liberation Sans",
+                  "font_size": 20,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "action_deadline_badge",
+                "type": "shape",
+                "x": 0.92,
+                "y": 4.0,
+                "w": 3.35,
+                "h": 0.72,
+                "content": {
+                  "text": "Reply by May 16",
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D58B44",
+                  "line_color": "D58B44",
+                  "text_color": "F7F3EA",
+                  "font_face": "Liberation Sans",
+                  "font_size": 17,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "action_path_marker",
+                "type": "shape",
+                "x": 9.62,
+                "y": 5.65,
+                "w": 2.45,
+                "h": 0.9,
+                "content": {
+                  "text": null,
+                  "shape_kind": "chevron",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "1F2A44",
+                  "line_color": "1F2A44",
+                  "text_color": "F7F3EA",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              }
+            ]
+          }
+        ],
+        "manual_setup_steps": []
+      },
+      "generation": {
+        "request_id": "7d247286-7a0e-47fa-9093-b4e83814803d",
+        "prompt_sha256": "1a13dbd65f5a2a91474cd1be8a4f6685e1c07868b430b894a56818b36bb7c963",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2984,
+        "output_tokens": 2240,
+        "estimated_cost_usd": 0.032848
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-r01-003",
+      "blueprint": {
+        "presentation_title": "Riverside Pollinator Walk",
+        "slide_size": "wide",
+        "theme": {
+          "primary_color": "D8EFE8",
+          "secondary_color": "1E5B55",
+          "accent_color": "E49A3A",
+          "background_color": "FAF8F1",
+          "title_font": "Liberation Sans",
+          "body_font": "Liberation Sans"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Introduce the volunteer field-briefing deck.",
+            "background_color": "FAF8F1",
+            "objects": [
+              {
+                "semantic_id": "cover_background_band",
+                "type": "shape",
+                "x": 0,
+                "y": 0,
+                "w": 13.333,
+                "h": 3.15,
+                "content": {
+                  "text": null,
+                  "shape_kind": "rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "1E5B55",
+                  "line_color": "1E5B55",
+                  "text_color": "FAF8F1",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "cover_main_title",
+                "type": "text",
+                "x": 0.8,
+                "y": 0.92,
+                "w": 7.8,
+                "h": 0.78,
+                "content": {
+                  "text": "Riverside Pollinator Walk",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FAF8F1",
+                  "line_color": "FAF8F1",
+                  "text_color": "FAF8F1",
+                  "font_face": "Liberation Sans",
+                  "font_size": 32,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_subtitle",
+                "type": "text",
+                "x": 0.83,
+                "y": 1.88,
+                "w": 6.6,
+                "h": 0.42,
+                "content": {
+                  "text": "Volunteer field brief • Riverside greenway • September 14",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FAF8F1",
+                  "line_color": "FAF8F1",
+                  "text_color": "D8EFE8",
+                  "font_face": "Liberation Sans",
+                  "font_size": 16,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_botanical_motif",
+                "type": "image",
+                "x": 8.55,
+                "y": 2.52,
+                "w": 3.65,
+                "h": 3.65,
+                "content": {
+                  "text": null,
+                  "shape_kind": null,
+                  "image_kind": "botanical",
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FAF8F1",
+                  "line_color": "FAF8F1",
+                  "text_color": "1E5B55",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Summarize the survey focus and three field metrics for volunteer check-in.",
+            "background_color": "FAF8F1",
+            "objects": [
+              {
+                "semantic_id": "snapshot_section_label",
+                "type": "text",
+                "x": 0.8,
+                "y": 0.66,
+                "w": 2.4,
+                "h": 0.32,
+                "content": {
+                  "text": "FIELD SNAPSHOT",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FAF8F1",
+                  "line_color": "FAF8F1",
+                  "text_color": "1E5B55",
+                  "font_face": "Liberation Sans",
+                  "font_size": 14,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "snapshot_heading",
+                "type": "text",
+                "x": 0.8,
+                "y": 1.08,
+                "w": 6.3,
+                "h": 0.68,
+                "content": {
+                  "text": "A focused walk for late-season habitat clues",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FAF8F1",
+                  "line_color": "FAF8F1",
+                  "text_color": "1E5B55",
+                  "font_face": "Liberation Sans",
+                  "font_size": 27,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "snapshot_summary_copy",
+                "type": "text",
+                "x": 0.8,
+                "y": 2.05,
+                "w": 3.9,
+                "h": 1.02,
+                "content": {
+                  "text": "Pair up along the river path to note nesting shelter,\nnectar plants, and repeat pollinator activity.",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FAF8F1",
+                  "line_color": "FAF8F1",
+                  "text_color": "1E5B55",
+                  "font_face": "Liberation Sans",
+                  "font_size": 17,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "pollinator_illustration",
+                "type": "image",
+                "x": 3.95,
+                "y": 3.48,
+                "w": 2.05,
+                "h": 1.5748,
+                "content": {
+                  "text": null,
+                  "shape_kind": null,
+                  "image_kind": "pollinator",
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FAF8F1",
+                  "line_color": "FAF8F1",
+                  "text_color": "1E5B55",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "metric_card_nesting",
+                "type": "shape",
+                "x": 0.8,
+                "y": 5.18,
+                "w": 3.72,
+                "h": 1.45,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8EFE8",
+                  "line_color": "D8EFE8",
+                  "text_color": "1E5B55",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "metric_value_nesting",
+                "type": "text",
+                "x": 1.1,
+                "y": 5.45,
+                "w": 1.1,
+                "h": 0.48,
+                "content": {
+                  "text": "24",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8EFE8",
+                  "line_color": "D8EFE8",
+                  "text_color": "1E5B55",
+                  "font_face": "Liberation Sans",
+                  "font_size": 28,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "metric_caption_nesting",
+                "type": "text",
+                "x": 1.1,
+                "y": 5.98,
+                "w": 2.95,
+                "h": 0.44,
+                "content": {
+                  "text": "Nesting sites mapped",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8EFE8",
+                  "line_color": "D8EFE8",
+                  "text_color": "1E5B55",
+                  "font_face": "Liberation Sans",
+                  "font_size": 16,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "metric_card_blooms",
+                "type": "shape",
+                "x": 4.81,
+                "y": 5.18,
+                "w": 3.72,
+                "h": 1.45,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8EFE8",
+                  "line_color": "D8EFE8",
+                  "text_color": "1E5B55",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "metric_value_blooms",
+                "type": "text",
+                "x": 5.11,
+                "y": 5.45,
+                "w": 1.1,
+                "h": 0.48,
+                "content": {
+                  "text": "17",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8EFE8",
+                  "line_color": "D8EFE8",
+                  "text_color": "1E5B55",
+                  "font_face": "Liberation Sans",
+                  "font_size": 28,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "metric_caption_blooms",
+                "type": "text",
+                "x": 5.11,
+                "y": 5.98,
+                "w": 2.95,
+                "h": 0.44,
+                "content": {
+                  "text": "Late-season blooms",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8EFE8",
+                  "line_color": "D8EFE8",
+                  "text_color": "1E5B55",
+                  "font_face": "Liberation Sans",
+                  "font_size": 16,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "metric_card_pairs",
+                "type": "shape",
+                "x": 8.82,
+                "y": 5.18,
+                "w": 3.72,
+                "h": 1.45,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8EFE8",
+                  "line_color": "D8EFE8",
+                  "text_color": "1E5B55",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "metric_value_pairs",
+                "type": "text",
+                "x": 9.12,
+                "y": 5.45,
+                "w": 1.1,
+                "h": 0.48,
+                "content": {
+                  "text": "8",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8EFE8",
+                  "line_color": "D8EFE8",
+                  "text_color": "1E5B55",
+                  "font_face": "Liberation Sans",
+                  "font_size": 28,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "metric_caption_pairs",
+                "type": "text",
+                "x": 9.12,
+                "y": 5.98,
+                "w": 2.95,
+                "h": 0.44,
+                "content": {
+                  "text": "Volunteer pairs",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8EFE8",
+                  "line_color": "D8EFE8",
+                  "text_color": "1E5B55",
+                  "font_face": "Liberation Sans",
+                  "font_size": 16,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              }
+            ]
+          },
+          {
+            "slide_number": 3,
+            "purpose": "Provide concise observation guidance for the walking route.",
+            "background_color": "FAF8F1",
+            "objects": [
+              {
+                "semantic_id": "guidance_title",
+                "type": "text",
+                "x": 0.8,
+                "y": 0.72,
+                "w": 7.0,
+                "h": 0.58,
+                "content": {
+                  "text": "Observe, record, and keep the path welcoming",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FAF8F1",
+                  "line_color": "FAF8F1",
+                  "text_color": "1E5B55",
+                  "font_face": "Liberation Sans",
+                  "font_size": 27,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "guidance_route_panel",
+                "type": "shape",
+                "x": 0.8,
+                "y": 1.75,
+                "w": 6.02,
+                "h": 4.75,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8EFE8",
+                  "line_color": "D8EFE8",
+                  "text_color": "1E5B55",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "guidance_route_steps",
+                "type": "text",
+                "x": 1.18,
+                "y": 2.15,
+                "w": 5.12,
+                "h": 3.65,
+                "content": {
+                  "text": "ROUTE OBSERVATIONS\n\n1. Pause at sunny edge plantings.\n2. Scan stems, bare soil, and old wood.\n3. Count open blooms in a small patch.\n4. Mark repeat visits before moving on.",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8EFE8",
+                  "line_color": "D8EFE8",
+                  "text_color": "1E5B55",
+                  "font_face": "Liberation Sans",
+                  "font_size": 18,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "guidance_safety_panel",
+                "type": "shape",
+                "x": 7.18,
+                "y": 1.75,
+                "w": 5.35,
+                "h": 4.75,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "1E5B55",
+                  "line_color": "1E5B55",
+                  "text_color": "FAF8F1",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "guidance_safety_copy",
+                "type": "text",
+                "x": 7.62,
+                "y": 2.22,
+                "w": 4.05,
+                "h": 2.28,
+                "content": {
+                  "text": "FIELD REMINDER\n\nStay with your partner, leave flowers in place, and record only what you can observe without disturbing habitat.\n\nUse one shared check-in note per pair.",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "1E5B55",
+                  "line_color": "1E5B55",
+                  "text_color": "FAF8F1",
+                  "font_face": "Liberation Sans",
+                  "font_size": 17,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "guidance_leaf_marker",
+                "type": "image",
+                "x": 10.55,
+                "y": 4.72,
+                "w": 1.35,
+                "h": 1.18,
+                "content": {
+                  "text": null,
+                  "shape_kind": null,
+                  "image_kind": "botanical",
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "1E5B55",
+                  "line_color": "1E5B55",
+                  "text_color": "FAF8F1",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              }
+            ]
+          }
+        ],
+        "manual_setup_steps": []
+      },
+      "generation": {
+        "request_id": "76d933e6-e67f-4971-8b51-146b139bbcf4",
+        "prompt_sha256": "96760d06a113c2220586387b706d265be634a7cfa7ef22b41f3a9fae17acc3e8",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 4150,
+        "output_tokens": 3658,
+        "estimated_cost_usd": 0.052196
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-r01-004",
+      "blueprint": {
+        "presentation_title": "Community Garden Field Brief",
+        "slide_size": "wide",
+        "theme": {
+          "primary_color": "C4512D",
+          "secondary_color": "355C4D",
+          "accent_color": "E3A83B",
+          "background_color": "FFFDF7",
+          "title_font": "Liberation Serif",
+          "body_font": "Liberation Sans"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Brief cover that establishes the volunteer walk-through context",
+            "background_color": "FFFDF7",
+            "objects": [
+              {
+                "semantic_id": "cover_top_rule",
+                "type": "shape",
+                "x": 0.72,
+                "y": 0.72,
+                "w": 2.1,
+                "h": 0.09,
+                "content": {
+                  "text": null,
+                  "shape_kind": "rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "C4512D",
+                  "line_color": "C4512D",
+                  "text_color": "C4512D",
+                  "font_face": "Liberation Sans",
+                  "font_size": 10,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_title",
+                "type": "text",
+                "x": 0.72,
+                "y": 1.5,
+                "w": 8.6,
+                "h": 1.35,
+                "content": {
+                  "text": "Community Garden\nField Brief",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFDF7",
+                  "line_color": "FFFDF7",
+                  "text_color": "355C4D",
+                  "font_face": "Liberation Serif",
+                  "font_size": 31,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_subtitle",
+                "type": "text",
+                "x": 0.75,
+                "y": 3.15,
+                "w": 6.6,
+                "h": 0.45,
+                "content": {
+                  "text": "Saturday volunteer walk-through",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFDF7",
+                  "line_color": "FFFDF7",
+                  "text_color": "C4512D",
+                  "font_face": "Liberation Sans",
+                  "font_size": 17,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_seedling_motif",
+                "type": "image",
+                "x": 9.62,
+                "y": 0.92,
+                "w": 2.85,
+                "h": 2.4,
+                "content": {
+                  "text": null,
+                  "shape_kind": null,
+                  "image_kind": "botanical",
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "E3A83B",
+                  "line_color": "355C4D",
+                  "text_color": "355C4D",
+                  "font_face": "Liberation Sans",
+                  "font_size": 10,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Working-slide checklist with a garden-bed visual reference",
+            "background_color": "FFFDF7",
+            "objects": [
+              {
+                "semantic_id": "checklist_section_label",
+                "type": "text",
+                "x": 0.72,
+                "y": 0.65,
+                "w": 3.1,
+                "h": 0.3,
+                "content": {
+                  "text": "FIELD WALK • EAST GATE",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFDF7",
+                  "line_color": "FFFDF7",
+                  "text_color": "C4512D",
+                  "font_face": "Liberation Sans",
+                  "font_size": 10,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "checklist_title",
+                "type": "text",
+                "x": 0.72,
+                "y": 1.02,
+                "w": 5.85,
+                "h": 0.7,
+                "content": {
+                  "text": "Start at the east gate",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFDF7",
+                  "line_color": "FFFDF7",
+                  "text_color": "355C4D",
+                  "font_face": "Liberation Serif",
+                  "font_size": 25,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "garden_bed_illustration",
+                "type": "image",
+                "x": 9.05,
+                "y": 2.03,
+                "w": 1.653543,
+                "h": 1.062992,
+                "content": {
+                  "text": null,
+                  "shape_kind": null,
+                  "image_kind": "garden",
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFDF7",
+                  "line_color": "355C4D",
+                  "text_color": "355C4D",
+                  "font_face": "Liberation Sans",
+                  "font_size": 10,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "garden_bed_caption",
+                "type": "text",
+                "x": 8.45,
+                "y": 3.3,
+                "w": 2.9,
+                "h": 0.42,
+                "content": {
+                  "text": "Raised beds: herbs + greens",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFDF7",
+                  "line_color": "FFFDF7",
+                  "text_color": "355C4D",
+                  "font_face": "Liberation Sans",
+                  "font_size": 11,
+                  "bold": false,
+                  "italic": true,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "checklist_callout_card",
+                "type": "shape",
+                "x": 0.72,
+                "y": 4.5,
+                "w": 5.55,
+                "h": 2.05,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F4E5C7",
+                  "line_color": "E3A83B",
+                  "text_color": "355C4D",
+                  "font_face": "Liberation Sans",
+                  "font_size": 10,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "checklist_callout_text",
+                "type": "text",
+                "x": 1.03,
+                "y": 4.77,
+                "w": 4.7,
+                "h": 0.42,
+                "content": {
+                  "text": "Morning Walk Checklist",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F4E5C7",
+                  "line_color": "F4E5C7",
+                  "text_color": "C4512D",
+                  "font_face": "Liberation Serif",
+                  "font_size": 16,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "checklist_item_one",
+                "type": "text",
+                "x": 1.05,
+                "y": 5.38,
+                "w": 4.7,
+                "h": 0.35,
+                "content": {
+                  "text": "• Check hose connections at each spigot",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F4E5C7",
+                  "line_color": "F4E5C7",
+                  "text_color": "355C4D",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "checklist_item_two",
+                "type": "text",
+                "x": 1.05,
+                "y": 5.88,
+                "w": 4.7,
+                "h": 0.35,
+                "content": {
+                  "text": "• Note ripe produce for the welcome table",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F4E5C7",
+                  "line_color": "F4E5C7",
+                  "text_color": "355C4D",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              }
+            ]
+          },
+          {
+            "slide_number": 3,
+            "purpose": "Working-slide assignment grid for the garden walk",
+            "background_color": "FFFDF7",
+            "objects": [
+              {
+                "semantic_id": "assignment_section_label",
+                "type": "text",
+                "x": 0.94,
+                "y": 0.65,
+                "w": 3.3,
+                "h": 0.3,
+                "content": {
+                  "text": "VOLUNTEER ASSIGNMENTS",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFDF7",
+                  "line_color": "FFFDF7",
+                  "text_color": "C4512D",
+                  "font_face": "Liberation Sans",
+                  "font_size": 10,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "assignment_title",
+                "type": "text",
+                "x": 0.94,
+                "y": 1.04,
+                "w": 7.2,
+                "h": 0.6,
+                "content": {
+                  "text": "Walk-through assignments",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFDF7",
+                  "line_color": "FFFDF7",
+                  "text_color": "355C4D",
+                  "font_face": "Liberation Serif",
+                  "font_size": 25,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "assignment_intro",
+                "type": "text",
+                "x": 0.94,
+                "y": 1.78,
+                "w": 8.5,
+                "h": 0.4,
+                "content": {
+                  "text": "Confirm each stop, then return materials to the welcome desk.",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFDF7",
+                  "line_color": "FFFDF7",
+                  "text_color": "355C4D",
+                  "font_face": "Liberation Sans",
+                  "font_size": 13,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "assignment_table",
+                "type": "table",
+                "x": 1.2,
+                "y": 2.55,
+                "w": 10.9,
+                "h": 2.7,
+                "content": {
+                  "text": null,
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [
+                    [
+                      "Bed",
+                      "Window",
+                      "Guide",
+                      "Gear"
+                    ],
+                    [
+                      "Herb border",
+                      "9:00–9:20",
+                      "Maya R.",
+                      "Plant tags"
+                    ],
+                    [
+                      "Tomato row",
+                      "9:20–9:45",
+                      "Jon P.",
+                      "Twine + clips"
+                    ],
+                    [
+                      "Compost corner",
+                      "9:45–10:05",
+                      "Inez L.",
+                      "Moisture meter"
+                    ]
+                  ],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFDF7",
+                  "line_color": "355C4D",
+                  "text_color": "355C4D",
+                  "font_face": "Liberation Sans",
+                  "font_size": 13,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "assignment_footer_note",
+                "type": "text",
+                "x": 0.94,
+                "y": 6.25,
+                "w": 8.5,
+                "h": 0.35,
+                "content": {
+                  "text": "Report route changes or supply needs to the welcome desk.",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFDF7",
+                  "line_color": "FFFDF7",
+                  "text_color": "355C4D",
+                  "font_face": "Liberation Sans",
+                  "font_size": 11,
+                  "bold": false,
+                  "italic": true,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "assignment_side_marker",
+                "type": "shape",
+                "x": 0.72,
+                "y": 2.55,
+                "w": 0.12,
+                "h": 2.7,
+                "content": {
+                  "text": null,
+                  "shape_kind": "rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "C4512D",
+                  "line_color": "C4512D",
+                  "text_color": "C4512D",
+                  "font_face": "Liberation Sans",
+                  "font_size": 10,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              }
+            ]
+          }
+        ],
+        "manual_setup_steps": []
+      },
+      "generation": {
+        "request_id": "03757900-9382-4892-948d-fcfab5e86416",
+        "prompt_sha256": "532394ad26419c5474706357d7ba6847b28c677adbc2e8bfb143e974f53f2607",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3587,
+        "output_tokens": 2711,
+        "estimated_cost_usd": 0.039706
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-r01-005",
+      "blueprint": {
+        "presentation_title": "Dawn Marsh Survey",
+        "slide_size": "wide",
+        "theme": {
+          "primary_color": "0B3D4A",
+          "secondary_color": "D8E5DD",
+          "accent_color": "F4C542",
+          "background_color": "F7F4EC",
+          "title_font": "Liberation Sans",
+          "body_font": "Liberation Sans"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Briefing cover that establishes the survey identity and provides context for the checklist slide.",
+            "background_color": "F7F4EC",
+            "objects": [
+              {
+                "semantic_id": "cover_title",
+                "type": "text",
+                "x": 0.8,
+                "y": 1.15,
+                "w": 7.7,
+                "h": 0.72,
+                "content": {
+                  "text": "Dawn Marsh Survey",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F4EC",
+                  "line_color": "F7F4EC",
+                  "text_color": "0B3D4A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 30,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_subtitle",
+                "type": "text",
+                "x": 0.84,
+                "y": 2.02,
+                "w": 6.9,
+                "h": 0.54,
+                "content": {
+                  "text": "Early field briefing · 14 May · Estuary team",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F4EC",
+                  "line_color": "F7F4EC",
+                  "text_color": "0B3D4A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 16,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_horizon_band",
+                "type": "shape",
+                "x": 0,
+                "y": 5.7,
+                "w": 13.333,
+                "h": 1.8,
+                "content": {
+                  "text": null,
+                  "shape_kind": "rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "0B3D4A",
+                  "line_color": "0B3D4A",
+                  "text_color": "0B3D4A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_location_badge",
+                "type": "shape",
+                "x": 0.82,
+                "y": 3.15,
+                "w": 2.45,
+                "h": 0.52,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8E5DD",
+                  "line_color": "0B3D4A",
+                  "text_color": "0B3D4A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_location_label",
+                "type": "text",
+                "x": 0.92,
+                "y": 3.24,
+                "w": 2.25,
+                "h": 0.28,
+                "content": {
+                  "text": "NORTH BASIN MARSH",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8E5DD",
+                  "line_color": "D8E5DD",
+                  "text_color": "0B3D4A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 10,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Field-team setup checklist to be finalized before departure.",
+            "background_color": "F7F4EC",
+            "objects": [
+              {
+                "semantic_id": "checklist_heading_band",
+                "type": "shape",
+                "x": 0.62,
+                "y": 0.42,
+                "w": 7.42,
+                "h": 0.92,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8E5DD",
+                  "line_color": "D8E5DD",
+                  "text_color": "0B3D4A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "checklist_slide_heading",
+                "type": "text",
+                "x": 0.8,
+                "y": 0.62,
+                "w": 6.9,
+                "h": 0.54,
+                "content": {
+                  "text": "Departure readiness",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F4EC",
+                  "line_color": "F7F4EC",
+                  "text_color": "0B3D4A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 25,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "checklist_intro_panel",
+                "type": "shape",
+                "x": 0.8,
+                "y": 1.35,
+                "w": 7.05,
+                "h": 0.4,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8E5DD",
+                  "line_color": "D8E5DD",
+                  "text_color": "0B3D4A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "checklist_intro_label",
+                "type": "text",
+                "x": 1.06,
+                "y": 1.42,
+                "w": 5.5,
+                "h": 0.31,
+                "content": {
+                  "text": "Verify before leaving the staging point",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8E5DD",
+                  "line_color": "D8E5DD",
+                  "text_color": "0B3D4A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "readiness_list_panel",
+                "type": "shape",
+                "x": 0.8,
+                "y": 1.78,
+                "w": 7.05,
+                "h": 2.66,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8E5DD",
+                  "line_color": "0B3D4A",
+                  "text_color": "0B3D4A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "readiness_list_text",
+                "type": "text",
+                "x": 1.1,
+                "y": 2.13,
+                "w": 5.9,
+                "h": 1.7,
+                "content": {
+                  "text": "Calibrate water meter\nPack sample envelopes\nConfirm trail access",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8E5DD",
+                  "line_color": "D8E5DD",
+                  "text_color": "0B3D4A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 18,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "launch_time_status",
+                "type": "text",
+                "x": 0.84,
+                "y": 4.76,
+                "w": 3.85,
+                "h": 0.45,
+                "content": {
+                  "text": "Launch window: 08:30",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F4EC",
+                  "line_color": "F7F4EC",
+                  "text_color": "0B3D4A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 17,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "battery_reminder_panel",
+                "type": "shape",
+                "x": 0.74,
+                "y": 5.28,
+                "w": 3.92,
+                "h": 0.86,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8E5DD",
+                  "line_color": "D8E5DD",
+                  "text_color": "0B3D4A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "battery_reminder_box",
+                "type": "text",
+                "x": 1.0,
+                "y": 5.47,
+                "w": 3.36,
+                "h": 0.48,
+                "content": {
+                  "text": "Carry spare batteries",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F4EC",
+                  "line_color": "0B3D4A",
+                  "text_color": "0B3D4A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 14,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "route_note_panel",
+                "type": "shape",
+                "x": 8.28,
+                "y": 4.48,
+                "w": 4.2,
+                "h": 1.24,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8E5DD",
+                  "line_color": "D8E5DD",
+                  "text_color": "0B3D4A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "route_note",
+                "type": "text",
+                "x": 8.58,
+                "y": 4.7,
+                "w": 3.6,
+                "h": 0.78,
+                "content": {
+                  "text": "Route note\nUse boardwalk entrance B",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F4EC",
+                  "line_color": "F7F4EC",
+                  "text_color": "0B3D4A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 14,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "draft_marker_one",
+                "type": "shape",
+                "x": 10.2,
+                "y": 1.1,
+                "w": 0.38,
+                "h": 0.38,
+                "content": {
+                  "text": null,
+                  "shape_kind": "ellipse",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8E5DD",
+                  "line_color": "D8E5DD",
+                  "text_color": "D8E5DD",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "draft_marker_two",
+                "type": "shape",
+                "x": 10.76,
+                "y": 1.3,
+                "w": 0.38,
+                "h": 0.38,
+                "content": {
+                  "text": null,
+                  "shape_kind": "ellipse",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8E5DD",
+                  "line_color": "D8E5DD",
+                  "text_color": "D8E5DD",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "draft_marker_three",
+                "type": "shape",
+                "x": 11.28,
+                "y": 1.02,
+                "w": 0.38,
+                "h": 0.38,
+                "content": {
+                  "text": null,
+                  "shape_kind": "ellipse",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D8E5DD",
+                  "line_color": "D8E5DD",
+                  "text_color": "D8E5DD",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              }
+            ]
+          }
+        ],
+        "manual_setup_steps": []
+      },
+      "generation": {
+        "request_id": "f1f0c5fa-d168-418f-a414-3c5422bda092",
+        "prompt_sha256": "4036546787cf9fec8fcb7ddf1197342efa32fcf2f2cf314ff0f8ddcc1455e697",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3580,
+        "output_tokens": 2519,
+        "estimated_cost_usd": 0.037388
+      }
+    }
+  ],
+  "totals": {
+    "calls": 5,
+    "input_tokens": 17545,
+    "output_tokens": 13503,
+    "estimated_cost_usd": 0.197126,
+    "pricing_complete": true
+  }
+}

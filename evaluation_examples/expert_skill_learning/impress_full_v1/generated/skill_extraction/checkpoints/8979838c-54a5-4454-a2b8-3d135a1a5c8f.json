@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+  "app": "libreoffice_impress",
+  "single_action_count": 8,
+  "prompt_sha256": "648e1a2d58c7232fd5f32306cd725aee188d71f2615cb8d45fed9ddb59090576",
+  "request_id": "568079a7-bcfc-4cbb-b0a7-236b6fe19d99",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 791,
+    "cached_input_tokens": 0,
+    "output_tokens": 345,
+    "estimated_cost_usd": 0.005722
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set a slide background color",
+        "procedure": [
+          "With the target slide active, open the background formatting dropdown or color control.",
+          "Open the color palette and choose a desired background color, for example a purple swatch.",
+          "The selected color is applied to the slide background."
+        ],
+        "efficiency_tip": "Choose the background color directly from the palette rather than creating or formatting a full-slide shape.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Add speaker notes in Notes view",
+        "procedure": [
+          "Open the View menu and choose Notes to switch from normal slide editing to the slide's notes view.",
+          "Click the notes placeholder labeled to add text; this enters text-editing mode in the notes area rather than selecting a slide object.",
+          "Type the speaker-note content, such as a short reminder or narration cue for the slide."
+        ],
+        "efficiency_tip": "Use Notes view when adding presenter-only content so the text is stored as speaker notes and does not appear on the slide canvas.",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    ]
+  }
+}

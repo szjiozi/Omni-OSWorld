@@ -137,9 +137,46 @@ def test_annotator_can_receive_multiple_tasks():
     ]
 
 
+def test_task_review_is_validated_persisted_and_bound_to_catalog_version(tmp_path):
+    service, _controller, store = _service(tmp_path)
+    identity = UserIdentity("alice")
+    store.put_assignment(TaskAssignment("task-1", "alice"))
+
+    saved = service.save_task_review(
+        identity,
+        "task-1",
+        decision="approved",
+        reason_codes=[],
+        revision_instructions=[],
+        notes="The task is natural and all required skills are observable.",
+    )
+
+    assert saved["reviewer"] == "alice"
+    assert service.task_review_for(identity, "task-1") == saved
+    assert service.tasks_for(identity)[0]["portal_review"] == saved
+    with pytest.raises(ValueError, match="revision_instructions"):
+        service.save_task_review(
+            identity,
+            "task-1",
+            decision="revision_requested",
+            reason_codes=["artifact_too_complex"],
+            revision_instructions=[],
+            notes="Simplify the artifact.",
+        )
+
+    task = _catalog().get("task-1")
+    service.catalog = TaskCatalog([replace(task, catalog_version="new-version")])
+    assert service.task_review_for(identity, "task-1")["decision"] == ""
+
+
+class _FakeCognitoPasswordError(Exception):
+    response = {"Error": {"Code": "InvalidPasswordException"}}
+
+
 class _FakeCognito:
-    def __init__(self, challenge: bool = False):
+    def __init__(self, challenge: bool = False, reject_weak_password: bool = False):
         self.challenge = challenge
+        self.reject_weak_password = reject_weak_password
         self.calls = []
 
     def initiate_auth(self, **kwargs):
@@ -150,6 +187,11 @@ class _FakeCognito:
 
     def respond_to_auth_challenge(self, **kwargs):
         self.calls.append(("respond_to_auth_challenge", kwargs))
+        if (
+            self.reject_weak_password
+            and kwargs["ChallengeResponses"]["NEW_PASSWORD"] == "weak"
+        ):
+            raise _FakeCognitoPasswordError()
         return {"AuthenticationResult": {"AccessToken": "access"}}
 
     def get_user(self, **kwargs):
@@ -165,6 +207,47 @@ def test_cognito_provider_supports_temporary_password_challenge():
     assert result == PasswordChangeRequired("alice", "challenge")
     completed = provider.complete_new_password("alice", "new-password", "challenge")
     assert completed == LoginSuccess(UserIdentity("alice", UserRole.ANNOTATOR))
+
+
+def test_fastapi_password_policy_failure_keeps_challenge_retriable(tmp_path):
+    fastapi_testclient = pytest.importorskip("fastapi.testclient")
+    service, _controller, store = _service(tmp_path)
+    provider = CognitoIdentityProvider(
+        _FakeCognito(challenge=True, reject_weak_password=True),
+        client_id="client",
+    )
+    app = create_app(
+        config=PortalWebConfig(
+            static_dir=Path(__file__).parents[1]
+            / "benchmark_construction/annotation_portal/static",
+            cookie_secure=False,
+        ),
+        identity_provider=provider,
+        session_manager=PortalSessionManager(store),
+        challenge_manager=PasswordChallengeManager(),
+        service=service,
+    )
+
+    with fastapi_testclient.TestClient(app) as client:
+        login = client.post(
+            "/api/auth/login",
+            json={"username": "alice", "password": "temporary-password"},
+        ).json()
+        payload = {
+            "username": "alice",
+            "challenge_id": login["challenge_id"],
+            "new_password": "weak",
+        }
+        rejected = client.post("/api/auth/new-password", json=payload)
+
+        assert rejected.status_code == 400
+        assert "at least 12 characters" in rejected.json()["detail"]
+
+        payload["new_password"] = "StrongPassword1!"
+        accepted = client.post("/api/auth/new-password", json=payload)
+        assert accepted.status_code == 200
+        assert accepted.json()["status"] == "authenticated"
+        assert accepted.cookies.get("osworld_annotation_session")
 
 
 class _FakeS3:
@@ -414,6 +497,12 @@ def test_fastapi_login_assignment_and_annotation_flow(tmp_path):
             f"/api/workspaces/{workspace['session_id']}/recording/stop"
         ).json()
         assert submitted["status"] == "submitted"
+        selected = client.put(
+            f"/api/submissions/{workspace['session_id']}/final"
+        )
+        assert selected.status_code == 200
+        assert selected.json()["status"] == "selected"
+        assert client.get("/api/submissions").json()[0]["is_final"] is True
 
 
 def test_fastapi_ready_workspace_can_be_closed_without_submission(tmp_path):
@@ -447,6 +536,46 @@ def test_fastapi_ready_workspace_can_be_closed_without_submission(tmp_path):
         assert closed.status_code == 200
         assert closed.json()["status"] == "terminated"
         assert client.get("/api/workspaces/current").json() is None
+
+
+def test_fastapi_review_json_round_trip_and_download(tmp_path):
+    fastapi_testclient = pytest.importorskip("fastapi.testclient")
+    service, _controller, store = _service(tmp_path)
+    store.put_assignment(TaskAssignment("task-1", "alice"))
+    app = create_app(
+        config=PortalWebConfig(
+            static_dir=Path(__file__).parents[1]
+            / "benchmark_construction/annotation_portal/static",
+            cookie_secure=False,
+        ),
+        identity_provider=StaticIdentityProvider(
+            {"alice": "test-password"}, admin_usernames=frozenset()
+        ),
+        session_manager=PortalSessionManager(store),
+        challenge_manager=PasswordChallengeManager(),
+        service=service,
+    )
+
+    with fastapi_testclient.TestClient(app) as client:
+        client.post(
+            "/api/auth/login",
+            json={"username": "alice", "password": "test-password"},
+        )
+        response = client.put(
+            "/api/tasks/task-1/review.json",
+            json={
+                "decision": "rejected",
+                "reason_codes": ["unnatural_combination"],
+                "revision_instructions": [],
+                "notes": "The required skills do not form one natural task.",
+            },
+        )
+        assert response.status_code == 200
+        assert response.json()["reviewer"] == "alice"
+
+        download = client.get("/api/tasks/task-1/review.json?download=true")
+        assert download.json() == response.json()
+        assert download.headers["content-disposition"] == 'attachment; filename="review.json"'
 
 
 def test_fastapi_streams_private_recording_through_same_origin_with_range(tmp_path):
@@ -524,6 +653,10 @@ def test_real_catalog_renders_task_markdown_and_scopes_relative_assets():
     assert 'href="#"' in task.task_markdown_html
     assert "../../../reviewer.md" not in task.task_markdown_html
     assert "<table>" in task.task_markdown_html
+    assert (
+        "/api/tasks/reference-task-r01-001/review.json?download=true"
+        in task.task_markdown_html
+    )
 
 
 def test_task_packet_file_access_prevents_directory_traversal(tmp_path):
@@ -592,6 +725,35 @@ def test_submission_preview_discard_restore_and_retention_purge(tmp_path):
     assert s3.deleted
 
 
+def test_final_submission_selection_replaces_per_task_and_clears_on_discard(tmp_path):
+    s3 = _FakeS3()
+    publisher = S3BundlePublisher(s3, bucket="private-bucket", root_prefix="annotations")
+    service, _controller, store = _service(tmp_path, publisher=publisher)
+    identity = UserIdentity("alice")
+    store.put_assignment(TaskAssignment("task-1", "alice"))
+
+    runs = []
+    for _ in range(2):
+        workspace = service.launch(identity, "task-1")
+        service.start_recording(identity, workspace.session_id)
+        runs.append(service.stop_recording(identity, workspace.session_id))
+
+    service.select_final_submission(identity, runs[0].session_id)
+    first_state = {item["session_id"]: item["is_final"] for item in service.submissions_for(identity)}
+    assert first_state == {runs[0].session_id: True, runs[1].session_id: False}
+
+    service.select_final_submission(identity, runs[1].session_id)
+    second_state = {item["session_id"]: item["is_final"] for item in service.submissions_for(identity)}
+    assert second_state == {runs[0].session_id: False, runs[1].session_id: True}
+    with pytest.raises(PermissionError):
+        service.select_final_submission(UserIdentity("bob"), runs[1].session_id)
+
+    service.discard_submission(identity, runs[1].session_id)
+    assert not any(item["is_final"] for item in service.submissions_for(identity))
+    with pytest.raises(RuntimeError, match="active submitted video"):
+        service.select_final_submission(identity, runs[1].session_id)
+
+
 def test_portal_uses_absolute_novnc_websocket_path():
     script = (
         Path(__file__).parents[1]
@@ -640,6 +802,25 @@ def test_portal_exposes_fullscreen_close_and_failed_workspace_retry_controls():
     assert "/terminate`" in script
     assert ".desktop-shell:fullscreen" in styles
     assert ".desktop-shell:fullscreen .exit-fullscreen" in styles
+
+
+def test_portal_renders_one_task_page_with_review_form_and_left_right_navigation():
+    script = (
+        Path(__file__).parents[1]
+        / "benchmark_construction/annotation_portal/static/assets/app.js"
+    ).read_text(encoding="utf-8")
+
+    assert "state.selectedTaskId" in script
+    assert "← Previous task" in script
+    assert "Next task →" in script
+    assert "Task ${index + 1} of ${tasks.length}" in script
+    assert "Save review.json" in script
+    assert "/review.json?download=true" in script
+    assert 'method: "PUT"' in script
+    assert "renderSubmissions(submissions, task.task_id)" in script
+    assert "No submissions for this task yet." in script
+    assert "Select as final" in script
+    assert "/final`" in script
 
 
 def test_janitor_expires_ready_idle_workspace(tmp_path):

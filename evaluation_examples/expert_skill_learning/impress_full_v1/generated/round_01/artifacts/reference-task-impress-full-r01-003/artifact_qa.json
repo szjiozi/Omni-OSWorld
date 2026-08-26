@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "pptx",
+  "opens_as_zip_package": true,
+  "libreoffice_render_succeeded": true,
+  "slide_count": 3,
+  "semantic_object_count": 23,
+  "geometric_overlap_warnings": [
+    {
+      "slide_number": 1,
+      "objects": [
+        "cover_background_band",
+        "cover_main_title"
+      ],
+      "overlap_area": 6.084
+    },
+    {
+      "slide_number": 1,
+      "objects": [
+        "cover_background_band",
+        "cover_subtitle"
+      ],
+      "overlap_area": 2.772
+    },
+    {
+      "slide_number": 1,
+      "objects": [
+        "cover_background_band",
+        "cover_botanical_motif"
+      ],
+      "overlap_area": 2.2995
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "metric_card_nesting",
+        "metric_value_nesting"
+      ],
+      "overlap_area": 0.528
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "metric_card_nesting",
+        "metric_caption_nesting"
+      ],
+      "overlap_area": 1.298
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "metric_card_blooms",
+        "metric_value_blooms"
+      ],
+      "overlap_area": 0.528
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "metric_card_blooms",
+        "metric_caption_blooms"
+      ],
+      "overlap_area": 1.298
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "metric_card_pairs",
+        "metric_value_pairs"
+      ],
+      "overlap_area": 0.528
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "metric_card_pairs",
+        "metric_caption_pairs"
+      ],
+      "overlap_area": 1.298
+    },
+    {
+      "slide_number": 3,
+      "objects": [
+        "guidance_route_panel",
+        "guidance_route_steps"
+      ],
+      "overlap_area": 18.688
+    },
+    {
+      "slide_number": 3,
+      "objects": [
+        "guidance_safety_panel",
+        "guidance_safety_copy"
+      ],
+      "overlap_area": 9.234
+    },
+    {
+      "slide_number": 3,
+      "objects": [
+        "guidance_safety_panel",
+        "guidance_leaf_marker"
+      ],
+      "overlap_area": 1.593
+    }
+  ],
+  "placeholder_matches": [],
+  "media_part_count": 4,
+  "notes_part_count": 8,
+  "slides": [
+    {
+      "slide_number": 1,
+      "text": [
+        "Riverside Pollinator Walk",
+        "Volunteer field brief • Riverside greenway • September 14"
+      ],
+      "shape_count": 3,
+      "picture_count": 1,
+      "graphic_frame_count": 0
+    },
+    {
+      "slide_number": 2,
+      "text": [
+        "FIELD SNAPSHOT",
+        "A focused walk for late-season habitat clues",
+        "Pair up along the river path to note nesting shelter,",
+        "nectar plants, and repeat pollinator activity.",
+        "24",
+        "Nesting sites mapped",
+        "17",
+        "Late-season blooms",
+        "8",
+        "Volunteer pairs"
+      ],
+      "shape_count": 12,
+      "picture_count": 1,
+      "graphic_frame_count": 0
+    },
+    {
+      "slide_number": 3,
+      "text": [
+        "Observe, record, and keep the path welcoming",
+        "ROUTE OBSERVATIONS",
+        "1. Pause at sunny edge plantings.",
+        "2. Scan stems, bare soil, and old wood.",
+        "3. Count open blooms in a small patch.",
+        "4. Mark repeat visits before moving on.",
+        "FIELD REMINDER",
+        "Stay with your partner, leave flowers in place, and record only what you can observe without disturbing habitat.",
+        "Use one shared check-in note per pair."
+      ],
+      "shape_count": 5,
+      "picture_count": 1,
+      "graphic_frame_count": 0
+    }
+  ],
+  "preview_files": [
+    "slide-01.png",
+    "slide-02.png",
+    "slide-03.png"
+  ],
+  "contact_sheet": "contact-sheet.png",
+  "visual_review_required": true
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+  "app": "libreoffice_impress",
+  "single_action_count": 18,
+  "prompt_sha256": "6fa96eb240e9db48d7d394762adcfeab1634f1c800418308e687b41ea9d45b40",
+  "request_id": "23f7553c-0479-41be-a330-396bdb991b21",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 880,
+    "cached_input_tokens": 0,
+    "output_tokens": 481,
+    "estimated_cost_usd": 0.007532
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply a font color to selected text in a shape",
+        "procedure": [
+          "Click a text-containing shape to enter text-editing mode, rather than merely selecting the shape as an object.",
+          "Select the target text with Ctrl+A when the shape contains only the text to format, or select only the relevant text range.",
+          "Open the Font Color drop-down on the formatting toolbar and choose the desired color, for example black.",
+          "The selected text remains selected after the color change, allowing additional character formatting to be applied without reselecting it."
+        ],
+        "efficiency_tip": "When formatting all text in a title or other single-purpose text box, enter text-editing mode and use Ctrl+A instead of dragging across the text.",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4,
+          7,
+          8,
+          9,
+          10,
+          13,
+          14,
+          15,
+          16
+        ]
+      },
+      {
+        "name": "Underline selected text",
+        "procedure": [
+          "With text already selected in text-editing mode, click the Underline button on the formatting toolbar.",
+          "Use the same button again to toggle underlining off for a selected range when needed."
+        ],
+        "efficiency_tip": "Apply underline immediately after another character-formatting change while the text selection is still active, avoiding an extra click into the text box and reselection.",
+        "action_ids": [
+          5,
+          11,
+          17
+        ]
+      }
+    ]
+  }
+}

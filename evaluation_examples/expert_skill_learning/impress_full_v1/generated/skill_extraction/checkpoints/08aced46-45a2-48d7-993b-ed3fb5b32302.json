@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+  "app": "libreoffice_impress",
+  "single_action_count": 4,
+  "prompt_sha256": "5c7dc7cd537dad8f7e4a30a3fd8a3439330f1d8f300af7d4f821af2ff4a66446",
+  "request_id": "cd5402ca-d85c-4f0f-9b5a-1cb9ff92baa3",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 742,
+    "cached_input_tokens": 0,
+    "output_tokens": 155,
+    "estimated_cost_usd": 0.003344
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Right-align text in a slide text box",
+        "procedure": [
+          "Select the text box containing the paragraph to format. Click inside the text to enter text-editing mode, rather than only selecting the shape border.",
+          "Place the cursor in the target paragraph or select its text.",
+          "Click the Right Align button on the formatting toolbar. This right-aligns the current paragraph; for example, it can align a title paragraph to the right edge of its text box."
+        ],
+        "efficiency_tip": "You do not need to select every character when the text box contains one paragraph: placing the cursor anywhere in that paragraph is sufficient before using Right Align.",
+        "action_ids": [
+          1,
+          3
+        ]
+      }
+    ]
+  }
+}

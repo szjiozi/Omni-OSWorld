@@ -33,11 +33,34 @@ def _bootstrap_commands() -> list[str]:
             f"> {DROP_IN_PATH}"
         ),
         "systemctl daemon-reload",
-        "systemctl reset-failed osworld.service || true",
-        "systemctl restart osworld.service",
         "systemctl cat osworld.service | grep -F '10-wait-for-x.conf'",
         "systemctl cat osworld.service | grep -F 'StartLimitIntervalSec=0'",
-        "systemctl cat osworld.service | grep -F 'xdpyinfo'",
+        "systemctl cat osworld.service | grep -F '/tmp/.X11-unix/X0'",
+        (
+            "for second in $(seq 1 360); do "
+            "test -S /tmp/.X11-unix/X0 && break; "
+            "if test \"$second\" -eq 360; then "
+            "echo 'X11 display socket did not become ready' >&2; "
+            "systemctl status display-manager.service --no-pager || true; "
+            "exit 1; fi; sleep 1; done"
+        ),
+        (
+            "for attempt in 1 2; do "
+            "systemctl reset-failed osworld.service || true; "
+            "if systemctl restart osworld.service; then "
+            "for second in $(seq 1 120); do "
+            "if systemctl is-active --quiet osworld.service && "
+            "/usr/bin/python3 -c \"import urllib.request; "
+            "response=urllib.request.urlopen('http://127.0.0.1:5000/platform', "
+            "timeout=2); raise SystemExit(0 if response.status == 200 else 1)\" "
+            "2>/dev/null; then "
+            "echo 'OSWorld API is ready'; exit 0; fi; sleep 1; done; fi; "
+            "echo \"OSWorld service attempt $attempt failed\" >&2; "
+            "systemctl status osworld.service --no-pager || true; "
+            "journalctl -u osworld.service -n 120 --no-pager || true; "
+            "sleep 5; done; "
+            "echo 'OSWorld service failed after two attempts' >&2; exit 1"
+        ),
     ]
 
 
@@ -46,7 +69,7 @@ def ensure_osworld_service_x11_wait(
     instance_id: str,
     logger: logging.Logger | None = None,
     *,
-    timeout_seconds: int = 600,
+    timeout_seconds: int = 900,
     poll_seconds: int = 5,
 ) -> None:
     """Idempotently install and verify the X11 startup guard via SSM."""
@@ -101,10 +124,12 @@ def ensure_osworld_service_x11_wait(
                 return
             if status in _TERMINAL_FAILURE_STATUSES:
                 error_text = invocation.get("StandardErrorContent", "")
+                output_text = invocation.get("StandardOutputContent", "")
                 raise RuntimeError(
-                    "OSWorld X11 wait bootstrap failed for "
+                    "OSWorld service bootstrap failed for "
                     f"{instance_id}: status={status}, "
-                    f"stderr={error_text[:1000]!r}"
+                    f"stderr={error_text[-4000:]!r}, "
+                    f"stdout={output_text[-4000:]!r}"
                 )
 
         if time.monotonic() >= deadline:

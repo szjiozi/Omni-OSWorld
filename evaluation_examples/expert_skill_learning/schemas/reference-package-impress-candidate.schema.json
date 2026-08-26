@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://osworld.local/schemas/reference-package-impress-candidate.schema.json",
+  "title": "Generated LibreOffice Impress human-video reference package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decision",
+    "task_instruction",
+    "required_skill_ids",
+    "artifact_spec",
+    "operator_guide",
+    "expected_incidental_operations",
+    "rejection_reason"
+  ],
+  "properties": {
+    "decision": {"type": "string", "enum": ["candidate", "rejected_combination"]},
+    "task_instruction": {"type": "string"},
+    "required_skill_ids": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 5,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "artifact_spec": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": [
+        "artifact_type",
+        "domain",
+        "presentation_title",
+        "slide_size",
+        "theme",
+        "slides",
+        "initial_state",
+        "must_not_be_completed",
+        "generation_notes"
+      ],
+      "properties": {
+        "artifact_type": {"type": "string", "const": "pptx"},
+        "domain": {"type": "string", "minLength": 1},
+        "presentation_title": {"type": "string", "minLength": 1},
+        "slide_size": {"type": "string", "enum": ["wide", "standard"]},
+        "theme": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "primary_color",
+            "secondary_color",
+            "accent_color",
+            "background_color",
+            "title_font",
+            "body_font"
+          ],
+          "properties": {
+            "primary_color": {"type": "string", "pattern": "^[0-9A-Fa-f]{6}$"},
+            "secondary_color": {"type": "string", "pattern": "^[0-9A-Fa-f]{6}$"},
+            "accent_color": {"type": "string", "pattern": "^[0-9A-Fa-f]{6}$"},
+            "background_color": {"type": "string", "pattern": "^[0-9A-Fa-f]{6}$"},
+            "title_font": {"type": "string", "minLength": 1},
+            "body_font": {"type": "string", "minLength": 1}
+          }
+        },
+        "slides": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["slide_number", "purpose", "layout", "object_plan"],
+            "properties": {
+              "slide_number": {"type": "integer", "minimum": 1, "maximum": 8},
+              "purpose": {"type": "string", "minLength": 1},
+              "layout": {
+                "type": "string",
+                "enum": [
+                  "title",
+                  "title_content",
+                  "two_column",
+                  "comparison",
+                  "process",
+                  "data_story",
+                  "blank"
+                ]
+              },
+              "object_plan": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 16,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["semantic_id", "type", "purpose", "editable"],
+                  "properties": {
+                    "semantic_id": {
+                      "type": "string",
+                      "pattern": "^[a-z][a-z0-9_]{0,47}$"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": ["text", "shape", "image", "table", "chart"]
+                    },
+                    "purpose": {"type": "string", "minLength": 1},
+                    "editable": {"type": "boolean", "const": true}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "initial_state": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "must_not_be_completed": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "generation_notes": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "operator_guide": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": [
+        "recommended_demonstration",
+        "allowed_variation",
+        "recording_start_state",
+        "recording_end_state"
+      ],
+      "properties": {
+        "recommended_demonstration": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "skill_id",
+              "operation_intent",
+              "visible_success_signal",
+              "efficiency_tip"
+            ],
+            "properties": {
+              "skill_id": {"type": "string"},
+              "operation_intent": {"type": "string"},
+              "visible_success_signal": {"type": "string"},
+              "efficiency_tip": {"type": "string"}
+            }
+          }
+        },
+        "allowed_variation": {"type": "string"},
+        "recording_start_state": {"type": "string"},
+        "recording_end_state": {"type": "string"}
+      }
+    },
+    "expected_incidental_operations": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["operation", "reason", "category"],
+        "properties": {
+          "operation": {"type": "string"},
+          "reason": {"type": "string"},
+          "category": {
+            "type": "string",
+            "enum": ["scaffolding", "task_specific", "substantive_prerequisite"]
+          }
+        }
+      }
+    },
+    "rejection_reason": {"type": "string"}
+  }
+}

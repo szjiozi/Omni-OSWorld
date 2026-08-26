@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "8f58ea89a97f311c57c8209176082ff5ddf1abac7b6bf49106b57b9fbbe99fd0",
+  "request_id": "02b7c9ef-ecd9-43fd-8abd-d3d55cd883f7",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 735,
+    "cached_input_tokens": 0,
+    "output_tokens": 148,
+    "estimated_cost_usd": 0.003246
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Reposition a text box on a slide",
+        "procedure": [
+          "In Normal view, select the slide containing the object in the Slides pane.",
+          "Click the text box border once to select the text box as an object; do not click into the text if you only want to move it.",
+          "Drag the selected text box to the desired location on the slide, such as nearer the lower edge, and release the mouse."
+        ],
+        "efficiency_tip": "Drag the object by its border rather than entering text-editing mode; use alignment guides or arrow keys afterward if a small positional adjustment is needed.",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

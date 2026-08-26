@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+  "app": "libreoffice_impress",
+  "single_action_count": 6,
+  "prompt_sha256": "ab8e41b204481c5153ed61d52cbd6c16f13f79e83fdbacad410d092e666d8b46",
+  "request_id": "95a0c212-991a-4d8f-bd48-6ce5447e8f30",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 788,
+    "cached_input_tokens": 0,
+    "output_tokens": 159,
+    "estimated_cost_usd": 0.003484
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply strikethrough formatting to multiple text lines",
+        "procedure": [
+          "Click within the text object to enter text-editing mode, rather than merely selecting the shape.",
+          "Select the first target line, for example by triple-clicking it.",
+          "Hold Shift and click another line to extend the text selection across additional lines.",
+          "Click the Strikethrough button on the formatting toolbar to apply strikethrough to all selected text."
+        ],
+        "efficiency_tip": "Select all noncontiguous or adjacent target lines in one text selection before clicking Strikethrough, so the formatting control only needs to be used once.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ]
+  }
+}

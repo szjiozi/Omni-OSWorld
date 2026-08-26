@@ -45,6 +45,7 @@ SOURCE_PATHS = (
     "desktop_env/trajectory",
     "evaluation_examples/expert_skill_learning/annotation_portal/assignments.example.json",
     "evaluation_examples/expert_skill_learning/pilot",
+    "evaluation_examples/expert_skill_learning/schemas",
     "infra/annotation_portal/gateway-requirements.txt",
     "scripts/python/run_annotation_portal.py",
 )
@@ -437,12 +438,34 @@ def _refresh_gateway_source(
     bucket: str,
     source_key: str,
     source_sha256: str,
+    worker_instance_profile_name: str,
 ) -> None:
     _wait_for_ssm_online(ssm, instance_id)
     download_code = (
         "import boto3; "
         f"boto3.client('s3').download_file({bucket!r}, {source_key!r}, "
         "'/tmp/osworld-annotation-refresh.tar.gz')"
+    )
+    service_unit_code = (
+        "from pathlib import Path; "
+        "path=Path('/etc/systemd/system/osworld-annotation-portal.service'); "
+        "text=path.read_text(); "
+        "marker=' --assignments '; "
+        "replacement=' --pilot-root /opt/osworld/live-pilot --assignments '; "
+        "assert ' --pilot-root ' in text or marker in text; "
+        "path.write_text(text if ' --pilot-root ' in text else "
+        "text.replace(marker, replacement, 1))"
+    )
+    portal_env_code = (
+        "from pathlib import Path; "
+        "path=Path('/etc/osworld-annotation/portal.env'); "
+        "key='AWS_EC2_INSTANCE_PROFILE_NAME='; "
+        f"value=key+{worker_instance_profile_name!r}; "
+        "lines=path.read_text().splitlines(); "
+        "found=any(item.startswith(key) for item in lines); "
+        "lines=[value if item.startswith(key) else item for item in lines]; "
+        "lines+=[] if found else [value]; "
+        "path.write_text('\\n'.join(lines)+'\\n')"
     )
     commands = [
         "set -eu",
@@ -461,6 +484,9 @@ def _refresh_gateway_source(
             "ln -sfnT /opt/osworld/evaluation_examples/expert_skill_learning/pilot "
             "/opt/osworld/live-pilot; fi"
         ),
+        f"/usr/bin/python3 -c {shlex.quote(service_unit_code)}",
+        f"/usr/bin/python3 -c {shlex.quote(portal_env_code)}",
+        "systemctl daemon-reload",
         (
             "/opt/osworld/.venv/bin/pip install --disable-pip-version-check "
             "--no-cache-dir --requirement "
@@ -642,6 +668,7 @@ def main() -> int:
         bucket=outputs["AnnotationBucketName"],
         source_key=source_key,
         source_sha256=source_sha256,
+        worker_instance_profile_name=outputs["WorkerInstanceProfileName"],
     )
     print(json.dumps(outputs, indent=2, sort_keys=True))
     print(f"CloudFront VPC Origin ingress is restricted to {service_group_id}.")

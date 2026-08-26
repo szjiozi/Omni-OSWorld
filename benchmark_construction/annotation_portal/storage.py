@@ -19,6 +19,7 @@ _CONTENT_TYPES = {
     ".mp4": "video/mp4",
     ".png": "image/png",
     ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    ".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
 }
 
 

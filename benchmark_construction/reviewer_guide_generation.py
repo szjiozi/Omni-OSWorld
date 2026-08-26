@@ -11,6 +11,7 @@ from typing import Any, Sequence
 
 from .llm import JSONRequest, OpenAICompatibleAsyncClient
 from .prompts import load_prompt, render_prompt
+from .reference_applications import get_reference_application
 from .reference_generation import PROMPT_ROOT
 from .schema import load_schema, validate_payload
 
@@ -42,6 +43,7 @@ class ReviewerGuideJob:
     reference_task_id: str
     required_skill_ids: tuple[str, ...]
     task_detail_path: Path
+    app: str = "libreoffice_calc"
 
 
 @dataclass(frozen=True)
@@ -69,8 +71,10 @@ def build_reviewer_guide_request(
 ) -> JSONRequest:
     if not task_detail.strip():
         raise ValueError(f"TASK_DETAIL.md is empty for {job.reference_task_id}")
-    system_prompt = load_prompt(prompt_root / "generate_reviewer_guide.system.txt")
-    user_template = load_prompt(prompt_root / "generate_reviewer_guide.user.txt")
+    profile = get_reference_application(job.app)
+    stem = profile.reviewer_guide_prompt_stem
+    system_prompt = load_prompt(prompt_root / f"{stem}.system.txt")
+    user_template = load_prompt(prompt_root / f"{stem}.user.txt")
     user_prompt = render_prompt(
         user_template,
         {
@@ -82,7 +86,7 @@ def build_reviewer_guide_request(
         },
     )
     return JSONRequest(
-        prompt_name="generate_reviewer_guide.v3",
+        prompt_name=f"{stem}.v3",
         system_prompt=system_prompt,
         user_prompt=user_prompt,
         response_schema=load_schema(REVIEWER_GUIDE_SCHEMA),
@@ -185,7 +189,11 @@ def validate_reviewer_guide(
 async def generate_reviewer_guides(
     jobs: Sequence[ReviewerGuideJob],
     client: OpenAICompatibleAsyncClient,
+    *,
+    semantic_retries: int = 2,
 ) -> list[ReviewerGuideResult]:
+    if semantic_retries < 0:
+        raise ValueError("semantic_retries must be non-negative")
     details = [job.task_detail_path.read_text(encoding="utf-8") for job in jobs]
     requests = [
         build_reviewer_guide_request(job, detail)
@@ -193,10 +201,50 @@ async def generate_reviewer_guides(
     ]
     responses = await client.generate_many(requests)
     results: list[ReviewerGuideResult] = []
-    for job, detail, request, response in zip(jobs, details, requests, responses):
-        validate_reviewer_guide(
-            job.reference_task_id, job.required_skill_ids, response.data
-        )
+    for job, detail, base_request, initial_response in zip(
+        jobs, details, requests, responses
+    ):
+        request = base_request
+        response = initial_response
+        last_error: ValueError | None = None
+        for retry in range(semantic_retries + 1):
+            try:
+                validate_reviewer_guide(
+                    job.reference_task_id,
+                    job.required_skill_ids,
+                    response.data,
+                )
+            except ValueError as exc:
+                last_error = exc
+                if retry >= semantic_retries:
+                    break
+                request = JSONRequest(
+                    prompt_name=base_request.prompt_name,
+                    system_prompt=base_request.system_prompt,
+                    user_prompt=(
+                        base_request.user_prompt
+                        + f"\n\nCorrection attempt {retry + 1}. The previous "
+                        "response failed local validation: "
+                        + str(exc)
+                        + ". Return a complete corrected guide. Keep Chinese "
+                        "explanations, but write every visible LibreOffice UI "
+                        "label in exact English inside backticks. Cover exactly "
+                        "these required skill IDs: "
+                        + json.dumps(list(job.required_skill_ids))
+                        + "."
+                    ),
+                    response_schema=base_request.response_schema,
+                    schema_name=base_request.schema_name,
+                )
+                response = await client.generate_json(request)
+                continue
+            last_error = None
+            break
+        if last_error is not None:
+            raise ValueError(
+                f"Reviewer guide for {job.reference_task_id} remained invalid "
+                f"after retries: {last_error}"
+            )
         results.append(
             ReviewerGuideResult(
                 reference_task_id=job.reference_task_id,

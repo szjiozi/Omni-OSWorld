@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "reviews": [
+    {
+      "reference_task_id": "reference-task-impress-full-r01-001",
+      "decision": "",
+      "reason_codes": [],
+      "revision_instructions": [],
+      "reviewer": "",
+      "notes": ""
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-r01-002",
+      "decision": "",
+      "reason_codes": [],
+      "revision_instructions": [],
+      "reviewer": "",
+      "notes": ""
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-r01-003",
+      "decision": "",
+      "reason_codes": [],
+      "revision_instructions": [],
+      "reviewer": "",
+      "notes": ""
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-r01-004",
+      "decision": "",
+      "reason_codes": [],
+      "revision_instructions": [],
+      "reviewer": "",
+      "notes": ""
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-r01-005",
+      "decision": "",
+      "reason_codes": [],
+      "revision_instructions": [],
+      "reviewer": "",
+      "notes": ""
+    }
+  ]
+}

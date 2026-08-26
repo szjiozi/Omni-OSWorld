@@ -72,6 +72,20 @@ def test_portal_template_disables_signup_and_keeps_results_private():
     assert resources["GatewayInstanceProfile"]["Properties"][
         "InstanceProfileName"
     ] == "osworld-annotation-portal-gateway"
+    assert resources["WorkerRole"]["Properties"]["RoleName"] == (
+        "osworld-annotation-portal-worker-v2"
+    )
+    assert resources["WorkerInstanceProfile"]["Properties"][
+        "InstanceProfileName"
+    ] == "osworld-annotation-portal-worker-v2"
+    worker_actions = {
+        action
+        for policy in resources["WorkerRole"]["Properties"]["Policies"]
+        for statement in policy["PolicyDocument"]["Statement"]
+        for action in statement["Action"]
+    }
+    assert "ssm:UpdateInstanceInformation" in worker_actions
+    assert "ssmmessages:OpenControlChannel" in worker_actions
 
 
 def test_gateway_role_can_register_with_ssm_for_private_diagnostics():
@@ -88,6 +102,9 @@ def test_gateway_role_can_register_with_ssm_for_private_diagnostics():
     }
 
     assert "ssm:UpdateInstanceInformation" in actions
+    assert "ssm:DescribeInstanceInformation" in actions
+    assert "ssm:SendCommand" in actions
+    assert "ssm:GetCommandInvocation" in actions
     assert "ssmmessages:OpenControlChannel" in actions
     assert "ec2messages:GetMessages" in actions
     assert "s3:PutObjectTagging" in actions
@@ -106,6 +123,18 @@ def test_recording_state_update_preserves_authenticated_novnc_iframe():
     assert "desktopReady && existingDesktop" in source
     assert "node.dataset.sessionId === workspace.session_id" in source
     assert 'node.querySelector("#start-recording").disabled = !canStart' in source
+
+
+def test_gateway_bundle_includes_online_review_validation_schema():
+    deployer = (
+        Path(__file__).parents[1] / "scripts/python/deploy_annotation_portal.py"
+    ).read_text(encoding="utf-8")
+
+    assert '"evaluation_examples/expert_skill_learning/schemas"' in deployer
+    assert "reference-package-review.schema.json" in (
+        Path(__file__).parents[1]
+        / "evaluation_examples/expert_skill_learning/schemas/reference-package-review.schema.json"
+    ).read_text(encoding="utf-8")
 
 
 def test_gateway_is_a_two_phase_private_self_bootstrap_behind_nat():
@@ -143,6 +172,7 @@ def test_gateway_is_a_two_phase_private_self_bootstrap_behind_nat():
     assert "gateway-requirements.txt" in rendered
     assert "AWS_EBS_IOPS=3000" in rendered
     assert "AWS_EBS_THROUGHPUT_MIBPS=125" in rendered
+    assert "AWS_EC2_INSTANCE_PROFILE_NAME" in rendered
 
 
 def test_gateway_source_bundle_is_deterministic_and_excludes_local_noise(tmp_path):
@@ -192,6 +222,8 @@ def test_deployer_acknowledges_named_iam_resources():
     ).read_text(encoding="utf-8")
     assert script.count('Capabilities=["CAPABILITY_NAMED_IAM"]') == 2
     assert 'Capabilities=["CAPABILITY_IAM"]' not in script
+    assert "worker_instance_profile_name" in script
+    assert "AWS_EC2_INSTANCE_PROFILE_NAME=" in script
 
 
 class _FakeEc2SecurityGroups:
@@ -309,6 +341,7 @@ def test_deployer_refreshes_content_addressed_gateway_bundle_through_ssm():
         bucket="annotation-bucket",
         source_key="bootstrap/source-hash.tar.gz",
         source_sha256="a" * 64,
+        worker_instance_profile_name="osworld-annotation-portal-worker-v2",
     )
 
     command = ssm.sent[0]
@@ -319,6 +352,10 @@ def test_deployer_refreshes_content_addressed_gateway_bundle_through_ssm():
     assert "bootstrap/source-hash.tar.gz" in rendered
     assert "sha256sum --check --strict" in rendered
     assert "systemctl start osworld-annotation-portal.service" in rendered
+    assert "--pilot-root /opt/osworld/live-pilot --assignments" in rendered
+    assert "systemctl daemon-reload" in rendered
+    assert "AWS_EC2_INSTANCE_PROFILE_NAME=" in rendered
+    assert "osworld-annotation-portal-worker-v2" in rendered
     assert "127.0.0.1:8080/healthz" in rendered
     assert "live-pilot" in rendered
 

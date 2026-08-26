@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "0a1383317809e91e8a1b228f43f341f87eec2a07426136e1dd575defb003fb93",
+  "request_id": "c353f46c-cb75-410f-b480-ee73737ee262",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 734,
+    "cached_input_tokens": 0,
+    "output_tokens": 127,
+    "estimated_cost_usd": 0.002992
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Move a slide object by dragging",
+        "procedure": [
+          "In Normal view, navigate to the slide containing the object.",
+          "Click the image once to select the object; selection handles indicate object-selection mode rather than image crop or text-editing mode.",
+          "Drag the selected image from its current position to the desired location on the slide and release the mouse button."
+        ],
+        "efficiency_tip": "Drag from inside the selected image rather than from a resize handle, which would resize instead of move it.",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

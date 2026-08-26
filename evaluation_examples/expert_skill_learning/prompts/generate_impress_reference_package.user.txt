@@ -1,0 +1,13 @@
+Application:
+{{APP}}
+
+Sampled mandatory skill cards:
+{{SAMPLED_SKILLS}}
+
+Source instructions for similarity avoidance:
+{{SOURCE_INSTRUCTIONS}}
+
+Reviewer feedback for this exact combination, if this is a revision:
+{{REVIEW_FEEDBACK}}
+
+Generate one coordinated static Impress reference package or reject this combination. Copy exactly the supplied skill_id values into required_skill_ids. Do not infer or invent skill IDs.

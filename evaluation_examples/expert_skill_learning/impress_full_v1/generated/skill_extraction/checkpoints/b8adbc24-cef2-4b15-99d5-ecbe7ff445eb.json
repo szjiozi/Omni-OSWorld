@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+  "app": "libreoffice_impress",
+  "single_action_count": 6,
+  "prompt_sha256": "8596589e299a77ca4bba2c2082f192497dc1b311f8c7e24113e65bc379862484",
+  "request_id": "32963b7f-367e-42a9-9ce7-81c70ac62166",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 775,
+    "cached_input_tokens": 0,
+    "output_tokens": 571,
+    "estimated_cost_usd": 0.008402
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Copy a formatted text box to another slide",
+        "procedure": [
+          "Select the source text box as an object, rather than placing the caret inside its text.",
+          "Press Ctrl+C to copy the text box, including its text formatting such as font color.",
+          "Select the destination slide in the Slides pane and press Ctrl+V to paste the copied text box onto that slide."
+        ],
+        "efficiency_tip": "Copying an existing text box is faster and more reliable than recreating its font color and other formatting manually.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Replace the text of a text box while retaining its formatting",
+        "procedure": [
+          "On the destination text box, enter text-editing mode and triple-click its existing single-paragraph text to select that paragraph.",
+          "Type replacement text; the new text retains the character formatting of the selected text when the selection is replaced."
+        ],
+        "efficiency_tip": "Select the existing text before typing so that it is replaced instead of appended, while preserving the text box and its formatting.",
+        "action_ids": [
+          4,
+          5
+        ]
+      }
+    ]
+  }
+}

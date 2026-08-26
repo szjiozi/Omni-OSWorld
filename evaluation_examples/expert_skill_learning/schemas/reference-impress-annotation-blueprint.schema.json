@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://osworld.local/schemas/reference-impress-annotation-blueprint.schema.json",
+  "title": "Constrained setup blueprint for an Impress reference annotation task",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "snapshot",
+    "artifact_slot",
+    "guest_filename",
+    "open_after_upload",
+    "ready_state_checks",
+    "setup_notes"
+  ],
+  "properties": {
+    "snapshot": {"type": "string", "const": "libreoffice_impress"},
+    "artifact_slot": {"type": "string", "const": "initial_artifact"},
+    "guest_filename": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,119}\\.pptx$"
+    },
+    "open_after_upload": {"type": "boolean", "const": true},
+    "ready_state_checks": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "setup_notes": {
+      "type": "array",
+      "maxItems": 6,
+      "items": {"type": "string", "minLength": 1}
+    }
+  }
+}

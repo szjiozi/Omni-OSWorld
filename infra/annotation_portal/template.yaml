@@ -345,6 +345,19 @@ Resources:
                 Action: iam:PassRole
                 Resource: !GetAtt SchedulerExecutionRole.Arn
               - Effect: Allow
+                Action: iam:PassRole
+                Resource: !GetAtt WorkerRole.Arn
+                Condition:
+                  StringEquals:
+                    iam:PassedToService: ec2.amazonaws.com
+              - Effect: Allow
+                Action:
+                  - ssm:DescribeInstanceInformation
+                  - ssm:SendCommand
+                  - ssm:GetCommandInvocation
+                  - ssm:ListCommandInvocations
+                Resource: "*"
+              - Effect: Allow
                 Action:
                   - ssm:UpdateInstanceInformation
                   - ec2messages:AcknowledgeMessage
@@ -378,6 +391,37 @@ Resources:
               - Effect: Allow
                 Action: ec2:TerminateInstances
                 Resource: !Sub arn:${AWS::Partition}:ec2:${AWS::Region}:${AWS::AccountId}:instance/*
+
+  WorkerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: osworld-annotation-portal-worker-v2
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: WorkerSsmCore
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - ssm:UpdateInstanceInformation
+                  - ssmmessages:CreateControlChannel
+                  - ssmmessages:CreateDataChannel
+                  - ssmmessages:OpenControlChannel
+                  - ssmmessages:OpenDataChannel
+                Resource: "*"
+
+  WorkerInstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      InstanceProfileName: osworld-annotation-portal-worker-v2
+      Roles: [!Ref WorkerRole]
 
   GatewayInstanceProfile:
     Type: AWS::IAM::InstanceProfile
@@ -443,6 +487,7 @@ Resources:
             AWS_SECURITY_GROUP_ID=${WorkerSecurityGroup}
             AWS_AMI_ID=${WorkerAmiId}
             AWS_INSTANCE_TYPE=${WorkerInstanceType}
+            AWS_EC2_INSTANCE_PROFILE_NAME=${WorkerInstanceProfile}
             AWS_EBS_IOPS=3000
             AWS_EBS_THROUGHPUT_MIBPS=125
             AWS_CONNECTION_MODE=private
@@ -557,5 +602,7 @@ Outputs:
     Value: !Ref GatewayInstance
   WorkerSecurityGroupId:
     Value: !Ref WorkerSecurityGroup
+  WorkerInstanceProfileName:
+    Value: !Ref WorkerInstanceProfile
   GatewaySecurityGroupId:
     Value: !Ref GatewaySecurityGroup

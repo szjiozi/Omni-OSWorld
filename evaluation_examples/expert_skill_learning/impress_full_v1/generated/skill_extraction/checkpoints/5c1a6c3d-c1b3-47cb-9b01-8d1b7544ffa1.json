@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+  "app": "libreoffice_impress",
+  "single_action_count": 9,
+  "prompt_sha256": "59128f3fd2af17614cab1fbea94066a769a498b0fe735094f973538e5f269b48",
+  "request_id": "effc82be-34ed-48fb-a9ee-e48515387939",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 798,
+    "cached_input_tokens": 0,
+    "output_tokens": 841,
+    "estimated_cost_usd": 0.011688
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply bold formatting to all text in a text shape",
+        "procedure": [
+          "Select the text shape containing the text to format. If the shape is not already in text-editing mode, double-click inside it to place the text cursor.",
+          "Press Ctrl+A while editing the shape to select all text in that shape, rather than selecting slide objects.",
+          "Click the Bold toolbar button to toggle bold formatting for the selected text."
+        ],
+        "efficiency_tip": "Use Ctrl+A only after entering text-editing mode; this selects the shape's text quickly and avoids manually dragging across multiple lines.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "name": "Underline selected text",
+        "procedure": [
+          "With the relevant text already selected in a text shape, click the Underline toolbar button to apply or remove underlining.",
+          "Use the button again on selected underlined text to toggle the underline off."
+        ],
+        "efficiency_tip": "Apply underline while the same text selection is active as other character formatting to avoid re-entering text-editing mode.",
+        "action_ids": [
+          3
+        ]
+      },
+      {
+        "name": "Set an exact font size for selected text",
+        "procedure": [
+          "Keep the target text selected in the text shape.",
+          "Open the font-size dropdown in the formatting toolbar.",
+          "Choose the required point-size value, such as 44 pt, to resize the selected text."
+        ],
+        "efficiency_tip": "Set the size before deselecting the text; the chosen size applies only to the active text selection rather than the entire slide.",
+        "action_ids": [
+          4,
+          5
+        ]
+      }
+    ]
+  }
+}

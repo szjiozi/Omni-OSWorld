@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "pptx",
+  "opens_as_zip_package": true,
+  "libreoffice_render_succeeded": true,
+  "slide_count": 3,
+  "semantic_object_count": 12,
+  "geometric_overlap_warnings": [],
+  "placeholder_matches": [],
+  "media_part_count": 1,
+  "notes_part_count": 8,
+  "slides": [
+    {
+      "slide_number": 1,
+      "text": [
+        "After-Dark Market Plan",
+        "Council preview • Saturday pilot on Cedar Avenue",
+        "6:00–10:00 PM"
+      ],
+      "shape_count": 5,
+      "picture_count": 0,
+      "graphic_frame_count": 0
+    },
+    {
+      "slide_number": 2,
+      "text": [
+        "Pilot Night Schedule",
+        "4:30 PM  Vendor arrival",
+        "6:00 PM  Market opens",
+        "10:00 PM  Street reopens",
+        "Vendor vehicles clear the curb lane before public opening.",
+        "8",
+        "PM"
+      ],
+      "shape_count": 5,
+      "picture_count": 0,
+      "graphic_frame_count": 0
+    },
+    {
+      "slide_number": 3,
+      "text": [
+        "Coordinate the Pilot",
+        "Confirm permit routing and neighborhood outreach leads.",
+        "Share questions before the final street notice.",
+        "Reply by May 16"
+      ],
+      "shape_count": 5,
+      "picture_count": 0,
+      "graphic_frame_count": 0
+    }
+  ],
+  "preview_files": [
+    "slide-01.png",
+    "slide-02.png",
+    "slide-03.png"
+  ],
+  "contact_sheet": "contact-sheet.png",
+  "visual_review_required": true
+}

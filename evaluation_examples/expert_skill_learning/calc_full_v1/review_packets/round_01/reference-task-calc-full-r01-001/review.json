@@ -1,8 +1,8 @@
 {
-  "reference_task_id": "reference-task-calc-full-r01-001",
-  "decision": "",
   "reason_codes": [],
+  "reviewer": "annotator-hk-1",
+  "notes": "",
+  "decision": "approved",
   "revision_instructions": [],
-  "reviewer": "",
-  "notes": ""
+  "reference_task_id": "reference-task-calc-full-r01-001"
 }

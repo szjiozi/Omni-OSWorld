@@ -11,6 +11,7 @@ from typing import Any, Sequence
 
 from .llm import JSONRequest, OpenAICompatibleAsyncClient
 from .prompts import load_prompt, render_prompt
+from .reference_applications import get_reference_application
 from .reference_generation import PROMPT_ROOT
 from .reference_review import load_reference_reviews
 from .schema import load_schema, validate_payload
@@ -18,9 +19,6 @@ from .schema import load_schema, validate_payload
 
 ANNOTATION_BLUEPRINT_SCHEMA = "reference-annotation-blueprint.schema.json"
 SAFE_TASK_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$")
-SAFE_GUEST_FILENAME = re.compile(
-    r"^[A-Za-z0-9][A-Za-z0-9._-]{0,119}\.xlsx$"
-)
 GUEST_DESKTOP = PurePosixPath("/home/user/Desktop")
 
 
@@ -108,12 +106,10 @@ def build_annotation_blueprint_request(
     *,
     prompt_root: Path = PROMPT_ROOT,
 ) -> JSONRequest:
-    system_prompt = load_prompt(
-        prompt_root / "generate_reference_annotation_blueprint.system.txt"
-    )
-    user_template = load_prompt(
-        prompt_root / "generate_reference_annotation_blueprint.user.txt"
-    )
+    profile = get_reference_application(package.get("app", "libreoffice_calc"))
+    stem = profile.annotation_prompt_stem
+    system_prompt = load_prompt(prompt_root / f"{stem}.system.txt")
+    user_template = load_prompt(prompt_root / f"{stem}.user.txt")
     package_input = {
         "reference_task_id": package["reference_task_id"],
         "app": package["app"],
@@ -138,18 +134,25 @@ def build_annotation_blueprint_request(
         },
     )
     return JSONRequest(
-        prompt_name="generate_reference_annotation_blueprint.v1",
+        prompt_name=f"{stem}.v1",
         system_prompt=system_prompt,
         user_prompt=user_prompt,
-        response_schema=load_schema(ANNOTATION_BLUEPRINT_SCHEMA),
+        response_schema=load_schema(profile.annotation_schema),
         schema_name="reference_annotation_blueprint",
     )
 
 
-def validate_annotation_blueprint(blueprint: dict[str, Any]) -> None:
-    validate_payload(blueprint, load_schema(ANNOTATION_BLUEPRINT_SCHEMA))
+def validate_annotation_blueprint(
+    blueprint: dict[str, Any], *, expected_app: str | None = None
+) -> None:
+    app = expected_app or blueprint.get("snapshot")
+    profile = get_reference_application(app)
+    validate_payload(blueprint, load_schema(profile.annotation_schema))
     filename = blueprint["guest_filename"]
-    if not SAFE_GUEST_FILENAME.fullmatch(filename):
+    safe_filename = re.compile(
+        rf"^[A-Za-z0-9][A-Za-z0-9._-]{{0,119}}{re.escape(profile.artifact_extension)}$"
+    )
+    if not safe_filename.fullmatch(filename):
         raise ValueError(f"Unsafe guest filename: {filename!r}")
     if PurePosixPath(filename).name != filename:
         raise ValueError("guest_filename must be a basename")
@@ -171,7 +174,7 @@ async def generate_annotation_blueprints(
     results = await client.generate_many(requests)
     blueprints: list[AnnotationBlueprintResult] = []
     for package, request, result in zip(packages, requests, results):
-        validate_annotation_blueprint(result.data)
+        validate_annotation_blueprint(result.data, expected_app=package.get("app"))
         blueprints.append(
             AnnotationBlueprintResult(
                 reference_task_id=package["reference_task_id"],
@@ -280,12 +283,11 @@ def assemble_osworld_annotation_config(
     *,
     repo_root: Path,
 ) -> dict[str, Any]:
-    validate_annotation_blueprint(blueprint)
+    profile = get_reference_application(package.get("app", "libreoffice_calc"))
+    validate_annotation_blueprint(blueprint, expected_app=profile.app)
     task_id = package["reference_task_id"]
     if not SAFE_TASK_ID.fullmatch(task_id):
         raise ValueError(f"Unsafe reference task ID: {task_id!r}")
-    if package.get("app") != "libreoffice_calc":
-        raise ValueError(f"Unsupported annotation app: {package.get('app')!r}")
     if artifact_entry.get("reference_task_id") != task_id:
         raise ValueError("Package and artifact manifest task IDs differ")
     artifact_path = _resolve_artifact_path(
@@ -305,7 +307,7 @@ def assemble_osworld_annotation_config(
     guest_path = str(GUEST_DESKTOP / blueprint["guest_filename"])
     return {
         "id": task_id,
-        "snapshot": "libreoffice_calc",
+        "snapshot": profile.app,
         "instruction": package["task_instruction"],
         "source": "OSWorld Expert Skill Reference Pilot",
         "config": [
@@ -322,7 +324,7 @@ def assemble_osworld_annotation_config(
             },
             {"type": "open", "parameters": {"path": guest_path}},
         ],
-        "related_apps": ["libreoffice_calc"],
+        "related_apps": [profile.app],
         "reference_annotation": {
             "schema_version": "1.0",
             "reference_task_id": task_id,

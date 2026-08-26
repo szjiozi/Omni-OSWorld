@@ -460,10 +460,52 @@ def _timestamped_xinput_blocks(
     return blocks
 
 
+def _timestamped_modifier_states(
+    timestamped_text: str,
+    keymap_text: str,
+) -> list[tuple[int, tuple[str, ...]]]:
+    mapping = parse_xmodmap(keymap_text)
+    pending: tuple[str, int] | None = None
+    modifier_by_keycode: dict[int, str] = {}
+    states: list[tuple[int, tuple[str, ...]]] = []
+    for raw_entry in timestamped_text.splitlines():
+        if not raw_entry.strip():
+            continue
+        entry = json.loads(raw_entry)
+        line = entry["line"]
+        header = EVENT_HEADER.search(line)
+        if header:
+            pending = (header.group(1), int(entry["monotonic_ns"]))
+            continue
+        if ANY_EVENT_HEADER.search(line):
+            pending = None
+            continue
+        detail = EVENT_DETAIL.match(line)
+        if pending is None or not detail:
+            continue
+        event_type, event_ns = pending
+        pending = None
+        keycode = int(detail.group(1))
+        base_symbol = _symbol_for_keycode(keycode, mapping, set())
+        modifier = MODIFIER_NAMES.get(base_symbol or "")
+        if event_type == "KeyPress" and modifier:
+            modifier_by_keycode[keycode] = modifier
+        elif event_type == "KeyRelease":
+            modifier_by_keycode.pop(keycode, None)
+        else:
+            continue
+        active = set(modifier_by_keycode.values())
+        ordered = tuple(item for item in MODIFIER_ORDER if item in active)
+        if not states or states[-1][1] != ordered:
+            states.append((event_ns, ordered))
+    return states
+
+
 def parse_timestamped_pointer_events(
     timestamped_text: str,
     *,
     video_start_monotonic_ns: int,
+    keymap_text: str | None = None,
     drag_threshold_px: int = 10,
     double_click_ms: int = 500,
     double_click_distance_px: int = 12,
@@ -473,9 +515,29 @@ def parse_timestamped_pointer_events(
 
     if drag_threshold_px < 0 or double_click_ms <= 0:
         raise ValueError("Pointer event thresholds are invalid")
-    pressed: dict[int, tuple[int, int, int]] = {}
+    pressed: dict[int, tuple[int, int, int, tuple[str, ...]]] = {}
     events: list[PointerOverlayEvent] = []
     last_left: tuple[int, int, int, int] | None = None
+    modifier_states = (
+        _timestamped_modifier_states(timestamped_text, keymap_text)
+        if keymap_text
+        else []
+    )
+    modifier_index = 0
+    active_modifiers: tuple[str, ...] = ()
+
+    def modifiers_at(event_ns: int) -> tuple[str, ...]:
+        nonlocal modifier_index, active_modifiers
+        while (
+            modifier_index < len(modifier_states)
+            and modifier_states[modifier_index][0] <= event_ns
+        ):
+            active_modifiers = modifier_states[modifier_index][1]
+            modifier_index += 1
+        return active_modifiers
+
+    def pointer_label(action: str, modifiers: tuple[str, ...]) -> str:
+        return " + ".join((*modifiers, action))
 
     for event_type, event_ns, fields in _timestamped_xinput_blocks(
         timestamped_text
@@ -490,10 +552,12 @@ def parse_timestamped_pointer_events(
         if event_ns < video_start_monotonic_ns:
             continue
         timestamp_ms = round((event_ns - video_start_monotonic_ns) / 1_000_000)
+        event_modifiers = modifiers_at(event_ns)
 
         if button in {4, 5} and event_type == "ButtonPress":
             action = "scroll_up" if button == 4 else "scroll_down"
-            label = "Scroll ↑" if button == 4 else "Scroll ↓"
+            base_label = "Scroll ↑" if button == 4 else "Scroll ↓"
+            label = pointer_label(base_label, event_modifiers)
             if (
                 events
                 and events[-1].action == action
@@ -506,12 +570,12 @@ def parse_timestamped_pointer_events(
         if button not in {1, 3}:
             continue
         if event_type == "ButtonPress":
-            pressed[button] = (event_ns, x, y)
+            pressed[button] = (event_ns, x, y, event_modifiers)
             continue
         press = pressed.pop(button, None)
         if press is None:
             continue
-        press_ns, press_x, press_y = press
+        press_ns, press_x, press_y, press_modifiers = press
         if (x - press_x) ** 2 + (y - press_y) ** 2 > drag_threshold_px**2:
             continue
         press_timestamp_ms = round(
@@ -524,7 +588,7 @@ def parse_timestamped_pointer_events(
                     "right_click",
                     press_x,
                     press_y,
-                    "Right Click",
+                    pointer_label("Right Click", press_modifiers),
                 )
             )
             continue
@@ -542,7 +606,7 @@ def parse_timestamped_pointer_events(
                     "double_click",
                     press_x,
                     press_y,
-                    "Double Click",
+                    pointer_label("Double Click", press_modifiers),
                 )
                 last_left = None
                 continue
@@ -552,7 +616,7 @@ def parse_timestamped_pointer_events(
                 "left_click",
                 press_x,
                 press_y,
-                "Left Click",
+                pointer_label("Left Click", press_modifiers),
             )
         )
         last_left = (press_timestamp_ms, press_x, press_y, len(events) - 1)

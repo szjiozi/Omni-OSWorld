@@ -1,0 +1,1011 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-impress-full-r01-001",
+  "package": {
+    "reference_task_id": "reference-task-impress-full-r01-001",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_impress",
+    "task_instruction": "For the Harbor Pollinator Day volunteer briefing, refine the RSVP message on slide 2 so it works as a centered closing callout: move the RSVP callout from the upper-left area to the footer directly beneath the three schedule cards, center-align all paragraphs in that callout, and emphasize only the words “Register by Friday” with an underline and the exact teal color #007C83. Leave the rest of the RSVP text in its existing dark gray color and without underlining.",
+    "required_skill_ids": [
+      "15aece23-a215-4579-91b4-69eec72e18da.skill-01",
+      "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-02",
+      "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01"
+    ],
+    "artifact_spec": {
+      "artifact_type": "pptx",
+      "domain": "community pollinator-garden volunteer event",
+      "presentation_title": "Harbor Pollinator Day",
+      "slide_size": "wide",
+      "theme": {
+        "primary_color": "0B3D4A",
+        "secondary_color": "E8F1EE",
+        "accent_color": "007C83",
+        "background_color": "FFFDF7",
+        "title_font": "Aptos Display",
+        "body_font": "Aptos"
+      },
+      "slides": [
+        {
+          "slide_number": 1,
+          "purpose": "Introduce the volunteer event and establish the botanical harbor theme.",
+          "layout": "title",
+          "object_plan": [
+            {
+              "semantic_id": "cover_harbor_band",
+              "type": "shape",
+              "purpose": "Dark teal top band framing the opening slide.",
+              "editable": true
+            },
+            {
+              "semantic_id": "cover_event_title",
+              "type": "text",
+              "purpose": "Main event title.",
+              "editable": true
+            },
+            {
+              "semantic_id": "cover_event_subtitle",
+              "type": "text",
+              "purpose": "Date and location line.",
+              "editable": true
+            },
+            {
+              "semantic_id": "cover_botanical_illustration",
+              "type": "image",
+              "purpose": "Decorative editable pollinator and wildflower illustration.",
+              "editable": true
+            },
+            {
+              "semantic_id": "cover_partner_mark",
+              "type": "shape",
+              "purpose": "Simple circular community-partner emblem.",
+              "editable": true
+            }
+          ]
+        },
+        {
+          "slide_number": 2,
+          "purpose": "Present the volunteer schedule and a closing registration callout.",
+          "layout": "process",
+          "object_plan": [
+            {
+              "semantic_id": "schedule_section_title",
+              "type": "text",
+              "purpose": "Slide heading for the volunteer schedule.",
+              "editable": true
+            },
+            {
+              "semantic_id": "schedule_intro_caption",
+              "type": "text",
+              "purpose": "Short explanatory caption above the schedule cards.",
+              "editable": true
+            },
+            {
+              "semantic_id": "schedule_card_arrival",
+              "type": "shape",
+              "purpose": "First schedule card for arrival and check-in.",
+              "editable": true
+            },
+            {
+              "semantic_id": "schedule_card_planting",
+              "type": "shape",
+              "purpose": "Second schedule card for planting activity.",
+              "editable": true
+            },
+            {
+              "semantic_id": "schedule_card_cleanup",
+              "type": "shape",
+              "purpose": "Third schedule card for tool return and cleanup.",
+              "editable": true
+            },
+            {
+              "semantic_id": "schedule_arrival_text",
+              "type": "text",
+              "purpose": "Time and details for the arrival card.",
+              "editable": true
+            },
+            {
+              "semantic_id": "schedule_planting_text",
+              "type": "text",
+              "purpose": "Time and details for the planting card.",
+              "editable": true
+            },
+            {
+              "semantic_id": "schedule_cleanup_text",
+              "type": "text",
+              "purpose": "Time and details for the cleanup card.",
+              "editable": true
+            },
+            {
+              "semantic_id": "rsvp_callout_panel",
+              "type": "shape",
+              "purpose": "Pale secondary-color panel behind the RSVP callout.",
+              "editable": true
+            },
+            {
+              "semantic_id": "rsvp_closing_callout",
+              "type": "text",
+              "purpose": "Closing RSVP message containing the registration deadline phrase.",
+              "editable": true
+            }
+          ]
+        }
+      ],
+      "initial_state": [
+        "Slide 2 contains three evenly spaced schedule cards across the middle of the slide: “9:00 — Check in at Pier Garden,” “9:30 — Plant shoreline natives,” and “11:30 — Return tools and sort compost.”",
+        "The RSVP callout panel and its text box are together in the upper-left area of slide 2, visibly away from the intended footer position beneath the schedule cards.",
+        "The RSVP text reads “Bring water, sun protection, and gloves. Register by Friday to reserve a planting kit.” and is left-aligned in dark gray.",
+        "Within the RSVP text, “Register by Friday” is not underlined and is dark gray rather than teal.",
+        "The footer area centered below the three schedule cards is clear and can accommodate the moved RSVP callout without overlapping other objects."
+      ],
+      "must_not_be_completed": [
+        "Do not move the RSVP callout to the footer beneath the schedule cards.",
+        "Do not center-align the RSVP callout text.",
+        "Do not underline “Register by Friday.”",
+        "Do not change “Register by Friday” to #007C83 teal.",
+        "Do not alter the dark-gray, non-underlined styling of the remaining RSVP text.",
+        "Do not change the wording, card order, slide order, background, or other schedule elements."
+      ],
+      "generation_notes": [
+        "Use a warm off-white background with dark teal headings, pale sage cards, and teal accent details.",
+        "Build the RSVP message as one editable text object with character-level formatting available for the deadline phrase.",
+        "Keep the RSVP panel and RSVP text as separate editable objects so the text box can be repositioned independently while the panel may remain as contextual visual scaffolding.",
+        "Place the initial RSVP text box clearly in the upper-left quadrant and size it so it can be moved intact to the centered footer region."
+      ]
+    },
+    "operator_guide": {
+      "recommended_demonstration": [
+        {
+          "skill_id": "15aece23-a215-4579-91b4-69eec72e18da.skill-01",
+          "operation_intent": "Reposition the RSVP text box from the upper-left area to the centered footer beneath the three schedule cards.",
+          "visible_success_signal": "The RSVP text box appears below the card row, centered in the open footer region rather than beside the heading.",
+          "efficiency_tip": "Select the text box by its border and drag it using the card row and slide-center guide as placement references."
+        },
+        {
+          "skill_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+          "operation_intent": "Underline only the deadline phrase “Register by Friday” within the RSVP callout.",
+          "visible_success_signal": "Only the deadline words have a visible underline; the surrounding packing-list and reservation text remains unlined.",
+          "efficiency_tip": "Keep the deadline phrase selected while applying the underline so no surrounding text is formatted."
+        },
+        {
+          "skill_id": "986fc832-6af2-417c-8845-9272b3a1528b.skill-02",
+          "operation_intent": "Apply the exact teal #007C83 font color to the selected deadline phrase.",
+          "visible_success_signal": "“Register by Friday” is teal while all remaining RSVP copy stays dark gray.",
+          "efficiency_tip": "Apply the teal color while the same deadline phrase remains selected after its underline is set."
+        },
+        {
+          "skill_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01",
+          "operation_intent": "Center-align every paragraph in the RSVP callout text box.",
+          "visible_success_signal": "Both sentences in the RSVP message are centered within the relocated callout area.",
+          "efficiency_tip": "Enter text-editing mode in the RSVP callout, select all text in that box, and apply paragraph centering once."
+        }
+      ],
+      "allowed_variation": "The callout may be placed with minor positional variation as long as it is clearly centered beneath the three schedule cards, does not overlap another object, and the specified text formatting is exact.",
+      "recording_start_state": "Open the provided two-slide Harbor Pollinator Day presentation in Normal view with slide 2 selected; the RSVP text box is visibly upper-left, left-aligned, and unformatted at the deadline phrase.",
+      "recording_end_state": "Slide 2 shows the RSVP text box centered in the footer below the schedule cards, with all callout paragraphs centered and only “Register by Friday” teal (#007C83) and underlined."
+    },
+    "expected_incidental_operations": [
+      {
+        "operation": "Select slide 2 in the Slides pane before editing the schedule-and-RSVP slide.",
+        "reason": "The requested callout edits all occur on slide 2.",
+        "category": "scaffolding"
+      },
+      {
+        "operation": "Enter text-editing mode and select the deadline phrase before applying character formatting.",
+        "reason": "Underline and font color must apply only to “Register by Friday,” not the full RSVP message.",
+        "category": "task_specific"
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        }
+      ],
+      "dominant_source_task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+      "dominant_source_skill_fraction": 0.25,
+      "complete_source_skill_sets_included": [
+        "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+        "15aece23-a215-4579-91b4-69eec72e18da"
+      ]
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+        "max_sequence_similarity": 0.272727,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+            "sequence_similarity": 0.272727
+          },
+          {
+            "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+            "sequence_similarity": 0.17757
+          },
+          {
+            "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+            "sequence_similarity": 0.143411
+          },
+          {
+            "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+            "sequence_similarity": 0.202946
+          },
+          {
+            "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+            "sequence_similarity": 0.009988
+          },
+          {
+            "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+            "sequence_similarity": 0.157996
+          },
+          {
+            "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+            "sequence_similarity": 0.138577
+          },
+          {
+            "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+            "sequence_similarity": 0.093933
+          },
+          {
+            "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+            "sequence_similarity": 0.112933
+          },
+          {
+            "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+            "sequence_similarity": 0.092421
+          },
+          {
+            "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+            "sequence_similarity": 0.043541
+          },
+          {
+            "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+            "sequence_similarity": 0.168856
+          },
+          {
+            "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+            "sequence_similarity": 0.221453
+          },
+          {
+            "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+            "sequence_similarity": 0.177049
+          },
+          {
+            "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+            "sequence_similarity": 0.183178
+          },
+          {
+            "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+            "sequence_similarity": 0.035661
+          },
+          {
+            "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+            "sequence_similarity": 0.191388
+          },
+          {
+            "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+            "sequence_similarity": 0.218579
+          },
+          {
+            "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+            "sequence_similarity": 0.094162
+          },
+          {
+            "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+            "sequence_similarity": 0.1571
+          },
+          {
+            "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+            "sequence_similarity": 0.175701
+          },
+          {
+            "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+            "sequence_similarity": 0.100775
+          },
+          {
+            "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+            "sequence_similarity": 0.115456
+          },
+          {
+            "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+            "sequence_similarity": 0.228675
+          },
+          {
+            "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+            "sequence_similarity": 0.176471
+          },
+          {
+            "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+            "sequence_similarity": 0.154426
+          },
+          {
+            "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+            "sequence_similarity": 0.157143
+          },
+          {
+            "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+            "sequence_similarity": 0.15
+          },
+          {
+            "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+            "sequence_similarity": 0.171516
+          },
+          {
+            "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+            "sequence_similarity": 0.144213
+          },
+          {
+            "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+            "sequence_similarity": 0.178082
+          },
+          {
+            "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+            "sequence_similarity": 0.133333
+          },
+          {
+            "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+            "sequence_similarity": 0.002813
+          },
+          {
+            "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+            "sequence_similarity": 0.16185
+          },
+          {
+            "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+            "sequence_similarity": 0.159869
+          },
+          {
+            "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+            "sequence_similarity": 0.159624
+          },
+          {
+            "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+            "sequence_similarity": 0.205674
+          },
+          {
+            "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+            "sequence_similarity": 0.174377
+          },
+          {
+            "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+            "sequence_similarity": 0.012973
+          },
+          {
+            "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+            "sequence_similarity": 0.014793
+          },
+          {
+            "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+            "sequence_similarity": 0.104673
+          },
+          {
+            "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+            "sequence_similarity": 0.131783
+          },
+          {
+            "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+            "sequence_similarity": 0.238754
+          },
+          {
+            "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+            "sequence_similarity": 0.105263
+          },
+          {
+            "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+            "sequence_similarity": 0.141491
+          },
+          {
+            "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+            "sequence_similarity": 0.111842
+          },
+          {
+            "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+            "sequence_similarity": 0.135922
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+        "max_cosine_similarity": 0.423523,
+        "by_source_task": [
+          {
+            "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+            "cosine_similarity": 0.389934
+          },
+          {
+            "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+            "cosine_similarity": 0.347785
+          },
+          {
+            "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+            "cosine_similarity": 0.393479
+          },
+          {
+            "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+            "cosine_similarity": 0.345369
+          },
+          {
+            "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+            "cosine_similarity": 0.204971
+          },
+          {
+            "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+            "cosine_similarity": 0.348867
+          },
+          {
+            "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+            "cosine_similarity": 0.265199
+          },
+          {
+            "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+            "cosine_similarity": 0.347393
+          },
+          {
+            "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+            "cosine_similarity": 0.12186
+          },
+          {
+            "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+            "cosine_similarity": 0.328959
+          },
+          {
+            "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+            "cosine_similarity": 0.282367
+          },
+          {
+            "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+            "cosine_similarity": 0.287381
+          },
+          {
+            "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+            "cosine_similarity": 0.370781
+          },
+          {
+            "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+            "cosine_similarity": 0.258836
+          },
+          {
+            "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+            "cosine_similarity": 0.370088
+          },
+          {
+            "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+            "cosine_similarity": 0.363938
+          },
+          {
+            "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+            "cosine_similarity": 0.376733
+          },
+          {
+            "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+            "cosine_similarity": 0.404958
+          },
+          {
+            "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+            "cosine_similarity": 0.315682
+          },
+          {
+            "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+            "cosine_similarity": 0.267568
+          },
+          {
+            "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+            "cosine_similarity": 0.341865
+          },
+          {
+            "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+            "cosine_similarity": 0.285642
+          },
+          {
+            "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+            "cosine_similarity": 0.296136
+          },
+          {
+            "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+            "cosine_similarity": 0.39856
+          },
+          {
+            "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+            "cosine_similarity": 0.378363
+          },
+          {
+            "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+            "cosine_similarity": 0.405292
+          },
+          {
+            "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+            "cosine_similarity": 0.423523
+          },
+          {
+            "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+            "cosine_similarity": 0.3809
+          },
+          {
+            "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+            "cosine_similarity": 0.286695
+          },
+          {
+            "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+            "cosine_similarity": 0.231832
+          },
+          {
+            "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+            "cosine_similarity": 0.370241
+          },
+          {
+            "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+            "cosine_similarity": 0.420913
+          },
+          {
+            "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+            "cosine_similarity": 0.277747
+          },
+          {
+            "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+            "cosine_similarity": 0.328242
+          },
+          {
+            "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+            "cosine_similarity": 0.334539
+          },
+          {
+            "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+            "cosine_similarity": 0.289402
+          },
+          {
+            "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+            "cosine_similarity": 0.354175
+          },
+          {
+            "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+            "cosine_similarity": 0.40809
+          },
+          {
+            "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+            "cosine_similarity": 0.219534
+          },
+          {
+            "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+            "cosine_similarity": 0.19768
+          },
+          {
+            "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+            "cosine_similarity": 0.227794
+          },
+          {
+            "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+            "cosine_similarity": 0.350067
+          },
+          {
+            "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+            "cosine_similarity": 0.32379
+          },
+          {
+            "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+            "cosine_similarity": 0.372159
+          },
+          {
+            "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+            "cosine_similarity": 0.392816
+          },
+          {
+            "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+            "cosine_similarity": 0.215821
+          },
+          {
+            "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+            "cosine_similarity": 0.337953
+          }
+        ],
+        "embedding_request_id": "63b28a34-d573-43c1-a131-f8b4a867da7a"
+      }
+    },
+    "generation": {
+      "attempt": 1,
+      "kind": "new_combination",
+      "request_id": "38a04096-4b2c-414f-a3fa-68a19363829a",
+      "prompt_sha256": "2cdf7df88544baae4ffcfbc09e2c25d9174664e367a73c94fa9abc4b1bf3a18d"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "15aece23-a215-4579-91b4-69eec72e18da.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Reposition a text box on a slide",
+      "procedure": [
+        "In Normal view, select the slide containing the object in the Slides pane.",
+        "Click the text box border once to select the text box as an object; do not click into the text if you only want to move it.",
+        "Drag the selected text box to the desired location on the slide, such as nearer the lower edge, and release the mouse."
+      ],
+      "efficiency_tip": "Drag the object by its border rather than entering text-editing mode; use alignment guides or arrow keys afterward if a small positional adjustment is needed.",
+      "source": {
+        "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "skill_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Underline selected text",
+      "procedure": [
+        "With text already selected in text-editing mode, click the Underline button on the formatting toolbar.",
+        "Use the same button again to toggle underlining off for a selected range when needed."
+      ],
+      "efficiency_tip": "Apply underline immediately after another character-formatting change while the text selection is still active, avoiding an extra click into the text box and reselection.",
+      "source": {
+        "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+        "action_ids": [
+          5,
+          11,
+          17
+        ]
+      }
+    },
+    {
+      "skill_id": "986fc832-6af2-417c-8845-9272b3a1528b.skill-02",
+      "app": "libreoffice_impress",
+      "name": "Apply a font color to selected text",
+      "procedure": [
+        "With text already selected in a text-editing context, click the Font Color control on the formatting toolbar.",
+        "Choose the required color from the color palette to apply it to the current selection."
+      ],
+      "efficiency_tip": "Keep the text selection active while opening the Font Color palette so the chosen color is applied immediately without reselecting the text.",
+      "source": {
+        "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+        "action_ids": [
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Set paragraph alignment in a text box",
+      "procedure": [
+        "Navigate to the slide containing the text box.",
+        "Click the text in the shape to enter text-editing mode, rather than merely selecting the shape.",
+        "Press Ctrl+A to select the text in that text box.",
+        "Click the desired paragraph alignment control, such as Align Right, Center, or Align Left, in the toolbar or Sidebar Paragraph section.",
+        "For example, choose Center to center all selected text within the text box."
+      ],
+      "efficiency_tip": "After entering text-editing mode, Ctrl+A selects the text in the current text box, allowing one alignment command to format the entire text box without manually dragging over its contents.",
+      "source": {
+        "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+      "instruction": "Align the first textbox on slide 3 to the right, on slide 4 to the center, and on slide 5 to the left. Ensure that the alignment is applied correctly to each respective slide.",
+      "required_skill_ids": [
+        "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`CLICK` Slide 3"
+        },
+        {
+          "action_id": 1,
+          "action": "`CLICK` 'HELLO'"
+        },
+        {
+          "action_id": 2,
+          "action": "`HOTKEY` ctrl-A"
+        },
+        {
+          "action_id": 3,
+          "action": "`CLICK` right-align icon"
+        },
+        {
+          "action_id": 4,
+          "action": "`CLICK` Slide 4"
+        },
+        {
+          "action_id": 5,
+          "action": "`CLICK` 'WRITE'"
+        },
+        {
+          "action_id": 6,
+          "action": "`HOTKEY` ctrl-A"
+        },
+        {
+          "action_id": 7,
+          "action": "`CLICK` center-align icon"
+        },
+        {
+          "action_id": 8,
+          "action": "`CLICK` Slide 5"
+        },
+        {
+          "action_id": 9,
+          "action": "`CLICK` 'WRITE'"
+        },
+        {
+          "action_id": 10,
+          "action": "`HOTKEY` ctrl-A"
+        },
+        {
+          "action_id": 11,
+          "action": "`CLICK` left-align icon under paragraph section"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` Slide 3",
+        "`CLICK` 'HELLO'",
+        "`HOTKEY` ctrl-A",
+        "`CLICK` right-align icon",
+        "`CLICK` Slide 4",
+        "`CLICK` 'WRITE'",
+        "`HOTKEY` ctrl-A",
+        "`CLICK` center-align icon",
+        "`CLICK` Slide 5",
+        "`CLICK` 'WRITE'",
+        "`HOTKEY` ctrl-A",
+        "`CLICK` left-align icon under paragraph section"
+      ]
+    },
+    {
+      "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+      "instruction": "Move the title of page 2 to the bottom of the slide.",
+      "required_skill_ids": [
+        "15aece23-a215-4579-91b4-69eec72e18da.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`CLICK` slide 2"
+        },
+        {
+          "action_id": 1,
+          "action": "`CLICK` Product Comparison text box"
+        },
+        {
+          "action_id": 2,
+          "action": "`DRAG_TO` bottom of the slide"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` slide 2",
+        "`CLICK` Product Comparison text box",
+        "`DRAG_TO` bottom of the slide"
+      ]
+    },
+    {
+      "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+      "instruction": "Set the color of titles in slides 2,3,5 as black and underline them.",
+      "required_skill_ids": [
+        "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 5,
+          "action": "`CLICK` underline icon"
+        },
+        {
+          "action_id": 11,
+          "action": "`CLICK` underline icon"
+        },
+        {
+          "action_id": 17,
+          "action": "`CLICK` underline icon"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` Slide 2.",
+        "`CLICK` the title text box",
+        "`HOTKEY` ctrl-A",
+        "`CLICK` font color dropdown.",
+        "`CLICK` black",
+        "`CLICK` underline icon",
+        "`CLICK` Slide 3.",
+        "`CLICK` the title text box",
+        "`HOTKEY` ctrl-A",
+        "`CLICK` font color dropdown.",
+        "`CLICK` black",
+        "`CLICK` underline icon",
+        "`CLICK` Slide 5.",
+        "`CLICK` the title text box",
+        "`HOTKEY` ctrl-A",
+        "`CLICK` font color dropdown.",
+        "`CLICK` black",
+        "`CLICK` underline icon"
+      ]
+    },
+    {
+      "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+      "instruction": "underline the content and make the font color on this slide (including the table) dark red 2.",
+      "required_skill_ids": [
+        "986fc832-6af2-417c-8845-9272b3a1528b.skill-02"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 3,
+          "action": "`CLICK` font color icon"
+        },
+        {
+          "action_id": 4,
+          "action": "`CLICK` dark red 2"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` outline",
+        "`HOTKEY` ctrl-A",
+        "`HOTKEY` ctrl-U",
+        "`CLICK` font color icon",
+        "`CLICK` dark red 2",
+        "`CLICK` normal",
+        "`CLICK` table",
+        "`CLICK` cursor before 'Model Name'",
+        "`DRAG_TO` bottom right corner of table",
+        "`HOTKEY` ctrl-U",
+        "`CLICK` font color icon"
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-impress-full-r01-001",
+    "task_detail_sha256": "b12fe822af7b19d485a0c7e12b0b316e1b628c06ff777fba314fadc8420172b9",
+    "guide": {
+      "reference_task_id": "reference-task-impress-full-r01-001",
+      "language": "zh-CN",
+      "overview": "本指南在 LibreOffice Impress 的 Normal 视图中完成第 2 张幻灯片的 RSVP 收尾信息：仅移动可编辑的 RSVP 文本框到三张日程卡片下方的居中页脚区，将文本框内所有段落居中，并且只把“Register by Friday”设为带下划线的精确青绿色 #007C83。其余 RSVP 文本保持原有深灰色且不加下划线，其他幻灯片和日程内容不作修改。",
+      "starting_state_checks": [
+        "确认当前处于 Normal 视图，左侧 Slides 窗格可见两张缩略图；第 2 张缩略图应被选中或可被选中。",
+        "查看第 2 张：中部应有三张从左至右排列的日程卡片，文字依次为“9:00 — Check in at Pier Garden”、“9:30 — Plant shoreline natives”和“11:30 — Return tools and sort compost.”。",
+        "确认 RSVP 文字对象显示“Bring water, sun protection, and gloves. Register by Friday to reserve a planting kit.”，位于左上区域、左对齐，且“Register by Friday”当前为深灰色并未加下划线。",
+        "识别两个独立对象：RSVP 的背景面板是形状，RSVP 文字是可编辑文本框。此任务移动的是文字框；背景面板仍留在原位置是可接受的，无需为了移动文字而选择或移动该面板。"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "title": "定位第 2 张并确认要编辑的对象",
+          "instructions": [
+            "在左侧 Slides 窗格中单击第 2 张的缩略图；这是选择幻灯片，不是选择画布上的对象。",
+            "在画布左上区域找到 RSVP 文本。单击文本框的外边框一次，使其出现对象选择边框和控制点；不要双击文字，也不要在句子中单击，否则会进入文字编辑模式。",
+            "可接受的初始状态是该文字框在左上区域且没有与其他对象重叠。如果它已经位于三张卡片下方的居中页脚区，则不需要移动；若它仍在左上区域，继续下一步。"
+          ],
+          "skill_ids": [],
+          "efficiency_tip": "先以边框选中对象，可避免误把整个文本内容选中或误选到 RSVP 背景面板。",
+          "visible_success_signal": "第 2 张缩略图处于选中状态，且仅 RSVP 文字框有控制点；三个日程卡片、文字和背景面板均未被选中。"
+        },
+        {
+          "step_number": 2,
+          "title": "将 RSVP 文字框移到卡片下方的居中页脚区",
+          "instructions": [
+            "保持 RSVP 文字框以对象边框选中的状态，从边框处拖动文字框到三张日程卡片正下方的空白页脚区，然后松开鼠标。不要通过拖动文字本身进入文字编辑模式。",
+            "以中间日程卡片的水平中心和幻灯片中线作为参考，使文本框整体明显位于三张卡片下方并大致居中；不应覆盖任何卡片、标题或其他文字。",
+            "若拖动后已清晰地位于卡片行下方且视觉居中，则无需再调整。若位置偏左、偏右或与卡片重叠，重新单击文字框边框后用方向键作小幅调整，或再次从边框拖动；不要移动 `rsvp_callout_panel` 背景形状。"
+          ],
+          "skill_ids": [
+            "15aece23-a215-4579-91b4-69eec72e18da.skill-01"
+          ],
+          "efficiency_tip": "拖动时观察对齐参考线；释放后用方向键微调通常比重复长距离拖动更容易保持居中。",
+          "visible_success_signal": "RSVP 文字框已成为三张日程卡片下方的收尾信息，位于开放的页脚区域并明显居中，且没有遮挡日程内容。"
+        },
+        {
+          "step_number": 3,
+          "title": "将 RSVP 文本框中的所有段落居中",
+          "instructions": [
+            "双击已移动的 RSVP 文字框内的文字，或在文字上单击进入文字编辑模式；此时应能看到插入光标，而非仅看到对象控制点。",
+            "按 `Ctrl+A`。在文字编辑模式中，这会选择当前 RSVP 文本框内的全部文本，而不是选择幻灯片上的全部对象。",
+            "在格式工具栏单击 `Center` 段落对齐按钮。也可打开右侧 `Properties` 侧边栏，在段落对齐控件中选择 `Center`。",
+            "可接受的结果是每个 RSVP 段落都在文本框宽度内居中；若文本原本已居中，则无需改变。若只有部分行居中，重新在该文本框中进入编辑模式，按 `Ctrl+A`，再选择 `Center`。"
+          ],
+          "skill_ids": [
+            "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01"
+          ],
+          "efficiency_tip": "使用 `Ctrl+A` 后只执行一次 `Center`，可避免逐行选择造成漏改。",
+          "visible_success_signal": "RSVP 信息的两句文字均以文本框中心为基准居中显示；文字框仍在卡片下方的居中页脚区。"
+        },
+        {
+          "step_number": 4,
+          "title": "仅对截止日期短语添加下划线和精确青绿色",
+          "instructions": [
+            "保持在 RSVP 文本框的文字编辑模式中，用鼠标从“Register by Friday”的第一个字符拖到最后一个字符，精确选中这 18 个字符；不要包含其前面的空格、前一句、后面的“ to reserve a planting kit.”或句点。",
+            "在选区仍高亮时，单击格式工具栏的 `Underline`。若所选短语已经显示下划线，则不需要再次单击；若误使周围文字带下划线，选中那些误格式化的字符并再次单击 `Underline` 取消。",
+            "保持同一短语仍被选中，打开 `Font Color` 的下拉菜单并选择 `Custom Color...`。在颜色对话框中将 `Hex #` 设为 `007C83`，然后确认。若该对话框没有 `Hex #` 输入项，则在 RGB 输入项中设定 `Red` 为 `0`、`Green` 为 `124`、`Blue` 为 `131`，再确认；这与 #007C83 相同。",
+            "可接受的结果是仅“Register by Friday”为 #007C83 且带下划线。如果整段 RSVP 文字意外变成青绿色或被加下划线，先仅选中不应改变的字符，使用 `Font Color` 恢复其原有深灰色，并用 `Underline` 关闭其下划线；然后重新精确选中该截止日期短语并应用所需格式。"
+          ],
+          "skill_ids": [
+            "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+            "986fc832-6af2-417c-8845-9272b3a1528b.skill-02"
+          ],
+          "efficiency_tip": "在同一段文字保持高亮选中时连续完成 `Underline` 和 `Font Color`，可确保字符级格式只作用于该短语，无须重新选择。",
+          "visible_success_signal": "“Register by Friday”清晰显示为青绿色 #007C83 并有下划线；“Bring water, sun protection, and gloves.”以及“to reserve a planting kit.”仍为深灰色且没有下划线。"
+        },
+        {
+          "step_number": 5,
+          "title": "退出编辑并检查版面关系",
+          "instructions": [
+            "单击 RSVP 文本框外侧的空白画布，退出文字编辑模式并取消文字选区，以便检查最终可见效果。",
+            "查看对象层次和位置：文字框应完整可读、居中位于卡片下方，且没有遮住三张卡片。若文字框被卡片覆盖或与卡片重叠，单击其边框重新选择对象并向下或横向小幅移动；若其已在清晰的居中页脚区，则无需调整。",
+            "不要调整日程卡片、标题、背景、RSVP 背景面板或第 1 张幻灯片中的对象。"
+          ],
+          "skill_ids": [],
+          "efficiency_tip": "退出文字编辑模式后再判断居中和重叠，可避免被插入光标、选区高亮或对象控制点干扰视觉判断。",
+          "visible_success_signal": "第 2 张呈现清晰的日程卡片行和下方居中的 RSVP 收尾文字，卡片顺序与其余页面元素保持不变。"
+        }
+      ],
+      "final_verification": [
+        "在 Slides 窗格检查仍只有两张幻灯片，顺序未改变；第 1 张缩略图的封面内容未被修改。",
+        "查看第 2 张：三张日程卡片仍从左到右依次显示“9:00 — Check in at Pier Garden”、“9:30 — Plant shoreline natives”和“11:30 — Return tools and sort compost.”，其位置、文字和背景均未改变。",
+        "确认 RSVP 文字框在三张卡片正下方的页脚开放区域并明显居中，未与任何卡片或其他对象重叠。",
+        "确认 RSVP 文本框内所有段落均为居中对齐。",
+        "确认只有“Register by Friday”带下划线并为精确颜色 #007C83；其余 RSVP 文本保持深灰色且不带下划线，且完整文案未被改写。"
+      ]
+    },
+    "generation": {
+      "request_id": "66f5d8fe-5188-48e4-9b5a-77f47dfa7e06",
+      "prompt_sha256": "6d5d111e776abac101f7a898740d1a05977ccdfcc55ae8e2ecd23ee815b79346",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 3710,
+      "output_tokens": 3104,
+      "estimated_cost_usd": 0.0379954
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-impress-full-r01-001",
+      "app": "libreoffice_impress",
+      "artifact_type": "pptx",
+      "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-001/initial_artifact.pptx",
+      "artifact_sha256": "6752ec00d13c0607dc5af8b8e64b2ddc45dc239c994053a17056711df5fa42f5",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-001/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/artifacts/reference-task-impress-full-r01-001/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.pptx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-impress-full-r01-001",
+      "task_config_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated/round_01/task_configs/reference-task-impress-full-r01-001.json",
+      "artifact_sha256": "6752ec00d13c0607dc5af8b8e64b2ddc45dc239c994053a17056711df5fa42f5",
+      "blueprint_request_id": "bf7c0db2-3b03-480f-91a6-e21386def646"
+    },
+    "packet_path": "task_config.json"
+  }
+}
