@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "app": "libreoffice_impress",
+  "groups": [
+    {
+      "generation_group_id": "application-preferences",
+      "artifact_strategy_ids": ["presenter-console-settings", "autorecovery-settings"],
+      "skill_ids": [
+        "0f84bef9-9790-432e-92b7-eece357603fb.skill-01",
+        "2cd43775-7085-45d8-89fa-9e35c0a915cf.skill-01"
+      ]
+    },
+    {
+      "generation_group_id": "portrait-with-transition",
+      "artifact_strategy_ids": ["portrait-orientation-source-seed", "slide-transition-source-seed"],
+      "skill_ids": [
+        "ce88f674-ab7a-43da-9201-468d38539e4a.skill-01",
+        "21760ecb-8f62-40d2-8d85-0cee5725cb72.skill-01"
+      ]
+    },
+    {
+      "generation_group_id": "outline-and-table",
+      "artifact_strategy_ids": ["outline-native-placeholders", "table-picker-content-placeholder"],
+      "skill_ids": [
+        "358aa0a7-6677-453f-ae35-e440f004c31e.skill-01",
+        "39be0d19-634d-4475-8768-09c130f5425d.skill-01"
+      ]
+    },
+    {
+      "generation_group_id": "master-background",
+      "artifact_strategy_ids": ["master-background-and-recent-color"],
+      "skill_ids": [
+        "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-01",
+        "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-02"
+      ]
+    },
+    {
+      "generation_group_id": "save-and-export",
+      "artifact_strategy_ids": ["save-as-secondary-presentation", "png-export-output"],
+      "skill_ids": [
+        "a097acff-6266-4291-9fbd-137af7ecd439.skill-01",
+        "455d3c66-7dc6-4537-a39a-36d3e9119df7.skill-01"
+      ]
+    },
+    {
+      "generation_group_id": "notes-and-bold",
+      "artifact_strategy_ids": ["speaker-notes-source-7dbc"],
+      "skill_ids": [
+        "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01",
+        "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-02"
+      ]
+    },
+    {
+      "generation_group_id": "notes-and-background",
+      "artifact_strategy_ids": ["speaker-notes-source-841b"],
+      "skill_ids": [
+        "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-01",
+        "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-02"
+      ]
+    },
+    {
+      "generation_group_id": "notes-and-theme-background",
+      "artifact_strategy_ids": ["speaker-notes-source-8979"],
+      "skill_ids": [
+        "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-01",
+        "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-02"
+      ]
+    },
+    {
+      "generation_group_id": "slide-number-fields",
+      "artifact_strategy_ids": ["slide-number-native-fields"],
+      "skill_ids": [
+        "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-01",
+        "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-02",
+        "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-03"
+      ]
+    },
+    {
+      "generation_group_id": "summary-with-transition",
+      "artifact_strategy_ids": ["summary-slide-source-seed", "slide-transition-source-seed"],
+      "skill_ids": [
+        "af23762e-2bfd-4a1d-aada-20fa8de9ce07.skill-01",
+        "21760ecb-8f62-40d2-8d85-0cee5725cb72.skill-01"
+      ]
+    },
+    {
+      "generation_group_id": "photo-album-cleanup",
+      "artifact_strategy_ids": ["photo-album-images"],
+      "skill_ids": [
+        "bf4e9888-f10f-47af-8dba-76413038b73c.skill-01",
+        "bf4e9888-f10f-47af-8dba-76413038b73c.skill-02"
+      ]
+    },
+    {
+      "generation_group_id": "audio-and-background",
+      "artifact_strategy_ids": ["embedded-audio-input"],
+      "skill_ids": [
+        "c59742c0-4323-4b9d-8a02-723c251deaa0.skill-01",
+        "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-01"
+      ]
+    },
+    {
+      "generation_group_id": "image-insertion-and-size",
+      "artifact_strategy_ids": ["insert-image-input"],
+      "skill_ids": [
+        "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-01",
+        "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-02"
+      ]
+    },
+    {
+      "generation_group_id": "restore-pane-and-cleanup",
+      "artifact_strategy_ids": ["hidden-slides-pane-state"],
+      "skill_ids": [
+        "ef9d12bd-bcee-4ba0-a40e-918400f43ddf.skill-01",
+        "bf4e9888-f10f-47af-8dba-76413038b73c.skill-02"
+      ]
+    }
+  ]
+}

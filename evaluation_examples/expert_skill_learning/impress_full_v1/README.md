@@ -27,10 +27,48 @@ per round. Every valid skill must eventually be covered by an approved recorded
 reference task or have an explicit waiver. Cross-task skill deduplication is not
 performed in this version.
 
-The first engineering pilot is limited to five static, artifact-producing
-candidates. Notes, master-slide operations, transitions, embedded media, app
-settings, and extra-output workflows remain in the skill pool but are deferred
-until their artifact and annotation adapters are enabled or reviewed for waiver.
+The first engineering pilot remains limited to five static, artifact-producing
+candidates. Its files and review state are historical inputs and are not
+rewritten by the deferred-skill adapter described below.
+
+## Deferred-skill artifact adapter
+
+`generated_v2/skill_readiness_policy.json` identifies 21 skills from 18 source
+tasks that cannot use the static PPTX builder alone. They now have an explicit
+adapter path:
+
+1. `deferred_skill_artifact_catalog.json` maps every deferred skill to either a
+   frozen OSWorld source artifact or a native seed profile. Only HTTPS downloads
+   from the allowlisted OSWorld Hugging Face cache are accepted.
+2. `materialize_impress_artifact_catalog.py` verifies the frozen task JSON hash,
+   downloads the declared PPTX and attachments, replaces source slide text with
+   privacy-safe workshop content, trims long decks to six slides while preserving
+   native OOXML parts, rejects
+   macros and (by default) external relationships, and records every SHA256.
+3. `deferred_skill_generation_plan.json` groups the 21 deferred skills into 14
+   coherent candidate groups (at most 20). The dedicated LLM prompt receives the
+   materialized artifact inspection, fixed attachment names, expected output
+   names, and adapter requirements.
+4. `build_impress_deferred_artifacts.py` installs one adapted primary PPTX per
+   candidate, copies required PNG/MP3 inputs, renders previews, and emits an
+   artifact manifest containing supporting inputs, UI setup profiles, and extra
+   outputs.
+5. The normal annotation-config/review-packet path accepts those manifest fields.
+   The recorder uploads every input but opens only the primary PPTX, applies the
+   allowlisted pre-recording UI setup, and collects required Save As or PNG files
+   in addition to the final PPTX.
+
+Materialize the catalog before generating packages:
+
+```bash
+python scripts/python/materialize_impress_artifact_catalog.py \
+  --output-dir evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/deferred_artifacts/materialized
+```
+
+After the current round has no pending reviews, generate the next deferred
+round with `scripts/python/generate_impress_deferred_packages.py`, then build its
+artifacts with `scripts/python/build_impress_deferred_artifacts.py`. The generator
+enforces the existing review gate and refuses more than 20 candidates.
 
 ## Round 1 engineering pilot
 

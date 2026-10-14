@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "6cf27a5cfe9bbc248147038794873f86eec48d69b425c4fa5f60e4c2a1089be1",
+  "request_id": "227053e7-5b8c-4eee-b5ac-924eefc24e03",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1474,
+    "cached_input_tokens": 1355,
+    "output_tokens": 128,
+    "estimated_cost_usd": 0.002045
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Move a selected text box by dragging",
+        "procedure": [
+          "Click the text box once to select its outer object border rather than entering text-editing mode.",
+          "Drag the selected text box to the desired position on the slide; for example, drag a title text box from the upper area to the bottom area of the canvas."
+        ],
+        "efficiency_tip": "Use a single click to select the object frame before dragging; this avoids accidentally placing a text cursor inside the box and keeps the move operation direct.",
+        "action_ids": [
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

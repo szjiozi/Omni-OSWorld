@@ -63,7 +63,7 @@
         },
         "slides": {
           "type": "array",
-          "minItems": 2,
+          "minItems": 1,
           "maxItems": 8,
           "items": {
             "type": "object",

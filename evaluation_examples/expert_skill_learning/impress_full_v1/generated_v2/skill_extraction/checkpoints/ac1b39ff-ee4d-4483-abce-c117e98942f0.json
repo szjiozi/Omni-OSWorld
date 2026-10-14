@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+  "app": "libreoffice_impress",
+  "single_action_count": 4,
+  "prompt_sha256": "6d0a4d428e8f6d4bcfbc164f7dc25314c7f6c4d77d5fc5441d7ef8e96ffee36b",
+  "request_id": "15b96c24-489c-4cd4-be4a-738d5e7cf6d1",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1541,
+    "cached_input_tokens": 1403,
+    "output_tokens": 178,
+    "estimated_cost_usd": 0.0026926
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Move a selected table by dragging its border",
+        "procedure": [
+          "Select the slide containing the table in the Slides pane.",
+          "Click the table once to select the entire table and show its object border rather than entering cell text-editing mode.",
+          "Position the pointer on the table’s outer border or a non-handle area, such as the upper-left edge, until it can be dragged.",
+          "Drag the table to the desired position; for example, drag it downward until it sits near the bottom of the slide."
+        ],
+        "efficiency_tip": "Drag from the table border rather than inside a cell to avoid selecting cell content or entering table-editing mode. Release only after checking that the whole table, not an individual cell, is moving.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ]
+  }
+}

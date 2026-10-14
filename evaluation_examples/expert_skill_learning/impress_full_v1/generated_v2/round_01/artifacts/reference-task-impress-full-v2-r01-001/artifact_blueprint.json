@@ -1,0 +1,345 @@
+{
+  "presentation_title": "Harbor Sampling Brief",
+  "slide_size": "wide",
+  "theme": {
+    "primary_color": "006D77",
+    "secondary_color": "83C5BE",
+    "accent_color": "FFB703",
+    "background_color": "F7FBFC",
+    "title_font": "Liberation Sans",
+    "body_font": "Liberation Sans"
+  },
+  "slides": [
+    {
+      "slide_number": 1,
+      "purpose": "Cover for a concise community monitoring briefing",
+      "background_color": "F7FBFC",
+      "objects": [
+        {
+          "semantic_id": "cover_title",
+          "type": "text",
+          "x": 0.85,
+          "y": 1.35,
+          "w": 8.5,
+          "h": 0.75,
+          "content": {
+            "text": "Harbor Sampling Brief",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "F7FBFC",
+            "line_color": "F7FBFC",
+            "text_color": "006D77",
+            "font_face": "Liberation Sans",
+            "font_size": 32,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "cover_subtitle",
+          "type": "text",
+          "x": 0.9,
+          "y": 2.22,
+          "w": 7.8,
+          "h": 0.4,
+          "content": {
+            "text": "Morning shoreline checks | North Pier",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "F7FBFC",
+            "line_color": "F7FBFC",
+            "text_color": "315B60",
+            "font_face": "Liberation Sans",
+            "font_size": 17,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "cover_water_band",
+          "type": "shape",
+          "x": 0,
+          "y": 5.95,
+          "w": 13.333,
+          "h": 1.55,
+          "content": {
+            "text": null,
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "006D77",
+            "line_color": "006D77",
+            "text_color": "F7FBFC",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "cover_date_tag",
+          "type": "shape",
+          "x": 0.9,
+          "y": 3.15,
+          "w": 2.05,
+          "h": 0.48,
+          "content": {
+            "text": "May field round",
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFB703",
+            "line_color": "FFB703",
+            "text_color": "173E43",
+            "font_face": "Liberation Sans",
+            "font_size": 14,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        }
+      ]
+    },
+    {
+      "slide_number": 2,
+      "purpose": "Field-ready summary of the current sampling window and station readings",
+      "background_color": "FFFFFF",
+      "objects": [
+        {
+          "semantic_id": "status_slide_heading",
+          "type": "text",
+          "x": 0.8,
+          "y": 0.55,
+          "w": 5.8,
+          "h": 0.55,
+          "content": {
+            "text": "North Pier Checkpoint",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFFFF",
+            "line_color": "FFFFFF",
+            "text_color": "006D77",
+            "font_face": "Liberation Sans",
+            "font_size": 26,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "sampling_window_label",
+          "type": "text",
+          "x": 9.05,
+          "y": 1.3,
+          "w": 3.9,
+          "h": 0.42,
+          "content": {
+            "text": "Sampling window: 06:00–10:00",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFFFF",
+            "line_color": "FFFFFF",
+            "text_color": "006D77",
+            "font_face": "Liberation Sans",
+            "font_size": 14,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "right",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "station_readings_table",
+          "type": "table",
+          "x": 0.8,
+          "y": 1.65,
+          "w": 6.15,
+          "h": 2.65,
+          "content": {
+            "text": null,
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [
+              [
+                "Station",
+                "Turbidity",
+                "Condition"
+              ],
+              [
+                "Breakwater",
+                "4.2 NTU",
+                "Clear"
+              ],
+              [
+                "Ferry slip",
+                "7.8 NTU",
+                "Watch"
+              ],
+              [
+                "Marina inlet",
+                "5.1 NTU",
+                "Clear"
+              ]
+            ],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "E6F4F3",
+            "line_color": "83C5BE",
+            "text_color": "173E43",
+            "font_face": "Liberation Sans",
+            "font_size": 15,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "turbidity_trend_chart",
+          "type": "chart",
+          "x": 7.6,
+          "y": 2.15,
+          "w": 4.85,
+          "h": 2.8,
+          "content": {
+            "text": null,
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [
+              "06:00",
+              "07:00",
+              "08:00",
+              "09:00"
+            ],
+            "series": [
+              {
+                "name": "Turbidity (NTU)",
+                "values": [
+                  4.0,
+                  5.3,
+                  6.7,
+                  5.1
+                ]
+              }
+            ]
+          },
+          "style": {
+            "fill_color": "F7FBFC",
+            "line_color": "83C5BE",
+            "text_color": "173E43",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "advisory_badge",
+          "type": "shape",
+          "x": 8.85,
+          "y": 5.55,
+          "w": 2.4,
+          "h": 0.62,
+          "content": {
+            "text": "Recheck after rain",
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFB703",
+            "line_color": "D68B00",
+            "text_color": "173E43",
+            "font_face": "Liberation Sans",
+            "font_size": 14,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "source_caption",
+          "type": "text",
+          "x": 0.8,
+          "y": 6.7,
+          "w": 5.5,
+          "h": 0.28,
+          "content": {
+            "text": "Volunteer readings; values shown in NTU",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "FFFFFF",
+            "line_color": "FFFFFF",
+            "text_color": "4C666A",
+            "font_face": "Liberation Sans",
+            "font_size": 11,
+            "bold": false,
+            "italic": true,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        }
+      ]
+    }
+  ],
+  "manual_setup_steps": []
+}

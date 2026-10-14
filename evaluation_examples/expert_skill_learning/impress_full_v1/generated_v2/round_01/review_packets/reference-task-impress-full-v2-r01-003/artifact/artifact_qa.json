@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "pptx",
+  "opens_as_zip_package": true,
+  "libreoffice_render_succeeded": true,
+  "slide_count": 3,
+  "semantic_object_count": 17,
+  "geometric_overlap_warnings": [
+    {
+      "slide_number": 3,
+      "objects": [
+        "timing_schedule_cue",
+        "timing_supply_panel"
+      ],
+      "overlap_area": 0.306
+    },
+    {
+      "slide_number": 3,
+      "objects": [
+        "timing_supply_panel",
+        "timing_supply_list"
+      ],
+      "overlap_area": 10.73
+    }
+  ],
+  "placeholder_matches": [],
+  "media_part_count": 1,
+  "notes_part_count": 8,
+  "slides": [
+    {
+      "slide_number": 1,
+      "text": [
+        "Neighborhood Repair Café",
+        "Host Brief  •  Saturday, 14 September  •  Community Hall",
+        "REPAIR BENCH",
+        "TOOLS • CARE • SECOND CHANCES",
+        "HOST TEAM"
+      ],
+      "shape_count": 6,
+      "picture_count": 0,
+      "graphic_frame_count": 0
+    },
+    {
+      "slide_number": 2,
+      "text": [
+        "Repair Table Flow",
+        "Keep each visitor moving with a clear welcome, a quick assessment, and a confident handoff.",
+        "1  WELCOME & INTAKE",
+        "Listen, label the item,",
+        "and note the issue.",
+        "2  SORT THE REQUEST",
+        "Match the repair type",
+        "to the right table.",
+        "3  HAND OFF",
+        "Introduce the fixer",
+        "and confirm the queue."
+      ],
+      "shape_count": 10,
+      "picture_count": 0,
+      "graphic_frame_count": 0
+    },
+    {
+      "slide_number": 3,
+      "text": [
+        "Open the Station",
+        "09:50",
+        "Tool check-in closes at 09:50",
+        "HOST READINESS",
+        "• Welcome sign is visible",
+        "• Queue cards are stacked",
+        "• Fixers know their tables",
+        "• Safety lead is on call",
+        "STAGE BEFORE DOORS OPEN",
+        "• Direction signs",
+        "• Clipboards + pens",
+        "• Safety glasses",
+        "• Extension leads",
+        "• Spare name badges"
+      ],
+      "shape_count": 7,
+      "picture_count": 0,
+      "graphic_frame_count": 0
+    }
+  ],
+  "preview_files": [
+    "slide-01.png",
+    "slide-02.png",
+    "slide-03.png"
+  ],
+  "contact_sheet": "contact-sheet.png",
+  "visual_review_required": true
+}

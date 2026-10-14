@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "18ff1d2e28218f7c9f502baac04dea3b3791163409a5b0c04de4fa58876bcb5d",
+  "request_id": "2975b6a3-e412-476c-a04b-51a2a61805b8",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1270,
+    "cached_input_tokens": 1103,
+    "output_tokens": 426,
+    "estimated_cost_usd": 0.0056666
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Remove a bullet from a paragraph using Backspace",
+        "procedure": [
+          "Click inside the target text box to enter text-editing mode, then place the insertion caret at the very beginning of the bulleted paragraph’s text.",
+          "Press Backspace once. In Impress, this removes the bullet formatting from that paragraph while retaining it as a paragraph in the text box. For example, place the caret before the first character of a bulleted continuation line and press Backspace to turn it into an unbulleted continuation line."
+        ],
+        "efficiency_tip": "Place the caret at the paragraph start rather than selecting and deleting the bullet character; this uses Impress’s list-formatting behavior and avoids accidentally deleting text.",
+        "action_ids": [
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

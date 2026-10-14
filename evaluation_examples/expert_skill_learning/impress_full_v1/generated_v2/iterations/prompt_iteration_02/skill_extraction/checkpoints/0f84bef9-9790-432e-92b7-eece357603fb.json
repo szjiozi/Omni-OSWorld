@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+  "app": "libreoffice_impress",
+  "single_action_count": 5,
+  "prompt_sha256": "786dbf359da610dba6f10bee1f53df396d1a28614496e9d5ce2850c6164aa0cc",
+  "request_id": "4d4f02f5-2987-4aeb-b957-9b9a7e07435b",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1570,
+    "cached_input_tokens": 1355,
+    "output_tokens": 159,
+    "estimated_cost_usd": 0.002609
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Disable the Presenter Console in Impress preferences",
+        "procedure": [
+          "Open LibreOffice Impress preferences with Alt+F12.",
+          "In the left navigation tree, expand “LibreOffice Impress” and select “General.”",
+          "Under the “Presentation” section, clear the “Enable Presenter console” checkbox.",
+          "Click OK to save the preference. For example, disabling this option prevents Impress from opening the separate current/next-slide presenter display when starting a presentation."
+        ],
+        "efficiency_tip": "Use Alt+F12 to open preferences directly, then change the presenter-console setting once; it remains available for future presentations without needing to alter individual slides.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ]
+  }
+}

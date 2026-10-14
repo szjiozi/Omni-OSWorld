@@ -68,6 +68,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--worker-instance-type", default="t3.xlarge")
     parser.add_argument("--allow-pending", action="store_true")
     parser.add_argument(
+        "--source-only",
+        action="store_true",
+        help=(
+            "Refresh the running gateway without updating CloudFormation; "
+            "a replacement instance will still use the stack's previous source."
+        ),
+    )
+    parser.add_argument(
         "--credentials-output",
         type=Path,
         default=DEFAULT_CREDENTIALS,
@@ -527,12 +535,56 @@ def _refresh_gateway_source(
         raise RuntimeError(f"Gateway source refresh failed: {details[-4000:]}") from waiter_error
 
 
+def refresh_source_only(session: Any, stack_name: str) -> dict[str, Any]:
+    cloudformation = session.client("cloudformation")
+    if not _stack_exists(cloudformation, stack_name):
+        raise RuntimeError("--source-only requires an existing portal stack")
+    outputs = _outputs(cloudformation, stack_name)
+    dynamodb = session.client("dynamodb")
+    table_name = outputs["StateTableName"]
+    deployment_id = _acquire_deployment_lock(dynamodb, table_name)
+    try:
+        with tempfile.TemporaryDirectory(prefix="osworld-portal-source-") as temp_dir:
+            bundle = Path(temp_dir) / "gateway-source.tar.gz"
+            source_sha256 = build_source_bundle(bundle)
+            bucket = outputs["AnnotationBucketName"]
+            source_key = f"bootstrap/gateway-source-{source_sha256}.tar.gz"
+            s3 = session.client("s3")
+            s3.upload_file(
+                str(bundle),
+                bucket,
+                source_key,
+                ExtraArgs={"Metadata": {"sha256": source_sha256}},
+            )
+            metadata = s3.head_object(Bucket=bucket, Key=source_key).get("Metadata", {})
+            if metadata.get("sha256") != source_sha256:
+                raise RuntimeError("Uploaded gateway source metadata verification failed")
+            _refresh_gateway_source(
+                session.client("ssm"),
+                instance_id=outputs["GatewayInstanceId"],
+                bucket=bucket,
+                source_key=source_key,
+                source_sha256=source_sha256,
+                worker_instance_profile_name=outputs["WorkerInstanceProfileName"],
+            )
+        return {
+            "portal_url": outputs["PortalUrl"],
+            "source_sha256": source_sha256,
+            "cloudformation_updated": False,
+        }
+    finally:
+        _release_deployment_lock(dynamodb, table_name, deployment_id)
+
+
 def main() -> int:
     args = parse_args()
     import boto3
     from botocore.exceptions import ClientError
 
     session = boto3.Session(profile_name=args.profile, region_name=args.region)
+    if args.source_only:
+        print(json.dumps(refresh_source_only(session, args.stack_name), indent=2))
+        return 0
     cloudformation = session.client("cloudformation")
     ec2 = session.client("ec2")
     s3 = session.client("s3")

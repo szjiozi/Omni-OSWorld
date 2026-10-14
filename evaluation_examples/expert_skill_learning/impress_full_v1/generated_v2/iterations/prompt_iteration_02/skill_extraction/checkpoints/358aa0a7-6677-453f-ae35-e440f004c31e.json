@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+  "app": "libreoffice_impress",
+  "single_action_count": 5,
+  "prompt_sha256": "a8d122e7a2cb30ed4ca36e4d27b3d2aa37007e40a2d1a628ab741347299a087f",
+  "request_id": "7167adc7-a3ed-4d62-87ac-0a03a34b1f0e",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1521,
+    "cached_input_tokens": 1355,
+    "output_tokens": 242,
+    "estimated_cost_usd": 0.003507
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply one font to all presentation text through Outline view",
+        "procedure": [
+          "Click Outline to switch from slide canvas editing to the presentation-wide outline text view.",
+          "Press Ctrl+A while the outline has focus to select all outline text across the presentation, rather than selecting individual text boxes on each slide.",
+          "Open the Font dropdown, type a font family name such as “Liberation Sans Narrow,” and press Enter to apply it to the complete selection."
+        ],
+        "efficiency_tip": "Use Outline view and Ctrl+A when standardizing presentation text: it applies the font in one operation and avoids visiting each slide and text box individually.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ]
+  }
+}

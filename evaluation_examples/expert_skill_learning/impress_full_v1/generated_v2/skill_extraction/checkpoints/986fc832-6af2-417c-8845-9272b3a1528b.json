@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+  "app": "libreoffice_impress",
+  "single_action_count": 11,
+  "prompt_sha256": "1e36179fe951c0a930ee60844c4be083f1605dbe52fb3f8f93d549b7d066b842",
+  "request_id": "0c897970-99b6-477c-87ab-edd6d71bfa9b",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1606,
+    "cached_input_tokens": 1403,
+    "output_tokens": 1148,
+    "estimated_cost_usd": 0.0144626
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply underline formatting to selected text with a keyboard shortcut",
+        "procedure": [
+          "Enter text-editing mode in the target text object, then select the required text; for example, click in a content placeholder and press Ctrl+A to select all of its text.",
+          "Press Ctrl+U to toggle underline on the current text selection.",
+          "Repeat Ctrl+U after selecting text in another object or table range if that range also needs underlining."
+        ],
+        "efficiency_tip": "Use Ctrl+U instead of opening character-format menus. Select each independent text range first, then apply the shortcut once per range.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          9
+        ]
+      },
+      {
+        "name": "Apply a font color from the font-color palette",
+        "procedure": [
+          "Select the text whose character color should change.",
+          "Click the Font Color button to open its color palette.",
+          "Choose the desired palette swatch; for example, select the “Dark Red 2” swatch to apply that color to the selected text."
+        ],
+        "efficiency_tip": "Select the complete text range before opening the palette so a single color choice formats the entire range at once.",
+        "action_ids": [
+          3,
+          4
+        ]
+      },
+      {
+        "name": "Select a table text range by dragging from the first cell to the last cell",
+        "procedure": [
+          "Click the table to activate it, then click at the beginning of the text in its first cell.",
+          "Drag from that starting caret position through the last cell, ending at the lower-right end of the table content.",
+          "With the resulting multi-cell text selection active, apply a character format such as underline or font color."
+        ],
+        "efficiency_tip": "Start at the first character and drag continuously to the final cell rather than formatting cells one at a time.",
+        "action_ids": [
+          6,
+          7,
+          8
+        ]
+      }
+    ]
+  }
+}

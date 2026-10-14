@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+  "app": "libreoffice_impress",
+  "single_action_count": 4,
+  "prompt_sha256": "1401e97c46786e90f13b4f880be0861f99f8b10c72e366f0c04d720dc87dd45a",
+  "request_id": "c3b8e743-f2f4-4fc0-a748-1301d25158b9",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1236,
+    "cached_input_tokens": 1103,
+    "output_tokens": 157,
+    "estimated_cost_usd": 0.0023706
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Save a presentation to a chosen folder using Save As",
+        "procedure": [
+          "Press Ctrl+Shift+S to open the Save As dialog.",
+          "In the file picker, select the destination folder in the sidebar or location list; for example, click Desktop.",
+          "Enter a filename with the desired presentation extension in the File name field; for example, type `pre.pptx`.",
+          "Click Save to write the presentation to that location."
+        ],
+        "efficiency_tip": "Use Ctrl+Shift+S directly instead of navigating through the File menu, then choose the destination folder before entering the filename to verify the save location at a glance.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ]
+  }
+}

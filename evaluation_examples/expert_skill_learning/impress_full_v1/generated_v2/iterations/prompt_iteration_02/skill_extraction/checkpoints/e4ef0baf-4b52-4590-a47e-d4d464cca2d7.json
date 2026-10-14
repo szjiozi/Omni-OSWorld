@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+  "app": "libreoffice_impress",
+  "single_action_count": 20,
+  "prompt_sha256": "95c568d737fee65b91d67a7151365fe4bcb34e0d1220be2c512b23a3978adbf8",
+  "request_id": "deca3660-93ae-4fb1-a53f-4dc601c8d5f9",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1680,
+    "cached_input_tokens": 1355,
+    "output_tokens": 330,
+    "estimated_cost_usd": 0.004881
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set an image's exact height using the size controls",
+        "procedure": [
+          "Select the target slide in the Slides pane, then click the image once so its outer object border is selected rather than entering any text-editing state.",
+          "Open or use the object's size properties and scroll to the Height input if it is not visible.",
+          "Replace the current Height value with the desired measurement, such as `20cm`, and press Enter to apply the exact height."
+        ],
+        "efficiency_tip": "Use the numeric Height field rather than dragging resize handles when a precise dimension is required; typing a unit such as cm avoids manual conversion.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "name": "Apply a font size to text in multiple separate text boxes",
+        "procedure": [
+          "Select the slide containing the text boxes.",
+          "For each text box, enter text-editing mode and select its text—for example, triple-click the text when that selects the whole text object.",
+          "Activate the font-size control, replace its value with the desired point size such as `40pt`, and press Enter.",
+          "Repeat the same text selection and font-size entry for each separate text box that needs the matching size."
+        ],
+        "efficiency_tip": "Complete the full select-text → set-size sequence on one text box before moving to the next, and type the point value directly in the font-size box instead of searching the dropdown list.",
+        "action_ids": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      }
+    ]
+  }
+}

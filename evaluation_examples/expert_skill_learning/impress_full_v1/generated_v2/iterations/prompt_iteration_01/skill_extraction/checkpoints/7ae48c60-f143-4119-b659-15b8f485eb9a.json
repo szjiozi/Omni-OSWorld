@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+  "app": "libreoffice_impress",
+  "single_action_count": 17,
+  "prompt_sha256": "f9f3457d8373351dc0ab8955d45d91a1f854a5a9343ce27ea7f484341da88710",
+  "request_id": "3a667f90-9e17-49c4-899a-10360cd9df07",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1380,
+    "cached_input_tokens": 1103,
+    "output_tokens": 301,
+    "estimated_cost_usd": 0.0043866
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set an image's exact height using the Position and Size controls",
+        "procedure": [
+          "Select the slide containing the image, then click the image once to select its outer border rather than entering text-editing mode.",
+          "Open or reveal the Position and Size controls if needed; for example, scroll the properties panel to the Height field or expand the Position and Size section.",
+          "Select the current Height value in the text box, type the desired measurement with its unit, and press Enter to apply it. For example, enter `20cm` to set the selected image's height to 20 cm.",
+          "Repeat the same selection-and-height-entry pattern for any other image that needs an exact height."
+        ],
+        "efficiency_tip": "Use the Height field directly and include the unit (such as `cm`) so Impress applies the requested dimension immediately; avoid manual resizing with drag handles when an exact measurement is required.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    ]
+  }
+}

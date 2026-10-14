@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "builder": "impress_deferred_artifact_adapter",
+  "artifact_strategy_ids": [
+    "insert-image-input"
+  ],
+  "package_artifact_spec": {
+    "artifact_type": "pptx",
+    "domain": "community education event planning",
+    "presentation_title": "Community Learning Showcase",
+    "slide_size": "standard",
+    "theme": {
+      "primary_color": "aed8e6",
+      "secondary_color": "ffffff",
+      "accent_color": "4f81bd",
+      "background_color": "ffffff",
+      "title_font": "Calibri",
+      "body_font": "Calibri"
+    },
+    "slides": [
+      {
+        "slide_number": 1,
+        "purpose": "Introduce the community learning event.",
+        "layout": "title_content",
+        "object_plan": [
+          {
+            "semantic_id": "showcase_title",
+            "type": "text",
+            "purpose": "Display the presentation title, “Community Learning Showcase”.",
+            "editable": true
+          },
+          {
+            "semantic_id": "overview_subtitle",
+            "type": "text",
+            "purpose": "Display the introductory subtitle, “Program overview”.",
+            "editable": true
+          }
+        ]
+      },
+      {
+        "slide_number": 2,
+        "purpose": "Present the workshop agenda and receive the requested discussion marker.",
+        "layout": "title_content",
+        "object_plan": [
+          {
+            "semantic_id": "workshop_plan_title",
+            "type": "text",
+            "purpose": "Display the slide title, “Workshop Plan”.",
+            "editable": true
+          },
+          {
+            "semantic_id": "agenda_content",
+            "type": "text",
+            "purpose": "List the opening session, hands-on activity, and discussion agenda items.",
+            "editable": true
+          }
+        ]
+      }
+    ],
+    "initial_state": [
+      "The supplied presentation contains two landscape standard slides.",
+      "Slide 1 contains the title “Community Learning Showcase” and the subtitle “Program overview”.",
+      "Slide 2 contains the title “Workshop Plan” and agenda text including “Opening session”, “Hands-on activity”, and “Discussion”.",
+      "Neither slide currently contains a picture.",
+      "Both existing slides have transitions in the supplied file.",
+      "The supporting Desktop file none.png is available for insertion."
+    ],
+    "must_not_be_completed": [
+      "Do not pre-insert none.png on slide 2.",
+      "Do not pre-size any image to 2.4 cm by 1.6 cm.",
+      "Do not alter the existing slide titles or agenda wording."
+    ],
+    "generation_notes": [
+      "Use the supplied initial_artifact.pptx as the starting presentation.",
+      "The requested image is a new editable picture object on slide 2 and should remain visibly separate from the existing text.",
+      "The task requires non-proportional exact dimensions if necessary to satisfy both requested measurements."
+    ]
+  },
+  "source_provenance": [
+    {
+      "strategy_id": "insert-image-input",
+      "source_task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    }
+  ]
+}

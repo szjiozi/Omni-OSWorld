@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "d0d029353d5bb70d72e87d9a2fa403ef6d37e784028863a89df7efa4de64e66e",
+  "request_id": "c047313f-ab5c-4439-8bde-91b76bc15ca2",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1466,
+    "cached_input_tokens": 1355,
+    "output_tokens": 148,
+    "estimated_cost_usd": 0.002269
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply bullet formatting to text in a content text box",
+        "procedure": [
+          "Click inside the content text box to place the text cursor in the paragraph that should become a list item.",
+          "Open the List dropdown in the formatting toolbar.",
+          "Choose the bullet-list icon to toggle bullets for the current paragraph or selected paragraphs. For example, place the cursor in an existing content line and select the bullet icon to prefix it with a bullet."
+        ],
+        "efficiency_tip": "Place the cursor in the target paragraph before opening the List menu; this applies the bullet format directly without selecting or retyping the paragraph.",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

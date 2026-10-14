@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+  "app": "libreoffice_impress",
+  "single_action_count": 6,
+  "prompt_sha256": "8b9e3e0a7ffe155bc507ae6adaba948f38b59f9850340cf67c704bf8d2b6d87e",
+  "request_id": "77c0f85b-a1ec-4390-ba13-bbb2eaf57d1d",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1262,
+    "cached_input_tokens": 1103,
+    "output_tokens": 541,
+    "estimated_cost_usd": 0.0070306
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Copy and paste a formatted text box onto another slide",
+        "procedure": [
+          "Click a text box once on the canvas so its outer border is selected rather than entering text-editing mode.",
+          "Press Ctrl+C to copy the entire text object, including its formatting such as font color.",
+          "Select the destination slide in the left Slides pane, then press Ctrl+V to paste the copied text box onto that slide. For example, copy a colored heading from one slide and paste it onto the next slide to retain the same heading appearance."
+        ],
+        "efficiency_tip": "Copying the whole text object is faster and more reliable than recreating a text box and manually matching its font color and other formatting.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Replace all text in a text box while retaining its formatting",
+        "procedure": [
+          "Enter text-editing mode in the pasted or existing text box and select its current text, for example by triple-clicking the text.",
+          "Type the replacement text. The selected content is replaced while the text box's existing character formatting, such as its font color, is retained."
+        ],
+        "efficiency_tip": "Select and replace the existing text instead of deleting and recreating the text box, which preserves the established formatting and position.",
+        "action_ids": [
+          4,
+          5
+        ]
+      }
+    ]
+  }
+}

@@ -20,6 +20,9 @@ from .schema import load_schema, validate_payload
 ANNOTATION_BLUEPRINT_SCHEMA = "reference-annotation-blueprint.schema.json"
 SAFE_TASK_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$")
 GUEST_DESKTOP = PurePosixPath("/home/user/Desktop")
+GUEST_DOWNLOADS = PurePosixPath("/home/user/Downloads")
+SAFE_OUTPUT_ROLE = re.compile(r"^[a-z][a-z0-9_]{0,63}$")
+SAFE_OUTPUT_FILENAME = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._ -]{0,159}$")
 
 
 @dataclass(frozen=True)
@@ -276,6 +279,103 @@ def _resolve_artifact_path(repo_root: Path, raw_path: str) -> Path:
     return resolved
 
 
+def _portable_artifact_path(repo_root: Path, raw_path: str) -> tuple[Path, str]:
+    resolved = _resolve_artifact_path(repo_root, raw_path)
+    return resolved, str(resolved.relative_to(repo_root.resolve()))
+
+
+def _validate_guest_file_path(raw_path: str) -> str:
+    guest_path = PurePosixPath(raw_path)
+    if guest_path.parent not in {GUEST_DESKTOP, GUEST_DOWNLOADS}:
+        raise ValueError(
+            "Guest artifact paths must be direct children of Desktop or Downloads: "
+            f"{raw_path}"
+        )
+    if not SAFE_OUTPUT_FILENAME.fullmatch(guest_path.name):
+        raise ValueError(f"Unsafe guest artifact filename: {guest_path.name!r}")
+    return str(guest_path)
+
+
+def _resolve_supporting_files(
+    artifact_entry: dict[str, Any], *, repo_root: Path, main_guest_path: str
+) -> list[dict[str, str]]:
+    resolved: list[dict[str, str]] = []
+    seen_guest_paths = {main_guest_path}
+    for item in artifact_entry.get("supporting_files", []):
+        if not isinstance(item, dict):
+            raise ValueError("supporting_files entries must be objects")
+        role = item.get("role", "supporting_input")
+        if not isinstance(role, str) or not SAFE_OUTPUT_ROLE.fullmatch(role):
+            raise ValueError(f"Unsafe supporting-file role: {role!r}")
+        guest_path = _validate_guest_file_path(item.get("guest_path", ""))
+        if guest_path in seen_guest_paths:
+            raise ValueError(f"Duplicate guest artifact path: {guest_path}")
+        seen_guest_paths.add(guest_path)
+        path, portable_path = _portable_artifact_path(
+            repo_root, item.get("local_path", "")
+        )
+        expected_hash = str(item.get("sha256", "")).casefold()
+        actual_hash = _sha256(path)
+        if actual_hash != expected_hash:
+            raise ValueError(
+                f"Supporting artifact SHA256 mismatch for {path.name}: "
+                f"expected {expected_hash}, got {actual_hash}"
+            )
+        resolved.append(
+            {
+                "role": role,
+                "local_path": portable_path,
+                "guest_path": guest_path,
+                "sha256": actual_hash,
+            }
+        )
+    return resolved
+
+
+def _validate_expected_outputs(raw_outputs: Any) -> list[dict[str, Any]]:
+    if raw_outputs is None:
+        return []
+    if not isinstance(raw_outputs, list):
+        raise ValueError("expected_outputs must be a list")
+    outputs: list[dict[str, Any]] = []
+    seen_roles: set[str] = set()
+    seen_guest_paths: set[str] = set()
+    seen_local_names: set[str] = set()
+    for item in raw_outputs:
+        if not isinstance(item, dict):
+            raise ValueError("expected_outputs entries must be objects")
+        role = item.get("role")
+        local_filename = item.get("local_filename")
+        if not isinstance(role, str) or not SAFE_OUTPUT_ROLE.fullmatch(role):
+            raise ValueError(f"Unsafe expected-output role: {role!r}")
+        if role in seen_roles:
+            raise ValueError(f"Duplicate expected-output role: {role}")
+        if (
+            not isinstance(local_filename, str)
+            or not SAFE_OUTPUT_FILENAME.fullmatch(local_filename)
+            or PurePosixPath(local_filename).name != local_filename
+        ):
+            raise ValueError(f"Unsafe expected-output filename: {local_filename!r}")
+        guest_path = _validate_guest_file_path(item.get("guest_path", ""))
+        if (
+            guest_path in seen_guest_paths
+            or local_filename.casefold() in seen_local_names
+        ):
+            raise ValueError("Duplicate expected-output path or local filename")
+        seen_roles.add(role)
+        seen_guest_paths.add(guest_path)
+        seen_local_names.add(local_filename.casefold())
+        outputs.append(
+            {
+                "role": role,
+                "guest_path": guest_path,
+                "local_filename": local_filename,
+                "required": bool(item.get("required", True)),
+            }
+        )
+    return outputs
+
+
 def assemble_osworld_annotation_config(
     package: dict[str, Any],
     artifact_entry: dict[str, Any],
@@ -290,7 +390,7 @@ def assemble_osworld_annotation_config(
         raise ValueError(f"Unsafe reference task ID: {task_id!r}")
     if artifact_entry.get("reference_task_id") != task_id:
         raise ValueError("Package and artifact manifest task IDs differ")
-    artifact_path = _resolve_artifact_path(
+    artifact_path, portable_path = _portable_artifact_path(
         repo_root, artifact_entry["artifact_path"]
     )
     expected_hash = artifact_entry.get("artifact_sha256", "").lower()
@@ -300,11 +400,45 @@ def assemble_osworld_annotation_config(
             f"Artifact SHA256 mismatch for {task_id}: expected "
             f"{expected_hash}, got {actual_hash}"
         )
-    try:
-        portable_path = str(artifact_path.relative_to(repo_root.resolve()))
-    except ValueError as exc:  # Defensive; _resolve_artifact_path already checks this.
-        raise ValueError("Artifact is not repository-relative") from exc
     guest_path = str(GUEST_DESKTOP / blueprint["guest_filename"])
+    supporting_files = _resolve_supporting_files(
+        artifact_entry, repo_root=repo_root, main_guest_path=guest_path
+    )
+    expected_outputs = _validate_expected_outputs(
+        artifact_entry.get("expected_outputs")
+    )
+    setup_profiles = artifact_entry.get("setup_profiles", [])
+    if not isinstance(setup_profiles, list) or not all(
+        isinstance(item, str) and SAFE_OUTPUT_ROLE.fullmatch(item)
+        for item in setup_profiles
+    ):
+        raise ValueError("setup_profiles must contain safe profile identifiers")
+    upload_files = [
+        {"local_path": portable_path, "path": guest_path},
+        *[
+            {"local_path": item["local_path"], "path": item["guest_path"]}
+            for item in supporting_files
+        ],
+    ]
+    reference_annotation = {
+        "schema_version": "1.0",
+        "reference_task_id": task_id,
+        "artifact_path": portable_path,
+        "artifact_sha256": actual_hash,
+        "guest_artifact_path": guest_path,
+        "required_skill_ids": package["required_skill_ids"],
+        "operator_guide": package["operator_guide"],
+        "expected_incidental_operations": package["expected_incidental_operations"],
+        "ready_state_checks": blueprint["ready_state_checks"],
+        "setup_notes": blueprint["setup_notes"],
+        "recording_mode": "human_reference",
+    }
+    if supporting_files:
+        reference_annotation["supporting_files"] = supporting_files
+    if expected_outputs:
+        reference_annotation["expected_outputs"] = expected_outputs
+    if setup_profiles:
+        reference_annotation["setup_profiles"] = setup_profiles
     return {
         "id": task_id,
         "snapshot": profile.app,
@@ -313,33 +447,12 @@ def assemble_osworld_annotation_config(
         "config": [
             {
                 "type": "upload_file",
-                "parameters": {
-                    "files": [
-                        {
-                            "local_path": portable_path,
-                            "path": guest_path,
-                        }
-                    ]
-                },
+                "parameters": {"files": upload_files},
             },
             {"type": "open", "parameters": {"path": guest_path}},
         ],
         "related_apps": [profile.app],
-        "reference_annotation": {
-            "schema_version": "1.0",
-            "reference_task_id": task_id,
-            "artifact_path": portable_path,
-            "artifact_sha256": actual_hash,
-            "guest_artifact_path": guest_path,
-            "required_skill_ids": package["required_skill_ids"],
-            "operator_guide": package["operator_guide"],
-            "expected_incidental_operations": package[
-                "expected_incidental_operations"
-            ],
-            "ready_state_checks": blueprint["ready_state_checks"],
-            "setup_notes": blueprint["setup_notes"],
-            "recording_mode": "human_reference",
-        },
+        "reference_annotation": reference_annotation,
         "proxy": False,
         "fixed_ip": False,
         "possibility_of_env_change": "low",
@@ -385,9 +498,7 @@ def write_annotation_configs(
             {
                 "reference_task_id": task_id,
                 "task_config_path": portable_config_path,
-                "artifact_sha256": config["reference_annotation"][
-                    "artifact_sha256"
-                ],
+                "artifact_sha256": config["reference_annotation"]["artifact_sha256"],
                 "blueprint_request_id": result.request_id,
             }
         )

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+  "app": "libreoffice_impress",
+  "single_action_count": 10,
+  "prompt_sha256": "807592b1e0b76bc7275923495113a9e18313ca41da202ac9ed82b0b4b2699d36",
+  "request_id": "b246cac7-b0eb-4678-91f2-10f9ed1a2493",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1559,
+    "cached_input_tokens": 1355,
+    "output_tokens": 244,
+    "estimated_cost_usd": 0.003607
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set an exact font size for selected text",
+        "procedure": [
+          "Enter text-editing mode in the target text box and select the text whose size should change; for example, triple-click a text line to select its contents.",
+          "Click the font-size field on the formatting toolbar, replace its current value with the desired point size, and press Enter to apply it.",
+          "Repeat the same direct-entry method independently for other text objects as needed; for example, apply 60 pt to one selected text box and 28 pt to another."
+        ],
+        "efficiency_tip": "Type the numeric point size directly into the font-size field instead of searching the dropdown list, especially for sizes not shown among the preset options.",
+        "action_ids": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    ]
+  }
+}

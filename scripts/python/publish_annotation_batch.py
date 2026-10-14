@@ -49,6 +49,21 @@ def parse_args() -> argparse.Namespace:
         help="Delete stale assignments for every username in the new assignment file.",
     )
     parser.add_argument("--allow-pending", action="store_true")
+    parser.add_argument(
+        "--review-only",
+        action="store_true",
+        help="Publish task cards and review forms without validating gateway launch support.",
+    )
+    parser.add_argument(
+        "--skip-assignments",
+        action="store_true",
+        help="Publish the catalog without writing or deleting any task assignments.",
+    )
+    parser.add_argument(
+        "--preserve-reviews-from-root",
+        type=Path,
+        help="Copy online reviews for unchanged tasks from this old snapshot version.",
+    )
     return parser.parse_args()
 
 
@@ -169,6 +184,7 @@ def install_snapshot(
     key: str,
     sha256: str,
     allow_pending: bool,
+    review_only: bool = False,
 ) -> None:
     archive_path = f"/tmp/osworld-pilot-{sha256}.tar.gz"
     destination = f"/opt/osworld/published-pilots/{sha256}"
@@ -179,16 +195,19 @@ def install_snapshot(
     validation_code = (
         "from pathlib import Path; "
         "from benchmark_construction.annotation_portal.catalog import TaskCatalog; "
-        "from benchmark_construction.annotation_portal.aws_workspace import "
-        "_load_task_config; "
         f"root=Path({(destination + '/pilot')!r}); "
         "TaskCatalog.load(packages_path=root/'reference_packages.json', "
         "skills_path=root/'skill_pool.json', "
         "reviews_path=root/'reference_package_reviews.json', "
-        f"allow_pending={allow_pending!r}); "
-        "[_load_task_config(path) for path in "
-        "sorted((root/'task_configs').glob('*.json'))]"
+        f"allow_pending={allow_pending!r})"
     )
+    if not review_only:
+        validation_code += (
+            "; from benchmark_construction.annotation_portal.aws_workspace import "
+            "_load_task_config; "
+            "[_load_task_config(path) for path in "
+            "sorted((root/'task_configs').glob('*.json'))]"
+        )
     commands = [
         "set -eu",
         f"/usr/bin/python3 -c {shlex.quote(download_code)}",
@@ -275,8 +294,60 @@ def put_assignments(
     return deleted
 
 
+def preserve_existing_reviews(
+    dynamodb: Any,
+    table_name: str,
+    *,
+    old_version: str,
+    new_version: str,
+    unchanged_task_ids: set[str],
+) -> int:
+    """Carry reviews to an appended catalog before switching the live symlink."""
+    from boto3.dynamodb.types import TypeDeserializer, TypeSerializer
+    from botocore.exceptions import ClientError
+
+    if old_version == new_version:
+        return 0
+    serializer = TypeSerializer()
+    deserializer = TypeDeserializer()
+    query = {
+        "TableName": table_name,
+        "KeyConditionExpression": "pk = :pk AND begins_with(sk, :prefix)",
+        "ExpressionAttributeValues": {
+            ":pk": serializer.serialize(f"REVIEW#{old_version}"),
+            ":prefix": serializer.serialize("TASK#"),
+        },
+    }
+    copied = 0
+    while True:
+        response = dynamodb.query(**query)
+        for raw in response.get("Items", []):
+            item = {key: deserializer.deserialize(value) for key, value in raw.items()}
+            if item["task_id"] not in unchanged_task_ids:
+                continue
+            item["pk"] = f"REVIEW#{new_version}"
+            item["catalog_version"] = new_version
+            try:
+                dynamodb.put_item(
+                    TableName=table_name,
+                    Item={key: serializer.serialize(value) for key, value in item.items()},
+                    ConditionExpression="attribute_not_exists(pk)",
+                )
+                copied += 1
+            except ClientError as exc:
+                if exc.response["Error"]["Code"] != "ConditionalCheckFailedException":
+                    raise
+        last_key = response.get("LastEvaluatedKey")
+        if not last_key:
+            break
+        query["ExclusiveStartKey"] = last_key
+    return copied
+
+
 def main() -> int:
     args = parse_args()
+    if args.skip_assignments and args.replace_assignments:
+        raise ValueError("--skip-assignments and --replace-assignments are incompatible")
     import boto3
 
     session = boto3.Session(profile_name=args.profile, region_name=args.region)
@@ -299,7 +370,23 @@ def main() -> int:
             allow_pending=args.allow_pending,
         )
         task_ids = {task.task_id for task in catalog.all()}
-        assignments = load_assignments(args.assignments.resolve(), task_ids)
+        assignments = (
+            []
+            if args.skip_assignments
+            else load_assignments(args.assignments.resolve(), task_ids)
+        )
+        old_catalog = None
+        if args.preserve_reviews_from_root:
+            old_root = args.preserve_reviews_from_root.resolve()
+            old_catalog = TaskCatalog.load(
+                packages_path=old_root / "reference_packages.json",
+                skills_path=old_root / "skill_pool.json",
+                reviews_path=old_root / "reference_package_reviews.json",
+                allow_pending=args.allow_pending,
+            )
+            old_ids = {task.task_id for task in old_catalog.all()}
+            if not old_ids.issubset(task_ids):
+                raise ValueError("New catalog omits tasks from the old snapshot")
         archive = temporary_root / "pilot.tar.gz"
         digest = build_snapshot(pilot_root, archive)
         bucket = outputs["AnnotationBucketName"]
@@ -313,6 +400,15 @@ def main() -> int:
         )
         if s3.head_object(Bucket=bucket, Key=key).get("Metadata", {}).get("sha256") != digest:
             raise RuntimeError("Uploaded pilot snapshot metadata verification failed")
+        copied_reviews = 0
+        if old_catalog is not None:
+            copied_reviews = preserve_existing_reviews(
+                session.client("dynamodb"),
+                outputs["StateTableName"],
+                old_version=old_catalog.all()[0].catalog_version,
+                new_version=catalog.all()[0].catalog_version,
+                unchanged_task_ids=old_ids,
+            )
         install_snapshot(
             session.client("ssm"),
             instance_id=outputs["GatewayInstanceId"],
@@ -320,21 +416,29 @@ def main() -> int:
             key=key,
             sha256=digest,
             allow_pending=args.allow_pending,
+            review_only=args.review_only,
         )
-    deleted_assignments = put_assignments(
-        session.client("dynamodb"),
-        outputs["StateTableName"],
-        assignments,
-        replace=args.replace_assignments,
+    deleted_assignments = (
+        0
+        if args.skip_assignments
+        else put_assignments(
+            session.client("dynamodb"),
+            outputs["StateTableName"],
+            assignments,
+            replace=args.replace_assignments,
+        )
     )
     print(
         json.dumps(
             {
-                "catalog_version": digest,
+                "catalog_version": catalog.all()[0].catalog_version,
+                "snapshot_sha256": digest,
                 "task_count": len(task_ids),
                 "assignment_count": len(assignments),
                 "deleted_assignment_count": deleted_assignments,
+                "preserved_review_count": copied_reviews,
                 "gateway_restarted": False,
+                "review_only": args.review_only,
                 "s3_uri": f"s3://{bucket}/{key}",
             },
             indent=2,

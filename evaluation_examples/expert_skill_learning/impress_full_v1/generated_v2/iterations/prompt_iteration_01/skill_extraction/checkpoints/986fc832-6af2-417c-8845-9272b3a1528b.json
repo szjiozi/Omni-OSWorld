@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+  "app": "libreoffice_impress",
+  "single_action_count": 11,
+  "prompt_sha256": "529979d36d244e8ed97acd4b20eef0891f45b69610095574e25a1da83cd2d4c7",
+  "request_id": "907a7d7d-47ab-491e-b016-e4ab9cc4da91",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1306,
+    "cached_input_tokens": 1103,
+    "output_tokens": 638,
+    "estimated_cost_usd": 0.0082826
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Underline all text in a text object or table",
+        "procedure": [
+          "For a regular text object, click inside the object so that its text is the editing target, then use Ctrl+A to select all text in that object and press Ctrl+U to toggle underlining. For example, select all text in a title box and press Ctrl+U.",
+          "For a table, click in the table, place the text cursor in the first cell, and drag through the table to select its text content; then press Ctrl+U. This applies underline formatting to the selected table text rather than merely selecting the table frame."
+        ],
+        "efficiency_tip": "Use Ctrl+A only after entering text-editing mode in the intended object; this selects that object's text quickly without requiring manual character-by-character selection. For tables, drag from the first cell through the last cell once to format the full table selection in one command.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "name": "Apply a font color from the color palette",
+        "procedure": [
+          "Select the text whose character color should change, then click the Font Color icon to open its palette.",
+          "Choose the desired named swatch from the palette. For example, choose the “Dark Red 2” swatch to apply that color to the current text selection."
+        ],
+        "efficiency_tip": "Select all target text before opening the color palette so one swatch choice formats the entire selection at once; the palette remains a faster choice than applying color separately to individual words.",
+        "action_ids": [
+          3,
+          4,
+          10
+        ]
+      }
+    ]
+  }
+}

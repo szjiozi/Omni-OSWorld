@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+  "app": "libreoffice_impress",
+  "single_action_count": 5,
+  "prompt_sha256": "ef40ebf23222988a459670a47d23d0c4743076c0689f75cc5578c12f59178d94",
+  "request_id": "4c5a84f4-963d-4e9c-9b18-969f798e5477",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1511,
+    "cached_input_tokens": 1355,
+    "output_tokens": 153,
+    "estimated_cost_usd": 0.002419
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Export an Impress presentation as a PNG image",
+        "procedure": [
+          "Open the File menu and choose Export… to open the export file dialog.",
+          "Enter a filename with the `.png` extension, for example `res.png`; choose the desired folder in the file dialog before confirming if needed.",
+          "Confirm the file dialog, then accept the default PNG export options in the subsequent format-options dialog."
+        ],
+        "efficiency_tip": "Type the desired filename with the `.png` extension directly in the export dialog so Impress selects the image format automatically; keep the default options when no custom resolution or compression is required.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ]
+  }
+}

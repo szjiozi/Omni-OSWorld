@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+  "app": "libreoffice_impress",
+  "single_action_count": 9,
+  "prompt_sha256": "02903c7765ffff0291a79cec5aa918137c3c7e1a5263f6441da1056914db0843",
+  "request_id": "15aec7b5-5231-4d56-80d0-6e53664666ef",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1537,
+    "cached_input_tokens": 1355,
+    "output_tokens": 556,
+    "estimated_cost_usd": 0.007307
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply bold formatting to all text in separate text objects",
+        "procedure": [
+          "Click inside a text object to enter text-editing mode, then press Ctrl+A to select all text in that object.",
+          "Click the Bold toolbar icon to toggle bold on for the selected text.",
+          "Repeat for each additional text object that needs the same formatting; for example, double-click inside another text object, press Ctrl+A, and click Bold."
+        ],
+        "efficiency_tip": "Use Ctrl+A only after entering the intended text object, since it selects that object's text rather than requiring character-by-character selection. Repeat the same quick sequence for separate objects instead of attempting to format them as one selection.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "name": "Underline selected text",
+        "procedure": [
+          "With the required text still selected in text-editing mode, click the Underline toolbar icon.",
+          "For example, after selecting all text in a text object with Ctrl+A, use Underline to apply the style to the entire object’s text."
+        ],
+        "efficiency_tip": "Apply underline while the text remains selected after another character-formatting change, avoiding an extra selection step.",
+        "action_ids": [
+          3
+        ]
+      },
+      {
+        "name": "Set the font size of selected text from the size dropdown",
+        "procedure": [
+          "Keep the target text selected in text-editing mode.",
+          "Open the font-size dropdown in the formatting toolbar and choose the required point size, such as 44 pt.",
+          "The chosen size is applied to the current text selection."
+        ],
+        "efficiency_tip": "Select the full target text before opening the size dropdown so the size change is applied consistently in one operation.",
+        "action_ids": [
+          4,
+          5
+        ]
+      }
+    ]
+  }
+}

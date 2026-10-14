@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.0",
+  "builder": "impress_deferred_artifact_adapter",
+  "artifact_strategy_ids": [
+    "slide-number-native-fields"
+  ],
+  "package_artifact_spec": {
+    "artifact_type": "pptx",
+    "domain": "community education program showcase",
+    "presentation_title": "Community Learning Showcase",
+    "slide_size": "wide",
+    "theme": {
+      "primary_color": "d0e7e8",
+      "secondary_color": "44546a",
+      "accent_color": "ed7d31",
+      "background_color": "ffffff",
+      "title_font": "Aptos Display",
+      "body_font": "Aptos"
+    },
+    "slides": [
+      {
+        "slide_number": 1,
+        "purpose": "Opening title for the community learning program.",
+        "layout": "title",
+        "object_plan": [
+          {
+            "semantic_id": "showcase_title",
+            "type": "text",
+            "purpose": "Presentation title: Community Learning Showcase.",
+            "editable": true
+          },
+          {
+            "semantic_id": "showcase_subtitle",
+            "type": "text",
+            "purpose": "Subtitle: Program overview.",
+            "editable": true
+          }
+        ]
+      },
+      {
+        "slide_number": 2,
+        "purpose": "Outline of the planned workshop activities.",
+        "layout": "title_content",
+        "object_plan": [
+          {
+            "semantic_id": "workshop_title",
+            "type": "text",
+            "purpose": "Slide title: Workshop Plan.",
+            "editable": true
+          },
+          {
+            "semantic_id": "workshop_agenda",
+            "type": "text",
+            "purpose": "Agenda listing opening session, hands-on activity, and discussion.",
+            "editable": true
+          }
+        ]
+      },
+      {
+        "slide_number": 3,
+        "purpose": "Visual summary of participation and the upcoming milestone.",
+        "layout": "data_story",
+        "object_plan": [
+          {
+            "semantic_id": "snapshot_heading",
+            "type": "text",
+            "purpose": "Slide title: Participation Snapshot.",
+            "editable": true
+          },
+          {
+            "semantic_id": "registrations_metric",
+            "type": "text",
+            "purpose": "Registrations callout.",
+            "editable": true
+          },
+          {
+            "semantic_id": "facilitators_metric",
+            "type": "text",
+            "purpose": "Facilitators callout.",
+            "editable": true
+          },
+          {
+            "semantic_id": "milestone_metric",
+            "type": "text",
+            "purpose": "Next milestone callout.",
+            "editable": true
+          },
+          {
+            "semantic_id": "snapshot_visual",
+            "type": "image",
+            "purpose": "Supporting participation visual.",
+            "editable": true
+          }
+        ]
+      },
+      {
+        "slide_number": 4,
+        "purpose": "Reference details for attendees and organizers.",
+        "layout": "title_content",
+        "object_plan": [
+          {
+            "semantic_id": "resource_title",
+            "type": "text",
+            "purpose": "Slide title: Resource Guide.",
+            "editable": true
+          },
+          {
+            "semantic_id": "resource_details",
+            "type": "text",
+            "purpose": "Venue, materials, and support contact details.",
+            "editable": true
+          }
+        ]
+      },
+      {
+        "slide_number": 5,
+        "purpose": "Conclude the program overview with takeaways and next actions.",
+        "layout": "comparison",
+        "object_plan": [
+          {
+            "semantic_id": "closing_title",
+            "type": "text",
+            "purpose": "Slide title: Closing Notes.",
+            "editable": true
+          },
+          {
+            "semantic_id": "takeaway_text",
+            "type": "text",
+            "purpose": "Key takeaway statement.",
+            "editable": true
+          },
+          {
+            "semantic_id": "followup_text",
+            "type": "text",
+            "purpose": "Follow-up action statement.",
+            "editable": true
+          },
+          {
+            "semantic_id": "closing_image_left",
+            "type": "image",
+            "purpose": "Supporting closing visual.",
+            "editable": true
+          },
+          {
+            "semantic_id": "closing_image_right",
+            "type": "image",
+            "purpose": "Supporting follow-up visual.",
+            "editable": true
+          }
+        ]
+      },
+      {
+        "slide_number": 6,
+        "purpose": "Closing recap of the program overview and resources.",
+        "layout": "title_content",
+        "object_plan": [
+          {
+            "semantic_id": "recap_title",
+            "type": "text",
+            "purpose": "Presentation title repeated for recap.",
+            "editable": true
+          },
+          {
+            "semantic_id": "recap_subtitle",
+            "type": "text",
+            "purpose": "Program overview recap.",
+            "editable": true
+          },
+          {
+            "semantic_id": "recap_content",
+            "type": "text",
+            "purpose": "Brief schedule and resources recap.",
+            "editable": true
+          }
+        ]
+      }
+    ],
+    "initial_state": [
+      "The supplied wide-format deck contains six slides and existing editable titles, body text, images, and notes.",
+      "No visible slide-number fields are currently instantiated on the individual slides, while the supplied master/layout hierarchy contains slide-number placeholders.",
+      "The presentation contains multiple master and layout parts that must be retained when applying shared numbering format."
+    ],
+    "must_not_be_completed": [
+      "Do not alter, replace, or delete existing titles, body content, images, notes, layouts, or slide order.",
+      "Do not apply the amber exception to slides other than Participation Snapshot and Closing Notes.",
+      "Do not use manually typed numbers in place of native slide-number fields."
+    ],
+    "generation_notes": [
+      "Use the supplied initial_artifact.pptx as the starting presentation.",
+      "Preserve native slide-number placeholders and master hierarchy when saving the adapted PPTX.",
+      "The expected result is a presentation-wide native numbering field with master-based deep-teal formatting plus two direct per-slide amber overrides."
+    ]
+  },
+  "source_provenance": [
+    {
+      "strategy_id": "slide-number-native-fields",
+      "source_task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    }
+  ]
+}

@@ -1,0 +1,992 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-impress-full-v2-r01-002",
+  "package": {
+    "reference_task_id": "reference-task-impress-full-v2-r01-002",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_impress",
+    "task_instruction": "Finalize the Harbor Air Lab briefing: on the “Field Snapshot” slide, move the coastal landscape illustration from the left panel into the right-side image frame, make the heading “FIELD SNAPSHOT” bold, and right-align the source line beneath the image. On the following “Next Measurement” slide, center the text in the closing callout, “Sampling begins at first light.” Keep all wording and other slide elements unchanged.",
+    "required_skill_ids": [
+      "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01",
+      "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01",
+      "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01",
+      "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01"
+    ],
+    "artifact_spec": {
+      "artifact_type": "pptx",
+      "domain": "Environmental field briefing for a harbor air-quality sampling team",
+      "presentation_title": "Harbor Air Lab: Dawn Sampling Brief",
+      "slide_size": "wide",
+      "theme": {
+        "primary_color": "0B3954",
+        "secondary_color": "BFD7EA",
+        "accent_color": "F4A261",
+        "background_color": "F7FAFC",
+        "title_font": "Aptos Display",
+        "body_font": "Aptos"
+      },
+      "slides": [
+        {
+          "slide_number": 1,
+          "purpose": "Briefing cover that establishes the harbor sampling theme.",
+          "layout": "title",
+          "object_plan": [
+            {
+              "semantic_id": "cover_horizon_band",
+              "type": "shape",
+              "purpose": "Full-width dark harbor-horizon band along the lower third of the cover.",
+              "editable": true
+            },
+            {
+              "semantic_id": "cover_title",
+              "type": "text",
+              "purpose": "Presentation title reading “Harbor Air Lab”.",
+              "editable": true
+            },
+            {
+              "semantic_id": "cover_subtitle",
+              "type": "text",
+              "purpose": "Subtitle reading “Dawn Sampling Brief · Coastal Operations Team”.",
+              "editable": true
+            },
+            {
+              "semantic_id": "cover_wave_mark",
+              "type": "shape",
+              "purpose": "Small orange wave-like accent beside the subtitle.",
+              "editable": true
+            }
+          ]
+        },
+        {
+          "slide_number": 2,
+          "purpose": "Field snapshot with an image placement target and a concise source citation.",
+          "layout": "two_column",
+          "object_plan": [
+            {
+              "semantic_id": "snapshot_heading",
+              "type": "text",
+              "purpose": "Editable heading reading “FIELD SNAPSHOT”; initially not bold.",
+              "editable": true
+            },
+            {
+              "semantic_id": "snapshot_context",
+              "type": "text",
+              "purpose": "Two-line context statement about prevailing offshore wind and pier access.",
+              "editable": true
+            },
+            {
+              "semantic_id": "snapshot_image_frame",
+              "type": "shape",
+              "purpose": "Light-blue outlined frame in the right panel that marks the intended image destination.",
+              "editable": true
+            },
+            {
+              "semantic_id": "snapshot_coastal_landscape",
+              "type": "image",
+              "purpose": "Editable coastal landscape illustration, initially positioned in the left panel rather than in its right-side frame.",
+              "editable": true
+            },
+            {
+              "semantic_id": "snapshot_source_line",
+              "type": "text",
+              "purpose": "Editable citation reading “Source: Harbor survey team, 06:10”; initially left-aligned beneath the intended image frame.",
+              "editable": true
+            },
+            {
+              "semantic_id": "snapshot_status_chip",
+              "type": "shape",
+              "purpose": "Orange rounded status chip labeled “CLEAR WINDOW”.",
+              "editable": true
+            }
+          ]
+        },
+        {
+          "slide_number": 3,
+          "purpose": "Next-step slide that closes the briefing with a centered operational callout.",
+          "layout": "process",
+          "object_plan": [
+            {
+              "semantic_id": "measurement_heading",
+              "type": "text",
+              "purpose": "Heading reading “NEXT MEASUREMENT”.",
+              "editable": true
+            },
+            {
+              "semantic_id": "measurement_step_one",
+              "type": "shape",
+              "purpose": "Numbered process marker for “Calibrate sensors”.",
+              "editable": true
+            },
+            {
+              "semantic_id": "measurement_step_two",
+              "type": "shape",
+              "purpose": "Numbered process marker for “Launch skiff”.",
+              "editable": true
+            },
+            {
+              "semantic_id": "measurement_step_three",
+              "type": "shape",
+              "purpose": "Numbered process marker for “Log coastal readings”.",
+              "editable": true
+            },
+            {
+              "semantic_id": "measurement_closing_callout",
+              "type": "text",
+              "purpose": "Editable closing callout reading “Sampling begins at first light.”; initially left-aligned within a wide pale-blue callout area.",
+              "editable": true
+            },
+            {
+              "semantic_id": "measurement_callout_backing",
+              "type": "shape",
+              "purpose": "Wide pale-blue rounded rectangle behind the closing callout.",
+              "editable": true
+            }
+          ]
+        }
+      ],
+      "initial_state": [
+        "The deck contains three editable wide-format slides using the Harbor Air Lab theme.",
+        "On slide 2, the coastal landscape illustration is visibly in the left panel while an empty outlined destination frame is visibly present on the right panel.",
+        "On slide 2, “FIELD SNAPSHOT” is regular weight, not bold.",
+        "On slide 2, the source line below the right-side frame is left-aligned.",
+        "On slide 3, the closing callout text is left-aligned within its wide callout area."
+      ],
+      "must_not_be_completed": [
+        "Do not move the coastal landscape illustration into the right-side image frame.",
+        "Do not bold the “FIELD SNAPSHOT” heading.",
+        "Do not right-align the slide 2 source line.",
+        "Do not center the slide 3 closing callout text.",
+        "Do not alter the slide order, theme colors, wording, or other objects."
+      ],
+      "generation_notes": [
+        "Use a privacy-safe, builder-generated shoreline illustration rather than an external photograph or a copied source asset.",
+        "Create all displayed text as editable text objects, not native placeholder controls.",
+        "Place the image frame and source line so the requested move and right alignment yield an unambiguous visual result.",
+        "Use object geometry that leaves sufficient room for the image to move from the left panel to the right panel without overlapping the heading or source line."
+      ]
+    },
+    "operator_guide": {
+      "recommended_demonstration": [
+        {
+          "skill_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01",
+          "operation_intent": "Apply bold character formatting to the slide 2 heading only.",
+          "visible_success_signal": "“FIELD SNAPSHOT” has a visibly heavier weight while its wording, position, and color remain unchanged.",
+          "efficiency_tip": "Enter text-editing mode in the heading and use Ctrl+B with the heading text selected or the insertion point in that text."
+        },
+        {
+          "skill_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01",
+          "operation_intent": "Relocate the slide 2 coastal landscape illustration into the outlined destination frame on the right.",
+          "visible_success_signal": "The coastal landscape illustration occupies the right-side frame area, and the left panel no longer contains the illustration.",
+          "efficiency_tip": "Drag from the image interior rather than a sizing handle; use the visible frame edges as the placement reference."
+        },
+        {
+          "skill_id": "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01",
+          "operation_intent": "Right-align the slide 2 source citation paragraph.",
+          "visible_success_signal": "The citation’s right edge aligns with the right edge of its text box beneath the image frame.",
+          "efficiency_tip": "Place the text cursor in the source paragraph before applying Right Align."
+        },
+        {
+          "skill_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01",
+          "operation_intent": "Center the paragraph in the slide 3 closing callout.",
+          "visible_success_signal": "“Sampling begins at first light.” is centered horizontally in the pale-blue callout area.",
+          "efficiency_tip": "Enter the callout text box, select its text, and apply Center Align once."
+        }
+      ],
+      "allowed_variation": "Minor differences in the precise image drop point are acceptable if the image is clearly positioned within the right-side outlined frame. The requested text formatting and paragraph alignments must remain exact.",
+      "recording_start_state": "Open the supplied three-slide presentation in normal slide editing view with all specified incomplete states visible.",
+      "recording_end_state": "Slide 2 has the image in the right frame, a bold heading, and a right-aligned source line; slide 3 has a centered closing callout."
+    },
+    "expected_incidental_operations": [
+      {
+        "operation": "Navigate between slides 2 and 3 in the Slides pane.",
+        "reason": "The coordinated edits are located on two related content slides.",
+        "category": "scaffolding"
+      },
+      {
+        "operation": "Enter text-editing mode and select text in the heading, source line, and closing callout as needed.",
+        "reason": "Character formatting and paragraph alignment must apply to text rather than to the containing objects.",
+        "category": "substantive_prerequisite"
+      },
+      {
+        "operation": "Select the coastal landscape illustration before dragging it.",
+        "reason": "The image must be selected to relocate it into the designated frame.",
+        "category": "substantive_prerequisite"
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        }
+      ],
+      "dominant_source_task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+      "dominant_source_skill_fraction": 0.25,
+      "complete_source_skill_sets_included": [
+        "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+        "08aced46-45a2-48d7-993b-ed3fb5b32302",
+        "2b94c692-6abb-48ae-ab0b-b3e8a19cb340"
+      ]
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+        "max_sequence_similarity": 0.274583,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+            "sequence_similarity": 0.156098
+          },
+          {
+            "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+            "sequence_similarity": 0.268007
+          },
+          {
+            "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+            "sequence_similarity": 0.165605
+          },
+          {
+            "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+            "sequence_similarity": 0.24735
+          },
+          {
+            "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+            "sequence_similarity": 0.02381
+          },
+          {
+            "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+            "sequence_similarity": 0.177215
+          },
+          {
+            "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+            "sequence_similarity": 0.151329
+          },
+          {
+            "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+            "sequence_similarity": 0.167382
+          },
+          {
+            "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+            "sequence_similarity": 0.115079
+          },
+          {
+            "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+            "sequence_similarity": 0.153226
+          },
+          {
+            "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+            "sequence_similarity": 0.021739
+          },
+          {
+            "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+            "sequence_similarity": 0.163934
+          },
+          {
+            "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+            "sequence_similarity": 0.243902
+          },
+          {
+            "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+            "sequence_similarity": 0.19823
+          },
+          {
+            "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+            "sequence_similarity": 0.17551
+          },
+          {
+            "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+            "sequence_similarity": 0.009554
+          },
+          {
+            "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+            "sequence_similarity": 0.264605
+          },
+          {
+            "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+            "sequence_similarity": 0.22619
+          },
+          {
+            "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+            "sequence_similarity": 0.106996
+          },
+          {
+            "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+            "sequence_similarity": 0.246353
+          },
+          {
+            "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+            "sequence_similarity": 0.134694
+          },
+          {
+            "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+            "sequence_similarity": 0.152866
+          },
+          {
+            "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+            "sequence_similarity": 0.126016
+          },
+          {
+            "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+            "sequence_similarity": 0.173913
+          },
+          {
+            "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+            "sequence_similarity": 0.164329
+          },
+          {
+            "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+            "sequence_similarity": 0.127572
+          },
+          {
+            "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+            "sequence_similarity": 0.205825
+          },
+          {
+            "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+            "sequence_similarity": 0.096842
+          },
+          {
+            "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+            "sequence_similarity": 0.25
+          },
+          {
+            "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+            "sequence_similarity": 0.091286
+          },
+          {
+            "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+            "sequence_similarity": 0.274583
+          },
+          {
+            "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+            "sequence_similarity": 0.189474
+          },
+          {
+            "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+            "sequence_similarity": 0.048048
+          },
+          {
+            "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+            "sequence_similarity": 0.177215
+          },
+          {
+            "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+            "sequence_similarity": 0.15493
+          },
+          {
+            "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+            "sequence_similarity": 0.175084
+          },
+          {
+            "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+            "sequence_similarity": 0.192678
+          },
+          {
+            "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+            "sequence_similarity": 0.119923
+          },
+          {
+            "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+            "sequence_similarity": 0.013636
+          },
+          {
+            "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+            "sequence_similarity": 0.015848
+          },
+          {
+            "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+            "sequence_similarity": 0.122449
+          },
+          {
+            "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+            "sequence_similarity": 0.106157
+          },
+          {
+            "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+            "sequence_similarity": 0.228893
+          },
+          {
+            "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+            "sequence_similarity": 0.241107
+          },
+          {
+            "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+            "sequence_similarity": 0.142259
+          },
+          {
+            "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+            "sequence_similarity": 0.241563
+          },
+          {
+            "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+            "sequence_similarity": 0.119149
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+        "max_cosine_similarity": 0.525306,
+        "by_source_task": [
+          {
+            "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+            "cosine_similarity": 0.458279
+          },
+          {
+            "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+            "cosine_similarity": 0.478245
+          },
+          {
+            "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+            "cosine_similarity": 0.525306
+          },
+          {
+            "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+            "cosine_similarity": 0.480647
+          },
+          {
+            "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+            "cosine_similarity": 0.323272
+          },
+          {
+            "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+            "cosine_similarity": 0.435633
+          },
+          {
+            "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+            "cosine_similarity": 0.360161
+          },
+          {
+            "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+            "cosine_similarity": 0.512044
+          },
+          {
+            "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+            "cosine_similarity": 0.154105
+          },
+          {
+            "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+            "cosine_similarity": 0.419706
+          },
+          {
+            "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+            "cosine_similarity": 0.304077
+          },
+          {
+            "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+            "cosine_similarity": 0.402928
+          },
+          {
+            "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+            "cosine_similarity": 0.435318
+          },
+          {
+            "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+            "cosine_similarity": 0.32126
+          },
+          {
+            "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+            "cosine_similarity": 0.430423
+          },
+          {
+            "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+            "cosine_similarity": 0.315373
+          },
+          {
+            "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+            "cosine_similarity": 0.436841
+          },
+          {
+            "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+            "cosine_similarity": 0.505462
+          },
+          {
+            "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+            "cosine_similarity": 0.43595
+          },
+          {
+            "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+            "cosine_similarity": 0.326894
+          },
+          {
+            "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+            "cosine_similarity": 0.437409
+          },
+          {
+            "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+            "cosine_similarity": 0.43204
+          },
+          {
+            "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+            "cosine_similarity": 0.464845
+          },
+          {
+            "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+            "cosine_similarity": 0.500236
+          },
+          {
+            "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+            "cosine_similarity": 0.399641
+          },
+          {
+            "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+            "cosine_similarity": 0.480338
+          },
+          {
+            "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+            "cosine_similarity": 0.460932
+          },
+          {
+            "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+            "cosine_similarity": 0.485285
+          },
+          {
+            "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+            "cosine_similarity": 0.438436
+          },
+          {
+            "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+            "cosine_similarity": 0.298939
+          },
+          {
+            "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+            "cosine_similarity": 0.415399
+          },
+          {
+            "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+            "cosine_similarity": 0.484246
+          },
+          {
+            "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+            "cosine_similarity": 0.337936
+          },
+          {
+            "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+            "cosine_similarity": 0.434154
+          },
+          {
+            "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+            "cosine_similarity": 0.360587
+          },
+          {
+            "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+            "cosine_similarity": 0.371336
+          },
+          {
+            "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+            "cosine_similarity": 0.453807
+          },
+          {
+            "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+            "cosine_similarity": 0.467197
+          },
+          {
+            "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+            "cosine_similarity": 0.375971
+          },
+          {
+            "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+            "cosine_similarity": 0.323561
+          },
+          {
+            "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+            "cosine_similarity": 0.389444
+          },
+          {
+            "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+            "cosine_similarity": 0.454407
+          },
+          {
+            "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+            "cosine_similarity": 0.454039
+          },
+          {
+            "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+            "cosine_similarity": 0.505467
+          },
+          {
+            "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+            "cosine_similarity": 0.487691
+          },
+          {
+            "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+            "cosine_similarity": 0.356758
+          },
+          {
+            "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+            "cosine_similarity": 0.446477
+          }
+        ],
+        "embedding_request_id": "1b8331a5-3c9c-489f-a950-ed3661568454"
+      }
+    },
+    "generation": {
+      "attempt": 2,
+      "kind": "new_combination",
+      "request_id": "8deb0b79-4f1f-45d5-a298-f0a11116a0dc",
+      "prompt_sha256": "e5c6b1feffc333b0e61be0d2f0f8045535b3e22475cb1d8b24575df45bdffc85"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Apply bold formatting to text in a slide text box",
+      "procedure": [
+        "Select the text box whose text should be formatted, entering text-editing mode if necessary so the formatting applies to its characters rather than the object border.",
+        "Use Ctrl+B to toggle bold formatting for the selected text or for subsequently entered text. For example, click inside a slide title and press Ctrl+B to make the title bold."
+      ],
+      "efficiency_tip": "Use Ctrl+B rather than opening the formatting toolbar; verify that the text caret or selected text is active so you do not merely select the text box object.",
+      "source": {
+        "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+        "action_ids": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "skill_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Move a selected image by dragging",
+      "procedure": [
+        "Select the slide containing the image in the Slides pane, for example Slide 2.",
+        "Move the pointer over the image and drag it to the desired position on the slide canvas, such as toward the right side.",
+        "Release the mouse button when the image is positioned correctly."
+      ],
+      "efficiency_tip": "Drag the image by its interior rather than a resize handle, and use alignment guides if they appear to place it accurately in one movement.",
+      "source": {
+        "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "skill_id": "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Align paragraph text to the right in a text box",
+      "procedure": [
+        "Enter text-editing mode in the target text box, for example by clicking inside its title text.",
+        "Click the Right Align toolbar icon to align the current paragraph to the right edge of the text box."
+      ],
+      "efficiency_tip": "Place the text cursor in the intended paragraph before using Right Align; this avoids changing alignment on a different object or paragraph.",
+      "source": {
+        "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+        "action_ids": [
+          1,
+          3
+        ]
+      }
+    },
+    {
+      "skill_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Align paragraph text within a selected text box",
+      "procedure": [
+        "In the Slides pane, select the slide containing the text box to format.",
+        "Click inside the text box to enter text-editing mode, then use Ctrl+A to select its text.",
+        "Click the desired paragraph-alignment control in the toolbar, such as Right Align, Center Align, or Left Align.",
+        "For example, select the text in a text box and click Center Align to center all selected paragraphs within that box."
+      ],
+      "efficiency_tip": "Select the text directly with Ctrl+A after entering the text box, then apply one alignment command; this avoids changing alignment on the wrong object or only affecting an insertion point.",
+      "source": {
+        "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+      "instruction": "Align the first textbox on slide 3 to the right, on slide 4 to the center, and on slide 5 to the left. Ensure that the alignment is applied correctly to each respective slide.",
+      "required_skill_ids": [
+        "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`CLICK` Slide 3"
+        },
+        {
+          "action_id": 1,
+          "action": "`CLICK` 'HELLO'"
+        },
+        {
+          "action_id": 2,
+          "action": "`HOTKEY` ctrl-A"
+        },
+        {
+          "action_id": 3,
+          "action": "`CLICK` right-align icon"
+        },
+        {
+          "action_id": 4,
+          "action": "`CLICK` Slide 4"
+        },
+        {
+          "action_id": 5,
+          "action": "`CLICK` 'WRITE'"
+        },
+        {
+          "action_id": 6,
+          "action": "`HOTKEY` ctrl-A"
+        },
+        {
+          "action_id": 7,
+          "action": "`CLICK` center-align icon"
+        },
+        {
+          "action_id": 8,
+          "action": "`CLICK` Slide 5"
+        },
+        {
+          "action_id": 9,
+          "action": "`CLICK` 'WRITE'"
+        },
+        {
+          "action_id": 10,
+          "action": "`HOTKEY` ctrl-A"
+        },
+        {
+          "action_id": 11,
+          "action": "`CLICK` left-align icon under paragraph section"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` Slide 3",
+        "`CLICK` 'HELLO'",
+        "`HOTKEY` ctrl-A",
+        "`CLICK` right-align icon",
+        "`CLICK` Slide 4",
+        "`CLICK` 'WRITE'",
+        "`HOTKEY` ctrl-A",
+        "`CLICK` center-align icon",
+        "`CLICK` Slide 5",
+        "`CLICK` 'WRITE'",
+        "`HOTKEY` ctrl-A",
+        "`CLICK` left-align icon under paragraph section"
+      ]
+    },
+    {
+      "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+      "instruction": "Give the slide 2 the right aligned title, \"Note\".",
+      "required_skill_ids": [
+        "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 1,
+          "action": "`CLICK` the title text box"
+        },
+        {
+          "action_id": 3,
+          "action": "`CLICK` right align icon."
+        }
+      ],
+      "single_actions": [
+        "`CLICK` Slide 2",
+        "`CLICK` the title text box",
+        "`TYPING` 'Note'",
+        "`CLICK` right align icon."
+      ]
+    },
+    {
+      "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+      "instruction": "Move the image to the right side on Slide 2.",
+      "required_skill_ids": [
+        "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`CLICK` Slide 2."
+        },
+        {
+          "action_id": 1,
+          "action": "`MOVE_TO` the image"
+        },
+        {
+          "action_id": 2,
+          "action": "`DRAG_TO` the right side of the slide"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` Slide 2.",
+        "`MOVE_TO` the image",
+        "`DRAG_TO` the right side of the slide"
+      ]
+    },
+    {
+      "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+      "instruction": "On page 2, add a note same to the title into the slide. Make the font of title bold.",
+      "required_skill_ids": [
+        "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 1,
+          "action": "`CLICK` 'Team Members' box in the slide."
+        },
+        {
+          "action_id": 2,
+          "action": "`HOTKEY` Ctrl-B"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` Slide 2",
+        "`CLICK` 'Team Members' box in the slide.",
+        "`HOTKEY` Ctrl-B",
+        "`CLICK` 'View' in the menu bar.'",
+        "`CLICK` 'Notes' in the dropdown menu.",
+        "`CLICK` 'Click to add notes'",
+        "`TYPING` 'Team Members'"
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-impress-full-v2-r01-002",
+    "task_detail_sha256": "4a4cfa41361175bced8b002eeee5f27b6e5f74f36fea2c0d8b41b9d0da6fa9da",
+    "guide": {
+      "reference_task_id": "reference-task-impress-full-v2-r01-002",
+      "language": "zh-CN",
+      "overview": "本指南完成三页 Harbor Air Lab 简报中的四项局部编辑：在“Field Snapshot”页将海岸插图移入右侧框、将标题加粗并将图源行右对齐；然后在“Next Measurement”页居中结束提示文字。除指定对象的格式或位置外，不修改任何文字、主题颜色、对象或幻灯片顺序。",
+      "starting_state_checks": [
+        "确认正在普通编辑视图中打开三页演示文稿，并且左侧 `Slides` 窗格可见三张缩略图。",
+        "在第 2 张缩略图上单击以选择幻灯片；这只是选择幻灯片，不是选择画布对象。确认可见左侧面板中的海岸景观插图、右侧空的描边图像框、常规字重的“FIELD SNAPSHOT”，以及图框下方左对齐的来源行。",
+        "在第 3 张缩略图上单击以选择幻灯片，确认浅蓝色提示区域中的“Sampling begins at first light.” 当前在其文本区域内左对齐。随后重新选择第 2 张缩略图开始编辑。",
+        "如第 2 张中的插图已经清楚地位于右侧描边框内、标题已加粗或来源行已靠右，第 2 张对应部分可不调整；如果与这些可见结果不一致，再按下面相应步骤修复，且不要改动文字内容。"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "title": "将“FIELD SNAPSHOT”标题设为粗体",
+          "instructions": [
+            "保持第 2 张幻灯片缩略图处于选中状态。在画布上单击“FIELD SNAPSHOT”文字的字符内部，进入文本编辑模式；此时应出现文本光标或文字编辑状态，而不只是整个文本框的外框。",
+            "按 `Ctrl+A`，仅选中该文本框中的标题字符，然后按 `Ctrl+B`。不要在仅选中对象边框时按快捷键，因为那不会可靠地将字符设为粗体。",
+            "单击文本框外的空白画布以退出文本编辑模式并观察字重。标题文字、颜色和位置保持原样即为正确。如果标题仍显得常规字重，重新单击文字内部、用 `Ctrl+A` 选中标题后再按一次 `Ctrl+B`；如果已经是粗体，则不要再次按 `Ctrl+B`，以免切回常规字重。"
+          ],
+          "skill_ids": [
+            "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01"
+          ],
+          "efficiency_tip": "用 `Ctrl+A` 前务必先在标题字符内部单击；这样选中的是该文本框的文字，而不是幻灯片上的全部对象。",
+          "visible_success_signal": "“FIELD SNAPSHOT”明显比原先更粗，而措辞、颜色、换行和文本框位置均未改变。"
+        },
+        {
+          "step_number": 2,
+          "title": "把海岸景观插图移至右侧图像框",
+          "instructions": [
+            "在第 2 张画布左侧面板中，单击海岸景观插图的可见图像内容一次，使选中的是图片对象：应看到图片自身的选择边框和控制点。这不同于单击左侧的幻灯片缩略图，也不要选中右侧空图框的描边形状。",
+            "从图片内部（不要从角部或边缘的缩放控制点）按住鼠标，将图片拖向右侧描边图像框的内部；以该框的边缘为落点参照，松开鼠标。",
+            "可接受的结果是插图清楚地占据右侧描边框区域、左侧原位置不再有插图，且插图没有压住标题或下方来源行。如果已经如此，无需移动。若图片只部分落在框外或遮挡了来源行，重新选中图片的边框并从其内部小幅拖动，使其完全清楚地落在右侧框区域。若右侧框的描边意外显示在图片上方或图片被框遮住而影响可见性，在不改变图片位置的前提下，选中相应对象后使用 `Format` > `Arrange` 调整层叠顺序，直到图片在框区域内清楚可见，同时保留框的视觉边界。"
+          ],
+          "skill_ids": [
+            "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01"
+          ],
+          "efficiency_tip": "拖动时抓住图片中央的图像内容，避免拖到控制点而触发缩放；一次拖到右框中央通常最稳定。",
+          "visible_success_signal": "海岸景观插图位于右侧图像框区域内，左侧面板不再保留该插图，标题和图框下方文字均未被覆盖。"
+        },
+        {
+          "step_number": 3,
+          "title": "将第 2 张的来源行右对齐",
+          "instructions": [
+            "在第 2 张右侧图像框下方，单击来源行文字的字符内部以进入文本编辑模式。此时出现插入光标即可；不要只选中文本框的对象边框。",
+            "将光标放在该唯一来源段落中，按 `Ctrl+R`，把当前段落设为右对齐。无需改写、删除或添加任何字符。",
+            "退出文本编辑模式后查看来源行：其最右端应与来源文本框的右边界对齐。如果来源行已经满足这个可见结果，不需要重复操作；若仍从左边开始，重新在该行文字内部单击并按 `Ctrl+R`。若误将其他段落或对象改动，可立即按 `Ctrl+Z` 撤销误操作，再只在来源行内执行右对齐。"
+          ],
+          "skill_ids": [
+            "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01"
+          ],
+          "efficiency_tip": "来源行只有一个段落时，只需在该行放置文本光标后按 `Ctrl+R`，无需拖选整行文字。",
+          "visible_success_signal": "图像框下方来源行的右端贴齐其文本框右侧，文字内容、字体颜色及垂直位置没有变化。"
+        },
+        {
+          "step_number": 4,
+          "title": "居中第 3 张结束提示的文字",
+          "instructions": [
+            "在 `Slides` 窗格单击第 3 张缩略图以切换到“Next Measurement”页；这是选择幻灯片。确认第 2 张缩略图仍显示其已完成的右侧插图布局。",
+            "在浅蓝色提示区域内单击“Sampling begins at first light.”的字符，进入该文本框的文本编辑模式，而不是仅选中浅蓝色背景形状或文本框边框。按 `Ctrl+A`，此时只选中该文本框中的这句文字。",
+            "按 `Ctrl+E` 将选中段落居中，然后单击画布空白处退出编辑。可接受的结果是这句话在浅蓝色提示区域中水平居中。如果它已经居中，无需调整；若仍偏左或偏右，重新进入该文本框，按 `Ctrl+A` 后再按 `Ctrl+E`。",
+            "若发现移动的是提示框背景而不是改变文字对齐，按 `Ctrl+Z` 恢复，然后务必直接单击句子字符进入文本编辑模式，再执行居中。"
+          ],
+          "skill_ids": [
+            "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01"
+          ],
+          "efficiency_tip": "先进入文字编辑再用 `Ctrl+A`，可避免选中整张幻灯片或提示框背景；一次 `Ctrl+E` 即可作用于该文本框内选中的段落。",
+          "visible_success_signal": "“Sampling begins at first light.”在浅蓝色 callout 区域内水平居中，句号、措辞、背景形状和其余流程元素均保持不变。"
+        }
+      ],
+      "final_verification": [
+        "检查 `Slides` 窗格仍只有原来的三张幻灯片，顺序未变化；封面第 1 张没有被编辑。",
+        "选择第 2 张缩略图，确认海岸景观插图清楚位于右侧描边图像框内，左侧区域没有该插图；“FIELD SNAPSHOT”为粗体；图框下方来源行右对齐。确认上下文文字、状态芯片、主题颜色及其他对象未改变。",
+        "选择第 3 张缩略图，确认“Sampling begins at first light.”在浅蓝色提示区域内水平居中。确认标题、三个步骤形状、提示背景和所有原有文字均未改动。",
+        "如某一项不符合，返回对应幻灯片，仅重做该对象的局部操作；不要通过重新创建文本框、替换图片或调整整个幻灯片来修复。"
+      ]
+    },
+    "generation": {
+      "request_id": "77bbaef8-b512-4acc-b416-fdb39baba1ab",
+      "prompt_sha256": "2e9442c733d4de4b6b2b644d686e9918e95789ffc12a217619a897530992b83d",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 3667,
+      "output_tokens": 2387,
+      "estimated_cost_usd": 0.035978
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-impress-full-v2-r01-002",
+      "app": "libreoffice_impress",
+      "artifact_type": "pptx",
+      "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-002/initial_artifact.pptx",
+      "artifact_sha256": "c5c98b617c0c8e1c37e4a60d91495d3c796766c8a5cd00f1063f4c2c450f1526",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-002/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-002/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.pptx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-impress-full-v2-r01-002",
+      "task_config_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/task_configs/reference-task-impress-full-v2-r01-002.json",
+      "artifact_sha256": "c5c98b617c0c8e1c37e4a60d91495d3c796766c8a5cd00f1063f4c2c450f1526",
+      "blueprint_request_id": "b6771bcb-4fed-4b66-9c1e-5d60a38189e8"
+    },
+    "packet_path": "task_config.json"
+  }
+}

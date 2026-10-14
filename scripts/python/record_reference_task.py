@@ -12,6 +12,7 @@ import shutil
 import signal
 import sys
 import time
+import zipfile
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlencode
@@ -43,6 +44,7 @@ from benchmark_construction.key_overlay import (
     write_key_events,
     write_pointer_events,
 )
+from benchmark_construction.impress_setup_profiles import apply_impress_setup_profiles
 from benchmark_construction.reference_annotation import (
     load_artifact_manifest,
     load_review_decisions,
@@ -141,8 +143,7 @@ def parse_args() -> argparse.Namespace:
         "--no-key-overlay",
         action="store_true",
         help=(
-            "Keep recording.mp4 free of keyboard and pointer overlays "
-            "(debug only)."
+            "Keep recording.mp4 free of keyboard and pointer overlays " "(debug only)."
         ),
     )
     parser.add_argument(
@@ -182,14 +183,51 @@ def _load_task_config(path: Path) -> dict[str, Any]:
             "Reference annotation config must contain exactly upload_file then open"
         )
     files = steps[0].get("parameters", {}).get("files", [])
-    if len(files) != 1:
-        raise ValueError("Reference annotation config must upload exactly one file")
-    local_path = Path(files[0]["local_path"])
-    files[0]["local_path"] = str(_resolve(local_path).resolve())
-    if steps[1].get("parameters", {}).get("path") != files[0].get("path"):
-        raise ValueError("The open action must target the uploaded artifact")
+    if not files:
+        raise ValueError("Reference annotation config must upload at least one file")
+    for item in files:
+        local_path = Path(item["local_path"])
+        resolved = _resolve(local_path).resolve()
+        if not resolved.is_file():
+            raise FileNotFoundError(f"Uploaded local file does not exist: {resolved}")
+        item["local_path"] = str(resolved)
+    open_path = steps[1].get("parameters", {}).get("path")
+    primary = [item for item in files if item.get("path") == open_path]
+    if len(primary) != 1:
+        raise ValueError("The open action must target exactly one uploaded artifact")
+    annotation = task.get("reference_annotation", {})
+    expected_primary_hash = annotation.get("artifact_sha256")
+    if expected_primary_hash and (
+        _sha256(Path(primary[0]["local_path"])) != expected_primary_hash
+    ):
+        raise ValueError("Initial artifact SHA256 does not match task config")
+    support_by_guest = {
+        item["guest_path"]: item for item in annotation.get("supporting_files", [])
+    }
+    for item in files:
+        if item is primary[0]:
+            continue
+        support = support_by_guest.get(item.get("path"))
+        if support is None:
+            raise ValueError(
+                f"Uploaded supporting file lacks metadata: {item.get('path')}"
+            )
+        if _sha256(Path(item["local_path"])) != support.get("sha256"):
+            raise ValueError(f"Supporting file SHA256 mismatch: {item.get('path')}")
     get_reference_application(task.get("snapshot", ""))
     return task
+
+
+def _primary_upload(task: dict[str, Any]) -> dict[str, str]:
+    open_path = task["config"][1]["parameters"]["path"]
+    matches = [
+        item
+        for item in task["config"][0]["parameters"]["files"]
+        if item["path"] == open_path
+    ]
+    if len(matches) != 1:
+        raise ValueError("Task config has no unique primary upload")
+    return matches[0]
 
 
 def _select_by_id(
@@ -261,7 +299,9 @@ def _configure_aws(args: argparse.Namespace) -> dict[str, Any]:
     connection_mode = (
         "ssm"
         if requested_mode == "auto" and args.aws_region == "ap-east-1"
-        else "public" if requested_mode == "auto" else requested_mode
+        else "public"
+        if requested_mode == "auto"
+        else requested_mode
     )
     os.environ["AWS_PROFILE"] = args.aws_profile
     os.environ["AWS_REGION"] = args.aws_region
@@ -349,9 +389,7 @@ def _retarget_env_to_local_api(env: Any, local_port: int) -> None:
 def _save_guest_workbook(env: Any, guest_path: str, output_path: Path) -> None:
     """Backward-compatible Calc wrapper used by tests and older callers."""
 
-    _save_guest_artifact(
-        env, guest_path, output_path, app="libreoffice_calc"
-    )
+    _save_guest_artifact(env, guest_path, output_path, app="libreoffice_calc")
 
 
 def _save_guest_artifact(
@@ -371,6 +409,32 @@ def _save_guest_artifact(
             f"Retrieved final artifact is not a {profile.artifact_type.upper()} ZIP package"
         )
     output_path.write_bytes(content)
+
+
+def _collect_expected_outputs(
+    env: Any, annotation: dict[str, Any], output_dir: Path
+) -> dict[str, str]:
+    collected: dict[str, str] = {}
+    for item in annotation.get("expected_outputs", []):
+        content = env.controller.get_file(item["guest_path"])
+        if not content:
+            if item.get("required", True):
+                raise RuntimeError(
+                    f"Required annotation output is missing: {item['guest_path']}"
+                )
+            continue
+        role = item["role"]
+        if role == "png_export" and not content.startswith(b"\x89PNG\r\n\x1a\n"):
+            raise RuntimeError(f"Collected output is not a PNG: {item['guest_path']}")
+        output_path = output_dir / item["local_filename"]
+        output_path.write_bytes(content)
+        if role == "saved_presentation" and not zipfile.is_zipfile(output_path):
+            output_path.unlink()
+            raise RuntimeError(
+                f"Collected output is not a PPTX package: {item['guest_path']}"
+            )
+        collected[f"expected_output_{role}"] = item["local_filename"]
+    return collected
 
 
 def _handle_stop_signal(_signum, _frame) -> None:
@@ -408,7 +472,7 @@ def main() -> int:
     if annotation["artifact_sha256"] != artifact_entry["artifact_sha256"]:
         raise ValueError("Task config and artifact manifest SHA256 values differ")
 
-    original_artifact = Path(task["config"][0]["parameters"]["files"][0]["local_path"])
+    original_artifact = Path(_primary_upload(task)["local_path"])
     expected_artifact = _resolve(Path(artifact_entry["artifact_path"])).resolve()
     if original_artifact != expected_artifact:
         raise ValueError("Task config artifact path differs from the artifact manifest")
@@ -422,6 +486,18 @@ def main() -> int:
     output_dir = _episode_output_dir(args.result_dir, task_id)
     shutil.copy2(config_path, output_dir / "reference_task_config.json")
     shutil.copy2(original_artifact, output_dir / profile.packet_artifact_filename)
+    supporting_artifacts: dict[str, str] = {}
+    uploads = task["config"][0]["parameters"]["files"]
+    for item in uploads:
+        if Path(item["local_path"]) == original_artifact:
+            continue
+        support_dir = output_dir / "supporting_inputs"
+        support_dir.mkdir(exist_ok=True)
+        target = support_dir / Path(item["local_path"]).name
+        shutil.copy2(item["local_path"], target)
+        supporting_artifacts[f"supporting_input_{target.stem}"] = str(
+            target.relative_to(output_dir)
+        )
     _write_json(output_dir / "reference_package.json", package)
     _write_json(output_dir / "artifact_manifest_entry.json", artifact_entry)
     _write_json(
@@ -439,6 +515,7 @@ def main() -> int:
         "task_config": "reference_task_config.json",
         "reference_package": "reference_package.json",
         "initial_artifact": profile.packet_artifact_filename,
+        **supporting_artifacts,
     }
     env = None
     recording_started = False
@@ -489,9 +566,7 @@ def main() -> int:
             )
             ssm_tunnels.append(multiplexed_tunnel)
             _retarget_env_to_local_api(env, multiplexed_tunnel.api_port)
-            novnc_url = _novnc_preview_url(
-                "127.0.0.1", multiplexed_tunnel.novnc_port
-            )
+            novnc_url = _novnc_preview_url("127.0.0.1", multiplexed_tunnel.novnc_port)
             aws_metadata["local_tunnel_ports"] = {
                 "api": multiplexed_tunnel.api_port,
                 "novnc": multiplexed_tunnel.novnc_port,
@@ -520,6 +595,14 @@ def main() -> int:
         reset_started = recorder.now_ns()
         obs = env.reset(task_config=task)
         recorder.add_timing("environment_setup", recorder.now_ns() - reset_started)
+        applied_setup_profiles: list[str] = []
+        if annotation.get("setup_profiles"):
+            if profile.app != "libreoffice_impress":
+                raise ValueError("UI setup profiles are only supported for Impress")
+            applied_setup_profiles = apply_impress_setup_profiles(
+                env, annotation["setup_profiles"]
+            )
+            obs = env._get_obs()
         initial_ref, initial_a11y = _save_observation(
             output_dir,
             recorder,
@@ -571,9 +654,7 @@ def main() -> int:
                     "schema_version": "1.0",
                     "clock": "guest_monotonic_ns",
                     "video_start_monotonic_ns": video_start_monotonic_ns,
-                    "provisional_video_start_monotonic_ns": (
-                        video_start_monotonic_ns
-                    ),
+                    "provisional_video_start_monotonic_ns": (video_start_monotonic_ns),
                     "alignment_status": "provisional",
                 },
             )
@@ -642,9 +723,7 @@ def main() -> int:
                 {
                     "schema_version": "1.0",
                     "clock": "guest_monotonic_ns",
-                    "video_start_monotonic_ns": (
-                        calibrated_video_start_monotonic_ns
-                    ),
+                    "video_start_monotonic_ns": (calibrated_video_start_monotonic_ns),
                     "alignment_status": "calibrated",
                     **recording_timeline_metadata,
                 },
@@ -681,16 +760,12 @@ def main() -> int:
                 keymap_text=keymap_text,
             )
             pointer_overlay_event_count = len(pointer_events)
-            write_pointer_events(
-                output_dir / "pointer_events.jsonl", pointer_events
-            )
+            write_pointer_events(output_dir / "pointer_events.jsonl", pointer_events)
             artifacts["pointer_events"] = "pointer_events.jsonl"
             if not args.no_key_overlay:
                 overlay_path = output_dir / "key_overlay.ass"
                 overlay_path.write_text(
-                    render_key_overlay_ass(
-                        key_events, pointer_events=pointer_events
-                    ),
+                    render_key_overlay_ass(key_events, pointer_events=pointer_events),
                     encoding="utf-8",
                 )
                 artifacts["key_overlay"] = overlay_path.name
@@ -715,6 +790,7 @@ def main() -> int:
             app=profile.app,
         )
         artifacts["final_artifact"] = final_path.name
+        artifacts.update(_collect_expected_outputs(env, annotation, output_dir))
         final_obs = env._get_obs()
         final_ref, final_a11y = _save_observation(
             output_dir,
@@ -744,6 +820,7 @@ def main() -> int:
                 "recording_duration": recording_duration_metadata,
                 "recording_timeline": recording_timeline_metadata,
                 "preferred_reference_video": "recording.mp4",
+                "applied_setup_profiles": applied_setup_profiles,
             },
         )
         completed = True

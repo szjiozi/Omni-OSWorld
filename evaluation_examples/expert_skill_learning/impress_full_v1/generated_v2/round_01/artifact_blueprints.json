@@ -1,0 +1,2375 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "pptx",
+  "blueprints": [
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-001",
+      "blueprint": {
+        "presentation_title": "Harbor Sampling Brief",
+        "slide_size": "wide",
+        "theme": {
+          "primary_color": "006D77",
+          "secondary_color": "83C5BE",
+          "accent_color": "FFB703",
+          "background_color": "F7FBFC",
+          "title_font": "Liberation Sans",
+          "body_font": "Liberation Sans"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Cover for a concise community monitoring briefing",
+            "background_color": "F7FBFC",
+            "objects": [
+              {
+                "semantic_id": "cover_title",
+                "type": "text",
+                "x": 0.85,
+                "y": 1.35,
+                "w": 8.5,
+                "h": 0.75,
+                "content": {
+                  "text": "Harbor Sampling Brief",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7FBFC",
+                  "line_color": "F7FBFC",
+                  "text_color": "006D77",
+                  "font_face": "Liberation Sans",
+                  "font_size": 32,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_subtitle",
+                "type": "text",
+                "x": 0.9,
+                "y": 2.22,
+                "w": 7.8,
+                "h": 0.4,
+                "content": {
+                  "text": "Morning shoreline checks | North Pier",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7FBFC",
+                  "line_color": "F7FBFC",
+                  "text_color": "315B60",
+                  "font_face": "Liberation Sans",
+                  "font_size": 17,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_water_band",
+                "type": "shape",
+                "x": 0,
+                "y": 5.95,
+                "w": 13.333,
+                "h": 1.55,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "006D77",
+                  "line_color": "006D77",
+                  "text_color": "F7FBFC",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_date_tag",
+                "type": "shape",
+                "x": 0.9,
+                "y": 3.15,
+                "w": 2.05,
+                "h": 0.48,
+                "content": {
+                  "text": "May field round",
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFB703",
+                  "line_color": "FFB703",
+                  "text_color": "173E43",
+                  "font_face": "Liberation Sans",
+                  "font_size": 14,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Field-ready summary of the current sampling window and station readings",
+            "background_color": "FFFFFF",
+            "objects": [
+              {
+                "semantic_id": "status_slide_heading",
+                "type": "text",
+                "x": 0.8,
+                "y": 0.55,
+                "w": 5.8,
+                "h": 0.55,
+                "content": {
+                  "text": "North Pier Checkpoint",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFFFF",
+                  "line_color": "FFFFFF",
+                  "text_color": "006D77",
+                  "font_face": "Liberation Sans",
+                  "font_size": 26,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "sampling_window_label",
+                "type": "text",
+                "x": 9.05,
+                "y": 1.3,
+                "w": 3.9,
+                "h": 0.42,
+                "content": {
+                  "text": "Sampling window: 06:00–10:00",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFFFF",
+                  "line_color": "FFFFFF",
+                  "text_color": "006D77",
+                  "font_face": "Liberation Sans",
+                  "font_size": 14,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "right",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "station_readings_table",
+                "type": "table",
+                "x": 0.8,
+                "y": 1.65,
+                "w": 6.15,
+                "h": 2.65,
+                "content": {
+                  "text": null,
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [
+                    [
+                      "Station",
+                      "Turbidity",
+                      "Condition"
+                    ],
+                    [
+                      "Breakwater",
+                      "4.2 NTU",
+                      "Clear"
+                    ],
+                    [
+                      "Ferry slip",
+                      "7.8 NTU",
+                      "Watch"
+                    ],
+                    [
+                      "Marina inlet",
+                      "5.1 NTU",
+                      "Clear"
+                    ]
+                  ],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "E6F4F3",
+                  "line_color": "83C5BE",
+                  "text_color": "173E43",
+                  "font_face": "Liberation Sans",
+                  "font_size": 15,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "turbidity_trend_chart",
+                "type": "chart",
+                "x": 7.6,
+                "y": 2.15,
+                "w": 4.85,
+                "h": 2.8,
+                "content": {
+                  "text": null,
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [
+                    "06:00",
+                    "07:00",
+                    "08:00",
+                    "09:00"
+                  ],
+                  "series": [
+                    {
+                      "name": "Turbidity (NTU)",
+                      "values": [
+                        4.0,
+                        5.3,
+                        6.7,
+                        5.1
+                      ]
+                    }
+                  ]
+                },
+                "style": {
+                  "fill_color": "F7FBFC",
+                  "line_color": "83C5BE",
+                  "text_color": "173E43",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "advisory_badge",
+                "type": "shape",
+                "x": 8.85,
+                "y": 5.55,
+                "w": 2.4,
+                "h": 0.62,
+                "content": {
+                  "text": "Recheck after rain",
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFB703",
+                  "line_color": "D68B00",
+                  "text_color": "173E43",
+                  "font_face": "Liberation Sans",
+                  "font_size": 14,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "source_caption",
+                "type": "text",
+                "x": 0.8,
+                "y": 6.7,
+                "w": 5.5,
+                "h": 0.28,
+                "content": {
+                  "text": "Volunteer readings; values shown in NTU",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFFFF",
+                  "line_color": "FFFFFF",
+                  "text_color": "4C666A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 11,
+                  "bold": false,
+                  "italic": true,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              }
+            ]
+          }
+        ],
+        "manual_setup_steps": []
+      },
+      "generation": {
+        "request_id": "5fe652b2-d4e7-445a-bf38-b136b5b2cb2d",
+        "prompt_sha256": "006300c01b3374d7d2a4130472a0cdd28eb98ddae2716161b3dd2cf7800172cd",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3064,
+        "output_tokens": 1818,
+        "estimated_cost_usd": 0.027944
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-002",
+      "blueprint": {
+        "presentation_title": "Harbor Air Lab: Dawn Sampling Brief",
+        "slide_size": "wide",
+        "theme": {
+          "primary_color": "0B3954",
+          "secondary_color": "BFD7EA",
+          "accent_color": "F4A261",
+          "background_color": "F7FAFC",
+          "title_font": "Aptos Display",
+          "body_font": "Aptos"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Briefing cover that establishes the harbor sampling theme.",
+            "background_color": "F7FAFC",
+            "objects": [
+              {
+                "semantic_id": "cover_horizon_band",
+                "type": "shape",
+                "x": 0,
+                "y": 5.15,
+                "w": 13.333,
+                "h": 2.35,
+                "content": {
+                  "text": null,
+                  "shape_kind": "rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "0B3954",
+                  "line_color": "0B3954",
+                  "text_color": "F7FAFC",
+                  "font_face": "Aptos",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_title",
+                "type": "text",
+                "x": 0.85,
+                "y": 1.35,
+                "w": 8.6,
+                "h": 0.85,
+                "content": {
+                  "text": "Harbor Air Lab",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7FAFC",
+                  "line_color": "F7FAFC",
+                  "text_color": "0B3954",
+                  "font_face": "Aptos Display",
+                  "font_size": 34,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_subtitle",
+                "type": "text",
+                "x": 1.15,
+                "y": 2.45,
+                "w": 8.7,
+                "h": 0.38,
+                "content": {
+                  "text": "Dawn Sampling Brief · Coastal Operations Team",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7FAFC",
+                  "line_color": "F7FAFC",
+                  "text_color": "0B3954",
+                  "font_face": "Aptos",
+                  "font_size": 16,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_wave_mark",
+                "type": "shape",
+                "x": 0.85,
+                "y": 2.48,
+                "w": 0.18,
+                "h": 0.32,
+                "content": {
+                  "text": null,
+                  "shape_kind": "chevron",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F4A261",
+                  "line_color": "F4A261",
+                  "text_color": "F4A261",
+                  "font_face": "Aptos",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Field snapshot with an image placement target and a concise source citation.",
+            "background_color": "F7FAFC",
+            "objects": [
+              {
+                "semantic_id": "snapshot_heading",
+                "type": "text",
+                "x": 0.8,
+                "y": 0.65,
+                "w": 5.5,
+                "h": 0.55,
+                "content": {
+                  "text": "FIELD SNAPSHOT",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7FAFC",
+                  "line_color": "F7FAFC",
+                  "text_color": "0B3954",
+                  "font_face": "Aptos Display",
+                  "font_size": 24,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "snapshot_context",
+                "type": "text",
+                "x": 0.8,
+                "y": 1.38,
+                "w": 5.45,
+                "h": 0.78,
+                "content": {
+                  "text": "Prevailing offshore wind keeps the plume moving seaward.\nPier access is clear for the 06:30 setup window.",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7FAFC",
+                  "line_color": "F7FAFC",
+                  "text_color": "0B3954",
+                  "font_face": "Aptos",
+                  "font_size": 15,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "snapshot_image_frame",
+                "type": "shape",
+                "x": 7.1,
+                "y": 1.45,
+                "w": 5.2,
+                "h": 3.65,
+                "content": {
+                  "text": null,
+                  "shape_kind": "rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7FAFC",
+                  "line_color": "BFD7EA",
+                  "text_color": "0B3954",
+                  "font_face": "Aptos",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "snapshot_coastal_landscape",
+                "type": "image",
+                "x": 0.8,
+                "y": 2.55,
+                "w": 4.7,
+                "h": 3.1,
+                "content": {
+                  "text": null,
+                  "shape_kind": null,
+                  "image_kind": "landscape",
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7FAFC",
+                  "line_color": "BFD7EA",
+                  "text_color": "0B3954",
+                  "font_face": "Aptos",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "snapshot_source_line",
+                "type": "text",
+                "x": 7.1,
+                "y": 5.35,
+                "w": 5.2,
+                "h": 0.3,
+                "content": {
+                  "text": "Source: Harbor survey team, 06:10",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7FAFC",
+                  "line_color": "F7FAFC",
+                  "text_color": "0B3954",
+                  "font_face": "Aptos",
+                  "font_size": 11,
+                  "bold": false,
+                  "italic": true,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "snapshot_status_chip",
+                "type": "shape",
+                "x": 0.8,
+                "y": 6.25,
+                "w": 1.85,
+                "h": 0.42,
+                "content": {
+                  "text": "CLEAR WINDOW",
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F4A261",
+                  "line_color": "F4A261",
+                  "text_color": "0B3954",
+                  "font_face": "Aptos",
+                  "font_size": 11,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              }
+            ]
+          },
+          {
+            "slide_number": 3,
+            "purpose": "Next-step slide that closes the briefing with a centered operational callout.",
+            "background_color": "F7FAFC",
+            "objects": [
+              {
+                "semantic_id": "measurement_heading",
+                "type": "text",
+                "x": 0.8,
+                "y": 0.7,
+                "w": 7.0,
+                "h": 0.55,
+                "content": {
+                  "text": "NEXT MEASUREMENT",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7FAFC",
+                  "line_color": "F7FAFC",
+                  "text_color": "0B3954",
+                  "font_face": "Aptos Display",
+                  "font_size": 24,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "measurement_step_one",
+                "type": "shape",
+                "x": 0.95,
+                "y": 2.05,
+                "w": 3.55,
+                "h": 1.35,
+                "content": {
+                  "text": "01  Calibrate sensors",
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "0B3954",
+                  "line_color": "0B3954",
+                  "text_color": "F7FAFC",
+                  "font_face": "Aptos",
+                  "font_size": 17,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "measurement_step_two",
+                "type": "shape",
+                "x": 4.9,
+                "y": 2.05,
+                "w": 3.55,
+                "h": 1.35,
+                "content": {
+                  "text": "02  Launch skiff",
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "BFD7EA",
+                  "line_color": "BFD7EA",
+                  "text_color": "0B3954",
+                  "font_face": "Aptos",
+                  "font_size": 17,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "measurement_step_three",
+                "type": "shape",
+                "x": 8.85,
+                "y": 2.05,
+                "w": 3.55,
+                "h": 1.35,
+                "content": {
+                  "text": "03  Log coastal readings",
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F4A261",
+                  "line_color": "F4A261",
+                  "text_color": "0B3954",
+                  "font_face": "Aptos",
+                  "font_size": 16,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "measurement_callout_backing",
+                "type": "shape",
+                "x": 1.25,
+                "y": 4.65,
+                "w": 10.85,
+                "h": 1.25,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "BFD7EA",
+                  "line_color": "BFD7EA",
+                  "text_color": "0B3954",
+                  "font_face": "Aptos",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "measurement_closing_callout",
+                "type": "text",
+                "x": 1.65,
+                "y": 4.98,
+                "w": 10.05,
+                "h": 0.56,
+                "content": {
+                  "text": "Sampling begins at first light.",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "BFD7EA",
+                  "line_color": "BFD7EA",
+                  "text_color": "0B3954",
+                  "font_face": "Aptos Display",
+                  "font_size": 23,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              }
+            ]
+          }
+        ],
+        "manual_setup_steps": []
+      },
+      "generation": {
+        "request_id": "f86199f9-ce6b-440b-bcd0-89b82416eba9",
+        "prompt_sha256": "6b853a74a922a5e24c135feecf718646991da534d046cf2ac64f1c5435310cdb",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3323,
+        "output_tokens": 2584,
+        "estimated_cost_usd": 0.037654
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-003",
+      "blueprint": {
+        "presentation_title": "Neighborhood Repair Café — Host Brief",
+        "slide_size": "wide",
+        "theme": {
+          "primary_color": "c8a06a",
+          "secondary_color": "244653",
+          "accent_color": "b85c38",
+          "background_color": "f7f1e8",
+          "title_font": "Liberation Sans",
+          "body_font": "Liberation Sans"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Cover and approved visual-color reference",
+            "background_color": "f7f1e8",
+            "objects": [
+              {
+                "semantic_id": "cover_headline_reference",
+                "type": "text",
+                "x": 0.8,
+                "y": 1.02,
+                "w": 6.3,
+                "h": 1.15,
+                "content": {
+                  "text": "Neighborhood Repair Café",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "f7f1e8",
+                  "line_color": "f7f1e8",
+                  "text_color": "b85c38",
+                  "font_face": "Liberation Sans",
+                  "font_size": 40,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_subtitle",
+                "type": "text",
+                "x": 0.85,
+                "y": 2.34,
+                "w": 5.75,
+                "h": 0.62,
+                "content": {
+                  "text": "Host Brief  •  Saturday, 14 September  •  Community Hall",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "f7f1e8",
+                  "line_color": "f7f1e8",
+                  "text_color": "244653",
+                  "font_face": "Liberation Sans",
+                  "font_size": 17,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_workbench_illustration",
+                "type": "shape",
+                "x": 7.55,
+                "y": 1.05,
+                "w": 4.82,
+                "h": 4.8,
+                "content": {
+                  "text": "REPAIR BENCH\n\nTOOLS • CARE • SECOND CHANCES",
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "c8a06a",
+                  "line_color": "244653",
+                  "text_color": "244653",
+                  "font_face": "Liberation Sans",
+                  "font_size": 18,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_footer_tag",
+                "type": "shape",
+                "x": 0.85,
+                "y": 6.38,
+                "w": 2.1,
+                "h": 0.48,
+                "content": {
+                  "text": "HOST TEAM",
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "244653",
+                  "line_color": "244653",
+                  "text_color": "f7f1e8",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Repair table workflow for volunteer hosts",
+            "background_color": "eff6f6",
+            "objects": [
+              {
+                "semantic_id": "flow_slide_title",
+                "type": "text",
+                "x": 0.78,
+                "y": 0.56,
+                "w": 5.7,
+                "h": 0.75,
+                "content": {
+                  "text": "Repair Table Flow",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "eff6f6",
+                  "line_color": "eff6f6",
+                  "text_color": "244653",
+                  "font_face": "Liberation Sans",
+                  "font_size": 36,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "flow_intro_text",
+                "type": "text",
+                "x": 0.82,
+                "y": 1.45,
+                "w": 8.7,
+                "h": 0.56,
+                "content": {
+                  "text": "Keep each visitor moving with a clear welcome, a quick assessment, and a confident handoff.",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "eff6f6",
+                  "line_color": "eff6f6",
+                  "text_color": "244653",
+                  "font_face": "Liberation Sans",
+                  "font_size": 18,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "flow_step_intake",
+                "type": "shape",
+                "x": 0.82,
+                "y": 3.2,
+                "w": 3.22,
+                "h": 2.08,
+                "content": {
+                  "text": "1  WELCOME & INTAKE\nListen, label the item,\nand note the issue.",
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "f7f1e8",
+                  "line_color": "b85c38",
+                  "text_color": "244653",
+                  "font_face": "Liberation Sans",
+                  "font_size": 18,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "flow_connector_one",
+                "type": "shape",
+                "x": 4.26,
+                "y": 3.88,
+                "w": 0.72,
+                "h": 0.68,
+                "content": {
+                  "text": "",
+                  "shape_kind": "chevron",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "c8a06a",
+                  "line_color": "c8a06a",
+                  "text_color": "244653",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "flow_step_sort",
+                "type": "shape",
+                "x": 5.12,
+                "y": 3.2,
+                "w": 3.22,
+                "h": 2.08,
+                "content": {
+                  "text": "2  SORT THE REQUEST\nMatch the repair type\nto the right table.",
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "f7f1e8",
+                  "line_color": "b85c38",
+                  "text_color": "244653",
+                  "font_face": "Liberation Sans",
+                  "font_size": 18,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "flow_connector_two",
+                "type": "shape",
+                "x": 8.56,
+                "y": 3.88,
+                "w": 0.72,
+                "h": 0.68,
+                "content": {
+                  "text": "",
+                  "shape_kind": "chevron",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "c8a06a",
+                  "line_color": "c8a06a",
+                  "text_color": "244653",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "flow_step_handoff",
+                "type": "shape",
+                "x": 9.42,
+                "y": 3.2,
+                "w": 3.08,
+                "h": 2.08,
+                "content": {
+                  "text": "3  HAND OFF\nIntroduce the fixer\nand confirm the queue.",
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "f7f1e8",
+                  "line_color": "b85c38",
+                  "text_color": "244653",
+                  "font_face": "Liberation Sans",
+                  "font_size": 18,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              }
+            ]
+          },
+          {
+            "slide_number": 3,
+            "purpose": "Opening-station timing and host readiness",
+            "background_color": "f8e9dd",
+            "objects": [
+              {
+                "semantic_id": "timing_slide_title",
+                "type": "text",
+                "x": 0.78,
+                "y": 0.56,
+                "w": 5.9,
+                "h": 0.75,
+                "content": {
+                  "text": "Open the Station",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "f8e9dd",
+                  "line_color": "f8e9dd",
+                  "text_color": "244653",
+                  "font_face": "Liberation Sans",
+                  "font_size": 36,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "timing_clock_badge",
+                "type": "shape",
+                "x": 0.82,
+                "y": 1.72,
+                "w": 1.2,
+                "h": 1.2,
+                "content": {
+                  "text": "09:50",
+                  "shape_kind": "ellipse",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "c8a06a",
+                  "line_color": "b85c38",
+                  "text_color": "244653",
+                  "font_face": "Liberation Sans",
+                  "font_size": 16,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "timing_schedule_cue",
+                "type": "text",
+                "x": 2.28,
+                "y": 1.86,
+                "w": 6.3,
+                "h": 0.65,
+                "content": {
+                  "text": "Tool check-in closes at 09:50",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "f8e9dd",
+                  "line_color": "f8e9dd",
+                  "text_color": "b85c38",
+                  "font_face": "Liberation Sans",
+                  "font_size": 22,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "timing_checklist_text",
+                "type": "text",
+                "x": 0.86,
+                "y": 3.35,
+                "w": 5.35,
+                "h": 2.42,
+                "content": {
+                  "text": "HOST READINESS\n\n• Welcome sign is visible\n• Queue cards are stacked\n• Fixers know their tables\n• Safety lead is on call",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "f8e9dd",
+                  "line_color": "f8e9dd",
+                  "text_color": "244653",
+                  "font_face": "Liberation Sans",
+                  "font_size": 20,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "timing_supply_panel",
+                "type": "shape",
+                "x": 7.9,
+                "y": 2.06,
+                "w": 5.22,
+                "h": 3.95,
+                "content": {
+                  "text": "",
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "f7f1e8",
+                  "line_color": "c8a06a",
+                  "text_color": "244653",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "timing_supply_list",
+                "type": "text",
+                "x": 8.25,
+                "y": 2.52,
+                "w": 3.7,
+                "h": 2.9,
+                "content": {
+                  "text": "STAGE BEFORE DOORS OPEN\n\n• Direction signs\n• Clipboards + pens\n• Safety glasses\n• Extension leads\n• Spare name badges",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "f7f1e8",
+                  "line_color": "f7f1e8",
+                  "text_color": "244653",
+                  "font_face": "Liberation Sans",
+                  "font_size": 18,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              }
+            ]
+          }
+        ],
+        "manual_setup_steps": []
+      },
+      "generation": {
+        "request_id": "e1e81dc9-4809-411a-9b21-c9453b40b315",
+        "prompt_sha256": "221cdb583e7cc35be221e1855f4a0e0bd4489713197aba8f572d0b9f17df2421",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3482,
+        "output_tokens": 2757,
+        "estimated_cost_usd": 0.040048
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-004",
+      "blueprint": {
+        "presentation_title": "Urban Pollinator Pocket Guide",
+        "slide_size": "wide",
+        "theme": {
+          "primary_color": "CFE8E1",
+          "secondary_color": "244B5A",
+          "accent_color": "F2B84B",
+          "background_color": "F7F4EC",
+          "title_font": "Liberation Sans",
+          "body_font": "Liberation Sans"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Cover for a short urban pollinator field guide",
+            "background_color": "F7F4EC",
+            "objects": [
+              {
+                "semantic_id": "cover_text_panel",
+                "type": "shape",
+                "x": 0.55,
+                "y": 0.85,
+                "w": 7.35,
+                "h": 2.85,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F4EC",
+                  "line_color": "D7D2C7",
+                  "text_color": "244B5A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_heading",
+                "type": "text",
+                "x": 0.8,
+                "y": 1.15,
+                "w": 6.75,
+                "h": 1.25,
+                "content": {
+                  "text": "Urban Pollinator\nPocket Guide",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F4EC",
+                  "line_color": "F7F4EC",
+                  "text_color": "244B5A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 31,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_subheading",
+                "type": "text",
+                "x": 0.84,
+                "y": 2.72,
+                "w": 5.9,
+                "h": 0.65,
+                "content": {
+                  "text": "Recognize small helpers in city gardens",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F4EC",
+                  "line_color": "F7F4EC",
+                  "text_color": "244B5A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 17,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_photo_window",
+                "type": "shape",
+                "x": 8.6,
+                "y": 0.75,
+                "w": 3.5,
+                "h": 5.9,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "CFE8E1",
+                  "line_color": "244B5A",
+                  "text_color": "244B5A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_bee_photo",
+                "type": "image",
+                "x": 9.25,
+                "y": 1.8,
+                "w": 2.2,
+                "h": 3.7,
+                "content": {
+                  "text": null,
+                  "shape_kind": null,
+                  "image_kind": "pollinator",
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFFFF",
+                  "line_color": "FFFFFF",
+                  "text_color": "244B5A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_footer_tag",
+                "type": "shape",
+                "x": 0.84,
+                "y": 5.78,
+                "w": 2.55,
+                "h": 0.52,
+                "content": {
+                  "text": "FIELD NOTES / 2026",
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F2B84B",
+                  "line_color": "F2B84B",
+                  "text_color": "244B5A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 11,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Quick-reference checklist of pollinator observations",
+            "background_color": "F7F4EC",
+            "objects": [
+              {
+                "semantic_id": "checklist_heading",
+                "type": "text",
+                "x": 0.75,
+                "y": 0.6,
+                "w": 7.4,
+                "h": 0.65,
+                "content": {
+                  "text": "What to Look For",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F4EC",
+                  "line_color": "F7F4EC",
+                  "text_color": "244B5A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 28,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "checklist_intro",
+                "type": "text",
+                "x": 0.78,
+                "y": 1.35,
+                "w": 7.25,
+                "h": 0.52,
+                "content": {
+                  "text": "Check garden visitors without disturbing them. Mark only what you can observe.",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F4EC",
+                  "line_color": "F7F4EC",
+                  "text_color": "244B5A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 14,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "pollinator_observation_table",
+                "type": "table",
+                "x": 0.78,
+                "y": 2.15,
+                "w": 7.75,
+                "h": 3.85,
+                "content": {
+                  "text": null,
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [
+                    [
+                      "Visitor",
+                      "Clue",
+                      "Status"
+                    ],
+                    [
+                      "Bumble bee",
+                      "Round body; pollen baskets",
+                      "Seen"
+                    ],
+                    [
+                      "Hoverfly",
+                      "One wing pair; hovers in place",
+                      "Look again"
+                    ],
+                    [
+                      "Leafcutter bee",
+                      "Neat circles cut from leaves",
+                      "Seen"
+                    ],
+                    [
+                      "Cabbage white",
+                      "Pale wings; quick flutter",
+                      "Noted"
+                    ]
+                  ],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "FFFFFF",
+                  "line_color": "244B5A",
+                  "text_color": "244B5A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 15,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "checklist_side_illustration",
+                "type": "image",
+                "x": 9.25,
+                "y": 1.8,
+                "w": 2.95,
+                "h": 2.75,
+                "content": {
+                  "text": null,
+                  "shape_kind": null,
+                  "image_kind": "pollinator",
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F4EC",
+                  "line_color": "F7F4EC",
+                  "text_color": "244B5A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "checklist_callout",
+                "type": "shape",
+                "x": 9.05,
+                "y": 5.05,
+                "w": 3.28,
+                "h": 0.82,
+                "content": {
+                  "text": "Observe, don’t handle.",
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F2B84B",
+                  "line_color": "F2B84B",
+                  "text_color": "244B5A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 15,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              }
+            ]
+          },
+          {
+            "slide_number": 3,
+            "purpose": "Unused internal working slide to be removed before delivery",
+            "background_color": "F7F4EC",
+            "objects": [
+              {
+                "semantic_id": "discarded_working_note",
+                "type": "text",
+                "x": 1.05,
+                "y": 1.1,
+                "w": 6.85,
+                "h": 0.7,
+                "content": {
+                  "text": "Scratch space — remove before sharing",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F4EC",
+                  "line_color": "F7F4EC",
+                  "text_color": "244B5A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 24,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "discarded_placeholder_block",
+                "type": "shape",
+                "x": 1.05,
+                "y": 2.15,
+                "w": 10.9,
+                "h": 3.65,
+                "content": {
+                  "text": null,
+                  "shape_kind": "rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D9DDD8",
+                  "line_color": "AEBAB5",
+                  "text_color": "244B5A",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "center",
+                  "valign": "mid"
+                }
+              }
+            ]
+          }
+        ],
+        "manual_setup_steps": []
+      },
+      "generation": {
+        "request_id": "8b90fac6-4c7d-459d-b0a5-ce093a085f4f",
+        "prompt_sha256": "6806de1e4d1dc1a9c2a5d72473815caaac655927daae30207d2751b9fe3caa06",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3109,
+        "output_tokens": 2274,
+        "estimated_cost_usd": 0.033506
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-005",
+      "blueprint": {
+        "presentation_title": "Riverside Garden Volunteer Day",
+        "slide_size": "wide",
+        "theme": {
+          "primary_color": "C8D8C0",
+          "secondary_color": "234B45",
+          "accent_color": "D36B4B",
+          "background_color": "F7F2E8",
+          "title_font": "Liberation Sans",
+          "body_font": "Liberation Sans"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Opening slide introducing the neighborhood garden workday.",
+            "background_color": "F7F2E8",
+            "objects": [
+              {
+                "semantic_id": "cover_background_panel",
+                "type": "shape",
+                "x": 0,
+                "y": 0,
+                "w": 13.333,
+                "h": 7.5,
+                "content": {
+                  "text": null,
+                  "shape_kind": "rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F2E8",
+                  "line_color": "F7F2E8",
+                  "text_color": "234B45",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "cover_garden_arc",
+                "type": "shape",
+                "x": 0.5,
+                "y": 6.55,
+                "w": 12.333,
+                "h": 0.55,
+                "content": {
+                  "text": null,
+                  "shape_kind": "ellipse",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "234B45",
+                  "line_color": "234B45",
+                  "text_color": "234B45",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "cover_event_title",
+                "type": "text",
+                "x": 1,
+                "y": 2.1,
+                "w": 8.9,
+                "h": 1.15,
+                "content": {
+                  "text": "Riverside Garden Volunteer Day",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F2E8",
+                  "line_color": "F7F2E8",
+                  "text_color": "234B45",
+                  "font_face": "Liberation Sans",
+                  "font_size": 30,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_event_subtitle",
+                "type": "text",
+                "x": 1.03,
+                "y": 3.48,
+                "w": 8.7,
+                "h": 0.45,
+                "content": {
+                  "text": "Saturday, 18 May · Riverside Commons",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F2E8",
+                  "line_color": "F7F2E8",
+                  "text_color": "D36B4B",
+                  "font_face": "Liberation Sans",
+                  "font_size": 16,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "cover_seedling_icon",
+                "type": "shape",
+                "x": 10.75,
+                "y": 1.55,
+                "w": 1.3,
+                "h": 2.25,
+                "content": {
+                  "text": null,
+                  "shape_kind": "ellipse",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "C8D8C0",
+                  "line_color": "234B45",
+                  "text_color": "234B45",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Volunteer sign-up information requiring the requested text color cues.",
+            "background_color": "F7F2E8",
+            "objects": [
+              {
+                "semantic_id": "signup_background_panel",
+                "type": "shape",
+                "x": 0,
+                "y": 0,
+                "w": 13.333,
+                "h": 7.5,
+                "content": {
+                  "text": null,
+                  "shape_kind": "rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F2E8",
+                  "line_color": "F7F2E8",
+                  "text_color": "234B45",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "signup_section_title",
+                "type": "text",
+                "x": 0.8,
+                "y": 0.62,
+                "w": 7.2,
+                "h": 0.7,
+                "content": {
+                  "text": "Join the workday",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F2E8",
+                  "line_color": "F7F2E8",
+                  "text_color": "234B45",
+                  "font_face": "Liberation Sans",
+                  "font_size": 27,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "signup_schedule_card",
+                "type": "shape",
+                "x": 0.8,
+                "y": 1.7,
+                "w": 5.45,
+                "h": 3.85,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "234B45",
+                  "line_color": "234B45",
+                  "text_color": "FFFFFF",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "signup_schedule_text",
+                "type": "text",
+                "x": 1.3,
+                "y": 2.72,
+                "w": 4.45,
+                "h": 1.25,
+                "content": {
+                  "text": "Meet at the tool shed\n8:30–11:30 a.m.",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "234B45",
+                  "line_color": "234B45",
+                  "text_color": "FFFFFF",
+                  "font_face": "Liberation Sans",
+                  "font_size": 22,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "signup_preparation_label",
+                "type": "text",
+                "x": 7.35,
+                "y": 2.0,
+                "w": 4.4,
+                "h": 0.4,
+                "content": {
+                  "text": "Before you arrive",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F2E8",
+                  "line_color": "F7F2E8",
+                  "text_color": "D36B4B",
+                  "font_face": "Liberation Sans",
+                  "font_size": 15,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "signup_preparation_sentence",
+                "type": "text",
+                "x": 7.35,
+                "y": 2.65,
+                "w": 4.9,
+                "h": 1.35,
+                "content": {
+                  "text": "Please bring work gloves and a refillable bottle.",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F2E8",
+                  "line_color": "F7F2E8",
+                  "text_color": "234B45",
+                  "font_face": "Liberation Sans",
+                  "font_size": 20,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "signup_path_marker",
+                "type": "shape",
+                "x": 6.55,
+                "y": 2.67,
+                "w": 0.43,
+                "h": 0.43,
+                "content": {
+                  "text": null,
+                  "shape_kind": "ellipse",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D36B4B",
+                  "line_color": "D36B4B",
+                  "text_color": "D36B4B",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "signup_signup_footer",
+                "type": "text",
+                "x": 0.82,
+                "y": 6.42,
+                "w": 8.8,
+                "h": 0.42,
+                "content": {
+                  "text": "Questions? Contact the garden desk by Friday.",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "F7F2E8",
+                  "line_color": "F7F2E8",
+                  "text_color": "234B45",
+                  "font_face": "Liberation Sans",
+                  "font_size": 13,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              }
+            ]
+          },
+          {
+            "slide_number": 3,
+            "purpose": "Closing slide with practical next actions for attendees.",
+            "background_color": "C8D8C0",
+            "objects": [
+              {
+                "semantic_id": "next_steps_background_panel",
+                "type": "shape",
+                "x": 0,
+                "y": 0,
+                "w": 13.333,
+                "h": 7.5,
+                "content": {
+                  "text": null,
+                  "shape_kind": "rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "C8D8C0",
+                  "line_color": "C8D8C0",
+                  "text_color": "234B45",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "next_steps_title",
+                "type": "text",
+                "x": 0.9,
+                "y": 0.78,
+                "w": 7.7,
+                "h": 0.72,
+                "content": {
+                  "text": "A few things that help",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "C8D8C0",
+                  "line_color": "C8D8C0",
+                  "text_color": "234B45",
+                  "font_face": "Liberation Sans",
+                  "font_size": 27,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              },
+              {
+                "semantic_id": "next_steps_checklist",
+                "type": "text",
+                "x": 1.05,
+                "y": 2.0,
+                "w": 6.9,
+                "h": 2.45,
+                "content": {
+                  "text": "• Bring water for the morning\n• Wear sun protection\n• Check in at the tool shed",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "C8D8C0",
+                  "line_color": "C8D8C0",
+                  "text_color": "234B45",
+                  "font_face": "Liberation Sans",
+                  "font_size": 21,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "next_steps_toolbox_icon",
+                "type": "shape",
+                "x": 9.25,
+                "y": 2.05,
+                "w": 2.85,
+                "h": 1.9,
+                "content": {
+                  "text": null,
+                  "shape_kind": "round_rect",
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "D36B4B",
+                  "line_color": "234B45",
+                  "text_color": "234B45",
+                  "font_face": "Liberation Sans",
+                  "font_size": 12,
+                  "bold": false,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "top"
+                }
+              },
+              {
+                "semantic_id": "next_steps_thank_you",
+                "type": "text",
+                "x": 1.03,
+                "y": 5.85,
+                "w": 9.2,
+                "h": 0.5,
+                "content": {
+                  "text": "Thank you for caring for our shared space.",
+                  "shape_kind": null,
+                  "image_kind": null,
+                  "rows": [],
+                  "categories": [],
+                  "series": []
+                },
+                "style": {
+                  "fill_color": "C8D8C0",
+                  "line_color": "C8D8C0",
+                  "text_color": "234B45",
+                  "font_face": "Liberation Sans",
+                  "font_size": 17,
+                  "bold": true,
+                  "italic": false,
+                  "underline": false,
+                  "align": "left",
+                  "valign": "mid"
+                }
+              }
+            ]
+          }
+        ],
+        "manual_setup_steps": []
+      },
+      "generation": {
+        "request_id": "fdad3e66-8573-4bc3-ac60-bf5ba1dcd56e",
+        "prompt_sha256": "2c5b1b82dd04d1682c5c65717e0440459d4b7607f2c7c68dbb4825e768eb04f3",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3584,
+        "output_tokens": 2839,
+        "estimated_cost_usd": 0.041236
+      }
+    }
+  ],
+  "totals": {
+    "calls": 5,
+    "input_tokens": 16562,
+    "output_tokens": 12272,
+    "estimated_cost_usd": 0.180388,
+    "pricing_complete": true
+  }
+}

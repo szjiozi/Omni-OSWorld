@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "artifacts": [
+    {
+      "reference_task_id": "reference-task-impress-deferred-smoke-r99-001",
+      "app": "libreoffice_impress",
+      "artifact_type": "pptx",
+      "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/smoke_tests/deferred_adapter_20260915/artifacts/reference-task-impress-deferred-smoke-r99-001/initial_artifact.pptx",
+      "artifact_sha256": "927e111727ec33f40ce52d2968465efa8bf48913e5f9f05b0bda9a194eb42820",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/impress_full_v1/smoke_tests/deferred_adapter_20260915/artifacts/reference-task-impress-deferred-smoke-r99-001/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/impress_full_v1/smoke_tests/deferred_adapter_20260915/artifacts/reference-task-impress-deferred-smoke-r99-001/artifact_qa.json",
+      "supporting_files": [],
+      "expected_outputs": [],
+      "setup_profiles": [],
+      "artifact_strategy_ids": [
+        "presenter-console-settings",
+        "autorecovery-settings"
+      ],
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-impress-deferred-smoke-r99-002",
+      "app": "libreoffice_impress",
+      "artifact_type": "pptx",
+      "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/smoke_tests/deferred_adapter_20260915/artifacts/reference-task-impress-deferred-smoke-r99-002/initial_artifact.pptx",
+      "artifact_sha256": "277f4eb7dce794a07a12576221e1f4b920ad41b59b1596de75e241abbe9363f0",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/impress_full_v1/smoke_tests/deferred_adapter_20260915/artifacts/reference-task-impress-deferred-smoke-r99-002/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/impress_full_v1/smoke_tests/deferred_adapter_20260915/artifacts/reference-task-impress-deferred-smoke-r99-002/artifact_qa.json",
+      "supporting_files": [],
+      "expected_outputs": [
+        {
+          "role": "saved_presentation",
+          "guest_path": "/home/user/Desktop/reference-copy.pptx",
+          "local_filename": "reference-copy.pptx",
+          "required": true
+        },
+        {
+          "role": "png_export",
+          "guest_path": "/home/user/Desktop/res.png",
+          "local_filename": "res.png",
+          "required": true
+        }
+      ],
+      "setup_profiles": [],
+      "artifact_strategy_ids": [
+        "save-as-secondary-presentation",
+        "png-export-output"
+      ],
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-impress-deferred-smoke-r99-003",
+      "app": "libreoffice_impress",
+      "artifact_type": "pptx",
+      "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/smoke_tests/deferred_adapter_20260915/artifacts/reference-task-impress-deferred-smoke-r99-003/initial_artifact.pptx",
+      "artifact_sha256": "a62b45ad3a69124f2253e325ea79c00c7d6845da98b1d397571da76caf34d0b7",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/impress_full_v1/smoke_tests/deferred_adapter_20260915/artifacts/reference-task-impress-deferred-smoke-r99-003/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/impress_full_v1/smoke_tests/deferred_adapter_20260915/artifacts/reference-task-impress-deferred-smoke-r99-003/artifact_qa.json",
+      "supporting_files": [],
+      "expected_outputs": [],
+      "setup_profiles": [],
+      "artifact_strategy_ids": [
+        "slide-number-native-fields"
+      ],
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-impress-deferred-smoke-r99-004",
+      "app": "libreoffice_impress",
+      "artifact_type": "pptx",
+      "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/smoke_tests/deferred_adapter_20260915/artifacts/reference-task-impress-deferred-smoke-r99-004/initial_artifact.pptx",
+      "artifact_sha256": "dbb71d3558cebc584812fd6ea25bd50749b18e5ea6c8a6a16c49c6c6028ff128",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/impress_full_v1/smoke_tests/deferred_adapter_20260915/artifacts/reference-task-impress-deferred-smoke-r99-004/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/impress_full_v1/smoke_tests/deferred_adapter_20260915/artifacts/reference-task-impress-deferred-smoke-r99-004/artifact_qa.json",
+      "supporting_files": [
+        {
+          "role": "supporting_input",
+          "local_path": "evaluation_examples/expert_skill_learning/impress_full_v1/smoke_tests/deferred_adapter_20260915/artifacts/reference-task-impress-deferred-smoke-r99-004/supporting/none.png",
+          "guest_path": "/home/user/Desktop/none.png",
+          "sha256": "c2a40433f387436cf6b91738e84b03aba50975b9f0dbfccc5fff01bffc49345a"
+        }
+      ],
+      "expected_outputs": [],
+      "setup_profiles": [],
+      "artifact_strategy_ids": [
+        "insert-image-input"
+      ],
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    }
+  ]
+}

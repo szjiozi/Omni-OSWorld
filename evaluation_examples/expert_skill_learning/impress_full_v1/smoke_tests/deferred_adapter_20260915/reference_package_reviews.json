@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "reviews": [
+    {
+      "reference_task_id": "reference-task-impress-deferred-smoke-r99-001",
+      "decision": "",
+      "reason_codes": [],
+      "revision_instructions": [],
+      "reviewer": "",
+      "notes": ""
+    },
+    {
+      "reference_task_id": "reference-task-impress-deferred-smoke-r99-002",
+      "decision": "",
+      "reason_codes": [],
+      "revision_instructions": [],
+      "reviewer": "",
+      "notes": ""
+    },
+    {
+      "reference_task_id": "reference-task-impress-deferred-smoke-r99-003",
+      "decision": "",
+      "reason_codes": [],
+      "revision_instructions": [],
+      "reviewer": "",
+      "notes": ""
+    },
+    {
+      "reference_task_id": "reference-task-impress-deferred-smoke-r99-004",
+      "decision": "",
+      "reason_codes": [],
+      "revision_instructions": [],
+      "reviewer": "",
+      "notes": ""
+    }
+  ]
+}

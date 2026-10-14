@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "pptx",
+  "opens_as_zip_package": true,
+  "libreoffice_render_succeeded": true,
+  "slide_count": 3,
+  "semantic_object_count": 13,
+  "geometric_overlap_warnings": [
+    {
+      "slide_number": 1,
+      "objects": [
+        "cover_text_panel",
+        "cover_heading"
+      ],
+      "overlap_area": 8.4375
+    },
+    {
+      "slide_number": 1,
+      "objects": [
+        "cover_text_panel",
+        "cover_subheading"
+      ],
+      "overlap_area": 3.835
+    },
+    {
+      "slide_number": 1,
+      "objects": [
+        "cover_photo_window",
+        "cover_bee_photo"
+      ],
+      "overlap_area": 8.14
+    }
+  ],
+  "placeholder_matches": [],
+  "media_part_count": 3,
+  "notes_part_count": 8,
+  "slides": [
+    {
+      "slide_number": 1,
+      "text": [
+        "Urban Pollinator",
+        "Pocket Guide",
+        "Recognize small helpers in city gardens",
+        "FIELD NOTES / 2026"
+      ],
+      "shape_count": 6,
+      "picture_count": 1,
+      "graphic_frame_count": 0
+    },
+    {
+      "slide_number": 2,
+      "text": [
+        "What to Look For",
+        "Check garden visitors without disturbing them. Mark only what you can observe.",
+        "Visitor",
+        "Clue",
+        "Status",
+        "Bumble bee",
+        "Round body; pollen baskets",
+        "Seen",
+        "Hoverfly",
+        "One wing pair; hovers in place",
+        "Look again",
+        "Leafcutter bee",
+        "Neat circles cut from leaves",
+        "Seen",
+        "Cabbage white",
+        "Pale wings; quick flutter",
+        "Noted",
+        "Observe, don’t handle."
+      ],
+      "shape_count": 4,
+      "picture_count": 1,
+      "graphic_frame_count": 1
+    },
+    {
+      "slide_number": 3,
+      "text": [
+        "Scratch space — remove before sharing"
+      ],
+      "shape_count": 2,
+      "picture_count": 0,
+      "graphic_frame_count": 0
+    }
+  ],
+  "preview_files": [
+    "slide-01.png",
+    "slide-02.png",
+    "slide-03.png"
+  ],
+  "contact_sheet": "contact-sheet.png",
+  "visual_review_required": true
+}

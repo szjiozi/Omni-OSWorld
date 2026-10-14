@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+  "app": "libreoffice_impress",
+  "single_action_count": 7,
+  "prompt_sha256": "13a76e20e98f101b1cf817aff7522de2203fb304348c5be64fc458ab451dc60a",
+  "request_id": "ea8336af-22f6-4b48-b528-40c079e114d7",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1536,
+    "cached_input_tokens": 1355,
+    "output_tokens": 336,
+    "estimated_cost_usd": 0.004665
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply bold formatting to text in a slide text box",
+        "procedure": [
+          "On the target slide, click the text box containing the text to format, entering the appropriate text-editing/selection state for that text.",
+          "Use Ctrl+B to toggle bold formatting for the selected text or for text subsequently entered. For example, select a title in a title box and press Ctrl+B to make the title bold."
+        ],
+        "efficiency_tip": "Use Ctrl+B instead of opening character-formatting menus; verify that the text, rather than only the text box border, is the active editing target before applying the shortcut.",
+        "action_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "name": "Add speaker notes in Notes view",
+        "procedure": [
+          "Open the View menu and choose Notes to switch from slide editing to the notes area for the current slide.",
+          "Click the notes placeholder labeled “Click to add notes” and enter the note text. For example, type a short note that matches the slide title.",
+          "Keep the current slide selected before switching views so the note is attached to that slide."
+        ],
+        "efficiency_tip": "Switch to Notes view once and enter the note directly in the placeholder, rather than adding a separate text box onto the slide canvas.",
+        "action_ids": [
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    ]
+  }
+}

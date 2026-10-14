@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+  "app": "libreoffice_impress",
+  "single_action_count": 12,
+  "prompt_sha256": "edb7129b16585a73bab7627bd08854a45b50457f1140815995158bd4269c5269",
+  "request_id": "0679d1cd-c248-40a0-8cca-867e7a61ee30",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1570,
+    "cached_input_tokens": 1355,
+    "output_tokens": 386,
+    "estimated_cost_usd": 0.005333
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Insert an image from a local folder into a slide",
+        "procedure": [
+          "Select the target slide thumbnail in the Slides pane.",
+          "Click the slide's Insert Image icon to open the file picker.",
+          "Navigate to the folder containing the image, select the desired image file, and confirm the selection (for example, choose `none.png` from the Desktop and press Enter).",
+          "The image is inserted onto the selected slide and remains selected for subsequent formatting."
+        ],
+        "efficiency_tip": "Use the slide's Insert Image icon when available to open the file picker directly, rather than opening broader Insert menus.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "name": "Set an image to exact width and height using Position and Size",
+        "procedure": [
+          "With the inserted image selected by its outer object border, open the Position and Size controls.",
+          "Scroll to the Width field, select its current value, and enter the required width, for example `1cm`.",
+          "Press Tab to move to the Height field, enter the required height, for example `1cm`, and press Enter to apply the dimensions."
+        ],
+        "efficiency_tip": "Type the width and use Tab to reach Height instead of clicking between fields; this reduces selection mistakes and preserves exact units.",
+        "action_ids": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    ]
+  }
+}

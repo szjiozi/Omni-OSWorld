@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.0",
+  "blueprints": [
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-001",
+      "blueprint": {
+        "snapshot": "libreoffice_impress",
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "harbor_sampling_brief.pptx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "Confirm the presentation is open in LibreOffice Impress in Normal view.",
+          "Confirm that there are exactly two slides and that slide 2 is selected.",
+          "Confirm slide 2 shows the “North Pier Checkpoint” heading and the “Sampling window: 06:00–10:00” label in the upper-right area."
+        ],
+        "setup_notes": []
+      },
+      "generation": {
+        "request_id": "016f3629-30d3-4c20-bb33-5da12ad67386",
+        "prompt_sha256": "d35ec8989c70b519ba729e6bb562f21c0e8e04cd54625f8b4041c01cc0004f5b",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2095,
+        "output_tokens": 115,
+        "estimated_cost_usd": 0.00557
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-002",
+      "blueprint": {
+        "snapshot": "libreoffice_impress",
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "harbor_air_briefing.pptx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "Confirm the presentation is open in LibreOffice Impress in normal slide editing view.",
+          "Confirm the Slides pane shows exactly three slides.",
+          "Confirm slide 1 is initially selected and displays the “Harbor Air Lab” cover slide.",
+          "Confirm slide 2 shows “FIELD SNAPSHOT” in regular weight, the shoreline image in the left panel, and an empty outlined image frame on the right.",
+          "Confirm slide 3 contains the closing callout “Sampling begins at first light.” aligned to the left within its pale-blue area."
+        ],
+        "setup_notes": []
+      },
+      "generation": {
+        "request_id": "b6771bcb-4fed-4b66-9c1e-5d60a38189e8",
+        "prompt_sha256": "faf50cc3db3332c047a33e12e69c2b798229063dd60713f78f7dfbdcbea8f1bd",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2355,
+        "output_tokens": 154,
+        "estimated_cost_usd": 0.006558
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-003",
+      "blueprint": {
+        "snapshot": "libreoffice_impress",
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "repair_cafe_host_brief.pptx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "Confirm the presentation is open in LibreOffice Impress in normal editing view.",
+          "Confirm that exactly three slide thumbnails are visible in the Slides pane.",
+          "Confirm Slide 1, the cover slide titled “Neighborhood Repair Café,” is the initially displayed slide and no text object is selected."
+        ],
+        "setup_notes": []
+      },
+      "generation": {
+        "request_id": "b06ce7c3-2da8-4e04-9e7d-64abc6c70824",
+        "prompt_sha256": "2745d47e73aa32166f30f6ea60cdbced6c6fa583c0d5135fbee15ee34a9cc909",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2550,
+        "output_tokens": 106,
+        "estimated_cost_usd": 0.006372
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-004",
+      "blueprint": {
+        "snapshot": "libreoffice_impress",
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "urban_pollinator_guide.pptx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "Confirm the presentation is open in LibreOffice Impress in normal editing view.",
+          "Confirm the Slides pane shows three slide thumbnails, with slide 1 selected initially.",
+          "Confirm slide 1 shows the light cream cover background and a centered bee photo that is visibly smaller than its tall photo window.",
+          "Confirm slide 2 contains the checklist table with non-underlined text, and slide 3 remains present as the unused working slide."
+        ],
+        "setup_notes": []
+      },
+      "generation": {
+        "request_id": "57ed53a2-e607-42dd-aecc-6bfbac001546",
+        "prompt_sha256": "d1df1f6be5345b0175f2b5a6ffc8a6fee9dc292f3d3e53a85f8a40fa3c97e3c0",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2198,
+        "output_tokens": 133,
+        "estimated_cost_usd": 0.005992
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-005",
+      "blueprint": {
+        "snapshot": "libreoffice_impress",
+        "artifact_slot": "initial_artifact",
+        "guest_filename": "riverside_volunteer_day.pptx",
+        "open_after_upload": true,
+        "ready_state_checks": [
+          "Confirm the presentation is open in LibreOffice Impress.",
+          "Confirm that the Slides pane shows exactly three slides.",
+          "Confirm slide 1, titled “Riverside Garden Volunteer Day,” is the initially visible selected slide."
+        ],
+        "setup_notes": []
+      },
+      "generation": {
+        "request_id": "a4b21d09-5209-4c72-8b57-f1f72e749ee3",
+        "prompt_sha256": "dab41c6256e9eec0c47c8156bf5ab5ef5b9c8e17d1eec65393a4f44af5b803be",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2276,
+        "output_tokens": 94,
+        "estimated_cost_usd": 0.00568
+      }
+    }
+  ],
+  "totals": {
+    "calls": 5,
+    "input_tokens": 11474,
+    "output_tokens": 602,
+    "estimated_cost_usd": 0.030172,
+    "pricing_complete": true
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+  "app": "libreoffice_impress",
+  "single_action_count": 17,
+  "prompt_sha256": "9c260fbcf01b0a869ddc586e0d0bd21e64b2867816d7ee4e62e565a5d196c3d2",
+  "request_id": "87fcfc1f-06d7-4b1c-a8ac-2fe45f6ba18c",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1680,
+    "cached_input_tokens": 1403,
+    "output_tokens": 241,
+    "estimated_cost_usd": 0.0037266
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set an image's exact height using the Position and Size controls",
+        "procedure": [
+          "In the Slides pane, select the slide containing the image, then click the image once so its outer object border is selected rather than entering text-editing mode.",
+          "Open the image's Position and Size controls if they are collapsed; scroll within the properties panel to locate the Height field.",
+          "Select the existing Height value, type a dimension with its unit, and press Enter to apply it. For example, enter `20cm` to set the selected image's height to 20 cm.",
+          "Repeat the same operation for other selected images as needed; the source demonstrates values such as `30cm` and `25cm`."
+        ],
+        "efficiency_tip": "Include the measurement unit directly in the Height field and press Enter, rather than opening a separate dialog or converting units manually. Keep the Position and Size section open while adjusting multiple images.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    ]
+  }
+}

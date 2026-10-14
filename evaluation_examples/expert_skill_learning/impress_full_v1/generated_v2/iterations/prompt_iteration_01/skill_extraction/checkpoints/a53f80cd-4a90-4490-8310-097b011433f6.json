@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+  "app": "libreoffice_impress",
+  "single_action_count": 13,
+  "prompt_sha256": "0543669559f41ff572f84f4321ecc5d21c319ea09b852777d3c72fdd8c3eafee",
+  "request_id": "afdc1dea-f224-4edd-aef5-341269691aaa",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1361,
+    "cached_input_tokens": 1103,
+    "output_tokens": 628,
+    "estimated_cost_usd": 0.0082726
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply a font color to title text",
+        "procedure": [
+          "Select the target slide in the Slides pane, then enter text-editing mode in its title and select the title text; for example, triple-click the title to select its paragraph.",
+          "Use the font color control to apply the desired color. Open the color dropdown and choose a swatch such as black, or click the font color button directly when its currently displayed color is already black.",
+          "Repeat on other slides while preserving each title's text selection before applying the color."
+        ],
+        "efficiency_tip": "When several titles need the same color, use the direct font color button after setting the desired swatch once; this avoids reopening the palette for every title.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "name": "Bold selected title text",
+        "procedure": [
+          "With the title text already selected in text-editing mode, click the Bold toolbar button to toggle bold formatting on.",
+          "For example, after selecting a slide title and applying a color, click Bold once to make the selected title bold; repeat for another selected title."
+        ],
+        "efficiency_tip": "Apply bold while the text remains selected after another text-formatting operation, rather than re-entering and reselecting the title.",
+        "action_ids": [
+          4,
+          8
+        ]
+      },
+      {
+        "name": "Delete multiple slide objects with a marquee selection",
+        "procedure": [
+          "Select the slide containing the objects to remove.",
+          "Click and drag on an empty area of the slide to draw a selection marquee around all related objects, including icons and text elements. Start outside the group and drag until the marquee encloses every object to be deleted.",
+          "Press Delete to remove all objects in the current multi-object selection."
+        ],
+        "efficiency_tip": "Use one marquee selection for a clustered set of objects instead of selecting and deleting each icon or text box individually; leave padding around the group so no object is missed.",
+        "action_ids": [
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    ]
+  }
+}

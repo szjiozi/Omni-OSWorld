@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+  "app": "libreoffice_impress",
+  "single_action_count": 8,
+  "prompt_sha256": "dca27c6c96a6a1a73a2e598b61c3317a3281b9a2596c419dc7b8363f2bc4676f",
+  "request_id": "e2ae10f5-aca5-4f28-97a4-aae1315975a0",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1328,
+    "cached_input_tokens": 1103,
+    "output_tokens": 374,
+    "estimated_cost_usd": 0.0051586
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply a font color from the color palette to selected text",
+        "procedure": [
+          "Enter text-editing mode in a text box and select the text whose characters should change color. For example, triple-click a short line to select it, or double-click and use an appropriate text selection gesture.",
+          "Open the Font Color drop-down in the formatting toolbar, then click the required standard color swatch. For example, choose the yellow swatch for one selected text range and the red or green swatch for other selected ranges.",
+          "Repeat the selection-and-color action independently for each text box; selecting text inside a text box changes character formatting, rather than selecting the text box border for object-level operations."
+        ],
+        "efficiency_tip": "Use the standard palette swatches directly rather than opening a custom-color dialog. Select the entire target text range before choosing a swatch so one color command formats all of that range at once.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    ]
+  }
+}

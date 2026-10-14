@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "7a7ea5774f1092ff3c583257d0300e66c3b761fa6fc4d0320c36ab353563ff01",
+  "request_id": "99bab209-0af4-4411-9024-23f468c216c5",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1527,
+    "cached_input_tokens": 1403,
+    "output_tokens": 49,
+    "estimated_cost_usd": 0.0011166
+  },
+  "response": {
+    "decision": "no_reusable_skill",
+    "decision_reason": "The steps only select a slide and enter task-specific literal text into an ordinary content placeholder; no independently reusable application operation is demonstrated.",
+    "skills": []
+  }
+}

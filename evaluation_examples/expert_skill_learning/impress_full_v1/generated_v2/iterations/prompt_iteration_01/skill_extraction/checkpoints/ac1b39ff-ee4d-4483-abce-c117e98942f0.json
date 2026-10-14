@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+  "app": "libreoffice_impress",
+  "single_action_count": 4,
+  "prompt_sha256": "58f777b23b10ae561a210d0ad07bcee042c95b80dfa30942febd2c628facbe76",
+  "request_id": "be2ade7e-6bd3-4fb2-9118-522c24bf54f3",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1241,
+    "cached_input_tokens": 1103,
+    "output_tokens": 187,
+    "estimated_cost_usd": 0.0027406
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Move a selected object by dragging",
+        "procedure": [
+          "Select the target slide thumbnail in the Slides pane so edits apply to that slide.",
+          "Click the table or other object once to select its outer border rather than entering text-editing mode.",
+          "Move the pointer to a stable point on the selected object's border, such as its upper-left corner, then drag the object to the desired location. For example, drag a table downward until it is positioned near the bottom edge of the slide.",
+          "Release the mouse to place the object; its contents and size remain unchanged while its position moves."
+        ],
+        "efficiency_tip": "Drag from an object border or empty area within the selected object, not from editable text or a table cell, to avoid entering text-editing mode or changing cell content.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ]
+  }
+}

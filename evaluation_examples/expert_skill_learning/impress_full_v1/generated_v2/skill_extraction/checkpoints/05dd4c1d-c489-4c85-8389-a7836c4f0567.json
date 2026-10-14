@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+  "app": "libreoffice_impress",
+  "single_action_count": 12,
+  "prompt_sha256": "7952b4bb695f5430e2dcd57f228e81ae1561858bea2d90a1a76d7f006f9ee842",
+  "request_id": "900d0f63-7616-4ee0-a35c-cea5aea02a14",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1636,
+    "cached_input_tokens": 0,
+    "output_tokens": 184,
+    "estimated_cost_usd": 0.00548
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Align paragraph text within a selected text box",
+        "procedure": [
+          "In the Slides pane, select the slide containing the text box to format.",
+          "Click inside the text box to enter text-editing mode, then use Ctrl+A to select its text.",
+          "Click the desired paragraph-alignment control in the toolbar, such as Right Align, Center Align, or Left Align.",
+          "For example, select the text in a text box and click Center Align to center all selected paragraphs within that box."
+        ],
+        "efficiency_tip": "Select the text directly with Ctrl+A after entering the text box, then apply one alignment command; this avoids changing alignment on the wrong object or only affecting an insertion point.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,256 @@
+{
+  "schema_version": "1.0",
+  "app": "libreoffice_impress",
+  "source_manifest": "evaluation_examples/expert_skill_learning/impress_full_v1/source_tasks.json",
+  "allowed_download_hosts": [
+    "huggingface.co",
+    "us.aws.cdn.hf.co"
+  ],
+  "entries": [
+    {
+      "strategy_id": "presenter-console-settings",
+      "skill_ids": ["0f84bef9-9790-432e-92b7-eece357603fb.skill-01"],
+      "source_task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+      "acquisition": "create_native",
+      "native_profile": "generic_ui",
+      "include_source_attachments": false,
+      "setup_profiles": [],
+      "expected_outputs": [],
+      "adaptation_requirements": ["Use a valid presentation so the annotator can open Impress before changing the application option."],
+      "validation_requirements": ["The presentation opens in Impress and contains editable title and body placeholders."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "slide-transition-source-seed",
+      "skill_ids": ["21760ecb-8f62-40d2-8d85-0cee5725cb72.skill-01"],
+      "source_task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+      "acquisition": "source_task_assets",
+      "native_profile": "transition_ready",
+      "include_source_attachments": false,
+      "setup_profiles": [],
+      "expected_outputs": [],
+      "adaptation_requirements": ["Preserve the source slide structure and leave slide 1 available for a transition assignment."],
+      "validation_requirements": ["The PPTX remains renderable after a LibreOffice round trip and transition XML is preserved after annotation."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "autorecovery-settings",
+      "skill_ids": ["2cd43775-7085-45d8-89fa-9e35c0a915cf.skill-01"],
+      "source_task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+      "acquisition": "create_native",
+      "native_profile": "generic_ui",
+      "include_source_attachments": false,
+      "setup_profiles": [],
+      "expected_outputs": [],
+      "adaptation_requirements": ["Use a valid presentation only as an entry point to LibreOffice Options."],
+      "validation_requirements": ["The application preference change is visible before the recording ends."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "outline-native-placeholders",
+      "skill_ids": ["358aa0a7-6677-453f-ae35-e440f004c31e.skill-01"],
+      "source_task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+      "acquisition": "source_task_assets",
+      "native_profile": "title_body_placeholders",
+      "include_source_attachments": false,
+      "setup_profiles": [],
+      "expected_outputs": [],
+      "adaptation_requirements": ["Retain native title and body placeholders so text appears in Outline view."],
+      "validation_requirements": ["At least one title placeholder and one body placeholder are present and editable."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "table-picker-content-placeholder",
+      "skill_ids": ["39be0d19-634d-4475-8768-09c130f5425d.skill-01"],
+      "source_task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+      "acquisition": "source_task_assets",
+      "native_profile": "title_body_placeholders",
+      "include_source_attachments": false,
+      "setup_profiles": [],
+      "expected_outputs": [],
+      "adaptation_requirements": ["Keep an unused native content placeholder on the target slide so its Insert Table icon is available."],
+      "validation_requirements": ["The target content placeholder is visible and accepts table insertion."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "master-background-and-recent-color",
+      "skill_ids": [
+        "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-01",
+        "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-02"
+      ],
+      "source_task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+      "acquisition": "source_task_assets",
+      "native_profile": "master_ready",
+      "include_source_attachments": false,
+      "setup_profiles": [],
+      "expected_outputs": [],
+      "adaptation_requirements": ["Preserve the master/layout hierarchy; the generated task must first apply a custom color, then ask the annotator to reuse that newly created Recent Colors swatch."],
+      "validation_requirements": ["Master-view edits persist after saving and the color created earlier in the same demonstration is visible in Recent Colors."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "png-export-output",
+      "skill_ids": ["455d3c66-7dc6-4537-a39a-36d3e9119df7.skill-01"],
+      "source_task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+      "acquisition": "source_task_assets",
+      "native_profile": "source_seed",
+      "include_source_attachments": false,
+      "setup_profiles": [],
+      "expected_outputs": [
+        {"role": "png_export", "guest_path": "/home/user/Desktop/res.png", "local_filename": "res.png", "required": true}
+      ],
+      "adaptation_requirements": ["The task instruction must name res.png as the export filename on the Desktop."],
+      "validation_requirements": ["Collect res.png and verify its PNG signature and nonzero dimensions."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "speaker-notes-source-7dbc",
+      "skill_ids": ["7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-02"],
+      "source_task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+      "acquisition": "source_task_assets",
+      "native_profile": "notes_ready",
+      "include_source_attachments": false,
+      "setup_profiles": [],
+      "expected_outputs": [],
+      "adaptation_requirements": ["Preserve native notes-slide relationships and a writable notes text frame."],
+      "validation_requirements": ["The saved PPTX contains the expected notes text on the target slide."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "speaker-notes-source-841b",
+      "skill_ids": ["841b50aa-df53-47bd-a73a-22d3a9f73160.skill-02"],
+      "source_task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+      "acquisition": "source_task_assets",
+      "native_profile": "notes_ready",
+      "include_source_attachments": false,
+      "setup_profiles": [],
+      "expected_outputs": [],
+      "adaptation_requirements": ["Preserve native notes-slide relationships and a writable notes text frame."],
+      "validation_requirements": ["The saved PPTX contains the expected notes text on the target slide."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "speaker-notes-source-8979",
+      "skill_ids": ["8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-02"],
+      "source_task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+      "acquisition": "source_task_assets",
+      "native_profile": "notes_ready",
+      "include_source_attachments": false,
+      "setup_profiles": [],
+      "expected_outputs": [],
+      "adaptation_requirements": ["Preserve native notes-slide relationships and a writable notes text frame."],
+      "validation_requirements": ["The saved PPTX contains the expected notes text on the target slide."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "save-as-secondary-presentation",
+      "skill_ids": ["a097acff-6266-4291-9fbd-137af7ecd439.skill-01"],
+      "source_task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+      "acquisition": "source_task_assets",
+      "native_profile": "source_seed",
+      "include_source_attachments": false,
+      "setup_profiles": [],
+      "expected_outputs": [
+        {"role": "saved_presentation", "guest_path": "/home/user/Desktop/reference-copy.pptx", "local_filename": "reference-copy.pptx", "required": true}
+      ],
+      "adaptation_requirements": ["The generated task must explicitly request reference-copy.pptx on the Desktop."],
+      "validation_requirements": ["Collect the new PPTX independently of the initially opened presentation and validate its package structure."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "slide-number-native-fields",
+      "skill_ids": [
+        "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-01",
+        "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-02",
+        "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-03"
+      ],
+      "source_task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+      "acquisition": "source_task_assets",
+      "native_profile": "slide_number_ready",
+      "include_source_attachments": false,
+      "setup_profiles": [],
+      "expected_outputs": [],
+      "adaptation_requirements": ["Preserve slide-number placeholders/fields and the master hierarchy used to format them."],
+      "validation_requirements": ["Slide-number field XML remains present after saving and its formatting can be inspected."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "summary-slide-source-seed",
+      "skill_ids": ["af23762e-2bfd-4a1d-aada-20fa8de9ce07.skill-01"],
+      "source_task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+      "acquisition": "source_task_assets",
+      "native_profile": "summary_ready",
+      "include_source_attachments": false,
+      "setup_profiles": [],
+      "expected_outputs": [],
+      "adaptation_requirements": ["Retain several titled slides so Summary Slide can derive a meaningful list."],
+      "validation_requirements": ["The final presentation gains the expected summary slide without losing source slides."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "photo-album-images",
+      "skill_ids": ["bf4e9888-f10f-47af-8dba-76413038b73c.skill-01"],
+      "source_task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+      "acquisition": "source_task_assets",
+      "native_profile": "source_seed",
+      "include_source_attachments": true,
+      "setup_profiles": [],
+      "expected_outputs": [],
+      "adaptation_requirements": ["Upload the source PPTX and all six source images to their original Desktop filenames."],
+      "validation_requirements": ["All image inputs are present before recording and the final PPTX embeds the selected images."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "embedded-audio-input",
+      "skill_ids": ["c59742c0-4323-4b9d-8a02-723c251deaa0.skill-01"],
+      "source_task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+      "acquisition": "source_task_assets",
+      "native_profile": "source_seed",
+      "include_source_attachments": true,
+      "setup_profiles": [],
+      "expected_outputs": [],
+      "adaptation_requirements": ["Upload Baseball.mp3 beside the source presentation using its original Desktop filename."],
+      "validation_requirements": ["The final PPTX contains an embedded media part and no unresolved external file relationship."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "insert-image-input",
+      "skill_ids": ["c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-01"],
+      "source_task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+      "acquisition": "source_task_assets",
+      "native_profile": "source_seed",
+      "include_source_attachments": true,
+      "setup_profiles": [],
+      "expected_outputs": [],
+      "adaptation_requirements": ["Upload none.png beside the source presentation using its original Desktop filename."],
+      "validation_requirements": ["The image input exists before recording and is embedded at the task-requested size in the final PPTX."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "portrait-orientation-source-seed",
+      "skill_ids": ["ce88f674-ab7a-43da-9201-468d38539e4a.skill-01"],
+      "source_task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+      "acquisition": "source_task_assets",
+      "native_profile": "portrait_ready",
+      "include_source_attachments": false,
+      "setup_profiles": [],
+      "expected_outputs": [],
+      "adaptation_requirements": ["Keep all slide content within bounds when the page orientation is changed."],
+      "validation_requirements": ["The final page height exceeds its width and rendered content is not clipped."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "hidden-slides-pane-state",
+      "skill_ids": ["ef9d12bd-bcee-4ba0-a40e-918400f43ddf.skill-01"],
+      "source_task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+      "acquisition": "create_native",
+      "native_profile": "generic_ui",
+      "include_source_attachments": false,
+      "setup_profiles": ["hide_slides_pane"],
+      "expected_outputs": [],
+      "adaptation_requirements": ["Hide the Slides pane after opening the seed and before capturing initial_state.png."],
+      "validation_requirements": ["The initial screenshot shows no Slides pane and the final screenshot shows it restored."],
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    }
+  ]
+}

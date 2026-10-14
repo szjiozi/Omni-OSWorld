@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+  "app": "libreoffice_impress",
+  "single_action_count": 9,
+  "prompt_sha256": "c4b0685710d8e454e23f8dc0ef1bf0ce4e85f6c30538639df95b0b4d81e12c05",
+  "request_id": "cb6f0ed3-c94a-4348-a2d5-e4abacd8cfa3",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1540,
+    "cached_input_tokens": 1355,
+    "output_tokens": 499,
+    "estimated_cost_usd": 0.006629
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply a solid color to a slide background",
+        "procedure": [
+          "Select the target slide thumbnail in the Slides pane so that slide-level formatting, rather than an individual object, is targeted.",
+          "Open the background formatting menu, choose the background Color option, then open its color palette.",
+          "Choose the desired solid color from the palette. For example, select a red swatch to make the entire slide background red."
+        ],
+        "efficiency_tip": "Select the slide thumbnail before opening background formatting; this avoids accidentally changing an object's fill or text color instead of the slide background.",
+        "action_ids": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      }
+    ]
+  }
+}

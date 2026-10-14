@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "pptx",
+  "opens_as_zip_package": true,
+  "libreoffice_render_succeeded": true,
+  "slide_count": 3,
+  "semantic_object_count": 16,
+  "geometric_overlap_warnings": [
+    {
+      "slide_number": 3,
+      "objects": [
+        "measurement_callout_backing",
+        "measurement_closing_callout"
+      ],
+      "overlap_area": 5.628
+    }
+  ],
+  "placeholder_matches": [],
+  "media_part_count": 2,
+  "notes_part_count": 8,
+  "slides": [
+    {
+      "slide_number": 1,
+      "text": [
+        "Harbor Air Lab",
+        "Dawn Sampling Brief · Coastal Operations Team"
+      ],
+      "shape_count": 4,
+      "picture_count": 0,
+      "graphic_frame_count": 0
+    },
+    {
+      "slide_number": 2,
+      "text": [
+        "FIELD SNAPSHOT",
+        "Prevailing offshore wind keeps the plume moving seaward.",
+        "Pier access is clear for the 06:30 setup window.",
+        "Source: Harbor survey team, 06:10",
+        "CLEAR WINDOW"
+      ],
+      "shape_count": 6,
+      "picture_count": 1,
+      "graphic_frame_count": 0
+    },
+    {
+      "slide_number": 3,
+      "text": [
+        "NEXT MEASUREMENT",
+        "01  Calibrate sensors",
+        "02  Launch skiff",
+        "03  Log coastal readings",
+        "Sampling begins at first light."
+      ],
+      "shape_count": 9,
+      "picture_count": 0,
+      "graphic_frame_count": 0
+    }
+  ],
+  "preview_files": [
+    "slide-01.png",
+    "slide-02.png",
+    "slide-03.png"
+  ],
+  "contact_sheet": "contact-sheet.png",
+  "visual_review_required": true
+}

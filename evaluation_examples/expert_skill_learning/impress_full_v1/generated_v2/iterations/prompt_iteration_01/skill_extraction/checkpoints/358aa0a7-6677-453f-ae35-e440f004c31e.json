@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+  "app": "libreoffice_impress",
+  "single_action_count": 5,
+  "prompt_sha256": "2d22b7b51cf8850b80ac86bbd4202c2f76170e71201e2293f94cf5b74cd89863",
+  "request_id": "8682ccdc-63ed-477e-8264-6ec64ef1a679",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1269,
+    "cached_input_tokens": 1103,
+    "output_tokens": 255,
+    "estimated_cost_usd": 0.0036126
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply one font to all presentation text using Outline view",
+        "procedure": [
+          "Switch to the Outline tab to work with the presentation’s text outline rather than individual slide objects.",
+          "Press Ctrl+A in the Outline pane to select all outline text across the presentation.",
+          "Use the Font Name dropdown, type the desired font family, and press Enter to apply it to the selected text. For example, type “Liberation Sans Narrow” and press Enter.",
+          "This updates the font for the presentation text selected through the outline without selecting each text box on every slide individually."
+        ],
+        "efficiency_tip": "Use Outline view and Ctrl+A before changing the font; this performs a presentation-wide text formatting change in one operation instead of editing text boxes slide by slide.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ]
+  }
+}

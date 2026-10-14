@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+  "app": "libreoffice_impress",
+  "single_action_count": 10,
+  "prompt_sha256": "a73e5cd29f09a73cc48ec4e68edf0b59a6ca7703ed4d8eec3f77b3b52809addd",
+  "request_id": "59dd1211-36ed-4603-aa7f-9d1d78d93548",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1623,
+    "cached_input_tokens": 1403,
+    "output_tokens": 306,
+    "estimated_cost_usd": 0.0043926
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Change a slide background color",
+        "procedure": [
+          "Open the slide background color dropdown.",
+          "Choose a background fill color from the palette; for example, select a red swatch.",
+          "The selected color is applied to the current slide background."
+        ],
+        "efficiency_tip": "Choose the background color directly from the palette rather than opening additional formatting dialogs when a solid color is all that is needed.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Set the font size of text in a text box",
+        "procedure": [
+          "Click the text box containing the text to format.",
+          "Select the existing value in the font-size field, for example by triple-clicking it.",
+          "Type the desired point size, such as 12, and press Enter to apply it."
+        ],
+        "efficiency_tip": "Replace the existing size value directly in the toolbar field instead of incrementing or decrementing the size repeatedly.",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "name": "Apply a font color to text",
+        "procedure": [
+          "With the target text box selected for text formatting, open the font color dropdown.",
+          "Choose a color swatch from the palette; for example, select an orange swatch.",
+          "The chosen color is applied to the selected text or the text subsequently entered in that box."
+        ],
+        "efficiency_tip": "Use the font color palette for a precise color selection rather than repeatedly using the toolbar’s last-used-color button.",
+        "action_ids": [
+          8,
+          9
+        ]
+      }
+    ]
+  }
+}

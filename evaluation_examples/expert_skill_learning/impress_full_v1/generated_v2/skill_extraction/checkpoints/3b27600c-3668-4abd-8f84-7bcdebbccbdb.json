@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+  "app": "libreoffice_impress",
+  "single_action_count": 23,
+  "prompt_sha256": "056264b25f5d283cb66a57d1f9e0f42e2dabfed6f017ba54777d876132e2b780",
+  "request_id": "77a900dc-fa30-469c-a472-aef39fc8440a",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1723,
+    "cached_input_tokens": 1403,
+    "output_tokens": 572,
+    "estimated_cost_usd": 0.0077846
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set a master slide background using a custom color value",
+        "procedure": [
+          "Open the Slide menu and enter Master View.",
+          "With the master slide active, open Slide > Slide Properties and select the Background tab.",
+          "Activate the color value field, replace its value with the desired hexadecimal color, and confirm the dialog. For example, enter `0000ff` for a solid blue background.",
+          "Close Master View after the master-level background change is complete."
+        ],
+        "efficiency_tip": "Use Master View when the same background should be inherited by slides using that master; this avoids formatting each slide individually.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          22
+        ]
+      },
+      {
+        "name": "Apply a recently used background color to selected slides",
+        "procedure": [
+          "Select a slide thumbnail in the Slides pane so that the change targets the slide rather than an object on its canvas.",
+          "Open Slide > Slide Properties.",
+          "Choose the desired color from the recent colors list and confirm the dialog. For example, select a previously used blue swatch.",
+          "Repeat this process for any other slides that need the same explicit background setting."
+        ],
+        "efficiency_tip": "After defining a custom color once, reuse its Recent Colors swatch instead of reopening a color picker or retyping the hexadecimal value for every slide.",
+        "action_ids": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ]
+      }
+    ]
+  }
+}

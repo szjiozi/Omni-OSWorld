@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+  "app": "libreoffice_impress",
+  "single_action_count": 13,
+  "prompt_sha256": "f9b03876aac0520d8e92ca8921de41d19cbe6e231ea7fc654dec0ec1ff09e3df",
+  "request_id": "83aced7d-e538-4005-ae02-aca009dc4c2b",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1627,
+    "cached_input_tokens": 1403,
+    "output_tokens": 215,
+    "estimated_cost_usd": 0.0033086
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Replace table-cell contents while moving across a row with Tab",
+        "procedure": [
+          "Click inside the first table cell to enter text-editing mode, then select its existing content with Ctrl+A and type the replacement text.",
+          "Press Tab to move to the next cell in the same row. In each newly active cell, use Ctrl+A to select that cell's current content and type the new value.",
+          "For example, replace four adjacent first-row cells by typing “T1”, pressing Tab, then replacing the next cells with “T2”, “T3”, and “T4”.",
+          "Continue pressing Tab as needed to advance through table cells without separately clicking each cell."
+        ],
+        "efficiency_tip": "Use Tab to advance between cells and Ctrl+A immediately after entering each cell to overwrite existing values, avoiding repeated mouse clicks and manual text selection.",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    ]
+  }
+}

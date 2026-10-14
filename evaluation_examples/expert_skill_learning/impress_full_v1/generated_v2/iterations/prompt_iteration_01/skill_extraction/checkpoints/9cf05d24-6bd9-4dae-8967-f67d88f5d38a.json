@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+  "app": "libreoffice_impress",
+  "single_action_count": 4,
+  "prompt_sha256": "25cccfee807234ba1979056706ca494976a1ef54f060845d14fd2c81c31a7db4",
+  "request_id": "0c25eb5a-b230-4071-9ef7-17675da29159",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1233,
+    "cached_input_tokens": 1103,
+    "output_tokens": 139,
+    "estimated_cost_usd": 0.0021486
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set a slide background to a solid color",
+        "procedure": [
+          "Select the target slide thumbnail in the Slides pane before opening the background controls.",
+          "Open the background dropdown menu, choose Color, then open the color picker dropdown.",
+          "Choose the desired swatch to apply it as the slide background; for example, select a green swatch such as the second-row green option."
+        ],
+        "efficiency_tip": "Select the slide first and choose the color directly from the background color picker, rather than inserting a full-slide shape to imitate a background.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+  "app": "libreoffice_impress",
+  "single_action_count": 6,
+  "prompt_sha256": "7984cb95d905c9a4843f14cfbe857bb661a085c22efe20e7442c29621d8a930a",
+  "request_id": "1fa6cb31-abca-4edf-9e2f-3b3ab6d02497",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1562,
+    "cached_input_tokens": 1403,
+    "output_tokens": 489,
+    "estimated_cost_usd": 0.0064666
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Duplicate a formatted title object and replace its text",
+        "procedure": [
+          "Select the existing title text box as an object, then copy it with Ctrl+C so its font color and other formatting are retained.",
+          "Switch to the destination slide by clicking its thumbnail in the Slides pane, then paste the copied title object with Ctrl+V.",
+          "Click inside the pasted title, triple-click its text to select the existing wording, and type the replacement text. For example, replace the copied title with “Online Shopping” while preserving the copied title’s color."
+        ],
+        "efficiency_tip": "Copying an already formatted title object is faster and more reliable than recreating the text box and manually matching its font color; edit only the pasted text after entering text-editing mode.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ]
+  }
+}

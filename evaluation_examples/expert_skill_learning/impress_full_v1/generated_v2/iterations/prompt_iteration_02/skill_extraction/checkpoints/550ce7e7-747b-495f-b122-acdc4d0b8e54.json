@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+  "app": "libreoffice_impress",
+  "single_action_count": 6,
+  "prompt_sha256": "3a08e3123b13eb2ae69378bd661d237fbfe0dae4e1d750d68e75ec8ccb2601da",
+  "request_id": "adb3af8e-ddb0-46fa-b5c7-0c844415c238",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1527,
+    "cached_input_tokens": 1355,
+    "output_tokens": 279,
+    "estimated_cost_usd": 0.003963
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply strikethrough formatting to adjacent lines of text",
+        "procedure": [
+          "Click within the first line to enter text-editing mode.",
+          "Triple-click the first line to select that line or paragraph.",
+          "Hold Shift and click the next line to extend the selection to the adjacent line.",
+          "Click the Strikethrough toolbar icon to apply the formatting to all selected text. For example, select two completed list entries and strike through both at once."
+        ],
+        "efficiency_tip": "Select all adjacent lines before clicking Strikethrough so the formatting is applied once consistently, rather than formatting each line separately.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ]
+  }
+}

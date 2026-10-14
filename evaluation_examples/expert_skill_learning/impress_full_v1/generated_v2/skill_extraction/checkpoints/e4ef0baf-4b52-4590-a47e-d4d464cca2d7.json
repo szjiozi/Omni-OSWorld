@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+  "app": "libreoffice_impress",
+  "single_action_count": 20,
+  "prompt_sha256": "4f9d3434da4930939eb5b6e3688ddb55f31bc848d7164feba4309fa23d1c3471",
+  "request_id": "c5b30af8-bdb9-4ad5-8e91-df4c0382e5b3",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1728,
+    "cached_input_tokens": 1403,
+    "output_tokens": 437,
+    "estimated_cost_usd": 0.0061746
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set an image to an exact height using the size controls",
+        "procedure": [
+          "Select the image on the slide so that its object border is active, rather than entering text-editing mode.",
+          "In the image's size/properties controls, scroll if needed until the Height field is visible.",
+          "Select the current Height value, replace it with a measurement including its unit, and press Enter to apply it. For example, enter `20cm` to set the image height to 20 centimeters."
+        ],
+        "efficiency_tip": "Type the unit together with the value (for example, `20cm`) so Impress converts and applies the intended measurement directly without needing to change unit settings.",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "name": "Apply the same font size to text in separate text boxes",
+        "procedure": [
+          "On the target slide, enter text-editing mode in a text box and select the text whose size should change.",
+          "Activate the font-size control, replace its current value with the desired point size, and press Enter. For example, type `40pt`.",
+          "Repeat this selection-and-font-size operation for each separate text box that needs the same size."
+        ],
+        "efficiency_tip": "Use the font-size box to type an exact point value instead of selecting an approximate preset; this is faster and keeps formatting consistent across multiple text boxes.",
+        "action_ids": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "be95a64d4f55eb45d2e637177ec011d868eb9beff33d76b5eaa1a9b87378c5eb",
+  "request_id": "03828986-8e81-46e6-af01-b7b232a61212",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1570,
+    "cached_input_tokens": 1403,
+    "output_tokens": 473,
+    "estimated_cost_usd": 0.0062906
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Remove a bullet from a list paragraph using Backspace",
+        "procedure": [
+          "Click at the very beginning of the bulleted paragraph so the text cursor is positioned before its first character, while editing the text object.",
+          "Press Backspace once. In Impress, this removes the bullet/list formatting from that paragraph; for example, use it to turn a bulleted continuation line into an unbulleted line aligned with related text."
+        ],
+        "efficiency_tip": "Place the cursor at the true start of the paragraph before pressing Backspace; this changes the paragraph’s list formatting without selecting or deleting its text.",
+        "action_ids": [
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

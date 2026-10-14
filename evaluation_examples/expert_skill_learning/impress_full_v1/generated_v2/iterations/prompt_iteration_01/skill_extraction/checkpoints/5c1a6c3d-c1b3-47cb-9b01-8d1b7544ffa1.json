@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+  "app": "libreoffice_impress",
+  "single_action_count": 9,
+  "prompt_sha256": "d05216707c7b4a0931bb4056c18b234c9c541982bc39cace76b39ef862d02a7a",
+  "request_id": "6b2f555c-80d8-4129-a8ca-98792d932938",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1285,
+    "cached_input_tokens": 1103,
+    "output_tokens": 583,
+    "estimated_cost_usd": 0.0075806
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply bold formatting to all text in a text object",
+        "procedure": [
+          "Click or double-click inside the target text object to place the cursor in text-editing mode; double-click when a single click only selects the object's border.",
+          "Press Ctrl+A to select all text within that object.",
+          "Click the Bold toolbar icon to toggle bold on for the selected text. For example, select all text in a title box and click Bold to make the entire title bold."
+        ],
+        "efficiency_tip": "Use Ctrl+A after entering the specific text object to format its entire contents at once, rather than selecting individual words or applying bold character by character.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "name": "Underline selected text",
+        "procedure": [
+          "Select the text to format, such as all text in a title box.",
+          "Click the Underline toolbar icon to apply underlining to the current selection. For example, keep a title selected after applying another character format, then click Underline to add an underline without reselecting it."
+        ],
+        "efficiency_tip": "Apply underline while the required text remains selected after other formatting operations, avoiding an unnecessary second text selection.",
+        "action_ids": [
+          3
+        ]
+      },
+      {
+        "name": "Set an exact font size from the font-size menu",
+        "procedure": [
+          "With the target text still selected, click the font-size dropdown in the formatting toolbar.",
+          "Choose the required point size from the list, such as 44 pt, to apply that exact size to the selected text."
+        ],
+        "efficiency_tip": "Choose a listed point size directly from the dropdown when available; this is faster and less error-prone than manually typing a size.",
+        "action_ids": [
+          4,
+          5
+        ]
+      }
+    ]
+  }
+}

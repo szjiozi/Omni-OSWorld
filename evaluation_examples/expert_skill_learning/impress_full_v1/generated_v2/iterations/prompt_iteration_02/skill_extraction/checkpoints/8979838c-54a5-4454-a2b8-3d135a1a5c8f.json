@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+  "app": "libreoffice_impress",
+  "single_action_count": 8,
+  "prompt_sha256": "74277a5fd7a649c8cb801e8009fc1eba3e33c8b77cb429f61300313948d6c953",
+  "request_id": "1be998c0-81f5-4f6e-81e1-35bee64ad6a8",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1530,
+    "cached_input_tokens": 1355,
+    "output_tokens": 246,
+    "estimated_cost_usd": 0.003573
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set a slide background to a preset color",
+        "procedure": [
+          "Open the background formatting dropdown for the current slide.",
+          "Choose the color background option, open its color palette, and select the desired swatch; for example, choose the purple swatch in the second row.",
+          "The selected color is applied as the slide background."
+        ],
+        "efficiency_tip": "Use the background color palette directly rather than drawing a full-slide rectangle, which keeps the color as an actual slide background and avoids extra layering or sizing work.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Add speaker notes in Notes view",
+        "procedure": [
+          "Open the View menu and switch to Notes view.",
+          "Click the notes placeholder (such as “Click to add”) and enter the speaker-note text; for example, type a presentation title or reminder.",
+          "The entered text is stored as notes for the current slide rather than as visible slide content."
+        ],
+        "efficiency_tip": "Switch to Notes view before typing so the text is placed in the slide’s notes area, not accidentally added to a slide text box.",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    ]
+  }
+}

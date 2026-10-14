@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+  "app": "libreoffice_impress",
+  "single_action_count": 20,
+  "prompt_sha256": "b0aca0085dc14ef599c07e5a506ab898c64dad34d0aa3665457f166b59ea8730",
+  "request_id": "8330398f-ce72-44b1-8f89-288823f04053",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1428,
+    "cached_input_tokens": 1103,
+    "output_tokens": 575,
+    "estimated_cost_usd": 0.0077706
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set an exact height for a selected image",
+        "procedure": [
+          "In the Slides pane, select the slide containing the image, then click the image once so its outer object border is selected rather than entering image-editing mode.",
+          "Open or use the object size controls and scroll to the Height field if it is not visible.",
+          "Select the existing Height value, type the desired measurement with its unit, and press Enter to apply it. For example, enter `20cm` to set the image height to 20 cm."
+        ],
+        "efficiency_tip": "Type a value together with its unit directly in the Height field (for example, `20cm`) instead of converting units manually. Select the object border first so the size field affects the image rather than another slide element.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "name": "Apply a font size to text in multiple text boxes",
+        "procedure": [
+          "Select the slide containing the text boxes to update.",
+          "For each text box, select its text by clicking inside the text and using a text-selection gesture, then activate the font-size control.",
+          "Replace the current font-size value with the desired point size and press Enter. For example, type `40pt` to format the selected text at 40 points.",
+          "Repeat the same text-selection and font-size entry process for each separate text box that needs the size change."
+        ],
+        "efficiency_tip": "Use the font-size field to type an exact point value rather than searching the dropdown list. Reuse the same value for each text box, but ensure text is selected inside each box so the change affects characters rather than the text box object.",
+        "action_ids": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "5282af5ba192191e4833a16c893d7cb4b6e8e13d9111fbb6018453a456bf8e77",
+  "request_id": "efa07170-2569-4500-842a-9cc507926fa8",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1521,
+    "cached_input_tokens": 1403,
+    "output_tokens": 128,
+    "estimated_cost_usd": 0.0020526
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Move a selected image by dragging",
+        "procedure": [
+          "Select the slide containing the image in the Slides pane, for example Slide 2.",
+          "Move the pointer over the image and drag it to the desired position on the slide canvas, such as toward the right side.",
+          "Release the mouse button when the image is positioned correctly."
+        ],
+        "efficiency_tip": "Drag the image by its interior rather than a resize handle, and use alignment guides if they appear to place it accurately in one movement.",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

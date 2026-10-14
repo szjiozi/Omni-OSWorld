@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "pptx",
+  "opens_as_zip_package": true,
+  "libreoffice_render_succeeded": true,
+  "slide_count": 2,
+  "semantic_object_count": 10,
+  "geometric_overlap_warnings": [],
+  "placeholder_matches": [],
+  "media_part_count": 1,
+  "notes_part_count": 6,
+  "slides": [
+    {
+      "slide_number": 1,
+      "text": [
+        "Harbor Sampling Brief",
+        "Morning shoreline checks | North Pier",
+        "May field round"
+      ],
+      "shape_count": 5,
+      "picture_count": 0,
+      "graphic_frame_count": 0
+    },
+    {
+      "slide_number": 2,
+      "text": [
+        "North Pier Checkpoint",
+        "Sampling window: 06:00–10:00",
+        "Station",
+        "Turbidity",
+        "Condition",
+        "Breakwater",
+        "4.2 NTU",
+        "Clear",
+        "Ferry slip",
+        "7.8 NTU",
+        "Watch",
+        "Marina inlet",
+        "5.1 NTU",
+        "Clear",
+        "Recheck after rain",
+        "Volunteer readings; values shown in NTU"
+      ],
+      "shape_count": 5,
+      "picture_count": 0,
+      "graphic_frame_count": 2
+    }
+  ],
+  "preview_files": [
+    "slide-01.png",
+    "slide-02.png"
+  ],
+  "contact_sheet": "contact-sheet.png",
+  "visual_review_required": true
+}

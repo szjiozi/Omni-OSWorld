@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+  "app": "libreoffice_impress",
+  "single_action_count": 7,
+  "prompt_sha256": "f36e2213d412f40c38eea68e4ef830abf2ab2fceeacf9a1f5a3629af6a5a3e4a",
+  "request_id": "9ded0d83-bbda-45d7-b066-2acd55122282",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1549,
+    "cached_input_tokens": 1355,
+    "output_tokens": 427,
+    "estimated_cost_usd": 0.005783
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply a specific font color to all text in a text box",
+        "procedure": [
+          "On the target slide, click inside a text box to enter text-editing mode.",
+          "Select the box’s text. For example, press Ctrl+A while editing the text box, or triple-click text when that selects the full text/paragraph in the current object.",
+          "Use the Font Color control: open its dropdown and choose the exact desired palette color, such as the standard Yellow swatch in the second row, first position.",
+          "For another text box, select its text and use the Font Color button again to apply the currently active color directly when it is already set to Yellow."
+        ],
+        "efficiency_tip": "After choosing Yellow once from the dropdown, select text in each remaining text box and click the main Font Color button rather than reopening the palette each time.",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    ]
+  }
+}

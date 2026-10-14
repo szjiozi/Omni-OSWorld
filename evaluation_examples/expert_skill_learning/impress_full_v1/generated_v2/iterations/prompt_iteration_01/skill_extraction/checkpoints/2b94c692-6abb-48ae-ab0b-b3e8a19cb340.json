@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "196bb233c76d67418faeb3f5bc71e4339ec84e6812a9b0b204b0125856377427",
+  "request_id": "f1be9433-0c27-4cf1-a462-5ad205361bd1",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1221,
+    "cached_input_tokens": 1103,
+    "output_tokens": 146,
+    "estimated_cost_usd": 0.0022086
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Move a selected image by dragging",
+        "procedure": [
+          "Select the image on the slide canvas by clicking it once so its object border/handles are active; do not enter image text-editing mode.",
+          "Drag the selected image to the desired position on the canvas. For example, drag it from the center area toward the right side of the slide, then release when its placement is correct."
+        ],
+        "efficiency_tip": "Click directly on the image and drag in one motion; use the object's selection border as confirmation that you are moving the image rather than selecting the slide or editing another object.",
+        "action_ids": [
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

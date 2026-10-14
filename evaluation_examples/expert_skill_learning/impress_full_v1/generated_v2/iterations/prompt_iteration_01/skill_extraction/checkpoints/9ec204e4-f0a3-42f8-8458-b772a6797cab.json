@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+  "app": "libreoffice_impress",
+  "single_action_count": 7,
+  "prompt_sha256": "0aa1b5441270a69415fb5ed5fc2adb21ec82653153509bf61919d8601d10b4e9",
+  "request_id": "1d0f1eb1-b498-4d78-821e-537c8b72c988",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1280,
+    "cached_input_tokens": 1103,
+    "output_tokens": 409,
+    "estimated_cost_usd": 0.0054826
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Select multiple slides in the Slides pane",
+        "procedure": [
+          "In the Slides pane, click the first slide thumbnail to select it.",
+          "Hold Ctrl and click another slide thumbnail to add it to the current selection; for example, select two adjacent slides without deselecting the first one.",
+          "Release Ctrl after both thumbnails are highlighted. This selection targets slides rather than objects on the canvas."
+        ],
+        "efficiency_tip": "Use Ctrl-click to build a non-contiguous or multi-slide selection directly, instead of duplicating or editing slides one at a time.",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "name": "Duplicate selected slides from the Slides pane context menu",
+        "procedure": [
+          "With one or more slide thumbnails selected in the Slides pane, right-click the selected thumbnails.",
+          "Choose Duplicate Slides from the context menu. Impress inserts copies of the selected slides after the selected slide range while preserving their order; for example, duplicating two selected adjacent slides adds two adjacent copies after them."
+        ],
+        "efficiency_tip": "Select all slides that need the same duplication operation before opening the context menu, so a single Duplicate Slides command creates the full set of copies in order.",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,1890 @@
+{
+  "schema_version": "2.0",
+  "pilot_id": "impress-deferred-adapter-smoke",
+  "generation_round": 99,
+  "app": "libreoffice_impress",
+  "skill_pool": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/skill_pool.json",
+  "candidate_coverage": {
+    "all_skill_ids": [
+      "04578141-1d42-4146-b9cf-6fab4ce5fd74.skill-01",
+      "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01",
+      "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01",
+      "0a211154-fda0-48d0-9274-eaac4ce5486d.skill-01",
+      "0f84bef9-9790-432e-92b7-eece357603fb.skill-01",
+      "15aece23-a215-4579-91b4-69eec72e18da.skill-01",
+      "21760ecb-8f62-40d2-8d85-0cee5725cb72.skill-01",
+      "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01",
+      "2cd43775-7085-45d8-89fa-9e35c0a915cf.skill-01",
+      "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01",
+      "358aa0a7-6677-453f-ae35-e440f004c31e.skill-01",
+      "39be0d19-634d-4475-8768-09c130f5425d.skill-01",
+      "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-01",
+      "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-02",
+      "455d3c66-7dc6-4537-a39a-36d3e9119df7.skill-01",
+      "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-01",
+      "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+      "550ce7e7-747b-495f-b122-acdc4d0b8e54.skill-01",
+      "57667013-ea97-417c-9dce-2713091e6e2a.skill-01",
+      "57667013-ea97-417c-9dce-2713091e6e2a.skill-02",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-01",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-02",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03",
+      "5cfb9197-e72b-454b-900e-c06b0c802b40.skill-01",
+      "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-01",
+      "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-02",
+      "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01",
+      "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-02",
+      "7ae48c60-f143-4119-b659-15b8f485eb9a.skill-01",
+      "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01",
+      "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-02",
+      "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-01",
+      "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-02",
+      "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-01",
+      "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-02",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-01",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-02",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-03",
+      "9cf05d24-6bd9-4dae-8967-f67d88f5d38a.skill-01",
+      "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01",
+      "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-02",
+      "a097acff-6266-4291-9fbd-137af7ecd439.skill-01",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-01",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-03",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-01",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-02",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-03",
+      "a669ef01-ded5-4099-9ea9-25e99b569840.skill-01",
+      "ac1b39ff-ee4d-4483-abce-c117e98942f0.skill-01",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-01",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-02",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-03",
+      "af23762e-2bfd-4a1d-aada-20fa8de9ce07.skill-01",
+      "af2d657a-e6b3-4c6a-9f67-9e3ed015974c.skill-01",
+      "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb.skill-01",
+      "bf4e9888-f10f-47af-8dba-76413038b73c.skill-01",
+      "bf4e9888-f10f-47af-8dba-76413038b73c.skill-02",
+      "c59742c0-4323-4b9d-8a02-723c251deaa0.skill-01",
+      "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-01",
+      "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-02",
+      "ce88f674-ab7a-43da-9201-468d38539e4a.skill-01",
+      "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-01",
+      "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-02",
+      "ed43c15f-00cb-4054-9c95-62c880865d68.skill-01",
+      "ed43c15f-00cb-4054-9c95-62c880865d68.skill-02",
+      "edb61b14-a854-4bf5-a075-c8075c11293a.skill-01",
+      "ef9d12bd-bcee-4ba0-a40e-918400f43ddf.skill-01",
+      "f23acfd2-c485-4b7c-a1e7-d4303ddfe864.skill-01"
+    ],
+    "initially_covered_skill_ids": [],
+    "round_candidate_covered_skill_ids": [
+      "0f84bef9-9790-432e-92b7-eece357603fb.skill-01",
+      "2cd43775-7085-45d8-89fa-9e35c0a915cf.skill-01",
+      "455d3c66-7dc6-4537-a39a-36d3e9119df7.skill-01",
+      "a097acff-6266-4291-9fbd-137af7ecd439.skill-01",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-01",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-02",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-03",
+      "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-01",
+      "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-02"
+    ],
+    "generation_eligible_skill_ids": [
+      "0f84bef9-9790-432e-92b7-eece357603fb.skill-01",
+      "21760ecb-8f62-40d2-8d85-0cee5725cb72.skill-01",
+      "2cd43775-7085-45d8-89fa-9e35c0a915cf.skill-01",
+      "358aa0a7-6677-453f-ae35-e440f004c31e.skill-01",
+      "39be0d19-634d-4475-8768-09c130f5425d.skill-01",
+      "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-01",
+      "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-02",
+      "455d3c66-7dc6-4537-a39a-36d3e9119df7.skill-01",
+      "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-02",
+      "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-02",
+      "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-02",
+      "a097acff-6266-4291-9fbd-137af7ecd439.skill-01",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-01",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-02",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-03",
+      "af23762e-2bfd-4a1d-aada-20fa8de9ce07.skill-01",
+      "bf4e9888-f10f-47af-8dba-76413038b73c.skill-01",
+      "c59742c0-4323-4b9d-8a02-723c251deaa0.skill-01",
+      "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-01",
+      "ce88f674-ab7a-43da-9201-468d38539e4a.skill-01",
+      "ef9d12bd-bcee-4ba0-a40e-918400f43ddf.skill-01"
+    ],
+    "generation_deferred_skill_ids": [
+      "04578141-1d42-4146-b9cf-6fab4ce5fd74.skill-01",
+      "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01",
+      "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01",
+      "0a211154-fda0-48d0-9274-eaac4ce5486d.skill-01",
+      "15aece23-a215-4579-91b4-69eec72e18da.skill-01",
+      "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01",
+      "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01",
+      "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-01",
+      "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+      "550ce7e7-747b-495f-b122-acdc4d0b8e54.skill-01",
+      "57667013-ea97-417c-9dce-2713091e6e2a.skill-01",
+      "57667013-ea97-417c-9dce-2713091e6e2a.skill-02",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-01",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-02",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03",
+      "5cfb9197-e72b-454b-900e-c06b0c802b40.skill-01",
+      "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-01",
+      "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-02",
+      "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01",
+      "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-02",
+      "7ae48c60-f143-4119-b659-15b8f485eb9a.skill-01",
+      "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01",
+      "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-01",
+      "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-01",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-01",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-02",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-03",
+      "9cf05d24-6bd9-4dae-8967-f67d88f5d38a.skill-01",
+      "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01",
+      "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-02",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-01",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-03",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-01",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-02",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-03",
+      "a669ef01-ded5-4099-9ea9-25e99b569840.skill-01",
+      "ac1b39ff-ee4d-4483-abce-c117e98942f0.skill-01",
+      "af2d657a-e6b3-4c6a-9f67-9e3ed015974c.skill-01",
+      "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb.skill-01",
+      "bf4e9888-f10f-47af-8dba-76413038b73c.skill-02",
+      "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-02",
+      "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-01",
+      "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-02",
+      "ed43c15f-00cb-4054-9c95-62c880865d68.skill-01",
+      "ed43c15f-00cb-4054-9c95-62c880865d68.skill-02",
+      "edb61b14-a854-4bf5-a075-c8075c11293a.skill-01",
+      "f23acfd2-c485-4b7c-a1e7-d4303ddfe864.skill-01"
+    ],
+    "covered_skill_ids": [
+      "0f84bef9-9790-432e-92b7-eece357603fb.skill-01",
+      "2cd43775-7085-45d8-89fa-9e35c0a915cf.skill-01",
+      "455d3c66-7dc6-4537-a39a-36d3e9119df7.skill-01",
+      "a097acff-6266-4291-9fbd-137af7ecd439.skill-01",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-01",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-02",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-03",
+      "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-01",
+      "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-02"
+    ],
+    "unresolved_skill_ids": [
+      "04578141-1d42-4146-b9cf-6fab4ce5fd74.skill-01",
+      "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01",
+      "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01",
+      "0a211154-fda0-48d0-9274-eaac4ce5486d.skill-01",
+      "15aece23-a215-4579-91b4-69eec72e18da.skill-01",
+      "21760ecb-8f62-40d2-8d85-0cee5725cb72.skill-01",
+      "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01",
+      "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01",
+      "358aa0a7-6677-453f-ae35-e440f004c31e.skill-01",
+      "39be0d19-634d-4475-8768-09c130f5425d.skill-01",
+      "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-01",
+      "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-02",
+      "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-01",
+      "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+      "550ce7e7-747b-495f-b122-acdc4d0b8e54.skill-01",
+      "57667013-ea97-417c-9dce-2713091e6e2a.skill-01",
+      "57667013-ea97-417c-9dce-2713091e6e2a.skill-02",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-01",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-02",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03",
+      "5cfb9197-e72b-454b-900e-c06b0c802b40.skill-01",
+      "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-01",
+      "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-02",
+      "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01",
+      "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-02",
+      "7ae48c60-f143-4119-b659-15b8f485eb9a.skill-01",
+      "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01",
+      "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-02",
+      "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-01",
+      "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-02",
+      "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-01",
+      "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-02",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-01",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-02",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-03",
+      "9cf05d24-6bd9-4dae-8967-f67d88f5d38a.skill-01",
+      "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01",
+      "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-02",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-01",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-03",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-01",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-02",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-03",
+      "a669ef01-ded5-4099-9ea9-25e99b569840.skill-01",
+      "ac1b39ff-ee4d-4483-abce-c117e98942f0.skill-01",
+      "af23762e-2bfd-4a1d-aada-20fa8de9ce07.skill-01",
+      "af2d657a-e6b3-4c6a-9f67-9e3ed015974c.skill-01",
+      "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb.skill-01",
+      "bf4e9888-f10f-47af-8dba-76413038b73c.skill-01",
+      "bf4e9888-f10f-47af-8dba-76413038b73c.skill-02",
+      "c59742c0-4323-4b9d-8a02-723c251deaa0.skill-01",
+      "ce88f674-ab7a-43da-9201-468d38539e4a.skill-01",
+      "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-01",
+      "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-02",
+      "ed43c15f-00cb-4054-9c95-62c880865d68.skill-01",
+      "ed43c15f-00cb-4054-9c95-62c880865d68.skill-02",
+      "edb61b14-a854-4bf5-a075-c8075c11293a.skill-01",
+      "ef9d12bd-bcee-4ba0-a40e-918400f43ddf.skill-01",
+      "f23acfd2-c485-4b7c-a1e7-d4303ddfe864.skill-01"
+    ],
+    "complete": false,
+    "note": "Candidate coverage is not approved human-review coverage."
+  },
+  "human_similarity_checklist": [
+    "The artifact, domain, object names, values, and layout differ materially from every source task.",
+    "The instruction is a natural task rather than a list of skill names or UI steps.",
+    "No distinctive source literal or complete ordered source solution is reproduced.",
+    "Every required skill is necessary to complete the task rather than decorative or optional."
+  ],
+  "reference_packages": [
+    {
+      "reference_task_id": "reference-task-impress-deferred-smoke-r99-001",
+      "generation_round": 99,
+      "parent_reference_task_id": null,
+      "app": "libreoffice_impress",
+      "task_instruction": "Prepare LibreOffice Impress for a single-screen community workshop briefing. Open the provided initial_artifact.pptx from the Desktop, set its recovery information to save every 8 minutes, and turn off the Presenter Console so that slide shows use the presentation display on one monitor rather than a separate presenter screen. Leave the presentation content unchanged.",
+      "required_skill_ids": [
+        "0f84bef9-9790-432e-92b7-eece357603fb.skill-01",
+        "2cd43775-7085-45d8-89fa-9e35c0a915cf.skill-01"
+      ],
+      "artifact_strategy_ids": [
+        "presenter-console-settings",
+        "autorecovery-settings"
+      ],
+      "artifact_spec": {
+        "artifact_type": "pptx",
+        "domain": "community workshop briefing",
+        "presentation_title": "Quarterly Briefing",
+        "slide_size": "standard",
+        "theme": {
+          "primary_color": "A4C2F4",
+          "secondary_color": "FFFFFF",
+          "accent_color": "1F4E79",
+          "background_color": "FFFFFF",
+          "title_font": "Aptos Display",
+          "body_font": "Aptos"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Opening slide for the briefing.",
+            "layout": "title",
+            "object_plan": [
+              {
+                "semantic_id": "briefing_title",
+                "type": "text",
+                "purpose": "Editable title placeholder containing “Quarterly Briefing.”",
+                "editable": true
+              },
+              {
+                "semantic_id": "audience_subtitle",
+                "type": "text",
+                "purpose": "Editable subtitle/body placeholder containing “Prepared for the review team.”",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Agenda overview for the briefing.",
+            "layout": "title_content",
+            "object_plan": [
+              {
+                "semantic_id": "agenda_title",
+                "type": "text",
+                "purpose": "Editable title placeholder containing “Agenda.”",
+                "editable": true
+              },
+              {
+                "semantic_id": "agenda_items",
+                "type": "text",
+                "purpose": "Editable body placeholder listing “Current status” and “Next steps.”",
+                "editable": true
+              }
+            ]
+          }
+        ],
+        "initial_state": [
+          "The Desktop contains initial_artifact.pptx.",
+          "The supplied presentation is a valid two-slide, landscape standard-format PPTX.",
+          "Slide 1 has editable title and subtitle placeholders; slide 2 has editable title and body placeholders."
+        ],
+        "must_not_be_completed": [
+          "The Presenter Console preference must not already be disabled as part of artifact preparation.",
+          "The AutoRecovery interval must not already be set to 8 minutes as part of artifact preparation.",
+          "No slide text, layout, or visual content should be edited."
+        ],
+        "generation_notes": [
+          "The same privacy-safe PPTX is the entry artifact for both application-preference tasks.",
+          "The requested results are application settings rather than saved presentation-content changes.",
+          "Artifact inspection reports two slides, two editable placeholder shapes on each slide, and no images, tables, charts, notes, or transitions."
+        ]
+      },
+      "operator_guide": {
+        "recommended_demonstration": [
+          {
+            "skill_id": "0f84bef9-9790-432e-92b7-eece357603fb.skill-01",
+            "operation_intent": "In Tools > Options > LibreOffice Impress > General, disable the Presenter Console for single-monitor playback.",
+            "visible_success_signal": "The “Enable Presenter console” checkbox is visibly cleared before confirming the Options dialog.",
+            "efficiency_tip": "Configure this in the same Options visit as the recovery preference; it is an application-wide setting."
+          },
+          {
+            "skill_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf.skill-01",
+            "operation_intent": "In Tools > Options > Load/Save > General, enable AutoRecovery and set the interval to 8 minutes.",
+            "visible_success_signal": "The AutoRecovery control is enabled and its minutes field visibly shows 8 before confirming the Options dialog.",
+            "efficiency_tip": "Use Alt+F12 to open Options, then navigate directly to Load/Save > General and enter the interval once."
+          }
+        ],
+        "allowed_variation": "Equivalent navigation to the same LibreOffice Options pages is acceptable. The visible settings must show Presenter Console disabled and AutoRecovery enabled at 8 minutes before the preference dialog is confirmed.",
+        "recording_start_state": "Open /home/user/Desktop/initial_artifact.pptx in LibreOffice Impress, with the normal editing view visible.",
+        "recording_end_state": "The Options dialog has been confirmed after both settings are changed; the two-slide presentation remains open and visually unchanged."
+      },
+      "expected_incidental_operations": [
+        {
+          "operation": "Open initial_artifact.pptx from the Desktop in LibreOffice Impress.",
+          "reason": "The provided presentation is the required entry point for changing the Impress application preferences.",
+          "category": "substantive_prerequisite"
+        },
+        {
+          "operation": "Open the LibreOffice Options dialog and navigate between the relevant preference categories.",
+          "reason": "Both requested outcomes are controlled through application preferences rather than slide objects.",
+          "category": "task_specific"
+        },
+        {
+          "operation": "Confirm the Options dialog after both changes are visible.",
+          "reason": "This applies the requested application settings.",
+          "category": "task_specific"
+        }
+      ],
+      "review_status": "pending",
+      "source_contribution": {
+        "by_source_task": [
+          {
+            "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+            "skill_count": 1,
+            "skill_fraction": 0.5
+          },
+          {
+            "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+            "skill_count": 1,
+            "skill_fraction": 0.5
+          }
+        ],
+        "dominant_source_task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+        "dominant_source_skill_fraction": 0.5,
+        "complete_source_skill_sets_included": [
+          "0f84bef9-9790-432e-92b7-eece357603fb",
+          "2cd43775-7085-45d8-89fa-9e35c0a915cf"
+        ]
+      },
+      "similarity_reference": {
+        "lexical": {
+          "most_similar_source_task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+          "max_sequence_similarity": 0.28777,
+          "exact_source_instruction_match": false,
+          "by_source_task": [
+            {
+              "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+              "sequence_similarity": 0.227353
+            },
+            {
+              "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+              "sequence_similarity": 0.27156
+            },
+            {
+              "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+              "sequence_similarity": 0.119332
+            },
+            {
+              "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+              "sequence_similarity": 0.155642
+            },
+            {
+              "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+              "sequence_similarity": 0.073864
+            },
+            {
+              "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+              "sequence_similarity": 0.085308
+            },
+            {
+              "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+              "sequence_similarity": 0.1373
+            },
+            {
+              "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+              "sequence_similarity": 0.120773
+            },
+            {
+              "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+              "sequence_similarity": 0.243363
+            },
+            {
+              "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+              "sequence_similarity": 0.162162
+            },
+            {
+              "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+              "sequence_similarity": 0.040541
+            },
+            {
+              "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+              "sequence_similarity": 0.16055
+            },
+            {
+              "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+              "sequence_similarity": 0.108108
+            },
+            {
+              "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+              "sequence_similarity": 0.25731
+            },
+            {
+              "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+              "sequence_similarity": 0.136986
+            },
+            {
+              "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+              "sequence_similarity": 0.010417
+            },
+            {
+              "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+              "sequence_similarity": 0.181132
+            },
+            {
+              "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+              "sequence_similarity": 0.176991
+            },
+            {
+              "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+              "sequence_similarity": 0.156682
+            },
+            {
+              "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+              "sequence_similarity": 0.20177
+            },
+            {
+              "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+              "sequence_similarity": 0.191781
+            },
+            {
+              "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+              "sequence_similarity": 0.109785
+            },
+            {
+              "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+              "sequence_similarity": 0.190909
+            },
+            {
+              "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+              "sequence_similarity": 0.211454
+            },
+            {
+              "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+              "sequence_similarity": 0.161074
+            },
+            {
+              "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+              "sequence_similarity": 0.142857
+            },
+            {
+              "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+              "sequence_similarity": 0.107991
+            },
+            {
+              "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+              "sequence_similarity": 0.160757
+            },
+            {
+              "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+              "sequence_similarity": 0.28777
+            },
+            {
+              "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+              "sequence_similarity": 0.102326
+            },
+            {
+              "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+              "sequence_similarity": 0.147844
+            },
+            {
+              "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+              "sequence_similarity": 0.27027
+            },
+            {
+              "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+              "sequence_similarity": 0.013029
+            },
+            {
+              "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+              "sequence_similarity": 0.090047
+            },
+            {
+              "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+              "sequence_similarity": 0.232558
+            },
+            {
+              "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+              "sequence_similarity": 0.239852
+            },
+            {
+              "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+              "sequence_similarity": 0.14561
+            },
+            {
+              "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+              "sequence_similarity": 0.167742
+            },
+            {
+              "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+              "sequence_similarity": 0.014493
+            },
+            {
+              "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+              "sequence_similarity": 0.017271
+            },
+            {
+              "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+              "sequence_similarity": 0.191781
+            },
+            {
+              "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+              "sequence_similarity": 0.138425
+            },
+            {
+              "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+              "sequence_similarity": 0.178794
+            },
+            {
+              "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+              "sequence_similarity": 0.114537
+            },
+            {
+              "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+              "sequence_similarity": 0.14554
+            },
+            {
+              "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+              "sequence_similarity": 0.191781
+            },
+            {
+              "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+              "sequence_similarity": 0.114833
+            }
+          ]
+        },
+        "semantic": null
+      },
+      "generation": {
+        "attempt": 1,
+        "kind": "deferred_artifact_strategy",
+        "request_id": "384adffb-42cb-4a25-a541-1160af29a297",
+        "prompt_sha256": "7b360eb546b85653bad232f26146c59b9a6a37fb25b63ea5f28ac0ce616c7b03"
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-deferred-smoke-r99-002",
+      "generation_round": 99,
+      "parent_reference_task_id": null,
+      "app": "libreoffice_impress",
+      "task_instruction": "Prepare a handoff package for the Community Learning Showcase: save an independent copy of the currently open presentation as reference-copy.pptx on the Desktop, then create a PNG preview of its opening slide named res.png on the Desktop. Keep the presentation content unchanged and use the default PNG export options.",
+      "required_skill_ids": [
+        "a097acff-6266-4291-9fbd-137af7ecd439.skill-01",
+        "455d3c66-7dc6-4537-a39a-36d3e9119df7.skill-01"
+      ],
+      "artifact_strategy_ids": [
+        "save-as-secondary-presentation",
+        "png-export-output"
+      ],
+      "artifact_spec": {
+        "artifact_type": "pptx",
+        "domain": "community education program showcase",
+        "presentation_title": "Community Learning Showcase",
+        "slide_size": "standard",
+        "theme": {
+          "primary_color": "a1c6d8",
+          "secondary_color": "ffffff",
+          "accent_color": "3c7186",
+          "background_color": "ffffff",
+          "title_font": "sans-serif",
+          "body_font": "sans-serif"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Introduce the community learning program.",
+            "layout": "title",
+            "object_plan": [
+              {
+                "semantic_id": "showcase_title",
+                "type": "text",
+                "purpose": "Main title, Community Learning Showcase.",
+                "editable": true
+              },
+              {
+                "semantic_id": "program_overview_subtitle",
+                "type": "text",
+                "purpose": "Subtitle, Program overview.",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_photo",
+                "type": "image",
+                "purpose": "Opening-slide photographic visual.",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Outline the workshop agenda.",
+            "layout": "title_content",
+            "object_plan": [
+              {
+                "semantic_id": "workshop_plan_title",
+                "type": "text",
+                "purpose": "Slide title, Workshop Plan.",
+                "editable": true
+              },
+              {
+                "semantic_id": "agenda_items",
+                "type": "text",
+                "purpose": "Agenda content including Opening session and Hands-on activity.",
+                "editable": true
+              },
+              {
+                "semantic_id": "workshop_photo",
+                "type": "image",
+                "purpose": "Workshop-related visual.",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 3,
+            "purpose": "Provide a full-slide visual interlude.",
+            "layout": "blank",
+            "object_plan": [
+              {
+                "semantic_id": "feature_photo",
+                "type": "image",
+                "purpose": "Standalone photographic visual with no visible text.",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 4,
+            "purpose": "Present practical event resources.",
+            "layout": "two_column",
+            "object_plan": [
+              {
+                "semantic_id": "resource_guide_title",
+                "type": "text",
+                "purpose": "Slide title, Resource Guide.",
+                "editable": true
+              },
+              {
+                "semantic_id": "venue_label_and_content",
+                "type": "text",
+                "purpose": "Venue resource label and associated content area.",
+                "editable": true
+              },
+              {
+                "semantic_id": "materials_label_and_content",
+                "type": "text",
+                "purpose": "Materials resource label and associated content area.",
+                "editable": true
+              },
+              {
+                "semantic_id": "resource_photo",
+                "type": "image",
+                "purpose": "Resource-related photographic visual.",
+                "editable": true
+              },
+              {
+                "semantic_id": "resource_panels",
+                "type": "shape",
+                "purpose": "Visual grouping shapes for resource information.",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 5,
+            "purpose": "Close with a takeaway and follow-up prompt.",
+            "layout": "two_column",
+            "object_plan": [
+              {
+                "semantic_id": "closing_notes_title",
+                "type": "text",
+                "purpose": "Slide title, Closing Notes.",
+                "editable": true
+              },
+              {
+                "semantic_id": "takeaway_content",
+                "type": "text",
+                "purpose": "Key takeaway label and content area.",
+                "editable": true
+              },
+              {
+                "semantic_id": "followup_content",
+                "type": "text",
+                "purpose": "Follow-up label and Thank you message.",
+                "editable": true
+              },
+              {
+                "semantic_id": "closing_photo",
+                "type": "image",
+                "purpose": "Closing-slide photographic visual.",
+                "editable": true
+              },
+              {
+                "semantic_id": "closing_panels",
+                "type": "shape",
+                "purpose": "Visual grouping shapes for closing content.",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 6,
+            "purpose": "Summarize the program overview, schedule, and resources.",
+            "layout": "process",
+            "object_plan": [
+              {
+                "semantic_id": "summary_title",
+                "type": "text",
+                "purpose": "Main title, Community Learning Showcase.",
+                "editable": true
+              },
+              {
+                "semantic_id": "summary_overview",
+                "type": "text",
+                "purpose": "Program overview text area.",
+                "editable": true
+              },
+              {
+                "semantic_id": "schedule_section",
+                "type": "text",
+                "purpose": "Schedule summary area.",
+                "editable": true
+              },
+              {
+                "semantic_id": "resources_section",
+                "type": "text",
+                "purpose": "Resources summary area.",
+                "editable": true
+              },
+              {
+                "semantic_id": "summary_photo",
+                "type": "image",
+                "purpose": "Photographic visual supporting the summary.",
+                "editable": true
+              },
+              {
+                "semantic_id": "summary_panels",
+                "type": "shape",
+                "purpose": "Visual grouping shapes for summary sections.",
+                "editable": true
+              }
+            ]
+          }
+        ],
+        "initial_state": [
+          "The currently opened source is initial_artifact.pptx on the Desktop.",
+          "The source deck contains six landscape standard slides.",
+          "Slide 1 is the opening Community Learning Showcase slide and contains the title, Program overview subtitle, and a photo.",
+          "All six slides include existing slide transitions.",
+          "The source presentation has not yet been saved as reference-copy.pptx, and no res.png output has been created."
+        ],
+        "must_not_be_completed": [
+          "Do not alter slide text, images, layout, transitions, or formatting.",
+          "Do not overwrite the initially opened presentation.",
+          "Do not use non-default PNG export settings."
+        ],
+        "generation_notes": [
+          "The requested saved copy is independently collected as reference-copy.pptx.",
+          "The requested PNG is independently collected as res.png and should represent the opening slide."
+        ]
+      },
+      "operator_guide": {
+        "recommended_demonstration": [
+          {
+            "skill_id": "a097acff-6266-4291-9fbd-137af7ecd439.skill-01",
+            "operation_intent": "Create the requested independent Desktop copy without replacing the source presentation, using Save As and the exact filename reference-copy.pptx.",
+            "visible_success_signal": "The Impress title bar or recent save state identifies reference-copy.pptx, and the Desktop destination is selected in the Save As dialog before confirmation.",
+            "efficiency_tip": "Use Ctrl+Shift+S, enter the exact filename, and confirm the Desktop location in one Save As operation."
+          },
+          {
+            "skill_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7.skill-01",
+            "operation_intent": "Export the opening slide as the requested Desktop PNG using the default PNG options.",
+            "visible_success_signal": "The export dialog shows res.png in the Desktop location, followed by confirmation of the default PNG options.",
+            "efficiency_tip": "Ensure slide 1 is active before choosing File > Export; type res.png including its extension so the PNG format is selected automatically."
+          }
+        ],
+        "allowed_variation": "Equivalent LibreOffice-native routes and keyboard shortcuts are acceptable. The saved copy and exported PNG must use the exact required filenames and Desktop destination; no document content changes are needed.",
+        "recording_start_state": "Begin with initial_artifact.pptx open in LibreOffice Impress. Select the opening slide before performing the PNG export.",
+        "recording_end_state": "reference-copy.pptx and res.png exist on the Desktop; the presentation content remains unchanged."
+      },
+      "expected_incidental_operations": [
+        {
+          "operation": "Select slide 1 before exporting the PNG.",
+          "reason": "The requested preview must depict the presentation's opening slide.",
+          "category": "substantive_prerequisite"
+        },
+        {
+          "operation": "Dismiss the default PNG export-options dialog.",
+          "reason": "Finalizes the required PNG export without changing output settings.",
+          "category": "task_specific"
+        },
+        {
+          "operation": "Handle an existing-file replacement prompt only if it appears.",
+          "reason": "Allows the required filenames to be produced at their specified locations.",
+          "category": "scaffolding"
+        }
+      ],
+      "review_status": "pending",
+      "source_contribution": {
+        "by_source_task": [
+          {
+            "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+            "skill_count": 1,
+            "skill_fraction": 0.5
+          },
+          {
+            "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+            "skill_count": 1,
+            "skill_fraction": 0.5
+          }
+        ],
+        "dominant_source_task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+        "dominant_source_skill_fraction": 0.5,
+        "complete_source_skill_sets_included": [
+          "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+          "a097acff-6266-4291-9fbd-137af7ecd439"
+        ]
+      },
+      "similarity_reference": {
+        "lexical": {
+          "most_similar_source_task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+          "max_sequence_similarity": 0.342733,
+          "exact_source_instruction_match": false,
+          "by_source_task": [
+            {
+              "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+              "sequence_similarity": 0.2818
+            },
+            {
+              "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+              "sequence_similarity": 0.239351
+            },
+            {
+              "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+              "sequence_similarity": 0.152589
+            },
+            {
+              "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+              "sequence_similarity": 0.203463
+            },
+            {
+              "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+              "sequence_similarity": 0.015337
+            },
+            {
+              "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+              "sequence_similarity": 0.118919
+            },
+            {
+              "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+              "sequence_similarity": 0.161039
+            },
+            {
+              "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+              "sequence_similarity": 0.171271
+            },
+            {
+              "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+              "sequence_similarity": 0.18
+            },
+            {
+              "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+              "sequence_similarity": 0.183673
+            },
+            {
+              "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+              "sequence_similarity": 0.02963
+            },
+            {
+              "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+              "sequence_similarity": 0.182292
+            },
+            {
+              "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+              "sequence_similarity": 0.265734
+            },
+            {
+              "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+              "sequence_similarity": 0.342733
+            },
+            {
+              "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+              "sequence_similarity": 0.227979
+            },
+            {
+              "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+              "sequence_similarity": 0.01145
+            },
+            {
+              "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+              "sequence_similarity": 0.192469
+            },
+            {
+              "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+              "sequence_similarity": 0.225
+            },
+            {
+              "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+              "sequence_similarity": 0.204188
+            },
+            {
+              "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+              "sequence_similarity": 0.265107
+            },
+            {
+              "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+              "sequence_similarity": 0.145078
+            },
+            {
+              "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+              "sequence_similarity": 0.13079
+            },
+            {
+              "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+              "sequence_similarity": 0.170103
+            },
+            {
+              "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+              "sequence_similarity": 0.248756
+            },
+            {
+              "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+              "sequence_similarity": 0.202532
+            },
+            {
+              "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+              "sequence_similarity": 0.162304
+            },
+            {
+              "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+              "sequence_similarity": 0.180049
+            },
+            {
+              "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+              "sequence_similarity": 0.150943
+            },
+            {
+              "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+              "sequence_similarity": 0.325397
+            },
+            {
+              "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+              "sequence_similarity": 0.21164
+            },
+            {
+              "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+              "sequence_similarity": 0.252874
+            },
+            {
+              "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+              "sequence_similarity": 0.23176
+            },
+            {
+              "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+              "sequence_similarity": 0.010676
+            },
+            {
+              "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+              "sequence_similarity": 0.118919
+            },
+            {
+              "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+              "sequence_similarity": 0.189655
+            },
+            {
+              "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+              "sequence_similarity": 0.257143
+            },
+            {
+              "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+              "sequence_similarity": 0.236145
+            },
+            {
+              "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+              "sequence_similarity": 0.208232
+            },
+            {
+              "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+              "sequence_similarity": 0.012887
+            },
+            {
+              "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+              "sequence_similarity": 0.011385
+            },
+            {
+              "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+              "sequence_similarity": 0.233161
+            },
+            {
+              "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+              "sequence_similarity": 0.13079
+            },
+            {
+              "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+              "sequence_similarity": 0.214452
+            },
+            {
+              "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+              "sequence_similarity": 0.253731
+            },
+            {
+              "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+              "sequence_similarity": 0.171123
+            },
+            {
+              "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+              "sequence_similarity": 0.213508
+            },
+            {
+              "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+              "sequence_similarity": 0.153005
+            }
+          ]
+        },
+        "semantic": null
+      },
+      "generation": {
+        "attempt": 2,
+        "kind": "deferred_artifact_strategy",
+        "request_id": "f2392256-c8fe-4f49-b4f5-4d3f46795fc6",
+        "prompt_sha256": "07e118750384817464da92b629c38f6ea3ff991369ed849aad117ab4c99c9a30"
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-deferred-smoke-r99-003",
+      "generation_round": 99,
+      "parent_reference_task_id": null,
+      "app": "libreoffice_impress",
+      "task_instruction": "For the Community Learning Showcase deck, add visible slide numbers throughout the presentation. Use the shared master formatting to make the standard slide numbers deep teal, then give the slide numbers on “Participation Snapshot” and “Closing Notes” an amber override so those two highlight slides are easy to identify. Keep all existing slide content and layout unchanged.",
+      "required_skill_ids": [
+        "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-01",
+        "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-02",
+        "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-03"
+      ],
+      "artifact_strategy_ids": [
+        "slide-number-native-fields"
+      ],
+      "artifact_spec": {
+        "artifact_type": "pptx",
+        "domain": "community education program showcase",
+        "presentation_title": "Community Learning Showcase",
+        "slide_size": "wide",
+        "theme": {
+          "primary_color": "d0e7e8",
+          "secondary_color": "44546a",
+          "accent_color": "ed7d31",
+          "background_color": "ffffff",
+          "title_font": "Aptos Display",
+          "body_font": "Aptos"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Opening title for the community learning program.",
+            "layout": "title",
+            "object_plan": [
+              {
+                "semantic_id": "showcase_title",
+                "type": "text",
+                "purpose": "Presentation title: Community Learning Showcase.",
+                "editable": true
+              },
+              {
+                "semantic_id": "showcase_subtitle",
+                "type": "text",
+                "purpose": "Subtitle: Program overview.",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Outline of the planned workshop activities.",
+            "layout": "title_content",
+            "object_plan": [
+              {
+                "semantic_id": "workshop_title",
+                "type": "text",
+                "purpose": "Slide title: Workshop Plan.",
+                "editable": true
+              },
+              {
+                "semantic_id": "workshop_agenda",
+                "type": "text",
+                "purpose": "Agenda listing opening session, hands-on activity, and discussion.",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 3,
+            "purpose": "Visual summary of participation and the upcoming milestone.",
+            "layout": "data_story",
+            "object_plan": [
+              {
+                "semantic_id": "snapshot_heading",
+                "type": "text",
+                "purpose": "Slide title: Participation Snapshot.",
+                "editable": true
+              },
+              {
+                "semantic_id": "registrations_metric",
+                "type": "text",
+                "purpose": "Registrations callout.",
+                "editable": true
+              },
+              {
+                "semantic_id": "facilitators_metric",
+                "type": "text",
+                "purpose": "Facilitators callout.",
+                "editable": true
+              },
+              {
+                "semantic_id": "milestone_metric",
+                "type": "text",
+                "purpose": "Next milestone callout.",
+                "editable": true
+              },
+              {
+                "semantic_id": "snapshot_visual",
+                "type": "image",
+                "purpose": "Supporting participation visual.",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 4,
+            "purpose": "Reference details for attendees and organizers.",
+            "layout": "title_content",
+            "object_plan": [
+              {
+                "semantic_id": "resource_title",
+                "type": "text",
+                "purpose": "Slide title: Resource Guide.",
+                "editable": true
+              },
+              {
+                "semantic_id": "resource_details",
+                "type": "text",
+                "purpose": "Venue, materials, and support contact details.",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 5,
+            "purpose": "Conclude the program overview with takeaways and next actions.",
+            "layout": "comparison",
+            "object_plan": [
+              {
+                "semantic_id": "closing_title",
+                "type": "text",
+                "purpose": "Slide title: Closing Notes.",
+                "editable": true
+              },
+              {
+                "semantic_id": "takeaway_text",
+                "type": "text",
+                "purpose": "Key takeaway statement.",
+                "editable": true
+              },
+              {
+                "semantic_id": "followup_text",
+                "type": "text",
+                "purpose": "Follow-up action statement.",
+                "editable": true
+              },
+              {
+                "semantic_id": "closing_image_left",
+                "type": "image",
+                "purpose": "Supporting closing visual.",
+                "editable": true
+              },
+              {
+                "semantic_id": "closing_image_right",
+                "type": "image",
+                "purpose": "Supporting follow-up visual.",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 6,
+            "purpose": "Closing recap of the program overview and resources.",
+            "layout": "title_content",
+            "object_plan": [
+              {
+                "semantic_id": "recap_title",
+                "type": "text",
+                "purpose": "Presentation title repeated for recap.",
+                "editable": true
+              },
+              {
+                "semantic_id": "recap_subtitle",
+                "type": "text",
+                "purpose": "Program overview recap.",
+                "editable": true
+              },
+              {
+                "semantic_id": "recap_content",
+                "type": "text",
+                "purpose": "Brief schedule and resources recap.",
+                "editable": true
+              }
+            ]
+          }
+        ],
+        "initial_state": [
+          "The supplied wide-format deck contains six slides and existing editable titles, body text, images, and notes.",
+          "No visible slide-number fields are currently instantiated on the individual slides, while the supplied master/layout hierarchy contains slide-number placeholders.",
+          "The presentation contains multiple master and layout parts that must be retained when applying shared numbering format."
+        ],
+        "must_not_be_completed": [
+          "Do not alter, replace, or delete existing titles, body content, images, notes, layouts, or slide order.",
+          "Do not apply the amber exception to slides other than Participation Snapshot and Closing Notes.",
+          "Do not use manually typed numbers in place of native slide-number fields."
+        ],
+        "generation_notes": [
+          "Use the supplied initial_artifact.pptx as the starting presentation.",
+          "Preserve native slide-number placeholders and master hierarchy when saving the adapted PPTX.",
+          "The expected result is a presentation-wide native numbering field with master-based deep-teal formatting plus two direct per-slide amber overrides."
+        ]
+      },
+      "operator_guide": {
+        "recommended_demonstration": [
+          {
+            "skill_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-01",
+            "operation_intent": "Enable the native Slide number option through Insert > Header and Footer and apply it to every slide.",
+            "visible_success_signal": "Slide-number fields become visible across the deck, including on the title and recap slides.",
+            "efficiency_tip": "Use Apply to All once rather than enabling numbering separately on each slide."
+          },
+          {
+            "skill_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-02",
+            "operation_intent": "Enter Master View and format the shared slide-number placeholder with a deep-teal font color.",
+            "visible_success_signal": "Standard slide numbers throughout the deck display in deep teal after returning to normal view.",
+            "efficiency_tip": "Select the placeholder border in Master View before using Font Color so the shared field, not nearby content, is formatted."
+          },
+          {
+            "skill_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-03",
+            "operation_intent": "On slides 3 and 5, directly select the native slide-number field and change its font color to amber.",
+            "visible_success_signal": "The numbers on Participation Snapshot and Closing Notes are amber while the remaining slide numbers stay deep teal.",
+            "efficiency_tip": "Set amber once, then reuse the active Font Color control for the second exception slide."
+          }
+        ],
+        "allowed_variation": "Equivalent deep-teal and amber swatches are acceptable if they are visually distinct, consistent, and the two exception slides clearly differ from the standard master-formatted numbers.",
+        "recording_start_state": "LibreOffice Impress is open with /home/user/Desktop/initial_artifact.pptx loaded in normal slide-editing view.",
+        "recording_end_state": "Normal slide-editing view shows native numbering on all six slides; slides 3 and 5 visibly use the amber exception while the other slides use deep teal."
+      },
+      "expected_incidental_operations": [
+        {
+          "operation": "Open the supplied initial_artifact.pptx from the Desktop.",
+          "reason": "The task must be performed on the provided presentation while retaining its master hierarchy and existing content.",
+          "category": "substantive_prerequisite"
+        },
+        {
+          "operation": "Switch between normal editing view and Master View.",
+          "reason": "The shared slide-number placeholder requires master-level formatting, while two specified slides require local exceptions.",
+          "category": "task_specific"
+        },
+        {
+          "operation": "Navigate to slides 3 and 5 after shared numbering is applied.",
+          "reason": "Those are the only slides needing direct slide-number color overrides.",
+          "category": "task_specific"
+        },
+        {
+          "operation": "Save the modified presentation.",
+          "reason": "Persist the native slide-number fields and their master and per-slide formatting.",
+          "category": "scaffolding"
+        }
+      ],
+      "review_status": "pending",
+      "source_contribution": {
+        "by_source_task": [
+          {
+            "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+            "skill_count": 3,
+            "skill_fraction": 1.0
+          }
+        ],
+        "dominant_source_task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+        "dominant_source_skill_fraction": 1.0,
+        "complete_source_skill_sets_included": [
+          "ac9bb6cb-1888-43ab-81e4-a98a547918cd"
+        ]
+      },
+      "similarity_reference": {
+        "lexical": {
+          "most_similar_source_task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+          "max_sequence_similarity": 0.271127,
+          "exact_source_instruction_match": false,
+          "by_source_task": [
+            {
+              "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+              "sequence_similarity": 0.271127
+            },
+            {
+              "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+              "sequence_similarity": 0.123636
+            },
+            {
+              "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+              "sequence_similarity": 0.160377
+            },
+            {
+              "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+              "sequence_similarity": 0.219653
+            },
+            {
+              "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+              "sequence_similarity": 0.008463
+            },
+            {
+              "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+              "sequence_similarity": 0.149883
+            },
+            {
+              "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+              "sequence_similarity": 0.19457
+            },
+            {
+              "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+              "sequence_similarity": 0.100239
+            },
+            {
+              "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+              "sequence_similarity": 0.135667
+            },
+            {
+              "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+              "sequence_similarity": 0.093541
+            },
+            {
+              "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+              "sequence_similarity": 0.01675
+            },
+            {
+              "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+              "sequence_similarity": 0.15873
+            },
+            {
+              "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+              "sequence_similarity": 0.218107
+            },
+            {
+              "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+              "sequence_similarity": 0.131274
+            },
+            {
+              "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+              "sequence_similarity": 0.180587
+            },
+            {
+              "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+              "sequence_similarity": 0.04475
+            },
+            {
+              "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+              "sequence_similarity": 0.250467
+            },
+            {
+              "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+              "sequence_similarity": 0.175055
+            },
+            {
+              "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+              "sequence_similarity": 0.104784
+            },
+            {
+              "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+              "sequence_similarity": 0.178947
+            },
+            {
+              "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+              "sequence_similarity": 0.180587
+            },
+            {
+              "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+              "sequence_similarity": 0.127358
+            },
+            {
+              "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+              "sequence_similarity": 0.125843
+            },
+            {
+              "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+              "sequence_similarity": 0.169935
+            },
+            {
+              "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+              "sequence_similarity": 0.19469
+            },
+            {
+              "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+              "sequence_similarity": 0.145786
+            },
+            {
+              "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+              "sequence_similarity": 0.145299
+            },
+            {
+              "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+              "sequence_similarity": 0.172897
+            },
+            {
+              "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+              "sequence_similarity": 0.235294
+            },
+            {
+              "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+              "sequence_similarity": 0.151724
+            },
+            {
+              "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+              "sequence_similarity": 0.247967
+            },
+            {
+              "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+              "sequence_similarity": 0.225621
+            },
+            {
+              "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+              "sequence_similarity": 0.003231
+            },
+            {
+              "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+              "sequence_similarity": 0.163934
+            },
+            {
+              "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+              "sequence_similarity": 0.264875
+            },
+            {
+              "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+              "sequence_similarity": 0.226691
+            },
+            {
+              "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+              "sequence_similarity": 0.258475
+            },
+            {
+              "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+              "sequence_similarity": 0.195745
+            },
+            {
+              "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+              "sequence_similarity": 0.014406
+            },
+            {
+              "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+              "sequence_similarity": 0.020548
+            },
+            {
+              "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+              "sequence_similarity": 0.112867
+            },
+            {
+              "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+              "sequence_similarity": 0.136792
+            },
+            {
+              "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+              "sequence_similarity": 0.197531
+            },
+            {
+              "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+              "sequence_similarity": 0.213508
+            },
+            {
+              "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+              "sequence_similarity": 0.176334
+            },
+            {
+              "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+              "sequence_similarity": 0.24031
+            },
+            {
+              "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+              "sequence_similarity": 0.146572
+            }
+          ]
+        },
+        "semantic": null
+      },
+      "generation": {
+        "attempt": 3,
+        "kind": "deferred_artifact_strategy",
+        "request_id": "5642437e-3be4-4fe6-ad73-bd451a51fdcf",
+        "prompt_sha256": "f633d50c8c99f6e22ddbe55e5dd6a2e01c6a6f57e348eafac495e19264c26b9c"
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-deferred-smoke-r99-004",
+      "generation_round": 99,
+      "parent_reference_task_id": null,
+      "app": "libreoffice_impress",
+      "task_instruction": "Update the “Workshop Plan” slide with a small visual marker for the discussion activity: insert the Desktop image file named none.png and set the inserted image to exactly 2.4 cm wide by 1.6 cm high. Keep the existing title and agenda text readable, placing the marker in unused space on the slide.",
+      "required_skill_ids": [
+        "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-01",
+        "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-02"
+      ],
+      "artifact_strategy_ids": [
+        "insert-image-input"
+      ],
+      "artifact_spec": {
+        "artifact_type": "pptx",
+        "domain": "community education event planning",
+        "presentation_title": "Community Learning Showcase",
+        "slide_size": "standard",
+        "theme": {
+          "primary_color": "aed8e6",
+          "secondary_color": "ffffff",
+          "accent_color": "4f81bd",
+          "background_color": "ffffff",
+          "title_font": "Calibri",
+          "body_font": "Calibri"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Introduce the community learning event.",
+            "layout": "title_content",
+            "object_plan": [
+              {
+                "semantic_id": "showcase_title",
+                "type": "text",
+                "purpose": "Display the presentation title, “Community Learning Showcase”.",
+                "editable": true
+              },
+              {
+                "semantic_id": "overview_subtitle",
+                "type": "text",
+                "purpose": "Display the introductory subtitle, “Program overview”.",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Present the workshop agenda and receive the requested discussion marker.",
+            "layout": "title_content",
+            "object_plan": [
+              {
+                "semantic_id": "workshop_plan_title",
+                "type": "text",
+                "purpose": "Display the slide title, “Workshop Plan”.",
+                "editable": true
+              },
+              {
+                "semantic_id": "agenda_content",
+                "type": "text",
+                "purpose": "List the opening session, hands-on activity, and discussion agenda items.",
+                "editable": true
+              }
+            ]
+          }
+        ],
+        "initial_state": [
+          "The supplied presentation contains two landscape standard slides.",
+          "Slide 1 contains the title “Community Learning Showcase” and the subtitle “Program overview”.",
+          "Slide 2 contains the title “Workshop Plan” and agenda text including “Opening session”, “Hands-on activity”, and “Discussion”.",
+          "Neither slide currently contains a picture.",
+          "Both existing slides have transitions in the supplied file.",
+          "The supporting Desktop file none.png is available for insertion."
+        ],
+        "must_not_be_completed": [
+          "Do not pre-insert none.png on slide 2.",
+          "Do not pre-size any image to 2.4 cm by 1.6 cm.",
+          "Do not alter the existing slide titles or agenda wording."
+        ],
+        "generation_notes": [
+          "Use the supplied initial_artifact.pptx as the starting presentation.",
+          "The requested image is a new editable picture object on slide 2 and should remain visibly separate from the existing text.",
+          "The task requires non-proportional exact dimensions if necessary to satisfy both requested measurements."
+        ]
+      },
+      "operator_guide": {
+        "recommended_demonstration": [
+          {
+            "skill_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-01",
+            "operation_intent": "With slide 2 selected, insert the provided Desktop image none.png onto the slide.",
+            "visible_success_signal": "A newly inserted image is visible on the “Workshop Plan” slide and has selection handles when selected.",
+            "efficiency_tip": "Open Insert > Image while slide 2 is active, then choose none.png directly from the Desktop so no cross-slide move is needed."
+          },
+          {
+            "skill_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-02",
+            "operation_intent": "Set the selected inserted picture to the required 2.4 cm width and 1.6 cm height.",
+            "visible_success_signal": "In Format > Position and Size, the picture size fields show Width 2.4 cm and Height 1.6 cm; the resized image remains visible in unused space on slide 2.",
+            "efficiency_tip": "Keep the picture selected, use Format > Position and Size, and enter both dimensions in one pass; disable proportion preservation only if it prevents the two exact values."
+          }
+        ],
+        "allowed_variation": "The image may be positioned anywhere in unused space on slide 2, provided it does not obscure the title or agenda and its final dimensions are exactly 2.4 cm by 1.6 cm.",
+        "recording_start_state": "LibreOffice Impress is open with initial_artifact.pptx loaded, the Slides pane visible, and slide 2 selected; none.png is present on the Desktop.",
+        "recording_end_state": "Slide 2 visibly contains none.png at exactly 2.4 cm wide by 1.6 cm high, with the original title and agenda readable."
+      },
+      "expected_incidental_operations": [
+        {
+          "operation": "Open initial_artifact.pptx and select slide 2 in the Slides pane.",
+          "reason": "Establishes the supplied presentation and correct destination slide before editing.",
+          "category": "scaffolding"
+        },
+        {
+          "operation": "Navigate the image file picker to the Desktop and choose none.png.",
+          "reason": "Accesses the sole supplied supporting asset required for the requested marker.",
+          "category": "task_specific"
+        },
+        {
+          "operation": "Save the edited presentation.",
+          "reason": "Preserves the completed insertion and exact image dimensions in the working PPTX.",
+          "category": "scaffolding"
+        }
+      ],
+      "review_status": "pending",
+      "source_contribution": {
+        "by_source_task": [
+          {
+            "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+            "skill_count": 2,
+            "skill_fraction": 1.0
+          }
+        ],
+        "dominant_source_task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+        "dominant_source_skill_fraction": 1.0,
+        "complete_source_skill_sets_included": [
+          "c82632a4-56b6-4db4-9dd1-3820ee3388e4"
+        ]
+      },
+      "similarity_reference": {
+        "lexical": {
+          "most_similar_source_task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+          "max_sequence_similarity": 0.317125,
+          "exact_source_instruction_match": false,
+          "by_source_task": [
+            {
+              "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+              "sequence_similarity": 0.281059
+            },
+            {
+              "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+              "sequence_similarity": 0.317125
+            },
+            {
+              "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+              "sequence_similarity": 0.080692
+            },
+            {
+              "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+              "sequence_similarity": 0.303167
+            },
+            {
+              "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+              "sequence_similarity": 0.006329
+            },
+            {
+              "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+              "sequence_similarity": 0.211429
+            },
+            {
+              "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+              "sequence_similarity": 0.186301
+            },
+            {
+              "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+              "sequence_similarity": 0.181287
+            },
+            {
+              "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+              "sequence_similarity": 0.231579
+            },
+            {
+              "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+              "sequence_similarity": 0.112903
+            },
+            {
+              "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+              "sequence_similarity": 0.026923
+            },
+            {
+              "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+              "sequence_similarity": 0.203297
+            },
+            {
+              "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+              "sequence_similarity": 0.259169
+            },
+            {
+              "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+              "sequence_similarity": 0.290249
+            },
+            {
+              "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+              "sequence_similarity": 0.147541
+            },
+            {
+              "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+              "sequence_similarity": 0.015873
+            },
+            {
+              "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+              "sequence_similarity": 0.275109
+            },
+            {
+              "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+              "sequence_similarity": 0.289474
+            },
+            {
+              "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+              "sequence_similarity": 0.110497
+            },
+            {
+              "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+              "sequence_similarity": 0.31643
+            },
+            {
+              "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+              "sequence_similarity": 0.20765
+            },
+            {
+              "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+              "sequence_similarity": 0.121037
+            },
+            {
+              "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+              "sequence_similarity": 0.157609
+            },
+            {
+              "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+              "sequence_similarity": 0.251309
+            },
+            {
+              "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+              "sequence_similarity": 0.122667
+            },
+            {
+              "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+              "sequence_similarity": 0.077348
+            },
+            {
+              "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+              "sequence_similarity": 0.189258
+            },
+            {
+              "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+              "sequence_similarity": 0.165242
+            },
+            {
+              "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+              "sequence_similarity": 0.260331
+            },
+            {
+              "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+              "sequence_similarity": 0.167598
+            },
+            {
+              "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+              "sequence_similarity": 0.298795
+            },
+            {
+              "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+              "sequence_similarity": 0.26009
+            },
+            {
+              "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+              "sequence_similarity": 0.01476
+            },
+            {
+              "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+              "sequence_similarity": 0.211429
+            },
+            {
+              "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+              "sequence_similarity": 0.148649
+            },
+            {
+              "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+              "sequence_similarity": 0.140426
+            },
+            {
+              "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+              "sequence_similarity": 0.268354
+            },
+            {
+              "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+              "sequence_similarity": 0.234097
+            },
+            {
+              "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+              "sequence_similarity": 0.013228
+            },
+            {
+              "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+              "sequence_similarity": 0.027613
+            },
+            {
+              "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+              "sequence_similarity": 0.169399
+            },
+            {
+              "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+              "sequence_similarity": 0.178674
+            },
+            {
+              "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+              "sequence_similarity": 0.268949
+            },
+            {
+              "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+              "sequence_similarity": 0.230366
+            },
+            {
+              "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+              "sequence_similarity": 0.135593
+            },
+            {
+              "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+              "sequence_similarity": 0.082005
+            },
+            {
+              "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+              "sequence_similarity": 0.132948
+            }
+          ]
+        },
+        "semantic": null
+      },
+      "generation": {
+        "attempt": 4,
+        "kind": "deferred_artifact_strategy",
+        "request_id": "53b478c1-a508-4c74-8f77-834248c47c82",
+        "prompt_sha256": "362e97797a587a8182ee24b560666b4966fb448329b5da97487e991eead70963"
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "ac68ab8243b6f5f407dc525e8f98077f847f04ecf0bb73d9088291b8598a0744",
+  "request_id": "3052f7fd-c57f-45f3-8e8b-ecc7429de9ed",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1214,
+    "cached_input_tokens": 1103,
+    "output_tokens": 152,
+    "estimated_cost_usd": 0.0022666
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply bullet-list formatting to text in a content placeholder",
+        "procedure": [
+          "Click inside the content text box to enter text-editing mode and place the cursor in the paragraph to format.",
+          "Open the List dropdown on the toolbar and choose the bullet-list icon.",
+          "For example, placing the cursor in a plain paragraph and selecting the bullet icon converts that paragraph into a bulleted list item; subsequent paragraphs can continue the list."
+        ],
+        "efficiency_tip": "Place the cursor in the target paragraph before opening the List dropdown, so the bullet command affects the intended text without selecting or reformatting the entire text box.",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

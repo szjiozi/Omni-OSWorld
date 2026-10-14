@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+  "app": "libreoffice_impress",
+  "single_action_count": 4,
+  "prompt_sha256": "0f5a1cd36a9b2a6c9bd919a0080358f0fb1755bb34d9587955506f9645926519",
+  "request_id": "2ccf733a-564c-4843-86bb-eb743ceb5660",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1536,
+    "cached_input_tokens": 1403,
+    "output_tokens": 146,
+    "estimated_cost_usd": 0.0022986
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Save a presentation under a new name in a chosen folder",
+        "procedure": [
+          "Use the Save As shortcut, such as Ctrl+Shift+S, to open the Save As dialog.",
+          "In the file name field, enter the desired presentation filename, for example `pre.pptx`.",
+          "Select the destination folder in the dialog, such as Desktop.",
+          "Click Save to create the copy in that location."
+        ],
+        "efficiency_tip": "Use Ctrl+Shift+S when changing either the filename or destination; it avoids overwriting the current file through a normal Save command.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ]
+  }
+}

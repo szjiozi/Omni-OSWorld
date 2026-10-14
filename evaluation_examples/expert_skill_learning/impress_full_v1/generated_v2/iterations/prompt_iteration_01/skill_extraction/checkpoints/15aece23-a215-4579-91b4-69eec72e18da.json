@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "a1de25c832fcc8e74886c326327e70d4fbd667ffb2a9569afb8136cc91e99922",
+  "request_id": "ed70f47b-4b81-4040-aaf3-eceef0237523",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1222,
+    "cached_input_tokens": 1103,
+    "output_tokens": 178,
+    "estimated_cost_usd": 0.0025946
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Move a text box by dragging its object border",
+        "procedure": [
+          "In the Slides pane, select the slide that contains the text box you want to reposition.",
+          "Click the text box once to select its outer object border rather than entering text-editing mode.",
+          "Drag the selected text box to the desired position on the slide. For example, drag a title text box from the top area to the bottom area while keeping it within the slide boundary."
+        ],
+        "efficiency_tip": "Use a single click on the object's border and drag from the border; avoid clicking inside the text, which enters text-editing mode and prevents straightforward object movement.",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

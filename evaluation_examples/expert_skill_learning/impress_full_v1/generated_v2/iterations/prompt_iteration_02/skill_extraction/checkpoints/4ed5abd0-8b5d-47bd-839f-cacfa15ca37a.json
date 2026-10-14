@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+  "app": "libreoffice_impress",
+  "single_action_count": 18,
+  "prompt_sha256": "7d1379fbb1b6b8862394b6b0010f9e961e1f42aea9bdaf1afc159daf0a8abcb9",
+  "request_id": "92d9a0d9-7cce-44f7-a63c-06142bce45bf",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1619,
+    "cached_input_tokens": 1355,
+    "output_tokens": 423,
+    "estimated_cost_usd": 0.005875
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply a font color to all text in selected title objects",
+        "procedure": [
+          "On each target slide, click inside the title text box to enter text-editing mode, then press Ctrl+A to select all text in that title.",
+          "Open the font color dropdown and choose the desired color. For example, choose black to apply black font color to the entire selected title.",
+          "Repeat this selection-and-color operation for other title objects as needed."
+        ],
+        "efficiency_tip": "Select the whole title with Ctrl+A after entering the text box, rather than recoloring individual words or characters.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6,
+          7,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      },
+      {
+        "name": "Underline all text in a selected text object",
+        "procedure": [
+          "With all text in a title or other text object already selected, click the Underline toolbar icon.",
+          "For example, after applying a font color to a selected title, click Underline to add underlining while preserving the current text selection and other formatting."
+        ],
+        "efficiency_tip": "Apply Underline while the full text selection remains active after another formatting change, avoiding the need to re-enter the text box and select the text again.",
+        "action_ids": [
+          5,
+          11,
+          17
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+  "app": "libreoffice_impress",
+  "single_action_count": 2,
+  "prompt_sha256": "d1985692ac55486c2b9a2fdede0ff19f532b761bc5b82bc89e3e4db53e282f60",
+  "request_id": "fd74687a-54c9-4574-b3ea-33a07093774f",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1478,
+    "cached_input_tokens": 1355,
+    "output_tokens": 121,
+    "estimated_cost_usd": 0.001969
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Show or hide the Slides pane from the View menu",
+        "procedure": [
+          "Open the View menu in Impress.",
+          "Choose Slide Pane to toggle the left-hand slide-thumbnail pane visible or hidden. For example, when the thumbnail panel has been closed, selecting Slide Pane restores it on the left side of the workspace."
+        ],
+        "efficiency_tip": "Use the View > Slide Pane toggle directly instead of changing layouts or restarting the application; verify the thumbnail pane appears before continuing.",
+        "action_ids": [
+          0,
+          1
+        ]
+      }
+    ]
+  }
+}

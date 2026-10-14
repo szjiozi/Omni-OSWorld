@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "builder": "impress_deferred_artifact_adapter",
+  "artifact_strategy_ids": [
+    "presenter-console-settings",
+    "autorecovery-settings"
+  ],
+  "package_artifact_spec": {
+    "artifact_type": "pptx",
+    "domain": "community workshop briefing",
+    "presentation_title": "Quarterly Briefing",
+    "slide_size": "standard",
+    "theme": {
+      "primary_color": "A4C2F4",
+      "secondary_color": "FFFFFF",
+      "accent_color": "1F4E79",
+      "background_color": "FFFFFF",
+      "title_font": "Aptos Display",
+      "body_font": "Aptos"
+    },
+    "slides": [
+      {
+        "slide_number": 1,
+        "purpose": "Opening slide for the briefing.",
+        "layout": "title",
+        "object_plan": [
+          {
+            "semantic_id": "briefing_title",
+            "type": "text",
+            "purpose": "Editable title placeholder containing “Quarterly Briefing.”",
+            "editable": true
+          },
+          {
+            "semantic_id": "audience_subtitle",
+            "type": "text",
+            "purpose": "Editable subtitle/body placeholder containing “Prepared for the review team.”",
+            "editable": true
+          }
+        ]
+      },
+      {
+        "slide_number": 2,
+        "purpose": "Agenda overview for the briefing.",
+        "layout": "title_content",
+        "object_plan": [
+          {
+            "semantic_id": "agenda_title",
+            "type": "text",
+            "purpose": "Editable title placeholder containing “Agenda.”",
+            "editable": true
+          },
+          {
+            "semantic_id": "agenda_items",
+            "type": "text",
+            "purpose": "Editable body placeholder listing “Current status” and “Next steps.”",
+            "editable": true
+          }
+        ]
+      }
+    ],
+    "initial_state": [
+      "The Desktop contains initial_artifact.pptx.",
+      "The supplied presentation is a valid two-slide, landscape standard-format PPTX.",
+      "Slide 1 has editable title and subtitle placeholders; slide 2 has editable title and body placeholders."
+    ],
+    "must_not_be_completed": [
+      "The Presenter Console preference must not already be disabled as part of artifact preparation.",
+      "The AutoRecovery interval must not already be set to 8 minutes as part of artifact preparation.",
+      "No slide text, layout, or visual content should be edited."
+    ],
+    "generation_notes": [
+      "The same privacy-safe PPTX is the entry artifact for both application-preference tasks.",
+      "The requested results are application settings rather than saved presentation-content changes.",
+      "Artifact inspection reports two slides, two editable placeholder shapes on each slide, and no images, tables, charts, notes, or transitions."
+    ]
+  },
+  "source_provenance": [
+    {
+      "strategy_id": "presenter-console-settings",
+      "source_task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "autorecovery-settings",
+      "source_task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    }
+  ]
+}

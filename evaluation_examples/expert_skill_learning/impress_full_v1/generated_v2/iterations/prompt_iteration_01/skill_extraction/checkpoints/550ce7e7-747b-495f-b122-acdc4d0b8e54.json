@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+  "app": "libreoffice_impress",
+  "single_action_count": 6,
+  "prompt_sha256": "1471ce105129ede24487975b5e51fdf29c81702be364195b0bed4a88e331e26d",
+  "request_id": "485f468f-f1c7-421c-a65f-8b8f41bd9e4b",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1275,
+    "cached_input_tokens": 1103,
+    "output_tokens": 154,
+    "estimated_cost_usd": 0.0024126
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply strikethrough formatting to multiple paragraphs",
+        "procedure": [
+          "Enter text-editing mode in a text box by clicking within the first paragraph.",
+          "Select the first paragraph, then extend the selection to the next paragraph with Shift-click; for example, triple-click the first line and hold Shift while clicking the second line.",
+          "Click the Strikethrough toolbar icon to apply the character formatting to all selected text."
+        ],
+        "efficiency_tip": "Select all adjacent paragraphs in one continuous selection before clicking Strikethrough, so the formatting command is applied once instead of separately to each line.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ]
+  }
+}

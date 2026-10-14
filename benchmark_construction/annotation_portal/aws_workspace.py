@@ -8,6 +8,7 @@ import json
 import os
 import shutil
 import threading
+import zipfile
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Mapping
@@ -28,6 +29,7 @@ from benchmark_construction.key_overlay import (
     write_key_events,
     write_pointer_events,
 )
+from benchmark_construction.impress_setup_profiles import apply_impress_setup_profiles
 from benchmark_construction.reference_recording import (
     calibrate_recording_timeline,
     collect_guest_reference_recording,
@@ -101,9 +103,13 @@ class AWSReferenceWorkspaceController:
         task = _load_task_config(task_config_path)
         if task["id"] != workspace.task_id:
             raise ValueError("Task config ID does not match workspace task ID")
-        output_dir = self.settings.result_root / workspace.task_id / workspace.session_id
+        output_dir = (
+            self.settings.result_root / workspace.task_id / workspace.session_id
+        )
         output_dir.mkdir(parents=True, exist_ok=False)
-        _copy_preparation_artifacts(task_config_path, task, output_dir)
+        preparation_artifacts = _copy_preparation_artifacts(
+            task_config_path, task, output_dir
+        )
 
         from desktop_env.desktop_env import DesktopEnv
         from desktop_env.trajectory import TrajectoryRecorder
@@ -120,6 +126,7 @@ class AWSReferenceWorkspaceController:
             "manifest": "episode_manifest.json",
             "task_config": "reference_task_config.json",
             "initial_artifact": profile.packet_artifact_filename,
+            **preparation_artifacts,
         }
         env = None
         try:
@@ -136,6 +143,12 @@ class AWSReferenceWorkspaceController:
             started_ns = recorder.now_ns()
             observation = env.reset(task_config=task)
             recorder.add_timing("environment_setup", recorder.now_ns() - started_ns)
+            setup_profiles = task["reference_annotation"].get("setup_profiles", [])
+            if setup_profiles:
+                if profile.app != "libreoffice_impress":
+                    raise ValueError("UI setup profiles are only supported for Impress")
+                apply_impress_setup_profiles(env, setup_profiles)
+                observation = env._get_obs()
             initial_ref = _save_observation(
                 output_dir, recorder, observation, stem="initial_state", kind="initial"
             )
@@ -260,7 +273,9 @@ class AWSReferenceWorkspaceController:
         if not captured:
             raise RuntimeError("Guest input events could not be retrieved")
 
-        notify("collecting_video", "Collecting and validating the raw screen recording.")
+        notify(
+            "collecting_video", "Collecting and validating the raw screen recording."
+        )
         raw_path = runtime.output_dir / "recording_raw.mp4"
         log_path = runtime.output_dir / "recording_capture.ffmpeg.log"
         collect_guest_reference_recording(runtime.env, raw_path, log_path)
@@ -306,7 +321,9 @@ class AWSReferenceWorkspaceController:
             keymap_text=keymap_text,
         )
         write_key_events(runtime.output_dir / "key_events.jsonl", key_events)
-        write_pointer_events(runtime.output_dir / "pointer_events.jsonl", pointer_events)
+        write_pointer_events(
+            runtime.output_dir / "pointer_events.jsonl", pointer_events
+        )
         runtime.artifacts["key_events"] = "key_events.jsonl"
         runtime.artifacts["pointer_events"] = "pointer_events.jsonl"
         overlay_path = runtime.output_dir / "key_overlay.ass"
@@ -329,6 +346,13 @@ class AWSReferenceWorkspaceController:
         guest_path = runtime.task["reference_annotation"]["guest_artifact_path"]
         _save_guest_artifact(runtime.env, guest_path, final_artifact, profile.app)
         runtime.artifacts["final_artifact"] = final_artifact.name
+        runtime.artifacts.update(
+            _collect_expected_outputs(
+                runtime.env,
+                runtime.task["reference_annotation"],
+                runtime.output_dir,
+            )
+        )
         final_ref = _save_observation(
             runtime.output_dir,
             runtime.recorder,
@@ -415,36 +439,70 @@ def _load_task_config(path: Path) -> dict[str, Any]:
     ]:
         raise ValueError("Task config must contain exactly upload_file then open")
     files = steps[0].get("parameters", {}).get("files", [])
-    if len(files) != 1:
-        raise ValueError("Task config must upload exactly one file")
-    local_path = Path(files[0]["local_path"])
-    if not local_path.is_absolute():
-        repository_candidate = Path.cwd() / local_path
-        snapshot_candidate = path.parent.parent / "artifacts" / task["id"] / local_path.name
-        local_path = (
-            repository_candidate if repository_candidate.is_file() else snapshot_candidate
-        )
-    files[0]["local_path"] = str(local_path.resolve())
-    if steps[1].get("parameters", {}).get("path") != files[0].get("path"):
-        raise ValueError("The open action must target the uploaded artifact")
+    if not files:
+        raise ValueError("Task config must upload at least one file")
+    for item in files:
+        local_path = Path(item["local_path"])
+        if not local_path.is_absolute():
+            repository_candidate = Path.cwd() / local_path
+            snapshot_candidate = (
+                path.parent.parent / "artifacts" / task["id"] / local_path.name
+            )
+            local_path = (
+                repository_candidate
+                if repository_candidate.is_file()
+                else snapshot_candidate
+            )
+        if not local_path.is_file():
+            raise FileNotFoundError(f"Uploaded local file does not exist: {local_path}")
+        item["local_path"] = str(local_path.resolve())
+    open_path = steps[1].get("parameters", {}).get("path")
+    primary = [item for item in files if item.get("path") == open_path]
+    if len(primary) != 1:
+        raise ValueError("The open action must target exactly one uploaded artifact")
     get_reference_application(task.get("snapshot", ""))
     expected_hash = task["reference_annotation"]["artifact_sha256"]
-    if _sha256(local_path) != expected_hash:
+    if _sha256(Path(primary[0]["local_path"])) != expected_hash:
         raise ValueError("Initial artifact SHA256 does not match task config")
+    support_by_guest = {
+        item["guest_path"]: item
+        for item in task["reference_annotation"].get("supporting_files", [])
+    }
+    for item in files:
+        if item is primary[0]:
+            continue
+        support = support_by_guest.get(item.get("path"))
+        if support is None or _sha256(Path(item["local_path"])) != support.get(
+            "sha256"
+        ):
+            raise ValueError(f"Supporting file metadata mismatch: {item.get('path')}")
     return task
 
 
 def _copy_preparation_artifacts(
     task_config_path: Path, task: Mapping[str, Any], output_dir: Path
-) -> None:
+) -> dict[str, str]:
     shutil.copy2(task_config_path, output_dir / "reference_task_config.json")
-    artifact = Path(task["config"][0]["parameters"]["files"][0]["local_path"])
+    uploads = task["config"][0]["parameters"]["files"]
+    open_path = task["config"][1]["parameters"]["path"]
+    primary = [item for item in uploads if item["path"] == open_path][0]
+    artifact = Path(primary["local_path"])
     profile = get_reference_application(task["snapshot"])
     shutil.copy2(artifact, output_dir / profile.packet_artifact_filename)
+    copied: dict[str, str] = {}
+    for item in uploads:
+        if item is primary:
+            continue
+        support_dir = output_dir / "supporting_inputs"
+        support_dir.mkdir(exist_ok=True)
+        target = support_dir / Path(item["local_path"]).name
+        shutil.copy2(item["local_path"], target)
+        copied[f"supporting_input_{target.stem}"] = str(target.relative_to(output_dir))
     _write_json(
         output_dir / "operator_guide.json",
         task["reference_annotation"]["operator_guide"],
     )
+    return copied
 
 
 def _save_observation(
@@ -491,6 +549,31 @@ def _save_guest_workbook(env: Any, guest_path: str, output_path: Path) -> None:
     """Backward-compatible Calc wrapper used by existing tests and callers."""
 
     _save_guest_artifact(env, guest_path, output_path, "libreoffice_calc")
+
+
+def _collect_expected_outputs(
+    env: Any, annotation: Mapping[str, Any], output_dir: Path
+) -> dict[str, str]:
+    collected: dict[str, str] = {}
+    for item in annotation.get("expected_outputs", []):
+        content = env.controller.get_file(item["guest_path"])
+        if not content:
+            if item.get("required", True):
+                raise RuntimeError(f"Required output is missing: {item['guest_path']}")
+            continue
+        if item["role"] == "png_export" and not content.startswith(
+            b"\x89PNG\r\n\x1a\n"
+        ):
+            raise RuntimeError(f"Collected output is not a PNG: {item['guest_path']}")
+        target = output_dir / item["local_filename"]
+        target.write_bytes(content)
+        if item["role"] == "saved_presentation" and not zipfile.is_zipfile(target):
+            target.unlink()
+            raise RuntimeError(
+                f"Collected output is not a PPTX package: {item['guest_path']}"
+            )
+        collected[f"expected_output_{item['role']}"] = item["local_filename"]
+    return collected
 
 
 def _sha256(path: Path) -> str:

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+  "app": "libreoffice_impress",
+  "single_action_count": 12,
+  "prompt_sha256": "ec3e7105a26075c38dd59f9e8dd1bf10849700f94bcf7d064c1951eb5a42d112",
+  "request_id": "3e9533a5-048b-4ac6-8876-21b1f2e970a5",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1318,
+    "cached_input_tokens": 1103,
+    "output_tokens": 347,
+    "estimated_cost_usd": 0.0048146
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Insert an image onto the selected slide",
+        "procedure": [
+          "Select the destination slide thumbnail in the Slides pane so the image is inserted on that slide.",
+          "Click the Insert Image icon to open the file picker.",
+          "Navigate to the folder containing the image, select an image file (for example, a PNG on the Desktop), and confirm with Enter. The image is placed on the slide and becomes the selected object."
+        ],
+        "efficiency_tip": "Select the target slide before opening the file picker, then use the Insert Image toolbar icon for direct access instead of navigating through multiple menus.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "name": "Set an inserted object's exact width and height in Position and Size",
+        "procedure": [
+          "With the inserted image selected by its outer object border, open the Position and Size control or dropdown.",
+          "Scroll to the size fields if needed.",
+          "Replace the Width value with an explicit measurement such as `1cm`, then move to the Height field with Tab and enter `1cm`.",
+          "Press Enter to apply the dimensions; this produces a 1 cm by 1 cm image example."
+        ],
+        "efficiency_tip": "Use Tab to move directly from Width to Height and type units such as `cm` explicitly, avoiding imprecise drag-resizing.",
+        "action_ids": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    ]
+  }
+}

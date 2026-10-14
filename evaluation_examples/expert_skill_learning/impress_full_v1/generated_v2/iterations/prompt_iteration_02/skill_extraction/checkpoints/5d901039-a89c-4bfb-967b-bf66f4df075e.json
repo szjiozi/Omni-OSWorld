@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+  "app": "libreoffice_impress",
+  "single_action_count": 7,
+  "prompt_sha256": "143b4e635212e22e5498dfc5179a066a199250b92125f85c024e60e0b6e069ff",
+  "request_id": "363eb8bf-6244-4366-a751-fe77f9473bdd",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1564,
+    "cached_input_tokens": 1355,
+    "output_tokens": 258,
+    "estimated_cost_usd": 0.003785
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Resize an image proportionally using corner handles",
+        "procedure": [
+          "Click the image once to select its outer border and display sizing handles.",
+          "Drag a corner handle outward to enlarge the image; use corner handles rather than side handles so the image retains its proportions.",
+          "For example, drag the top-left corner outward, then adjust from the bottom-right corner as needed to reach the desired coverage."
+        ],
+        "efficiency_tip": "Use only diagonal corner handles for proportional scaling, and make the larger adjustment from one corner before making a small correction from the opposite corner.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "name": "Center a selected image on a slide by dragging",
+        "procedure": [
+          "With the image still selected by its outer border, position the pointer over the image body rather than a sizing handle.",
+          "Drag the image to the center of the slide, using the slide boundaries and alignment feedback as visual references.",
+          "For example, after enlarging an image, drag it until its center is visually aligned with the page center."
+        ],
+        "efficiency_tip": "Resize first and reposition only once afterward; this avoids repeated centering adjustments caused by changing the image dimensions.",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    ]
+  }
+}

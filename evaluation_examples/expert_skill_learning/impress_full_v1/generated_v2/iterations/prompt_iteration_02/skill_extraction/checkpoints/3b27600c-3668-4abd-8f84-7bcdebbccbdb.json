@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+  "app": "libreoffice_impress",
+  "single_action_count": 23,
+  "prompt_sha256": "032a2cf0618bda4758764cf69f0b8bfc3d99faf74a226062e10a8f95e173829e",
+  "request_id": "54d10c0f-5e0d-48b9-804c-92a620df7c97",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1675,
+    "cached_input_tokens": 1355,
+    "output_tokens": 569,
+    "estimated_cost_usd": 0.007739
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set a presentation master slide background color",
+        "procedure": [
+          "Open the Slide menu and enter Master View.",
+          "With the master slide targeted, open Slide > Slide Properties and select the Background tab.",
+          "Activate the color’s hexadecimal field, replace its value with the desired RGB hex code, and confirm. For example, enter `0000ff` to use blue.",
+          "Close Master View after completing the master-level formatting."
+        ],
+        "efficiency_tip": "Use the master slide background when several slides should share the same appearance; this avoids opening Slide Properties separately for every slide.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          22
+        ]
+      },
+      {
+        "name": "Apply a background color to individual slides using Slide Properties",
+        "procedure": [
+          "Select the target slide thumbnail so that the slide, rather than a canvas object, is the formatting target.",
+          "Open Slide > Slide Properties and use the Background settings.",
+          "Choose a color swatch, such as a recently used blue swatch, and confirm the dialog.",
+          "Repeat on other selected slide thumbnails only when those slides need their own direct background formatting."
+        ],
+        "efficiency_tip": "After defining a custom color once, select it from the recent-colors area for later slides instead of retyping its hex value.",
+        "action_ids": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ]
+      }
+    ]
+  }
+}

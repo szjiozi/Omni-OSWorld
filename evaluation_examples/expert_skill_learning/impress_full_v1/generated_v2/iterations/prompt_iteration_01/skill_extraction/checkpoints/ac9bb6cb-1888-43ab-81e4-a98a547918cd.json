@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+  "app": "libreoffice_impress",
+  "single_action_count": 17,
+  "prompt_sha256": "ef6c26db8ba146080bdafe2c367031a28fe38badf87b0a691dfa0d80cace8b8c",
+  "request_id": "7c83506e-33f6-4b49-aec6-6637457e9d5a",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1366,
+    "cached_input_tokens": 1103,
+    "output_tokens": 794,
+    "estimated_cost_usd": 0.0102746
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Enable slide numbers on all slides",
+        "procedure": [
+          "Open Insert > Header and Footer.",
+          "In the dialog, enable the Slide Number checkbox.",
+          "Choose Apply to All to insert the slide-number field throughout the presentation; for example, use this when every slide should display its number."
+        ],
+        "efficiency_tip": "Use Apply to All instead of enabling slide numbers separately on individual slides, then format the field through the master when a consistent appearance is needed.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Format the slide-number field in Master View",
+        "procedure": [
+          "Enter Master View so edits affect master placeholders rather than a single slide.",
+          "Select the slide-number placeholder box on the master.",
+          "Open the Font Color control and choose a color, such as red, to change the appearance of slide numbers that inherit the master formatting."
+        ],
+        "efficiency_tip": "Format the slide-number placeholder once in Master View to avoid repeating the same styling change on every slide that uses that master.",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "name": "Apply a font color directly to slide-number placeholders on selected slides",
+        "procedure": [
+          "Select a slide thumbnail to target that individual slide.",
+          "Click its slide-number box to select the placeholder, then use the Font Color control to apply the currently chosen color.",
+          "Repeat on other slides only when they need an override; for example, select each slide whose number should use a different color from the master."
+        ],
+        "efficiency_tip": "Use direct per-slide formatting only for exceptions. If all slide numbers need the same color, format the master placeholder instead.",
+        "action_ids": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    ]
+  }
+}

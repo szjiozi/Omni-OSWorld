@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+  "app": "libreoffice_impress",
+  "single_action_count": 9,
+  "prompt_sha256": "7757a61f790d677dac3d87827318145e3a82587b0a3e1f7d28657aec95b1c8db",
+  "request_id": "889d85ea-c24c-4be5-aaca-958d179a9888",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1288,
+    "cached_input_tokens": 1103,
+    "output_tokens": 495,
+    "estimated_cost_usd": 0.0065306
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set a slide background to a solid color",
+        "procedure": [
+          "In the Slides pane, select the thumbnail of the slide whose background you want to change; this targets the slide rather than an object on its canvas.",
+          "Open the slide background command, choose the background color option, then open its color palette.",
+          "Select the desired swatch and apply it. For example, choose a red swatch from the palette to make the entire selected slide background red."
+        ],
+        "efficiency_tip": "Select the slide thumbnail before opening the background command so the change is applied directly to the intended slide, and choose the color from the palette in the same dialog rather than formatting individual shapes.",
+        "action_ids": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      }
+    ]
+  }
+}

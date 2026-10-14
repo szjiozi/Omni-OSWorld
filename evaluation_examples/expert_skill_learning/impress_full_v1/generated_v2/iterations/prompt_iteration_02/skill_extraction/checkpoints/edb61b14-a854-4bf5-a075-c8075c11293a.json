@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+  "app": "libreoffice_impress",
+  "single_action_count": 5,
+  "prompt_sha256": "2df88e87a04f9fe7828f49a0d2bab6befadf1a607035b70c0382e7c22ec595a8",
+  "request_id": "bad8c71b-18dc-49ba-8f63-e25434ca1dc9",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1492,
+    "cached_input_tokens": 1355,
+    "output_tokens": 150,
+    "estimated_cost_usd": 0.002345
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Change the font family of text in a text box",
+        "procedure": [
+          "Select the target slide thumbnail in the Slides pane, then click the text box to target its text for formatting.",
+          "Click the font-name field on the formatting toolbar; triple-click if needed to select the existing font name.",
+          "Type a new font family name, such as “Times New Roman,” and press Enter to apply it to the selected text box's text."
+        ],
+        "efficiency_tip": "Use the font-name field directly and replace its current value in one action rather than opening and searching the font dropdown.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ]
+  }
+}

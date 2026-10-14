@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+  "app": "libreoffice_impress",
+  "single_action_count": 8,
+  "prompt_sha256": "3dbdc492f033c44668c6d9a49ea9af7c8e52dbcfd879ab051871e608b14178a3",
+  "request_id": "e565e1cb-6c19-4809-8a97-733c5fb564a4",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1628,
+    "cached_input_tokens": 0,
+    "output_tokens": 357,
+    "estimated_cost_usd": 0.00754
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply exact font colors to text in separate text boxes",
+        "procedure": [
+          "Enter text-editing mode in a text box and select the text whose color should change; for example, triple-click a short text line to select it.",
+          "Open the Font Color drop-down on the formatting toolbar and click the required swatch, such as the standard yellow swatch.",
+          "Repeat for text in other text boxes, selecting each text range before choosing its exact color. For example, use the standard red swatch for one selected line and the standard green swatch for another.",
+          "Verify that the selected text, rather than the entire object border, is active before applying the color so the command changes characters only."
+        ],
+        "efficiency_tip": "Use triple-click to select a whole short line or paragraph quickly, then choose colors directly from the recently opened palette when available; this avoids manually dragging across text and reduces the risk of recoloring the wrong range.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    ]
+  }
+}

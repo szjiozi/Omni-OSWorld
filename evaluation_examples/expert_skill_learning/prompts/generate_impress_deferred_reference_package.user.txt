@@ -1,0 +1,16 @@
+Application:
+{{APP}}
+
+Sampled mandatory skill cards:
+{{SAMPLED_SKILLS}}
+
+Trusted artifact strategy contract:
+{{ARTIFACT_STRATEGIES}}
+
+Materialized primary/supporting artifact inspection:
+{{MATERIALIZED_ARTIFACTS}}
+
+Source instructions for similarity avoidance:
+{{SOURCE_INSTRUCTIONS}}
+
+Generate one coordinated Impress reference package or reject this exact combination. Copy exactly the supplied skill_id values into required_skill_ids. Do not infer or invent skill IDs.

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "5d0b1251d11276ad145741da07f34ebfbb20905c55fba140533a16d813eb6508",
+  "request_id": "180fe2ea-982d-44de-bee6-c8fae10ad2b1",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1481,
+    "cached_input_tokens": 1355,
+    "output_tokens": 148,
+    "estimated_cost_usd": 0.002299
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Insert a table by selecting dimensions from the table grid",
+        "procedure": [
+          "Select the target slide thumbnail so the table is inserted on that slide.",
+          "Click the table icon in the content placeholder to open the dimension grid.",
+          "Move to and click the cell representing the desired dimensions; for example, click the fifth-row, second-column cell to insert a 5-row by 2-column table."
+        ],
+        "efficiency_tip": "Use the placeholder’s table icon and its dimension grid to create the table in one interaction, instead of inserting a generic table first and then adding or removing rows and columns.",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

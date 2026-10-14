@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+  "app": "libreoffice_impress",
+  "single_action_count": 4,
+  "prompt_sha256": "23a40c911fd1a90c44157742113539183f4464f770a670510dd46e9591b4e1e4",
+  "request_id": "deef2edd-b4b3-4305-a1f4-096cf7ffbe3b",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1227,
+    "cached_input_tokens": 1103,
+    "output_tokens": 131,
+    "estimated_cost_usd": 0.0020406
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Change slide orientation to portrait",
+        "procedure": [
+          "Open the Slide menu and choose Slide Properties.",
+          "In the Paper format section, select Portrait to make slides upright rather than landscape.",
+          "Confirm the dialog with OK. For example, use this when converting a widescreen-style horizontal slide layout into a vertical page layout."
+        ],
+        "efficiency_tip": "Change orientation once from Slide Properties rather than manually rotating or rebuilding individual slide content; then review layouts because objects may need repositioning after the page dimensions change.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ]
+  }
+}

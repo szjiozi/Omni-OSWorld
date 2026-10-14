@@ -27,6 +27,7 @@ from benchmark_construction.reference_annotation import (
 )
 from benchmark_construction.schema import load_schema
 from scripts.python.record_reference_task import (
+    _collect_expected_outputs,
     _configure_aws,
     _load_task_config,
     _novnc_preview_url,
@@ -362,9 +363,12 @@ def test_ssm_waits_until_instance_is_online():
             return {"InstanceInformationList": [{"PingStatus": status}]}
 
     client = FakeSsm()
-    assert wait_for_ssm_online(
-        client, "i-0123456789abcdef0", timeout_seconds=1, poll_seconds=0
-    ) >= 0
+    assert (
+        wait_for_ssm_online(
+            client, "i-0123456789abcdef0", timeout_seconds=1, poll_seconds=0
+        )
+        >= 0
+    )
     assert client.calls == 2
 
 
@@ -463,9 +467,7 @@ def test_ssm_port_forward_starts_listener_and_closes(monkeypatch):
     assert process.terminated is True
 
 
-def test_ssm_ssh_forward_builds_multiplexed_api_and_novnc_tunnel(
-    monkeypatch, tmp_path
-):
+def test_ssm_ssh_forward_builds_multiplexed_api_and_novnc_tunnel(monkeypatch, tmp_path):
     class FakeDirectory:
         name = str(tmp_path)
         cleaned = False
@@ -682,9 +684,7 @@ def test_configure_aws_defaults_hong_kong_to_ssm_without_ingress(monkeypatch):
         SimpleNamespace(Session=lambda **_kwargs: FakeSession()),
     )
     monkeypatch.setenv("AWS_AP_EAST_1_SUBNET_ID", "subnet-11111111111111111")
-    monkeypatch.setenv(
-        "AWS_AP_EAST_1_SECURITY_GROUP_ID", "sg-22222222222222222"
-    )
+    monkeypatch.setenv("AWS_AP_EAST_1_SECURITY_GROUP_ID", "sg-22222222222222222")
     monkeypatch.setenv("AWS_AP_EAST_1_AMI_ID", "ami-33333333333333333")
     monkeypatch.setattr(
         "scripts.python.record_reference_task.active_project_instance_ids",
@@ -757,6 +757,75 @@ def test_runtime_loader_rejects_evaluator_and_resolves_artifact(tmp_path):
     path.write_text(json.dumps(config), encoding="utf-8")
     with pytest.raises(ValueError, match="must not contain an evaluator"):
         _load_task_config(path)
+
+
+def test_runtime_loader_accepts_verified_supporting_files(tmp_path):
+    primary = tmp_path / "initial.pptx"
+    support = tmp_path / "photo.png"
+    primary.write_bytes(b"PK-primary")
+    support.write_bytes(b"\x89PNG\r\n\x1a\nphoto")
+    task = {
+        "id": "reference-task-impress-r02-001",
+        "snapshot": "libreoffice_impress",
+        "config": [
+            {
+                "type": "upload_file",
+                "parameters": {
+                    "files": [
+                        {
+                            "local_path": str(primary),
+                            "path": "/home/user/Desktop/initial.pptx",
+                        },
+                        {
+                            "local_path": str(support),
+                            "path": "/home/user/Desktop/photo.png",
+                        },
+                    ]
+                },
+            },
+            {"type": "open", "parameters": {"path": "/home/user/Desktop/initial.pptx"}},
+        ],
+        "reference_annotation": {
+            "artifact_sha256": hashlib.sha256(primary.read_bytes()).hexdigest(),
+            "supporting_files": [
+                {
+                    "guest_path": "/home/user/Desktop/photo.png",
+                    "sha256": hashlib.sha256(support.read_bytes()).hexdigest(),
+                }
+            ],
+        },
+    }
+    path = tmp_path / "task.json"
+    path.write_text(json.dumps(task), encoding="utf-8")
+
+    loaded = _load_task_config(path)
+
+    assert len(loaded["config"][0]["parameters"]["files"]) == 2
+
+
+def test_expected_output_collection_validates_png(tmp_path):
+    controller = SimpleNamespace(
+        get_file=lambda path: b"\x89PNG\r\n\x1a\ncontent"
+        if path.endswith("res.png")
+        else None
+    )
+    artifacts = _collect_expected_outputs(
+        SimpleNamespace(controller=controller),
+        {
+            "expected_outputs": [
+                {
+                    "role": "png_export",
+                    "guest_path": "/home/user/Desktop/res.png",
+                    "local_filename": "res.png",
+                    "required": True,
+                }
+            ]
+        },
+        tmp_path,
+    )
+
+    assert artifacts == {"expected_output_png_export": "res.png"}
+    assert (tmp_path / "res.png").read_bytes().startswith(b"\x89PNG")
 
 
 def test_final_workbook_is_saved_then_downloaded(tmp_path):

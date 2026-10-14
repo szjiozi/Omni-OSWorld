@@ -1,0 +1,101 @@
+{
+  "id": "reference-task-impress-full-v2-r01-002",
+  "snapshot": "libreoffice_impress",
+  "instruction": "Finalize the Harbor Air Lab briefing: on the “Field Snapshot” slide, move the coastal landscape illustration from the left panel into the right-side image frame, make the heading “FIELD SNAPSHOT” bold, and right-align the source line beneath the image. On the following “Next Measurement” slide, center the text in the closing callout, “Sampling begins at first light.” Keep all wording and other slide elements unchanged.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-002/initial_artifact.pptx",
+            "path": "/home/user/Desktop/harbor_air_briefing.pptx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/harbor_air_briefing.pptx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_impress"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-impress-full-v2-r01-002",
+    "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-002/initial_artifact.pptx",
+    "artifact_sha256": "c5c98b617c0c8e1c37e4a60d91495d3c796766c8a5cd00f1063f4c2c450f1526",
+    "guest_artifact_path": "/home/user/Desktop/harbor_air_briefing.pptx",
+    "required_skill_ids": [
+      "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01",
+      "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01",
+      "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01",
+      "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01"
+    ],
+    "operator_guide": {
+      "recommended_demonstration": [
+        {
+          "skill_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01",
+          "operation_intent": "Apply bold character formatting to the slide 2 heading only.",
+          "visible_success_signal": "“FIELD SNAPSHOT” has a visibly heavier weight while its wording, position, and color remain unchanged.",
+          "efficiency_tip": "Enter text-editing mode in the heading and use Ctrl+B with the heading text selected or the insertion point in that text."
+        },
+        {
+          "skill_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01",
+          "operation_intent": "Relocate the slide 2 coastal landscape illustration into the outlined destination frame on the right.",
+          "visible_success_signal": "The coastal landscape illustration occupies the right-side frame area, and the left panel no longer contains the illustration.",
+          "efficiency_tip": "Drag from the image interior rather than a sizing handle; use the visible frame edges as the placement reference."
+        },
+        {
+          "skill_id": "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01",
+          "operation_intent": "Right-align the slide 2 source citation paragraph.",
+          "visible_success_signal": "The citation’s right edge aligns with the right edge of its text box beneath the image frame.",
+          "efficiency_tip": "Place the text cursor in the source paragraph before applying Right Align."
+        },
+        {
+          "skill_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01",
+          "operation_intent": "Center the paragraph in the slide 3 closing callout.",
+          "visible_success_signal": "“Sampling begins at first light.” is centered horizontally in the pale-blue callout area.",
+          "efficiency_tip": "Enter the callout text box, select its text, and apply Center Align once."
+        }
+      ],
+      "allowed_variation": "Minor differences in the precise image drop point are acceptable if the image is clearly positioned within the right-side outlined frame. The requested text formatting and paragraph alignments must remain exact.",
+      "recording_start_state": "Open the supplied three-slide presentation in normal slide editing view with all specified incomplete states visible.",
+      "recording_end_state": "Slide 2 has the image in the right frame, a bold heading, and a right-aligned source line; slide 3 has a centered closing callout."
+    },
+    "expected_incidental_operations": [
+      {
+        "operation": "Navigate between slides 2 and 3 in the Slides pane.",
+        "reason": "The coordinated edits are located on two related content slides.",
+        "category": "scaffolding"
+      },
+      {
+        "operation": "Enter text-editing mode and select text in the heading, source line, and closing callout as needed.",
+        "reason": "Character formatting and paragraph alignment must apply to text rather than to the containing objects.",
+        "category": "substantive_prerequisite"
+      },
+      {
+        "operation": "Select the coastal landscape illustration before dragging it.",
+        "reason": "The image must be selected to relocate it into the designated frame.",
+        "category": "substantive_prerequisite"
+      }
+    ],
+    "ready_state_checks": [
+      "Confirm the presentation is open in LibreOffice Impress in normal slide editing view.",
+      "Confirm the Slides pane shows exactly three slides.",
+      "Confirm slide 1 is initially selected and displays the “Harbor Air Lab” cover slide.",
+      "Confirm slide 2 shows “FIELD SNAPSHOT” in regular weight, the shoreline image in the left panel, and an empty outlined image frame on the right.",
+      "Confirm slide 3 contains the closing callout “Sampling begins at first light.” aligned to the left within its pale-blue area."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

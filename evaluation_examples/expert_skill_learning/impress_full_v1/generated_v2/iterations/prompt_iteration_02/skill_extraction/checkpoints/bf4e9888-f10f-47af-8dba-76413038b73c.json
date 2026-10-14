@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+  "app": "libreoffice_impress",
+  "single_action_count": 11,
+  "prompt_sha256": "3306f586c86d96c3da592c47a7fbae3b7fa3612805fd5e6b9d84c6e8c85efeaa",
+  "request_id": "04a520a7-23d3-4bea-8926-06be537ee2a7",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1627,
+    "cached_input_tokens": 1355,
+    "output_tokens": 686,
+    "estimated_cost_usd": 0.009047
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Create image slides from a contiguous file selection using Photo Album",
+        "procedure": [
+          "In Impress, open the Photo Album command through Insert > Media > Photo Album.",
+          "Choose Add to open the file picker, then navigate to the folder containing the images, such as Desktop.",
+          "Select a consecutive range of image files in the required order. For example, select the first image, hold Shift, and select the last image to include every file from pic1.png through pic6.png.",
+          "Confirm the file selection, then use Insert Slides in the Photo Album dialog to generate slides from the selected images."
+        ],
+        "efficiency_tip": "Use Shift-range selection for consecutively named files instead of adding images one at a time; verify the first and last selected filenames before inserting so the album follows the intended sequence.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    ]
+  }
+}

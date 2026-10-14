@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+  "app": "libreoffice_impress",
+  "single_action_count": 10,
+  "prompt_sha256": "6baf0d0dcfcc2e35d7c37e6201486c555cae1a237bf7cf8ae37d50ff9b4db23a",
+  "request_id": "51a104e1-4174-4ef4-aa6a-f704e2e257e6",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1323,
+    "cached_input_tokens": 1103,
+    "output_tokens": 416,
+    "estimated_cost_usd": 0.0056526
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Change a slide background color",
+        "procedure": [
+          "Open the slide background color dropdown.",
+          "Choose a color from the palette to apply it to the current slide background; for example, select a red swatch."
+        ],
+        "efficiency_tip": "Use the background color control directly rather than inserting a full-slide shape, so the color remains a true slide background.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Set the font size for text in a text box",
+        "procedure": [
+          "Select the text box whose content should be formatted.",
+          "Click in the font-size field, replace its current value with the desired point size, and press Enter to apply it; for example, enter 12."
+        ],
+        "efficiency_tip": "Replace the value in the font-size field in one edit rather than adjusting it repeatedly with increase/decrease font-size buttons.",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "name": "Apply a font color from the color palette",
+        "procedure": [
+          "With the target text box still selected, open the font color dropdown.",
+          "Choose the desired text color from the palette; for example, select an orange swatch."
+        ],
+        "efficiency_tip": "Use the dropdown palette when a specific color is needed, instead of clicking the main font-color button, which only reapplies its currently stored color.",
+        "action_ids": [
+          8,
+          9
+        ]
+      }
+    ]
+  }
+}

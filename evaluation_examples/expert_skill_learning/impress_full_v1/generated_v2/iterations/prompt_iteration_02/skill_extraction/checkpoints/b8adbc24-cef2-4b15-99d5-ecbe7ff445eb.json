@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+  "app": "libreoffice_impress",
+  "single_action_count": 6,
+  "prompt_sha256": "3cec17f5bb916e8ac93bcbf8717f759a170a89db7d963bffe6daf00f0cf1ac0a",
+  "request_id": "4717635b-a00a-4b03-847c-8f549d84d288",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1514,
+    "cached_input_tokens": 1355,
+    "output_tokens": 458,
+    "estimated_cost_usd": 0.006085
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Copy a formatted text box to another slide and replace its text",
+        "procedure": [
+          "Select the source text box by clicking its border, then copy it with Ctrl+C; this retains the text box’s formatting, including its font color.",
+          "In the Slides pane, select the destination slide, then paste with Ctrl+V to create the copied text box on that slide.",
+          "Enter text-editing mode in the pasted box, select its existing text (for example, with a triple-click), and type the replacement text. For example, replace the copied title with “Online Shopping” while retaining the copied title color."
+        ],
+        "efficiency_tip": "Copy the already formatted text box instead of creating a new title and manually matching its font color; only the text content needs to be replaced afterward.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ]
+  }
+}

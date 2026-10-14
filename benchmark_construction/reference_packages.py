@@ -131,7 +131,9 @@ def validate_reference_package_response(
     if response["rejection_reason"].strip():
         raise ValueError("A candidate package must have an empty rejection reason")
     if response["artifact_spec"] is None or response["operator_guide"] is None:
-        raise ValueError("A candidate package must contain artifact and operator guides")
+        raise ValueError(
+            "A candidate package must contain artifact and operator guides"
+        )
 
     expected = set(sample.skill_ids)
     returned_ids = response["required_skill_ids"]
@@ -162,6 +164,9 @@ def validate_reference_package_response(
             if any(not name for name in columns) or len(set(columns)) != len(columns):
                 raise ValueError("Artifact column names must be non-empty and unique")
     else:
+        slide_count = len(artifact["slides"])
+        if not response.get("artifact_strategy_ids") and not 2 <= slide_count <= 8:
+            raise ValueError("Static Impress artifacts must contain 2-8 slides")
         slide_numbers = [slide["slide_number"] for slide in artifact["slides"]]
         if slide_numbers != list(range(1, len(slide_numbers) + 1)):
             raise ValueError("Artifact slide numbers must be consecutive from 1")
@@ -253,7 +258,9 @@ async def generate_reference_packages(
     if semantic_retries < 0:
         raise ValueError("semantic_retries must be non-negative")
     if not task_id_prefix or not re.fullmatch(r"[a-z0-9-]+", task_id_prefix):
-        raise ValueError("task_id_prefix must contain lowercase letters, digits, or hyphens")
+        raise ValueError(
+            "task_id_prefix must contain lowercase letters, digits, or hyphens"
+        )
     skill_by_id = {skill.skill_id: skill for skill in skills}
     all_skill_ids = tuple(skill_by_id)
     uncovered = set(
@@ -370,12 +377,9 @@ async def generate_reference_packages(
             if result.data["decision"] != "candidate":
                 continue
             task_id = (
-                f"{task_id_prefix}-r{generation_round:02d}-"
-                f"{len(packages) + 1:03d}"
+                f"{task_id_prefix}-r{generation_round:02d}-" f"{len(packages) + 1:03d}"
             )
-            source_for_app = [
-                task for task in source_tasks if task.app == sample.app
-            ]
+            source_for_app = [task for task in source_tasks if task.app == sample.app]
             packages.append(
                 {
                     "reference_task_id": task_id,
@@ -455,12 +459,8 @@ async def generate_reference_packages(
             package["similarity_reference"]["semantic"] = report
 
     newly_covered = set(all_skill_ids).difference(uncovered, initial_covered)
-    covered = tuple(
-        skill_id for skill_id in all_skill_ids if skill_id in newly_covered
-    )
-    unresolved = tuple(
-        skill_id for skill_id in all_skill_ids if skill_id in uncovered
-    )
+    covered = tuple(skill_id for skill_id in all_skill_ids if skill_id in newly_covered)
+    unresolved = tuple(skill_id for skill_id in all_skill_ids if skill_id in uncovered)
     return ReferencePackageGenerationResult(
         packages=tuple(packages),
         attempts=tuple(attempts),
@@ -474,7 +474,9 @@ async def generate_reference_packages(
             skill_id for skill_id in all_skill_ids if skill_id in generation_eligible
         ),
         generation_deferred_skill_ids=tuple(
-            skill_id for skill_id in all_skill_ids if skill_id not in generation_eligible
+            skill_id
+            for skill_id in all_skill_ids
+            if skill_id not in generation_eligible
         ),
         semantic_batch=semantic_batch,
     )
@@ -506,12 +508,8 @@ def write_reference_packages(
             "round_candidate_covered_skill_ids": list(
                 result.candidate_covered_skill_ids
             ),
-            "generation_eligible_skill_ids": list(
-                result.generation_eligible_skill_ids
-            ),
-            "generation_deferred_skill_ids": list(
-                result.generation_deferred_skill_ids
-            ),
+            "generation_eligible_skill_ids": list(result.generation_eligible_skill_ids),
+            "generation_deferred_skill_ids": list(result.generation_deferred_skill_ids),
             "covered_skill_ids": list(
                 dict.fromkeys(
                     [
@@ -547,8 +545,7 @@ def write_reference_packages(
         "attempt_count": len(result.attempts),
         "candidate_count": len(result.packages),
         "rejection_count": sum(
-            item["decision"] == "rejected_combination"
-            for item in result.attempts
+            item["decision"] == "rejected_combination" for item in result.attempts
         ),
         "generation_input_tokens": sum(
             item["input_tokens"] for item in result.attempts

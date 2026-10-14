@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+  "app": "libreoffice_impress",
+  "single_action_count": 5,
+  "prompt_sha256": "1b64580043895fa812949a9575b0922bddc3a919235264567b48a3b610963737",
+  "request_id": "03051a32-77d4-44e0-b741-64258b411d8b",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1573,
+    "cached_input_tokens": 1403,
+    "output_tokens": 156,
+    "estimated_cost_usd": 0.0024926
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Insert an audio file into a presentation slide",
+        "procedure": [
+          "Open the Insert menu and choose “Audio and Video…” to open the media file picker.",
+          "Navigate to the folder containing the audio file, select the desired audio file (for example, an .mp3 file), and confirm the selection with Enter or the dialog’s Open button.",
+          "Impress inserts the selected audio as a media object on the current slide."
+        ],
+        "efficiency_tip": "Open the file picker directly through Insert > Audio and Video, then type the first letters of the filename or use the folder sidebar to reach the media file quickly.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+  "app": "libreoffice_impress",
+  "single_action_count": 12,
+  "prompt_sha256": "bb5f73187cdbb886c36bcbc8902c290981783ec07837532f7a6119bc14d0b412",
+  "request_id": "aa3213a8-ec43-4027-a593-16adb0c7b7a0",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1336,
+    "cached_input_tokens": 0,
+    "output_tokens": 348,
+    "estimated_cost_usd": 0.006848
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set paragraph alignment in a text box using alignment controls",
+        "procedure": [
+          "In the Slides pane, select the slide containing the text box to edit.",
+          "Click inside the text box so that it enters text-editing mode, then press Ctrl+A to select its text or paragraphs.",
+          "Click the desired paragraph-alignment control in the toolbar. For example, use Right Align for right-aligned text, Center Align for centered text, or Left Align for left-aligned text.",
+          "Repeat on other slides or text boxes as needed; for example, choose right alignment on one text box, center alignment on another, and left alignment on a third."
+        ],
+        "efficiency_tip": "Use Ctrl+A only after the insertion cursor is inside the intended text box; this selects that box’s text for paragraph formatting without accidentally selecting or moving the whole object.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    ]
+  }
+}

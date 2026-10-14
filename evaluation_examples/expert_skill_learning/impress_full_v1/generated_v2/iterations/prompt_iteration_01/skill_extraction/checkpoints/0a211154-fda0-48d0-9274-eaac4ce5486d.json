@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+  "app": "libreoffice_impress",
+  "single_action_count": 9,
+  "prompt_sha256": "811de03982ac7ff4f655e7a2b9aad04d83994f289bb08b339286a85f045747f1",
+  "request_id": "266608d5-3782-4079-b30f-70d34ba0a208",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1313,
+    "cached_input_tokens": 1103,
+    "output_tokens": 279,
+    "estimated_cost_usd": 0.0039886
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set a slide background color from the sidebar color picker",
+        "procedure": [
+          "In the Slides pane, select the thumbnail of the slide whose background you want to change; this targets the slide rather than an object on the canvas.",
+          "In the right sidebar’s background/color control, open the color dropdown and choose the desired swatch. For example, choose the yellow swatch in the second row, first column.",
+          "Repeat on other selected slide thumbnails as needed; each slide can receive the same background color independently."
+        ],
+        "efficiency_tip": "Select each target slide and use the same sidebar color control directly; do not enter text-editing mode or select canvas objects when changing a slide-level background.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "name": "Replace the text of a slide title",
+        "procedure": [
+          "Select the slide thumbnail containing the title to edit.",
+          "Double-click inside the title text to enter text-editing mode, rather than selecting the text box border.",
+          "Replace the existing title text with the new title. For example, change an existing heading to “Let's start”."
+        ],
+        "efficiency_tip": "Double-click directly on the displayed title to edit its contents in place, avoiding unnecessary text-box recreation or object formatting changes.",
+        "action_ids": [
+          6,
+          7,
+          8
+        ]
+      }
+    ]
+  }
+}

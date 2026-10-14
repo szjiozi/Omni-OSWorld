@@ -1,0 +1,512 @@
+{
+  "presentation_title": "Neighborhood Repair Café — Host Brief",
+  "slide_size": "wide",
+  "theme": {
+    "primary_color": "c8a06a",
+    "secondary_color": "244653",
+    "accent_color": "b85c38",
+    "background_color": "f7f1e8",
+    "title_font": "Liberation Sans",
+    "body_font": "Liberation Sans"
+  },
+  "slides": [
+    {
+      "slide_number": 1,
+      "purpose": "Cover and approved visual-color reference",
+      "background_color": "f7f1e8",
+      "objects": [
+        {
+          "semantic_id": "cover_headline_reference",
+          "type": "text",
+          "x": 0.8,
+          "y": 1.02,
+          "w": 6.3,
+          "h": 1.15,
+          "content": {
+            "text": "Neighborhood Repair Café",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "f7f1e8",
+            "line_color": "f7f1e8",
+            "text_color": "b85c38",
+            "font_face": "Liberation Sans",
+            "font_size": 40,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "cover_subtitle",
+          "type": "text",
+          "x": 0.85,
+          "y": 2.34,
+          "w": 5.75,
+          "h": 0.62,
+          "content": {
+            "text": "Host Brief  •  Saturday, 14 September  •  Community Hall",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "f7f1e8",
+            "line_color": "f7f1e8",
+            "text_color": "244653",
+            "font_face": "Liberation Sans",
+            "font_size": 17,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "cover_workbench_illustration",
+          "type": "shape",
+          "x": 7.55,
+          "y": 1.05,
+          "w": 4.82,
+          "h": 4.8,
+          "content": {
+            "text": "REPAIR BENCH\n\nTOOLS • CARE • SECOND CHANCES",
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "c8a06a",
+            "line_color": "244653",
+            "text_color": "244653",
+            "font_face": "Liberation Sans",
+            "font_size": 18,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "cover_footer_tag",
+          "type": "shape",
+          "x": 0.85,
+          "y": 6.38,
+          "w": 2.1,
+          "h": 0.48,
+          "content": {
+            "text": "HOST TEAM",
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "244653",
+            "line_color": "244653",
+            "text_color": "f7f1e8",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        }
+      ]
+    },
+    {
+      "slide_number": 2,
+      "purpose": "Repair table workflow for volunteer hosts",
+      "background_color": "eff6f6",
+      "objects": [
+        {
+          "semantic_id": "flow_slide_title",
+          "type": "text",
+          "x": 0.78,
+          "y": 0.56,
+          "w": 5.7,
+          "h": 0.75,
+          "content": {
+            "text": "Repair Table Flow",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "eff6f6",
+            "line_color": "eff6f6",
+            "text_color": "244653",
+            "font_face": "Liberation Sans",
+            "font_size": 36,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "flow_intro_text",
+          "type": "text",
+          "x": 0.82,
+          "y": 1.45,
+          "w": 8.7,
+          "h": 0.56,
+          "content": {
+            "text": "Keep each visitor moving with a clear welcome, a quick assessment, and a confident handoff.",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "eff6f6",
+            "line_color": "eff6f6",
+            "text_color": "244653",
+            "font_face": "Liberation Sans",
+            "font_size": 18,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "flow_step_intake",
+          "type": "shape",
+          "x": 0.82,
+          "y": 3.2,
+          "w": 3.22,
+          "h": 2.08,
+          "content": {
+            "text": "1  WELCOME & INTAKE\nListen, label the item,\nand note the issue.",
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "f7f1e8",
+            "line_color": "b85c38",
+            "text_color": "244653",
+            "font_face": "Liberation Sans",
+            "font_size": 18,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "flow_connector_one",
+          "type": "shape",
+          "x": 4.26,
+          "y": 3.88,
+          "w": 0.72,
+          "h": 0.68,
+          "content": {
+            "text": "",
+            "shape_kind": "chevron",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "c8a06a",
+            "line_color": "c8a06a",
+            "text_color": "244653",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "flow_step_sort",
+          "type": "shape",
+          "x": 5.12,
+          "y": 3.2,
+          "w": 3.22,
+          "h": 2.08,
+          "content": {
+            "text": "2  SORT THE REQUEST\nMatch the repair type\nto the right table.",
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "f7f1e8",
+            "line_color": "b85c38",
+            "text_color": "244653",
+            "font_face": "Liberation Sans",
+            "font_size": 18,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "flow_connector_two",
+          "type": "shape",
+          "x": 8.56,
+          "y": 3.88,
+          "w": 0.72,
+          "h": 0.68,
+          "content": {
+            "text": "",
+            "shape_kind": "chevron",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "c8a06a",
+            "line_color": "c8a06a",
+            "text_color": "244653",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "flow_step_handoff",
+          "type": "shape",
+          "x": 9.42,
+          "y": 3.2,
+          "w": 3.08,
+          "h": 2.08,
+          "content": {
+            "text": "3  HAND OFF\nIntroduce the fixer\nand confirm the queue.",
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "f7f1e8",
+            "line_color": "b85c38",
+            "text_color": "244653",
+            "font_face": "Liberation Sans",
+            "font_size": 18,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        }
+      ]
+    },
+    {
+      "slide_number": 3,
+      "purpose": "Opening-station timing and host readiness",
+      "background_color": "f8e9dd",
+      "objects": [
+        {
+          "semantic_id": "timing_slide_title",
+          "type": "text",
+          "x": 0.78,
+          "y": 0.56,
+          "w": 5.9,
+          "h": 0.75,
+          "content": {
+            "text": "Open the Station",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "f8e9dd",
+            "line_color": "f8e9dd",
+            "text_color": "244653",
+            "font_face": "Liberation Sans",
+            "font_size": 36,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "timing_clock_badge",
+          "type": "shape",
+          "x": 0.82,
+          "y": 1.72,
+          "w": 1.2,
+          "h": 1.2,
+          "content": {
+            "text": "09:50",
+            "shape_kind": "ellipse",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "c8a06a",
+            "line_color": "b85c38",
+            "text_color": "244653",
+            "font_face": "Liberation Sans",
+            "font_size": 16,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "timing_schedule_cue",
+          "type": "text",
+          "x": 2.28,
+          "y": 1.86,
+          "w": 6.3,
+          "h": 0.65,
+          "content": {
+            "text": "Tool check-in closes at 09:50",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "f8e9dd",
+            "line_color": "f8e9dd",
+            "text_color": "b85c38",
+            "font_face": "Liberation Sans",
+            "font_size": 22,
+            "bold": true,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "timing_checklist_text",
+          "type": "text",
+          "x": 0.86,
+          "y": 3.35,
+          "w": 5.35,
+          "h": 2.42,
+          "content": {
+            "text": "HOST READINESS\n\n• Welcome sign is visible\n• Queue cards are stacked\n• Fixers know their tables\n• Safety lead is on call",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "f8e9dd",
+            "line_color": "f8e9dd",
+            "text_color": "244653",
+            "font_face": "Liberation Sans",
+            "font_size": 20,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "top"
+          }
+        },
+        {
+          "semantic_id": "timing_supply_panel",
+          "type": "shape",
+          "x": 7.9,
+          "y": 2.06,
+          "w": 5.22,
+          "h": 3.95,
+          "content": {
+            "text": "",
+            "shape_kind": "round_rect",
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "f7f1e8",
+            "line_color": "c8a06a",
+            "text_color": "244653",
+            "font_face": "Liberation Sans",
+            "font_size": 12,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "center",
+            "valign": "mid"
+          }
+        },
+        {
+          "semantic_id": "timing_supply_list",
+          "type": "text",
+          "x": 8.25,
+          "y": 2.52,
+          "w": 3.7,
+          "h": 2.9,
+          "content": {
+            "text": "STAGE BEFORE DOORS OPEN\n\n• Direction signs\n• Clipboards + pens\n• Safety glasses\n• Extension leads\n• Spare name badges",
+            "shape_kind": null,
+            "image_kind": null,
+            "rows": [],
+            "categories": [],
+            "series": []
+          },
+          "style": {
+            "fill_color": "f7f1e8",
+            "line_color": "f7f1e8",
+            "text_color": "244653",
+            "font_face": "Liberation Sans",
+            "font_size": 18,
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "align": "left",
+            "valign": "top"
+          }
+        }
+      ]
+    }
+  ],
+  "manual_setup_steps": []
+}

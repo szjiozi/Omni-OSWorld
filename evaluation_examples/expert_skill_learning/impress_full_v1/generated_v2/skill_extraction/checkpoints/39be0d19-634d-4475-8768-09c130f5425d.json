@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "391b19421b987e293bf25e3039e0dc2d3a25c93530aee97a133f555114c031ee",
+  "request_id": "9246d7e9-ba43-4189-aa1c-39a822a39a86",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1529,
+    "cached_input_tokens": 1403,
+    "output_tokens": 142,
+    "estimated_cost_usd": 0.0022366
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Insert a table using the table-size picker",
+        "procedure": [
+          "Select the slide where the table should be added.",
+          "Click the table icon in the content placeholder to open the mini-table size picker.",
+          "Move to the grid cell representing the required dimensions and click it; for example, click the cell at row 5, column 2 to insert a 5-row by 2-column table."
+        ],
+        "efficiency_tip": "Use the mini-table grid for small tables because it sets the row and column count in one click, avoiding the separate Insert Table dialog.",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

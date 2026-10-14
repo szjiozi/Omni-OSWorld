@@ -1,0 +1,497 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-impress-full-v2-r01-002",
+  "base_prompt_sha256": "6b853a74a922a5e24c135feecf718646991da534d046cf2ac64f1c5435310cdb",
+  "blueprint": {
+    "presentation_title": "Harbor Air Lab: Dawn Sampling Brief",
+    "slide_size": "wide",
+    "theme": {
+      "primary_color": "0B3954",
+      "secondary_color": "BFD7EA",
+      "accent_color": "F4A261",
+      "background_color": "F7FAFC",
+      "title_font": "Aptos Display",
+      "body_font": "Aptos"
+    },
+    "slides": [
+      {
+        "slide_number": 1,
+        "purpose": "Briefing cover that establishes the harbor sampling theme.",
+        "background_color": "F7FAFC",
+        "objects": [
+          {
+            "semantic_id": "cover_horizon_band",
+            "type": "shape",
+            "x": 0,
+            "y": 5.15,
+            "w": 13.333,
+            "h": 2.35,
+            "content": {
+              "text": null,
+              "shape_kind": "rect",
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "0B3954",
+              "line_color": "0B3954",
+              "text_color": "F7FAFC",
+              "font_face": "Aptos",
+              "font_size": 12,
+              "bold": false,
+              "italic": false,
+              "underline": false,
+              "align": "left",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "cover_title",
+            "type": "text",
+            "x": 0.85,
+            "y": 1.35,
+            "w": 8.6,
+            "h": 0.85,
+            "content": {
+              "text": "Harbor Air Lab",
+              "shape_kind": null,
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F7FAFC",
+              "line_color": "F7FAFC",
+              "text_color": "0B3954",
+              "font_face": "Aptos Display",
+              "font_size": 34,
+              "bold": true,
+              "italic": false,
+              "underline": false,
+              "align": "left",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "cover_subtitle",
+            "type": "text",
+            "x": 1.15,
+            "y": 2.45,
+            "w": 8.7,
+            "h": 0.38,
+            "content": {
+              "text": "Dawn Sampling Brief · Coastal Operations Team",
+              "shape_kind": null,
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F7FAFC",
+              "line_color": "F7FAFC",
+              "text_color": "0B3954",
+              "font_face": "Aptos",
+              "font_size": 16,
+              "bold": false,
+              "italic": false,
+              "underline": false,
+              "align": "left",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "cover_wave_mark",
+            "type": "shape",
+            "x": 0.85,
+            "y": 2.48,
+            "w": 0.18,
+            "h": 0.32,
+            "content": {
+              "text": null,
+              "shape_kind": "chevron",
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F4A261",
+              "line_color": "F4A261",
+              "text_color": "F4A261",
+              "font_face": "Aptos",
+              "font_size": 12,
+              "bold": false,
+              "italic": false,
+              "underline": false,
+              "align": "center",
+              "valign": "mid"
+            }
+          }
+        ]
+      },
+      {
+        "slide_number": 2,
+        "purpose": "Field snapshot with an image placement target and a concise source citation.",
+        "background_color": "F7FAFC",
+        "objects": [
+          {
+            "semantic_id": "snapshot_heading",
+            "type": "text",
+            "x": 0.8,
+            "y": 0.65,
+            "w": 5.5,
+            "h": 0.55,
+            "content": {
+              "text": "FIELD SNAPSHOT",
+              "shape_kind": null,
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F7FAFC",
+              "line_color": "F7FAFC",
+              "text_color": "0B3954",
+              "font_face": "Aptos Display",
+              "font_size": 24,
+              "bold": false,
+              "italic": false,
+              "underline": false,
+              "align": "left",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "snapshot_context",
+            "type": "text",
+            "x": 0.8,
+            "y": 1.38,
+            "w": 5.45,
+            "h": 0.78,
+            "content": {
+              "text": "Prevailing offshore wind keeps the plume moving seaward.\nPier access is clear for the 06:30 setup window.",
+              "shape_kind": null,
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F7FAFC",
+              "line_color": "F7FAFC",
+              "text_color": "0B3954",
+              "font_face": "Aptos",
+              "font_size": 15,
+              "bold": false,
+              "italic": false,
+              "underline": false,
+              "align": "left",
+              "valign": "top"
+            }
+          },
+          {
+            "semantic_id": "snapshot_image_frame",
+            "type": "shape",
+            "x": 7.1,
+            "y": 1.45,
+            "w": 5.2,
+            "h": 3.65,
+            "content": {
+              "text": null,
+              "shape_kind": "rect",
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F7FAFC",
+              "line_color": "BFD7EA",
+              "text_color": "0B3954",
+              "font_face": "Aptos",
+              "font_size": 12,
+              "bold": false,
+              "italic": false,
+              "underline": false,
+              "align": "center",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "snapshot_aerial_photo",
+            "type": "image",
+            "x": 0.8,
+            "y": 2.55,
+            "w": 4.7,
+            "h": 3.1,
+            "content": {
+              "text": null,
+              "shape_kind": null,
+              "image_kind": "landscape",
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F7FAFC",
+              "line_color": "BFD7EA",
+              "text_color": "0B3954",
+              "font_face": "Aptos",
+              "font_size": 12,
+              "bold": false,
+              "italic": false,
+              "underline": false,
+              "align": "center",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "snapshot_source_line",
+            "type": "text",
+            "x": 7.1,
+            "y": 5.35,
+            "w": 5.2,
+            "h": 0.3,
+            "content": {
+              "text": "Source: Harbor survey team, 06:10",
+              "shape_kind": null,
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F7FAFC",
+              "line_color": "F7FAFC",
+              "text_color": "0B3954",
+              "font_face": "Aptos",
+              "font_size": 11,
+              "bold": false,
+              "italic": true,
+              "underline": false,
+              "align": "left",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "snapshot_status_chip",
+            "type": "shape",
+            "x": 0.8,
+            "y": 6.25,
+            "w": 1.85,
+            "h": 0.42,
+            "content": {
+              "text": "CLEAR WINDOW",
+              "shape_kind": "round_rect",
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F4A261",
+              "line_color": "F4A261",
+              "text_color": "0B3954",
+              "font_face": "Aptos",
+              "font_size": 11,
+              "bold": true,
+              "italic": false,
+              "underline": false,
+              "align": "center",
+              "valign": "mid"
+            }
+          }
+        ]
+      },
+      {
+        "slide_number": 3,
+        "purpose": "Next-step slide that closes the briefing with a centered operational callout.",
+        "background_color": "F7FAFC",
+        "objects": [
+          {
+            "semantic_id": "measurement_heading",
+            "type": "text",
+            "x": 0.8,
+            "y": 0.7,
+            "w": 7.0,
+            "h": 0.55,
+            "content": {
+              "text": "NEXT MEASUREMENT",
+              "shape_kind": null,
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F7FAFC",
+              "line_color": "F7FAFC",
+              "text_color": "0B3954",
+              "font_face": "Aptos Display",
+              "font_size": 24,
+              "bold": true,
+              "italic": false,
+              "underline": false,
+              "align": "left",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "measurement_step_one",
+            "type": "shape",
+            "x": 0.95,
+            "y": 2.05,
+            "w": 3.55,
+            "h": 1.35,
+            "content": {
+              "text": "01  Calibrate sensors",
+              "shape_kind": "round_rect",
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "0B3954",
+              "line_color": "0B3954",
+              "text_color": "F7FAFC",
+              "font_face": "Aptos",
+              "font_size": 17,
+              "bold": true,
+              "italic": false,
+              "underline": false,
+              "align": "center",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "measurement_step_two",
+            "type": "shape",
+            "x": 4.9,
+            "y": 2.05,
+            "w": 3.55,
+            "h": 1.35,
+            "content": {
+              "text": "02  Launch skiff",
+              "shape_kind": "round_rect",
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "BFD7EA",
+              "line_color": "BFD7EA",
+              "text_color": "0B3954",
+              "font_face": "Aptos",
+              "font_size": 17,
+              "bold": true,
+              "italic": false,
+              "underline": false,
+              "align": "center",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "measurement_step_three",
+            "type": "shape",
+            "x": 8.85,
+            "y": 2.05,
+            "w": 3.55,
+            "h": 1.35,
+            "content": {
+              "text": "03  Log coastal readings",
+              "shape_kind": "round_rect",
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F4A261",
+              "line_color": "F4A261",
+              "text_color": "0B3954",
+              "font_face": "Aptos",
+              "font_size": 16,
+              "bold": true,
+              "italic": false,
+              "underline": false,
+              "align": "center",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "measurement_callout_backing",
+            "type": "shape",
+            "x": 1.25,
+            "y": 4.65,
+            "w": 10.85,
+            "h": 1.25,
+            "content": {
+              "text": null,
+              "shape_kind": "round_rect",
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "BFD7EA",
+              "line_color": "BFD7EA",
+              "text_color": "0B3954",
+              "font_face": "Aptos",
+              "font_size": 12,
+              "bold": false,
+              "italic": false,
+              "underline": false,
+              "align": "left",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "measurement_closing_callout",
+            "type": "text",
+            "x": 1.65,
+            "y": 4.98,
+            "w": 10.05,
+            "h": 0.56,
+            "content": {
+              "text": "Sampling begins at first light.",
+              "shape_kind": null,
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "BFD7EA",
+              "line_color": "BFD7EA",
+              "text_color": "0B3954",
+              "font_face": "Aptos Display",
+              "font_size": 23,
+              "bold": true,
+              "italic": false,
+              "underline": false,
+              "align": "left",
+              "valign": "mid"
+            }
+          }
+        ]
+      }
+    ],
+    "manual_setup_steps": []
+  },
+  "generation": {
+    "request_id": "f86199f9-ce6b-440b-bcd0-89b82416eba9",
+    "prompt_sha256": "6b853a74a922a5e24c135feecf718646991da534d046cf2ac64f1c5435310cdb",
+    "model": "gpt-5.6-terra",
+    "input_tokens": 3323,
+    "output_tokens": 2584,
+    "estimated_cost_usd": 0.037654
+  }
+}

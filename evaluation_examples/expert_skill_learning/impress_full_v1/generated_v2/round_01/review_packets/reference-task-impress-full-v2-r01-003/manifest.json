@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "scripts/python/manage_reference_review_packets.py export",
+  "reference_task_id": "reference-task-impress-full-v2-r01-003",
+  "context_fingerprint": "3f38b31446cae440566a6ecb5959ab4abbae0aa5e042f458f129970c31eb9ad4",
+  "inputs": [
+    {
+      "role": "artifact",
+      "path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-003/initial_artifact.pptx",
+      "sha256": "adc78d5d84407e317a999630fa019e02c807a69a199e6836914147c7700dbe94"
+    },
+    {
+      "role": "artifact_blueprint",
+      "path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-003/artifact_blueprint.json",
+      "sha256": "5b3624ef9d9122470fa4354f373b49780b740b94b708186353fe3d5fede4870c"
+    },
+    {
+      "role": "artifact_qa",
+      "path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-003/artifact_qa.json",
+      "sha256": "9ae40cfffe52a66166c685a8850f0c1eb0c47ccc8d70c70deb1ac0dc21e31612"
+    },
+    {
+      "role": "task_config",
+      "path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/task_configs/reference-task-impress-full-v2-r01-003.json",
+      "sha256": "cfdeb3ace07cf42ff354f903215c27538063a8d9575c22880c3930a249921103"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-003/previews/contact-sheet.png",
+      "sha256": "cdbf7da4bc65cc5c4ebf8035a0adcfc130143a8615c22066108855a6d198c355"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-003/previews/slide-01.png",
+      "sha256": "8d7efdfb4a0ea7f345b6c00d81e03c33c2fefc1ebb13ecaaffa4c72c2cbb39e4"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-003/previews/slide-02.png",
+      "sha256": "e54569ba81ed210e6a8d84eb062e00dffb07086ad714447b4abc2aa5bbe5f7a8"
+    },
+    {
+      "role": "artifact_preview",
+      "path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-003/previews/slide-03.png",
+      "sha256": "d7981a52c4ea5ca55a752127f1c45cbe049c05739f273c7fd4f9f40033448934"
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "TASK.md",
+      "sha256": "2f72a55fba020984909d7421be666b7e8af4d3cee6a8ed216b86cac5b708710f"
+    },
+    {
+      "path": "TASK_DETAIL.md",
+      "sha256": "51e624c2fb4e43f123fa7b578c4c989d6124ba02eeb239722d10314145fad282"
+    },
+    {
+      "path": "context.json",
+      "sha256": "c4b31630681d43b84c6b4f429c5d1824c56fe90c60f43465c0b73e4a5c3944a2"
+    },
+    {
+      "path": "task_config.json",
+      "sha256": "cfdeb3ace07cf42ff354f903215c27538063a8d9575c22880c3930a249921103"
+    },
+    {
+      "path": "artifact/initial_artifact.pptx",
+      "sha256": "adc78d5d84407e317a999630fa019e02c807a69a199e6836914147c7700dbe94"
+    },
+    {
+      "path": "artifact/artifact_blueprint.json",
+      "sha256": "5b3624ef9d9122470fa4354f373b49780b740b94b708186353fe3d5fede4870c"
+    },
+    {
+      "path": "artifact/artifact_qa.json",
+      "sha256": "9ae40cfffe52a66166c685a8850f0c1eb0c47ccc8d70c70deb1ac0dc21e31612"
+    },
+    {
+      "path": "artifact/previews/contact-sheet.png",
+      "sha256": "cdbf7da4bc65cc5c4ebf8035a0adcfc130143a8615c22066108855a6d198c355"
+    },
+    {
+      "path": "artifact/previews/slide-01.png",
+      "sha256": "8d7efdfb4a0ea7f345b6c00d81e03c33c2fefc1ebb13ecaaffa4c72c2cbb39e4"
+    },
+    {
+      "path": "artifact/previews/slide-02.png",
+      "sha256": "e54569ba81ed210e6a8d84eb062e00dffb07086ad714447b4abc2aa5bbe5f7a8"
+    },
+    {
+      "path": "artifact/previews/slide-03.png",
+      "sha256": "d7981a52c4ea5ca55a752127f1c45cbe049c05739f273c7fd4f9f40033448934"
+    }
+  ],
+  "editable_review": {
+    "path": "review.json",
+    "excluded_from_generated_file_hashes": true
+  }
+}

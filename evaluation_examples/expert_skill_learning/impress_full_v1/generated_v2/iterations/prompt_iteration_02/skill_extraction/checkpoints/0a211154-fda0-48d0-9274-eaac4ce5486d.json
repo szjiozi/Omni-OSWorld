@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+  "app": "libreoffice_impress",
+  "single_action_count": 9,
+  "prompt_sha256": "1e7136b7bf59d83caf35f396bc375282df1878fe7c54503fc12f36a319381477",
+  "request_id": "17a0e5c6-cfea-47bd-ac91-a7b2127589c9",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1565,
+    "cached_input_tokens": 1355,
+    "output_tokens": 255,
+    "estimated_cost_usd": 0.003751
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set a slide background color from the sidebar palette",
+        "procedure": [
+          "Select the target slide thumbnail in the Slides pane so formatting applies to the slide background rather than an object on the canvas.",
+          "In the right sidebar, open the background color dropdown and choose a color swatch. For example, choose the yellow swatch in the second row, first column.",
+          "Repeat for other target slides by selecting each slide and applying the same color choice."
+        ],
+        "efficiency_tip": "Select each slide thumbnail before opening its color picker; this prevents accidentally formatting a selected object instead of the slide background.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "name": "Replace title text in a slide title placeholder",
+        "procedure": [
+          "Select the slide thumbnail that contains the title to edit.",
+          "Double-click inside the title placeholder text to enter text-editing mode.",
+          "Replace the existing title with the desired text, for example, enter “Let's start”."
+        ],
+        "efficiency_tip": "Double-click directly on the title text rather than its outer border, because the border selects the object while text-editing mode is needed to change its contents.",
+        "action_ids": [
+          6,
+          7,
+          8
+        ]
+      }
+    ]
+  }
+}

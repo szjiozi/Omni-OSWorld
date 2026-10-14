@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+  "app": "libreoffice_impress",
+  "single_action_count": 18,
+  "prompt_sha256": "15231ed0d7807db1149b57ffeaf9a90d70eba6559df817e8507551c1f4413846",
+  "request_id": "5b6b51d9-71f8-423b-bc19-7c632e5297b1",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1367,
+    "cached_input_tokens": 1103,
+    "output_tokens": 338,
+    "estimated_cost_usd": 0.0048046
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply a font color to all text in a text box",
+        "procedure": [
+          "In the Slides pane, select the slide containing the text box to format.",
+          "Click inside the text box to enter text-editing mode, then press Ctrl+A to select all text in that box.",
+          "Open the font color dropdown on the formatting toolbar and choose the desired color. For example, choose black to make the complete title black."
+        ],
+        "efficiency_tip": "Select the entire text box content once with Ctrl+A before choosing the color; this applies one consistent color without separately selecting individual words or lines.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6,
+          7,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      },
+      {
+        "name": "Underline selected text",
+        "procedure": [
+          "With the text in a text box still selected, click the Underline button on the formatting toolbar.",
+          "For example, after applying a font color to a title, use Underline once to underline every selected title character."
+        ],
+        "efficiency_tip": "Keep the text selected after other character formatting changes so Underline can be applied immediately, rather than re-entering text-editing mode and selecting the text again.",
+        "action_ids": [
+          5,
+          11,
+          17
+        ]
+      }
+    ]
+  }
+}

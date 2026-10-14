@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task_configs": [
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-001",
+      "task_config_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/task_configs/reference-task-impress-full-v2-r01-001.json",
+      "artifact_sha256": "2cbae7745ecfed293513f0341316bab41ee2458270221d074daff9a35938d882",
+      "blueprint_request_id": "016f3629-30d3-4c20-bb33-5da12ad67386"
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-002",
+      "task_config_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/task_configs/reference-task-impress-full-v2-r01-002.json",
+      "artifact_sha256": "c5c98b617c0c8e1c37e4a60d91495d3c796766c8a5cd00f1063f4c2c450f1526",
+      "blueprint_request_id": "b6771bcb-4fed-4b66-9c1e-5d60a38189e8"
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-003",
+      "task_config_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/task_configs/reference-task-impress-full-v2-r01-003.json",
+      "artifact_sha256": "adc78d5d84407e317a999630fa019e02c807a69a199e6836914147c7700dbe94",
+      "blueprint_request_id": "b06ce7c3-2da8-4e04-9e7d-64abc6c70824"
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-004",
+      "task_config_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/task_configs/reference-task-impress-full-v2-r01-004.json",
+      "artifact_sha256": "0a23d88211b74df07bc5a68cd0db1b44924637d1d855282220d381ca6617168e",
+      "blueprint_request_id": "57ed53a2-e607-42dd-aecc-6bfbac001546"
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-005",
+      "task_config_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/task_configs/reference-task-impress-full-v2-r01-005.json",
+      "artifact_sha256": "6af67d8e82f8e512c47728245ad910896527674f7c84013c0f99c7e639835569",
+      "blueprint_request_id": "a4b21d09-5209-4c72-8b57-f1f72e749ee3"
+    }
+  ]
+}

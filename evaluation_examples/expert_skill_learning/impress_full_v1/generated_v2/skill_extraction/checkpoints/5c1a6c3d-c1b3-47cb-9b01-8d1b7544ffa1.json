@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+  "app": "libreoffice_impress",
+  "single_action_count": 9,
+  "prompt_sha256": "b5928ab80d9034b9f10da769c830710d5d20f5f7e5a9d414d02781ef835c1c38",
+  "request_id": "ea9bf92d-49f1-4f76-94b7-9ac817823ef7",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1585,
+    "cached_input_tokens": 1403,
+    "output_tokens": 511,
+    "estimated_cost_usd": 0.0067766
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply bold formatting to all text in a text object",
+        "procedure": [
+          "Click or double-click inside the target text object to enter text-editing mode.",
+          "Press Ctrl+A to select all text in that object; for example, select all text in a slide title or body text box.",
+          "Click the Bold toolbar icon to apply bold formatting.",
+          "Repeat the same selection-and-bold workflow for any separate text object that also needs bold styling."
+        ],
+        "efficiency_tip": "Use Ctrl+A only after entering the intended text object, so the command selects that object’s text rather than unrelated slide objects.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "name": "Underline selected text",
+        "procedure": [
+          "With the target text already selected in text-editing mode, click the Underline toolbar icon.",
+          "For example, underline the selected title text without changing its other character formatting."
+        ],
+        "efficiency_tip": "Apply underline while the existing text selection is still active, avoiding an extra click and reselection.",
+        "action_ids": [
+          3
+        ]
+      },
+      {
+        "name": "Set the font size of selected text",
+        "procedure": [
+          "Keep the target text selected in its text object.",
+          "Open the font-size dropdown on the formatting toolbar.",
+          "Choose the required point size; for example, select 44 pt to make selected title text 44 points."
+        ],
+        "efficiency_tip": "Set the size on an existing text selection before clicking elsewhere, which preserves the target range and avoids re-entering text-editing mode.",
+        "action_ids": [
+          4,
+          5
+        ]
+      }
+    ]
+  }
+}

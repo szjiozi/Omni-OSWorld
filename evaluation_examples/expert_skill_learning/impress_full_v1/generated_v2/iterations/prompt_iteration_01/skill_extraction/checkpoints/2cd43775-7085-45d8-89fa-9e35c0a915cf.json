@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+  "app": "libreoffice_impress",
+  "single_action_count": 6,
+  "prompt_sha256": "6218d64e2a66da66757fdb2af7693b6779459c4a6ba674f01734c2f96f3d1f77",
+  "request_id": "d8fb5f61-9896-4c95-a0e6-53641fe6a6ba",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1280,
+    "cached_input_tokens": 1103,
+    "output_tokens": 160,
+    "estimated_cost_usd": 0.0024946
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Configure the AutoRecovery save interval in application preferences",
+        "procedure": [
+          "Open the application Options dialog with Alt+F12.",
+          "In the left navigation, expand or select Load/Save, then choose General.",
+          "Enable “Save AutoRecovery information every” if it is not already checked.",
+          "Enter the desired interval in the minutes field; for example, enter 3 to save recovery information every three minutes.",
+          "Confirm with OK to apply the preference."
+        ],
+        "efficiency_tip": "Use Alt+F12 to open Options directly, then adjust the interval in one visit; checking the existing checkbox state first avoids accidentally disabling AutoRecovery.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ]
+  }
+}

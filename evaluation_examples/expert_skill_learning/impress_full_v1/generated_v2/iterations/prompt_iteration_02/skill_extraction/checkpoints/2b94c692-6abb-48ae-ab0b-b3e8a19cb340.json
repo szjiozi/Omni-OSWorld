@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "dabd7ae965a43c1ec6938a0e7e1dbc6987e878a6899548eecf9a7d4d99b73b12",
+  "request_id": "991f744e-5507-4fc4-8db8-9da515c44aa6",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1473,
+    "cached_input_tokens": 1355,
+    "output_tokens": 141,
+    "estimated_cost_usd": 0.002199
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Reposition a slide object by dragging",
+        "procedure": [
+          "In the Slides pane, select the slide containing the object.",
+          "Click the image once to select its outer object frame rather than entering image-editing mode.",
+          "Drag the selected image to the desired location on the slide; for example, drag it from the center area toward the right side of the canvas."
+        ],
+        "efficiency_tip": "Drag the object directly from within its selected frame in a single motion; verify the object outline is selected first so you move the image rather than interact with its contents.",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

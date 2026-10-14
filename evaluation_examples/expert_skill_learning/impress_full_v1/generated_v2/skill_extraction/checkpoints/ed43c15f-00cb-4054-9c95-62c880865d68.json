@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+  "app": "libreoffice_impress",
+  "single_action_count": 7,
+  "prompt_sha256": "581d7c47b725d79ade29b7b53fdb1f258ca29c044c7690d0d34dace3752507ce",
+  "request_id": "2190b86c-aba8-42af-8e83-d788b1f2708a",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1568,
+    "cached_input_tokens": 1403,
+    "output_tokens": 649,
+    "estimated_cost_usd": 0.0083986
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Underline text across all text boxes on a slide",
+        "procedure": [
+          "Target the slide whose text should be formatted; for example, click its thumbnail in the Slides pane before formatting the next slide.",
+          "Use Ctrl+A to select the available text/content on that slide, then press Ctrl+U to toggle underline formatting.",
+          "Repeat the same select-all and underline shortcut on other slides that need the formatting. For example, after selecting slide 2, press Ctrl+A and Ctrl+U."
+        ],
+        "efficiency_tip": "Use the keyboard shortcut sequence Ctrl+A, Ctrl+U rather than opening character-formatting dialogs; switch slides only once per slide before applying the formatting.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "name": "Move a selected image by dragging it to a new position on a slide",
+        "procedure": [
+          "Click the image once so its object border and sizing handles appear, indicating object-selection mode rather than text-editing mode.",
+          "Drag the selected image to the desired location on the canvas. For example, drag it upward until it is positioned at the top of the slide."
+        ],
+        "efficiency_tip": "Drag from inside the image rather than from a sizing handle, which avoids accidentally resizing it instead of moving it.",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    ]
+  }
+}

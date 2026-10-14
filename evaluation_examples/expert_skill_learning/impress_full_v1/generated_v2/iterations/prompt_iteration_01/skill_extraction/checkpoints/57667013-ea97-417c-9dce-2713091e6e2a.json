@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+  "app": "libreoffice_impress",
+  "single_action_count": 7,
+  "prompt_sha256": "b9d9b8e4658dde98374e5451cab0b6073a13a4e8d0ad726863358554a164e258",
+  "request_id": "ff6f447c-1bd2-40b6-a586-80f696812d7e",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1297,
+    "cached_input_tokens": 1103,
+    "output_tokens": 512,
+    "estimated_cost_usd": 0.0067526
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply a chosen font color to all text in a text box",
+        "procedure": [
+          "Click inside the target text box to enter text-editing mode, rather than selecting its outer border.",
+          "Use Ctrl+A to select all text in that text box.",
+          "Open the Font Color drop-down on the formatting toolbar and choose the required swatch. For example, choose the standard yellow swatch to make every character in the selected text box yellow."
+        ],
+        "efficiency_tip": "Use Ctrl+A only after the text cursor is active inside the intended text box; this selects that box's text without requiring manual dragging across multiple lines.",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "name": "Apply the current font color to selected text using the toolbar button",
+        "procedure": [
+          "Select the text to format, such as by triple-clicking a text paragraph in a text box.",
+          "Click the Font Color toolbar button itself (not its drop-down arrow) to apply the currently active color. For example, after yellow has been chosen as the active font color, clicking the button applies yellow to the selected text."
+        ],
+        "efficiency_tip": "After choosing a color once, use the main Font Color button for subsequent text selections instead of reopening the color palette each time.",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    ]
+  }
+}

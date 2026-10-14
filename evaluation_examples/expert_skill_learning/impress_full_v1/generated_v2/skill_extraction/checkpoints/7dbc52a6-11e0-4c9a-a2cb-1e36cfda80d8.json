@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+  "app": "libreoffice_impress",
+  "single_action_count": 7,
+  "prompt_sha256": "cc4634e1b540e574fd0701cf18d37522cbfdce95400211ade09cd2696415dd3a",
+  "request_id": "dff5a3cb-456b-4cde-805c-50573de5f831",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1584,
+    "cached_input_tokens": 1403,
+    "output_tokens": 377,
+    "estimated_cost_usd": 0.0051666
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply bold formatting to text in a slide text box",
+        "procedure": [
+          "Select the text box whose text should be formatted, entering text-editing mode if necessary so the formatting applies to its characters rather than the object border.",
+          "Use Ctrl+B to toggle bold formatting for the selected text or for subsequently entered text. For example, click inside a slide title and press Ctrl+B to make the title bold."
+        ],
+        "efficiency_tip": "Use Ctrl+B rather than opening the formatting toolbar; verify that the text caret or selected text is active so you do not merely select the text box object.",
+        "action_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "name": "Add speaker notes in Notes view",
+        "procedure": [
+          "Open the View menu and choose Notes to switch from the normal slide canvas to Notes view.",
+          "Click the notes placeholder, such as “Click to add notes,” and enter the desired speaker-note text. For example, type a short phrase that matches the slide title.",
+          "Keep the note associated with the currently selected slide; switching slides before typing changes the target slide’s notes."
+        ],
+        "efficiency_tip": "Switch to Notes view once and add notes slide by slide, rather than repeatedly toggling between Normal and Notes view for each individual note.",
+        "action_ids": [
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    ]
+  }
+}

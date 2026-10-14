@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+  "app": "libreoffice_impress",
+  "single_action_count": 8,
+  "prompt_sha256": "7b6036c315603e476b5eb86b951e20e654a2f6d17c3dbd4906b5db22469ae391",
+  "request_id": "5ad0a961-13cc-4357-abdb-0e2953b439cf",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1580,
+    "cached_input_tokens": 1355,
+    "output_tokens": 384,
+    "estimated_cost_usd": 0.005329
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply exact font colors to text in separate text boxes",
+        "procedure": [
+          "Enter text-editing mode in a text box and select the full text; for example, triple-click the text when supported, or double-click and use a full-text selection gesture.",
+          "Open the Font Color palette from the toolbar and choose the required standard swatch exactly, rather than a theme variation. For example, select the yellow swatch in the second row, first column for one text box.",
+          "Repeat for each separate text box, selecting its text before choosing its color. For example, choose the red swatch in the second row, fifth column for another box, and the green swatch in the second row, second from the right for a third box."
+        ],
+        "efficiency_tip": "Use full-text selection in each box before opening the color palette so the chosen swatch changes all characters at once; select the named standard swatch directly instead of adjusting a custom or shaded color.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    ]
+  }
+}

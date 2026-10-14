@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+  "app": "libreoffice_impress",
+  "single_action_count": 13,
+  "prompt_sha256": "81205dffa8bbe8175b283d1b3974a0d8c1036c18edc055f92d68e1629094e753",
+  "request_id": "576afcb9-b618-4fcf-a6ae-c95b15d646d3",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1579,
+    "cached_input_tokens": 1355,
+    "output_tokens": 284,
+    "estimated_cost_usd": 0.004127
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Replace table-cell contents while advancing across a row with Tab",
+        "procedure": [
+          "Select the slide containing the table, then click inside the first target cell to enter cell text-editing mode.",
+          "Use Ctrl+A to select that cell's existing text, type the replacement value, and press Tab to move to the next cell in the row.",
+          "Repeat Ctrl+A, type, and Tab for each subsequent cell; for example, replace four first-row cells with “T1”, “T2”, “T3”, and “T4”, omitting Tab after the final cell if no further navigation is needed."
+        ],
+        "efficiency_tip": "Use Tab to advance through adjacent table cells instead of clicking each cell individually; this preserves a predictable left-to-right editing sequence while Ctrl+A ensures existing cell text is replaced rather than appended.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    ]
+  }
+}

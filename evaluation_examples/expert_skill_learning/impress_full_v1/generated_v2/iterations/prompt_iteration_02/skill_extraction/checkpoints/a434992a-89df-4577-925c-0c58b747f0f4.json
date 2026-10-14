@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+  "app": "libreoffice_impress",
+  "single_action_count": 10,
+  "prompt_sha256": "207bc90d673d932844b944fee296597a415444b522be0cb4a783a344fd6e12c5",
+  "request_id": "cd71adab-93ff-40f3-8bbe-55c5e3acf514",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1575,
+    "cached_input_tokens": 1355,
+    "output_tokens": 341,
+    "estimated_cost_usd": 0.004803
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Change a slide background color",
+        "procedure": [
+          "Open the slide background color control by clicking its dropdown arrow.",
+          "Choose the color option, then open the color palette dropdown if needed.",
+          "Select the desired background color; for example, choose a red swatch from the palette. The color applies to the slide background rather than to an object on the canvas."
+        ],
+        "efficiency_tip": "Open the background color control directly instead of selecting and formatting a full-slide shape, which keeps the background editable as a slide property.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Set the font size of text in a text box",
+        "procedure": [
+          "Click the text box to target its content for text formatting.",
+          "Select the existing value in the font-size field, for example by triple-clicking it.",
+          "Type the desired point size, such as 12, and press Enter to apply it to the targeted text."
+        ],
+        "efficiency_tip": "Replace the value already shown in the font-size box rather than incrementing size controls repeatedly; this is faster and gives an exact point size.",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "name": "Apply a font color to text",
+        "procedure": [
+          "With the text box targeted for formatting, open the font-color dropdown arrow.",
+          "Choose a color swatch from the palette; for example, select an orange swatch. The chosen color is applied to the text rather than the slide background."
+        ],
+        "efficiency_tip": "Use the font-color dropdown palette to apply an exact color in one operation instead of cycling through recent or automatic colors.",
+        "action_ids": [
+          8,
+          9
+        ]
+      }
+    ]
+  }
+}

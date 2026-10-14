@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+  "app": "libreoffice_impress",
+  "single_action_count": 7,
+  "prompt_sha256": "303b057c45eb1b5c6809aac3e7f0822d8c18faa028440abf1a0743b41151621b",
+  "request_id": "691349e4-140b-4ae1-8685-7771a40438a3",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1268,
+    "cached_input_tokens": 1103,
+    "output_tokens": 494,
+    "estimated_cost_usd": 0.0064786
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Underline all text in a text box",
+        "procedure": [
+          "Enter text-editing mode in the target text box so that keyboard formatting applies to its characters rather than to slide objects.",
+          "Press Ctrl+A to select all text in that text box, then press Ctrl+U to toggle underline formatting on the selection.",
+          "Repeat on another slide or text box as needed; for example, select all text in a caption box and press Ctrl+U to underline the entire caption."
+        ],
+        "efficiency_tip": "Use Ctrl+A and Ctrl+U while the text cursor is active inside the text box; this formats all of that box’s text in two keystrokes without manually selecting each line.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "name": "Move an image by dragging it to a new slide position",
+        "procedure": [
+          "Click the image once to select its outer object border, rather than entering text-editing mode in another object.",
+          "Drag the selected image upward and release it near the top edge of the slide. For example, drag a centered picture until its top aligns with the desired upper margin."
+        ],
+        "efficiency_tip": "Select the image by its border and drag from within the object; this avoids opening image-editing controls and lets you reposition it in a single motion.",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "pptx",
+  "opens_as_zip_package": true,
+  "libreoffice_render_succeeded": true,
+  "slide_count": 3,
+  "semantic_object_count": 18,
+  "geometric_overlap_warnings": [
+    {
+      "slide_number": 1,
+      "objects": [
+        "cover_background_panel",
+        "cover_garden_arc"
+      ],
+      "overlap_area": 6.7831
+    },
+    {
+      "slide_number": 1,
+      "objects": [
+        "cover_background_panel",
+        "cover_event_title"
+      ],
+      "overlap_area": 10.235
+    },
+    {
+      "slide_number": 1,
+      "objects": [
+        "cover_background_panel",
+        "cover_event_subtitle"
+      ],
+      "overlap_area": 3.915
+    },
+    {
+      "slide_number": 1,
+      "objects": [
+        "cover_background_panel",
+        "cover_seedling_icon"
+      ],
+      "overlap_area": 2.925
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "signup_background_panel",
+        "signup_section_title"
+      ],
+      "overlap_area": 5.04
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "signup_background_panel",
+        "signup_schedule_card"
+      ],
+      "overlap_area": 20.9825
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "signup_background_panel",
+        "signup_schedule_text"
+      ],
+      "overlap_area": 5.5625
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "signup_background_panel",
+        "signup_preparation_label"
+      ],
+      "overlap_area": 1.76
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "signup_background_panel",
+        "signup_preparation_sentence"
+      ],
+      "overlap_area": 6.615
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "signup_background_panel",
+        "signup_path_marker"
+      ],
+      "overlap_area": 0.1849
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "signup_background_panel",
+        "signup_signup_footer"
+      ],
+      "overlap_area": 3.696
+    },
+    {
+      "slide_number": 2,
+      "objects": [
+        "signup_schedule_card",
+        "signup_schedule_text"
+      ],
+      "overlap_area": 5.5625
+    },
+    {
+      "slide_number": 3,
+      "objects": [
+        "next_steps_background_panel",
+        "next_steps_title"
+      ],
+      "overlap_area": 5.544
+    },
+    {
+      "slide_number": 3,
+      "objects": [
+        "next_steps_background_panel",
+        "next_steps_checklist"
+      ],
+      "overlap_area": 16.905
+    },
+    {
+      "slide_number": 3,
+      "objects": [
+        "next_steps_background_panel",
+        "next_steps_toolbox_icon"
+      ],
+      "overlap_area": 5.415
+    },
+    {
+      "slide_number": 3,
+      "objects": [
+        "next_steps_background_panel",
+        "next_steps_thank_you"
+      ],
+      "overlap_area": 4.6
+    }
+  ],
+  "placeholder_matches": [],
+  "media_part_count": 1,
+  "notes_part_count": 8,
+  "slides": [
+    {
+      "slide_number": 1,
+      "text": [
+        "Riverside Garden Volunteer Day",
+        "Saturday, 18 May · Riverside Commons"
+      ],
+      "shape_count": 5,
+      "picture_count": 0,
+      "graphic_frame_count": 0
+    },
+    {
+      "slide_number": 2,
+      "text": [
+        "Join the workday",
+        "Meet at the tool shed",
+        "8:30–11:30 a.m.",
+        "Before you arrive",
+        "Please bring work gloves and a refillable bottle.",
+        "Questions? Contact the garden desk by Friday."
+      ],
+      "shape_count": 8,
+      "picture_count": 0,
+      "graphic_frame_count": 0
+    },
+    {
+      "slide_number": 3,
+      "text": [
+        "A few things that help",
+        "• Bring water for the morning",
+        "• Wear sun protection",
+        "• Check in at the tool shed",
+        "Thank you for caring for our shared space."
+      ],
+      "shape_count": 5,
+      "picture_count": 0,
+      "graphic_frame_count": 0
+    }
+  ],
+  "preview_files": [
+    "slide-01.png",
+    "slide-02.png",
+    "slide-03.png"
+  ],
+  "contact_sheet": "contact-sheet.png",
+  "visual_review_required": true
+}

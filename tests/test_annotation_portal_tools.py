@@ -248,6 +248,158 @@ def test_calc_full_round_is_staged_into_portal_layout(tmp_path):
         ]
 
 
+def test_impress_review_batch_appends_without_changing_existing_tasks(tmp_path):
+    module = _load_script("merge_impress_annotation_batch.py")
+    base = REPO_ROOT / "evaluation_examples/expert_skill_learning/pilot"
+    staged = tmp_path / "merged"
+    old_files = {
+        str(path.relative_to(base)): hashlib.sha256(path.read_bytes()).hexdigest()
+        for folder in ("review_packets", "task_configs", "artifacts")
+        for path in (base / folder).rglob("*")
+        if path.is_file()
+    }
+
+    result = module.merge_batch(base, staged)
+
+    assert result["old_task_count"] == 4
+    assert result["total_task_count"] == 13
+    assert len(result["new_task_ids"]) == 9
+    for relative, digest in old_files.items():
+        assert hashlib.sha256((staged / relative).read_bytes()).hexdigest() == digest
+    for task_id in result["new_task_ids"]:
+        assert (staged / "review_packets" / task_id / "TASK.md").is_file()
+        assert (staged / "task_configs" / f"{task_id}.json").is_file()
+        module._load_task_config(staged / "task_configs" / f"{task_id}.json")
+    support = staged / "artifacts/reference-task-impress-deferred-smoke-r99-004/none.png"
+    assert support.is_file()
+    with pytest.raises(FileExistsError):
+        module.merge_batch(base, staged)
+
+
+def test_review_migration_only_copies_unchanged_tasks():
+    from boto3.dynamodb.types import TypeDeserializer, TypeSerializer
+
+    module = _load_script("publish_annotation_batch.py")
+    serializer = TypeSerializer()
+    deserializer = TypeDeserializer()
+
+    class ReviewsTable:
+        def __init__(self):
+            self.rows = [
+                {
+                    "pk": "REVIEW#old",
+                    "sk": f"TASK#{task_id}",
+                    "task_id": task_id,
+                    "catalog_version": "old",
+                    "review": {"decision": "approved"},
+                }
+                for task_id in ("kept-task", "removed-task")
+            ]
+            self.writes = []
+
+        def query(self, **_kwargs):
+            return {
+                "Items": [
+                    {key: serializer.serialize(value) for key, value in row.items()}
+                    for row in self.rows
+                ]
+            }
+
+        def put_item(self, **kwargs):
+            self.writes.append(
+                {key: deserializer.deserialize(value) for key, value in kwargs["Item"].items()}
+            )
+
+    table = ReviewsTable()
+    copied = module.preserve_existing_reviews(
+        table,
+        "state",
+        old_version="old",
+        new_version="new",
+        unchanged_task_ids={"kept-task"},
+    )
+
+    assert copied == 1
+    assert table.writes[0]["pk"] == "REVIEW#new"
+    assert table.writes[0]["task_id"] == "kept-task"
+    assert table.writes[0]["review"] == {"decision": "approved"}
+
+
+def test_review_only_install_skips_old_gateway_launch_validator():
+    module = _load_script("publish_annotation_batch.py")
+
+    class SSM:
+        def send_command(self, **kwargs):
+            self.commands = kwargs["Parameters"]["commands"]
+            return {"Command": {"CommandId": "command"}}
+
+        def get_waiter(self, _name):
+            return self
+
+        def wait(self, **_kwargs):
+            return None
+
+        def get_command_invocation(self, **_kwargs):
+            return {"Status": "Success"}
+
+    ssm = SSM()
+    module.install_snapshot(
+        ssm,
+        instance_id="instance",
+        bucket="bucket",
+        key="key",
+        sha256="a" * 64,
+        allow_pending=True,
+        review_only=True,
+    )
+
+    assert any("TaskCatalog.load" in command for command in ssm.commands)
+    assert not any("_load_task_config" in command for command in ssm.commands)
+
+
+def test_source_only_gateway_refresh_does_not_update_cloudformation(monkeypatch):
+    module = _load_script("deploy_annotation_portal.py")
+    calls = []
+
+    class CloudFormation:
+        def update_stack(self, **_kwargs):
+            raise AssertionError("source-only must not update CloudFormation")
+
+    class S3:
+        def upload_file(self, *_args, **_kwargs):
+            calls.append("upload")
+
+        def head_object(self, **_kwargs):
+            return {"Metadata": {"sha256": "a" * 64}}
+
+    class Session:
+        def client(self, name):
+            return {"cloudformation": CloudFormation(), "dynamodb": object(),
+                    "s3": S3(), "ssm": object()}[name]
+
+    def build_bundle(path):
+        path.write_bytes(b"source")
+        return "a" * 64
+
+    monkeypatch.setattr(module, "_stack_exists", lambda *_args: True)
+    monkeypatch.setattr(module, "_outputs", lambda *_args: {
+        "StateTableName": "state",
+        "AnnotationBucketName": "bucket",
+        "GatewayInstanceId": "instance",
+        "WorkerInstanceProfileName": "profile",
+        "PortalUrl": "https://portal.example/",
+    })
+    monkeypatch.setattr(module, "_acquire_deployment_lock", lambda *_args: "lock")
+    monkeypatch.setattr(module, "_release_deployment_lock", lambda *_args: calls.append("unlock"))
+    monkeypatch.setattr(module, "build_source_bundle", build_bundle)
+    monkeypatch.setattr(module, "_refresh_gateway_source", lambda *_args, **_kwargs: calls.append("refresh"))
+
+    result = module.refresh_source_only(Session(), "portal")
+
+    assert result["cloudformation_updated"] is False
+    assert calls == ["upload", "refresh", "unlock"]
+
+
 def test_assignment_replacement_removes_old_tasks_for_target_users():
     module = _load_script("publish_annotation_batch.py")
     dynamodb = _AssignmentDynamo(

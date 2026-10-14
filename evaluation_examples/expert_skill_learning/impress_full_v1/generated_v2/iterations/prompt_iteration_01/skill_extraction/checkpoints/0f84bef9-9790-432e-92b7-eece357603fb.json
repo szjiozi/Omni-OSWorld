@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+  "app": "libreoffice_impress",
+  "single_action_count": 5,
+  "prompt_sha256": "c03d115bd5581540281ffbfb955f46434a375b7548a2e7b870bbe2c4e82a524b",
+  "request_id": "564803bb-e34b-4ae0-b936-ac11e6ec8894",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1318,
+    "cached_input_tokens": 1103,
+    "output_tokens": 161,
+    "estimated_cost_usd": 0.0025826
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Disable the Presenter Console for single-display slide shows",
+        "procedure": [
+          "Open LibreOffice Impress Options using Alt+F12.",
+          "In the Options navigation tree, expand “LibreOffice Impress” and select “General.”",
+          "Under the Presentation section, clear the “Enable Presenter console” checkbox.",
+          "Click OK to save the preference. For example, disabling this option causes a slide show to use the presentation display rather than opening the separate current-slide/next-slide presenter view."
+        ],
+        "efficiency_tip": "Use Alt+F12 to open Options directly, then change the Presenter Console preference once; it remains available for future presentations until re-enabled.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ]
+  }
+}

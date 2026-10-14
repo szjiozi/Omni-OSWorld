@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+  "app": "libreoffice_impress",
+  "single_action_count": 4,
+  "prompt_sha256": "51728eaef51688ae0fb93f40ab03c35f6c55c8f5c44efb7b4994439b9f3edd67",
+  "request_id": "4396fba9-197d-4703-b39c-2382c68156a0",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1229,
+    "cached_input_tokens": 1103,
+    "output_tokens": 374,
+    "estimated_cost_usd": 0.0049606
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Enter text into a slide title placeholder",
+        "procedure": [
+          "Click inside the title placeholder to enter text-editing mode rather than selecting its outer border.",
+          "Type the desired title text. For example, type “Overview” into an empty title placeholder."
+        ],
+        "efficiency_tip": "Click directly in the placeholder’s text area and type immediately; this avoids separately selecting the object and opening additional text-editing controls.",
+        "action_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "name": "Right-align paragraph text in a text box",
+        "procedure": [
+          "Keep the insertion point in the target text box, or select the paragraph whose alignment should change.",
+          "Click the Right Align toolbar icon to align the paragraph to the right edge of the text box. For example, apply it to a title paragraph after entering its text."
+        ],
+        "efficiency_tip": "Apply paragraph alignment while the text cursor is still active in the text box, avoiding an extra object-selection step.",
+        "action_ids": [
+          3
+        ]
+      }
+    ]
+  }
+}

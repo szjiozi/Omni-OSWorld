@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+  "app": "libreoffice_impress",
+  "single_action_count": 5,
+  "prompt_sha256": "cd1bf6875c3da8f7d86fbe15104eff47307b691914fc19f0e3ad6bbf92ca4740",
+  "request_id": "d893f10a-c1fc-4e54-ac33-7c3730d02e09",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1557,
+    "cached_input_tokens": 1403,
+    "output_tokens": 151,
+    "estimated_cost_usd": 0.0024006
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Change the font family for selected text",
+        "procedure": [
+          "Enter text-editing mode in a text placeholder or text box, then select the text whose font family should change. For example, press Ctrl+A after entering text to select all text in the active placeholder.",
+          "Click the font-name field, replace its current value with the desired installed font family such as “Microsoft JhengHei,” and confirm the font selection if the application requires it."
+        ],
+        "efficiency_tip": "Use Ctrl+A while the text cursor is active to target all text in the current placeholder at once, rather than selecting characters manually.",
+        "action_ids": [
+          2,
+          3,
+          4
+        ]
+      }
+    ]
+  }
+}

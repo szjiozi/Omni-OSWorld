@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "artifacts": [
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-001",
+      "app": "libreoffice_impress",
+      "artifact_type": "pptx",
+      "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-001/initial_artifact.pptx",
+      "artifact_sha256": "2cbae7745ecfed293513f0341316bab41ee2458270221d074daff9a35938d882",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-001/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-001/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-002",
+      "app": "libreoffice_impress",
+      "artifact_type": "pptx",
+      "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-002/initial_artifact.pptx",
+      "artifact_sha256": "c5c98b617c0c8e1c37e4a60d91495d3c796766c8a5cd00f1063f4c2c450f1526",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-002/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-002/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-003",
+      "app": "libreoffice_impress",
+      "artifact_type": "pptx",
+      "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-003/initial_artifact.pptx",
+      "artifact_sha256": "adc78d5d84407e317a999630fa019e02c807a69a199e6836914147c7700dbe94",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-003/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-003/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-004",
+      "app": "libreoffice_impress",
+      "artifact_type": "pptx",
+      "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-004/initial_artifact.pptx",
+      "artifact_sha256": "0a23d88211b74df07bc5a68cd0db1b44924637d1d855282220d381ca6617168e",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-004/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-004/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-005",
+      "app": "libreoffice_impress",
+      "artifact_type": "pptx",
+      "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-005/initial_artifact.pptx",
+      "artifact_sha256": "6af67d8e82f8e512c47728245ad910896527674f7c84013c0f99c7e639835569",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-005/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-005/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    }
+  ]
+}

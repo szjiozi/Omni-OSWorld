@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "e81d8509cb07ace321bd998c4ccc5efd37f0f0353a06867d4385f475999ca1d1",
+  "request_id": "7686f592-a8bd-48f5-9e5b-429d90f73de0",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1540,
+    "cached_input_tokens": 1403,
+    "output_tokens": 128,
+    "estimated_cost_usd": 0.0020906
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply a slide transition from the Slide Transition pane",
+        "procedure": [
+          "Open the Slide Transition pane for the currently selected slide.",
+          "Scroll through the transition types if the desired effect is not visible.",
+          "Click a transition type to apply it to the selected slide; for example, click “Dissolve.”"
+        ],
+        "efficiency_tip": "Select the target slide thumbnail before opening the pane, then click the desired transition once; use the pane’s list rather than searching through unrelated slide formatting menus.",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

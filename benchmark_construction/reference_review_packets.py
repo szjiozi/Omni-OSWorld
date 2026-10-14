@@ -420,8 +420,7 @@ def _render_reviewer_guide(guide: dict[str, Any]) -> list[str]:
     lines = [
         "### 中文详细参考方案",
         "",
-        "> 以下是一个可以参考的操作 guide。标注者可以根据实际 LibreOffice "
-        "界面采用等价操作。",
+        "> 以下是一个可以参考的操作 guide。标注者可以根据实际 LibreOffice " "界面采用等价操作。",
         "",
         guide["overview"],
         "",
@@ -498,8 +497,7 @@ def _render_source_similarity_review(
             ]
         )
         lines.extend(
-            f"- **{skill['name']}** — `{skill['skill_id']}`"
-            for skill in source_skills
+            f"- **{skill['name']}** — `{skill['skill_id']}`" for skill in source_skills
         )
         lines.extend(
             [
@@ -546,7 +544,9 @@ def _render_task_markdown(
     operator_guide = package.get("operator_guide", {})
     title = artifact_spec.get(profile.title_field) or task_id
     natural_task_label = (
-        "natural Calc task" if profile.app == "libreoffice_calc" else "natural Impress task"
+        "natural Calc task"
+        if profile.app == "libreoffice_calc"
+        else "natural Impress task"
     )
     artifact_noun = "workbook" if profile.app == "libreoffice_calc" else "presentation"
     artifact_contents = "data" if profile.app == "libreoffice_calc" else "content"
@@ -731,6 +731,16 @@ def _prepare_packet_data(
             raise FileNotFoundError(required_path)
     if _sha256(artifact_path) != artifact_entry["artifact_sha256"]:
         raise ValueError(f"Artifact SHA256 mismatch for {task_id}")
+    supporting_paths: list[tuple[dict[str, Any], Path]] = []
+    for supporting in artifact_entry.get("supporting_files", []):
+        support_path = _resolve_repo_path(repo_root, supporting["local_path"])
+        if not support_path.is_file():
+            raise FileNotFoundError(support_path)
+        if _sha256(support_path) != supporting["sha256"]:
+            raise ValueError(
+                f"Supporting artifact SHA256 mismatch for {task_id}: {support_path.name}"
+            )
+        supporting_paths.append((supporting, support_path))
     preview_paths = sorted(
         path
         for path in (artifact_path.parent / "previews").glob("*")
@@ -744,6 +754,10 @@ def _prepare_packet_data(
     ]
     input_files.extend(
         _input_descriptor(repo_root, "artifact_preview", path) for path in preview_paths
+    )
+    input_files.extend(
+        _input_descriptor(repo_root, f"supporting_input:{entry['role']}", path)
+        for entry, path in supporting_paths
     )
     context_seed = {
         "package": package,
@@ -764,6 +778,7 @@ def _prepare_packet_data(
         "qa_path": qa_path,
         "task_config_path": task_config_path,
         "preview_paths": preview_paths,
+        "supporting_paths": supporting_paths,
         "input_files": input_files,
         "fingerprint": _json_fingerprint(context_seed),
     }
@@ -931,9 +946,7 @@ def export_review_packets(
             artifact_by_id=artifact_by_id,
             config_by_id=config_by_id,
         )
-        task_detail_path = (
-            task_detail_root / current_id / "TASK_DETAIL.md"
-        ).resolve()
+        task_detail_path = (task_detail_root / current_id / "TASK_DETAIL.md").resolve()
         if not task_detail_path.is_file():
             raise FileNotFoundError(task_detail_path)
         _add_reviewer_guide(
@@ -971,9 +984,7 @@ def export_review_packets(
     for item in prepared:
         package = item["package"]
         current_id = package["reference_task_id"]
-        profile = get_reference_application(
-            package.get("app", "libreoffice_calc")
-        )
+        profile = get_reference_application(package.get("app", "libreoffice_calc"))
         packet_dir = item["packet_dir"]
         artifact_dir = packet_dir / "artifact"
         packet_artifact = artifact_dir / profile.packet_artifact_filename
@@ -982,6 +993,11 @@ def export_review_packets(
         _atomic_copy(item["qa_path"], artifact_dir / "artifact_qa.json")
         for preview_path in item["preview_paths"]:
             _atomic_copy(preview_path, artifact_dir / "previews" / preview_path.name)
+        packet_supporting_paths: list[tuple[dict[str, Any], Path]] = []
+        for supporting, support_path in item["supporting_paths"]:
+            target = artifact_dir / "supporting" / support_path.name
+            _atomic_copy(support_path, target)
+            packet_supporting_paths.append((supporting, target))
         _atomic_copy(item["task_config_path"], packet_dir / "task_config.json")
         _atomic_copy(item["task_detail_path"], packet_dir / "TASK_DETAIL.md")
 
@@ -995,6 +1011,13 @@ def export_review_packets(
             "artifact": {
                 "manifest_entry": item["artifact_entry"],
                 "packet_path": f"artifact/{profile.packet_artifact_filename}",
+                "supporting_files": [
+                    {
+                        **supporting,
+                        "packet_path": f"artifact/supporting/{path.name}",
+                    }
+                    for supporting, path in packet_supporting_paths
+                ],
             },
             "task_config": {
                 "manifest_entry": item["config_entry"],
@@ -1032,6 +1055,7 @@ def export_review_packets(
             artifact_dir / "artifact_blueprint.json",
             artifact_dir / "artifact_qa.json",
             *(artifact_dir / "previews" / path.name for path in item["preview_paths"]),
+            *(path for _, path in packet_supporting_paths),
         ]
         manifest = {
             "schema_version": PACKET_SCHEMA_VERSION,
@@ -1116,9 +1140,7 @@ def _write_index(
         if task_id not in exported:
             continue
         review = _packet_review(output_root / task_id) or _blank_review(task_id)
-        profile = get_reference_application(
-            package.get("app", "libreoffice_calc")
-        )
+        profile = get_reference_application(package.get("app", "libreoffice_calc"))
         title = package.get("artifact_spec", {}).get(profile.title_field, task_id)
         rows.append(
             f"| [{task_id}]({task_id}/TASK.md) | {title} | "
@@ -1206,9 +1228,7 @@ def collect_packet_reviews(
             artifact_by_id=artifact_by_id,
             config_by_id=config_by_id,
         )
-        task_detail_path = (
-            task_detail_root / current_id / "TASK_DETAIL.md"
-        ).resolve()
+        task_detail_path = (task_detail_root / current_id / "TASK_DETAIL.md").resolve()
         if not task_detail_path.is_file():
             raise FileNotFoundError(task_detail_path)
         _add_reviewer_guide(

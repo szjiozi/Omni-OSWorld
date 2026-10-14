@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://osworld.local/schemas/impress-deferred-artifact-catalog.schema.json",
+  "title": "Trusted acquisition and adaptation strategies for deferred Impress skills",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "app",
+    "source_manifest",
+    "allowed_download_hosts",
+    "entries"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0"},
+    "app": {"type": "string", "const": "libreoffice_impress"},
+    "source_manifest": {"type": "string", "minLength": 1},
+    "allowed_download_hosts": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "strategy_id",
+          "skill_ids",
+          "source_task_id",
+          "acquisition",
+          "native_profile",
+          "include_source_attachments",
+          "setup_profiles",
+          "expected_outputs",
+          "adaptation_requirements",
+          "validation_requirements",
+          "source_license"
+        ],
+        "properties": {
+          "strategy_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+          },
+          "skill_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "source_task_id": {"type": "string", "minLength": 1},
+          "acquisition": {
+            "type": "string",
+            "enum": ["source_task_assets", "create_native"]
+          },
+          "native_profile": {
+            "type": "string",
+            "enum": [
+              "source_seed",
+              "generic_ui",
+              "title_body_placeholders",
+              "notes_ready",
+              "master_ready",
+              "slide_number_ready",
+              "summary_ready",
+              "portrait_ready",
+              "transition_ready"
+            ]
+          },
+          "include_source_attachments": {"type": "boolean"},
+          "setup_profiles": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": ["hide_slides_pane", "seed_recent_background_color"]
+            }
+          },
+          "expected_outputs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["role", "guest_path", "local_filename", "required"],
+              "properties": {
+                "role": {
+                  "type": "string",
+                  "enum": ["saved_presentation", "png_export"]
+                },
+                "guest_path": {
+                  "type": "string",
+                  "pattern": "^/home/user/(Desktop|Downloads)/[^/]+$"
+                },
+                "local_filename": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+                },
+                "required": {"type": "boolean"}
+              }
+            }
+          },
+          "adaptation_requirements": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "validation_requirements": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "source_license": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

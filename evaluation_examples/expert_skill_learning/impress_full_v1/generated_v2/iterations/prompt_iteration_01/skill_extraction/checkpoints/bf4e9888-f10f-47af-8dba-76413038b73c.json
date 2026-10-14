@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+  "app": "libreoffice_impress",
+  "single_action_count": 11,
+  "prompt_sha256": "d24809d38493f94b6f0c28415095e6a399a43fcee1a0507163ebc526ac3fe48f",
+  "request_id": "36726e1b-c3c4-4fa5-b604-a21b2fb4f0e5",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1375,
+    "cached_input_tokens": 1103,
+    "output_tokens": 601,
+    "estimated_cost_usd": 0.0079766
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Create image-based slides with the Photo Album feature",
+        "procedure": [
+          "In Impress, open Insert > Media > Photo Album to create slides from a collection of image files.",
+          "Choose Add in the Photo Album dialog, browse to the folder containing the images, and select the desired files. For a contiguous sequence, select the first image and Shift-click the last image; for example, select pic1.png through pic6.png from the Desktop.",
+          "Confirm the file selection, verify that the images are listed in the intended sequence in the Photo Album dialog, then choose Insert Slides. Impress generates one image slide per selected file."
+        ],
+        "efficiency_tip": "Use a contiguous multi-selection in the file picker rather than adding images one at a time. Name files with sortable numeric prefixes, such as pic1.png, pic2.png, and so on, so their order is easier to verify before inserting the slides.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    ]
+  }
+}

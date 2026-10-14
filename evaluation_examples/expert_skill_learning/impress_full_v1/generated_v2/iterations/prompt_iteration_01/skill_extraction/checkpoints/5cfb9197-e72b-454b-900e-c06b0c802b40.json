@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+  "app": "libreoffice_impress",
+  "single_action_count": 13,
+  "prompt_sha256": "c8985df6dd6be17c2a744977bdd0bfc1bc2f246eac33a8f30b69ebd4977490d7",
+  "request_id": "70be749b-62a8-4d15-87d5-8d8562c3457d",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1327,
+    "cached_input_tokens": 1103,
+    "output_tokens": 609,
+    "estimated_cost_usd": 0.0079766
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Replace text in selected table cells",
+        "procedure": [
+          "Click inside a table cell so the insertion caret is active in the cell text, rather than selecting the table object's outer border.",
+          "Press Ctrl+A to select the existing text in the active cell, then type the replacement text. For example, replace a cell's existing label with `T1`.",
+          "Repeat the select-all-and-type pattern after navigating to any other target cell."
+        ],
+        "efficiency_tip": "Use Ctrl+A within each active cell before typing so old content is replaced in one pass instead of manually deleting characters.",
+        "action_ids": [
+          1,
+          2,
+          3,
+          5,
+          6,
+          8,
+          9,
+          11,
+          12
+        ]
+      },
+      {
+        "name": "Navigate to the next table cell with Tab",
+        "procedure": [
+          "While editing text in a table cell, press Tab to move the input focus to the next cell in row order.",
+          "For example, after finishing one header cell, press Tab once to activate the adjacent header cell before replacing its text."
+        ],
+        "efficiency_tip": "Use Tab to continue across a row without clicking each cell, which keeps the editing focus in the table and reduces misselection.",
+        "action_ids": [
+          4,
+          7,
+          10
+        ]
+      }
+    ]
+  }
+}

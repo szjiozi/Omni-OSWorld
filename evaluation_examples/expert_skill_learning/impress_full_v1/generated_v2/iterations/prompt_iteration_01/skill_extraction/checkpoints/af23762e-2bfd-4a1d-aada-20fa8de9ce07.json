@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+  "app": "libreoffice_impress",
+  "single_action_count": 2,
+  "prompt_sha256": "cb098321dffcad10823e31439cae4a98089cc6f43d608da3b9d2ddf8a1af0c06",
+  "request_id": "d7d5c992-c8fb-4ea1-af4f-8d9e873d89ef",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1230,
+    "cached_input_tokens": 1103,
+    "output_tokens": 151,
+    "estimated_cost_usd": 0.0022866
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Create a summary slide from selected presentation content",
+        "procedure": [
+          "In LibreOffice Impress, select the slides whose titles or content should be summarized, if the current selection does not already represent the desired source slides.",
+          "Open the Slide menu from the menu bar.",
+          "Choose Summary Slide. Impress generates a new summary slide based on the selected slides; for example, select several agenda-section slides and use Summary Slide to create a slide listing their titles."
+        ],
+        "efficiency_tip": "Select all source slides before opening the Slide menu so the Summary Slide command can generate the summary in one operation rather than requiring manual copying of titles.",
+        "action_ids": [
+          0,
+          1
+        ]
+      }
+    ]
+  }
+}

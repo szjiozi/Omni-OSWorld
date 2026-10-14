@@ -1,0 +1,94 @@
+{
+  "id": "reference-task-impress-full-v2-r01-003",
+  "snapshot": "libreoffice_impress",
+  "instruction": "Update the “Neighborhood Repair Café” host brief for the workshop team. First inspect the copper color used by the cover headline and use that verified color for the titles on both activity slides. Select the two activity slides together and give them the shared pale-sage background. On the “Repair Table Flow” slide, set the title to 44 pt using the font-size list, and set the “Tool check-in closes at 09:50” schedule line to an exact 27 pt so it remains a distinct operational cue.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-003/initial_artifact.pptx",
+            "path": "/home/user/Desktop/repair_cafe_host_brief.pptx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/repair_cafe_host_brief.pptx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_impress"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-impress-full-v2-r01-003",
+    "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-003/initial_artifact.pptx",
+    "artifact_sha256": "adc78d5d84407e317a999630fa019e02c807a69a199e6836914147c7700dbe94",
+    "guest_artifact_path": "/home/user/Desktop/repair_cafe_host_brief.pptx",
+    "required_skill_ids": [
+      "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01",
+      "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01",
+      "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03"
+    ],
+    "operator_guide": {
+      "recommended_demonstration": [
+        {
+          "skill_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01",
+          "operation_intent": "Build a two-slide selection for the related activity slides before applying their shared background treatment.",
+          "visible_success_signal": "Slides 2 and 3 are simultaneously highlighted in the Slides pane, and both subsequently show the same pale-sage background.",
+          "efficiency_tip": "Click Slide 2, then Ctrl-click Slide 3 so the common background can be applied as one grouped slide operation."
+        },
+        {
+          "skill_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01",
+          "operation_intent": "Verify the approved copper title color from the cover headline before using it on the activity-slide titles.",
+          "visible_success_signal": "With the cover headline selected, the font-color control indicates the copper reference color; both activity titles later visibly match that hue.",
+          "efficiency_tip": "Select the cover headline itself before opening the font-color control, rather than relying on a toolbar default."
+        },
+        {
+          "skill_id": "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01",
+          "operation_intent": "Set the Slide 3 operational schedule line to its non-preset exact size of 27 pt.",
+          "visible_success_signal": "The full “Tool check-in closes at 09:50” line is visibly larger than its initial state and reports 27 pt when its text is selected.",
+          "efficiency_tip": "Enter text-editing mode, select the complete schedule line, type 27 in the font-size field, and confirm it."
+        },
+        {
+          "skill_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03",
+          "operation_intent": "Use the font-size dropdown to promote the Slide 2 workflow title to 44 pt.",
+          "visible_success_signal": "The selected “Repair Table Flow” title is visibly more prominent and reports 44 pt.",
+          "efficiency_tip": "Keep the title text selected while choosing 44 pt from the size list so the formatting applies only to that title."
+        }
+      ],
+      "allowed_variation": "Minor selection and toolbar-navigation paths may vary, provided the specified objects, colors, font sizes, shared backgrounds, and slide order are preserved.",
+      "recording_start_state": "Open the generated presentation in normal editing view with all three slide thumbnails visible and no text object selected.",
+      "recording_end_state": "Slides 2 and 3 share pale-sage backgrounds and copper titles; the Slide 2 title is 44 pt and the Slide 3 schedule line is 27 pt."
+    },
+    "expected_incidental_operations": [
+      {
+        "operation": "Apply the inspected copper #B85C38 font color to the titles on Slides 2 and 3.",
+        "reason": "The task requires the activity-slide titles to match the verified cover-headline color.",
+        "category": "task_specific"
+      },
+      {
+        "operation": "Apply pale-sage #E3EAD7 as the shared background for the selected activity slides.",
+        "reason": "This is the visible shared treatment requested for the two related activity slides after their thumbnail multi-selection.",
+        "category": "task_specific"
+      }
+    ],
+    "ready_state_checks": [
+      "Confirm the presentation is open in LibreOffice Impress in normal editing view.",
+      "Confirm that exactly three slide thumbnails are visible in the Slides pane.",
+      "Confirm Slide 1, the cover slide titled “Neighborhood Repair Café,” is the initially displayed slide and no text object is selected."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

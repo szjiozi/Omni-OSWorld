@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+  "app": "libreoffice_impress",
+  "single_action_count": 5,
+  "prompt_sha256": "0148e79a9468588f415b35394551bbbc63cd3d75ffae0a9098e182af408ca148",
+  "request_id": "9f2360df-67eb-4269-b02a-e0f7b98ea88f",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1257,
+    "cached_input_tokens": 1103,
+    "output_tokens": 242,
+    "estimated_cost_usd": 0.0034326
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Change the font family of all text in a text placeholder",
+        "procedure": [
+          "Click inside the text placeholder to enter text-editing mode, then select all of its text with Ctrl+A.",
+          "Click the font-name field on the formatting toolbar, replace its current value, and type the desired font family name. For example, type “Microsoft JhengHei” to apply that font to the selected placeholder text."
+        ],
+        "efficiency_tip": "Use Ctrl+A while editing the placeholder to change the font for all of its existing text at once, rather than selecting and formatting separate text ranges.",
+        "action_ids": [
+          2,
+          3,
+          4
+        ]
+      }
+    ]
+  }
+}

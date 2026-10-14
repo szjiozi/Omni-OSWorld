@@ -1,0 +1,1033 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-impress-full-v2-r01-003",
+  "package": {
+    "reference_task_id": "reference-task-impress-full-v2-r01-003",
+    "generation_round": 1,
+    "parent_reference_task_id": null,
+    "app": "libreoffice_impress",
+    "task_instruction": "Update the “Neighborhood Repair Café” host brief for the workshop team. First inspect the copper color used by the cover headline and use that verified color for the titles on both activity slides. Select the two activity slides together and give them the shared pale-sage background. On the “Repair Table Flow” slide, set the title to 44 pt using the font-size list, and set the “Tool check-in closes at 09:50” schedule line to an exact 27 pt so it remains a distinct operational cue.",
+    "required_skill_ids": [
+      "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01",
+      "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01",
+      "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03"
+    ],
+    "artifact_spec": {
+      "artifact_type": "pptx",
+      "domain": "Neighborhood repair café workshop operations",
+      "presentation_title": "Neighborhood Repair Café — Host Brief",
+      "slide_size": "wide",
+      "theme": {
+        "primary_color": "c8a06a",
+        "secondary_color": "244653",
+        "accent_color": "b85c38",
+        "background_color": "f7f1e8",
+        "title_font": "Liberation Sans",
+        "body_font": "Liberation Sans"
+      },
+      "slides": [
+        {
+          "slide_number": 1,
+          "purpose": "Cover and approved visual-color reference",
+          "layout": "title",
+          "object_plan": [
+            {
+              "semantic_id": "cover_headline_reference",
+              "type": "text",
+              "purpose": "Main cover headline whose copper font color is the approved reference",
+              "editable": true
+            },
+            {
+              "semantic_id": "cover_subtitle",
+              "type": "text",
+              "purpose": "Workshop date and venue subtitle",
+              "editable": true
+            },
+            {
+              "semantic_id": "cover_workbench_illustration",
+              "type": "shape",
+              "purpose": "Abstract workbench and hand-tool illustration",
+              "editable": true
+            },
+            {
+              "semantic_id": "cover_footer_tag",
+              "type": "shape",
+              "purpose": "Small host-team identity tag",
+              "editable": true
+            }
+          ]
+        },
+        {
+          "slide_number": 2,
+          "purpose": "Repair table workflow for volunteer hosts",
+          "layout": "process",
+          "object_plan": [
+            {
+              "semantic_id": "flow_slide_title",
+              "type": "text",
+              "purpose": "Activity-slide title to recolor from the verified cover reference and resize through the size list",
+              "editable": true
+            },
+            {
+              "semantic_id": "flow_intro_text",
+              "type": "text",
+              "purpose": "Short explanation of the repair-table sequence",
+              "editable": true
+            },
+            {
+              "semantic_id": "flow_step_intake",
+              "type": "shape",
+              "purpose": "First workflow step for greeting and issue intake",
+              "editable": true
+            },
+            {
+              "semantic_id": "flow_step_sort",
+              "type": "shape",
+              "purpose": "Second workflow step for sorting repair requests",
+              "editable": true
+            },
+            {
+              "semantic_id": "flow_step_handoff",
+              "type": "shape",
+              "purpose": "Third workflow step for technician handoff",
+              "editable": true
+            },
+            {
+              "semantic_id": "flow_connector_one",
+              "type": "shape",
+              "purpose": "Arrow joining the first and second workflow steps",
+              "editable": true
+            },
+            {
+              "semantic_id": "flow_connector_two",
+              "type": "shape",
+              "purpose": "Arrow joining the second and third workflow steps",
+              "editable": true
+            }
+          ]
+        },
+        {
+          "slide_number": 3,
+          "purpose": "Opening-station timing and host readiness",
+          "layout": "two_column",
+          "object_plan": [
+            {
+              "semantic_id": "timing_slide_title",
+              "type": "text",
+              "purpose": "Second activity-slide title to recolor from the verified cover reference",
+              "editable": true
+            },
+            {
+              "semantic_id": "timing_schedule_cue",
+              "type": "text",
+              "purpose": "Operational schedule line requiring an exact 27-point font size",
+              "editable": true
+            },
+            {
+              "semantic_id": "timing_checklist_text",
+              "type": "text",
+              "purpose": "Host readiness checklist",
+              "editable": true
+            },
+            {
+              "semantic_id": "timing_supply_panel",
+              "type": "shape",
+              "purpose": "Panel framing supplies to stage before doors open",
+              "editable": true
+            },
+            {
+              "semantic_id": "timing_supply_list",
+              "type": "text",
+              "purpose": "List of signs, clipboards, and safety equipment",
+              "editable": true
+            },
+            {
+              "semantic_id": "timing_clock_badge",
+              "type": "shape",
+              "purpose": "Visual clock badge beside the schedule cue",
+              "editable": true
+            }
+          ]
+        }
+      ],
+      "initial_state": [
+        "The deck contains three editable wide-format slides using a warm linen cover background and a restrained repair-workshop visual system.",
+        "Slide 1 headline reads “Neighborhood Repair Café” in copper #B85C38 at 40 pt; it is the approved color reference but has not yet been inspected through the font-color control.",
+        "Slide 2 is titled “Repair Table Flow” in dark teal #244653 at 36 pt. It has a light blue-gray background #EFF6F6 and a three-step process diagram.",
+        "Slide 3 is titled “Open the Station” in dark teal #244653 at 36 pt. It has a pale peach background #F8E9DD, a checklist, and the schedule line “Tool check-in closes at 09:50” at 22 pt.",
+        "The activity-slide titles do not yet match the cover headline color, the two activity-slide backgrounds are visibly different, the Slide 2 title is not 44 pt, and the Slide 3 schedule cue is not 27 pt."
+      ],
+      "must_not_be_completed": [
+        "Do not pre-match the activity-slide title colors to the cover headline.",
+        "Do not pre-apply the shared pale-sage #E3EAD7 background to Slides 2 and 3.",
+        "Do not pre-size the Slide 2 title to 44 pt or the Slide 3 schedule cue to 27 pt.",
+        "Do not alter the cover headline’s copper reference color, body text, workflow wording, or slide order."
+      ],
+      "generation_notes": [
+        "Build all listed objects as normal editable text boxes and editable shapes; do not use native placeholders, notes, animations, or external media.",
+        "Use the intended shared activity-slide background color #E3EAD7 after editing; retain the cover background #F7F1E8.",
+        "Place the Slide 2 process steps horizontally across the lower half, and arrange the Slide 3 checklist left of the supplies panel to make both slides visibly related but distinct.",
+        "Use the exact text strings stated in the initial-state descriptions so a reviewer can identify the title and schedule-line targets unambiguously."
+      ]
+    },
+    "operator_guide": {
+      "recommended_demonstration": [
+        {
+          "skill_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01",
+          "operation_intent": "Build a two-slide selection for the related activity slides before applying their shared background treatment.",
+          "visible_success_signal": "Slides 2 and 3 are simultaneously highlighted in the Slides pane, and both subsequently show the same pale-sage background.",
+          "efficiency_tip": "Click Slide 2, then Ctrl-click Slide 3 so the common background can be applied as one grouped slide operation."
+        },
+        {
+          "skill_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01",
+          "operation_intent": "Verify the approved copper title color from the cover headline before using it on the activity-slide titles.",
+          "visible_success_signal": "With the cover headline selected, the font-color control indicates the copper reference color; both activity titles later visibly match that hue.",
+          "efficiency_tip": "Select the cover headline itself before opening the font-color control, rather than relying on a toolbar default."
+        },
+        {
+          "skill_id": "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01",
+          "operation_intent": "Set the Slide 3 operational schedule line to its non-preset exact size of 27 pt.",
+          "visible_success_signal": "The full “Tool check-in closes at 09:50” line is visibly larger than its initial state and reports 27 pt when its text is selected.",
+          "efficiency_tip": "Enter text-editing mode, select the complete schedule line, type 27 in the font-size field, and confirm it."
+        },
+        {
+          "skill_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03",
+          "operation_intent": "Use the font-size dropdown to promote the Slide 2 workflow title to 44 pt.",
+          "visible_success_signal": "The selected “Repair Table Flow” title is visibly more prominent and reports 44 pt.",
+          "efficiency_tip": "Keep the title text selected while choosing 44 pt from the size list so the formatting applies only to that title."
+        }
+      ],
+      "allowed_variation": "Minor selection and toolbar-navigation paths may vary, provided the specified objects, colors, font sizes, shared backgrounds, and slide order are preserved.",
+      "recording_start_state": "Open the generated presentation in normal editing view with all three slide thumbnails visible and no text object selected.",
+      "recording_end_state": "Slides 2 and 3 share pale-sage backgrounds and copper titles; the Slide 2 title is 44 pt and the Slide 3 schedule line is 27 pt."
+    },
+    "expected_incidental_operations": [
+      {
+        "operation": "Apply the inspected copper #B85C38 font color to the titles on Slides 2 and 3.",
+        "reason": "The task requires the activity-slide titles to match the verified cover-headline color.",
+        "category": "task_specific"
+      },
+      {
+        "operation": "Apply pale-sage #E3EAD7 as the shared background for the selected activity slides.",
+        "reason": "This is the visible shared treatment requested for the two related activity slides after their thumbnail multi-selection.",
+        "category": "task_specific"
+      }
+    ],
+    "review_status": "pending",
+    "source_contribution": {
+      "by_source_task": [
+        {
+          "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        },
+        {
+          "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+          "skill_count": 1,
+          "skill_fraction": 0.25
+        }
+      ],
+      "dominant_source_task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+      "dominant_source_skill_fraction": 0.25,
+      "complete_source_skill_sets_included": [
+        "3161d64e-3120-47b4-aaad-6a764a92493b"
+      ]
+    },
+    "similarity_reference": {
+      "lexical": {
+        "most_similar_source_task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+        "max_sequence_similarity": 0.289121,
+        "exact_source_instruction_match": false,
+        "by_source_task": [
+          {
+            "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+            "sequence_similarity": 0.147493
+          },
+          {
+            "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+            "sequence_similarity": 0.206061
+          },
+          {
+            "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+            "sequence_similarity": 0.11236
+          },
+          {
+            "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+            "sequence_similarity": 0.197138
+          },
+          {
+            "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+            "sequence_similarity": 0.02442
+          },
+          {
+            "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+            "sequence_similarity": 0.126629
+          },
+          {
+            "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+            "sequence_similarity": 0.07971
+          },
+          {
+            "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+            "sequence_similarity": 0.117202
+          },
+          {
+            "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+            "sequence_similarity": 0.137566
+          },
+          {
+            "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+            "sequence_similarity": 0.135957
+          },
+          {
+            "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+            "sequence_similarity": 0.011315
+          },
+          {
+            "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+            "sequence_similarity": 0.163339
+          },
+          {
+            "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+            "sequence_similarity": 0.218121
+          },
+          {
+            "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+            "sequence_similarity": 0.197452
+          },
+          {
+            "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+            "sequence_similarity": 0.162749
+          },
+          {
+            "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+            "sequence_similarity": 0.008683
+          },
+          {
+            "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+            "sequence_similarity": 0.179845
+          },
+          {
+            "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+            "sequence_similarity": 0.21164
+          },
+          {
+            "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+            "sequence_similarity": 0.120219
+          },
+          {
+            "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+            "sequence_similarity": 0.188235
+          },
+          {
+            "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+            "sequence_similarity": 0.144665
+          },
+          {
+            "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+            "sequence_similarity": 0.11985
+          },
+          {
+            "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+            "sequence_similarity": 0.111712
+          },
+          {
+            "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+            "sequence_similarity": 0.172232
+          },
+          {
+            "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+            "sequence_similarity": 0.185053
+          },
+          {
+            "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+            "sequence_similarity": 0.174863
+          },
+          {
+            "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+            "sequence_similarity": 0.179931
+          },
+          {
+            "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+            "sequence_similarity": 0.163569
+          },
+          {
+            "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+            "sequence_similarity": 0.289121
+          },
+          {
+            "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+            "sequence_similarity": 0.150459
+          },
+          {
+            "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+            "sequence_similarity": 0.202658
+          },
+          {
+            "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+            "sequence_similarity": 0.173776
+          },
+          {
+            "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+            "sequence_similarity": 0.013717
+          },
+          {
+            "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+            "sequence_similarity": 0.081937
+          },
+          {
+            "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+            "sequence_similarity": 0.161648
+          },
+          {
+            "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+            "sequence_similarity": 0.17656
+          },
+          {
+            "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+            "sequence_similarity": 0.19244
+          },
+          {
+            "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+            "sequence_similarity": 0.113793
+          },
+          {
+            "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+            "sequence_similarity": 0.008484
+          },
+          {
+            "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+            "sequence_similarity": 0.017291
+          },
+          {
+            "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+            "sequence_similarity": 0.155515
+          },
+          {
+            "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+            "sequence_similarity": 0.108614
+          },
+          {
+            "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+            "sequence_similarity": 0.244966
+          },
+          {
+            "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+            "sequence_similarity": 0.144112
+          },
+          {
+            "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+            "sequence_similarity": 0.147874
+          },
+          {
+            "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+            "sequence_similarity": 0.178914
+          },
+          {
+            "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+            "sequence_similarity": 0.105066
+          }
+        ]
+      },
+      "semantic": {
+        "model": "text-embedding-3-small",
+        "most_similar_source_task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+        "max_cosine_similarity": 0.540673,
+        "by_source_task": [
+          {
+            "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+            "cosine_similarity": 0.524353
+          },
+          {
+            "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+            "cosine_similarity": 0.391059
+          },
+          {
+            "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+            "cosine_similarity": 0.489704
+          },
+          {
+            "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+            "cosine_similarity": 0.465954
+          },
+          {
+            "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+            "cosine_similarity": 0.278116
+          },
+          {
+            "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+            "cosine_similarity": 0.407664
+          },
+          {
+            "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+            "cosine_similarity": 0.293811
+          },
+          {
+            "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+            "cosine_similarity": 0.384939
+          },
+          {
+            "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+            "cosine_similarity": 0.137088
+          },
+          {
+            "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+            "cosine_similarity": 0.484733
+          },
+          {
+            "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+            "cosine_similarity": 0.373819
+          },
+          {
+            "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+            "cosine_similarity": 0.399036
+          },
+          {
+            "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+            "cosine_similarity": 0.428104
+          },
+          {
+            "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+            "cosine_similarity": 0.240645
+          },
+          {
+            "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+            "cosine_similarity": 0.517536
+          },
+          {
+            "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+            "cosine_similarity": 0.408551
+          },
+          {
+            "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+            "cosine_similarity": 0.510947
+          },
+          {
+            "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+            "cosine_similarity": 0.507863
+          },
+          {
+            "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+            "cosine_similarity": 0.488812
+          },
+          {
+            "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+            "cosine_similarity": 0.277851
+          },
+          {
+            "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+            "cosine_similarity": 0.478504
+          },
+          {
+            "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+            "cosine_similarity": 0.387704
+          },
+          {
+            "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+            "cosine_similarity": 0.407661
+          },
+          {
+            "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+            "cosine_similarity": 0.522487
+          },
+          {
+            "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+            "cosine_similarity": 0.437035
+          },
+          {
+            "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+            "cosine_similarity": 0.518939
+          },
+          {
+            "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+            "cosine_similarity": 0.498059
+          },
+          {
+            "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+            "cosine_similarity": 0.482333
+          },
+          {
+            "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+            "cosine_similarity": 0.395515
+          },
+          {
+            "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+            "cosine_similarity": 0.284565
+          },
+          {
+            "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+            "cosine_similarity": 0.511436
+          },
+          {
+            "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+            "cosine_similarity": 0.540673
+          },
+          {
+            "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+            "cosine_similarity": 0.33541
+          },
+          {
+            "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+            "cosine_similarity": 0.38962
+          },
+          {
+            "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+            "cosine_similarity": 0.455724
+          },
+          {
+            "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+            "cosine_similarity": 0.36776
+          },
+          {
+            "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+            "cosine_similarity": 0.464163
+          },
+          {
+            "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+            "cosine_similarity": 0.498752
+          },
+          {
+            "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+            "cosine_similarity": 0.321448
+          },
+          {
+            "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+            "cosine_similarity": 0.261112
+          },
+          {
+            "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+            "cosine_similarity": 0.283326
+          },
+          {
+            "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+            "cosine_similarity": 0.427795
+          },
+          {
+            "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+            "cosine_similarity": 0.451596
+          },
+          {
+            "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+            "cosine_similarity": 0.452587
+          },
+          {
+            "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+            "cosine_similarity": 0.499387
+          },
+          {
+            "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+            "cosine_similarity": 0.323011
+          },
+          {
+            "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+            "cosine_similarity": 0.416998
+          }
+        ],
+        "embedding_request_id": "cc608694-63df-470f-b93e-6f5e37f47834"
+      }
+    },
+    "generation": {
+      "attempt": 3,
+      "kind": "new_combination",
+      "request_id": "df822ef9-9269-4a5b-b11b-5263cd0055e7",
+      "prompt_sha256": "addee6bcf649daf50369d4948faf3363acfabf8354f4342c190fcf655d519ba7"
+    }
+  },
+  "required_skills": [
+    {
+      "skill_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Multi-select slide thumbnails in the Slides pane",
+      "procedure": [
+        "In the Slides pane, click the first slide thumbnail to select it.",
+        "Hold Ctrl and click another thumbnail to add it to the selection without deselecting the first. For example, select two adjacent ending slides before applying a shared command.",
+        "Release Ctrl after all intended thumbnails are selected."
+      ],
+      "efficiency_tip": "Use Ctrl-click to build a noncontiguous or multi-slide selection in one pass instead of applying the same command separately to each slide.",
+      "source": {
+        "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "skill_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Inspect a text object's current font color",
+      "procedure": [
+        "Select the slide containing the text object.",
+        "Click the text box once to select it, then open the Font Color drop-down on the toolbar.",
+        "Use the color currently indicated for the selected text as the reference color. For example, inspect a slide title before applying the same color elsewhere."
+      ],
+      "efficiency_tip": "Open the color control only after selecting the text object; otherwise the displayed color may reflect a default or a different selection.",
+      "source": {
+        "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "skill_id": "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01",
+      "app": "libreoffice_impress",
+      "name": "Set an exact font size for text in a text box",
+      "procedure": [
+        "Select the slide containing the text box from the Slides pane.",
+        "Enter text-editing mode in the target text box and select the text whose size should change; for example, triple-click within the text to select its paragraph or text content.",
+        "Click the font-size field on the formatting toolbar, replace its current value with an exact point size such as 60 pt, and press Enter to apply it.",
+        "Repeat the same process for any other text object needing a different size, such as entering 28 pt for a second text box."
+      ],
+      "efficiency_tip": "Type the desired point value directly into the font-size field instead of searching the dropdown list; this is faster and supports sizes not shown among preset options.",
+      "source": {
+        "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "skill_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03",
+      "app": "libreoffice_impress",
+      "name": "Set the font size of selected text",
+      "procedure": [
+        "Keep the target text selected in its text object.",
+        "Open the font-size dropdown on the formatting toolbar.",
+        "Choose the required point size; for example, select 44 pt to make selected title text 44 points."
+      ],
+      "efficiency_tip": "Set the size on an existing text selection before clicking elsewhere, which preserves the target range and avoids re-entering text-editing mode.",
+      "source": {
+        "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+        "action_ids": [
+          4,
+          5
+        ]
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+      "instruction": "Make the first textbox font size 60 pt while the second 28 pt on slide 14.",
+      "required_skill_ids": [
+        "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`SCROLL` down to slide 14."
+        },
+        {
+          "action_id": 1,
+          "action": "`CLICK` slide 14."
+        },
+        {
+          "action_id": 2,
+          "action": "`TRIPLE_CLICK` target audience"
+        },
+        {
+          "action_id": 3,
+          "action": "`TRIPLE_CLICK` font size text field"
+        },
+        {
+          "action_id": 4,
+          "action": "`TYPING` 60 pt"
+        },
+        {
+          "action_id": 5,
+          "action": "`PRESS` enter"
+        },
+        {
+          "action_id": 6,
+          "action": "`TRIPLE_CLICK` 'Elaborate...'"
+        },
+        {
+          "action_id": 7,
+          "action": "`TRIPLE_CLICK` font size dropdown"
+        },
+        {
+          "action_id": 8,
+          "action": "`TYPING` 28 pt"
+        },
+        {
+          "action_id": 9,
+          "action": "`PRESS` enter"
+        }
+      ],
+      "single_actions": [
+        "`SCROLL` down to slide 14.",
+        "`CLICK` slide 14.",
+        "`TRIPLE_CLICK` target audience",
+        "`TRIPLE_CLICK` font size text field",
+        "`TYPING` 60 pt",
+        "`PRESS` enter",
+        "`TRIPLE_CLICK` 'Elaborate...'",
+        "`TRIPLE_CLICK` font size dropdown",
+        "`TYPING` 28 pt",
+        "`PRESS` enter"
+      ]
+    },
+    {
+      "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+      "instruction": "Bold the text on slide 1. Make the title of size 44pt and underline it on slide 1.",
+      "required_skill_ids": [
+        "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 4,
+          "action": "`CLICK` font size dropdown"
+        },
+        {
+          "action_id": 5,
+          "action": "`CLICK` 44 pt"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` 'Infographic'",
+        "`HOTKEY` ctrl-A",
+        "`CLICK` bold icon",
+        "`CLICK` underline icon",
+        "`CLICK` font size dropdown",
+        "`CLICK` 44 pt",
+        "`DOUBLE_CLICK` 'Corporate.",
+        "`HOTKEY` ctrl-A",
+        "`CLICK` bold icon."
+      ]
+    },
+    {
+      "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+      "instruction": "Make the background color of slide 2 same as the color of its title.",
+      "required_skill_ids": [
+        "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 0,
+          "action": "`CLICK` slide 2"
+        },
+        {
+          "action_id": 1,
+          "action": "`CLICK 'Our customers love us' text box"
+        },
+        {
+          "action_id": 2,
+          "action": "`CLICK` font color dropdown"
+        }
+      ],
+      "single_actions": [
+        "`CLICK` slide 2",
+        "`CLICK 'Our customers love us' text box",
+        "`CLICK` font color dropdown",
+        "`CLICK` slide 2.",
+        "`CLICK` slide 2.",
+        "`CLICK` background menu.",
+        "`CLICK` color",
+        "`CLICK` color menu",
+        "`CLICK` red (2nd row, 5th from right)"
+      ]
+    },
+    {
+      "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+      "instruction": "Please duplicate the last two slides and insert the copies in alternating order, so the sequence becomes: original slide A, original slide B, then duplicated slide A, duplicated slide B.",
+      "required_skill_ids": [
+        "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01"
+      ],
+      "referenced_actions": [
+        {
+          "action_id": 1,
+          "action": "`CLICK` slide 23"
+        },
+        {
+          "action_id": 2,
+          "action": "`KEY_DOWN` Ctrl"
+        },
+        {
+          "action_id": 3,
+          "action": "`CLICK` slide 24"
+        },
+        {
+          "action_id": 4,
+          "action": "`KEY_UP` Ctrl"
+        }
+      ],
+      "single_actions": [
+        "`SCROLL` down on the slides pane",
+        "`CLICK` slide 23",
+        "`KEY_DOWN` Ctrl",
+        "`CLICK` slide 24",
+        "`KEY_UP` Ctrl",
+        "`RIGHT_CLICK` the selection",
+        "`CLICK` Duplicate slides"
+      ]
+    }
+  ],
+  "reviewer_guide": {
+    "reference_task_id": "reference-task-impress-full-v2-r01-003",
+    "task_detail_sha256": "51e624c2fb4e43f123fa7b578c4c989d6124ba02eeb239722d10314145fad282",
+    "guide": {
+      "reference_task_id": "reference-task-impress-full-v2-r01-003",
+      "language": "zh-CN",
+      "overview": "本指南将封面标题的已批准铜色作为可验证的格式来源，随后统一处理两张活动幻灯片的背景与标题，并分别调整两处指定文字的字号。所有文字和图形均应保留为可编辑对象；不改动幻灯片顺序、正文措辞或封面内容。",
+      "starting_state_checks": [
+        "确认处于普通编辑视图，左侧 `Slides` 窗格中能同时看到 3 张缩略图，且当前没有文本插入光标或对象边框处于选中状态。",
+        "确认 Slide 1 标题为 “Neighborhood Repair Café”；Slide 2 标题为 “Repair Table Flow”；Slide 3 包含 “Tool check-in closes at 09:50”。这些是本任务仅需格式化的文字目标。",
+        "确认初始时 Slide 2 与 Slide 3 的背景可见地不同、两张活动页标题为深色、Slide 2 标题尚未达到 44 pt、Slide 3 的日程行尚未达到 27 pt。若文件已经部分符合最终外观，只对仍不匹配的项目执行相应修复，勿重写任何文字。",
+        "确认 Slide 1 的暖亚麻背景、封面副标题、插图和页脚标签均存在；Slide 2 的三步流程图、Slide 3 的清单与 supplies panel 均应保留。"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "title": "检查并记录封面标题的铜色",
+          "instructions": [
+            "在 `Slides` 窗格单击 Slide 1 缩略图；这是选择幻灯片，不是选择其中文字。",
+            "在画布上对 “Neighborhood Repair Café” 文本框单击一次，使整个文本对象出现对象边框和控制点；此时不要双击进入文字编辑模式。",
+            "在格式工具栏打开 `Font Color` 的下拉箭头，读取当前针对所选标题显示的颜色。可接受的正确参考色为铜色 `#B85C38`；仅检查到该色时无需改动封面标题。",
+            "如果颜色控制显示的不是 `#B85C38`，先检查是否误选了幻灯片或其他对象：按 `Esc` 后重新单击标题文本框的边框，再打开 `Font Color`。不要将任何颜色应用到 Slide 1。"
+          ],
+          "skill_ids": [
+            "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01"
+          ],
+          "efficiency_tip": "一定要在标题文本对象已出现边框后再打开 `Font Color`；否则工具栏显示的可能是默认色，而不是封面标题的实际颜色。",
+          "visible_success_signal": "“Neighborhood Repair Café” 的文本框被选中，`Font Color` 所示参考色为 `#B85C38`，封面文字和背景外观没有变化。"
+        },
+        {
+          "step_number": 2,
+          "title": "同时选择两张活动幻灯片并应用共享背景",
+          "instructions": [
+            "在左侧 `Slides` 窗格单击 Slide 2 缩略图，然后按住 `Ctrl` 再单击 Slide 3 缩略图，最后松开 `Ctrl`。这是缩略图多选；不要在画布中按住 `Ctrl` 去选择文字或形状。",
+            "两张缩略图同时高亮时，使用 `Format` > `Slide Properties...`，在对话框中打开 `Background`。将填充设为纯色，并在颜色控件选择或自定义淡鼠尾草色 `#E3EAD7`，再确认应用。",
+            "如果对话框中已有与 `#E3EAD7` 相同的纯色背景，保持该设置即可，无需重复应用。若 Slide 2 或 Slide 3 仍显示原来的蓝灰或浅桃色，重新按 `Ctrl` 同时选择这两张缩略图后再应用 `#E3EAD7`；不要选择 Slide 1。",
+            "应用后单击画布空白处或任一单独缩略图以结束多选，避免后续标题编辑误作用于多张幻灯片。"
+          ],
+          "skill_ids": [
+            "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01"
+          ],
+          "efficiency_tip": "先完成 `Ctrl` 多选再执行一次背景命令，可让两页获得完全相同的背景，避免逐页设置造成色差。",
+          "visible_success_signal": "Slide 2 和 Slide 3 缩略图均呈选中状态时已一次性应用背景；之后两页画布和缩略图都显示相同的淡鼠尾草 `#E3EAD7`，Slide 1 仍是暖亚麻色。"
+        },
+        {
+          "step_number": 3,
+          "title": "将 Slide 2 标题设为铜色并从字号列表选择 44 pt",
+          "instructions": [
+            "在 `Slides` 窗格单击 Slide 2 缩略图，使其成为当前单张幻灯片。单击 “Repair Table Flow” 文本框一次选中对象边框，然后双击文本框进入文字编辑模式。",
+            "用 `Ctrl+A` 仅选择该文本框内的完整标题文字；检查反白范围只覆盖 “Repair Table Flow”，不要选中下方介绍文字或流程图形。",
+            "保持标题文字反白，打开 `Font Color` 下拉控件，选择在步骤 1 检查到的铜色；若需通过颜色对话框设置，输入 `#B85C38` 后确认。若标题已经可见为与封面相同的铜色，无需再次着色。",
+            "不要取消标题文字选择，打开字号下拉列表并选择 `44 pt`。这是从列表中选择预设字号，而不是修改其他对象的字号。",
+            "如果列表当前未直接显示 `44 pt`，可滚动该列表查找 `44 pt`；若选错大小，保持标题反白并重新从字号列表选择 `44 pt`。"
+          ],
+          "skill_ids": [
+            "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03"
+          ],
+          "efficiency_tip": "先选择完整标题文字并在不点击画布其他位置的情况下连续设置颜色和字号，可确保格式只落在该标题上。",
+          "visible_success_signal": "Slide 2 的 “Repair Table Flow” 明显比初始状态更突出、呈铜色，且在其文字仍被选中时字号控件显示 `44 pt`；流程介绍和三个流程步骤未改变。"
+        },
+        {
+          "step_number": 4,
+          "title": "将 Slide 3 标题设为同一铜色",
+          "instructions": [
+            "单击 `Slides` 窗格中的 Slide 3 缩略图。单击 “Open the Station” 文本框一次以选择对象边框，再双击进入该文本框的文字编辑模式。",
+            "选择完整的 “Open the Station” 标题文字。此处的文字反白表示正在编辑文字；若只看到对象边框而没有反白，尚未选中可格式化的文本。",
+            "在 `Font Color` 中选择已验证的铜色 `#B85C38`。若标题已经与 Slide 1 封面标题目视相同且颜色控件显示 `#B85C38`，不需要调整。",
+            "如果标题仍是深青色或颜色与封面不一致，确认选中的确实是 “Open the Station” 的文字而不是日程行或清单，然后重新通过 `Font Color` 应用 `#B85C38`。"
+          ],
+          "skill_ids": [],
+          "efficiency_tip": "仅在标题文字反白时着色；不要选择整个幻灯片或 supplies panel，这样清单和面板的原有强调色不会被覆盖。",
+          "visible_success_signal": "Slide 3 标题 “Open the Station” 与 Slide 1 的封面标题呈相同铜色，而日程行、清单、时钟徽章和 supplies panel 的内容仍保持原样。"
+        },
+        {
+          "step_number": 5,
+          "title": "将 Slide 3 日程提示精确设为 27 pt",
+          "instructions": [
+            "仍在 Slide 3 上，单击 “Tool check-in closes at 09:50” 所在文本框一次以选中对象边框，然后双击进入文字编辑模式。",
+            "选择完整的一行 “Tool check-in closes at 09:50”。确认高亮只包括此日程行，不包括检查清单、标题或供应品列表。",
+            "在格式工具栏的字号输入字段中单击当前字号，使用 `Ctrl+A` 替换字段内容，输入 `27`，然后按 `Enter` 应用精确字号。",
+            "如果该行已经显示为 27 pt，则无需改动。若按 `Enter` 后字号未变，通常是因为焦点仍在文本中或未选中完整行：重新选择整行文字，再在字号字段输入 `27` 并按 `Enter`。"
+          ],
+          "skill_ids": [
+            "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01"
+          ],
+          "efficiency_tip": "直接在字号字段键入 `27` 比在下拉预设中查找更可靠，且能保证非预设的精确点值。",
+          "visible_success_signal": "“Tool check-in closes at 09:50” 比初始 22 pt 更醒目；选中整行时字号字段报告 `27 pt`，相邻的清单文字没有被放大。"
+        },
+        {
+          "step_number": 6,
+          "title": "检查所有页面并保存最终结果",
+          "instructions": [
+            "依次单击 Slide 1、Slide 2、Slide 3 缩略图进行目视检查；这里是逐张选择缩略图，不要保留多选状态。",
+            "确认 Slide 1 的 “Neighborhood Repair Café” 仍为铜色 `#B85C38`、仍为 40 pt，封面暖亚麻背景及其余封面对象没有变化。",
+            "确认 Slide 2 和 Slide 3 都使用相同的淡鼠尾草背景 `#E3EAD7`，两个活动标题都与封面标题同为铜色；Slide 2 的 “Repair Table Flow” 为 `44 pt`，Slide 3 的日程行是 `27 pt`。",
+            "若发现任一活动页背景不相同，重新用 `Ctrl` 精确多选 Slide 2 和 Slide 3 后修复背景；若发现任一标题颜色或字号不对，只进入该标题文本框编辑并选择对应文字后修复，避免影响无关内容。",
+            "使用 `Ctrl+S` 保存演示文稿。"
+          ],
+          "skill_ids": [],
+          "efficiency_tip": "检查时通过缩略图颜色和画布文字同时判断，可快速发现只改到当前页、误改封面或误格式化正文等问题。",
+          "visible_success_signal": "三个缩略图顺序仍为封面、Repair Table Flow、Open the Station；后两张具有相同淡鼠尾草背景和铜色标题，指定字号正确，所有流程图、清单、面板和封面内容保持不变。"
+        }
+      ],
+      "final_verification": [
+        "Slide 1 仍是第一张，标题 “Neighborhood Repair Café” 保持铜色 `#B85C38`、40 pt；封面背景仍为 `#F7F1E8`，其他封面对象及文字未变。",
+        "Slide 2 仍包含原有三步横向流程图；其背景为 `#E3EAD7`，标题 “Repair Table Flow” 为铜色 `#B85C38` 且为 `44 pt`。",
+        "Slide 3 仍包含原有清单、supplies panel 和时钟徽章；其背景为 `#E3EAD7`，标题 “Open the Station” 为铜色 `#B85C38`，而 “Tool check-in closes at 09:50” 为精确 `27 pt`。",
+        "Slide 2 与 Slide 3 的缩略图背景颜色一致，Slide 1 没有被纳入共同背景处理；幻灯片顺序仍为 1、2、3。",
+        "保存后重新查看各缩略图，确认没有出现文字内容被替换、无关正文被改字号、流程图或清单被删除的情况。"
+      ]
+    },
+    "generation": {
+      "request_id": "ae0ce92e-effb-49a3-8119-be904fbc430e",
+      "prompt_sha256": "6411ac54f9d5fa721b41dcc1b2ec729b6f7f737ca33c346424fc4ebcc5381d1e",
+      "model": "gpt-5.6-terra",
+      "input_tokens": 3883,
+      "output_tokens": 3103,
+      "estimated_cost_usd": 0.038018
+    }
+  },
+  "artifact": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-impress-full-v2-r01-003",
+      "app": "libreoffice_impress",
+      "artifact_type": "pptx",
+      "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-003/initial_artifact.pptx",
+      "artifact_sha256": "adc78d5d84407e317a999630fa019e02c807a69a199e6836914147c7700dbe94",
+      "blueprint_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-003/artifact_blueprint.json",
+      "qa_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-003/artifact_qa.json",
+      "manual_setup_required": false,
+      "manual_setup_steps": []
+    },
+    "packet_path": "artifact/initial_artifact.pptx"
+  },
+  "task_config": {
+    "manifest_entry": {
+      "reference_task_id": "reference-task-impress-full-v2-r01-003",
+      "task_config_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/task_configs/reference-task-impress-full-v2-r01-003.json",
+      "artifact_sha256": "adc78d5d84407e317a999630fa019e02c807a69a199e6836914147c7700dbe94",
+      "blueprint_request_id": "b06ce7c3-2da8-4e04-9e7d-64abc6c70824"
+    },
+    "packet_path": "task_config.json"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+  "app": "libreoffice_impress",
+  "single_action_count": 3,
+  "prompt_sha256": "6b9fb33e21802e5e3804752c3e70bdd2050a6f9bf73954376e6fa2f4b475d906",
+  "request_id": "24113b9d-f21e-45ed-97aa-fc675c9240a5",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1229,
+    "cached_input_tokens": 1103,
+    "output_tokens": 153,
+    "estimated_cost_usd": 0.0023086
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Insert a table using the table-size grid",
+        "procedure": [
+          "Select the destination slide thumbnail in the Slides pane.",
+          "Click the table icon to open the mini-table size grid.",
+          "Move to the grid cell representing the desired dimensions and click it; for example, click the cell at column 2, row 5 to insert a 2-column by 5-row table.",
+          "The table is inserted onto the selected slide with the chosen dimensions."
+        ],
+        "efficiency_tip": "Use the table icon’s size grid when the required row and column count is visible, since it creates the table directly without opening a separate dialog.",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      }
+    ]
+  }
+}

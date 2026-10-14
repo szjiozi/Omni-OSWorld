@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+  "app": "libreoffice_impress",
+  "single_action_count": 17,
+  "prompt_sha256": "501d74f65771c425314acc0a4aa53f47589f1585b73d4811e41ca2e426379995",
+  "request_id": "98110096-4be4-4661-aaa1-07ed4905105a",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1666,
+    "cached_input_tokens": 1403,
+    "output_tokens": 794,
+    "estimated_cost_usd": 0.0103346
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Enable slide numbers on all slides using Header and Footer",
+        "procedure": [
+          "Open the Insert menu and choose Header and Footer.",
+          "In the dialog, enable the Slide number checkbox.",
+          "Choose Apply to All so the slide-number field is added throughout the presentation rather than only on the current slide."
+        ],
+        "efficiency_tip": "Use Apply to All when every slide should display a number; this avoids enabling the field slide by slide.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Format the slide-number field in Master View",
+        "procedure": [
+          "Open Master View to edit the shared slide layout rather than an individual slide.",
+          "Select the slide-number field by clicking its box border, then open the font-color control.",
+          "Choose the desired color, for example red. Formatting the master field updates slides that use that master layout."
+        ],
+        "efficiency_tip": "Apply shared formatting in Master View first. It is faster and more consistent than directly formatting the slide-number field on every slide.",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "name": "Directly apply a font color to slide-number fields on selected slides",
+        "procedure": [
+          "Select a slide thumbnail, then click its slide-number box to target that individual field.",
+          "Use the Font Color control to apply the currently chosen color; for example, after choosing red, clicking Font Color can apply red directly.",
+          "Repeat on other selected slides only when they need an override from the master formatting."
+        ],
+        "efficiency_tip": "Reuse the active font color for repeated direct formatting, but use this method only for exceptions; master formatting is more efficient for a presentation-wide result.",
+        "action_ids": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    ]
+  }
+}

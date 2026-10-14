@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+  "app": "libreoffice_impress",
+  "single_action_count": 23,
+  "prompt_sha256": "542587598cf38d1391a7696864c099fbdf0e7912632293baa1cdaec79c435613",
+  "request_id": "7eeabfb2-95b3-4a26-a2ce-4e58a01cb00d",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1423,
+    "cached_input_tokens": 1103,
+    "output_tokens": 1187,
+    "estimated_cost_usd": 0.0151046
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Enter and exit Master View for master-level editing",
+        "procedure": [
+          "Open the Slide menu and choose Master View to switch from normal slide editing into the master-editing workspace.",
+          "Make the required master-level changes while this mode is active.",
+          "When finished, use Close Master View to return to normal slide editing. For example, enter Master View before changing a master’s background so slides using that master inherit the formatting."
+        ],
+        "efficiency_tip": "Use Master View when the same formatting should be controlled from a shared master; this avoids reopening formatting controls on every individual slide.",
+        "action_ids": [
+          0,
+          22
+        ]
+      },
+      {
+        "name": "Set a slide or master background color with a custom hex value",
+        "procedure": [
+          "Select the target slide or master thumbnail, then open Slide > Slide Properties.",
+          "Open the Background tab and activate the color value field.",
+          "Replace the existing value with the desired hexadecimal color and confirm the dialog. For example, enter `0000ff` to apply a pure blue background."
+        ],
+        "efficiency_tip": "Enter an exact hex value when a specific brand or design color is required; once applied, the color can usually be reused from the recent-color palette on other slides or masters.",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "name": "Reuse a recent background color on multiple slides or masters",
+        "procedure": [
+          "Select a target slide or master thumbnail.",
+          "Open Slide > Slide Properties and choose the desired swatch from the recent colors, such as the leftmost recently used blue.",
+          "Confirm the dialog, then repeat for each additional target slide or master."
+        ],
+        "efficiency_tip": "After applying a custom color once, select it from Recent Colors for subsequent targets rather than retyping its hex value each time.",
+        "action_ids": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ]
+      }
+    ]
+  }
+}

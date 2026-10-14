@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+  "app": "libreoffice_impress",
+  "single_action_count": 9,
+  "prompt_sha256": "0e381588a2d5a1b59d23c8b1bf058a5fe7d65dcda9ff14b2349f8ca870502de9",
+  "request_id": "805be875-c608-4637-b647-73be0ca50288",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1613,
+    "cached_input_tokens": 1403,
+    "output_tokens": 160,
+    "estimated_cost_usd": 0.0026206
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set slide background color from the sidebar palette",
+        "procedure": [
+          "In the Slides pane, click the thumbnail of the slide whose background you want to change; this targets the slide rather than an object on its canvas.",
+          "In the right sidebar, open the background color dropdown.",
+          "Choose the desired palette color. For example, select yellow from the second row, first column.",
+          "Repeat the same steps for each additional slide that needs that background color."
+        ],
+        "efficiency_tip": "Select each target slide thumbnail before opening the color control so the chosen color is applied to the slide background, not to a selected object or text element.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ]
+  }
+}

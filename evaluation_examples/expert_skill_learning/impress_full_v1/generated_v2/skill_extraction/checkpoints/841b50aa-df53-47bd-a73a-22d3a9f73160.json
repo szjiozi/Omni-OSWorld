@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+  "app": "libreoffice_impress",
+  "single_action_count": 8,
+  "prompt_sha256": "e804e1cb21818750835ded87bdd47034823e018cbbbf160598527772f6ecedcb",
+  "request_id": "b6942eba-9372-45da-97b4-4ef456abbfdb",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1576,
+    "cached_input_tokens": 1403,
+    "output_tokens": 234,
+    "estimated_cost_usd": 0.0034346
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set a slide background color",
+        "procedure": [
+          "Open the slide background dropdown or background formatting control.",
+          "Choose the background color option, then open its color palette.",
+          "Select the desired color from the palette; for example, choose a purple swatch to apply a purple background to the current slide."
+        ],
+        "efficiency_tip": "Use the background color palette directly rather than adding a full-slide colored shape, which keeps the slide background editable as a slide property.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Add speaker notes in Notes view",
+        "procedure": [
+          "Open the View menu and switch to Notes view.",
+          "Click the notes placeholder (such as “Click to add notes”) and enter the note text. For example, type “APP”.",
+          "The entered text is stored as speaker notes for the current slide rather than appearing on the slide canvas."
+        ],
+        "efficiency_tip": "Switch to Notes view before entering text so it is placed in the slide’s notes area, not in a visible slide text box.",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    ]
+  }
+}

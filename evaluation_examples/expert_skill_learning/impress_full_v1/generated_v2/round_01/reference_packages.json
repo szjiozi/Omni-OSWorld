@@ -1,0 +1,3380 @@
+{
+  "schema_version": "2.0",
+  "pilot_id": "impress-full-v2",
+  "generation_round": 1,
+  "app": "libreoffice_impress",
+  "skill_pool": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/skill_pool.json",
+  "candidate_coverage": {
+    "all_skill_ids": [
+      "04578141-1d42-4146-b9cf-6fab4ce5fd74.skill-01",
+      "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01",
+      "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01",
+      "0a211154-fda0-48d0-9274-eaac4ce5486d.skill-01",
+      "0f84bef9-9790-432e-92b7-eece357603fb.skill-01",
+      "15aece23-a215-4579-91b4-69eec72e18da.skill-01",
+      "21760ecb-8f62-40d2-8d85-0cee5725cb72.skill-01",
+      "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01",
+      "2cd43775-7085-45d8-89fa-9e35c0a915cf.skill-01",
+      "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01",
+      "358aa0a7-6677-453f-ae35-e440f004c31e.skill-01",
+      "39be0d19-634d-4475-8768-09c130f5425d.skill-01",
+      "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-01",
+      "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-02",
+      "455d3c66-7dc6-4537-a39a-36d3e9119df7.skill-01",
+      "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-01",
+      "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+      "550ce7e7-747b-495f-b122-acdc4d0b8e54.skill-01",
+      "57667013-ea97-417c-9dce-2713091e6e2a.skill-01",
+      "57667013-ea97-417c-9dce-2713091e6e2a.skill-02",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-01",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-02",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03",
+      "5cfb9197-e72b-454b-900e-c06b0c802b40.skill-01",
+      "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-01",
+      "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-02",
+      "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01",
+      "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-02",
+      "7ae48c60-f143-4119-b659-15b8f485eb9a.skill-01",
+      "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01",
+      "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-02",
+      "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-01",
+      "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-02",
+      "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-01",
+      "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-02",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-01",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-02",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-03",
+      "9cf05d24-6bd9-4dae-8967-f67d88f5d38a.skill-01",
+      "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01",
+      "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-02",
+      "a097acff-6266-4291-9fbd-137af7ecd439.skill-01",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-01",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-03",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-01",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-02",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-03",
+      "a669ef01-ded5-4099-9ea9-25e99b569840.skill-01",
+      "ac1b39ff-ee4d-4483-abce-c117e98942f0.skill-01",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-01",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-02",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-03",
+      "af23762e-2bfd-4a1d-aada-20fa8de9ce07.skill-01",
+      "af2d657a-e6b3-4c6a-9f67-9e3ed015974c.skill-01",
+      "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb.skill-01",
+      "bf4e9888-f10f-47af-8dba-76413038b73c.skill-01",
+      "bf4e9888-f10f-47af-8dba-76413038b73c.skill-02",
+      "c59742c0-4323-4b9d-8a02-723c251deaa0.skill-01",
+      "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-01",
+      "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-02",
+      "ce88f674-ab7a-43da-9201-468d38539e4a.skill-01",
+      "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-01",
+      "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-02",
+      "ed43c15f-00cb-4054-9c95-62c880865d68.skill-01",
+      "ed43c15f-00cb-4054-9c95-62c880865d68.skill-02",
+      "edb61b14-a854-4bf5-a075-c8075c11293a.skill-01",
+      "ef9d12bd-bcee-4ba0-a40e-918400f43ddf.skill-01",
+      "f23acfd2-c485-4b7c-a1e7-d4303ddfe864.skill-01"
+    ],
+    "initially_covered_skill_ids": [],
+    "round_candidate_covered_skill_ids": [
+      "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01",
+      "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01",
+      "15aece23-a215-4579-91b4-69eec72e18da.skill-01",
+      "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01",
+      "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01",
+      "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+      "57667013-ea97-417c-9dce-2713091e6e2a.skill-01",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03",
+      "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-01",
+      "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01",
+      "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-02",
+      "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-02",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-03",
+      "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-01",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+      "bf4e9888-f10f-47af-8dba-76413038b73c.skill-02"
+    ],
+    "generation_eligible_skill_ids": [
+      "04578141-1d42-4146-b9cf-6fab4ce5fd74.skill-01",
+      "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01",
+      "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01",
+      "0a211154-fda0-48d0-9274-eaac4ce5486d.skill-01",
+      "15aece23-a215-4579-91b4-69eec72e18da.skill-01",
+      "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01",
+      "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01",
+      "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-01",
+      "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+      "550ce7e7-747b-495f-b122-acdc4d0b8e54.skill-01",
+      "57667013-ea97-417c-9dce-2713091e6e2a.skill-01",
+      "57667013-ea97-417c-9dce-2713091e6e2a.skill-02",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-01",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-02",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03",
+      "5cfb9197-e72b-454b-900e-c06b0c802b40.skill-01",
+      "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-01",
+      "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-02",
+      "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01",
+      "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-02",
+      "7ae48c60-f143-4119-b659-15b8f485eb9a.skill-01",
+      "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01",
+      "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-01",
+      "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-01",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-01",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-02",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-03",
+      "9cf05d24-6bd9-4dae-8967-f67d88f5d38a.skill-01",
+      "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01",
+      "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-02",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-01",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-03",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-01",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-02",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-03",
+      "a669ef01-ded5-4099-9ea9-25e99b569840.skill-01",
+      "ac1b39ff-ee4d-4483-abce-c117e98942f0.skill-01",
+      "af2d657a-e6b3-4c6a-9f67-9e3ed015974c.skill-01",
+      "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb.skill-01",
+      "bf4e9888-f10f-47af-8dba-76413038b73c.skill-02",
+      "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-02",
+      "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-01",
+      "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-02",
+      "ed43c15f-00cb-4054-9c95-62c880865d68.skill-01",
+      "ed43c15f-00cb-4054-9c95-62c880865d68.skill-02",
+      "edb61b14-a854-4bf5-a075-c8075c11293a.skill-01",
+      "f23acfd2-c485-4b7c-a1e7-d4303ddfe864.skill-01"
+    ],
+    "generation_deferred_skill_ids": [
+      "0f84bef9-9790-432e-92b7-eece357603fb.skill-01",
+      "21760ecb-8f62-40d2-8d85-0cee5725cb72.skill-01",
+      "2cd43775-7085-45d8-89fa-9e35c0a915cf.skill-01",
+      "358aa0a7-6677-453f-ae35-e440f004c31e.skill-01",
+      "39be0d19-634d-4475-8768-09c130f5425d.skill-01",
+      "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-01",
+      "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-02",
+      "455d3c66-7dc6-4537-a39a-36d3e9119df7.skill-01",
+      "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-02",
+      "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-02",
+      "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-02",
+      "a097acff-6266-4291-9fbd-137af7ecd439.skill-01",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-01",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-02",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-03",
+      "af23762e-2bfd-4a1d-aada-20fa8de9ce07.skill-01",
+      "bf4e9888-f10f-47af-8dba-76413038b73c.skill-01",
+      "c59742c0-4323-4b9d-8a02-723c251deaa0.skill-01",
+      "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-01",
+      "ce88f674-ab7a-43da-9201-468d38539e4a.skill-01",
+      "ef9d12bd-bcee-4ba0-a40e-918400f43ddf.skill-01"
+    ],
+    "covered_skill_ids": [
+      "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01",
+      "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01",
+      "15aece23-a215-4579-91b4-69eec72e18da.skill-01",
+      "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01",
+      "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01",
+      "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+      "57667013-ea97-417c-9dce-2713091e6e2a.skill-01",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03",
+      "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-01",
+      "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01",
+      "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-02",
+      "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-02",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-03",
+      "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-01",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+      "bf4e9888-f10f-47af-8dba-76413038b73c.skill-02"
+    ],
+    "unresolved_skill_ids": [
+      "04578141-1d42-4146-b9cf-6fab4ce5fd74.skill-01",
+      "0a211154-fda0-48d0-9274-eaac4ce5486d.skill-01",
+      "0f84bef9-9790-432e-92b7-eece357603fb.skill-01",
+      "21760ecb-8f62-40d2-8d85-0cee5725cb72.skill-01",
+      "2cd43775-7085-45d8-89fa-9e35c0a915cf.skill-01",
+      "358aa0a7-6677-453f-ae35-e440f004c31e.skill-01",
+      "39be0d19-634d-4475-8768-09c130f5425d.skill-01",
+      "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-01",
+      "3b27600c-3668-4abd-8f84-7bcdebbccbdb.skill-02",
+      "455d3c66-7dc6-4537-a39a-36d3e9119df7.skill-01",
+      "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-01",
+      "550ce7e7-747b-495f-b122-acdc4d0b8e54.skill-01",
+      "57667013-ea97-417c-9dce-2713091e6e2a.skill-02",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-01",
+      "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-02",
+      "5cfb9197-e72b-454b-900e-c06b0c802b40.skill-01",
+      "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-02",
+      "7ae48c60-f143-4119-b659-15b8f485eb9a.skill-01",
+      "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-02",
+      "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-01",
+      "841b50aa-df53-47bd-a73a-22d3a9f73160.skill-02",
+      "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-01",
+      "8979838c-54a5-4454-a2b8-3d135a1a5c8f.skill-02",
+      "986fc832-6af2-417c-8845-9272b3a1528b.skill-01",
+      "9cf05d24-6bd9-4dae-8967-f67d88f5d38a.skill-01",
+      "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-02",
+      "a097acff-6266-4291-9fbd-137af7ecd439.skill-01",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-03",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-01",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-02",
+      "a53f80cd-4a90-4490-8310-097b011433f6.skill-03",
+      "a669ef01-ded5-4099-9ea9-25e99b569840.skill-01",
+      "ac1b39ff-ee4d-4483-abce-c117e98942f0.skill-01",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-01",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-02",
+      "ac9bb6cb-1888-43ab-81e4-a98a547918cd.skill-03",
+      "af23762e-2bfd-4a1d-aada-20fa8de9ce07.skill-01",
+      "af2d657a-e6b3-4c6a-9f67-9e3ed015974c.skill-01",
+      "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb.skill-01",
+      "bf4e9888-f10f-47af-8dba-76413038b73c.skill-01",
+      "c59742c0-4323-4b9d-8a02-723c251deaa0.skill-01",
+      "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-01",
+      "c82632a4-56b6-4db4-9dd1-3820ee3388e4.skill-02",
+      "ce88f674-ab7a-43da-9201-468d38539e4a.skill-01",
+      "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-01",
+      "e4ef0baf-4b52-4590-a47e-d4d464cca2d7.skill-02",
+      "ed43c15f-00cb-4054-9c95-62c880865d68.skill-01",
+      "ed43c15f-00cb-4054-9c95-62c880865d68.skill-02",
+      "edb61b14-a854-4bf5-a075-c8075c11293a.skill-01",
+      "ef9d12bd-bcee-4ba0-a40e-918400f43ddf.skill-01",
+      "f23acfd2-c485-4b7c-a1e7-d4303ddfe864.skill-01"
+    ],
+    "complete": false,
+    "note": "Candidate coverage is not approved human-review coverage."
+  },
+  "human_similarity_checklist": [
+    "The artifact, domain, object names, values, and layout differ materially from every source task.",
+    "The instruction is a natural task rather than a list of skill names or UI steps.",
+    "No distinctive source literal or complete ordered source solution is reproduced.",
+    "Every required skill is necessary to complete the task rather than decorative or optional."
+  ],
+  "reference_packages": [
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-001",
+      "generation_round": 1,
+      "parent_reference_task_id": null,
+      "app": "libreoffice_impress",
+      "task_instruction": "Refresh the “Harbor Sampling Brief” status slide as a field-ready monitoring card: set its slide background to the predefined Light Blue color, move the “Sampling window: 06:00–10:00” status label from the upper-right area to the lower-left area beneath the reading table, and make every character in that label underlined at 18 pt. Keep the table, trend graphic, and advisory badge in their current positions.",
+      "required_skill_ids": [
+        "15aece23-a215-4579-91b4-69eec72e18da.skill-01",
+        "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+        "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+        "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-02"
+      ],
+      "artifact_spec": {
+        "artifact_type": "pptx",
+        "domain": "Community harbor water-quality monitoring",
+        "presentation_title": "Harbor Sampling Brief",
+        "slide_size": "wide",
+        "theme": {
+          "primary_color": "006D77",
+          "secondary_color": "83C5BE",
+          "accent_color": "FFB703",
+          "background_color": "F7FBFC",
+          "title_font": "Liberation Sans",
+          "body_font": "Liberation Sans"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Cover for a concise community monitoring briefing",
+            "layout": "title",
+            "object_plan": [
+              {
+                "semantic_id": "cover_title",
+                "type": "text",
+                "purpose": "Presentation title reading “Harbor Sampling Brief”",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_subtitle",
+                "type": "text",
+                "purpose": "Subtitle reading “Morning shoreline checks | North Pier”",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_water_band",
+                "type": "shape",
+                "purpose": "Decorative teal wave band along the lower slide edge",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_date_tag",
+                "type": "shape",
+                "purpose": "Small accent date tag reading “May field round”",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Field-ready summary of the current sampling window and station readings",
+            "layout": "data_story",
+            "object_plan": [
+              {
+                "semantic_id": "status_slide_heading",
+                "type": "text",
+                "purpose": "Heading reading “North Pier Checkpoint”",
+                "editable": true
+              },
+              {
+                "semantic_id": "sampling_window_label",
+                "type": "text",
+                "purpose": "Movable status label reading “Sampling window: 06:00–10:00”",
+                "editable": true
+              },
+              {
+                "semantic_id": "station_readings_table",
+                "type": "table",
+                "purpose": "Three-row table of station names, turbidity readings, and condition labels",
+                "editable": true
+              },
+              {
+                "semantic_id": "turbidity_trend_chart",
+                "type": "chart",
+                "purpose": "Small line chart showing turbidity across four morning checks",
+                "editable": true
+              },
+              {
+                "semantic_id": "advisory_badge",
+                "type": "shape",
+                "purpose": "Amber advisory badge reading “Recheck after rain”",
+                "editable": true
+              },
+              {
+                "semantic_id": "source_caption",
+                "type": "text",
+                "purpose": "Small source caption reading “Volunteer readings; values shown in NTU”",
+                "editable": true
+              }
+            ]
+          }
+        ],
+        "initial_state": [
+          "The deck opens with slide 2 selected in Normal view.",
+          "Slide 2 has a white background, not the requested predefined Light Blue background.",
+          "The sampling_window_label is an editable text box positioned in the upper-right area of slide 2, above and separate from the readings table.",
+          "The sampling_window_label text is 14 pt and has no underline formatting.",
+          "The station_readings_table, turbidity_trend_chart, advisory_badge, and source_caption are already present and should remain where they are.",
+          "All planned text, shapes, table cells, and chart elements are editable static presentation objects."
+        ],
+        "must_not_be_completed": [
+          "Do not set slide 2 to the requested Light Blue background in the initial deck.",
+          "Do not place sampling_window_label in the requested lower-left position in the initial deck.",
+          "Do not underline sampling_window_label in the initial deck.",
+          "Do not set sampling_window_label to 18 pt in the initial deck."
+        ],
+        "generation_notes": [
+          "Build a wide, two-slide PPTX using only editable static text, shape, table, and chart objects.",
+          "On slide 2, place sampling_window_label clearly in the upper-right quadrant and leave open lower-left space immediately beneath station_readings_table for its requested destination.",
+          "Use a white slide 2 background initially so the Light Blue background change is readily reviewable.",
+          "Set sampling_window_label initially to 14 pt in the body font with underline disabled.",
+          "Do not use native placeholders, speaker notes, transitions, animations, embedded media, or external assets."
+        ]
+      },
+      "operator_guide": {
+        "recommended_demonstration": [
+          {
+            "skill_id": "15aece23-a215-4579-91b4-69eec72e18da.skill-01",
+            "operation_intent": "Relocate the sampling-window status text box from the upper-right portion of slide 2 to the designated open lower-left area beneath the table.",
+            "visible_success_signal": "The entire “Sampling window: 06:00–10:00” text box appears below the table on the lower-left, while the table and chart have not moved.",
+            "efficiency_tip": "Select the text box border once, then drag the object rather than entering text-editing mode."
+          },
+          {
+            "skill_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+            "operation_intent": "Apply underline formatting to every character in the sampling-window status label.",
+            "visible_success_signal": "Both the “Sampling window:” text and the “06:00–10:00” time range have a continuous underline.",
+            "efficiency_tip": "Select all text in the label before applying Underline so the whole label is formatted in one action."
+          },
+          {
+            "skill_id": "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+            "operation_intent": "Change the sampling-window status label to 18 pt.",
+            "visible_success_signal": "The status label is visibly larger than its initial 14 pt appearance and displays as 18 pt when its text is selected.",
+            "efficiency_tip": "Replace the font-size value directly in the toolbar field rather than stepping through size increments."
+          },
+          {
+            "skill_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-02",
+            "operation_intent": "Apply the predefined Light Blue color to slide 2’s background.",
+            "visible_success_signal": "The full slide canvas behind all slide 2 objects is Light Blue, with the objects retaining their own fills and positions.",
+            "efficiency_tip": "Select the slide thumbnail before opening Background settings so the color applies to the slide rather than a selected object."
+          }
+        ],
+        "allowed_variation": "The exact drag path and the sequence used for text formatting may vary, provided the specified final placement, 18 pt size, full underline, and predefined Light Blue slide background are visible.",
+        "recording_start_state": "Open the supplied two-slide presentation with slide 2 selected; all requested changes are intentionally incomplete.",
+        "recording_end_state": "Slide 2 has a predefined Light Blue background, and its sampling-window label is positioned beneath the table at lower-left, fully underlined, and 18 pt."
+      },
+      "expected_incidental_operations": [
+        {
+          "operation": "Select slide 2 in the Slides pane before changing its background.",
+          "reason": "Ensures the background command targets the slide rather than an object.",
+          "category": "scaffolding"
+        },
+        {
+          "operation": "Select the sampling-window text box and enter text-editing mode to select its complete text.",
+          "reason": "Required to apply the requested character-level underline and font-size formatting to the full label.",
+          "category": "substantive_prerequisite"
+        },
+        {
+          "operation": "Deselect the text insertion point and select the sampling-window text box border before dragging.",
+          "reason": "Required to move the complete text box without altering its text content.",
+          "category": "scaffolding"
+        }
+      ],
+      "review_status": "pending",
+      "source_contribution": {
+        "by_source_task": [
+          {
+            "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+            "skill_count": 1,
+            "skill_fraction": 0.25
+          },
+          {
+            "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+            "skill_count": 1,
+            "skill_fraction": 0.25
+          },
+          {
+            "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+            "skill_count": 1,
+            "skill_fraction": 0.25
+          },
+          {
+            "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+            "skill_count": 1,
+            "skill_fraction": 0.25
+          }
+        ],
+        "dominant_source_task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+        "dominant_source_skill_fraction": 0.25,
+        "complete_source_skill_sets_included": [
+          "15aece23-a215-4579-91b4-69eec72e18da"
+        ]
+      },
+      "similarity_reference": {
+        "lexical": {
+          "most_similar_source_task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+          "max_sequence_similarity": 0.290598,
+          "exact_source_instruction_match": false,
+          "by_source_task": [
+            {
+              "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+              "sequence_similarity": 0.159204
+            },
+            {
+              "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+              "sequence_similarity": 0.290598
+            },
+            {
+              "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+              "sequence_similarity": 0.156863
+            },
+            {
+              "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+              "sequence_similarity": 0.249097
+            },
+            {
+              "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+              "sequence_similarity": 0.056452
+            },
+            {
+              "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+              "sequence_similarity": 0.147186
+            },
+            {
+              "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+              "sequence_similarity": 0.092243
+            },
+            {
+              "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+              "sequence_similarity": 0.127753
+            },
+            {
+              "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+              "sequence_similarity": 0.134146
+            },
+            {
+              "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+              "sequence_similarity": 0.11157
+            },
+            {
+              "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+              "sequence_similarity": 0.028481
+            },
+            {
+              "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+              "sequence_similarity": 0.180672
+            },
+            {
+              "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+              "sequence_similarity": 0.272553
+            },
+            {
+              "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+              "sequence_similarity": 0.101266
+            },
+            {
+              "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+              "sequence_similarity": 0.192469
+            },
+            {
+              "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+              "sequence_similarity": 0.019481
+            },
+            {
+              "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+              "sequence_similarity": 0.17193
+            },
+            {
+              "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+              "sequence_similarity": 0.219512
+            },
+            {
+              "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+              "sequence_similarity": 0.080169
+            },
+            {
+              "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+              "sequence_similarity": 0.095868
+            },
+            {
+              "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+              "sequence_similarity": 0.154812
+            },
+            {
+              "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+              "sequence_similarity": 0.078431
+            },
+            {
+              "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+              "sequence_similarity": 0.116667
+            },
+            {
+              "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+              "sequence_similarity": 0.198381
+            },
+            {
+              "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+              "sequence_similarity": 0.164271
+            },
+            {
+              "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+              "sequence_similarity": 0.206751
+            },
+            {
+              "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+              "sequence_similarity": 0.22664
+            },
+            {
+              "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+              "sequence_similarity": 0.155508
+            },
+            {
+              "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+              "sequence_similarity": 0.241611
+            },
+            {
+              "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+              "sequence_similarity": 0.144681
+            },
+            {
+              "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+              "sequence_similarity": 0.166983
+            },
+            {
+              "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+              "sequence_similarity": 0.096774
+            },
+            {
+              "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+              "sequence_similarity": 0.015291
+            },
+            {
+              "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+              "sequence_similarity": 0.121212
+            },
+            {
+              "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+              "sequence_similarity": 0.165468
+            },
+            {
+              "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+              "sequence_similarity": 0.216495
+            },
+            {
+              "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+              "sequence_similarity": 0.232742
+            },
+            {
+              "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+              "sequence_similarity": 0.221782
+            },
+            {
+              "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+              "sequence_similarity": 0.023041
+            },
+            {
+              "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+              "sequence_similarity": 0.016155
+            },
+            {
+              "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+              "sequence_similarity": 0.112971
+            },
+            {
+              "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+              "sequence_similarity": 0.143791
+            },
+            {
+              "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+              "sequence_similarity": 0.145873
+            },
+            {
+              "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+              "sequence_similarity": 0.230769
+            },
+            {
+              "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+              "sequence_similarity": 0.158798
+            },
+            {
+              "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+              "sequence_similarity": 0.228675
+            },
+            {
+              "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+              "sequence_similarity": 0.131004
+            }
+          ]
+        },
+        "semantic": {
+          "model": "text-embedding-3-small",
+          "most_similar_source_task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+          "max_cosine_similarity": 0.523926,
+          "by_source_task": [
+            {
+              "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+              "cosine_similarity": 0.523926
+            },
+            {
+              "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+              "cosine_similarity": 0.337359
+            },
+            {
+              "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+              "cosine_similarity": 0.423165
+            },
+            {
+              "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+              "cosine_similarity": 0.459896
+            },
+            {
+              "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+              "cosine_similarity": 0.296962
+            },
+            {
+              "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+              "cosine_similarity": 0.343467
+            },
+            {
+              "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+              "cosine_similarity": 0.280069
+            },
+            {
+              "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+              "cosine_similarity": 0.37245
+            },
+            {
+              "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+              "cosine_similarity": 0.191649
+            },
+            {
+              "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+              "cosine_similarity": 0.358827
+            },
+            {
+              "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+              "cosine_similarity": 0.30825
+            },
+            {
+              "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+              "cosine_similarity": 0.386376
+            },
+            {
+              "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+              "cosine_similarity": 0.488683
+            },
+            {
+              "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+              "cosine_similarity": 0.273726
+            },
+            {
+              "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+              "cosine_similarity": 0.46494
+            },
+            {
+              "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+              "cosine_similarity": 0.318291
+            },
+            {
+              "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+              "cosine_similarity": 0.491063
+            },
+            {
+              "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+              "cosine_similarity": 0.464686
+            },
+            {
+              "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+              "cosine_similarity": 0.449249
+            },
+            {
+              "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+              "cosine_similarity": 0.217746
+            },
+            {
+              "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+              "cosine_similarity": 0.468158
+            },
+            {
+              "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+              "cosine_similarity": 0.337766
+            },
+            {
+              "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+              "cosine_similarity": 0.404549
+            },
+            {
+              "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+              "cosine_similarity": 0.432711
+            },
+            {
+              "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+              "cosine_similarity": 0.464361
+            },
+            {
+              "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+              "cosine_similarity": 0.520965
+            },
+            {
+              "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+              "cosine_similarity": 0.495917
+            },
+            {
+              "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+              "cosine_similarity": 0.507635
+            },
+            {
+              "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+              "cosine_similarity": 0.357081
+            },
+            {
+              "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+              "cosine_similarity": 0.257967
+            },
+            {
+              "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+              "cosine_similarity": 0.449515
+            },
+            {
+              "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+              "cosine_similarity": 0.473364
+            },
+            {
+              "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+              "cosine_similarity": 0.298152
+            },
+            {
+              "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+              "cosine_similarity": 0.370148
+            },
+            {
+              "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+              "cosine_similarity": 0.439097
+            },
+            {
+              "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+              "cosine_similarity": 0.344031
+            },
+            {
+              "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+              "cosine_similarity": 0.387162
+            },
+            {
+              "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+              "cosine_similarity": 0.459995
+            },
+            {
+              "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+              "cosine_similarity": 0.328628
+            },
+            {
+              "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+              "cosine_similarity": 0.283967
+            },
+            {
+              "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+              "cosine_similarity": 0.329603
+            },
+            {
+              "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+              "cosine_similarity": 0.374886
+            },
+            {
+              "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+              "cosine_similarity": 0.368996
+            },
+            {
+              "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+              "cosine_similarity": 0.409944
+            },
+            {
+              "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+              "cosine_similarity": 0.430947
+            },
+            {
+              "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+              "cosine_similarity": 0.312264
+            },
+            {
+              "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+              "cosine_similarity": 0.405459
+            }
+          ],
+          "embedding_request_id": "cc608694-63df-470f-b93e-6f5e37f47834"
+        }
+      },
+      "generation": {
+        "attempt": 1,
+        "kind": "new_combination",
+        "request_id": "c49881a3-38ef-464a-a9ea-f9b8b3bcbec3",
+        "prompt_sha256": "ffd9651baee1a2dc196d7df3d99f5c7274984c11fb7938aa0c7353788513f08c"
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-002",
+      "generation_round": 1,
+      "parent_reference_task_id": null,
+      "app": "libreoffice_impress",
+      "task_instruction": "Finalize the Harbor Air Lab briefing: on the “Field Snapshot” slide, move the coastal landscape illustration from the left panel into the right-side image frame, make the heading “FIELD SNAPSHOT” bold, and right-align the source line beneath the image. On the following “Next Measurement” slide, center the text in the closing callout, “Sampling begins at first light.” Keep all wording and other slide elements unchanged.",
+      "required_skill_ids": [
+        "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01",
+        "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01",
+        "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01",
+        "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01"
+      ],
+      "artifact_spec": {
+        "artifact_type": "pptx",
+        "domain": "Environmental field briefing for a harbor air-quality sampling team",
+        "presentation_title": "Harbor Air Lab: Dawn Sampling Brief",
+        "slide_size": "wide",
+        "theme": {
+          "primary_color": "0B3954",
+          "secondary_color": "BFD7EA",
+          "accent_color": "F4A261",
+          "background_color": "F7FAFC",
+          "title_font": "Aptos Display",
+          "body_font": "Aptos"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Briefing cover that establishes the harbor sampling theme.",
+            "layout": "title",
+            "object_plan": [
+              {
+                "semantic_id": "cover_horizon_band",
+                "type": "shape",
+                "purpose": "Full-width dark harbor-horizon band along the lower third of the cover.",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_title",
+                "type": "text",
+                "purpose": "Presentation title reading “Harbor Air Lab”.",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_subtitle",
+                "type": "text",
+                "purpose": "Subtitle reading “Dawn Sampling Brief · Coastal Operations Team”.",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_wave_mark",
+                "type": "shape",
+                "purpose": "Small orange wave-like accent beside the subtitle.",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Field snapshot with an image placement target and a concise source citation.",
+            "layout": "two_column",
+            "object_plan": [
+              {
+                "semantic_id": "snapshot_heading",
+                "type": "text",
+                "purpose": "Editable heading reading “FIELD SNAPSHOT”; initially not bold.",
+                "editable": true
+              },
+              {
+                "semantic_id": "snapshot_context",
+                "type": "text",
+                "purpose": "Two-line context statement about prevailing offshore wind and pier access.",
+                "editable": true
+              },
+              {
+                "semantic_id": "snapshot_image_frame",
+                "type": "shape",
+                "purpose": "Light-blue outlined frame in the right panel that marks the intended image destination.",
+                "editable": true
+              },
+              {
+                "semantic_id": "snapshot_coastal_landscape",
+                "type": "image",
+                "purpose": "Editable coastal landscape illustration, initially positioned in the left panel rather than in its right-side frame.",
+                "editable": true
+              },
+              {
+                "semantic_id": "snapshot_source_line",
+                "type": "text",
+                "purpose": "Editable citation reading “Source: Harbor survey team, 06:10”; initially left-aligned beneath the intended image frame.",
+                "editable": true
+              },
+              {
+                "semantic_id": "snapshot_status_chip",
+                "type": "shape",
+                "purpose": "Orange rounded status chip labeled “CLEAR WINDOW”.",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 3,
+            "purpose": "Next-step slide that closes the briefing with a centered operational callout.",
+            "layout": "process",
+            "object_plan": [
+              {
+                "semantic_id": "measurement_heading",
+                "type": "text",
+                "purpose": "Heading reading “NEXT MEASUREMENT”.",
+                "editable": true
+              },
+              {
+                "semantic_id": "measurement_step_one",
+                "type": "shape",
+                "purpose": "Numbered process marker for “Calibrate sensors”.",
+                "editable": true
+              },
+              {
+                "semantic_id": "measurement_step_two",
+                "type": "shape",
+                "purpose": "Numbered process marker for “Launch skiff”.",
+                "editable": true
+              },
+              {
+                "semantic_id": "measurement_step_three",
+                "type": "shape",
+                "purpose": "Numbered process marker for “Log coastal readings”.",
+                "editable": true
+              },
+              {
+                "semantic_id": "measurement_closing_callout",
+                "type": "text",
+                "purpose": "Editable closing callout reading “Sampling begins at first light.”; initially left-aligned within a wide pale-blue callout area.",
+                "editable": true
+              },
+              {
+                "semantic_id": "measurement_callout_backing",
+                "type": "shape",
+                "purpose": "Wide pale-blue rounded rectangle behind the closing callout.",
+                "editable": true
+              }
+            ]
+          }
+        ],
+        "initial_state": [
+          "The deck contains three editable wide-format slides using the Harbor Air Lab theme.",
+          "On slide 2, the coastal landscape illustration is visibly in the left panel while an empty outlined destination frame is visibly present on the right panel.",
+          "On slide 2, “FIELD SNAPSHOT” is regular weight, not bold.",
+          "On slide 2, the source line below the right-side frame is left-aligned.",
+          "On slide 3, the closing callout text is left-aligned within its wide callout area."
+        ],
+        "must_not_be_completed": [
+          "Do not move the coastal landscape illustration into the right-side image frame.",
+          "Do not bold the “FIELD SNAPSHOT” heading.",
+          "Do not right-align the slide 2 source line.",
+          "Do not center the slide 3 closing callout text.",
+          "Do not alter the slide order, theme colors, wording, or other objects."
+        ],
+        "generation_notes": [
+          "Use a privacy-safe, builder-generated shoreline illustration rather than an external photograph or a copied source asset.",
+          "Create all displayed text as editable text objects, not native placeholder controls.",
+          "Place the image frame and source line so the requested move and right alignment yield an unambiguous visual result.",
+          "Use object geometry that leaves sufficient room for the image to move from the left panel to the right panel without overlapping the heading or source line."
+        ]
+      },
+      "operator_guide": {
+        "recommended_demonstration": [
+          {
+            "skill_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8.skill-01",
+            "operation_intent": "Apply bold character formatting to the slide 2 heading only.",
+            "visible_success_signal": "“FIELD SNAPSHOT” has a visibly heavier weight while its wording, position, and color remain unchanged.",
+            "efficiency_tip": "Enter text-editing mode in the heading and use Ctrl+B with the heading text selected or the insertion point in that text."
+          },
+          {
+            "skill_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340.skill-01",
+            "operation_intent": "Relocate the slide 2 coastal landscape illustration into the outlined destination frame on the right.",
+            "visible_success_signal": "The coastal landscape illustration occupies the right-side frame area, and the left panel no longer contains the illustration.",
+            "efficiency_tip": "Drag from the image interior rather than a sizing handle; use the visible frame edges as the placement reference."
+          },
+          {
+            "skill_id": "08aced46-45a2-48d7-993b-ed3fb5b32302.skill-01",
+            "operation_intent": "Right-align the slide 2 source citation paragraph.",
+            "visible_success_signal": "The citation’s right edge aligns with the right edge of its text box beneath the image frame.",
+            "efficiency_tip": "Place the text cursor in the source paragraph before applying Right Align."
+          },
+          {
+            "skill_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567.skill-01",
+            "operation_intent": "Center the paragraph in the slide 3 closing callout.",
+            "visible_success_signal": "“Sampling begins at first light.” is centered horizontally in the pale-blue callout area.",
+            "efficiency_tip": "Enter the callout text box, select its text, and apply Center Align once."
+          }
+        ],
+        "allowed_variation": "Minor differences in the precise image drop point are acceptable if the image is clearly positioned within the right-side outlined frame. The requested text formatting and paragraph alignments must remain exact.",
+        "recording_start_state": "Open the supplied three-slide presentation in normal slide editing view with all specified incomplete states visible.",
+        "recording_end_state": "Slide 2 has the image in the right frame, a bold heading, and a right-aligned source line; slide 3 has a centered closing callout."
+      },
+      "expected_incidental_operations": [
+        {
+          "operation": "Navigate between slides 2 and 3 in the Slides pane.",
+          "reason": "The coordinated edits are located on two related content slides.",
+          "category": "scaffolding"
+        },
+        {
+          "operation": "Enter text-editing mode and select text in the heading, source line, and closing callout as needed.",
+          "reason": "Character formatting and paragraph alignment must apply to text rather than to the containing objects.",
+          "category": "substantive_prerequisite"
+        },
+        {
+          "operation": "Select the coastal landscape illustration before dragging it.",
+          "reason": "The image must be selected to relocate it into the designated frame.",
+          "category": "substantive_prerequisite"
+        }
+      ],
+      "review_status": "pending",
+      "source_contribution": {
+        "by_source_task": [
+          {
+            "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+            "skill_count": 1,
+            "skill_fraction": 0.25
+          },
+          {
+            "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+            "skill_count": 1,
+            "skill_fraction": 0.25
+          },
+          {
+            "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+            "skill_count": 1,
+            "skill_fraction": 0.25
+          },
+          {
+            "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+            "skill_count": 1,
+            "skill_fraction": 0.25
+          }
+        ],
+        "dominant_source_task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+        "dominant_source_skill_fraction": 0.25,
+        "complete_source_skill_sets_included": [
+          "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+          "08aced46-45a2-48d7-993b-ed3fb5b32302",
+          "2b94c692-6abb-48ae-ab0b-b3e8a19cb340"
+        ]
+      },
+      "similarity_reference": {
+        "lexical": {
+          "most_similar_source_task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+          "max_sequence_similarity": 0.274583,
+          "exact_source_instruction_match": false,
+          "by_source_task": [
+            {
+              "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+              "sequence_similarity": 0.156098
+            },
+            {
+              "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+              "sequence_similarity": 0.268007
+            },
+            {
+              "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+              "sequence_similarity": 0.165605
+            },
+            {
+              "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+              "sequence_similarity": 0.24735
+            },
+            {
+              "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+              "sequence_similarity": 0.02381
+            },
+            {
+              "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+              "sequence_similarity": 0.177215
+            },
+            {
+              "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+              "sequence_similarity": 0.151329
+            },
+            {
+              "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+              "sequence_similarity": 0.167382
+            },
+            {
+              "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+              "sequence_similarity": 0.115079
+            },
+            {
+              "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+              "sequence_similarity": 0.153226
+            },
+            {
+              "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+              "sequence_similarity": 0.021739
+            },
+            {
+              "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+              "sequence_similarity": 0.163934
+            },
+            {
+              "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+              "sequence_similarity": 0.243902
+            },
+            {
+              "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+              "sequence_similarity": 0.19823
+            },
+            {
+              "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+              "sequence_similarity": 0.17551
+            },
+            {
+              "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+              "sequence_similarity": 0.009554
+            },
+            {
+              "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+              "sequence_similarity": 0.264605
+            },
+            {
+              "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+              "sequence_similarity": 0.22619
+            },
+            {
+              "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+              "sequence_similarity": 0.106996
+            },
+            {
+              "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+              "sequence_similarity": 0.246353
+            },
+            {
+              "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+              "sequence_similarity": 0.134694
+            },
+            {
+              "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+              "sequence_similarity": 0.152866
+            },
+            {
+              "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+              "sequence_similarity": 0.126016
+            },
+            {
+              "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+              "sequence_similarity": 0.173913
+            },
+            {
+              "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+              "sequence_similarity": 0.164329
+            },
+            {
+              "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+              "sequence_similarity": 0.127572
+            },
+            {
+              "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+              "sequence_similarity": 0.205825
+            },
+            {
+              "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+              "sequence_similarity": 0.096842
+            },
+            {
+              "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+              "sequence_similarity": 0.25
+            },
+            {
+              "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+              "sequence_similarity": 0.091286
+            },
+            {
+              "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+              "sequence_similarity": 0.274583
+            },
+            {
+              "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+              "sequence_similarity": 0.189474
+            },
+            {
+              "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+              "sequence_similarity": 0.048048
+            },
+            {
+              "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+              "sequence_similarity": 0.177215
+            },
+            {
+              "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+              "sequence_similarity": 0.15493
+            },
+            {
+              "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+              "sequence_similarity": 0.175084
+            },
+            {
+              "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+              "sequence_similarity": 0.192678
+            },
+            {
+              "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+              "sequence_similarity": 0.119923
+            },
+            {
+              "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+              "sequence_similarity": 0.013636
+            },
+            {
+              "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+              "sequence_similarity": 0.015848
+            },
+            {
+              "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+              "sequence_similarity": 0.122449
+            },
+            {
+              "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+              "sequence_similarity": 0.106157
+            },
+            {
+              "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+              "sequence_similarity": 0.228893
+            },
+            {
+              "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+              "sequence_similarity": 0.241107
+            },
+            {
+              "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+              "sequence_similarity": 0.142259
+            },
+            {
+              "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+              "sequence_similarity": 0.241563
+            },
+            {
+              "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+              "sequence_similarity": 0.119149
+            }
+          ]
+        },
+        "semantic": {
+          "model": "text-embedding-3-small",
+          "most_similar_source_task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+          "max_cosine_similarity": 0.525306,
+          "by_source_task": [
+            {
+              "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+              "cosine_similarity": 0.458279
+            },
+            {
+              "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+              "cosine_similarity": 0.478245
+            },
+            {
+              "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+              "cosine_similarity": 0.525306
+            },
+            {
+              "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+              "cosine_similarity": 0.480647
+            },
+            {
+              "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+              "cosine_similarity": 0.323272
+            },
+            {
+              "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+              "cosine_similarity": 0.435633
+            },
+            {
+              "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+              "cosine_similarity": 0.360161
+            },
+            {
+              "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+              "cosine_similarity": 0.512044
+            },
+            {
+              "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+              "cosine_similarity": 0.154105
+            },
+            {
+              "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+              "cosine_similarity": 0.419706
+            },
+            {
+              "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+              "cosine_similarity": 0.304077
+            },
+            {
+              "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+              "cosine_similarity": 0.402928
+            },
+            {
+              "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+              "cosine_similarity": 0.435318
+            },
+            {
+              "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+              "cosine_similarity": 0.32126
+            },
+            {
+              "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+              "cosine_similarity": 0.430423
+            },
+            {
+              "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+              "cosine_similarity": 0.315373
+            },
+            {
+              "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+              "cosine_similarity": 0.436841
+            },
+            {
+              "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+              "cosine_similarity": 0.505462
+            },
+            {
+              "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+              "cosine_similarity": 0.43595
+            },
+            {
+              "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+              "cosine_similarity": 0.326894
+            },
+            {
+              "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+              "cosine_similarity": 0.437409
+            },
+            {
+              "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+              "cosine_similarity": 0.43204
+            },
+            {
+              "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+              "cosine_similarity": 0.464845
+            },
+            {
+              "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+              "cosine_similarity": 0.500236
+            },
+            {
+              "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+              "cosine_similarity": 0.399641
+            },
+            {
+              "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+              "cosine_similarity": 0.480338
+            },
+            {
+              "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+              "cosine_similarity": 0.460932
+            },
+            {
+              "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+              "cosine_similarity": 0.485285
+            },
+            {
+              "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+              "cosine_similarity": 0.438436
+            },
+            {
+              "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+              "cosine_similarity": 0.298939
+            },
+            {
+              "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+              "cosine_similarity": 0.415399
+            },
+            {
+              "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+              "cosine_similarity": 0.484246
+            },
+            {
+              "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+              "cosine_similarity": 0.337936
+            },
+            {
+              "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+              "cosine_similarity": 0.434154
+            },
+            {
+              "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+              "cosine_similarity": 0.360587
+            },
+            {
+              "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+              "cosine_similarity": 0.371336
+            },
+            {
+              "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+              "cosine_similarity": 0.453807
+            },
+            {
+              "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+              "cosine_similarity": 0.467197
+            },
+            {
+              "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+              "cosine_similarity": 0.375971
+            },
+            {
+              "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+              "cosine_similarity": 0.323561
+            },
+            {
+              "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+              "cosine_similarity": 0.389444
+            },
+            {
+              "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+              "cosine_similarity": 0.454407
+            },
+            {
+              "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+              "cosine_similarity": 0.454039
+            },
+            {
+              "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+              "cosine_similarity": 0.505467
+            },
+            {
+              "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+              "cosine_similarity": 0.487691
+            },
+            {
+              "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+              "cosine_similarity": 0.356758
+            },
+            {
+              "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+              "cosine_similarity": 0.446477
+            }
+          ],
+          "embedding_request_id": "1b8331a5-3c9c-489f-a950-ed3661568454"
+        }
+      },
+      "generation": {
+        "attempt": 2,
+        "kind": "new_combination",
+        "request_id": "8deb0b79-4f1f-45d5-a298-f0a11116a0dc",
+        "prompt_sha256": "e5c6b1feffc333b0e61be0d2f0f8045535b3e22475cb1d8b24575df45bdffc85"
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-003",
+      "generation_round": 1,
+      "parent_reference_task_id": null,
+      "app": "libreoffice_impress",
+      "task_instruction": "Update the “Neighborhood Repair Café” host brief for the workshop team. First inspect the copper color used by the cover headline and use that verified color for the titles on both activity slides. Select the two activity slides together and give them the shared pale-sage background. On the “Repair Table Flow” slide, set the title to 44 pt using the font-size list, and set the “Tool check-in closes at 09:50” schedule line to an exact 27 pt so it remains a distinct operational cue.",
+      "required_skill_ids": [
+        "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01",
+        "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01",
+        "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01",
+        "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03"
+      ],
+      "artifact_spec": {
+        "artifact_type": "pptx",
+        "domain": "Neighborhood repair café workshop operations",
+        "presentation_title": "Neighborhood Repair Café — Host Brief",
+        "slide_size": "wide",
+        "theme": {
+          "primary_color": "c8a06a",
+          "secondary_color": "244653",
+          "accent_color": "b85c38",
+          "background_color": "f7f1e8",
+          "title_font": "Liberation Sans",
+          "body_font": "Liberation Sans"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Cover and approved visual-color reference",
+            "layout": "title",
+            "object_plan": [
+              {
+                "semantic_id": "cover_headline_reference",
+                "type": "text",
+                "purpose": "Main cover headline whose copper font color is the approved reference",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_subtitle",
+                "type": "text",
+                "purpose": "Workshop date and venue subtitle",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_workbench_illustration",
+                "type": "shape",
+                "purpose": "Abstract workbench and hand-tool illustration",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_footer_tag",
+                "type": "shape",
+                "purpose": "Small host-team identity tag",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Repair table workflow for volunteer hosts",
+            "layout": "process",
+            "object_plan": [
+              {
+                "semantic_id": "flow_slide_title",
+                "type": "text",
+                "purpose": "Activity-slide title to recolor from the verified cover reference and resize through the size list",
+                "editable": true
+              },
+              {
+                "semantic_id": "flow_intro_text",
+                "type": "text",
+                "purpose": "Short explanation of the repair-table sequence",
+                "editable": true
+              },
+              {
+                "semantic_id": "flow_step_intake",
+                "type": "shape",
+                "purpose": "First workflow step for greeting and issue intake",
+                "editable": true
+              },
+              {
+                "semantic_id": "flow_step_sort",
+                "type": "shape",
+                "purpose": "Second workflow step for sorting repair requests",
+                "editable": true
+              },
+              {
+                "semantic_id": "flow_step_handoff",
+                "type": "shape",
+                "purpose": "Third workflow step for technician handoff",
+                "editable": true
+              },
+              {
+                "semantic_id": "flow_connector_one",
+                "type": "shape",
+                "purpose": "Arrow joining the first and second workflow steps",
+                "editable": true
+              },
+              {
+                "semantic_id": "flow_connector_two",
+                "type": "shape",
+                "purpose": "Arrow joining the second and third workflow steps",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 3,
+            "purpose": "Opening-station timing and host readiness",
+            "layout": "two_column",
+            "object_plan": [
+              {
+                "semantic_id": "timing_slide_title",
+                "type": "text",
+                "purpose": "Second activity-slide title to recolor from the verified cover reference",
+                "editable": true
+              },
+              {
+                "semantic_id": "timing_schedule_cue",
+                "type": "text",
+                "purpose": "Operational schedule line requiring an exact 27-point font size",
+                "editable": true
+              },
+              {
+                "semantic_id": "timing_checklist_text",
+                "type": "text",
+                "purpose": "Host readiness checklist",
+                "editable": true
+              },
+              {
+                "semantic_id": "timing_supply_panel",
+                "type": "shape",
+                "purpose": "Panel framing supplies to stage before doors open",
+                "editable": true
+              },
+              {
+                "semantic_id": "timing_supply_list",
+                "type": "text",
+                "purpose": "List of signs, clipboards, and safety equipment",
+                "editable": true
+              },
+              {
+                "semantic_id": "timing_clock_badge",
+                "type": "shape",
+                "purpose": "Visual clock badge beside the schedule cue",
+                "editable": true
+              }
+            ]
+          }
+        ],
+        "initial_state": [
+          "The deck contains three editable wide-format slides using a warm linen cover background and a restrained repair-workshop visual system.",
+          "Slide 1 headline reads “Neighborhood Repair Café” in copper #B85C38 at 40 pt; it is the approved color reference but has not yet been inspected through the font-color control.",
+          "Slide 2 is titled “Repair Table Flow” in dark teal #244653 at 36 pt. It has a light blue-gray background #EFF6F6 and a three-step process diagram.",
+          "Slide 3 is titled “Open the Station” in dark teal #244653 at 36 pt. It has a pale peach background #F8E9DD, a checklist, and the schedule line “Tool check-in closes at 09:50” at 22 pt.",
+          "The activity-slide titles do not yet match the cover headline color, the two activity-slide backgrounds are visibly different, the Slide 2 title is not 44 pt, and the Slide 3 schedule cue is not 27 pt."
+        ],
+        "must_not_be_completed": [
+          "Do not pre-match the activity-slide title colors to the cover headline.",
+          "Do not pre-apply the shared pale-sage #E3EAD7 background to Slides 2 and 3.",
+          "Do not pre-size the Slide 2 title to 44 pt or the Slide 3 schedule cue to 27 pt.",
+          "Do not alter the cover headline’s copper reference color, body text, workflow wording, or slide order."
+        ],
+        "generation_notes": [
+          "Build all listed objects as normal editable text boxes and editable shapes; do not use native placeholders, notes, animations, or external media.",
+          "Use the intended shared activity-slide background color #E3EAD7 after editing; retain the cover background #F7F1E8.",
+          "Place the Slide 2 process steps horizontally across the lower half, and arrange the Slide 3 checklist left of the supplies panel to make both slides visibly related but distinct.",
+          "Use the exact text strings stated in the initial-state descriptions so a reviewer can identify the title and schedule-line targets unambiguously."
+        ]
+      },
+      "operator_guide": {
+        "recommended_demonstration": [
+          {
+            "skill_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab.skill-01",
+            "operation_intent": "Build a two-slide selection for the related activity slides before applying their shared background treatment.",
+            "visible_success_signal": "Slides 2 and 3 are simultaneously highlighted in the Slides pane, and both subsequently show the same pale-sage background.",
+            "efficiency_tip": "Click Slide 2, then Ctrl-click Slide 3 so the common background can be applied as one grouped slide operation."
+          },
+          {
+            "skill_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-01",
+            "operation_intent": "Verify the approved copper title color from the cover headline before using it on the activity-slide titles.",
+            "visible_success_signal": "With the cover headline selected, the font-color control indicates the copper reference color; both activity titles later visibly match that hue.",
+            "efficiency_tip": "Select the cover headline itself before opening the font-color control, rather than relying on a toolbar default."
+          },
+          {
+            "skill_id": "3161d64e-3120-47b4-aaad-6a764a92493b.skill-01",
+            "operation_intent": "Set the Slide 3 operational schedule line to its non-preset exact size of 27 pt.",
+            "visible_success_signal": "The full “Tool check-in closes at 09:50” line is visibly larger than its initial state and reports 27 pt when its text is selected.",
+            "efficiency_tip": "Enter text-editing mode, select the complete schedule line, type 27 in the font-size field, and confirm it."
+          },
+          {
+            "skill_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1.skill-03",
+            "operation_intent": "Use the font-size dropdown to promote the Slide 2 workflow title to 44 pt.",
+            "visible_success_signal": "The selected “Repair Table Flow” title is visibly more prominent and reports 44 pt.",
+            "efficiency_tip": "Keep the title text selected while choosing 44 pt from the size list so the formatting applies only to that title."
+          }
+        ],
+        "allowed_variation": "Minor selection and toolbar-navigation paths may vary, provided the specified objects, colors, font sizes, shared backgrounds, and slide order are preserved.",
+        "recording_start_state": "Open the generated presentation in normal editing view with all three slide thumbnails visible and no text object selected.",
+        "recording_end_state": "Slides 2 and 3 share pale-sage backgrounds and copper titles; the Slide 2 title is 44 pt and the Slide 3 schedule line is 27 pt."
+      },
+      "expected_incidental_operations": [
+        {
+          "operation": "Apply the inspected copper #B85C38 font color to the titles on Slides 2 and 3.",
+          "reason": "The task requires the activity-slide titles to match the verified cover-headline color.",
+          "category": "task_specific"
+        },
+        {
+          "operation": "Apply pale-sage #E3EAD7 as the shared background for the selected activity slides.",
+          "reason": "This is the visible shared treatment requested for the two related activity slides after their thumbnail multi-selection.",
+          "category": "task_specific"
+        }
+      ],
+      "review_status": "pending",
+      "source_contribution": {
+        "by_source_task": [
+          {
+            "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+            "skill_count": 1,
+            "skill_fraction": 0.25
+          },
+          {
+            "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+            "skill_count": 1,
+            "skill_fraction": 0.25
+          },
+          {
+            "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+            "skill_count": 1,
+            "skill_fraction": 0.25
+          },
+          {
+            "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+            "skill_count": 1,
+            "skill_fraction": 0.25
+          }
+        ],
+        "dominant_source_task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+        "dominant_source_skill_fraction": 0.25,
+        "complete_source_skill_sets_included": [
+          "3161d64e-3120-47b4-aaad-6a764a92493b"
+        ]
+      },
+      "similarity_reference": {
+        "lexical": {
+          "most_similar_source_task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+          "max_sequence_similarity": 0.289121,
+          "exact_source_instruction_match": false,
+          "by_source_task": [
+            {
+              "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+              "sequence_similarity": 0.147493
+            },
+            {
+              "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+              "sequence_similarity": 0.206061
+            },
+            {
+              "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+              "sequence_similarity": 0.11236
+            },
+            {
+              "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+              "sequence_similarity": 0.197138
+            },
+            {
+              "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+              "sequence_similarity": 0.02442
+            },
+            {
+              "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+              "sequence_similarity": 0.126629
+            },
+            {
+              "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+              "sequence_similarity": 0.07971
+            },
+            {
+              "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+              "sequence_similarity": 0.117202
+            },
+            {
+              "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+              "sequence_similarity": 0.137566
+            },
+            {
+              "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+              "sequence_similarity": 0.135957
+            },
+            {
+              "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+              "sequence_similarity": 0.011315
+            },
+            {
+              "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+              "sequence_similarity": 0.163339
+            },
+            {
+              "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+              "sequence_similarity": 0.218121
+            },
+            {
+              "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+              "sequence_similarity": 0.197452
+            },
+            {
+              "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+              "sequence_similarity": 0.162749
+            },
+            {
+              "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+              "sequence_similarity": 0.008683
+            },
+            {
+              "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+              "sequence_similarity": 0.179845
+            },
+            {
+              "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+              "sequence_similarity": 0.21164
+            },
+            {
+              "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+              "sequence_similarity": 0.120219
+            },
+            {
+              "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+              "sequence_similarity": 0.188235
+            },
+            {
+              "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+              "sequence_similarity": 0.144665
+            },
+            {
+              "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+              "sequence_similarity": 0.11985
+            },
+            {
+              "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+              "sequence_similarity": 0.111712
+            },
+            {
+              "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+              "sequence_similarity": 0.172232
+            },
+            {
+              "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+              "sequence_similarity": 0.185053
+            },
+            {
+              "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+              "sequence_similarity": 0.174863
+            },
+            {
+              "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+              "sequence_similarity": 0.179931
+            },
+            {
+              "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+              "sequence_similarity": 0.163569
+            },
+            {
+              "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+              "sequence_similarity": 0.289121
+            },
+            {
+              "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+              "sequence_similarity": 0.150459
+            },
+            {
+              "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+              "sequence_similarity": 0.202658
+            },
+            {
+              "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+              "sequence_similarity": 0.173776
+            },
+            {
+              "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+              "sequence_similarity": 0.013717
+            },
+            {
+              "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+              "sequence_similarity": 0.081937
+            },
+            {
+              "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+              "sequence_similarity": 0.161648
+            },
+            {
+              "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+              "sequence_similarity": 0.17656
+            },
+            {
+              "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+              "sequence_similarity": 0.19244
+            },
+            {
+              "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+              "sequence_similarity": 0.113793
+            },
+            {
+              "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+              "sequence_similarity": 0.008484
+            },
+            {
+              "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+              "sequence_similarity": 0.017291
+            },
+            {
+              "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+              "sequence_similarity": 0.155515
+            },
+            {
+              "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+              "sequence_similarity": 0.108614
+            },
+            {
+              "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+              "sequence_similarity": 0.244966
+            },
+            {
+              "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+              "sequence_similarity": 0.144112
+            },
+            {
+              "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+              "sequence_similarity": 0.147874
+            },
+            {
+              "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+              "sequence_similarity": 0.178914
+            },
+            {
+              "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+              "sequence_similarity": 0.105066
+            }
+          ]
+        },
+        "semantic": {
+          "model": "text-embedding-3-small",
+          "most_similar_source_task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+          "max_cosine_similarity": 0.540673,
+          "by_source_task": [
+            {
+              "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+              "cosine_similarity": 0.524353
+            },
+            {
+              "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+              "cosine_similarity": 0.391059
+            },
+            {
+              "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+              "cosine_similarity": 0.489704
+            },
+            {
+              "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+              "cosine_similarity": 0.465954
+            },
+            {
+              "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+              "cosine_similarity": 0.278116
+            },
+            {
+              "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+              "cosine_similarity": 0.407664
+            },
+            {
+              "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+              "cosine_similarity": 0.293811
+            },
+            {
+              "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+              "cosine_similarity": 0.384939
+            },
+            {
+              "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+              "cosine_similarity": 0.137088
+            },
+            {
+              "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+              "cosine_similarity": 0.484733
+            },
+            {
+              "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+              "cosine_similarity": 0.373819
+            },
+            {
+              "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+              "cosine_similarity": 0.399036
+            },
+            {
+              "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+              "cosine_similarity": 0.428104
+            },
+            {
+              "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+              "cosine_similarity": 0.240645
+            },
+            {
+              "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+              "cosine_similarity": 0.517536
+            },
+            {
+              "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+              "cosine_similarity": 0.408551
+            },
+            {
+              "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+              "cosine_similarity": 0.510947
+            },
+            {
+              "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+              "cosine_similarity": 0.507863
+            },
+            {
+              "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+              "cosine_similarity": 0.488812
+            },
+            {
+              "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+              "cosine_similarity": 0.277851
+            },
+            {
+              "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+              "cosine_similarity": 0.478504
+            },
+            {
+              "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+              "cosine_similarity": 0.387704
+            },
+            {
+              "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+              "cosine_similarity": 0.407661
+            },
+            {
+              "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+              "cosine_similarity": 0.522487
+            },
+            {
+              "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+              "cosine_similarity": 0.437035
+            },
+            {
+              "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+              "cosine_similarity": 0.518939
+            },
+            {
+              "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+              "cosine_similarity": 0.498059
+            },
+            {
+              "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+              "cosine_similarity": 0.482333
+            },
+            {
+              "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+              "cosine_similarity": 0.395515
+            },
+            {
+              "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+              "cosine_similarity": 0.284565
+            },
+            {
+              "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+              "cosine_similarity": 0.511436
+            },
+            {
+              "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+              "cosine_similarity": 0.540673
+            },
+            {
+              "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+              "cosine_similarity": 0.33541
+            },
+            {
+              "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+              "cosine_similarity": 0.38962
+            },
+            {
+              "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+              "cosine_similarity": 0.455724
+            },
+            {
+              "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+              "cosine_similarity": 0.36776
+            },
+            {
+              "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+              "cosine_similarity": 0.464163
+            },
+            {
+              "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+              "cosine_similarity": 0.498752
+            },
+            {
+              "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+              "cosine_similarity": 0.321448
+            },
+            {
+              "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+              "cosine_similarity": 0.261112
+            },
+            {
+              "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+              "cosine_similarity": 0.283326
+            },
+            {
+              "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+              "cosine_similarity": 0.427795
+            },
+            {
+              "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+              "cosine_similarity": 0.451596
+            },
+            {
+              "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+              "cosine_similarity": 0.452587
+            },
+            {
+              "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+              "cosine_similarity": 0.499387
+            },
+            {
+              "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+              "cosine_similarity": 0.323011
+            },
+            {
+              "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+              "cosine_similarity": 0.416998
+            }
+          ],
+          "embedding_request_id": "cc608694-63df-470f-b93e-6f5e37f47834"
+        }
+      },
+      "generation": {
+        "attempt": 3,
+        "kind": "new_combination",
+        "request_id": "df822ef9-9269-4a5b-b11b-5263cd0055e7",
+        "prompt_sha256": "addee6bcf649daf50369d4948faf3363acfabf8354f4342c190fcf655d519ba7"
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-004",
+      "generation_round": 1,
+      "parent_reference_task_id": null,
+      "app": "libreoffice_impress",
+      "task_instruction": "Finalize the two-slide “Urban Pollinator Pocket Guide” briefing: remove the unused working slide, give the cover slide a navy blue background, and enlarge its bee photograph proportionally until it fills the existing photo window. On the species checklist slide, underline every entry in the table, from the first header cell through the final status cell, so the checklist reads as a marked reference sheet.",
+      "required_skill_ids": [
+        "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-01",
+        "bf4e9888-f10f-47af-8dba-76413038b73c.skill-02",
+        "a434992a-89df-4577-925c-0c58b747f0f4.skill-01",
+        "986fc832-6af2-417c-8845-9272b3a1528b.skill-03"
+      ],
+      "artifact_spec": {
+        "artifact_type": "pptx",
+        "domain": "Urban pollinator education",
+        "presentation_title": "Urban Pollinator Pocket Guide",
+        "slide_size": "wide",
+        "theme": {
+          "primary_color": "CFE8E1",
+          "secondary_color": "244B5A",
+          "accent_color": "F2B84B",
+          "background_color": "F7F4EC",
+          "title_font": "Liberation Sans",
+          "body_font": "Liberation Sans"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Cover for a short urban pollinator field guide",
+            "layout": "blank",
+            "object_plan": [
+              {
+                "semantic_id": "cover_text_panel",
+                "type": "shape",
+                "purpose": "Light cover panel that keeps the title and subtitle readable after the requested navy background is applied",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_heading",
+                "type": "text",
+                "purpose": "Guide title reading “Urban Pollinator Pocket Guide”",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_subheading",
+                "type": "text",
+                "purpose": "Brief subtitle reading “Recognize small helpers in city gardens”",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_photo_window",
+                "type": "shape",
+                "purpose": "Tall rounded photo window that establishes the intended image area",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_bee_photo",
+                "type": "image",
+                "purpose": "Bee-on-lavender photograph, initially centered within but visibly smaller than the photo window",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_footer_tag",
+                "type": "shape",
+                "purpose": "Small accent label reading “FIELD NOTES / 2026”",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Quick-reference checklist of pollinator observations",
+            "layout": "two_column",
+            "object_plan": [
+              {
+                "semantic_id": "checklist_heading",
+                "type": "text",
+                "purpose": "Slide heading reading “What to Look For”",
+                "editable": true
+              },
+              {
+                "semantic_id": "checklist_intro",
+                "type": "text",
+                "purpose": "Short instruction to check garden visitors without disturbing them",
+                "editable": true
+              },
+              {
+                "semantic_id": "pollinator_observation_table",
+                "type": "table",
+                "purpose": "Three-column table with headers “Visitor”, “Clue”, and “Status”; it contains four observation rows and no underlined text initially",
+                "editable": true
+              },
+              {
+                "semantic_id": "checklist_side_illustration",
+                "type": "image",
+                "purpose": "Small editable line-art illustration of a flower and bee",
+                "editable": true
+              },
+              {
+                "semantic_id": "checklist_callout",
+                "type": "shape",
+                "purpose": "Accent callout reading “Observe, don’t handle.”",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 3,
+            "purpose": "Unused internal working slide to be removed before delivery",
+            "layout": "blank",
+            "object_plan": [
+              {
+                "semantic_id": "discarded_working_note",
+                "type": "text",
+                "purpose": "Internal note reading “Scratch space — remove before sharing”",
+                "editable": true
+              },
+              {
+                "semantic_id": "discarded_placeholder_block",
+                "type": "shape",
+                "purpose": "Muted rectangle indicating unfinished working material",
+                "editable": true
+              }
+            ]
+          }
+        ],
+        "initial_state": [
+          "The presentation opens with three slides in the order shown; slide 3 is intentionally an unused working slide and must remain present initially.",
+          "Slide 1 has the default light cream background rather than navy blue.",
+          "The bee photograph on slide 1 is already centered over the tall photo window but is intentionally undersized, leaving a visible border of the photo window on all sides.",
+          "Slide 2’s checklist table contains ordinary, non-underlined text in every header and body cell.",
+          "All title, body, table, shape, and image objects are editable."
+        ],
+        "must_not_be_completed": [
+          "Do not delete slide 3 during generation; it is the slide that must be deleted by the operator.",
+          "Do not set slide 1’s background to navy blue during generation.",
+          "Do not resize the cover bee photograph to fill its photo window during generation.",
+          "Do not underline any portion of the checklist table during generation."
+        ],
+        "generation_notes": [
+          "Use a privacy-safe synthetic bee-and-lavender image for the cover and a separate simple pollinator illustration on slide 2.",
+          "Make the cover photo window and the initial photograph share the same aspect ratio, with the photo materially smaller, so proportional enlargement by a corner handle can visibly fill the window.",
+          "Use navy blue as a standard solid palette color for the requested cover background.",
+          "Keep the slide 2 table large enough that a continuous drag from the first character of the first header cell to the final character of the final status cell is practical and visibly reviewable."
+        ]
+      },
+      "operator_guide": {
+        "recommended_demonstration": [
+          {
+            "skill_id": "5d901039-a89c-4bfb-967b-bf66f4df075e.skill-01",
+            "operation_intent": "Scale the centered cover photograph up without distorting it, until it fills the existing tall photo window.",
+            "visible_success_signal": "The bee photo reaches the photo-window boundaries while retaining its original proportions and without visible side or top/bottom gaps.",
+            "efficiency_tip": "Select the image and use a corner handle for the largest practical enlargement rather than using side handles."
+          },
+          {
+            "skill_id": "bf4e9888-f10f-47af-8dba-76413038b73c.skill-02",
+            "operation_intent": "Remove the unused internal working slide from the deck.",
+            "visible_success_signal": "The slide thumbnail list contains only the cover and checklist slides, with no scratch-space slide remaining.",
+            "efficiency_tip": "Select the third slide’s thumbnail in the Slides pane and press Delete, rather than deleting the slide’s individual objects."
+          },
+          {
+            "skill_id": "a434992a-89df-4577-925c-0c58b747f0f4.skill-01",
+            "operation_intent": "Apply the requested solid navy blue background to the cover slide.",
+            "visible_success_signal": "The entire slide 1 canvas behind its objects displays a uniform navy blue background.",
+            "efficiency_tip": "Use the slide background color palette to choose navy blue directly when a solid fill is required."
+          },
+          {
+            "skill_id": "986fc832-6af2-417c-8845-9272b3a1528b.skill-03",
+            "operation_intent": "Apply underline formatting across the complete checklist table text in one continuous selection.",
+            "visible_success_signal": "Every table header and every entry through the final Status cell is underlined, with no unformatted cell text left behind.",
+            "efficiency_tip": "Activate the table, begin at the first character in the first header cell, and drag continuously through the final character in the lower-right cell before applying underline."
+          }
+        ],
+        "allowed_variation": "The exact order of the four edits may vary. Minor handle placement variation is acceptable provided the cover image remains proportional, fills the intended photo window, and remains visually aligned with it.",
+        "recording_start_state": "Open the supplied three-slide presentation in normal editing view with all four requested outcomes visibly incomplete.",
+        "recording_end_state": "The deck has two slides; the cover has a navy blue background and a proportionally enlarged photo filling its window; and every character in the checklist table is underlined."
+      },
+      "expected_incidental_operations": [
+        {
+          "operation": "Select slide thumbnails to target the cover, checklist, and unused working slide.",
+          "reason": "Each requested edit applies to a specific slide, and slide 3 must be identified before deletion.",
+          "category": "scaffolding"
+        },
+        {
+          "operation": "Apply underline after the multi-cell table text selection is active.",
+          "reason": "The task specifically requires the selected table range to become underlined.",
+          "category": "task_specific"
+        }
+      ],
+      "review_status": "pending",
+      "source_contribution": {
+        "by_source_task": [
+          {
+            "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+            "skill_count": 1,
+            "skill_fraction": 0.25
+          },
+          {
+            "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+            "skill_count": 1,
+            "skill_fraction": 0.25
+          },
+          {
+            "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+            "skill_count": 1,
+            "skill_fraction": 0.25
+          },
+          {
+            "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+            "skill_count": 1,
+            "skill_fraction": 0.25
+          }
+        ],
+        "dominant_source_task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+        "dominant_source_skill_fraction": 0.25,
+        "complete_source_skill_sets_included": []
+      },
+      "similarity_reference": {
+        "lexical": {
+          "most_similar_source_task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+          "max_sequence_similarity": 0.258706,
+          "exact_source_instruction_match": false,
+          "by_source_task": [
+            {
+              "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+              "sequence_similarity": 0.189684
+            },
+            {
+              "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+              "sequence_similarity": 0.19211
+            },
+            {
+              "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+              "sequence_similarity": 0.140044
+            },
+            {
+              "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+              "sequence_similarity": 0.192029
+            },
+            {
+              "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+              "sequence_similarity": 0.026954
+            },
+            {
+              "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+              "sequence_similarity": 0.086957
+            },
+            {
+              "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+              "sequence_similarity": 0.151579
+            },
+            {
+              "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+              "sequence_similarity": 0.115044
+            },
+            {
+              "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+              "sequence_similarity": 0.17551
+            },
+            {
+              "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+              "sequence_similarity": 0.116183
+            },
+            {
+              "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+              "sequence_similarity": 0.034921
+            },
+            {
+              "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+              "sequence_similarity": 0.177215
+            },
+            {
+              "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+              "sequence_similarity": 0.231214
+            },
+            {
+              "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+              "sequence_similarity": 0.232305
+            },
+            {
+              "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+              "sequence_similarity": 0.189076
+            },
+            {
+              "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+              "sequence_similarity": 0.016287
+            },
+            {
+              "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+              "sequence_similarity": 0.137324
+            },
+            {
+              "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+              "sequence_similarity": 0.159184
+            },
+            {
+              "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+              "sequence_similarity": 0.088983
+            },
+            {
+              "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+              "sequence_similarity": 0.258706
+            },
+            {
+              "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+              "sequence_similarity": 0.138655
+            },
+            {
+              "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+              "sequence_similarity": 0.087527
+            },
+            {
+              "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+              "sequence_similarity": 0.146444
+            },
+            {
+              "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+              "sequence_similarity": 0.101626
+            },
+            {
+              "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+              "sequence_similarity": 0.214433
+            },
+            {
+              "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+              "sequence_similarity": 0.207627
+            },
+            {
+              "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+              "sequence_similarity": 0.151697
+            },
+            {
+              "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+              "sequence_similarity": 0.143167
+            },
+            {
+              "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+              "sequence_similarity": 0.208754
+            },
+            {
+              "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+              "sequence_similarity": 0.15812
+            },
+            {
+              "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+              "sequence_similarity": 0.182857
+            },
+            {
+              "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+              "sequence_similarity": 0.143885
+            },
+            {
+              "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+              "sequence_similarity": 0.02454
+            },
+            {
+              "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+              "sequence_similarity": 0.130435
+            },
+            {
+              "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+              "sequence_similarity": 0.212996
+            },
+            {
+              "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+              "sequence_similarity": 0.193103
+            },
+            {
+              "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+              "sequence_similarity": 0.162376
+            },
+            {
+              "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+              "sequence_similarity": 0.182903
+            },
+            {
+              "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+              "sequence_similarity": 0.011547
+            },
+            {
+              "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+              "sequence_similarity": 0.045381
+            },
+            {
+              "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+              "sequence_similarity": 0.176471
+            },
+            {
+              "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+              "sequence_similarity": 0.126915
+            },
+            {
+              "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+              "sequence_similarity": 0.200385
+            },
+            {
+              "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+              "sequence_similarity": 0.215447
+            },
+            {
+              "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+              "sequence_similarity": 0.163793
+            },
+            {
+              "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+              "sequence_similarity": 0.204007
+            },
+            {
+              "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+              "sequence_similarity": 0.114035
+            }
+          ]
+        },
+        "semantic": {
+          "model": "text-embedding-3-small",
+          "most_similar_source_task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+          "max_cosine_similarity": 0.528282,
+          "by_source_task": [
+            {
+              "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+              "cosine_similarity": 0.452138
+            },
+            {
+              "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+              "cosine_similarity": 0.400275
+            },
+            {
+              "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+              "cosine_similarity": 0.516768
+            },
+            {
+              "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+              "cosine_similarity": 0.467446
+            },
+            {
+              "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+              "cosine_similarity": 0.332855
+            },
+            {
+              "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+              "cosine_similarity": 0.428655
+            },
+            {
+              "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+              "cosine_similarity": 0.339845
+            },
+            {
+              "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+              "cosine_similarity": 0.44309
+            },
+            {
+              "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+              "cosine_similarity": 0.124938
+            },
+            {
+              "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+              "cosine_similarity": 0.418392
+            },
+            {
+              "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+              "cosine_similarity": 0.326445
+            },
+            {
+              "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+              "cosine_similarity": 0.443696
+            },
+            {
+              "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+              "cosine_similarity": 0.45073
+            },
+            {
+              "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+              "cosine_similarity": 0.321975
+            },
+            {
+              "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+              "cosine_similarity": 0.453814
+            },
+            {
+              "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+              "cosine_similarity": 0.34108
+            },
+            {
+              "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+              "cosine_similarity": 0.440242
+            },
+            {
+              "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+              "cosine_similarity": 0.488721
+            },
+            {
+              "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+              "cosine_similarity": 0.441888
+            },
+            {
+              "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+              "cosine_similarity": 0.309929
+            },
+            {
+              "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+              "cosine_similarity": 0.434434
+            },
+            {
+              "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+              "cosine_similarity": 0.413147
+            },
+            {
+              "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+              "cosine_similarity": 0.444693
+            },
+            {
+              "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+              "cosine_similarity": 0.498796
+            },
+            {
+              "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+              "cosine_similarity": 0.461049
+            },
+            {
+              "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+              "cosine_similarity": 0.528282
+            },
+            {
+              "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+              "cosine_similarity": 0.490507
+            },
+            {
+              "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+              "cosine_similarity": 0.480392
+            },
+            {
+              "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+              "cosine_similarity": 0.46233
+            },
+            {
+              "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+              "cosine_similarity": 0.375433
+            },
+            {
+              "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+              "cosine_similarity": 0.423973
+            },
+            {
+              "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+              "cosine_similarity": 0.497889
+            },
+            {
+              "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+              "cosine_similarity": 0.357649
+            },
+            {
+              "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+              "cosine_similarity": 0.420031
+            },
+            {
+              "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+              "cosine_similarity": 0.420862
+            },
+            {
+              "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+              "cosine_similarity": 0.419166
+            },
+            {
+              "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+              "cosine_similarity": 0.423773
+            },
+            {
+              "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+              "cosine_similarity": 0.481813
+            },
+            {
+              "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+              "cosine_similarity": 0.412705
+            },
+            {
+              "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+              "cosine_similarity": 0.28833
+            },
+            {
+              "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+              "cosine_similarity": 0.398337
+            },
+            {
+              "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+              "cosine_similarity": 0.445812
+            },
+            {
+              "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+              "cosine_similarity": 0.4539
+            },
+            {
+              "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+              "cosine_similarity": 0.472925
+            },
+            {
+              "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+              "cosine_similarity": 0.457688
+            },
+            {
+              "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+              "cosine_similarity": 0.341448
+            },
+            {
+              "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+              "cosine_similarity": 0.453853
+            }
+          ],
+          "embedding_request_id": "cc608694-63df-470f-b93e-6f5e37f47834"
+        }
+      },
+      "generation": {
+        "attempt": 4,
+        "kind": "new_combination",
+        "request_id": "564469cb-72b4-424d-80be-0398459c68dd",
+        "prompt_sha256": "4018728e8dd0020d50cd8347906c3a69715786a54c60f6c2757de68b998b3466"
+      }
+    },
+    {
+      "reference_task_id": "reference-task-impress-full-v2-r01-005",
+      "generation_round": 1,
+      "parent_reference_task_id": null,
+      "app": "libreoffice_impress",
+      "task_instruction": "On the “Join the workday” slide, establish the two color cues for the event: make all text inside the dark-green schedule card use the standard Yellow font-color palette swatch, and recolor only the words “bring work gloves” in the preparation sentence with the Dark Red 2 palette swatch. Leave the rest of the preparation sentence unchanged.",
+      "required_skill_ids": [
+        "986fc832-6af2-417c-8845-9272b3a1528b.skill-02",
+        "57667013-ea97-417c-9dce-2713091e6e2a.skill-01"
+      ],
+      "artifact_spec": {
+        "artifact_type": "pptx",
+        "domain": "community garden volunteer event",
+        "presentation_title": "Riverside Garden Volunteer Day",
+        "slide_size": "wide",
+        "theme": {
+          "primary_color": "C8D8C0",
+          "secondary_color": "234B45",
+          "accent_color": "D36B4B",
+          "background_color": "F7F2E8",
+          "title_font": "Liberation Sans",
+          "body_font": "Liberation Sans"
+        },
+        "slides": [
+          {
+            "slide_number": 1,
+            "purpose": "Opening slide introducing the neighborhood garden workday.",
+            "layout": "title",
+            "object_plan": [
+              {
+                "semantic_id": "cover_background_panel",
+                "type": "shape",
+                "purpose": "Full-slide soft cream background panel",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_garden_arc",
+                "type": "shape",
+                "purpose": "Decorative dark-green curved garden-bed motif along the lower edge",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_event_title",
+                "type": "text",
+                "purpose": "Main event title reading “Riverside Garden Volunteer Day”",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_event_subtitle",
+                "type": "text",
+                "purpose": "Event date and location line reading “Saturday, 18 May · Riverside Commons”",
+                "editable": true
+              },
+              {
+                "semantic_id": "cover_seedling_icon",
+                "type": "shape",
+                "purpose": "Simple seedling illustration beside the title",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 2,
+            "purpose": "Volunteer sign-up information requiring the requested text color cues.",
+            "layout": "two_column",
+            "object_plan": [
+              {
+                "semantic_id": "signup_background_panel",
+                "type": "shape",
+                "purpose": "Full-slide cream background panel",
+                "editable": true
+              },
+              {
+                "semantic_id": "signup_section_title",
+                "type": "text",
+                "purpose": "Slide heading reading “Join the workday”",
+                "editable": true
+              },
+              {
+                "semantic_id": "signup_schedule_card",
+                "type": "shape",
+                "purpose": "Dark-green rounded card behind the schedule information",
+                "editable": true
+              },
+              {
+                "semantic_id": "signup_schedule_text",
+                "type": "text",
+                "purpose": "Schedule details reading “Meet at the tool shed\\n8:30–11:30 a.m.”; all text initially white and intended to become standard Yellow",
+                "editable": true
+              },
+              {
+                "semantic_id": "signup_preparation_label",
+                "type": "text",
+                "purpose": "Small label reading “Before you arrive”",
+                "editable": true
+              },
+              {
+                "semantic_id": "signup_preparation_sentence",
+                "type": "text",
+                "purpose": "Preparation sentence reading “Please bring work gloves and a refillable bottle.”; the phrase “bring work gloves” is initially the same dark-green color as surrounding text and intended to become Dark Red 2",
+                "editable": true
+              },
+              {
+                "semantic_id": "signup_path_marker",
+                "type": "shape",
+                "purpose": "Accent-colored circular marker beside the preparation guidance",
+                "editable": true
+              },
+              {
+                "semantic_id": "signup_signup_footer",
+                "type": "text",
+                "purpose": "Footer reading “Questions? Contact the garden desk by Friday.”",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "slide_number": 3,
+            "purpose": "Closing slide with practical next actions for attendees.",
+            "layout": "title_content",
+            "object_plan": [
+              {
+                "semantic_id": "next_steps_background_panel",
+                "type": "shape",
+                "purpose": "Full-slide pale green background panel",
+                "editable": true
+              },
+              {
+                "semantic_id": "next_steps_title",
+                "type": "text",
+                "purpose": "Heading reading “A few things that help”",
+                "editable": true
+              },
+              {
+                "semantic_id": "next_steps_checklist",
+                "type": "text",
+                "purpose": "Three-item checklist covering water, sun protection, and check-in",
+                "editable": true
+              },
+              {
+                "semantic_id": "next_steps_toolbox_icon",
+                "type": "shape",
+                "purpose": "Simple toolbox illustration near the checklist",
+                "editable": true
+              },
+              {
+                "semantic_id": "next_steps_thank_you",
+                "type": "text",
+                "purpose": "Closing line reading “Thank you for caring for our shared space.”",
+                "editable": true
+              }
+            ]
+          }
+        ],
+        "initial_state": [
+          "The presentation contains three editable wide-format slides with the Riverside Garden Volunteer Day theme already applied.",
+          "On slide 2, the dark-green schedule card and its editable schedule text are present; the schedule text is currently white rather than standard Yellow.",
+          "On slide 2, the editable preparation sentence contains the exact phrase “bring work gloves”; that phrase is currently dark green, matching the other words in the sentence rather than Dark Red 2.",
+          "No requested font-color change has been completed in the initial deck."
+        ],
+        "must_not_be_completed": [
+          "Do not change any slide background, shape fill, layout, object position, text wording, font family, font size, or text alignment.",
+          "Do not recolor any text other than all text in the schedule callout and only the phrase “bring work gloves” in the preparation sentence.",
+          "Do not apply Dark Red 2 to the entire preparation sentence.",
+          "Do not use a yellow variation other than the standard Yellow palette swatch for the schedule callout."
+        ],
+        "generation_notes": [
+          "Build all listed text as ordinary editable text boxes, not title or content placeholders.",
+          "Keep “bring work gloves” in a single editable paragraph with the rest of the preparation sentence so a character-level font-color change is visibly testable.",
+          "Use a dark-green schedule card with sufficient contrast for the initial white text and the required standard Yellow text.",
+          "Use a light background behind the preparation sentence so Dark Red 2 is visibly distinguishable from the unchanged dark-green text."
+        ]
+      },
+      "operator_guide": {
+        "recommended_demonstration": [
+          {
+            "skill_id": "986fc832-6af2-417c-8845-9272b3a1528b.skill-02",
+            "operation_intent": "Apply Dark Red 2 only to the phrase “bring work gloves” within the preparation sentence on slide 2.",
+            "visible_success_signal": "Only those three words appear in Dark Red 2, while “Please” and “and a refillable bottle.” remain dark green.",
+            "efficiency_tip": "Enter text-editing mode in the preparation sentence and select exactly the target phrase before opening the Font Color palette."
+          },
+          {
+            "skill_id": "57667013-ea97-417c-9dce-2713091e6e2a.skill-01",
+            "operation_intent": "Apply the standard Yellow palette swatch to every character in the schedule callout on slide 2.",
+            "visible_success_signal": "Both lines, “Meet at the tool shed” and “8:30–11:30 a.m.”, display in the same standard Yellow against the dark-green card.",
+            "efficiency_tip": "Click inside the schedule text box first, then use Ctrl+A to select only that text box’s complete text before choosing Yellow from the Font Color palette."
+          }
+        ],
+        "allowed_variation": "Equivalent efficient selection and palette-opening paths are acceptable if the specified palette colors and exact text scope are preserved.",
+        "recording_start_state": "Open the supplied presentation in LibreOffice Impress with slide 2 selected or readily accessible; all requested text is still in its initial colors.",
+        "recording_end_state": "Slide 2 retains its original layout and wording, the whole schedule callout is standard Yellow, and only “bring work gloves” is Dark Red 2."
+      },
+      "expected_incidental_operations": [
+        {
+          "operation": "Navigate to slide 2 and enter text-editing mode in each specified text box.",
+          "reason": "The requested character-level and text-box-wide font-color changes target two separate editable text objects on that slide.",
+          "category": "scaffolding"
+        }
+      ],
+      "review_status": "pending",
+      "source_contribution": {
+        "by_source_task": [
+          {
+            "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+            "skill_count": 1,
+            "skill_fraction": 0.5
+          },
+          {
+            "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+            "skill_count": 1,
+            "skill_fraction": 0.5
+          }
+        ],
+        "dominant_source_task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+        "dominant_source_skill_fraction": 0.5,
+        "complete_source_skill_sets_included": []
+      },
+      "similarity_reference": {
+        "lexical": {
+          "most_similar_source_task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+          "max_sequence_similarity": 0.338645,
+          "exact_source_instruction_match": false,
+          "by_source_task": [
+            {
+              "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+              "sequence_similarity": 0.190654
+            },
+            {
+              "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+              "sequence_similarity": 0.332689
+            },
+            {
+              "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+              "sequence_similarity": 0.148338
+            },
+            {
+              "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+              "sequence_similarity": 0.263374
+            },
+            {
+              "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+              "sequence_similarity": 0.023669
+            },
+            {
+              "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+              "sequence_similarity": 0.101523
+            },
+            {
+              "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+              "sequence_similarity": 0.180929
+            },
+            {
+              "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+              "sequence_similarity": 0.129534
+            },
+            {
+              "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+              "sequence_similarity": 0.141509
+            },
+            {
+              "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+              "sequence_similarity": 0.192308
+            },
+            {
+              "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+              "sequence_similarity": 0.021277
+            },
+            {
+              "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+              "sequence_similarity": 0.181373
+            },
+            {
+              "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+              "sequence_similarity": 0.207506
+            },
+            {
+              "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+              "sequence_similarity": 0.160825
+            },
+            {
+              "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+              "sequence_similarity": 0.141463
+            },
+            {
+              "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+              "sequence_similarity": 0.021898
+            },
+            {
+              "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+              "sequence_similarity": 0.338645
+            },
+            {
+              "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+              "sequence_similarity": 0.231132
+            },
+            {
+              "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+              "sequence_similarity": 0.098522
+            },
+            {
+              "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+              "sequence_similarity": 0.175047
+            },
+            {
+              "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+              "sequence_similarity": 0.180488
+            },
+            {
+              "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+              "sequence_similarity": 0.112532
+            },
+            {
+              "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+              "sequence_similarity": 0.101942
+            },
+            {
+              "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+              "sequence_similarity": 0.201878
+            },
+            {
+              "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+              "sequence_similarity": 0.162291
+            },
+            {
+              "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+              "sequence_similarity": 0.187192
+            },
+            {
+              "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+              "sequence_similarity": 0.257471
+            },
+            {
+              "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+              "sequence_similarity": 0.121519
+            },
+            {
+              "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+              "sequence_similarity": 0.287879
+            },
+            {
+              "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+              "sequence_similarity": 0.064677
+            },
+            {
+              "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+              "sequence_similarity": 0.16122
+            },
+            {
+              "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+              "sequence_similarity": 0.163265
+            },
+            {
+              "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+              "sequence_similarity": 0.006826
+            },
+            {
+              "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+              "sequence_similarity": 0.101523
+            },
+            {
+              "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+              "sequence_similarity": 0.221311
+            },
+            {
+              "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+              "sequence_similarity": 0.182879
+            },
+            {
+              "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+              "sequence_similarity": 0.255125
+            },
+            {
+              "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+              "sequence_similarity": 0.169336
+            },
+            {
+              "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+              "sequence_similarity": 0.0325
+            },
+            {
+              "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+              "sequence_similarity": 0.047187
+            },
+            {
+              "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+              "sequence_similarity": 0.131707
+            },
+            {
+              "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+              "sequence_similarity": 0.158568
+            },
+            {
+              "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+              "sequence_similarity": 0.198675
+            },
+            {
+              "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+              "sequence_similarity": 0.13615
+            },
+            {
+              "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+              "sequence_similarity": 0.19598
+            },
+            {
+              "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+              "sequence_similarity": 0.153209
+            },
+            {
+              "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+              "sequence_similarity": 0.128205
+            }
+          ]
+        },
+        "semantic": {
+          "model": "text-embedding-3-small",
+          "most_similar_source_task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+          "max_cosine_similarity": 0.637427,
+          "by_source_task": [
+            {
+              "task_id": "04578141-1d42-4146-b9cf-6fab4ce5fd74",
+              "cosine_similarity": 0.637427
+            },
+            {
+              "task_id": "05dd4c1d-c489-4c85-8389-a7836c4f0567",
+              "cosine_similarity": 0.346699
+            },
+            {
+              "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+              "cosine_similarity": 0.39742
+            },
+            {
+              "task_id": "0a211154-fda0-48d0-9274-eaac4ce5486d",
+              "cosine_similarity": 0.543579
+            },
+            {
+              "task_id": "0f84bef9-9790-432e-92b7-eece357603fb",
+              "cosine_similarity": 0.235336
+            },
+            {
+              "task_id": "15aece23-a215-4579-91b4-69eec72e18da",
+              "cosine_similarity": 0.311534
+            },
+            {
+              "task_id": "21760ecb-8f62-40d2-8d85-0cee5725cb72",
+              "cosine_similarity": 0.283315
+            },
+            {
+              "task_id": "2b94c692-6abb-48ae-ab0b-b3e8a19cb340",
+              "cosine_similarity": 0.34875
+            },
+            {
+              "task_id": "2cd43775-7085-45d8-89fa-9e35c0a915cf",
+              "cosine_similarity": 0.14028
+            },
+            {
+              "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+              "cosine_similarity": 0.373065
+            },
+            {
+              "task_id": "358aa0a7-6677-453f-ae35-e440f004c31e",
+              "cosine_similarity": 0.328861
+            },
+            {
+              "task_id": "39be0d19-634d-4475-8768-09c130f5425d",
+              "cosine_similarity": 0.3396
+            },
+            {
+              "task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+              "cosine_similarity": 0.43198
+            },
+            {
+              "task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+              "cosine_similarity": 0.232597
+            },
+            {
+              "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+              "cosine_similarity": 0.489432
+            },
+            {
+              "task_id": "550ce7e7-747b-495f-b122-acdc4d0b8e54",
+              "cosine_similarity": 0.374416
+            },
+            {
+              "task_id": "57667013-ea97-417c-9dce-2713091e6e2a",
+              "cosine_similarity": 0.604336
+            },
+            {
+              "task_id": "5c1a6c3d-c1b3-47cb-9b01-8d1b7544ffa1",
+              "cosine_similarity": 0.473223
+            },
+            {
+              "task_id": "5cfb9197-e72b-454b-900e-c06b0c802b40",
+              "cosine_similarity": 0.411774
+            },
+            {
+              "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+              "cosine_similarity": 0.221749
+            },
+            {
+              "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+              "cosine_similarity": 0.485944
+            },
+            {
+              "task_id": "73c99fb9-f828-43ce-b87a-01dc07faa224",
+              "cosine_similarity": 0.359036
+            },
+            {
+              "task_id": "7ae48c60-f143-4119-b659-15b8f485eb9a",
+              "cosine_similarity": 0.331977
+            },
+            {
+              "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+              "cosine_similarity": 0.465217
+            },
+            {
+              "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+              "cosine_similarity": 0.501803
+            },
+            {
+              "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+              "cosine_similarity": 0.502384
+            },
+            {
+              "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+              "cosine_similarity": 0.562181
+            },
+            {
+              "task_id": "9cf05d24-6bd9-4dae-8967-f67d88f5d38a",
+              "cosine_similarity": 0.518708
+            },
+            {
+              "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+              "cosine_similarity": 0.343089
+            },
+            {
+              "task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+              "cosine_similarity": 0.254694
+            },
+            {
+              "task_id": "a434992a-89df-4577-925c-0c58b747f0f4",
+              "cosine_similarity": 0.514265
+            },
+            {
+              "task_id": "a53f80cd-4a90-4490-8310-097b011433f6",
+              "cosine_similarity": 0.517472
+            },
+            {
+              "task_id": "a669ef01-ded5-4099-9ea9-25e99b569840",
+              "cosine_similarity": 0.287276
+            },
+            {
+              "task_id": "ac1b39ff-ee4d-4483-abce-c117e98942f0",
+              "cosine_similarity": 0.292496
+            },
+            {
+              "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+              "cosine_similarity": 0.467579
+            },
+            {
+              "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+              "cosine_similarity": 0.299164
+            },
+            {
+              "task_id": "af2d657a-e6b3-4c6a-9f67-9e3ed015974c",
+              "cosine_similarity": 0.424357
+            },
+            {
+              "task_id": "b8adbc24-cef2-4b15-99d5-ecbe7ff445eb",
+              "cosine_similarity": 0.504413
+            },
+            {
+              "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+              "cosine_similarity": 0.329886
+            },
+            {
+              "task_id": "c59742c0-4323-4b9d-8a02-723c251deaa0",
+              "cosine_similarity": 0.260044
+            },
+            {
+              "task_id": "c82632a4-56b6-4db4-9dd1-3820ee3388e4",
+              "cosine_similarity": 0.298639
+            },
+            {
+              "task_id": "ce88f674-ab7a-43da-9201-468d38539e4a",
+              "cosine_similarity": 0.319183
+            },
+            {
+              "task_id": "e4ef0baf-4b52-4590-a47e-d4d464cca2d7",
+              "cosine_similarity": 0.372336
+            },
+            {
+              "task_id": "ed43c15f-00cb-4054-9c95-62c880865d68",
+              "cosine_similarity": 0.402567
+            },
+            {
+              "task_id": "edb61b14-a854-4bf5-a075-c8075c11293a",
+              "cosine_similarity": 0.435578
+            },
+            {
+              "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+              "cosine_similarity": 0.267523
+            },
+            {
+              "task_id": "f23acfd2-c485-4b7c-a1e7-d4303ddfe864",
+              "cosine_similarity": 0.359978
+            }
+          ],
+          "embedding_request_id": "1b8331a5-3c9c-489f-a950-ed3661568454"
+        }
+      },
+      "generation": {
+        "attempt": 5,
+        "kind": "new_combination",
+        "request_id": "7038cb31-4d46-4b70-8422-8ef06127bdc3",
+        "prompt_sha256": "580e8a9f5a57efdd365feb0c1191914268a21906788c9da159246c9ee8dee893"
+      }
+    }
+  ]
+}

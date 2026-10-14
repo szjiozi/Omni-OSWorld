@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "pptx",
+  "opens_as_zip_package": true,
+  "libreoffice_render_succeeded": true,
+  "slide_count": 6,
+  "semantic_object_count": 18,
+  "geometric_overlap_warnings": [],
+  "placeholder_matches": [],
+  "media_part_count": 3,
+  "notes_part_count": 12,
+  "slides": [
+    {
+      "slide_number": 1,
+      "text": [
+        "Community Learning Showcase",
+        "Program overview"
+      ],
+      "shape_count": 2,
+      "picture_count": 0,
+      "graphic_frame_count": 0,
+      "placeholder_count": 2,
+      "empty_placeholder_count": 0,
+      "slide_number_field_count": 0,
+      "has_transition": false
+    },
+    {
+      "slide_number": 2,
+      "text": [
+        "Workshop Plan",
+        "Opening session",
+        "Hands-on activity",
+        "Discussion",
+        ""
+      ],
+      "shape_count": 2,
+      "picture_count": 0,
+      "graphic_frame_count": 0,
+      "placeholder_count": 2,
+      "empty_placeholder_count": 0,
+      "slide_number_field_count": 0,
+      "has_transition": false
+    },
+    {
+      "slide_number": 3,
+      "text": [
+        "Participation Snapshot",
+        "Registrations",
+        "Facilitators",
+        "Next milestone"
+      ],
+      "shape_count": 4,
+      "picture_count": 1,
+      "graphic_frame_count": 0,
+      "placeholder_count": 0,
+      "empty_placeholder_count": 0,
+      "slide_number_field_count": 0,
+      "has_transition": false
+    },
+    {
+      "slide_number": 4,
+      "text": [
+        "Resource Guide",
+        "Venue",
+        "Materials",
+        "Support contacts",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "shape_count": 2,
+      "picture_count": 0,
+      "graphic_frame_count": 0,
+      "placeholder_count": 2,
+      "empty_placeholder_count": 0,
+      "slide_number_field_count": 0,
+      "has_transition": false
+    },
+    {
+      "slide_number": 5,
+      "text": [
+        "Closing Notes",
+        "Key takeaway",
+        "Follow-up"
+      ],
+      "shape_count": 3,
+      "picture_count": 2,
+      "graphic_frame_count": 0,
+      "placeholder_count": 0,
+      "empty_placeholder_count": 0,
+      "slide_number_field_count": 0,
+      "has_transition": false
+    },
+    {
+      "slide_number": 6,
+      "text": [
+        "Community Learning Showcase",
+        "Program overview",
+        "Schedule",
+        "Resources",
+        "",
+        "",
+        ""
+      ],
+      "shape_count": 2,
+      "picture_count": 0,
+      "graphic_frame_count": 0,
+      "placeholder_count": 2,
+      "empty_placeholder_count": 0,
+      "slide_number_field_count": 0,
+      "has_transition": false
+    }
+  ],
+  "preview_files": [
+    "slide-01.png",
+    "slide-02.png",
+    "slide-03.png",
+    "slide-04.png",
+    "slide-05.png",
+    "slide-06.png"
+  ],
+  "contact_sheet": "contact-sheet.png",
+  "visual_review_required": true
+}

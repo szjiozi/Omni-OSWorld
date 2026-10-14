@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "task_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a",
+  "app": "libreoffice_impress",
+  "single_action_count": 18,
+  "prompt_sha256": "45f50c54a534469cd6735c6b62cd665834b74f5c39372db8f9f6709549219c1f",
+  "request_id": "869f41f0-1da7-4130-9d4b-3d8203ef2867",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1667,
+    "cached_input_tokens": 1403,
+    "output_tokens": 279,
+    "estimated_cost_usd": 0.0041566
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply a font color to selected text",
+        "procedure": [
+          "Click inside the target text box to enter text-editing mode, then select the text with Ctrl+A when the entire text box should be formatted.",
+          "Open the font color dropdown and choose the desired swatch. For example, choose Black to make all selected title text black.",
+          "Repeat on other text objects as needed, selecting each object’s text before applying the color."
+        ],
+        "efficiency_tip": "Select all text in each target box before opening the color menu; the chosen color applies immediately to the selection and avoids changing text one character or paragraph at a time.",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4,
+          7,
+          8,
+          9,
+          10,
+          13,
+          14,
+          15,
+          16
+        ]
+      },
+      {
+        "name": "Underline all text in a selected text box",
+        "procedure": [
+          "After the text in a text box is selected in text-editing mode, click the Underline toolbar icon.",
+          "For example, select an entire title with Ctrl+A and click Underline once to apply underlining to every selected character.",
+          "Repeat for each additional text box that needs the same character formatting."
+        ],
+        "efficiency_tip": "Apply underline while the text remains selected after other character formatting, so no extra text selection is required.",
+        "action_ids": [
+          5,
+          11,
+          17
+        ]
+      }
+    ]
+  }
+}

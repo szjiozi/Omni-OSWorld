@@ -1,0 +1,99 @@
+{
+  "id": "reference-task-impress-full-v2-r01-001",
+  "snapshot": "libreoffice_impress",
+  "instruction": "Refresh the “Harbor Sampling Brief” status slide as a field-ready monitoring card: set its slide background to the predefined Light Blue color, move the “Sampling window: 06:00–10:00” status label from the upper-right area to the lower-left area beneath the reading table, and make every character in that label underlined at 18 pt. Keep the table, trend graphic, and advisory badge in their current positions.",
+  "source": "OSWorld Expert Skill Reference Pilot",
+  "config": [
+    {
+      "type": "upload_file",
+      "parameters": {
+        "files": [
+          {
+            "local_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-001/initial_artifact.pptx",
+            "path": "/home/user/Desktop/harbor_sampling_brief.pptx"
+          }
+        ]
+      }
+    },
+    {
+      "type": "open",
+      "parameters": {
+        "path": "/home/user/Desktop/harbor_sampling_brief.pptx"
+      }
+    }
+  ],
+  "related_apps": [
+    "libreoffice_impress"
+  ],
+  "reference_annotation": {
+    "schema_version": "1.0",
+    "reference_task_id": "reference-task-impress-full-v2-r01-001",
+    "artifact_path": "evaluation_examples/expert_skill_learning/impress_full_v1/generated_v2/round_01/artifacts/reference-task-impress-full-v2-r01-001/initial_artifact.pptx",
+    "artifact_sha256": "2cbae7745ecfed293513f0341316bab41ee2458270221d074daff9a35938d882",
+    "guest_artifact_path": "/home/user/Desktop/harbor_sampling_brief.pptx",
+    "required_skill_ids": [
+      "15aece23-a215-4579-91b4-69eec72e18da.skill-01",
+      "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+      "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+      "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-02"
+    ],
+    "operator_guide": {
+      "recommended_demonstration": [
+        {
+          "skill_id": "15aece23-a215-4579-91b4-69eec72e18da.skill-01",
+          "operation_intent": "Relocate the sampling-window status text box from the upper-right portion of slide 2 to the designated open lower-left area beneath the table.",
+          "visible_success_signal": "The entire “Sampling window: 06:00–10:00” text box appears below the table on the lower-left, while the table and chart have not moved.",
+          "efficiency_tip": "Select the text box border once, then drag the object rather than entering text-editing mode."
+        },
+        {
+          "skill_id": "4ed5abd0-8b5d-47bd-839f-cacfa15ca37a.skill-02",
+          "operation_intent": "Apply underline formatting to every character in the sampling-window status label.",
+          "visible_success_signal": "Both the “Sampling window:” text and the “06:00–10:00” time range have a continuous underline.",
+          "efficiency_tip": "Select all text in the label before applying Underline so the whole label is formatted in one action."
+        },
+        {
+          "skill_id": "a434992a-89df-4577-925c-0c58b747f0f4.skill-02",
+          "operation_intent": "Change the sampling-window status label to 18 pt.",
+          "visible_success_signal": "The status label is visibly larger than its initial 14 pt appearance and displays as 18 pt when its text is selected.",
+          "efficiency_tip": "Replace the font-size value directly in the toolbar field rather than stepping through size increments."
+        },
+        {
+          "skill_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6.skill-02",
+          "operation_intent": "Apply the predefined Light Blue color to slide 2’s background.",
+          "visible_success_signal": "The full slide canvas behind all slide 2 objects is Light Blue, with the objects retaining their own fills and positions.",
+          "efficiency_tip": "Select the slide thumbnail before opening Background settings so the color applies to the slide rather than a selected object."
+        }
+      ],
+      "allowed_variation": "The exact drag path and the sequence used for text formatting may vary, provided the specified final placement, 18 pt size, full underline, and predefined Light Blue slide background are visible.",
+      "recording_start_state": "Open the supplied two-slide presentation with slide 2 selected; all requested changes are intentionally incomplete.",
+      "recording_end_state": "Slide 2 has a predefined Light Blue background, and its sampling-window label is positioned beneath the table at lower-left, fully underlined, and 18 pt."
+    },
+    "expected_incidental_operations": [
+      {
+        "operation": "Select slide 2 in the Slides pane before changing its background.",
+        "reason": "Ensures the background command targets the slide rather than an object.",
+        "category": "scaffolding"
+      },
+      {
+        "operation": "Select the sampling-window text box and enter text-editing mode to select its complete text.",
+        "reason": "Required to apply the requested character-level underline and font-size formatting to the full label.",
+        "category": "substantive_prerequisite"
+      },
+      {
+        "operation": "Deselect the text insertion point and select the sampling-window text box border before dragging.",
+        "reason": "Required to move the complete text box without altering its text content.",
+        "category": "scaffolding"
+      }
+    ],
+    "ready_state_checks": [
+      "Confirm the presentation is open in LibreOffice Impress in Normal view.",
+      "Confirm that there are exactly two slides and that slide 2 is selected.",
+      "Confirm slide 2 shows the “North Pier Checkpoint” heading and the “Sampling window: 06:00–10:00” label in the upper-right area."
+    ],
+    "setup_notes": [],
+    "recording_mode": "human_reference"
+  },
+  "proxy": false,
+  "fixed_ip": false,
+  "possibility_of_env_change": "low"
+}

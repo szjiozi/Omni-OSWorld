@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+  "app": "libreoffice_impress",
+  "single_action_count": 7,
+  "prompt_sha256": "23f3ca9ea3f350898f1ac01c270cbc5011134b43513e1d8ad6dcf90af1e49bf9",
+  "request_id": "988fccb3-8543-4dbc-a1a5-888e30de6e62",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1312,
+    "cached_input_tokens": 1103,
+    "output_tokens": 333,
+    "estimated_cost_usd": 0.0046346
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Resize an image proportionally using corner handles",
+        "procedure": [
+          "Click the image once to select its outer bounding box and display resize handles; do not enter text-editing mode.",
+          "Drag a corner handle outward to enlarge the image while preserving its aspect ratio. For example, drag the top-left corner outward, then adjust the bottom-right corner if additional size is needed.",
+          "Use corner handles rather than side-middle handles when the image must retain its original proportions."
+        ],
+        "efficiency_tip": "Make the main enlargement with one corner drag, then use the opposite corner only for fine adjustment; this avoids repeated resizing and helps prevent unintended distortion.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "name": "Move a selected image by dragging its interior",
+        "procedure": [
+          "Keep the image selected after resizing.",
+          "Point to the image interior away from its resize handles, then drag it to the desired position on the slide.",
+          "For example, drag the enlarged image until its visual center aligns with the page center, while ensuring its edges cover the intended area."
+        ],
+        "efficiency_tip": "Drag from the object interior rather than a handle so the operation moves the image instead of changing its size.",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    ]
+  }
+}

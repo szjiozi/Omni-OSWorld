@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "task_id": "8979838c-54a5-4454-a2b8-3d135a1a5c8f",
+  "app": "libreoffice_impress",
+  "single_action_count": 8,
+  "prompt_sha256": "abd40cad19df91eaf73f9aebcd722c4272ed8c161a97c557a5e776d779793402",
+  "request_id": "b23cab2c-b59d-4767-9687-57113f542067",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1278,
+    "cached_input_tokens": 1103,
+    "output_tokens": 303,
+    "estimated_cost_usd": 0.0042066
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set a slide background to a solid color",
+        "procedure": [
+          "With the target slide active, open the background control dropdown.",
+          "Choose the color background option, then open its color palette or color dropdown.",
+          "Select the desired swatch; for example, choose a purple swatch from the palette to apply purple as the slide background."
+        ],
+        "efficiency_tip": "Set the background from the slide-level background control rather than drawing a full-slide rectangle, which keeps the background independent of slide objects and easier to change later.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Add text to a slide's speaker notes",
+        "procedure": [
+          "Open the View menu and switch to Notes view.",
+          "Click the notes placeholder (such as “Click to add”) to place the text cursor in the speaker-notes area.",
+          "Type the note text; for example, enter a presentation title as a note."
+        ],
+        "efficiency_tip": "Use Notes view or the notes placeholder directly instead of adding a visible text box to the slide, so the text remains presenter-only speaker notes.",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    ]
+  }
+}

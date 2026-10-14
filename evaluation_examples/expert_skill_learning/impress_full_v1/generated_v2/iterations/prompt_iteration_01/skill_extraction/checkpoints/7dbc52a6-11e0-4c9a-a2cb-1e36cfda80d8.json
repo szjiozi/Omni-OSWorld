@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "task_id": "7dbc52a6-11e0-4c9a-a2cb-1e36cfda80d8",
+  "app": "libreoffice_impress",
+  "single_action_count": 7,
+  "prompt_sha256": "00830c0fbbf080759c7301bfa827ed45f63a4ba5bc1598813f01771075600d17",
+  "request_id": "595f6b2e-cf14-40c4-806c-90780c57a6e2",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1284,
+    "cached_input_tokens": 1103,
+    "output_tokens": 654,
+    "estimated_cost_usd": 0.0084306
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Apply bold formatting to a selected text box",
+        "procedure": [
+          "Click the text box containing the text to format so that the object is selected on the slide canvas.",
+          "Press Ctrl+B to toggle bold formatting for the text in the selected text object. For example, use this to make a slide title bold without opening the font dialog."
+        ],
+        "efficiency_tip": "Use Ctrl+B after selecting the text object instead of opening character-formatting menus; press it once and visually confirm the text weight changed.",
+        "action_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "name": "Add text to a slide’s speaker notes",
+        "procedure": [
+          "Open the View menu and choose Notes to display the speaker-notes area for the current slide.",
+          "Click the notes placeholder, such as “Click to add notes,” and type the note text. For example, enter a short reminder that matches the slide title."
+        ],
+        "efficiency_tip": "Switch to Notes view before typing so text is placed in speaker notes rather than in a slide text box.",
+        "action_ids": [
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    ]
+  }
+}

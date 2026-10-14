@@ -1,0 +1,411 @@
+{
+  "schema_version": "1.0",
+  "reference_task_id": "reference-task-impress-full-v2-r01-004",
+  "base_prompt_sha256": "6806de1e4d1dc1a9c2a5d72473815caaac655927daae30207d2751b9fe3caa06",
+  "blueprint": {
+    "presentation_title": "Urban Pollinator Pocket Guide",
+    "slide_size": "wide",
+    "theme": {
+      "primary_color": "CFE8E1",
+      "secondary_color": "244B5A",
+      "accent_color": "F2B84B",
+      "background_color": "F7F4EC",
+      "title_font": "Liberation Sans",
+      "body_font": "Liberation Sans"
+    },
+    "slides": [
+      {
+        "slide_number": 1,
+        "purpose": "Cover for a short urban pollinator field guide",
+        "background_color": "F7F4EC",
+        "objects": [
+          {
+            "semantic_id": "cover_heading",
+            "type": "text",
+            "x": 0.8,
+            "y": 1.15,
+            "w": 6.75,
+            "h": 1.25,
+            "content": {
+              "text": "Urban Pollinator\nPocket Guide",
+              "shape_kind": null,
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F7F4EC",
+              "line_color": "F7F4EC",
+              "text_color": "244B5A",
+              "font_face": "Liberation Sans",
+              "font_size": 31,
+              "bold": true,
+              "italic": false,
+              "underline": false,
+              "align": "left",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "cover_subheading",
+            "type": "text",
+            "x": 0.84,
+            "y": 2.72,
+            "w": 5.9,
+            "h": 0.65,
+            "content": {
+              "text": "Recognize small helpers in city gardens",
+              "shape_kind": null,
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F7F4EC",
+              "line_color": "F7F4EC",
+              "text_color": "244B5A",
+              "font_face": "Liberation Sans",
+              "font_size": 17,
+              "bold": false,
+              "italic": false,
+              "underline": false,
+              "align": "left",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "cover_photo_window",
+            "type": "shape",
+            "x": 8.6,
+            "y": 0.75,
+            "w": 3.5,
+            "h": 5.9,
+            "content": {
+              "text": null,
+              "shape_kind": "round_rect",
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "CFE8E1",
+              "line_color": "244B5A",
+              "text_color": "244B5A",
+              "font_face": "Liberation Sans",
+              "font_size": 12,
+              "bold": false,
+              "italic": false,
+              "underline": false,
+              "align": "center",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "cover_bee_photo",
+            "type": "image",
+            "x": 9.25,
+            "y": 1.8,
+            "w": 2.2,
+            "h": 3.7,
+            "content": {
+              "text": null,
+              "shape_kind": null,
+              "image_kind": "pollinator",
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "FFFFFF",
+              "line_color": "FFFFFF",
+              "text_color": "244B5A",
+              "font_face": "Liberation Sans",
+              "font_size": 12,
+              "bold": false,
+              "italic": false,
+              "underline": false,
+              "align": "center",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "cover_footer_tag",
+            "type": "shape",
+            "x": 0.84,
+            "y": 5.78,
+            "w": 2.55,
+            "h": 0.52,
+            "content": {
+              "text": "FIELD NOTES / 2026",
+              "shape_kind": "round_rect",
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F2B84B",
+              "line_color": "F2B84B",
+              "text_color": "244B5A",
+              "font_face": "Liberation Sans",
+              "font_size": 11,
+              "bold": true,
+              "italic": false,
+              "underline": false,
+              "align": "center",
+              "valign": "mid"
+            }
+          }
+        ]
+      },
+      {
+        "slide_number": 2,
+        "purpose": "Quick-reference checklist of pollinator observations",
+        "background_color": "F7F4EC",
+        "objects": [
+          {
+            "semantic_id": "checklist_heading",
+            "type": "text",
+            "x": 0.75,
+            "y": 0.6,
+            "w": 7.4,
+            "h": 0.65,
+            "content": {
+              "text": "What to Look For",
+              "shape_kind": null,
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F7F4EC",
+              "line_color": "F7F4EC",
+              "text_color": "244B5A",
+              "font_face": "Liberation Sans",
+              "font_size": 28,
+              "bold": true,
+              "italic": false,
+              "underline": false,
+              "align": "left",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "checklist_intro",
+            "type": "text",
+            "x": 0.78,
+            "y": 1.35,
+            "w": 7.25,
+            "h": 0.52,
+            "content": {
+              "text": "Check garden visitors without disturbing them. Mark only what you can observe.",
+              "shape_kind": null,
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F7F4EC",
+              "line_color": "F7F4EC",
+              "text_color": "244B5A",
+              "font_face": "Liberation Sans",
+              "font_size": 14,
+              "bold": false,
+              "italic": false,
+              "underline": false,
+              "align": "left",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "pollinator_observation_table",
+            "type": "table",
+            "x": 0.78,
+            "y": 2.15,
+            "w": 7.75,
+            "h": 3.85,
+            "content": {
+              "text": null,
+              "shape_kind": null,
+              "image_kind": null,
+              "rows": [
+                [
+                  "Visitor",
+                  "Clue",
+                  "Status"
+                ],
+                [
+                  "Bumble bee",
+                  "Round body; pollen baskets",
+                  "Seen"
+                ],
+                [
+                  "Hoverfly",
+                  "One wing pair; hovers in place",
+                  "Look again"
+                ],
+                [
+                  "Leafcutter bee",
+                  "Neat circles cut from leaves",
+                  "Seen"
+                ],
+                [
+                  "Cabbage white",
+                  "Pale wings; quick flutter",
+                  "Noted"
+                ]
+              ],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "FFFFFF",
+              "line_color": "244B5A",
+              "text_color": "244B5A",
+              "font_face": "Liberation Sans",
+              "font_size": 15,
+              "bold": false,
+              "italic": false,
+              "underline": false,
+              "align": "left",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "checklist_side_illustration",
+            "type": "image",
+            "x": 9.25,
+            "y": 1.8,
+            "w": 2.95,
+            "h": 2.75,
+            "content": {
+              "text": null,
+              "shape_kind": null,
+              "image_kind": "pollinator",
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F7F4EC",
+              "line_color": "F7F4EC",
+              "text_color": "244B5A",
+              "font_face": "Liberation Sans",
+              "font_size": 12,
+              "bold": false,
+              "italic": false,
+              "underline": false,
+              "align": "center",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "checklist_callout",
+            "type": "shape",
+            "x": 9.05,
+            "y": 5.05,
+            "w": 3.28,
+            "h": 0.82,
+            "content": {
+              "text": "Observe, don’t handle.",
+              "shape_kind": "round_rect",
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F2B84B",
+              "line_color": "F2B84B",
+              "text_color": "244B5A",
+              "font_face": "Liberation Sans",
+              "font_size": 15,
+              "bold": true,
+              "italic": false,
+              "underline": false,
+              "align": "center",
+              "valign": "mid"
+            }
+          }
+        ]
+      },
+      {
+        "slide_number": 3,
+        "purpose": "Unused internal working slide to be removed before delivery",
+        "background_color": "F7F4EC",
+        "objects": [
+          {
+            "semantic_id": "discarded_working_note",
+            "type": "text",
+            "x": 1.05,
+            "y": 1.1,
+            "w": 6.85,
+            "h": 0.7,
+            "content": {
+              "text": "Scratch space — remove before sharing",
+              "shape_kind": null,
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "F7F4EC",
+              "line_color": "F7F4EC",
+              "text_color": "244B5A",
+              "font_face": "Liberation Sans",
+              "font_size": 24,
+              "bold": true,
+              "italic": false,
+              "underline": false,
+              "align": "left",
+              "valign": "mid"
+            }
+          },
+          {
+            "semantic_id": "discarded_placeholder_block",
+            "type": "shape",
+            "x": 1.05,
+            "y": 2.15,
+            "w": 10.9,
+            "h": 3.65,
+            "content": {
+              "text": null,
+              "shape_kind": "rect",
+              "image_kind": null,
+              "rows": [],
+              "categories": [],
+              "series": []
+            },
+            "style": {
+              "fill_color": "D9DDD8",
+              "line_color": "AEBAB5",
+              "text_color": "244B5A",
+              "font_face": "Liberation Sans",
+              "font_size": 12,
+              "bold": false,
+              "italic": false,
+              "underline": false,
+              "align": "center",
+              "valign": "mid"
+            }
+          }
+        ]
+      }
+    ],
+    "manual_setup_steps": []
+  },
+  "generation": {
+    "request_id": "8b90fac6-4c7d-459d-b0a5-ce093a085f4f",
+    "prompt_sha256": "6806de1e4d1dc1a9c2a5d72473815caaac655927daae30207d2751b9fe3caa06",
+    "model": "gpt-5.6-terra",
+    "input_tokens": 3109,
+    "output_tokens": 2274,
+    "estimated_cost_usd": 0.033506
+  }
+}

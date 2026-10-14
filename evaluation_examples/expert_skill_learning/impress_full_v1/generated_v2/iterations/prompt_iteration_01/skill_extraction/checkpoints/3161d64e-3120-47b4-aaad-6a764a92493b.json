@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "task_id": "3161d64e-3120-47b4-aaad-6a764a92493b",
+  "app": "libreoffice_impress",
+  "single_action_count": 10,
+  "prompt_sha256": "1163847f60cc4584a93c706893f43b40b41d627e1516f011f9a5573a52b873d7",
+  "request_id": "a6350927-a7cc-42c7-9e04-8efe8854e6ea",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1307,
+    "cached_input_tokens": 1103,
+    "output_tokens": 218,
+    "estimated_cost_usd": 0.0032446
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Set an exact font size for text in a text box",
+        "procedure": [
+          "In the Slides pane, select the slide containing the text box you want to format.",
+          "Enter text-editing mode for the text box and select the text whose size should change; for example, triple-click the text to select its paragraph or content.",
+          "Activate the font-size field on the formatting toolbar, replace its current value with the desired point size such as 60 pt, and press Enter to apply it.",
+          "Repeat the same selection-and-font-size entry process for other text boxes as needed, for example entering 28 pt for a second text box."
+        ],
+        "efficiency_tip": "Type the numeric point size directly into the font-size field instead of opening the preset-size list; this is faster and supports exact values. Select only the intended text before changing the size to avoid altering other objects.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    ]
+  }
+}

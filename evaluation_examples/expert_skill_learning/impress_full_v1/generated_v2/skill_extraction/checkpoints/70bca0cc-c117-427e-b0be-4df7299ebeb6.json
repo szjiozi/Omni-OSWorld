@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "task_id": "70bca0cc-c117-427e-b0be-4df7299ebeb6",
+  "app": "libreoffice_impress",
+  "single_action_count": 9,
+  "prompt_sha256": "f34315ba908ae842e1c22556016e537edddd29c5ce9f68c23e9a18e61553c4a9",
+  "request_id": "225f3cff-c798-4a88-8148-7bed0592d43d",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1588,
+    "cached_input_tokens": 1403,
+    "output_tokens": 664,
+    "estimated_cost_usd": 0.0086186
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Inspect a text object's current font color",
+        "procedure": [
+          "Select the slide containing the text object.",
+          "Click the text box once to select it, then open the Font Color drop-down on the toolbar.",
+          "Use the color currently indicated for the selected text as the reference color. For example, inspect a slide title before applying the same color elsewhere."
+        ],
+        "efficiency_tip": "Open the color control only after selecting the text object; otherwise the displayed color may reflect a default or a different selection.",
+        "action_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "name": "Set a slide background to a predefined color",
+        "procedure": [
+          "Select the target slide thumbnail so that formatting applies to the slide rather than an object on the canvas.",
+          "Open the slide Background menu, choose the background color option, and open its color palette.",
+          "Click the desired palette swatch. For example, choose a red swatch to make the entire slide background red."
+        ],
+        "efficiency_tip": "Select the slide in the Slides pane before opening Background settings to avoid changing the fill color of a currently selected text box or shape.",
+        "action_ids": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      }
+    ]
+  }
+}

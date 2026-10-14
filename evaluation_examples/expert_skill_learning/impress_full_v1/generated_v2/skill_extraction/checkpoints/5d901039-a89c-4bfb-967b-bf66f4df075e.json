@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "task_id": "5d901039-a89c-4bfb-967b-bf66f4df075e",
+  "app": "libreoffice_impress",
+  "single_action_count": 7,
+  "prompt_sha256": "fd4e4811388e7409913a3f60297f0019315699f3cb418667db6d4e7f13312765",
+  "request_id": "ecfe1f60-0e2d-4aa2-8121-e3a4431b5a63",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1612,
+    "cached_input_tokens": 1403,
+    "output_tokens": 376,
+    "estimated_cost_usd": 0.0052106
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Resize an image proportionally using corner handles",
+        "procedure": [
+          "Click the image once to select it and show its resize handles.",
+          "Drag a corner handle outward to enlarge the image while retaining its aspect ratio; for example, drag the top-left handle toward the page’s top-left area.",
+          "If more enlargement is needed, drag the opposite corner handle outward, such as the bottom-right handle toward the page’s bottom-right area."
+        ],
+        "efficiency_tip": "Use corner handles rather than side handles when enlarging an image proportionally, and make the largest practical resize first to minimize adjustment drags.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "name": "Reposition a selected image by dragging its center",
+        "procedure": [
+          "With the image still selected, point to its interior center rather than a resize handle.",
+          "Drag the image to the desired location on the slide; for example, move it until it is visually centered on the page."
+        ],
+        "efficiency_tip": "Start the drag from the image interior to move the whole object; starting on a handle would resize it instead.",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    ]
+  }
+}

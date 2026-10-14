@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "task_id": "9ec204e4-f0a3-42f8-8458-b772a6797cab",
+  "app": "libreoffice_impress",
+  "single_action_count": 7,
+  "prompt_sha256": "16da0b55e2b6d7b86717cf8b251cc4a7c4e8916ea2237d08a7800f5dd944995c",
+  "request_id": "73b272b9-e318-4504-99ce-b38c597efc5d",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1580,
+    "cached_input_tokens": 1403,
+    "output_tokens": 224,
+    "estimated_cost_usd": 0.0033226
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Multi-select slide thumbnails in the Slides pane",
+        "procedure": [
+          "In the Slides pane, click the first slide thumbnail to select it.",
+          "Hold Ctrl and click another thumbnail to add it to the selection without deselecting the first. For example, select two adjacent ending slides before applying a shared command.",
+          "Release Ctrl after all intended thumbnails are selected."
+        ],
+        "efficiency_tip": "Use Ctrl-click to build a noncontiguous or multi-slide selection in one pass instead of applying the same command separately to each slide.",
+        "action_ids": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "name": "Duplicate selected slides from the Slides pane context menu",
+        "procedure": [
+          "With one or more slide thumbnails selected in the Slides pane, right-click the selection.",
+          "Choose Duplicate Slides from the context menu. Impress creates copies of every selected slide while preserving their selected order."
+        ],
+        "efficiency_tip": "Select all slides that need copying before opening the context menu, so one Duplicate Slides command creates the entire set of copies.",
+        "action_ids": [
+          5,
+          6
+        ]
+      }
+    ]
+  }
+}

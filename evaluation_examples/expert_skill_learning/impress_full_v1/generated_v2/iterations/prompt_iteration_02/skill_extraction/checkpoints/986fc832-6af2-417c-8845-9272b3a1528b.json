@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "task_id": "986fc832-6af2-417c-8845-9272b3a1528b",
+  "app": "libreoffice_impress",
+  "single_action_count": 11,
+  "prompt_sha256": "d4c4be924f79506dfa1a36b11507d96114fb646bd6f30b339e15b1bad00328d3",
+  "request_id": "a4a5e63b-a9ed-4c32-9e3f-06abc4090d57",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1558,
+    "cached_input_tokens": 1355,
+    "output_tokens": 649,
+    "estimated_cost_usd": 0.008465
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Underline all text in a text object or table",
+        "procedure": [
+          "For a text object, click inside the text to enter text-editing mode, then press Ctrl+A to select all text in that object.",
+          "Press Ctrl+U to toggle underline on the selected text.",
+          "For a table, first select the table, click at the start of its first cell’s text, and drag through the final cell to select the table’s text; then press Ctrl+U. For example, drag from before the first header to the bottom-right cell before applying the shortcut."
+        ],
+        "efficiency_tip": "Use Ctrl+A only after entering the intended text object, so it selects that object’s content rather than unrelated slide objects. For tables, drag once across the full table text instead of formatting cells individually.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "name": "Apply a chosen font color from the color palette",
+        "procedure": [
+          "With the target text selected, click the Font Color control to open its color palette.",
+          "Choose the desired preset color, such as “Dark Red 2,” to apply it to the current selection."
+        ],
+        "efficiency_tip": "Select all target text before opening the palette so one color choice formats the entire selection at once.",
+        "action_ids": [
+          3,
+          4
+        ]
+      }
+    ]
+  }
+}

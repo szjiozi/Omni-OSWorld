@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+  "app": "libreoffice_impress",
+  "single_action_count": 17,
+  "prompt_sha256": "88f976289f60717970a90ecf8fb856aeb6b5d784d7211ccf93d8a41ec15c462f",
+  "request_id": "f60d9185-0ff4-4e40-938f-ba6add5eeb92",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1618,
+    "cached_input_tokens": 1355,
+    "output_tokens": 894,
+    "estimated_cost_usd": 0.011525
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Enable slide numbers on all slides",
+        "procedure": [
+          "Open the Insert menu and choose Header and Footer.",
+          "In the dialog, enable the Slide number checkbox.",
+          "Choose Apply to All to insert the slide-number field throughout the presentation. For example, use this when a deck currently has no visible numbering and every slide should receive the field."
+        ],
+        "efficiency_tip": "Use Apply to All rather than enabling slide numbers separately on individual slides; this creates a consistent field across the deck in one operation.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Set the slide-number field color in Master View",
+        "procedure": [
+          "Open Master View so formatting changes can be made to the master-level slide-number placeholder.",
+          "Select the slide-number box itself, then open the Font Color dropdown.",
+          "Choose the desired color, such as red. This formats the master placeholder so slides using that master can display the number in the selected color."
+        ],
+        "efficiency_tip": "Format the slide-number placeholder in Master View before editing individual slides, since master-level formatting can update many slides at once.",
+        "action_ids": [
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "name": "Apply the current font color to slide-number fields on selected slides",
+        "procedure": [
+          "Select a slide thumbnail to target that slide rather than an object on another slide.",
+          "Select its slide-number box, then use the Font Color control to apply the currently selected color.",
+          "Repeat for additional slides as needed. For example, after red has been selected in the color dropdown, select each slide-number box and click Font Color to apply red."
+        ],
+        "efficiency_tip": "Set the desired color once from the dropdown, then use the Font Color button for subsequent selected fields instead of reopening the color palette for every slide.",
+        "action_ids": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    ]
+  }
+}

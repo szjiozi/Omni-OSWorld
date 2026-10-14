@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ef9d12bd-bcee-4ba0-a40e-918400f43ddf",
+  "app": "libreoffice_impress",
+  "single_action_count": 2,
+  "prompt_sha256": "2d81f683aa3c57c4486d19bc1d12d621f6203a7138060796aa27f9478745db48",
+  "request_id": "9fd11957-d1e6-4bd9-8483-38856a05963f",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1526,
+    "cached_input_tokens": 1403,
+    "output_tokens": 123,
+    "estimated_cost_usd": 0.0020026
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Show or hide the Slides pane from the View menu",
+        "procedure": [
+          "Open the View menu in the menu bar.",
+          "Choose Slide Pane to toggle the left-side slide thumbnail pane back on or off. For example, use this command when the slide thumbnails are hidden and you need them visible for navigation or reordering."
+        ],
+        "efficiency_tip": "Use the View menu toggle directly instead of changing views or restarting the application; selecting Slide Pane restores the panel in one command.",
+        "action_ids": [
+          0,
+          1
+        ]
+      }
+    ]
+  }
+}

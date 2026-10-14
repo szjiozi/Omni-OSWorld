@@ -17,6 +17,16 @@ PLACEHOLDER_PATTERN = re.compile(
     re.IGNORECASE,
 )
 DRAWING_TEXT = "{http://schemas.openxmlformats.org/drawingml/2006/main}t"
+DRAWING_FIELD = "{http://schemas.openxmlformats.org/drawingml/2006/main}fld"
+PRESENTATION_PLACEHOLDER = (
+    "{http://schemas.openxmlformats.org/presentationml/2006/main}ph"
+)
+PRESENTATION_TRANSITION = (
+    "{http://schemas.openxmlformats.org/presentationml/2006/main}transition"
+)
+PRESENTATION_SLIDE_SIZE = (
+    "{http://schemas.openxmlformats.org/presentationml/2006/main}sldSz"
+)
 
 
 def _slide_xml_paths(archive: zipfile.ZipFile) -> list[str]:
@@ -39,29 +49,124 @@ def inspect_pptx(path: Path) -> dict:
             raise ValueError(f"PPTX lacks required parts: {missing}")
         slides = []
         all_text = []
+        presentation_root = ElementTree.fromstring(archive.read("ppt/presentation.xml"))
+        slide_size_node = next(
+            (
+                node
+                for node in presentation_root.iter()
+                if node.tag == PRESENTATION_SLIDE_SIZE
+            ),
+            None,
+        )
+        slide_width = (
+            int(slide_size_node.attrib["cx"]) if slide_size_node is not None else None
+        )
+        slide_height = (
+            int(slide_size_node.attrib["cy"]) if slide_size_node is not None else None
+        )
+        transition_slide_numbers = []
+        slide_number_field_count = 0
+        master_layout_slide_number_field_count = 0
+        slide_placeholder_count = 0
+        empty_placeholder_count = 0
         for index, name in enumerate(_slide_xml_paths(archive), start=1):
             root = ElementTree.fromstring(archive.read(name))
             texts = [node.text or "" for node in root.iter(DRAWING_TEXT)]
             all_text.extend(texts)
+            has_transition = any(
+                node.tag == PRESENTATION_TRANSITION for node in root.iter()
+            )
+            if has_transition:
+                transition_slide_numbers.append(index)
+            placeholder_count = sum(
+                1 for node in root.iter() if node.tag == PRESENTATION_PLACEHOLDER
+            )
+            empty_placeholders = sum(
+                1
+                for shape in root.iter()
+                if shape.tag.endswith("}sp")
+                and any(node.tag == PRESENTATION_PLACEHOLDER for node in shape.iter())
+                and not any(
+                    (node.text or "").strip() for node in shape.iter(DRAWING_TEXT)
+                )
+            )
+            slide_placeholder_count += placeholder_count
+            empty_placeholder_count += empty_placeholders
+            field_count = sum(
+                1
+                for node in root.iter(DRAWING_FIELD)
+                if node.attrib.get("type", "").casefold() == "slidenum"
+            )
+            slide_number_field_count += field_count
             slides.append(
                 {
                     "slide_number": index,
                     "text": texts,
-                    "shape_count": sum(1 for node in root.iter() if node.tag.endswith("}sp")),
-                    "picture_count": sum(1 for node in root.iter() if node.tag.endswith("}pic")),
+                    "shape_count": sum(
+                        1 for node in root.iter() if node.tag.endswith("}sp")
+                    ),
+                    "picture_count": sum(
+                        1 for node in root.iter() if node.tag.endswith("}pic")
+                    ),
                     "graphic_frame_count": sum(
                         1 for node in root.iter() if node.tag.endswith("}graphicFrame")
                     ),
+                    "placeholder_count": placeholder_count,
+                    "empty_placeholder_count": empty_placeholders,
+                    "slide_number_field_count": field_count,
+                    "has_transition": has_transition,
                 }
+            )
+        for name in names:
+            if not (
+                re.fullmatch(r"ppt/slideMasters/slideMaster[1-9][0-9]*\.xml", name)
+                or re.fullmatch(r"ppt/slideLayouts/slideLayout[1-9][0-9]*\.xml", name)
+            ):
+                continue
+            root = ElementTree.fromstring(archive.read(name))
+            master_layout_slide_number_field_count += sum(
+                1
+                for node in root.iter(DRAWING_FIELD)
+                if node.attrib.get("type", "").casefold() == "slidenum"
             )
         joined = "\n".join(all_text)
         return {
             "slide_count": len(slides),
+            "slide_width_emu": slide_width,
+            "slide_height_emu": slide_height,
+            "orientation": (
+                "portrait"
+                if slide_width is not None
+                and slide_height is not None
+                and slide_height > slide_width
+                else "landscape"
+            ),
             "slides": slides,
             "text": all_text,
             "placeholder_matches": sorted(set(PLACEHOLDER_PATTERN.findall(joined))),
-            "media_parts": sorted(name for name in names if name.startswith("ppt/media/")),
-            "notes_parts": sorted(name for name in names if name.startswith("ppt/notesSlides/")),
+            "media_parts": sorted(
+                name for name in names if name.startswith("ppt/media/")
+            ),
+            "notes_parts": sorted(
+                name for name in names if name.startswith("ppt/notesSlides/")
+            ),
+            "master_parts": sorted(
+                name
+                for name in names
+                if re.fullmatch(r"ppt/slideMasters/slideMaster[1-9][0-9]*\.xml", name)
+            ),
+            "layout_parts": sorted(
+                name
+                for name in names
+                if re.fullmatch(r"ppt/slideLayouts/slideLayout[1-9][0-9]*\.xml", name)
+            ),
+            "slide_placeholder_count": slide_placeholder_count,
+            "empty_placeholder_count": empty_placeholder_count,
+            "slide_number_field_count": slide_number_field_count,
+            "master_layout_slide_number_field_count": (
+                master_layout_slide_number_field_count
+            ),
+            "transition_slide_numbers": transition_slide_numbers,
         }
 
 

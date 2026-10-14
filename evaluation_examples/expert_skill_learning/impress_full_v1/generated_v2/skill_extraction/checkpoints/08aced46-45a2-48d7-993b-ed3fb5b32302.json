@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "task_id": "08aced46-45a2-48d7-993b-ed3fb5b32302",
+  "app": "libreoffice_impress",
+  "single_action_count": 4,
+  "prompt_sha256": "c965ed6df49983074daf71e70ae2404bde0d8ee8f58fc4c84885e99c835a6df6",
+  "request_id": "f71651fd-e629-4d15-b2f6-d49ea39f2241",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1529,
+    "cached_input_tokens": 0,
+    "output_tokens": 114,
+    "estimated_cost_usd": 0.004426
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Align paragraph text to the right in a text box",
+        "procedure": [
+          "Enter text-editing mode in the target text box, for example by clicking inside its title text.",
+          "Click the Right Align toolbar icon to align the current paragraph to the right edge of the text box."
+        ],
+        "efficiency_tip": "Place the text cursor in the intended paragraph before using Right Align; this avoids changing alignment on a different object or paragraph.",
+        "action_ids": [
+          1,
+          3
+        ]
+      }
+    ]
+  }
+}

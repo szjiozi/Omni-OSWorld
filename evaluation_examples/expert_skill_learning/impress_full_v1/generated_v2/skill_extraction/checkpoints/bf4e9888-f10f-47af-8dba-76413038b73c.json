@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "task_id": "bf4e9888-f10f-47af-8dba-76413038b73c",
+  "app": "libreoffice_impress",
+  "single_action_count": 11,
+  "prompt_sha256": "ef24b642a4febe05799fd1248c0cda53fcc6d6fd4bff464f6f95fb5df66fe479",
+  "request_id": "42491ca2-fdb6-43af-88e0-681c103b572d",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1675,
+    "cached_input_tokens": 1403,
+    "output_tokens": 644,
+    "estimated_cost_usd": 0.0085526
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Create one slide per image with the Photo Album command",
+        "procedure": [
+          "Open Insert > Media > Photo Album, then use Add to choose image files from a folder.",
+          "In the file picker, select a contiguous range of images with Shift. For example, with the first image selected, hold Shift and click the last image, such as pic6.png, to include pic1.png through pic6.png in filename order.",
+          "Confirm the file selection, then choose Insert Slides in the Photo Album dialog. Impress creates a separate slide for each selected image."
+        ],
+        "efficiency_tip": "Use a Shift-selected contiguous filename range instead of adding images one at a time; this preserves the file-list order while creating all image slides in a single operation.",
+        "action_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "name": "Delete the currently selected slide with the keyboard",
+        "procedure": [
+          "Select the slide thumbnail to remove in the Slides pane, then press Delete.",
+          "For example, after generating image slides, select any extra blank starter slide and press Delete to remove it from the presentation."
+        ],
+        "efficiency_tip": "Delete unwanted slides from the thumbnail pane rather than opening each slide and removing its individual contents.",
+        "action_ids": [
+          10
+        ]
+      }
+    ]
+  }
+}

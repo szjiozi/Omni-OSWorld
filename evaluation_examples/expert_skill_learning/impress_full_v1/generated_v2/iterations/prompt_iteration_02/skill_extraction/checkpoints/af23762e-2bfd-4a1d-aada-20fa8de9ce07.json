@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "task_id": "af23762e-2bfd-4a1d-aada-20fa8de9ce07",
+  "app": "libreoffice_impress",
+  "single_action_count": 2,
+  "prompt_sha256": "63075b315a5ae0e3a2c9b89d663dd60c62aa66bd6fb64759c9b0edc946f972e0",
+  "request_id": "7086c67d-d8c5-4fc6-b423-6042cf3bb5a4",
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "input_tokens": 1482,
+    "cached_input_tokens": 1355,
+    "output_tokens": 133,
+    "estimated_cost_usd": 0.002121
+  },
+  "response": {
+    "decision": "skills_extracted",
+    "decision_reason": "",
+    "skills": [
+      {
+        "name": "Create a summary slide from selected slides",
+        "procedure": [
+          "In LibreOffice Impress, select the slide thumbnails whose titles or content should be summarized.",
+          "Open the Slide menu from the menu bar and choose Summary Slide.",
+          "Impress creates a new summary slide containing summary entries derived from the selected slides; for example, select several topic slides before invoking the command to create one overview slide."
+        ],
+        "efficiency_tip": "Select all source slide thumbnails before opening the Slide menu so the Summary Slide command can build the overview in one operation.",
+        "action_ids": [
+          0,
+          1
+        ]
+      }
+    ]
+  }
+}

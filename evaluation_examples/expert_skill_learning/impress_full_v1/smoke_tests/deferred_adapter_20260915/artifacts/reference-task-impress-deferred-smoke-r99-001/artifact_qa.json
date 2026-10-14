@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "pptx",
+  "opens_as_zip_package": true,
+  "libreoffice_render_succeeded": true,
+  "slide_count": 2,
+  "semantic_object_count": 4,
+  "geometric_overlap_warnings": [],
+  "placeholder_matches": [],
+  "media_part_count": 0,
+  "notes_part_count": 0,
+  "slides": [
+    {
+      "slide_number": 1,
+      "text": [
+        "Quarterly Briefing",
+        "Prepared for the review team"
+      ],
+      "shape_count": 2,
+      "picture_count": 0,
+      "graphic_frame_count": 0,
+      "placeholder_count": 2,
+      "empty_placeholder_count": 0,
+      "slide_number_field_count": 0,
+      "has_transition": false
+    },
+    {
+      "slide_number": 2,
+      "text": [
+        "Agenda",
+        "Current status",
+        "Next steps"
+      ],
+      "shape_count": 2,
+      "picture_count": 0,
+      "graphic_frame_count": 0,
+      "placeholder_count": 2,
+      "empty_placeholder_count": 0,
+      "slide_number_field_count": 0,
+      "has_transition": false
+    }
+  ],
+  "preview_files": [
+    "slide-01.png",
+    "slide-02.png"
+  ],
+  "contact_sheet": "contact-sheet.png",
+  "visual_review_required": true
+}

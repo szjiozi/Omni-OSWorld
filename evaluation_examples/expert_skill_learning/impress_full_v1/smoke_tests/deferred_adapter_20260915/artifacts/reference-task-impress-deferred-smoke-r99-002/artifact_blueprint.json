@@ -1,0 +1,232 @@
+{
+  "schema_version": "1.0",
+  "builder": "impress_deferred_artifact_adapter",
+  "artifact_strategy_ids": [
+    "save-as-secondary-presentation",
+    "png-export-output"
+  ],
+  "package_artifact_spec": {
+    "artifact_type": "pptx",
+    "domain": "community education program showcase",
+    "presentation_title": "Community Learning Showcase",
+    "slide_size": "standard",
+    "theme": {
+      "primary_color": "a1c6d8",
+      "secondary_color": "ffffff",
+      "accent_color": "3c7186",
+      "background_color": "ffffff",
+      "title_font": "sans-serif",
+      "body_font": "sans-serif"
+    },
+    "slides": [
+      {
+        "slide_number": 1,
+        "purpose": "Introduce the community learning program.",
+        "layout": "title",
+        "object_plan": [
+          {
+            "semantic_id": "showcase_title",
+            "type": "text",
+            "purpose": "Main title, Community Learning Showcase.",
+            "editable": true
+          },
+          {
+            "semantic_id": "program_overview_subtitle",
+            "type": "text",
+            "purpose": "Subtitle, Program overview.",
+            "editable": true
+          },
+          {
+            "semantic_id": "cover_photo",
+            "type": "image",
+            "purpose": "Opening-slide photographic visual.",
+            "editable": true
+          }
+        ]
+      },
+      {
+        "slide_number": 2,
+        "purpose": "Outline the workshop agenda.",
+        "layout": "title_content",
+        "object_plan": [
+          {
+            "semantic_id": "workshop_plan_title",
+            "type": "text",
+            "purpose": "Slide title, Workshop Plan.",
+            "editable": true
+          },
+          {
+            "semantic_id": "agenda_items",
+            "type": "text",
+            "purpose": "Agenda content including Opening session and Hands-on activity.",
+            "editable": true
+          },
+          {
+            "semantic_id": "workshop_photo",
+            "type": "image",
+            "purpose": "Workshop-related visual.",
+            "editable": true
+          }
+        ]
+      },
+      {
+        "slide_number": 3,
+        "purpose": "Provide a full-slide visual interlude.",
+        "layout": "blank",
+        "object_plan": [
+          {
+            "semantic_id": "feature_photo",
+            "type": "image",
+            "purpose": "Standalone photographic visual with no visible text.",
+            "editable": true
+          }
+        ]
+      },
+      {
+        "slide_number": 4,
+        "purpose": "Present practical event resources.",
+        "layout": "two_column",
+        "object_plan": [
+          {
+            "semantic_id": "resource_guide_title",
+            "type": "text",
+            "purpose": "Slide title, Resource Guide.",
+            "editable": true
+          },
+          {
+            "semantic_id": "venue_label_and_content",
+            "type": "text",
+            "purpose": "Venue resource label and associated content area.",
+            "editable": true
+          },
+          {
+            "semantic_id": "materials_label_and_content",
+            "type": "text",
+            "purpose": "Materials resource label and associated content area.",
+            "editable": true
+          },
+          {
+            "semantic_id": "resource_photo",
+            "type": "image",
+            "purpose": "Resource-related photographic visual.",
+            "editable": true
+          },
+          {
+            "semantic_id": "resource_panels",
+            "type": "shape",
+            "purpose": "Visual grouping shapes for resource information.",
+            "editable": true
+          }
+        ]
+      },
+      {
+        "slide_number": 5,
+        "purpose": "Close with a takeaway and follow-up prompt.",
+        "layout": "two_column",
+        "object_plan": [
+          {
+            "semantic_id": "closing_notes_title",
+            "type": "text",
+            "purpose": "Slide title, Closing Notes.",
+            "editable": true
+          },
+          {
+            "semantic_id": "takeaway_content",
+            "type": "text",
+            "purpose": "Key takeaway label and content area.",
+            "editable": true
+          },
+          {
+            "semantic_id": "followup_content",
+            "type": "text",
+            "purpose": "Follow-up label and Thank you message.",
+            "editable": true
+          },
+          {
+            "semantic_id": "closing_photo",
+            "type": "image",
+            "purpose": "Closing-slide photographic visual.",
+            "editable": true
+          },
+          {
+            "semantic_id": "closing_panels",
+            "type": "shape",
+            "purpose": "Visual grouping shapes for closing content.",
+            "editable": true
+          }
+        ]
+      },
+      {
+        "slide_number": 6,
+        "purpose": "Summarize the program overview, schedule, and resources.",
+        "layout": "process",
+        "object_plan": [
+          {
+            "semantic_id": "summary_title",
+            "type": "text",
+            "purpose": "Main title, Community Learning Showcase.",
+            "editable": true
+          },
+          {
+            "semantic_id": "summary_overview",
+            "type": "text",
+            "purpose": "Program overview text area.",
+            "editable": true
+          },
+          {
+            "semantic_id": "schedule_section",
+            "type": "text",
+            "purpose": "Schedule summary area.",
+            "editable": true
+          },
+          {
+            "semantic_id": "resources_section",
+            "type": "text",
+            "purpose": "Resources summary area.",
+            "editable": true
+          },
+          {
+            "semantic_id": "summary_photo",
+            "type": "image",
+            "purpose": "Photographic visual supporting the summary.",
+            "editable": true
+          },
+          {
+            "semantic_id": "summary_panels",
+            "type": "shape",
+            "purpose": "Visual grouping shapes for summary sections.",
+            "editable": true
+          }
+        ]
+      }
+    ],
+    "initial_state": [
+      "The currently opened source is initial_artifact.pptx on the Desktop.",
+      "The source deck contains six landscape standard slides.",
+      "Slide 1 is the opening Community Learning Showcase slide and contains the title, Program overview subtitle, and a photo.",
+      "All six slides include existing slide transitions.",
+      "The source presentation has not yet been saved as reference-copy.pptx, and no res.png output has been created."
+    ],
+    "must_not_be_completed": [
+      "Do not alter slide text, images, layout, transitions, or formatting.",
+      "Do not overwrite the initially opened presentation.",
+      "Do not use non-default PNG export settings."
+    ],
+    "generation_notes": [
+      "The requested saved copy is independently collected as reference-copy.pptx.",
+      "The requested PNG is independently collected as res.png and should represent the opening slide."
+    ]
+  },
+  "source_provenance": [
+    {
+      "strategy_id": "save-as-secondary-presentation",
+      "source_task_id": "a097acff-6266-4291-9fbd-137af7ecd439",
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    },
+    {
+      "strategy_id": "png-export-output",
+      "source_task_id": "455d3c66-7dc6-4537-a39a-36d3e9119df7",
+      "source_license": "Apache-2.0 (Hugging Face ubuntu_osworld_file_cache metadata)"
+    }
+  ]
+}
